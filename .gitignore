@@ -6,3 +6,9 @@
 #
 # Pods/
 
+# Exclude OS X folder attributes
+.DS_Store
+
+# Exclude user-specific Xcode 3 and 5 files
+*.xcworkspace
+xcuserdata
