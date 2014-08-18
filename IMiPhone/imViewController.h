@@ -10,4 +10,7 @@
 
 @interface imViewController : UIViewController
 
+- (IBAction)regonclick:(id)sender;
+- (IBAction)loginonclick:(id)sender;
+
 @end

@@ -10,4 +10,12 @@
 
 @interface RegisterViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UITextField *phonenum;
+@property (weak, nonatomic) IBOutlet UITextField *code;
+@property (weak, nonatomic) IBOutlet UITextField *password;
+
+- (IBAction)backonclick:(id)sender;
+- (IBAction)doneonclick:(id)sender;
+- (IBAction)codeonclick:(id)sender;
+
 @end

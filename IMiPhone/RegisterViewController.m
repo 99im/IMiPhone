@@ -46,4 +46,15 @@
 }
 */
 
+- (IBAction)backonclick:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:^{
+        NSLog(@"Modal View back : registerViewController to imViewController");
+    }];
+}
+
+- (IBAction)doneonclick:(id)sender {
+}
+
+- (IBAction)codeonclick:(id)sender {
+}
 @end
