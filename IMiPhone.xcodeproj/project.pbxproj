@@ -21,6 +21,9 @@
 		585971F31999F0C700258CB1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 585971D51999F0C700258CB1 /* UIKit.framework */; };
 		585971FB1999F0C700258CB1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 585971F91999F0C700258CB1 /* InfoPlist.strings */; };
 		585971FD1999F0C700258CB1 /* IMiPhoneTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 585971FC1999F0C700258CB1 /* IMiPhoneTests.m */; };
+		5859720719A1CBD000258CB1 /* splash.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5859720619A1CBD000258CB1 /* splash.jpg */; };
+		5859721519A1DE1000258CB1 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5859721419A1DE1000258CB1 /* RegisterViewController.m */; };
+		5859721819A1DEE500258CB1 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5859721719A1DEE500258CB1 /* LoginViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,20 +42,25 @@
 		585971D31999F0C700258CB1 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		585971D51999F0C700258CB1 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		585971D91999F0C700258CB1 /* IMiPhone-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "IMiPhone-Info.plist"; sourceTree = "<group>"; };
-		585971DB1999F0C700258CB1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		585971DD1999F0C700258CB1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		585971DF1999F0C700258CB1 /* IMiPhone-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "IMiPhone-Prefix.pch"; sourceTree = "<group>"; };
 		585971E01999F0C700258CB1 /* imAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = imAppDelegate.h; sourceTree = "<group>"; };
 		585971E11999F0C700258CB1 /* imAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = imAppDelegate.m; sourceTree = "<group>"; };
-		585971E41999F0C700258CB1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		585971E61999F0C700258CB1 /* imViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = imViewController.h; sourceTree = "<group>"; };
 		585971E71999F0C700258CB1 /* imViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = imViewController.m; sourceTree = "<group>"; };
 		585971E91999F0C700258CB1 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		585971EF1999F0C700258CB1 /* IMiPhoneTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IMiPhoneTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		585971F01999F0C700258CB1 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		585971F81999F0C700258CB1 /* IMiPhoneTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "IMiPhoneTests-Info.plist"; sourceTree = "<group>"; };
-		585971FA1999F0C700258CB1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		585971FC1999F0C700258CB1 /* IMiPhoneTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IMiPhoneTests.m; sourceTree = "<group>"; };
+		5859720619A1CBD000258CB1 /* splash.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = splash.jpg; sourceTree = "<group>"; };
+		5859720A19A1CD9100258CB1 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		5859720B19A1CD9200258CB1 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		5859721119A1D28100258CB1 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = "zh-Hans"; path = "zh-Hans.lproj/Main.storyboard"; sourceTree = "<group>"; };
+		5859721319A1DE1000258CB1 /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
+		5859721419A1DE1000258CB1 /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
+		5859721619A1DEE500258CB1 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		5859721719A1DEE500258CB1 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,11 +120,15 @@
 		585971D71999F0C700258CB1 /* IMiPhone */ = {
 			isa = PBXGroup;
 			children = (
+				585971E31999F0C700258CB1 /* Main.storyboard */,
+				5859721619A1DEE500258CB1 /* LoginViewController.h */,
+				5859721719A1DEE500258CB1 /* LoginViewController.m */,
 				585971E01999F0C700258CB1 /* imAppDelegate.h */,
 				585971E11999F0C700258CB1 /* imAppDelegate.m */,
-				585971E31999F0C700258CB1 /* Main.storyboard */,
 				585971E61999F0C700258CB1 /* imViewController.h */,
 				585971E71999F0C700258CB1 /* imViewController.m */,
+				5859721319A1DE1000258CB1 /* RegisterViewController.h */,
+				5859721419A1DE1000258CB1 /* RegisterViewController.m */,
 				585971E91999F0C700258CB1 /* Images.xcassets */,
 				585971D81999F0C700258CB1 /* Supporting Files */,
 			);
@@ -126,6 +138,7 @@
 		585971D81999F0C700258CB1 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				5859720819A1CBE500258CB1 /* Image */,
 				585971D91999F0C700258CB1 /* IMiPhone-Info.plist */,
 				585971DA1999F0C700258CB1 /* InfoPlist.strings */,
 				585971DD1999F0C700258CB1 /* main.m */,
@@ -150,6 +163,14 @@
 				585971F91999F0C700258CB1 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		5859720819A1CBE500258CB1 /* Image */ = {
+			isa = PBXGroup;
+			children = (
+				5859720619A1CBD000258CB1 /* splash.jpg */,
+			);
+			name = Image;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -212,6 +233,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"zh-Hans",
 			);
 			mainGroup = 585971C51999F0C700258CB1;
 			productRefGroup = 585971CF1999F0C700258CB1 /* Products */;
@@ -229,6 +251,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5859720719A1CBD000258CB1 /* splash.jpg in Resources */,
 				585971EA1999F0C700258CB1 /* Images.xcassets in Resources */,
 				585971DC1999F0C700258CB1 /* InfoPlist.strings in Resources */,
 				585971E51999F0C700258CB1 /* Main.storyboard in Resources */,
@@ -253,6 +276,8 @@
 				585971E21999F0C700258CB1 /* imAppDelegate.m in Sources */,
 				585971E81999F0C700258CB1 /* imViewController.m in Sources */,
 				585971DE1999F0C700258CB1 /* main.m in Sources */,
+				5859721519A1DE1000258CB1 /* RegisterViewController.m in Sources */,
+				5859721819A1DEE500258CB1 /* LoginViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -278,7 +303,7 @@
 		585971DA1999F0C700258CB1 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				585971DB1999F0C700258CB1 /* en */,
+				5859720A19A1CD9100258CB1 /* zh-Hans */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -286,7 +311,7 @@
 		585971E31999F0C700258CB1 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				585971E41999F0C700258CB1 /* Base */,
+				5859721119A1D28100258CB1 /* zh-Hans */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -294,7 +319,7 @@
 		585971F91999F0C700258CB1 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				585971FA1999F0C700258CB1 /* en */,
+				5859720B19A1CD9200258CB1 /* zh-Hans */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -457,6 +482,7 @@
 				585972021999F0C700258CB1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		585972031999F0C700258CB1 /* Build configuration list for PBXNativeTarget "IMiPhoneTests" */ = {
 			isa = XCConfigurationList;
@@ -465,6 +491,7 @@
 				585972051999F0C700258CB1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

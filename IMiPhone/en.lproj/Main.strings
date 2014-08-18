@@ -1,0 +1,18 @@
+
+/* Class = "IBUITextField"; placeholder = "手机号或靓号"; ObjectID = "2Y8-d7-s0D"; */
+"2Y8-d7-s0D.placeholder" = "手机号或靓号";
+
+/* Class = "IBUILabel"; text = "Label"; ObjectID = "7SI-Ii-cEd"; */
+"7SI-Ii-cEd.text" = "Label";
+
+/* Class = "IBUILabel"; text = "Label"; ObjectID = "EDa-pO-zMV"; */
+"EDa-pO-zMV.text" = "Label";
+
+/* Class = "IBUITextField"; placeholder = "登录密码"; ObjectID = "h7b-SR-1zh"; */
+"h7b-SR-1zh.placeholder" = "登录密码";
+
+/* Class = "IBUILabel"; text = "欢迎"; ObjectID = "kXX-pQ-Fqz"; */
+"kXX-pQ-Fqz.text" = "欢迎";
+
+/* Class = "IBUIButton"; normalTitle = "注册"; ObjectID = "uBg-Mg-2aC"; */
+"uBg-Mg-2aC.normalTitle" = "注册";
