@@ -24,6 +24,14 @@
 		5859720719A1CBD000258CB1 /* splash.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5859720619A1CBD000258CB1 /* splash.jpg */; };
 		5859721519A1DE1000258CB1 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5859721419A1DE1000258CB1 /* RegisterViewController.m */; };
 		5859721819A1DEE500258CB1 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5859721719A1DEE500258CB1 /* LoginViewController.m */; };
+		58F2AA3419A2F85400DC2FFB /* imUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F2AA3319A2F85400DC2FFB /* imUtil.m */; };
+		58F2AA3919A487E300DC2FFB /* AsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F2AA3819A487E300DC2FFB /* AsyncSocket.m */; };
+		58F2AA3A19A487E300DC2FFB /* AsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F2AA3819A487E300DC2FFB /* AsyncSocket.m */; };
+		58F2AA3B19A4888E00DC2FFB /* imUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F2AA3319A2F85400DC2FFB /* imUtil.m */; };
+		58F2AA3E19A48D2300DC2FFB /* imNWManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F2AA3D19A48D2300DC2FFB /* imNWManager.m */; };
+		58F2AA3F19A48D2300DC2FFB /* imNWManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F2AA3D19A48D2300DC2FFB /* imNWManager.m */; };
+		58F2AA4219A497BA00DC2FFB /* imNWSocketConnect.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F2AA4119A497BA00DC2FFB /* imNWSocketConnect.m */; };
+		58F2AA4319A497BA00DC2FFB /* imNWSocketConnect.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F2AA4119A497BA00DC2FFB /* imNWSocketConnect.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +69,14 @@
 		5859721419A1DE1000258CB1 /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
 		5859721619A1DEE500258CB1 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		5859721719A1DEE500258CB1 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		58F2AA3219A2F85400DC2FFB /* imUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = imUtil.h; sourceTree = "<group>"; };
+		58F2AA3319A2F85400DC2FFB /* imUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = imUtil.m; sourceTree = "<group>"; };
+		58F2AA3719A487E300DC2FFB /* AsyncSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsyncSocket.h; sourceTree = "<group>"; };
+		58F2AA3819A487E300DC2FFB /* AsyncSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsyncSocket.m; sourceTree = "<group>"; };
+		58F2AA3C19A48D2300DC2FFB /* imNWManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = imNWManager.h; sourceTree = "<group>"; };
+		58F2AA3D19A48D2300DC2FFB /* imNWManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = imNWManager.m; sourceTree = "<group>"; };
+		58F2AA4019A497BA00DC2FFB /* imNWSocketConnect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = imNWSocketConnect.h; sourceTree = "<group>"; };
+		58F2AA4119A497BA00DC2FFB /* imNWSocketConnect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = imNWSocketConnect.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +145,8 @@
 				585971E71999F0C700258CB1 /* imViewController.m */,
 				5859721319A1DE1000258CB1 /* RegisterViewController.h */,
 				5859721419A1DE1000258CB1 /* RegisterViewController.m */,
+				58F2AA3619A4876900DC2FFB /* network */,
+				58F2AA3519A2FBC300DC2FFB /* util */,
 				585971E91999F0C700258CB1 /* Images.xcassets */,
 				585971D81999F0C700258CB1 /* Supporting Files */,
 			);
@@ -171,6 +189,28 @@
 				5859720619A1CBD000258CB1 /* splash.jpg */,
 			);
 			name = Image;
+			sourceTree = "<group>";
+		};
+		58F2AA3519A2FBC300DC2FFB /* util */ = {
+			isa = PBXGroup;
+			children = (
+				58F2AA3219A2F85400DC2FFB /* imUtil.h */,
+				58F2AA3319A2F85400DC2FFB /* imUtil.m */,
+			);
+			name = util;
+			sourceTree = "<group>";
+		};
+		58F2AA3619A4876900DC2FFB /* network */ = {
+			isa = PBXGroup;
+			children = (
+				58F2AA3719A487E300DC2FFB /* AsyncSocket.h */,
+				58F2AA3819A487E300DC2FFB /* AsyncSocket.m */,
+				58F2AA3C19A48D2300DC2FFB /* imNWManager.h */,
+				58F2AA3D19A48D2300DC2FFB /* imNWManager.m */,
+				58F2AA4019A497BA00DC2FFB /* imNWSocketConnect.h */,
+				58F2AA4119A497BA00DC2FFB /* imNWSocketConnect.m */,
+			);
+			name = network;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -274,10 +314,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				585971E21999F0C700258CB1 /* imAppDelegate.m in Sources */,
+				58F2AA3419A2F85400DC2FFB /* imUtil.m in Sources */,
 				585971E81999F0C700258CB1 /* imViewController.m in Sources */,
 				585971DE1999F0C700258CB1 /* main.m in Sources */,
+				58F2AA4219A497BA00DC2FFB /* imNWSocketConnect.m in Sources */,
 				5859721519A1DE1000258CB1 /* RegisterViewController.m in Sources */,
 				5859721819A1DEE500258CB1 /* LoginViewController.m in Sources */,
+				58F2AA3E19A48D2300DC2FFB /* imNWManager.m in Sources */,
+				58F2AA3919A487E300DC2FFB /* AsyncSocket.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -285,7 +329,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				58F2AA3B19A4888E00DC2FFB /* imUtil.m in Sources */,
 				585971FD1999F0C700258CB1 /* IMiPhoneTests.m in Sources */,
+				58F2AA4319A497BA00DC2FFB /* imNWSocketConnect.m in Sources */,
+				58F2AA3F19A48D2300DC2FFB /* imNWManager.m in Sources */,
+				58F2AA3A19A487E300DC2FFB /* AsyncSocket.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
