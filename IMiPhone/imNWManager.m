@@ -11,6 +11,7 @@
 @implementation imNWManager
 
 @synthesize socketConnect;
+@synthesize httpConnect;
 
 static imNWManager *sharedNWManager = nil;
 
@@ -25,10 +26,42 @@ static imNWManager *sharedNWManager = nil;
 
 - (void)initSocketConnect
 {
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
+    //static dispatch_once_t onceToken;
+    //dispatch_once(&onceToken, ^{
         socketConnect = [[imNWSocketConnect alloc] init];
-    });
+    //});
+}
+
+- (void)initHttpConnect
+{
+    httpConnect = [[imNWHttpConnect alloc] init];
+}
+
+- (void)sendMessage:(imNWMessage *)message
+{
+    switch (message.connect) {
+        case CONNECT_HTTP:
+        {
+            [self.httpConnect sendHttpRequest:message];
+            break;
+        }
+        case CONNECT_SOCKET:
+        {
+            NSData *data = [message getSocketData];
+            [self.socketConnect sendData:data];
+            break;
+        }
+        default:
+            break;
+    }
+}
+
+- (void)parseMessage:(imNWMessage *)message
+{
+    [message excute];
+//    Class markClass = NSClassFromString([NSString stringWithFormat:@"Mark%@", message.mark]);
+//    SEL typeMethod = NSSelectorFromString([NSString stringWithFormat:@"parseType%@", message.type]);
+//    [markClass performSelector:typeMethod withObject:nil];
 }
 
 @end

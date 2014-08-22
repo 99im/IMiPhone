@@ -7,12 +7,16 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "AsyncSocket.h"
+#import "GCDAsyncSocket.h"
 
 @interface imNWSocketConnect : NSObject
 
-@property (nonatomic, retain) AsyncSocket *socket;
+@property (nonatomic, retain) GCDAsyncSocket *socket;
 
-- (void)connect:(NSString *)hostIP port:(int)hostPort;
+- (void)connect:(NSString *)hostIP port:(uint16_t)hostPort;
+
+- (void)handlerData:(NSData *)data;
+
+- (void)sendData:(NSData *)data;
 
 @end

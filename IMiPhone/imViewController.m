@@ -7,6 +7,7 @@
 //
 
 #import "imViewController.h"
+#import "imNWManager.h"
 
 @interface imViewController ()
 
@@ -18,6 +19,20 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    
+    //Socket测试
+    //[[imNWManager sharedNWManager] initSocketConnect];
+    //[[imNWManager sharedNWManager].socketConnect connect:@"124.225.214.126" port:8019];
+    
+    //Http测试
+    imNWMessage *message = [[imNWMessage alloc] init];
+    message.host = @"gamify.tianya.cn";
+    srand((unsigned)time(0));
+    message.path = [NSString stringWithFormat:@"/app/bobing/server/?&r=%i",rand()];
+    message.connect = CONNECT_HTTP;
+    [[imNWManager sharedNWManager] initHttpConnect];
+    [[imNWManager sharedNWManager] sendMessage:message];
+    
 }
 
 - (void)didReceiveMemoryWarning
