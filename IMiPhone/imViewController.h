@@ -11,4 +11,7 @@
 @interface imViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UIButton *btnRegister;
 
+- (IBAction)regonclick:(id)sender;
+- (IBAction)loginonclick:(id)sender;
+
 @end

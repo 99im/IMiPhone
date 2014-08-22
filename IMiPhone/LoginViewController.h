@@ -5,9 +5,15 @@
 //  Created by 尹晓君 on 14-8-18.
 //  Copyright (c) 2014年 尹晓君. All rights reserved.
 //
-//ss
+
 #import <UIKit/UIKit.h>
 
 @interface LoginViewController : UIViewController
+
+@property (weak, nonatomic) IBOutlet UITextField *username;
+@property (weak, nonatomic) IBOutlet UITextField *password;
+
+- (IBAction)backonclick:(id)sender;
+- (IBAction)doneonclick:(id)sender;
 
 @end
