@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface imViewController : UIViewController
+@property (weak, nonatomic) IBOutlet UIButton *btnRegister;
 
 @end

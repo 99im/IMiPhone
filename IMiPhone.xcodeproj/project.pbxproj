@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		11DF9F8319A2276C00AE5D89 /* splash.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 11DF9F8519A2276C00AE5D89 /* splash.jpg */; };
 		585971D21999F0C700258CB1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 585971D11999F0C700258CB1 /* Foundation.framework */; };
 		585971D41999F0C700258CB1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 585971D31999F0C700258CB1 /* CoreGraphics.framework */; };
 		585971D61999F0C700258CB1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 585971D51999F0C700258CB1 /* UIKit.framework */; };
@@ -21,7 +22,6 @@
 		585971F31999F0C700258CB1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 585971D51999F0C700258CB1 /* UIKit.framework */; };
 		585971FB1999F0C700258CB1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 585971F91999F0C700258CB1 /* InfoPlist.strings */; };
 		585971FD1999F0C700258CB1 /* IMiPhoneTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 585971FC1999F0C700258CB1 /* IMiPhoneTests.m */; };
-		5859720719A1CBD000258CB1 /* splash.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5859720619A1CBD000258CB1 /* splash.jpg */; };
 		5859721519A1DE1000258CB1 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5859721419A1DE1000258CB1 /* RegisterViewController.m */; };
 		5859721819A1DEE500258CB1 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5859721719A1DEE500258CB1 /* LoginViewController.m */; };
 /* End PBXBuildFile section */
@@ -37,6 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		11DF9F8419A2276C00AE5D89 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "zh-Hans"; path = "zh-Hans.lproj/splash.jpg"; sourceTree = "<group>"; };
 		585971CE1999F0C700258CB1 /* IMiPhone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IMiPhone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		585971D11999F0C700258CB1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		585971D31999F0C700258CB1 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -53,7 +54,6 @@
 		585971F01999F0C700258CB1 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		585971F81999F0C700258CB1 /* IMiPhoneTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "IMiPhoneTests-Info.plist"; sourceTree = "<group>"; };
 		585971FC1999F0C700258CB1 /* IMiPhoneTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IMiPhoneTests.m; sourceTree = "<group>"; };
-		5859720619A1CBD000258CB1 /* splash.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = splash.jpg; sourceTree = "<group>"; };
 		5859720A19A1CD9100258CB1 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		5859720B19A1CD9200258CB1 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		5859721119A1D28100258CB1 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = "zh-Hans"; path = "zh-Hans.lproj/Main.storyboard"; sourceTree = "<group>"; };
@@ -87,6 +87,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		11DF9F8819A6D03F00AE5D89 /* Persistence */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Persistence;
+			sourceTree = "<group>";
+		};
 		585971C51999F0C700258CB1 = {
 			isa = PBXGroup;
 			children = (
@@ -120,6 +127,7 @@
 		585971D71999F0C700258CB1 /* IMiPhone */ = {
 			isa = PBXGroup;
 			children = (
+				11DF9F8819A6D03F00AE5D89 /* Persistence */,
 				585971E31999F0C700258CB1 /* Main.storyboard */,
 				5859721619A1DEE500258CB1 /* LoginViewController.h */,
 				5859721719A1DEE500258CB1 /* LoginViewController.m */,
@@ -168,7 +176,7 @@
 		5859720819A1CBE500258CB1 /* Image */ = {
 			isa = PBXGroup;
 			children = (
-				5859720619A1CBD000258CB1 /* splash.jpg */,
+				11DF9F8519A2276C00AE5D89 /* splash.jpg */,
 			);
 			name = Image;
 			sourceTree = "<group>";
@@ -251,7 +259,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5859720719A1CBD000258CB1 /* splash.jpg in Resources */,
+				11DF9F8319A2276C00AE5D89 /* splash.jpg in Resources */,
 				585971EA1999F0C700258CB1 /* Images.xcassets in Resources */,
 				585971DC1999F0C700258CB1 /* InfoPlist.strings in Resources */,
 				585971E51999F0C700258CB1 /* Main.storyboard in Resources */,
@@ -300,6 +308,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		11DF9F8519A2276C00AE5D89 /* splash.jpg */ = {
+			isa = PBXVariantGroup;
+			children = (
+				11DF9F8419A2276C00AE5D89 /* zh-Hans */,
+			);
+			name = splash.jpg;
+			sourceTree = "<group>";
+		};
 		585971DA1999F0C700258CB1 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (

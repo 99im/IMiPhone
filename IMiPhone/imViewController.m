@@ -25,5 +25,9 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+- (IBAction)touch:(id)sender forEvent:(UIEvent *)event
+{
+    NSLog(@"touchbtn");
+}
 
 @end
