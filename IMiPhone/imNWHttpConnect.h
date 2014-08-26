@@ -8,9 +8,12 @@
 
 #import <Foundation/Foundation.h>
 #import "imNWMessage.h"
+#import "MKNetworkKit/MKNetworkOperation.h"
+
+typedef void (^imNWResponseBlock)(NSString* responseString, NSData* responseData);
 
 @interface imNWHttpConnect : NSObject
 
-- (void)sendHttpRequest:(imNWMessage *)message;
+- (void)sendHttpRequest:(imNWMessage *)message withResponse:(imNWResponseBlock)response;
 
 @end

@@ -19,6 +19,7 @@
 @property (nonatomic, retain) id data;
 @property (nonatomic, retain) NSString *host;
 @property (nonatomic, retain) NSString *path;
+@property (nonatomic, strong) NSMutableArray *responseBlocks;
 
 - (NSData *)getSocketData;
 - (NSMutableDictionary *)getHttpParams;

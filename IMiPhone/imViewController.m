@@ -31,7 +31,10 @@
     message.path = [NSString stringWithFormat:@"/app/bobing/server/?&r=%i",rand()];
     message.connect = CONNECT_HTTP;
     [[imNWManager sharedNWManager] initHttpConnect];
-    [[imNWManager sharedNWManager] sendMessage:message];
+    [[imNWManager sharedNWManager] sendMessage:message withResponse:^(NSString *responseString, NSData *responseData) {
+        NSLog(@"Http connect response string: %@", responseString);
+        NSLog(@"Http connect response data: %@", [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding]);
+    }];
     
 }
 

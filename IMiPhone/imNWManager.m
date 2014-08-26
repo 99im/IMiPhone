@@ -37,12 +37,12 @@ static imNWManager *sharedNWManager = nil;
     httpConnect = [[imNWHttpConnect alloc] init];
 }
 
-- (void)sendMessage:(imNWMessage *)message
+- (void)sendMessage:(imNWMessage *)message withResponse:(imNWResponseBlock)response
 {
     switch (message.connect) {
         case CONNECT_HTTP:
         {
-            [self.httpConnect sendHttpRequest:message];
+            [self.httpConnect sendHttpRequest:message withResponse:response];
             break;
         }
         case CONNECT_SOCKET:
