@@ -8,6 +8,7 @@
 
 #import "imViewController.h"
 #import "imNWManager.h"
+#import "imRms.h"
 
 @interface imViewController ()
 
@@ -44,6 +45,9 @@
 {
     NSLog(@"touchbtn");
 }
+//- (IBAction)touchLogin:(id)sender {
+//     NSLog(@"%@",[imRms userDefaultsRead:@"userid"]);
+//}
 
 - (IBAction)regonclick:(id)sender {
     UIStoryboard* mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
@@ -52,15 +56,20 @@
     [self presentViewController:registerViewController animated:YES completion:^{
         NSLog(@"Present Modal View: registerViewController");
     }];
+    
+    
 }
 
 - (IBAction)loginonclick:(id)sender {
+    
+    
     UIStoryboard* mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     UIViewController *loginViewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"loginViewController"];
     //    loginViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
     [self presentViewController:loginViewController animated:YES completion:^{
         NSLog(@"Present Modal View: loginViewController");
     }];
+
 
 }
 @end

@@ -7,12 +7,16 @@
 //
 
 #import "LoginViewController.h"
+#import "imRms.h"
 
 @interface LoginViewController ()
 
 @end
 
 @implementation LoginViewController
+
+NSString *uid;
+NSString *psw;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -27,6 +31,24 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    uid = [imRms userDefaultsRead:@"userid"];
+    if(uid == nil)
+    {
+        uid = @"";
+        [imRms userDefaultsWrite:@"userid" withValue:uid];
+    }
+    NSLog(@"%@",uid);
+    self.username.text = uid;
+    
+    psw = [imRms userDefaultsRead:@"password"];
+    if(psw == nil)
+    {
+        psw = @"";
+        [imRms userDefaultsWrite:@"password" withValue:psw];
+    }
+    NSLog(@"%@",psw);
+    self.password.text = psw;
+   
 }
 
 - (void)didReceiveMemoryWarning
@@ -53,5 +75,9 @@
 }
 
 - (IBAction)doneonclick:(id)sender {
+    uid = self.username.text;
+    [imRms userDefaultsWrite:@"userid" withValue:uid];
+    psw = self.password.text;
+    [imRms userDefaultsWrite:@"password" withValue:psw];
 }
 @end

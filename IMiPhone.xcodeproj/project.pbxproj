@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		11DF9F8319A2276C00AE5D89 /* splash.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 11DF9F8519A2276C00AE5D89 /* splash.jpg */; };
+		11DF9F8B19AC5F0100AE5D89 /* imRms.m in Sources */ = {isa = PBXBuildFile; fileRef = 11DF9F8A19AC5F0100AE5D89 /* imRms.m */; };
 		585971D21999F0C700258CB1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 585971D11999F0C700258CB1 /* Foundation.framework */; };
 		585971D41999F0C700258CB1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 585971D31999F0C700258CB1 /* CoreGraphics.framework */; };
 		585971D61999F0C700258CB1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 585971D51999F0C700258CB1 /* UIKit.framework */; };
@@ -77,6 +78,8 @@
 
 /* Begin PBXFileReference section */
 		11DF9F8419A2276C00AE5D89 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "zh-Hans"; path = "zh-Hans.lproj/splash.jpg"; sourceTree = "<group>"; };
+		11DF9F8919AC5F0100AE5D89 /* imRms.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = imRms.h; sourceTree = "<group>"; };
+		11DF9F8A19AC5F0100AE5D89 /* imRms.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = imRms.m; sourceTree = "<group>"; };
 		585971CE1999F0C700258CB1 /* IMiPhone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IMiPhone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		585971D11999F0C700258CB1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		585971D31999F0C700258CB1 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -172,6 +175,8 @@
 		11DF9F8819A6D03F00AE5D89 /* Persistence */ = {
 			isa = PBXGroup;
 			children = (
+				11DF9F8919AC5F0100AE5D89 /* imRms.h */,
+				11DF9F8A19AC5F0100AE5D89 /* imRms.m */,
 			);
 			name = Persistence;
 			sourceTree = "<group>";
@@ -469,6 +474,7 @@
 				58B496EA19A7186A0082AE30 /* Reachability.m in Sources */,
 				58B496E019A7186A0082AE30 /* NSString+MKNetworkKitAdditions.m in Sources */,
 				58B496DE19A7186A0082AE30 /* NSDictionary+RequestEncoding.m in Sources */,
+				11DF9F8B19AC5F0100AE5D89 /* imRms.m in Sources */,
 				58D95F4819A5BDF4007139AB /* GCDAsyncSocket.m in Sources */,
 				58B496E619A7186A0082AE30 /* MKNetworkEngine.m in Sources */,
 				5859721819A1DEE500258CB1 /* LoginViewController.m in Sources */,
