@@ -26,10 +26,7 @@ static imNWManager *sharedNWManager = nil;
 
 - (void)initSocketConnect
 {
-    //static dispatch_once_t onceToken;
-    //dispatch_once(&onceToken, ^{
-        socketConnect = [[imNWSocketConnect alloc] init];
-    //});
+    socketConnect = [[imNWSocketConnect alloc] init];
 }
 
 - (void)initHttpConnect
