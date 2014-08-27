@@ -1,18 +1,18 @@
 //
-//  LoginViewController.m
+//  MainTabBarController.m
 //  IMiPhone
 //
-//  Created by 尹晓君 on 14-8-18.
+//  Created by 尹晓君 on 14-8-27.
 //  Copyright (c) 2014年 尹晓君. All rights reserved.
 //
 
-#import "LoginViewController.h"
+#import "MainTabBarController.h"
 
-@interface LoginViewController ()
+@interface MainTabBarController ()
 
 @end
 
-@implementation LoginViewController
+@implementation MainTabBarController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -46,18 +46,4 @@
 }
 */
 
-- (IBAction)backonclick:(id)sender {
-    [self dismissViewControllerAnimated:YES completion:^{
-        NSLog(@"Modal View back : loginViewController to imViewController");
-    }];
-}
-
-- (IBAction)doneonclick:(id)sender {
-    UIStoryboard* mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    UITabBarController *mainTabBarController = [mainStoryboard instantiateViewControllerWithIdentifier:@"mainTabBarController"];
-    //    registerViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
-    [self presentViewController:mainTabBarController animated:YES completion:^{
-        NSLog(@"Present TabBar View: mainTabBarController");
-    }];
-}
 @end

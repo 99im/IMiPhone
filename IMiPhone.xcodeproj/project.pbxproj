@@ -24,6 +24,12 @@
 		5859720719A1CBD000258CB1 /* splash.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5859720619A1CBD000258CB1 /* splash.jpg */; };
 		5859721519A1DE1000258CB1 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5859721419A1DE1000258CB1 /* RegisterViewController.m */; };
 		5859721819A1DEE500258CB1 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5859721719A1DEE500258CB1 /* LoginViewController.m */; };
+		58A5B4F819ADC05F0007C2F3 /* MainTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A5B4F719ADC05F0007C2F3 /* MainTabBarController.m */; };
+		58A5B4F919ADC05F0007C2F3 /* MainTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A5B4F719ADC05F0007C2F3 /* MainTabBarController.m */; };
+		58A5B4FC19ADC3CA0007C2F3 /* ChatTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A5B4FB19ADC3CA0007C2F3 /* ChatTableViewController.m */; };
+		58A5B4FD19ADC3CA0007C2F3 /* ChatTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A5B4FB19ADC3CA0007C2F3 /* ChatTableViewController.m */; };
+		58A5B50019ADC7CC0007C2F3 /* FriendTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A5B4FF19ADC7CC0007C2F3 /* FriendTableViewController.m */; };
+		58A5B50119ADC7CC0007C2F3 /* FriendTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A5B4FF19ADC7CC0007C2F3 /* FriendTableViewController.m */; };
 		58B496D819A7186A0082AE30 /* NSAlert+MKNetworkKitAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B496C319A7186A0082AE30 /* NSAlert+MKNetworkKitAdditions.m */; };
 		58B496D919A7186A0082AE30 /* NSAlert+MKNetworkKitAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B496C319A7186A0082AE30 /* NSAlert+MKNetworkKitAdditions.m */; };
 		58B496DA19A7186A0082AE30 /* NSData+MKBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B496C519A7186A0082AE30 /* NSData+MKBase64.m */; };
@@ -100,6 +106,12 @@
 		5859721419A1DE1000258CB1 /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
 		5859721619A1DEE500258CB1 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		5859721719A1DEE500258CB1 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		58A5B4F619ADC05F0007C2F3 /* MainTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainTabBarController.h; sourceTree = "<group>"; };
+		58A5B4F719ADC05F0007C2F3 /* MainTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainTabBarController.m; sourceTree = "<group>"; };
+		58A5B4FA19ADC3CA0007C2F3 /* ChatTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatTableViewController.h; sourceTree = "<group>"; };
+		58A5B4FB19ADC3CA0007C2F3 /* ChatTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatTableViewController.m; sourceTree = "<group>"; };
+		58A5B4FE19ADC7CC0007C2F3 /* FriendTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendTableViewController.h; sourceTree = "<group>"; };
+		58A5B4FF19ADC7CC0007C2F3 /* FriendTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendTableViewController.m; sourceTree = "<group>"; };
 		58B496C219A7186A0082AE30 /* NSAlert+MKNetworkKitAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSAlert+MKNetworkKitAdditions.h"; sourceTree = "<group>"; };
 		58B496C319A7186A0082AE30 /* NSAlert+MKNetworkKitAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSAlert+MKNetworkKitAdditions.m"; sourceTree = "<group>"; };
 		58B496C419A7186A0082AE30 /* NSData+MKBase64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+MKBase64.h"; sourceTree = "<group>"; };
@@ -214,6 +226,12 @@
 				585971E71999F0C700258CB1 /* imViewController.m */,
 				5859721319A1DE1000258CB1 /* RegisterViewController.h */,
 				5859721419A1DE1000258CB1 /* RegisterViewController.m */,
+				58A5B4F619ADC05F0007C2F3 /* MainTabBarController.h */,
+				58A5B4F719ADC05F0007C2F3 /* MainTabBarController.m */,
+				58A5B4FA19ADC3CA0007C2F3 /* ChatTableViewController.h */,
+				58A5B4FB19ADC3CA0007C2F3 /* ChatTableViewController.m */,
+				58A5B4FE19ADC7CC0007C2F3 /* FriendTableViewController.h */,
+				58A5B4FF19ADC7CC0007C2F3 /* FriendTableViewController.m */,
 				58D95F4E19A5EB7F007139AB /* message */,
 				58F2AA3619A4876900DC2FFB /* network */,
 				58F2AA3519A2FBC300DC2FFB /* util */,
@@ -457,9 +475,12 @@
 				585971DE1999F0C700258CB1 /* main.m in Sources */,
 				58B496DC19A7186A0082AE30 /* NSDate+RFC1123.m in Sources */,
 				58F2AA4219A497BA00DC2FFB /* imNWSocketConnect.m in Sources */,
+				58A5B4F819ADC05F0007C2F3 /* MainTabBarController.m in Sources */,
 				5859721519A1DE1000258CB1 /* RegisterViewController.m in Sources */,
+				58A5B4FC19ADC3CA0007C2F3 /* ChatTableViewController.m in Sources */,
 				58B496EA19A7186A0082AE30 /* Reachability.m in Sources */,
 				58B496E019A7186A0082AE30 /* NSString+MKNetworkKitAdditions.m in Sources */,
+				58A5B50019ADC7CC0007C2F3 /* FriendTableViewController.m in Sources */,
 				58B496DE19A7186A0082AE30 /* NSDictionary+RequestEncoding.m in Sources */,
 				58D95F4819A5BDF4007139AB /* GCDAsyncSocket.m in Sources */,
 				58B496E619A7186A0082AE30 /* MKNetworkEngine.m in Sources */,
@@ -476,14 +497,17 @@
 				58B496D919A7186A0082AE30 /* NSAlert+MKNetworkKitAdditions.m in Sources */,
 				58D95F4919A5BDF4007139AB /* GCDAsyncSocket.m in Sources */,
 				58F2AA3B19A4888E00DC2FFB /* imUtil.m in Sources */,
+				58A5B50119ADC7CC0007C2F3 /* FriendTableViewController.m in Sources */,
 				58D95F5219A5ECA4007139AB /* MarkLogin.m in Sources */,
 				58B496E719A7186A0082AE30 /* MKNetworkEngine.m in Sources */,
 				585971FD1999F0C700258CB1 /* IMiPhoneTests.m in Sources */,
+				58A5B4F919ADC05F0007C2F3 /* MainTabBarController.m in Sources */,
 				58B496E919A7186A0082AE30 /* MKNetworkOperation.m in Sources */,
 				58B496F519A71AFB0082AE30 /* imNWHttpConnect.m in Sources */,
 				58F2AA4319A497BA00DC2FFB /* imNWSocketConnect.m in Sources */,
 				58B496DD19A7186A0082AE30 /* NSDate+RFC1123.m in Sources */,
 				58B496DF19A7186A0082AE30 /* NSDictionary+RequestEncoding.m in Sources */,
+				58A5B4FD19ADC3CA0007C2F3 /* ChatTableViewController.m in Sources */,
 				58F2AA3F19A48D2300DC2FFB /* imNWManager.m in Sources */,
 				58B496DB19A7186A0082AE30 /* NSData+MKBase64.m in Sources */,
 				58F2AA3A19A487E300DC2FFB /* AsyncSocket.m in Sources */,
