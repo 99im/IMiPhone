@@ -1,5 +1,5 @@
 //
-//  FriendTableViewController.h
+//  FriendViewController.h
 //  IMiPhone
 //
 //  Created by 尹晓君 on 14-8-27.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FriendTableViewController : UITableViewController
+@interface FriendViewController : UIViewController
 
 @end
