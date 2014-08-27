@@ -8,7 +8,6 @@
 
 #import <Foundation/Foundation.h>
 #import "GCDAsyncSocket.h"
-#import "imNWManager.h"
 
 @interface imNWSocketConnect : NSObject
 
