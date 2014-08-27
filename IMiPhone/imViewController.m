@@ -44,18 +44,14 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-- (IBAction)touch:(id)sender forEvent:(UIEvent *)event
-{
-    NSLog(@"touchbtn");
-}
+
 //- (IBAction)touchLogin:(id)sender {
 //     NSLog(@"%@",[imRms userDefaultsRead:@"userid"]);
 //}
-
-- (IBAction)regonclick:(id)sender {
+- (IBAction)registerclick:(id)sender {
     UIStoryboard* mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    UIViewController *registerViewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"registerViewController"];
-//    registerViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+    UIViewController *registerViewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"RegisterViewController"];//
+//    //    registerViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
     [self presentViewController:registerViewController animated:YES completion:^{
         NSLog(@"Present Modal View: registerViewController");
     }];
@@ -67,7 +63,7 @@
     
     
     UIStoryboard* mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    UIViewController *loginViewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"loginViewController"];
+    UIViewController *loginViewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
     //    loginViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
     [self presentViewController:loginViewController animated:YES completion:^{
         NSLog(@"Present Modal View: loginViewController");
