@@ -179,6 +179,83 @@
             </objects>
             <point key="canvasLocation" x="1073" y="138"/>
         </scene>
+        <!--Chat Table View Controller - 聊天-->
+        <scene sceneID="eaN-B9-llO">
+            <objects>
+                <tableViewController storyboardIdentifier="chatTableViewController" id="tlN-tk-7nL" customClass="ChatTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="9vu-2x-Xbb">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ChatCell" id="nWa-Et-BT7">
+                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nWa-Et-BT7" id="JhQ-gt-jQI">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="tlN-tk-7nL" id="zca-L7-S2v"/>
+                            <outlet property="delegate" destination="tlN-tk-7nL" id="FSl-SR-bNS"/>
+                        </connections>
+                    </tableView>
+                    <tabBarItem key="tabBarItem" title="聊天" id="Gyt-BQ-7M1"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BVz-pC-Nry" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2080" y="-898"/>
+        </scene>
+        <!--Main Tab Bar Controller-->
+        <scene sceneID="1Sc-ja-75g">
+            <objects>
+                <tabBarController storyboardIdentifier="mainTabBarController" definesPresentationContext="YES" id="MIG-TR-klW" customClass="MainTabBarController" sceneMemberID="viewController">
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="PfU-zR-gaI">
+                        <rect key="frame" x="129" y="330" width="163" height="49"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="tlN-tk-7nL" kind="relationship" relationship="viewControllers" id="Qdr-Q2-AWv"/>
+                        <segue destination="Znc-04-l34" kind="relationship" relationship="viewControllers" id="PVT-rz-Z8s"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Nhd-dT-7rP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1546" y="138"/>
+        </scene>
+        <!--Friend Table View Controller - 好友-->
+        <scene sceneID="9o9-uz-0mj">
+            <objects>
+                <tableViewController storyboardIdentifier="friendTableViewController" id="Znc-04-l34" customClass="FriendTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="f6o-bh-KZJ">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="FriendCell" id="Be7-o3-rOk">
+                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Be7-o3-rOk" id="6IQ-xS-GQ5">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Znc-04-l34" id="wtD-9k-YP9"/>
+                            <outlet property="delegate" destination="Znc-04-l34" id="WFz-K4-7EH"/>
+                        </connections>
+                    </tableView>
+                    <tabBarItem key="tabBarItem" title="好友" id="F7G-V6-95a"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Yi7-FM-aLk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2080" y="-216"/>
+        </scene>
     </scenes>
     <resources>
         <image name="splash.jpg" width="700" height="550"/>
