@@ -13,7 +13,7 @@
 
 @implementation imNWHttpConnect
 
-- (void)sendHttpRequest:(imNWMessage *)message
+- (void)sendHttpRequest:(imNWMessage *)message withResponse:(imNWResponseBlock)response
 {
     NSMutableDictionary *params = [message getHttpParams];
     
@@ -26,10 +26,15 @@
         op = [engine operationWithPath:message.path params:params httpMethod:@"POST"];
     }
     [op addCompletionHandler:^(MKNetworkOperation *completedOperation) {
-        [self completionHandler:completedOperation];
+        if (response) {
+            response([completedOperation responseString], [completedOperation responseData]);
+        } else {
+            [self completionHandler:completedOperation];
+        }
     } errorHandler:^(MKNetworkOperation *completedOperation, NSError *error) {
         [self errorHandler:completedOperation error:error];
     }];
+    
     [engine enqueueOperation:op];
 }
 

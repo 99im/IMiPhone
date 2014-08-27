@@ -26,10 +26,7 @@ static imNWManager *sharedNWManager = nil;
 
 - (void)initSocketConnect
 {
-    //static dispatch_once_t onceToken;
-    //dispatch_once(&onceToken, ^{
-        socketConnect = [[imNWSocketConnect alloc] init];
-    //});
+    socketConnect = [[imNWSocketConnect alloc] init];
 }
 
 - (void)initHttpConnect
@@ -37,12 +34,12 @@ static imNWManager *sharedNWManager = nil;
     httpConnect = [[imNWHttpConnect alloc] init];
 }
 
-- (void)sendMessage:(imNWMessage *)message
+- (void)sendMessage:(imNWMessage *)message withResponse:(imNWResponseBlock)response
 {
     switch (message.connect) {
         case CONNECT_HTTP:
         {
-            [self.httpConnect sendHttpRequest:message];
+            [self.httpConnect sendHttpRequest:message withResponse:response];
             break;
         }
         case CONNECT_SOCKET:
