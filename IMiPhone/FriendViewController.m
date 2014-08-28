@@ -7,6 +7,9 @@
 //
 
 #import "FriendViewController.h"
+#import "FriendBarCell.h"
+#import "FriendTitleCell.h"
+#import "FriendGroupCell.h"
 
 @interface FriendViewController ()
 
@@ -45,5 +48,53 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+#pragma mark - TableView DataSource
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 5;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    switch (indexPath.row) {
+        case 0:
+        {
+            FriendBarCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FriendBarCell"];
+            return cell;
+        }
+        case 1:
+        {
+            FriendTitleCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FriendTitleCell"];
+            cell.lblName.text = NSLocalizedString(@"FriendTitleOwnGroup", @"我的群组");
+            return cell;
+        }
+        case 2:
+        {
+            FriendGroupCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FriendGroupCell"];
+            cell.lblName.text = @"自驾游";
+            cell.lblMembers.text = @"1/12";
+            return cell;
+        }
+        case 3:
+        {
+            FriendTitleCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FriendTitleCell"];
+            cell.lblName.text = NSLocalizedString(@"FriendTitleMyGroup", @"我参加的群组");
+            cell.btnCreate.hidden = YES;
+            return cell;
+        }
+        case 4:
+        {
+            FriendGroupCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FriendGroupCell"];
+            cell.lblName.text = @"摄影爱好者";
+            cell.lblMembers.text = @"1/6";
+            return cell;
+        }
+        default:
+            break;
+    }
+    return nil;
+}
 
 @end
