@@ -12,15 +12,15 @@
 
 @implementation UserMessageProxy
 
-static UserMessageProxy *sharedMark = nil;
+static UserMessageProxy *sharedUserMessageProxy = nil;
 
-+ (UserMessageProxy *)sharedMark
++ (UserMessageProxy *)sharedProxy
 {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        sharedMark = [[self alloc] init];
+        sharedUserMessageProxy = [[self alloc] init];
     });
-    return sharedMark;
+    return sharedUserMessageProxy;
 }
 
 - (void)parseMessage:(imNWMessage *)message

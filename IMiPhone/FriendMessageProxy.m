@@ -12,15 +12,15 @@
 
 @implementation FriendMessageProxy
 
-static FriendMessageProxy *sharedMark = nil;
+static FriendMessageProxy *sharedFriendMessageProxy = nil;
 
-+ (FriendMessageProxy *)sharedMark
++ (FriendMessageProxy *)sharedProxy
 {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        sharedMark = [[self alloc] init];
+        sharedFriendMessageProxy = [[self alloc] init];
     });
-    return sharedMark;
+    return sharedFriendMessageProxy;
 }
 
 - (void)parseMessage:(imNWMessage *)message

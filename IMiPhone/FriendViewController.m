@@ -10,7 +10,7 @@
 #import "FriendBarCell.h"
 #import "FriendTitleCell.h"
 #import "FriendGroupCell.h"
-#import "FriendMessageProxy.h"
+#import "FriendDataProxy.h"
 
 @interface FriendViewController ()
 
@@ -34,13 +34,15 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [[FriendMessageProxy sharedMark] sendTypeGroups];
+    //[[FriendMessageProxy sharedProxy] sendTypeGroups];
+    [[FriendDataProxy sharedProxy] addObserver:self forKeyPath:@"arrGroups" options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld context:NULL];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+    [[FriendDataProxy sharedProxy] removeObserver:self forKeyPath:@"arrGroups"];
 }
 
 /*
@@ -119,6 +121,8 @@
     }
 }
 
+#pragma mark
+
 - (void)tapHandler:(UITapGestureRecognizer *)sender
 {
     if (profileViewController) {
@@ -135,6 +139,11 @@
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer
 {
     return YES;
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+    NSLog(@"Property '%@' of object '%@' changed: %@", keyPath, object, change);
 }
 
 @end

@@ -13,7 +13,7 @@
 
 @interface FriendMessageProxy : NSObject
 
-+ (FriendMessageProxy*)sharedMark;
++ (FriendMessageProxy*)sharedProxy;
 
 - (void)parseMessage:(imNWMessage *)message;
 

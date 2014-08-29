@@ -19,7 +19,7 @@
 
 @interface UserMessageProxy : NSObject
 
-+ (UserMessageProxy*)sharedMark;
++ (UserMessageProxy*)sharedProxy;
 
 - (void)parseMessage:(imNWMessage *)message;
 
