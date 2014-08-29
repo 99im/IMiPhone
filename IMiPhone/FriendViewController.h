@@ -7,10 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ProfileViewController.h"
 
-@interface FriendViewController : UIViewController
+@interface FriendViewController : UIViewController <UIGestureRecognizerDelegate>
+
+@property (nonatomic, retain) ProfileViewController *profileViewController;
+@property (nonatomic, retain) UITapGestureRecognizer *tapGestureRecognizer;
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section;
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath;
+
+- (IBAction)profileOnclick:(id)sender;
 
 @end

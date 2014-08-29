@@ -212,13 +212,13 @@
         <!--Profile View Controller-->
         <scene sceneID="3N0-ev-ULm">
             <objects>
-                <viewController storyboardIdentifier="profileViewController" id="uzw-4X-jkc" customClass="ProfileViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ProfileViewController" id="uzw-4X-jkc" customClass="ProfileViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="uR7-c8-eib"/>
                         <viewControllerLayoutGuide type="bottom" id="Hdl-jL-vPr"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="0iL-qn-f7n">
-                        <rect key="frame" x="0.0" y="0.0" width="200" height="380"/>
+                        <rect key="frame" x="0.0" y="0.0" width="200" height="320"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AfM-Nf-ApZ">
@@ -245,7 +245,7 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="200" height="380"/>
+                    <size key="freeformSize" width="200" height="320"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Llt-Vc-krd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -287,7 +287,11 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
                                     <navigationItem title="好友" id="NgD-Or-bi6">
-                                        <barButtonItem key="rightBarButtonItem" title="..." id="NxX-wk-RAO"/>
+                                        <barButtonItem key="rightBarButtonItem" title="..." id="NxX-wk-RAO">
+                                            <connections>
+                                                <action selector="profileOnclick:" destination="BLa-S2-8cc" id="I4L-7K-DAQ"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>

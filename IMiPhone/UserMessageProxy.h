@@ -15,9 +15,11 @@
 #import <Foundation/Foundation.h>
 #import "imNWMessage.h"
 
-@interface MarkLogin : NSObject
+#define MARK_LOGIN @"login"
 
-+ (MarkLogin*)sharedMark;
+@interface UserMessageProxy : NSObject
+
++ (UserMessageProxy*)sharedMark;
 
 - (void)parseMessage:(imNWMessage *)message;
 

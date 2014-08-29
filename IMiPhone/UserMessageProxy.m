@@ -6,15 +6,15 @@
 //  Copyright (c) 2014年 尹晓君. All rights reserved.
 //
 
-#import "MarkLogin.h"
+#import "UserMessageProxy.h"
 
-@implementation MarkLogin
+#define TYPE_REGISTER @"register"
 
-static MarkLogin *sharedMark = nil;
+@implementation UserMessageProxy
 
-NSString *const TYPE_REGISTER = @"register";
+static UserMessageProxy *sharedMark = nil;
 
-+ (MarkLogin *)sharedMark
++ (UserMessageProxy *)sharedMark
 {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
@@ -29,6 +29,7 @@ NSString *const TYPE_REGISTER = @"register";
         [self parseTypeRegister:[message getResponseJson]];
     }
 }
+
 
 - (void)sendTypeRegister:(NSString *)phone code:(NSString *)code password:(NSString *)password
 {

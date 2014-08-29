@@ -41,6 +41,10 @@
 		58AF048819AF10560077DCBC /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 58AF048A19AF10560077DCBC /* Localizable.strings */; };
 		58AF048E19AF14BE0077DCBC /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58AF048D19AF14BE0077DCBC /* ProfileViewController.m */; };
 		58AF048F19AF14BE0077DCBC /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58AF048D19AF14BE0077DCBC /* ProfileViewController.m */; };
+		58AF049219AF37C70077DCBC /* FriendMessageProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 58AF049119AF37C70077DCBC /* FriendMessageProxy.m */; };
+		58AF049319AF37C70077DCBC /* FriendMessageProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 58AF049119AF37C70077DCBC /* FriendMessageProxy.m */; };
+		58AF049819B056050077DCBC /* FriendDataProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 58AF049719B056050077DCBC /* FriendDataProxy.m */; };
+		58AF049919B056050077DCBC /* FriendDataProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 58AF049719B056050077DCBC /* FriendDataProxy.m */; };
 		58B496D819A7186A0082AE30 /* NSAlert+MKNetworkKitAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B496C319A7186A0082AE30 /* NSAlert+MKNetworkKitAdditions.m */; };
 		58B496D919A7186A0082AE30 /* NSAlert+MKNetworkKitAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B496C319A7186A0082AE30 /* NSAlert+MKNetworkKitAdditions.m */; };
 		58B496DA19A7186A0082AE30 /* NSData+MKBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B496C519A7186A0082AE30 /* NSData+MKBase64.m */; };
@@ -70,8 +74,8 @@
 		58D95F4919A5BDF4007139AB /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D95F4719A5BDF4007139AB /* GCDAsyncSocket.m */; };
 		58D95F4C19A5E2E7007139AB /* imNWMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D95F4B19A5E2E7007139AB /* imNWMessage.m */; };
 		58D95F4D19A5E2E7007139AB /* imNWMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D95F4B19A5E2E7007139AB /* imNWMessage.m */; };
-		58D95F5119A5ECA4007139AB /* MarkLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D95F5019A5ECA4007139AB /* MarkLogin.m */; };
-		58D95F5219A5ECA4007139AB /* MarkLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D95F5019A5ECA4007139AB /* MarkLogin.m */; };
+		58D95F5119A5ECA4007139AB /* UserMessageProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D95F5019A5ECA4007139AB /* UserMessageProxy.m */; };
+		58D95F5219A5ECA4007139AB /* UserMessageProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D95F5019A5ECA4007139AB /* UserMessageProxy.m */; };
 		58F2AA3419A2F85400DC2FFB /* imUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F2AA3319A2F85400DC2FFB /* imUtil.m */; };
 		58F2AA3919A487E300DC2FFB /* AsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F2AA3819A487E300DC2FFB /* AsyncSocket.m */; };
 		58F2AA3A19A487E300DC2FFB /* AsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F2AA3819A487E300DC2FFB /* AsyncSocket.m */; };
@@ -134,6 +138,10 @@
 		58AF048919AF10560077DCBC /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		58AF048C19AF14BE0077DCBC /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
 		58AF048D19AF14BE0077DCBC /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
+		58AF049019AF37C70077DCBC /* FriendMessageProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendMessageProxy.h; sourceTree = "<group>"; };
+		58AF049119AF37C70077DCBC /* FriendMessageProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendMessageProxy.m; sourceTree = "<group>"; };
+		58AF049619B056050077DCBC /* FriendDataProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendDataProxy.h; sourceTree = "<group>"; };
+		58AF049719B056050077DCBC /* FriendDataProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendDataProxy.m; sourceTree = "<group>"; };
 		58B496C219A7186A0082AE30 /* NSAlert+MKNetworkKitAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSAlert+MKNetworkKitAdditions.h"; sourceTree = "<group>"; };
 		58B496C319A7186A0082AE30 /* NSAlert+MKNetworkKitAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSAlert+MKNetworkKitAdditions.m"; sourceTree = "<group>"; };
 		58B496C419A7186A0082AE30 /* NSData+MKBase64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+MKBase64.h"; sourceTree = "<group>"; };
@@ -164,8 +172,8 @@
 		58D95F4719A5BDF4007139AB /* GCDAsyncSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDAsyncSocket.m; sourceTree = "<group>"; };
 		58D95F4A19A5E2E7007139AB /* imNWMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = imNWMessage.h; sourceTree = "<group>"; };
 		58D95F4B19A5E2E7007139AB /* imNWMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = imNWMessage.m; sourceTree = "<group>"; };
-		58D95F4F19A5ECA4007139AB /* MarkLogin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MarkLogin.h; sourceTree = "<group>"; };
-		58D95F5019A5ECA4007139AB /* MarkLogin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MarkLogin.m; sourceTree = "<group>"; };
+		58D95F4F19A5ECA4007139AB /* UserMessageProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserMessageProxy.h; sourceTree = "<group>"; };
+		58D95F5019A5ECA4007139AB /* UserMessageProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserMessageProxy.m; sourceTree = "<group>"; };
 		58F2AA3219A2F85400DC2FFB /* imUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = imUtil.h; sourceTree = "<group>"; };
 		58F2AA3319A2F85400DC2FFB /* imUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = imUtil.m; sourceTree = "<group>"; };
 		58F2AA3719A487E300DC2FFB /* AsyncSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsyncSocket.h; sourceTree = "<group>"; };
@@ -264,7 +272,8 @@
 				58A5B4FA19ADC3CA0007C2F3 /* ChatTableViewController.h */,
 				58A5B4FB19ADC3CA0007C2F3 /* ChatTableViewController.m */,
 				58AF046C19AF00C60077DCBC /* Friend */,
-				58D95F4E19A5EB7F007139AB /* Message */,
+				58AF049419B053930077DCBC /* DataProxy */,
+				58D95F4E19A5EB7F007139AB /* MessageProxy */,
 				58F2AA3619A4876900DC2FFB /* Network */,
 				58F2AA3519A2FBC300DC2FFB /* Util */,
 				585971E91999F0C700258CB1 /* Images.xcassets */,
@@ -336,6 +345,15 @@
 			name = User;
 			sourceTree = "<group>";
 		};
+		58AF049419B053930077DCBC /* DataProxy */ = {
+			isa = PBXGroup;
+			children = (
+				58AF049619B056050077DCBC /* FriendDataProxy.h */,
+				58AF049719B056050077DCBC /* FriendDataProxy.m */,
+			);
+			name = DataProxy;
+			sourceTree = "<group>";
+		};
 		58B496C019A7186A0082AE30 /* MKNetworkKit */ = {
 			isa = PBXGroup;
 			children = (
@@ -380,13 +398,15 @@
 			path = Reachability;
 			sourceTree = "<group>";
 		};
-		58D95F4E19A5EB7F007139AB /* Message */ = {
+		58D95F4E19A5EB7F007139AB /* MessageProxy */ = {
 			isa = PBXGroup;
 			children = (
-				58D95F4F19A5ECA4007139AB /* MarkLogin.h */,
-				58D95F5019A5ECA4007139AB /* MarkLogin.m */,
+				58D95F4F19A5ECA4007139AB /* UserMessageProxy.h */,
+				58D95F5019A5ECA4007139AB /* UserMessageProxy.m */,
+				58AF049019AF37C70077DCBC /* FriendMessageProxy.h */,
+				58AF049119AF37C70077DCBC /* FriendMessageProxy.m */,
 			);
-			name = Message;
+			name = MessageProxy;
 			sourceTree = "<group>";
 		};
 		58F2AA3519A2FBC300DC2FFB /* Util */ = {
@@ -523,13 +543,14 @@
 				58A5B50419ADF6770007C2F3 /* FriendViewController.m in Sources */,
 				585971E21999F0C700258CB1 /* imAppDelegate.m in Sources */,
 				58F2AA3419A2F85400DC2FFB /* imUtil.m in Sources */,
-				58D95F5119A5ECA4007139AB /* MarkLogin.m in Sources */,
+				58D95F5119A5ECA4007139AB /* UserMessageProxy.m in Sources */,
 				58B496E819A7186A0082AE30 /* MKNetworkOperation.m in Sources */,
 				58D95F4C19A5E2E7007139AB /* imNWMessage.m in Sources */,
 				58B496F419A71AFB0082AE30 /* imNWHttpConnect.m in Sources */,
 				58B496E419A7186A0082AE30 /* UIImageView+MKNetworkKitAdditions.m in Sources */,
 				58B496D819A7186A0082AE30 /* NSAlert+MKNetworkKitAdditions.m in Sources */,
 				58B496E219A7186A0082AE30 /* UIAlertView+MKNetworkKitAdditions.m in Sources */,
+				58AF049219AF37C70077DCBC /* FriendMessageProxy.m in Sources */,
 				58B496DA19A7186A0082AE30 /* NSData+MKBase64.m in Sources */,
 				585971E81999F0C700258CB1 /* imViewController.m in Sources */,
 				585971DE1999F0C700258CB1 /* main.m in Sources */,
@@ -546,6 +567,7 @@
 				58D95F4819A5BDF4007139AB /* GCDAsyncSocket.m in Sources */,
 				58B496E619A7186A0082AE30 /* MKNetworkEngine.m in Sources */,
 				58AF047719AF04570077DCBC /* FriendTitleCell.m in Sources */,
+				58AF049819B056050077DCBC /* FriendDataProxy.m in Sources */,
 				58AF047B19AF046E0077DCBC /* FriendGroupCell.m in Sources */,
 				5859721819A1DEE500258CB1 /* LoginViewController.m in Sources */,
 				58F2AA3E19A48D2300DC2FFB /* imNWManager.m in Sources */,
@@ -561,7 +583,8 @@
 				58B496D919A7186A0082AE30 /* NSAlert+MKNetworkKitAdditions.m in Sources */,
 				58D95F4919A5BDF4007139AB /* GCDAsyncSocket.m in Sources */,
 				58F2AA3B19A4888E00DC2FFB /* imUtil.m in Sources */,
-				58D95F5219A5ECA4007139AB /* MarkLogin.m in Sources */,
+				58D95F5219A5ECA4007139AB /* UserMessageProxy.m in Sources */,
+				58AF049919B056050077DCBC /* FriendDataProxy.m in Sources */,
 				58B496E719A7186A0082AE30 /* MKNetworkEngine.m in Sources */,
 				585971FD1999F0C700258CB1 /* IMiPhoneTests.m in Sources */,
 				58A5B4F919ADC05F0007C2F3 /* MainTabBarController.m in Sources */,
@@ -581,6 +604,7 @@
 				58AF047C19AF046E0077DCBC /* FriendGroupCell.m in Sources */,
 				58B496E119A7186A0082AE30 /* NSString+MKNetworkKitAdditions.m in Sources */,
 				58AF048F19AF14BE0077DCBC /* ProfileViewController.m in Sources */,
+				58AF049319AF37C70077DCBC /* FriendMessageProxy.m in Sources */,
 				58B496EB19A7186A0082AE30 /* Reachability.m in Sources */,
 				58AF047819AF04570077DCBC /* FriendTitleCell.m in Sources */,
 				58B496E319A7186A0082AE30 /* UIAlertView+MKNetworkKitAdditions.m in Sources */,

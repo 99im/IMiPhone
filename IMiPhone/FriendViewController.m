@@ -10,12 +10,16 @@
 #import "FriendBarCell.h"
 #import "FriendTitleCell.h"
 #import "FriendGroupCell.h"
+#import "FriendMessageProxy.h"
 
 @interface FriendViewController ()
 
 @end
 
 @implementation FriendViewController
+
+@synthesize profileViewController;
+@synthesize tapGestureRecognizer;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -30,6 +34,7 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [[FriendMessageProxy sharedMark] sendTypeGroups];
 }
 
 - (void)didReceiveMemoryWarning
@@ -95,6 +100,41 @@
             break;
     }
     return nil;
+}
+
+- (IBAction)profileOnclick:(id)sender {
+    if (!self.profileViewController) {
+        UIStoryboard* mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        profileViewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"ProfileViewController"];
+        UIView *view = profileViewController.view;
+        view.center = CGPointMake(view.center.x + 120, view.center.y + 50);
+        [[self view].window addSubview:view];
+        
+        if (!tapGestureRecognizer) {
+            tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapHandler:)];
+            [self.view addGestureRecognizer:tapGestureRecognizer];
+            tapGestureRecognizer.delegate = self;
+            tapGestureRecognizer.cancelsTouchesInView = NO;
+        }
+    }
+}
+
+- (void)tapHandler:(UITapGestureRecognizer *)sender
+{
+    if (profileViewController) {
+        [profileViewController.view removeFromSuperview];
+        profileViewController = nil;
+        
+        [self.view removeGestureRecognizer:tapGestureRecognizer];
+        tapGestureRecognizer = nil;
+    }
+    CGPoint point = [sender locationInView:self.view];
+    NSLog(@"tapHandler: x: %f, y: %f", point.x, point.y);
+}
+
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer
+{
+    return YES;
 }
 
 @end
