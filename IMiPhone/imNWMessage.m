@@ -44,7 +44,7 @@
 
 - (void)excute
 {
-    if ([self.mark isEqualToString:MARK_LOGIN] == YES) {
+    if ([self.mark isEqualToString:MARK_USER] == YES) {
         [[UserMessageProxy sharedProxy] parseMessage:self];
     }
     else if ([self.mark isEqualToString:MARK_FRIEND] == YES) {

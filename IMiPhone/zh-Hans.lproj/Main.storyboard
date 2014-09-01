@@ -212,7 +212,7 @@
         <!--Profile View Controller-->
         <scene sceneID="3N0-ev-ULm">
             <objects>
-                <viewController storyboardIdentifier="ProfileViewController" id="uzw-4X-jkc" customClass="ProfileViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ProfileViewController" autoresizesArchivedViewToFullSize="NO" automaticallyAdjustsScrollViewInsets="NO" id="uzw-4X-jkc" customClass="ProfileViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="uR7-c8-eib"/>
                         <viewControllerLayoutGuide type="bottom" id="Hdl-jL-vPr"/>
@@ -224,6 +224,7 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AfM-Nf-ApZ">
                                 <rect key="frame" x="20" y="20" width="64" height="64"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                             </imageView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bJX-H8-HFi">
                                 <rect key="frame" x="92" y="41" width="81" height="21"/>
@@ -246,6 +247,9 @@
                     <nil key="simulatedBottomBarMetrics"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="200" height="320"/>
+                    <connections>
+                        <outlet property="imgHead" destination="AfM-Nf-ApZ" id="fLD-re-XTm"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Llt-Vc-krd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

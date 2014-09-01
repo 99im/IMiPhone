@@ -27,6 +27,10 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapHandler:)];
+    [self.imgHead addGestureRecognizer:tap];
+    tap.delegate = self;
+    tap.cancelsTouchesInView = NO;
 }
 
 - (void)didReceiveMemoryWarning
@@ -45,5 +49,15 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+- (void)tapHandler:(UITapGestureRecognizer *)sender
+{
+    
+}
+
+- (BOOL)gestureRecognizer:(UITapGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer
+{
+    return YES;
+}
 
 @end

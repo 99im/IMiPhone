@@ -15,7 +15,7 @@
 #import <Foundation/Foundation.h>
 #import "imNWMessage.h"
 
-#define MARK_LOGIN @"login"
+#define MARK_USER @"user"
 
 @interface UserMessageProxy : NSObject
 
