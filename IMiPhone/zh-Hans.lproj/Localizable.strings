@@ -1,0 +1,9 @@
+/* 
+  Localizable.strings
+  IMiPhone
+
+  Created by 尹晓君 on 14-8-28.
+  Copyright (c) 2014年 尹晓君. All rights reserved.
+*/
+"FriendTitleOwnGroup" = "我的群组";
+"FriendTitleMyGroup" = "我参加的群组";

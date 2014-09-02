@@ -7,11 +7,10 @@
 //
 
 #import "imNWMessage.h"
-#import "MarkLogin.h"
+#import "UserMessageProxy.h"
+#import "FriendMessageProxy.h"
 
 @implementation imNWMessage
-
-NSString *const MARK_LOGIN = @"login";
 
 @synthesize connect;
 @synthesize mark;
@@ -45,8 +44,11 @@ NSString *const MARK_LOGIN = @"login";
 
 - (void)excute
 {
-    if([self.mark isEqualToString:MARK_LOGIN] == YES) {
-        [[MarkLogin sharedMark] parseMessage:self];
+    if ([self.mark isEqualToString:MARK_USER] == YES) {
+        [[UserMessageProxy sharedProxy] parseMessage:self];
+    }
+    else if ([self.mark isEqualToString:MARK_FRIEND] == YES) {
+        [[FriendMessageProxy sharedProxy] parseMessage:self];
     }
 }
 

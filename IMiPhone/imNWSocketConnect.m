@@ -7,12 +7,17 @@
 //
 
 #import "imNWSocketConnect.h"
+#import "imNWMessage.h"
+#import "imNWManager.h"
+#import "crypt.h"
+
+#define TAG_MSG 0
+#define TAG_CRYPT 1
 
 @implementation imNWSocketConnect
 
-#define TAG_MSG 0
-
 NSData *term = nil;
+char cryptKey[17];
 
 - (id)init
 {
@@ -31,8 +36,12 @@ NSData *term = nil;
     {
         NSLog(@"Socket connect error: %@", err);
     }
-    
-    [self.socket readDataToData:term withTimeout:-1 tag:TAG_MSG];
+    if (CRYPT) {
+        [self.socket readDataToData:term withTimeout:-1 tag:TAG_CRYPT];
+    }
+    else {
+        [self.socket readDataToData:term withTimeout:-1 tag:TAG_MSG];
+    }
 }
 
 - (void)socket:(GCDAsyncSocket *)sender didConnectToHost:(NSString *)host port:(uint16_t)port
@@ -46,6 +55,12 @@ NSData *term = nil;
         [self handlerData:data];
         [self.socket readDataToData:term withTimeout:-1 tag:TAG_MSG];
     }
+    else if (tag == TAG_CRYPT) {
+        char originalKey[17];
+        [data getBytes:originalKey length:data.length];
+        keyRevert(originalKey, cryptKey);
+        [self.socket readDataToData:term withTimeout:-1 tag:TAG_MSG];
+    }
 }
 
 - (void)socketDidDisconnect:(GCDAsyncSocket *)sender withError:(NSError *)err
@@ -55,13 +70,60 @@ NSData *term = nil;
 
 - (void)handlerData:(NSData *)data
 {
-    NSString *content = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+    NSData *dataDecoded = nil;
+    if (CRYPT) {
+        char *dataBytes = (char *)[data bytes];
+        char bytesToDecode[data.length - 2];
+        [data getBytes:bytesToDecode range:NSMakeRange(2, data.length - 3)];
+        cryptKey[0] = dataBytes[0];
+        cryptKey[1] = dataBytes[1];
+        bitDecode(bytesToDecode , data.length - 3, cryptKey, 16);
+        dataDecoded = [NSData dataWithBytes:bytesToDecode length:data.length - 3];
+    }
+    else {
+        dataDecoded = data;
+    }
+    
+    NSString *content = [[NSString alloc] initWithData:dataDecoded encoding:NSUTF8StringEncoding];
     NSLog(@"Socket Received: %@", content);
+
+    NSError *err = nil;
+    NSMutableDictionary *json = [NSJSONSerialization JSONObjectWithData:dataDecoded options:NSJSONReadingAllowFragments error:&err];
+    if (err) {
+        NSLog(@"JSON create error: %@", err);
+    }
+    imNWMessage *message = [[imNWMessage alloc] init];
+    message.data = json;
+    message.mark = [json objectForKey:@"mark"];
+    message.type = [json objectForKey:@"type"];
+    [[imNWManager sharedNWManager] parseMessage:message];
+    
+    [self.socket readDataToData:term withTimeout:-1 tag:TAG_MSG];
 }
 
 - (void)sendData:(NSData *)data
 {
-    [self.socket writeData:data withTimeout:-1 tag:TAG_MSG];
+    NSString *content = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+    NSLog(@"Socket Send: %@ , length: %i", content, data.length);
+    if (CRYPT) {
+        char *dataBytes = (char*)[data bytes];
+        bitEncode(dataBytes, data.length, cryptKey, 16);
+        NSMutableData *dataEncoded = [NSMutableData data];
+        [dataEncoded appendBytes:cryptKey length:2];
+        [dataEncoded appendBytes:dataBytes length:data.length];
+        [self.socket writeData:dataEncoded withTimeout:-1 tag:TAG_MSG];
+        [self.socket writeData:term withTimeout:-1 tag:TAG_MSG];
+    }
+    else {
+        [self.socket writeData:data withTimeout:-1 tag:TAG_MSG];
+    }
+}
+
+- (void)socket:(GCDAsyncSocket *)sender didWriteDataWithTag:(long)tag
+{
+    if (tag == TAG_MSG) {
+        NSLog(@"Socket Send !!!");
+    }
 }
 
 @end
