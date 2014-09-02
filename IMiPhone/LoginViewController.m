@@ -8,7 +8,7 @@
 
 #import "LoginViewController.h"
 #import "imRms.h"
-
+#import "DatabaseConfig.h"
 @interface LoginViewController ()
 
 @end
@@ -86,5 +86,6 @@ NSString *psw;
     [self presentViewController:mainTabBarController animated:YES completion:^{
         NSLog(@"Present TabBar View: mainTabBarController");
     }];
+    [DatabaseConfig instance].databaseName = [uid stringByAppendingString:@".sqlite"];
 }
 @end

@@ -7,8 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		110FCCA119ADF83C0087CBCB /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 110FCCA019ADF83A0087CBCB /* libsqlite3.dylib */; };
+		116B6E7B19AEF83500DB1B5E /* GroupMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 116B6E7619AEF83500DB1B5E /* GroupMessage.m */; };
+		116B6E7D19AEF83500DB1B5E /* imRms.m in Sources */ = {isa = PBXBuildFile; fileRef = 116B6E7A19AEF83500DB1B5E /* imRms.m */; };
+		116B6E8019AF0F8C00DB1B5E /* DatabaseConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 116B6E7F19AF0F8C00DB1B5E /* DatabaseConfig.m */; };
+		116B6E8319AF1C7900DB1B5E /* BaseDAO.m in Sources */ = {isa = PBXBuildFile; fileRef = 116B6E8219AF1C7900DB1B5E /* BaseDAO.m */; };
+		116B6E8619B0122100DB1B5E /* PersistenceTempCode.m in Sources */ = {isa = PBXBuildFile; fileRef = 116B6E8519B0122100DB1B5E /* PersistenceTempCode.m */; };
+		116B6E8919B0534000DB1B5E /* Group.m in Sources */ = {isa = PBXBuildFile; fileRef = 116B6E8819B0534000DB1B5E /* Group.m */; };
+		116B6E8C19B0538300DB1B5E /* GroupDAO.m in Sources */ = {isa = PBXBuildFile; fileRef = 116B6E8B19B0538300DB1B5E /* GroupDAO.m */; };
+		116B6E9519B058A400DB1B5E /* SqlightAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 116B6E8F19B058A400DB1B5E /* SqlightAdapter.m */; };
+		116B6E9619B058A400DB1B5E /* SqlightDriver.m in Sources */ = {isa = PBXBuildFile; fileRef = 116B6E9119B058A400DB1B5E /* SqlightDriver.m */; };
+		116B6E9719B058A400DB1B5E /* SqlightResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 116B6E9319B058A400DB1B5E /* SqlightResult.m */; };
 		11DF9F8319A2276C00AE5D89 /* splash.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 11DF9F8519A2276C00AE5D89 /* splash.jpg */; };
-		11DF9F8B19AC5F0100AE5D89 /* imRms.m in Sources */ = {isa = PBXBuildFile; fileRef = 11DF9F8A19AC5F0100AE5D89 /* imRms.m */; };
 		585971D21999F0C700258CB1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 585971D11999F0C700258CB1 /* Foundation.framework */; };
 		585971D41999F0C700258CB1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 585971D31999F0C700258CB1 /* CoreGraphics.framework */; };
 		585971D61999F0C700258CB1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 585971D51999F0C700258CB1 /* UIKit.framework */; };
@@ -100,9 +110,29 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		110FCCA019ADF83A0087CBCB /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		116B6E7519AEF83500DB1B5E /* GroupMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupMessage.h; sourceTree = "<group>"; };
+		116B6E7619AEF83500DB1B5E /* GroupMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupMessage.m; sourceTree = "<group>"; };
+		116B6E7919AEF83500DB1B5E /* imRms.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = imRms.h; sourceTree = "<group>"; };
+		116B6E7A19AEF83500DB1B5E /* imRms.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = imRms.m; sourceTree = "<group>"; };
+		116B6E7E19AF0F8C00DB1B5E /* DatabaseConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatabaseConfig.h; sourceTree = "<group>"; };
+		116B6E7F19AF0F8C00DB1B5E /* DatabaseConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatabaseConfig.m; sourceTree = "<group>"; };
+		116B6E8119AF1C7900DB1B5E /* BaseDAO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseDAO.h; sourceTree = "<group>"; };
+		116B6E8219AF1C7900DB1B5E /* BaseDAO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseDAO.m; sourceTree = "<group>"; };
+		116B6E8419B0122100DB1B5E /* PersistenceTempCode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersistenceTempCode.h; sourceTree = "<group>"; };
+		116B6E8519B0122100DB1B5E /* PersistenceTempCode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersistenceTempCode.m; sourceTree = "<group>"; };
+		116B6E8719B0534000DB1B5E /* Group.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Group.h; sourceTree = "<group>"; };
+		116B6E8819B0534000DB1B5E /* Group.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Group.m; sourceTree = "<group>"; };
+		116B6E8A19B0538300DB1B5E /* GroupDAO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupDAO.h; sourceTree = "<group>"; };
+		116B6E8B19B0538300DB1B5E /* GroupDAO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupDAO.m; sourceTree = "<group>"; };
+		116B6E8E19B058A400DB1B5E /* SqlightAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SqlightAdapter.h; sourceTree = "<group>"; };
+		116B6E8F19B058A400DB1B5E /* SqlightAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SqlightAdapter.m; sourceTree = "<group>"; };
+		116B6E9019B058A400DB1B5E /* SqlightDriver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SqlightDriver.h; sourceTree = "<group>"; };
+		116B6E9119B058A400DB1B5E /* SqlightDriver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SqlightDriver.m; sourceTree = "<group>"; };
+		116B6E9219B058A400DB1B5E /* SqlightResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SqlightResult.h; sourceTree = "<group>"; };
+		116B6E9319B058A400DB1B5E /* SqlightResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SqlightResult.m; sourceTree = "<group>"; };
+		116B6E9419B058A400DB1B5E /* Sqlite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sqlite.h; sourceTree = "<group>"; };
 		11DF9F8419A2276C00AE5D89 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "zh-Hans"; path = "zh-Hans.lproj/splash.jpg"; sourceTree = "<group>"; };
-		11DF9F8919AC5F0100AE5D89 /* imRms.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = imRms.h; sourceTree = "<group>"; };
-		11DF9F8A19AC5F0100AE5D89 /* imRms.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = imRms.m; sourceTree = "<group>"; };
 		585971CE1999F0C700258CB1 /* IMiPhone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IMiPhone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		585971D11999F0C700258CB1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		585971D31999F0C700258CB1 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -195,7 +225,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				58AF049B19B07CFA0077DCBC /* MobileCoreServices.framework in Frameworks */,
+				110FCCA119ADF83C0087CBCB /* libsqlite3.dylib in Frameworks */,
 				58B496F119A719350082AE30 /* Security.framework in Frameworks */,
 				58B496EF19A719230082AE30 /* SystemConfiguration.framework in Frameworks */,
 				58B496ED19A7190B0082AE30 /* CFNetwork.framework in Frameworks */,
@@ -218,13 +248,48 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		11DF9F8819A6D03F00AE5D89 /* Persistence */ = {
+		116B6E7319AEF83500DB1B5E /* Persistence */ = {
 			isa = PBXGroup;
 			children = (
-				11DF9F8919AC5F0100AE5D89 /* imRms.h */,
-				11DF9F8A19AC5F0100AE5D89 /* imRms.m */,
+				116B6E7419AEF83500DB1B5E /* Database */,
+				116B6E7919AEF83500DB1B5E /* imRms.h */,
+				116B6E7A19AEF83500DB1B5E /* imRms.m */,
+				116B6E8419B0122100DB1B5E /* PersistenceTempCode.h */,
+				116B6E8519B0122100DB1B5E /* PersistenceTempCode.m */,
 			);
-			name = Persistence;
+			path = Persistence;
+			sourceTree = "<group>";
+		};
+		116B6E7419AEF83500DB1B5E /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				116B6E8D19B058A400DB1B5E /* SQLight */,
+				116B6E7519AEF83500DB1B5E /* GroupMessage.h */,
+				116B6E7619AEF83500DB1B5E /* GroupMessage.m */,
+				116B6E7E19AF0F8C00DB1B5E /* DatabaseConfig.h */,
+				116B6E7F19AF0F8C00DB1B5E /* DatabaseConfig.m */,
+				116B6E8119AF1C7900DB1B5E /* BaseDAO.h */,
+				116B6E8219AF1C7900DB1B5E /* BaseDAO.m */,
+				116B6E8719B0534000DB1B5E /* Group.h */,
+				116B6E8819B0534000DB1B5E /* Group.m */,
+				116B6E8A19B0538300DB1B5E /* GroupDAO.h */,
+				116B6E8B19B0538300DB1B5E /* GroupDAO.m */,
+			);
+			path = Database;
+			sourceTree = "<group>";
+		};
+		116B6E8D19B058A400DB1B5E /* SQLight */ = {
+			isa = PBXGroup;
+			children = (
+				116B6E8E19B058A400DB1B5E /* SqlightAdapter.h */,
+				116B6E8F19B058A400DB1B5E /* SqlightAdapter.m */,
+				116B6E9019B058A400DB1B5E /* SqlightDriver.h */,
+				116B6E9119B058A400DB1B5E /* SqlightDriver.m */,
+				116B6E9219B058A400DB1B5E /* SqlightResult.h */,
+				116B6E9319B058A400DB1B5E /* SqlightResult.m */,
+				116B6E9419B058A400DB1B5E /* Sqlite.h */,
+			);
+			path = SQLight;
 			sourceTree = "<group>";
 		};
 		585971C51999F0C700258CB1 = {
@@ -249,7 +314,7 @@
 		585971D01999F0C700258CB1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				58AF049A19B07CFA0077DCBC /* MobileCoreServices.framework */,
+				110FCCA019ADF83A0087CBCB /* libsqlite3.dylib */,
 				58B496F019A719350082AE30 /* Security.framework */,
 				58B496EE19A719230082AE30 /* SystemConfiguration.framework */,
 				58B496EC19A7190B0082AE30 /* CFNetwork.framework */,
@@ -264,8 +329,7 @@
 		585971D71999F0C700258CB1 /* IMiPhone */ = {
 			isa = PBXGroup;
 			children = (
-				58AF048B19AF12DB0077DCBC /* User */,
-				11DF9F8819A6D03F00AE5D89 /* Persistence */,
+				116B6E7319AEF83500DB1B5E /* Persistence */,
 				585971E31999F0C700258CB1 /* Main.storyboard */,
 				5859721619A1DEE500258CB1 /* LoginViewController.h */,
 				5859721719A1DEE500258CB1 /* LoginViewController.m */,
@@ -550,18 +614,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				58A5B50419ADF6770007C2F3 /* FriendViewController.m in Sources */,
+				116B6E8919B0534000DB1B5E /* Group.m in Sources */,
 				585971E21999F0C700258CB1 /* imAppDelegate.m in Sources */,
 				58F2AA3419A2F85400DC2FFB /* imUtil.m in Sources */,
-				58D95F5119A5ECA4007139AB /* UserMessageProxy.m in Sources */,
-				58BACEFF19B4410C00A72391 /* crypt.c in Sources */,
+				58D95F5119A5ECA4007139AB /* MarkLogin.m in Sources */,
+				116B6E9519B058A400DB1B5E /* SqlightAdapter.m in Sources */,
 				58B496E819A7186A0082AE30 /* MKNetworkOperation.m in Sources */,
+				116B6E9619B058A400DB1B5E /* SqlightDriver.m in Sources */,
 				58D95F4C19A5E2E7007139AB /* imNWMessage.m in Sources */,
+				116B6E9719B058A400DB1B5E /* SqlightResult.m in Sources */,
+				116B6E7B19AEF83500DB1B5E /* GroupMessage.m in Sources */,
+				116B6E8619B0122100DB1B5E /* PersistenceTempCode.m in Sources */,
 				58B496F419A71AFB0082AE30 /* imNWHttpConnect.m in Sources */,
 				58B496E419A7186A0082AE30 /* UIImageView+MKNetworkKitAdditions.m in Sources */,
 				58B496D819A7186A0082AE30 /* NSAlert+MKNetworkKitAdditions.m in Sources */,
 				58B496E219A7186A0082AE30 /* UIAlertView+MKNetworkKitAdditions.m in Sources */,
-				58AF049219AF37C70077DCBC /* FriendMessageProxy.m in Sources */,
+				116B6E8C19B0538300DB1B5E /* GroupDAO.m in Sources */,
+				116B6E7D19AEF83500DB1B5E /* imRms.m in Sources */,
 				58B496DA19A7186A0082AE30 /* NSData+MKBase64.m in Sources */,
 				585971E81999F0C700258CB1 /* imViewController.m in Sources */,
 				585971DE1999F0C700258CB1 /* main.m in Sources */,
@@ -574,12 +643,10 @@
 				58B496EA19A7186A0082AE30 /* Reachability.m in Sources */,
 				58B496E019A7186A0082AE30 /* NSString+MKNetworkKitAdditions.m in Sources */,
 				58B496DE19A7186A0082AE30 /* NSDictionary+RequestEncoding.m in Sources */,
-				11DF9F8B19AC5F0100AE5D89 /* imRms.m in Sources */,
+				116B6E8319AF1C7900DB1B5E /* BaseDAO.m in Sources */,
 				58D95F4819A5BDF4007139AB /* GCDAsyncSocket.m in Sources */,
 				58B496E619A7186A0082AE30 /* MKNetworkEngine.m in Sources */,
-				58AF047719AF04570077DCBC /* FriendTitleCell.m in Sources */,
-				58AF049819B056050077DCBC /* FriendDataProxy.m in Sources */,
-				58AF047B19AF046E0077DCBC /* FriendGroupCell.m in Sources */,
+				116B6E8019AF0F8C00DB1B5E /* DatabaseConfig.m in Sources */,
 				5859721819A1DEE500258CB1 /* LoginViewController.m in Sources */,
 				58F2AA3E19A48D2300DC2FFB /* imNWManager.m in Sources */,
 				58F2AA3919A487E300DC2FFB /* AsyncSocket.m in Sources */,
