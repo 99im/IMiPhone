@@ -8,7 +8,7 @@
 
 #import "LoginViewController.h"
 #import "imRms.h"
-
+#import "DatabaseConfig.h"
 @interface LoginViewController ()
 
 @end
@@ -79,5 +79,7 @@ NSString *psw;
     [imRms userDefaultsWrite:@"userid" withValue:uid];
     psw = self.password.text;
     [imRms userDefaultsWrite:@"password" withValue:psw];
+    
+    [DatabaseConfig instance].databaseName = [uid stringByAppendingString:@".sqlite"];
 }
 @end
