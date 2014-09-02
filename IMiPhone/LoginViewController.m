@@ -80,6 +80,12 @@ NSString *psw;
     psw = self.password.text;
     [imRms userDefaultsWrite:@"password" withValue:psw];
     
+    UIStoryboard* mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    UITabBarController *mainTabBarController = [mainStoryboard instantiateViewControllerWithIdentifier:@"mainTabBarController"];
+    //    registerViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+    [self presentViewController:mainTabBarController animated:YES completion:^{
+        NSLog(@"Present TabBar View: mainTabBarController");
+    }];
     [DatabaseConfig instance].databaseName = [uid stringByAppendingString:@".sqlite"];
 }
 @end
