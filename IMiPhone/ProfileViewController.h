@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ProfileViewController : UIViewController <UIGestureRecognizerDelegate>
+@interface ProfileViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UIImageView *imgHead;
 
