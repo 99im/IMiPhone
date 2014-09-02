@@ -11,12 +11,15 @@
 #import "DatabaseConfig.h"
 @interface LoginViewController ()
 
+@property (nonatomic, retain) NSString *uid;
+@property (nonatomic, retain) NSString *psw;
+
 @end
 
 @implementation LoginViewController
 
-NSString *uid;
-NSString *psw;
+@synthesize uid;
+@synthesize psw;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {

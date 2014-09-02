@@ -30,4 +30,15 @@
     }
 }
 
++ (BOOL)checkPoint:(CGPoint)point inRectangle:(CGRect)rect
+{
+    if (point.x < rect.origin.x || point.x > rect.origin.x + rect.size.width) {
+        return NO;
+    }
+    if (point.y < rect.origin.y || point.y > rect.origin.y + rect.size.height) {
+        return NO;
+    }
+    return YES;
+}
+
 @end

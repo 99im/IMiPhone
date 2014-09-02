@@ -16,3 +16,5 @@
 #endif
 
 #define CRYPT YES
+
+#import <MobileCoreServices/MobileCoreServices.h>

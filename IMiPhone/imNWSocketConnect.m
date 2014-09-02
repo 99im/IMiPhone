@@ -106,6 +106,8 @@ char cryptKey[17];
     NSString *content = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
     NSLog(@"Socket Send: %@ , length: %i", content, data.length);
     if (CRYPT) {
+        cryptKey[0] = rand() % 127 + 1;
+        cryptKey[1] = rand() % 127 + 1;
         char *dataBytes = (char*)[data bytes];
         bitEncode(dataBytes, data.length, cryptKey, 16);
         NSMutableData *dataEncoded = [NSMutableData data];

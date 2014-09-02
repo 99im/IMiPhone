@@ -173,7 +173,6 @@ static NSDictionary *dicSQLDataType;
             [arrResult addObject:dataModeInstance];
         }
     }
-    
     return arrResult;
 }
 - (int)update:(NSDictionary *)data ByCondition:(NSString *)condition Bind:(NSArray *)bind
