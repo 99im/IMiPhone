@@ -12,11 +12,7 @@
 #define SQL_STATEMENT_MODE_CREATE_TABLE @"CREATE TABLE IF NOT EXISTS #tablename# (cdate TEXT PRIMARY KEY, content TEXT);"
 
 @interface BaseDAO : NSObject
-{
-    NSString *tableName;
-    SqlightAdapter *sqlight;
-    Class dataMode;
-}
+
 + (NSDictionary *) getDicFromNormalClass:(id) classInstance;
 + (NSArray *)getArrPropsFromDataModeClass:(Class) cls;
 
