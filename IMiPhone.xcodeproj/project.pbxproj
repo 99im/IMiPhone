@@ -60,6 +60,10 @@
 		58BACF0819B5804700A72391 /* FriendMessageProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 58AF049119AF37C70077DCBC /* FriendMessageProxy.m */; };
 		58BACF0919B5805800A72391 /* crypt.c in Sources */ = {isa = PBXBuildFile; fileRef = 58BACEFD19B4410C00A72391 /* crypt.c */; };
 		58BACF0B19B5C12800A72391 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58BACF0A19B5C12800A72391 /* MobileCoreServices.framework */; };
+		58BACF0F19B5DAB900A72391 /* imPhotoPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 58BACF0E19B5DAB900A72391 /* imPhotoPicker.m */; };
+		58BACF1019B5DAB900A72391 /* imPhotoPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 58BACF0E19B5DAB900A72391 /* imPhotoPicker.m */; };
+		58BACF1319B5E89D00A72391 /* VPImageCropperViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58BACF1219B5E89D00A72391 /* VPImageCropperViewController.m */; };
+		58BACF1419B5E89D00A72391 /* VPImageCropperViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58BACF1219B5E89D00A72391 /* VPImageCropperViewController.m */; };
 		58D95F4819A5BDF4007139AB /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D95F4719A5BDF4007139AB /* GCDAsyncSocket.m */; };
 		58D95F4C19A5E2E7007139AB /* imNWMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D95F4B19A5E2E7007139AB /* imNWMessage.m */; };
 		58D95F5119A5ECA4007139AB /* UserMessageProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D95F5019A5ECA4007139AB /* UserMessageProxy.m */; };
@@ -164,6 +168,10 @@
 		58BACF0119B57E6C00A72391 /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
 		58BACF0219B57E6C00A72391 /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
 		58BACF0A19B5C12800A72391 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		58BACF0D19B5DAB900A72391 /* imPhotoPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = imPhotoPicker.h; sourceTree = "<group>"; };
+		58BACF0E19B5DAB900A72391 /* imPhotoPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = imPhotoPicker.m; sourceTree = "<group>"; };
+		58BACF1119B5E89D00A72391 /* VPImageCropperViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPImageCropperViewController.h; sourceTree = "<group>"; };
+		58BACF1219B5E89D00A72391 /* VPImageCropperViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPImageCropperViewController.m; sourceTree = "<group>"; };
 		58D95F4619A5BDF4007139AB /* GCDAsyncSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDAsyncSocket.h; sourceTree = "<group>"; };
 		58D95F4719A5BDF4007139AB /* GCDAsyncSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDAsyncSocket.m; sourceTree = "<group>"; };
 		58D95F4A19A5E2E7007139AB /* imNWMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = imNWMessage.h; sourceTree = "<group>"; };
@@ -439,10 +447,14 @@
 		58F2AA3519A2FBC300DC2FFB /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				58BACF1119B5E89D00A72391 /* VPImageCropperViewController.h */,
+				58BACF1219B5E89D00A72391 /* VPImageCropperViewController.m */,
 				58BACEFD19B4410C00A72391 /* crypt.c */,
 				58BACEFE19B4410C00A72391 /* crypt.h */,
 				58F2AA3219A2F85400DC2FFB /* imUtil.h */,
 				58F2AA3319A2F85400DC2FFB /* imUtil.m */,
+				58BACF0D19B5DAB900A72391 /* imPhotoPicker.h */,
+				58BACF0E19B5DAB900A72391 /* imPhotoPicker.m */,
 			);
 			name = Util;
 			sourceTree = "<group>";
@@ -573,6 +585,7 @@
 				58D95F5119A5ECA4007139AB /* UserMessageProxy.m in Sources */,
 				116B6E9519B058A400DB1B5E /* SqlightAdapter.m in Sources */,
 				58B496E819A7186A0082AE30 /* MKNetworkOperation.m in Sources */,
+				58BACF0F19B5DAB900A72391 /* imPhotoPicker.m in Sources */,
 				116B6E9619B058A400DB1B5E /* SqlightDriver.m in Sources */,
 				58D95F4C19A5E2E7007139AB /* imNWMessage.m in Sources */,
 				116B6E9719B058A400DB1B5E /* SqlightResult.m in Sources */,
@@ -595,6 +608,7 @@
 				58A5B4FC19ADC3CA0007C2F3 /* ChatTableViewController.m in Sources */,
 				58B496EA19A7186A0082AE30 /* Reachability.m in Sources */,
 				58B496E019A7186A0082AE30 /* NSString+MKNetworkKitAdditions.m in Sources */,
+				58BACF1319B5E89D00A72391 /* VPImageCropperViewController.m in Sources */,
 				58B496DE19A7186A0082AE30 /* NSDictionary+RequestEncoding.m in Sources */,
 				116B6E8319AF1C7900DB1B5E /* BaseDAO.m in Sources */,
 				58D95F4819A5BDF4007139AB /* GCDAsyncSocket.m in Sources */,
