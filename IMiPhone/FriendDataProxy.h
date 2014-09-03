@@ -14,4 +14,5 @@
 
 + (FriendDataProxy*)sharedProxy;
 
+
 @end

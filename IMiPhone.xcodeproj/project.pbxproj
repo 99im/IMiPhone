@@ -9,6 +9,16 @@
 /* Begin PBXBuildFile section */
 		110FCCA119ADF83C0087CBCB /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 110FCCA019ADF83A0087CBCB /* libsqlite3.dylib */; };
 		1120945A19B601EF0012D607 /* IMiPhoneTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 585971FC1999F0C700258CB1 /* IMiPhoneTests.m */; };
+		116AB14119B7315000092E2C /* PersistenceTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 116AB13F19B7315000092E2C /* PersistenceTest.m */; };
+		116AB14319B7318C00092E2C /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 116AB14219B7318C00092E2C /* libsqlite3.0.dylib */; };
+		116AB14419B731C700092E2C /* SqlightAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 116B6E8F19B058A400DB1B5E /* SqlightAdapter.m */; };
+		116AB14519B731CB00092E2C /* SqlightDriver.m in Sources */ = {isa = PBXBuildFile; fileRef = 116B6E9119B058A400DB1B5E /* SqlightDriver.m */; };
+		116AB14619B731CF00092E2C /* SqlightResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 116B6E9319B058A400DB1B5E /* SqlightResult.m */; };
+		116AB14719B731D300092E2C /* GroupMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 116B6E7619AEF83500DB1B5E /* GroupMessage.m */; };
+		116AB14819B731D600092E2C /* DatabaseConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 116B6E7F19AF0F8C00DB1B5E /* DatabaseConfig.m */; };
+		116AB14919B731DA00092E2C /* BaseDAO.m in Sources */ = {isa = PBXBuildFile; fileRef = 116B6E8219AF1C7900DB1B5E /* BaseDAO.m */; };
+		116AB14A19B731DE00092E2C /* Group.m in Sources */ = {isa = PBXBuildFile; fileRef = 116B6E8819B0534000DB1B5E /* Group.m */; };
+		116AB14B19B731E100092E2C /* GroupDAO.m in Sources */ = {isa = PBXBuildFile; fileRef = 116B6E8B19B0538300DB1B5E /* GroupDAO.m */; };
 		116B6E7B19AEF83500DB1B5E /* GroupMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 116B6E7619AEF83500DB1B5E /* GroupMessage.m */; };
 		116B6E7D19AEF83500DB1B5E /* imRms.m in Sources */ = {isa = PBXBuildFile; fileRef = 116B6E7A19AEF83500DB1B5E /* imRms.m */; };
 		116B6E8019AF0F8C00DB1B5E /* DatabaseConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 116B6E7F19AF0F8C00DB1B5E /* DatabaseConfig.m */; };
@@ -72,7 +82,9 @@
 
 /* Begin PBXFileReference section */
 		110FCCA019ADF83A0087CBCB /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
-		11383AE419B5E51200CDCA33 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "zh-Hans"; path = "zh-Hans.lproj/IMiPhoneTests-Info.plist"; sourceTree = "<group>"; };
+		116AB13E19B7315000092E2C /* IMiPhoneTests-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "IMiPhoneTests-Info.plist"; sourceTree = "<group>"; };
+		116AB13F19B7315000092E2C /* PersistenceTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersistenceTest.m; sourceTree = "<group>"; };
+		116AB14219B7318C00092E2C /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
 		116B6E7519AEF83500DB1B5E /* GroupMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupMessage.h; sourceTree = "<group>"; };
 		116B6E7619AEF83500DB1B5E /* GroupMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupMessage.m; sourceTree = "<group>"; };
 		116B6E7919AEF83500DB1B5E /* imRms.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = imRms.h; sourceTree = "<group>"; };
@@ -81,8 +93,6 @@
 		116B6E7F19AF0F8C00DB1B5E /* DatabaseConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatabaseConfig.m; sourceTree = "<group>"; };
 		116B6E8119AF1C7900DB1B5E /* BaseDAO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseDAO.h; sourceTree = "<group>"; };
 		116B6E8219AF1C7900DB1B5E /* BaseDAO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseDAO.m; sourceTree = "<group>"; };
-		116B6E8419B0122100DB1B5E /* PersistenceTempCode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersistenceTempCode.h; sourceTree = "<group>"; };
-		116B6E8519B0122100DB1B5E /* PersistenceTempCode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersistenceTempCode.m; sourceTree = "<group>"; };
 		116B6E8719B0534000DB1B5E /* Group.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Group.h; sourceTree = "<group>"; };
 		116B6E8819B0534000DB1B5E /* Group.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Group.m; sourceTree = "<group>"; };
 		116B6E8A19B0538300DB1B5E /* GroupDAO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupDAO.h; sourceTree = "<group>"; };
@@ -205,6 +215,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				116AB14319B7318C00092E2C /* libsqlite3.0.dylib in Frameworks */,
 				585971F11999F0C700258CB1 /* XCTest.framework in Frameworks */,
 				585971F31999F0C700258CB1 /* UIKit.framework in Frameworks */,
 				585971F21999F0C700258CB1 /* Foundation.framework in Frameworks */,
@@ -220,8 +231,6 @@
 				116B6E7419AEF83500DB1B5E /* Database */,
 				116B6E7919AEF83500DB1B5E /* imRms.h */,
 				116B6E7A19AEF83500DB1B5E /* imRms.m */,
-				116B6E8419B0122100DB1B5E /* PersistenceTempCode.h */,
-				116B6E8519B0122100DB1B5E /* PersistenceTempCode.m */,
 			);
 			path = Persistence;
 			sourceTree = "<group>";
@@ -280,6 +289,7 @@
 		585971D01999F0C700258CB1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				116AB14219B7318C00092E2C /* libsqlite3.0.dylib */,
 				58BACF0A19B5C12800A72391 /* MobileCoreServices.framework */,
 				110FCCA019ADF83A0087CBCB /* libsqlite3.dylib */,
 				58B496F019A719350082AE30 /* Security.framework */,
@@ -339,6 +349,7 @@
 		585971F61999F0C700258CB1 /* IMiPhoneTests */ = {
 			isa = PBXGroup;
 			children = (
+				116AB13F19B7315000092E2C /* PersistenceTest.m */,
 				585971FC1999F0C700258CB1 /* IMiPhoneTests.m */,
 				585971F71999F0C700258CB1 /* Supporting Files */,
 			);
@@ -348,7 +359,7 @@
 		585971F71999F0C700258CB1 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				11383AE519B5E51200CDCA33 /* IMiPhoneTests-Info.plist */,
+				116AB13E19B7315000092E2C /* IMiPhoneTests-Info.plist */,
 				585971F91999F0C700258CB1 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
@@ -621,21 +632,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				116AB14A19B731DE00092E2C /* Group.m in Sources */,
+				116AB14619B731CF00092E2C /* SqlightResult.m in Sources */,
 				1120945A19B601EF0012D607 /* IMiPhoneTests.m in Sources */,
+				116AB14819B731D600092E2C /* DatabaseConfig.m in Sources */,
+				116AB14919B731DA00092E2C /* BaseDAO.m in Sources */,
+				116AB14119B7315000092E2C /* PersistenceTest.m in Sources */,
+				116AB14519B731CB00092E2C /* SqlightDriver.m in Sources */,
+				116AB14419B731C700092E2C /* SqlightAdapter.m in Sources */,
+				116AB14B19B731E100092E2C /* GroupDAO.m in Sources */,
+				116AB14719B731D300092E2C /* GroupMessage.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		11383AE519B5E51200CDCA33 /* IMiPhoneTests-Info.plist */ = {
-			isa = PBXVariantGroup;
-			children = (
-				11383AE419B5E51200CDCA33 /* zh-Hans */,
-			);
-			name = "IMiPhoneTests-Info.plist";
-			sourceTree = "<group>";
-		};
 		11DF9F8519A2276C00AE5D89 /* splash.jpg */ = {
 			isa = PBXVariantGroup;
 			children = (
