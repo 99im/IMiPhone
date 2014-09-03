@@ -9,7 +9,7 @@
 #import "imViewController.h"
 #import "imNWManager.h"
 #import "imRms.h"
-#import "PersistenceTempCode.h"
+
 
 @interface imViewController ()
 
@@ -20,13 +20,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    PersistenceTempCode *ptc = [[PersistenceTempCode alloc] init];
-    
-//    [ptc toDictionary];
-//    [ptc testKeyValue];
-      [ptc testGroupDAO];
-    
+        
 	// Do any additional setup after loading the view, typically from a nib.
     
     imNWMessage *message = [[imNWMessage alloc] init];

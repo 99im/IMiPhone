@@ -9,8 +9,13 @@
 #import "BaseDAO.h"
 #import "DatabaseConfig.h"
 #import <objc/runtime.h>
-#import "PersistenceTempCode.h"
 
+
+@interface BaseDAO()
+    @property NSString *tableName;
+    @property SqlightAdapter *sqlight;
+    @property Class dataMode;
+@end
 @implementation BaseDAO
 
 static NSDictionary *dicSQLDataType;
@@ -91,7 +96,7 @@ static NSDictionary *dicSQLDataType;
 
 //            NSLog(@"why%@:",[NSString stringWithFormat:@"%c", type[0]]);
 //            NSLog(@"dic string:%@",[[DatabaseConfig instance].dicSQLDataType valueForKey:@"@"]);
-            NSString *sqlType = [[DatabaseConfig instance].dicSQLDataType valueForKey:typeStr];
+            NSString *sqlType = [[DatabaseConfig shareDatabaseConfig].dicSQLDataType valueForKey:typeStr];
             NSString *keyAndType = [[key stringByAppendingString:@" "] stringByAppendingString:sqlType];
             if([key isEqualToString:pKey])//主键
             {
@@ -107,12 +112,12 @@ static NSDictionary *dicSQLDataType;
 
 - (int)createTableIfNotExist:(NSString *)name withDataMode:(Class)cls withPrimaryKey:(NSString *)pKey
 {
-    NSString *dbName = [DatabaseConfig instance].databaseName;
-    tableName = name;
-    dataMode = cls;
-    sqlight = [SqlightAdapter database:dbName AndTable:name];
-    if (nil == sqlight) {
-        sqlight = [SqlightAdapter database:dbName];
+    NSString *dbName = [DatabaseConfig shareDatabaseConfig].databaseName;
+    self.tableName = name;
+    self.dataMode = cls;
+    self.sqlight = [SqlightAdapter database:dbName AndTable:name];
+    if (nil == self.sqlight) {
+        self.sqlight = [SqlightAdapter database:dbName];
         
 //        //
 //        SqlightResult *result = [sqlight createTable:name Info:[NSMutableArray arrayWithObjects:
@@ -124,43 +129,43 @@ static NSDictionary *dicSQLDataType;
 //                                                                nil]];
 //        //
         
-        SqlightResult *result = [sqlight createTable:name Info:[self getInfoFromDataMode:cls withPrimaryKey:pKey]];
-        sqlight.tableName = name;
+        SqlightResult *result = [self.sqlight createTable:name Info:[self getInfoFromDataMode:cls withPrimaryKey:pKey]];
+        self.sqlight.tableName = name;
         NSLog(@"Create table Result msg:%@ code:%d data:%@", result.msg, result.code, result.data);
+        return result.code;
 
     }
-    return 0;
+    return -1;
 }
 - (int)dropTable;
 {
-    SqlightResult *result  = [sqlight dropTable:tableName];
+    SqlightResult *result  = [self.sqlight dropTable:self.tableName];
     NSLog(@"Drop table Result msg:%@ code:%d data:%@", result.msg, result.code, result.data);
     return 0;
 }
 - (int)insert:(NSObject *)data
 {
     NSDictionary *dataDic = [BaseDAO getDicFromNormalClass:data];
-    SqlightResult *result  = [sqlight insertData:dataDic];
+    SqlightResult *result  = [self.sqlight insertData:dataDic];
     NSLog(@"insert Result msg:%@ code:%d data:%@", result.msg, result.code, result.data);
-    
-    return 0;
+    return result.code;
 }
 - (int)deleteByCondition:(NSString *)condition Bind:(NSMutableArray *)bind;
 {
-    SqlightResult *result  = [sqlight deleteByCondition:condition Bind:bind];
+    SqlightResult *result  = [self.sqlight deleteByCondition:condition Bind:bind];
     NSLog(@"delete Result msg:%@ code:%d data:%@", result.msg, result.code, result.data);
-    return 0;
+    return result.code;
 }
 - (NSMutableArray *)query:(NSString *)condition Bind:(NSArray *)bind
 {
-    NSArray *arrProps = [BaseDAO getArrPropsFromDataModeClass:dataMode];
-    SqlightResult *result = [sqlight selectFields:arrProps
+    NSArray *arrProps = [BaseDAO getArrPropsFromDataModeClass:self.dataMode];
+    SqlightResult *result = [self.sqlight selectFields:arrProps
                                       ByCondition:condition Bind:bind];
     NSLog(@"query Result msg:%@ code:%d data:%@", result.msg, result.code, result.data);
     NSMutableArray *arrResult = [NSMutableArray array];
     if (result.data) {
         for (int i = 0; i < result.data.count; i++) {
-             NSData *dataModeInstance = [[dataMode alloc] init];
+             NSData *dataModeInstance = [[self.dataMode alloc] init];
             NSArray *arrTempData = result.data[i];
             for (int j = 0; j < arrTempData.count; j++) {
             [dataModeInstance setValue:arrTempData[j] forKey:arrProps[j]];
@@ -172,9 +177,9 @@ static NSDictionary *dicSQLDataType;
 }
 - (int)update:(NSDictionary *)data ByCondition:(NSString *)condition Bind:(NSArray *)bind
 {
-    SqlightResult *result = [sqlight updateData:data ByCondition:condition Bind:bind];
+    SqlightResult *result = [self.sqlight updateData:data ByCondition:condition Bind:bind];
     NSLog(@"update Result msg:%@ code:%d data:%@", result.msg, result.code, result.data);
-    return 0;
+    return result.code;
 }
 
 
