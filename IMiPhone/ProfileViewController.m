@@ -9,8 +9,9 @@
 #import "ProfileViewController.h"
 #import "imUtil.h"
 #import "LoginViewController.h"
+#import "imPhotoPicker.h"
 
-@interface ProfileViewController () <UIGestureRecognizerDelegate, UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+@interface ProfileViewController () <UIGestureRecognizerDelegate, VPImageCropperDelegate>
 
 @property (nonatomic, retain) UITapGestureRecognizer *tap;
 
@@ -48,29 +49,13 @@
     tap = nil;
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
 - (void)tapHandler:(UITapGestureRecognizer *)sender
 {
     NSLog(@"Gesture Recognize: imgHead");
     CGPoint point = [sender locationInView:self.imgHead];
     if ([imUtil checkPoint:point inRectangle:[self.imgHead bounds]]) {
         NSLog(@"tapHandler: x: %f, y: %f", point.x, point.y);
-        UIActionSheet *choiceSheet = [[UIActionSheet alloc] initWithTitle:nil
-                                                                 delegate:self
-                                                        cancelButtonTitle:@"取消"
-                                                   destructiveButtonTitle:nil
-                                                        otherButtonTitles:@"拍照", @"从相册中选取", nil];
-        [choiceSheet showInView:[self.view superview]];
+        [[imPhotoPicker sharedPicker] showChoiceSheet:self inView:[self.view superview]];
     }
 }
 
@@ -79,50 +64,17 @@
     return YES;
 }
 
-- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-    if (buttonIndex == 0) {
-        // 拍照
-//        if ([self isCameraAvailable] && [self doesCameraSupportTakingPhotos]) {
-//            UIImagePickerController *controller = [[UIImagePickerController alloc] init];
-//            controller.sourceType = UIImagePickerControllerSourceTypeCamera;
-//            if ([self isFrontCameraAvailable]) {
-//                controller.cameraDevice = UIImagePickerControllerCameraDeviceFront;
-//            }
-//            NSMutableArray *mediaTypes = [[NSMutableArray alloc] init];
-//            [mediaTypes addObject:(__bridge NSString *)kUTTypeImage];
-//            controller.mediaTypes = mediaTypes;
-//            controller.delegate = self;
-//            [self presentViewController:controller
-//                               animated:YES
-//                             completion:^(void){
-//                                 NSLog(@"Picker View Controller is presented");
-//                             }];
-//        }
-        
-    } else if (buttonIndex == 1) {
-        // 从相册中选取
-        if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary]) {
-            UIImagePickerController *controller = [[UIImagePickerController alloc] init];
-            controller.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-            NSMutableArray *mediaTypes = [[NSMutableArray alloc] init];
-            [mediaTypes addObject:(__bridge NSString *)kUTTypeImage];
-            controller.mediaTypes = mediaTypes;
-            controller.delegate = self;
-            [self presentViewController:controller
-                               animated:YES
-                             completion:^(void){
-                                 NSLog(@"Picker View Controller is presented");
-                             }];
-        }
-    }
+#pragma mark VPImageCropperDelegate
+- (void)imageCropper:(VPImageCropperViewController *)cropperViewController didFinished:(UIImage *)editedImage {
+    //self.portraitImageView.image = editedImage;
+    [cropperViewController dismissViewControllerAnimated:YES completion:^{
+        [self.imgHead setImage:editedImage];
+    }];
 }
 
-#pragma mark - UINavigationControllerDelegate
-- (void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated {
-}
-
-- (void)navigationController:(UINavigationController *)navigationController didShowViewController:(UIViewController *)viewController animated:(BOOL)animated {
+- (void)imageCropperDidCancel:(VPImageCropperViewController *)cropperViewController {
+    [cropperViewController dismissViewControllerAnimated:YES completion:^{
+    }];
 }
 
 @end
