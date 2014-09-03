@@ -89,6 +89,6 @@
     [self presentViewController:mainTabBarController animated:YES completion:^{
         NSLog(@"Present TabBar View: mainTabBarController");
     }];
-    [DatabaseConfig instance].databaseName = [uid stringByAppendingString:@".sqlite"];
+    [DatabaseConfig shareDatabaseConfig].databaseName = [uid stringByAppendingString:@".sqlite"];
 }
 @end

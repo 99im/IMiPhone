@@ -7,7 +7,7 @@
 //
 
 #import <XCTest/XCTest.h>
-#import "GroupDAO.h"
+//#import "GroupDAO.h"
 @interface IMiPhoneTests : XCTestCase
 
 @end
@@ -29,7 +29,7 @@
 - (void)testExample
 {
 //    XCTFail(@"No implementation for \"%s\"", __PRETTY_FUNCTION__);
-    [[GroupDAO sharedManager] dropTable];
+////    [[GroupDAO sharedManager] dropTable];
 }
 
 @end

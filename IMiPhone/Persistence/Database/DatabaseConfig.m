@@ -10,7 +10,7 @@
 
 
 @implementation DatabaseConfig
-+ (DatabaseConfig *) instance{
++ (DatabaseConfig *) shareDatabaseConfig{
     static DatabaseConfig* _instance = nil;
     static dispatch_once_t once;
     dispatch_once(&once,

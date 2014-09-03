@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		110FCCA119ADF83C0087CBCB /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 110FCCA019ADF83A0087CBCB /* libsqlite3.dylib */; };
-		11383ADE19B5C40B00CDCA33 /* IMiPhoneTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 585971FC1999F0C700258CB1 /* IMiPhoneTests.m */; };
+		1120945A19B601EF0012D607 /* IMiPhoneTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 585971FC1999F0C700258CB1 /* IMiPhoneTests.m */; };
 		116B6E7B19AEF83500DB1B5E /* GroupMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 116B6E7619AEF83500DB1B5E /* GroupMessage.m */; };
 		116B6E7D19AEF83500DB1B5E /* imRms.m in Sources */ = {isa = PBXBuildFile; fileRef = 116B6E7A19AEF83500DB1B5E /* imRms.m */; };
 		116B6E8019AF0F8C00DB1B5E /* DatabaseConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 116B6E7F19AF0F8C00DB1B5E /* DatabaseConfig.m */; };
@@ -32,50 +32,26 @@
 		585971F11999F0C700258CB1 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 585971F01999F0C700258CB1 /* XCTest.framework */; };
 		585971F21999F0C700258CB1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 585971D11999F0C700258CB1 /* Foundation.framework */; };
 		585971F31999F0C700258CB1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 585971D51999F0C700258CB1 /* UIKit.framework */; };
-		585971FB1999F0C700258CB1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 585971F91999F0C700258CB1 /* InfoPlist.strings */; };
-		585971FD1999F0C700258CB1 /* IMiPhoneTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 585971FC1999F0C700258CB1 /* IMiPhoneTests.m */; };
 		5859721519A1DE1000258CB1 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5859721419A1DE1000258CB1 /* RegisterViewController.m */; };
 		5859721819A1DEE500258CB1 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5859721719A1DEE500258CB1 /* LoginViewController.m */; };
 		58A5B4F819ADC05F0007C2F3 /* MainTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A5B4F719ADC05F0007C2F3 /* MainTabBarController.m */; };
-		58A5B4F919ADC05F0007C2F3 /* MainTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A5B4F719ADC05F0007C2F3 /* MainTabBarController.m */; };
 		58A5B4FC19ADC3CA0007C2F3 /* ChatTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A5B4FB19ADC3CA0007C2F3 /* ChatTableViewController.m */; };
-		58A5B4FD19ADC3CA0007C2F3 /* ChatTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A5B4FB19ADC3CA0007C2F3 /* ChatTableViewController.m */; };
-		58A5B50519ADF6770007C2F3 /* FriendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A5B50319ADF6770007C2F3 /* FriendViewController.m */; };
 		58AF047319AF040C0077DCBC /* FriendBarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 58AF047219AF040C0077DCBC /* FriendBarCell.m */; };
-		58AF047419AF040C0077DCBC /* FriendBarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 58AF047219AF040C0077DCBC /* FriendBarCell.m */; };
-		58AF047819AF04570077DCBC /* FriendTitleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 58AF047619AF04570077DCBC /* FriendTitleCell.m */; };
-		58AF047C19AF046E0077DCBC /* FriendGroupCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 58AF047A19AF046E0077DCBC /* FriendGroupCell.m */; };
 		58AF048719AF10560077DCBC /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 58AF048A19AF10560077DCBC /* Localizable.strings */; };
-		58AF048819AF10560077DCBC /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 58AF048A19AF10560077DCBC /* Localizable.strings */; };
-		58AF048F19AF14BE0077DCBC /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58AF048D19AF14BE0077DCBC /* ProfileViewController.m */; };
-		58AF049319AF37C70077DCBC /* FriendMessageProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 58AF049119AF37C70077DCBC /* FriendMessageProxy.m */; };
-		58AF049919B056050077DCBC /* FriendDataProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 58AF049719B056050077DCBC /* FriendDataProxy.m */; };
 		58B496D819A7186A0082AE30 /* NSAlert+MKNetworkKitAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B496C319A7186A0082AE30 /* NSAlert+MKNetworkKitAdditions.m */; };
-		58B496D919A7186A0082AE30 /* NSAlert+MKNetworkKitAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B496C319A7186A0082AE30 /* NSAlert+MKNetworkKitAdditions.m */; };
 		58B496DA19A7186A0082AE30 /* NSData+MKBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B496C519A7186A0082AE30 /* NSData+MKBase64.m */; };
-		58B496DB19A7186A0082AE30 /* NSData+MKBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B496C519A7186A0082AE30 /* NSData+MKBase64.m */; };
 		58B496DC19A7186A0082AE30 /* NSDate+RFC1123.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B496C719A7186A0082AE30 /* NSDate+RFC1123.m */; };
-		58B496DD19A7186A0082AE30 /* NSDate+RFC1123.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B496C719A7186A0082AE30 /* NSDate+RFC1123.m */; };
 		58B496DE19A7186A0082AE30 /* NSDictionary+RequestEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B496C919A7186A0082AE30 /* NSDictionary+RequestEncoding.m */; };
-		58B496DF19A7186A0082AE30 /* NSDictionary+RequestEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B496C919A7186A0082AE30 /* NSDictionary+RequestEncoding.m */; };
 		58B496E019A7186A0082AE30 /* NSString+MKNetworkKitAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B496CB19A7186A0082AE30 /* NSString+MKNetworkKitAdditions.m */; };
-		58B496E119A7186A0082AE30 /* NSString+MKNetworkKitAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B496CB19A7186A0082AE30 /* NSString+MKNetworkKitAdditions.m */; };
 		58B496E219A7186A0082AE30 /* UIAlertView+MKNetworkKitAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B496CD19A7186A0082AE30 /* UIAlertView+MKNetworkKitAdditions.m */; };
-		58B496E319A7186A0082AE30 /* UIAlertView+MKNetworkKitAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B496CD19A7186A0082AE30 /* UIAlertView+MKNetworkKitAdditions.m */; };
 		58B496E419A7186A0082AE30 /* UIImageView+MKNetworkKitAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B496CF19A7186A0082AE30 /* UIImageView+MKNetworkKitAdditions.m */; };
-		58B496E519A7186A0082AE30 /* UIImageView+MKNetworkKitAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B496CF19A7186A0082AE30 /* UIImageView+MKNetworkKitAdditions.m */; };
 		58B496E619A7186A0082AE30 /* MKNetworkEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B496D119A7186A0082AE30 /* MKNetworkEngine.m */; };
-		58B496E719A7186A0082AE30 /* MKNetworkEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B496D119A7186A0082AE30 /* MKNetworkEngine.m */; };
 		58B496E819A7186A0082AE30 /* MKNetworkOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B496D419A7186A0082AE30 /* MKNetworkOperation.m */; };
-		58B496E919A7186A0082AE30 /* MKNetworkOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B496D419A7186A0082AE30 /* MKNetworkOperation.m */; };
 		58B496EA19A7186A0082AE30 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B496D719A7186A0082AE30 /* Reachability.m */; };
-		58B496EB19A7186A0082AE30 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B496D719A7186A0082AE30 /* Reachability.m */; };
 		58B496ED19A7190B0082AE30 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58B496EC19A7190B0082AE30 /* CFNetwork.framework */; };
 		58B496EF19A719230082AE30 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58B496EE19A719230082AE30 /* SystemConfiguration.framework */; };
 		58B496F119A719350082AE30 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58B496F019A719350082AE30 /* Security.framework */; };
 		58B496F419A71AFB0082AE30 /* imNWHttpConnect.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B496F319A71AFB0082AE30 /* imNWHttpConnect.m */; };
-		58B496F519A71AFB0082AE30 /* imNWHttpConnect.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B496F319A71AFB0082AE30 /* imNWHttpConnect.m */; };
-		58BACF0019B4410C00A72391 /* crypt.c in Sources */ = {isa = PBXBuildFile; fileRef = 58BACEFD19B4410C00A72391 /* crypt.c */; };
 		58BACF0319B57E6C00A72391 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58BACF0219B57E6C00A72391 /* ProfileViewController.m */; };
 		58BACF0419B5802B00A72391 /* FriendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A5B50319ADF6770007C2F3 /* FriendViewController.m */; };
 		58BACF0519B5803300A72391 /* FriendGroupCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 58AF047A19AF046E0077DCBC /* FriendGroupCell.m */; };
@@ -85,33 +61,17 @@
 		58BACF0919B5805800A72391 /* crypt.c in Sources */ = {isa = PBXBuildFile; fileRef = 58BACEFD19B4410C00A72391 /* crypt.c */; };
 		58BACF0B19B5C12800A72391 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58BACF0A19B5C12800A72391 /* MobileCoreServices.framework */; };
 		58D95F4819A5BDF4007139AB /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D95F4719A5BDF4007139AB /* GCDAsyncSocket.m */; };
-		58D95F4919A5BDF4007139AB /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D95F4719A5BDF4007139AB /* GCDAsyncSocket.m */; };
 		58D95F4C19A5E2E7007139AB /* imNWMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D95F4B19A5E2E7007139AB /* imNWMessage.m */; };
-		58D95F4D19A5E2E7007139AB /* imNWMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D95F4B19A5E2E7007139AB /* imNWMessage.m */; };
 		58D95F5119A5ECA4007139AB /* UserMessageProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D95F5019A5ECA4007139AB /* UserMessageProxy.m */; };
-		58D95F5219A5ECA4007139AB /* UserMessageProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D95F5019A5ECA4007139AB /* UserMessageProxy.m */; };
 		58F2AA3419A2F85400DC2FFB /* imUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F2AA3319A2F85400DC2FFB /* imUtil.m */; };
 		58F2AA3919A487E300DC2FFB /* AsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F2AA3819A487E300DC2FFB /* AsyncSocket.m */; };
-		58F2AA3A19A487E300DC2FFB /* AsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F2AA3819A487E300DC2FFB /* AsyncSocket.m */; };
-		58F2AA3B19A4888E00DC2FFB /* imUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F2AA3319A2F85400DC2FFB /* imUtil.m */; };
 		58F2AA3E19A48D2300DC2FFB /* imNWManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F2AA3D19A48D2300DC2FFB /* imNWManager.m */; };
-		58F2AA3F19A48D2300DC2FFB /* imNWManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F2AA3D19A48D2300DC2FFB /* imNWManager.m */; };
 		58F2AA4219A497BA00DC2FFB /* imNWSocketConnect.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F2AA4119A497BA00DC2FFB /* imNWSocketConnect.m */; };
-		58F2AA4319A497BA00DC2FFB /* imNWSocketConnect.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F2AA4119A497BA00DC2FFB /* imNWSocketConnect.m */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		585971F41999F0C700258CB1 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 585971C61999F0C700258CB1 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 585971CD1999F0C700258CB1;
-			remoteInfo = IMiPhone;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		110FCCA019ADF83A0087CBCB /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		11383AE419B5E51200CDCA33 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "zh-Hans"; path = "zh-Hans.lproj/IMiPhoneTests-Info.plist"; sourceTree = "<group>"; };
 		116B6E7519AEF83500DB1B5E /* GroupMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupMessage.h; sourceTree = "<group>"; };
 		116B6E7619AEF83500DB1B5E /* GroupMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupMessage.m; sourceTree = "<group>"; };
 		116B6E7919AEF83500DB1B5E /* imRms.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = imRms.h; sourceTree = "<group>"; };
@@ -148,7 +108,6 @@
 		585971E91999F0C700258CB1 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		585971EF1999F0C700258CB1 /* IMiPhoneTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IMiPhoneTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		585971F01999F0C700258CB1 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		585971F81999F0C700258CB1 /* IMiPhoneTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "IMiPhoneTests-Info.plist"; sourceTree = "<group>"; };
 		585971FC1999F0C700258CB1 /* IMiPhoneTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IMiPhoneTests.m; sourceTree = "<group>"; };
 		5859720A19A1CD9100258CB1 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		5859720B19A1CD9200258CB1 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
@@ -170,7 +129,6 @@
 		58AF047919AF046E0077DCBC /* FriendGroupCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendGroupCell.h; sourceTree = "<group>"; };
 		58AF047A19AF046E0077DCBC /* FriendGroupCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendGroupCell.m; sourceTree = "<group>"; };
 		58AF048919AF10560077DCBC /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
-		58AF048D19AF14BE0077DCBC /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
 		58AF049019AF37C70077DCBC /* FriendMessageProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendMessageProxy.h; sourceTree = "<group>"; };
 		58AF049119AF37C70077DCBC /* FriendMessageProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendMessageProxy.m; sourceTree = "<group>"; };
 		58AF049619B056050077DCBC /* FriendDataProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendDataProxy.h; sourceTree = "<group>"; };
@@ -385,7 +343,7 @@
 		585971F71999F0C700258CB1 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				585971F81999F0C700258CB1 /* IMiPhoneTests-Info.plist */,
+				11383AE519B5E51200CDCA33 /* IMiPhoneTests-Info.plist */,
 				585971F91999F0C700258CB1 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
@@ -540,7 +498,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				585971F51999F0C700258CB1 /* PBXTargetDependency */,
 			);
 			name = IMiPhoneTests;
 			productName = IMiPhoneTests;
@@ -556,11 +513,6 @@
 				CLASSPREFIX = im;
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "尹晓君";
-				TargetAttributes = {
-					585971EE1999F0C700258CB1 = {
-						TestTargetID = 585971CD1999F0C700258CB1;
-					};
-				};
 			};
 			buildConfigurationList = 585971C91999F0C700258CB1 /* Build configuration list for PBXProject "IMiPhone" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -599,8 +551,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				585971FB1999F0C700258CB1 /* InfoPlist.strings in Resources */,
-				58AF048819AF10560077DCBC /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -642,7 +592,6 @@
 				58BACF0319B57E6C00A72391 /* ProfileViewController.m in Sources */,
 				58A5B4F819ADC05F0007C2F3 /* MainTabBarController.m in Sources */,
 				5859721519A1DE1000258CB1 /* RegisterViewController.m in Sources */,
-				11383ADE19B5C40B00CDCA33 /* IMiPhoneTests.m in Sources */,
 				58A5B4FC19ADC3CA0007C2F3 /* ChatTableViewController.m in Sources */,
 				58B496EA19A7186A0082AE30 /* Reachability.m in Sources */,
 				58B496E019A7186A0082AE30 /* NSString+MKNetworkKitAdditions.m in Sources */,
@@ -662,49 +611,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				58B496D919A7186A0082AE30 /* NSAlert+MKNetworkKitAdditions.m in Sources */,
-				58D95F4919A5BDF4007139AB /* GCDAsyncSocket.m in Sources */,
-				58F2AA3B19A4888E00DC2FFB /* imUtil.m in Sources */,
-				58D95F5219A5ECA4007139AB /* UserMessageProxy.m in Sources */,
-				58AF049919B056050077DCBC /* FriendDataProxy.m in Sources */,
-				58B496E719A7186A0082AE30 /* MKNetworkEngine.m in Sources */,
-				585971FD1999F0C700258CB1 /* IMiPhoneTests.m in Sources */,
-				58A5B4F919ADC05F0007C2F3 /* MainTabBarController.m in Sources */,
-				58B496E919A7186A0082AE30 /* MKNetworkOperation.m in Sources */,
-				58A5B50519ADF6770007C2F3 /* FriendViewController.m in Sources */,
-				58B496F519A71AFB0082AE30 /* imNWHttpConnect.m in Sources */,
-				58F2AA4319A497BA00DC2FFB /* imNWSocketConnect.m in Sources */,
-				58B496DD19A7186A0082AE30 /* NSDate+RFC1123.m in Sources */,
-				58B496DF19A7186A0082AE30 /* NSDictionary+RequestEncoding.m in Sources */,
-				58A5B4FD19ADC3CA0007C2F3 /* ChatTableViewController.m in Sources */,
-				58F2AA3F19A48D2300DC2FFB /* imNWManager.m in Sources */,
-				58BACF0019B4410C00A72391 /* crypt.c in Sources */,
-				58B496DB19A7186A0082AE30 /* NSData+MKBase64.m in Sources */,
-				58F2AA3A19A487E300DC2FFB /* AsyncSocket.m in Sources */,
-				58B496E519A7186A0082AE30 /* UIImageView+MKNetworkKitAdditions.m in Sources */,
-				58D95F4D19A5E2E7007139AB /* imNWMessage.m in Sources */,
-				58AF047419AF040C0077DCBC /* FriendBarCell.m in Sources */,
-				58AF047C19AF046E0077DCBC /* FriendGroupCell.m in Sources */,
-				58B496E119A7186A0082AE30 /* NSString+MKNetworkKitAdditions.m in Sources */,
-				58AF048F19AF14BE0077DCBC /* ProfileViewController.m in Sources */,
-				58AF049319AF37C70077DCBC /* FriendMessageProxy.m in Sources */,
-				58B496EB19A7186A0082AE30 /* Reachability.m in Sources */,
-				58AF047819AF04570077DCBC /* FriendTitleCell.m in Sources */,
-				58B496E319A7186A0082AE30 /* UIAlertView+MKNetworkKitAdditions.m in Sources */,
+				1120945A19B601EF0012D607 /* IMiPhoneTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
-/* Begin PBXTargetDependency section */
-		585971F51999F0C700258CB1 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 585971CD1999F0C700258CB1 /* IMiPhone */;
-			targetProxy = 585971F41999F0C700258CB1 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
-
 /* Begin PBXVariantGroup section */
+		11383AE519B5E51200CDCA33 /* IMiPhoneTests-Info.plist */ = {
+			isa = PBXVariantGroup;
+			children = (
+				11383AE419B5E51200CDCA33 /* zh-Hans */,
+			);
+			name = "IMiPhoneTests-Info.plist";
+			sourceTree = "<group>";
+		};
 		11DF9F8519A2276C00AE5D89 /* splash.jpg */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -847,7 +768,6 @@
 		585972041999F0C700258CB1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/IMiPhone.app/IMiPhone";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -861,7 +781,6 @@
 				);
 				INFOPLIST_FILE = "IMiPhoneTests/IMiPhoneTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
 			name = Debug;
@@ -869,7 +788,6 @@
 		585972051999F0C700258CB1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/IMiPhone.app/IMiPhone";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -879,7 +797,6 @@
 				GCC_PREFIX_HEADER = "IMiPhone/IMiPhone-Prefix.pch";
 				INFOPLIST_FILE = "IMiPhoneTests/IMiPhoneTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
 			name = Release;

@@ -16,15 +16,15 @@ NSString *const primaryKey = @"group_id";
 
 +(GroupDAO*)sharedManager
 {
-    static GroupDAO* sharedMyManager = nil;
+    static GroupDAO* sharedGroupDAO = nil;
     static dispatch_once_t once;
     dispatch_once(&once,
                   ^{
-                      sharedMyManager = [[self alloc] init];
-                      [sharedMyManager createTableIfNotExist:tableName withDataMode:[Group class] withPrimaryKey:primaryKey];
+                      sharedGroupDAO = [[self alloc] init];
+                      [sharedGroupDAO createTableIfNotExist:tableName withDataMode:[Group class] withPrimaryKey:primaryKey];
                   }
                   );
-    return sharedMyManager;
+    return sharedGroupDAO;
 }
 
 

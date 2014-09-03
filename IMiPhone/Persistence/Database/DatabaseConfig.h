@@ -13,7 +13,7 @@
 
 @interface DatabaseConfig : NSObject
 
-+ (DatabaseConfig *) instance;
++ (DatabaseConfig *) shareDatabaseConfig;
 
 @property (nonatomic, retain) NSString * databaseName;
 

@@ -9,7 +9,7 @@
 #import "BaseDAO.h"
 #import "DatabaseConfig.h"
 #import <objc/runtime.h>
-#import "PersistenceTempCode.h"
+
 
 @interface BaseDAO()
     @property NSString *tableName;
@@ -96,7 +96,7 @@ static NSDictionary *dicSQLDataType;
 
 //            NSLog(@"why%@:",[NSString stringWithFormat:@"%c", type[0]]);
 //            NSLog(@"dic string:%@",[[DatabaseConfig instance].dicSQLDataType valueForKey:@"@"]);
-            NSString *sqlType = [[DatabaseConfig instance].dicSQLDataType valueForKey:typeStr];
+            NSString *sqlType = [[DatabaseConfig shareDatabaseConfig].dicSQLDataType valueForKey:typeStr];
             NSString *keyAndType = [[key stringByAppendingString:@" "] stringByAppendingString:sqlType];
             if([key isEqualToString:pKey])//主键
             {
@@ -112,7 +112,7 @@ static NSDictionary *dicSQLDataType;
 
 - (int)createTableIfNotExist:(NSString *)name withDataMode:(Class)cls withPrimaryKey:(NSString *)pKey
 {
-    NSString *dbName = [DatabaseConfig instance].databaseName;
+    NSString *dbName = [DatabaseConfig shareDatabaseConfig].databaseName;
     self.tableName = name;
     self.dataMode = cls;
     self.sqlight = [SqlightAdapter database:dbName AndTable:name];
@@ -132,9 +132,10 @@ static NSDictionary *dicSQLDataType;
         SqlightResult *result = [self.sqlight createTable:name Info:[self getInfoFromDataMode:cls withPrimaryKey:pKey]];
         self.sqlight.tableName = name;
         NSLog(@"Create table Result msg:%@ code:%d data:%@", result.msg, result.code, result.data);
+        return result.code;
 
     }
-    return 0;
+    return -1;
 }
 - (int)dropTable;
 {
@@ -147,14 +148,13 @@ static NSDictionary *dicSQLDataType;
     NSDictionary *dataDic = [BaseDAO getDicFromNormalClass:data];
     SqlightResult *result  = [self.sqlight insertData:dataDic];
     NSLog(@"insert Result msg:%@ code:%d data:%@", result.msg, result.code, result.data);
-    
-    return 0;
+    return result.code;
 }
 - (int)deleteByCondition:(NSString *)condition Bind:(NSMutableArray *)bind;
 {
     SqlightResult *result  = [self.sqlight deleteByCondition:condition Bind:bind];
     NSLog(@"delete Result msg:%@ code:%d data:%@", result.msg, result.code, result.data);
-    return 0;
+    return result.code;
 }
 - (NSMutableArray *)query:(NSString *)condition Bind:(NSArray *)bind
 {
@@ -179,7 +179,7 @@ static NSDictionary *dicSQLDataType;
 {
     SqlightResult *result = [self.sqlight updateData:data ByCondition:condition Bind:bind];
     NSLog(@"update Result msg:%@ code:%d data:%@", result.msg, result.code, result.data);
-    return 0;
+    return result.code;
 }
 
 
