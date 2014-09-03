@@ -71,12 +71,6 @@
 }
 */
 
-- (IBAction)backonclick:(id)sender {
-    [self dismissViewControllerAnimated:YES completion:^{
-        NSLog(@"Modal View back : loginViewController to imViewController");
-    }];
-}
-
 - (IBAction)doneonclick:(id)sender {
     uid = self.username.text;
     [imRms userDefaultsWrite:@"userid" withValue:uid];

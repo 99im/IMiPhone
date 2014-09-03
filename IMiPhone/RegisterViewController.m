@@ -47,11 +47,6 @@
 }
 */
 
-- (IBAction)backonclick:(id)sender {
-    [self dismissViewControllerAnimated:YES completion:^{
-        NSLog(@"Modal View back : registerViewController to imViewController");
-    }];
-}
 
 - (IBAction)doneonclick:(id)sender {
     NSString *password = self.tfPassword.text;
