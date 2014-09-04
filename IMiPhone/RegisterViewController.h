@@ -11,9 +11,5 @@
 @interface RegisterViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UITextField *tfPhonenum;
-@property (weak, nonatomic) IBOutlet UITextField *tfCode;
-@property (weak, nonatomic) IBOutlet UITextField *tfPassword;
-
-- (IBAction)codeonclick:(id)sender;
 
 @end
