@@ -77,6 +77,8 @@
 		58BACF1D19B83D8400A72391 /* RegStep2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58BACF1B19B83D8400A72391 /* RegStep2ViewController.m */; };
 		58BACF2019B84D6700A72391 /* RegInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58BACF1F19B84D6700A72391 /* RegInfoViewController.m */; };
 		58BACF2119B84D6700A72391 /* RegInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58BACF1F19B84D6700A72391 /* RegInfoViewController.m */; };
+		58BACF2519B85B2B00A72391 /* SystemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58BACF2419B85B2B00A72391 /* SystemViewController.m */; };
+		58BACF2619B85B2B00A72391 /* SystemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58BACF2419B85B2B00A72391 /* SystemViewController.m */; };
 		58D95F4819A5BDF4007139AB /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D95F4719A5BDF4007139AB /* GCDAsyncSocket.m */; };
 		58D95F4C19A5E2E7007139AB /* imNWMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D95F4B19A5E2E7007139AB /* imNWMessage.m */; };
 		58D95F5119A5ECA4007139AB /* UserMessageProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D95F5019A5ECA4007139AB /* UserMessageProxy.m */; };
@@ -191,6 +193,8 @@
 		58BACF1B19B83D8400A72391 /* RegStep2ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegStep2ViewController.m; sourceTree = "<group>"; };
 		58BACF1E19B84D6700A72391 /* RegInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegInfoViewController.h; sourceTree = "<group>"; };
 		58BACF1F19B84D6700A72391 /* RegInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegInfoViewController.m; sourceTree = "<group>"; };
+		58BACF2319B85B2B00A72391 /* SystemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SystemViewController.h; sourceTree = "<group>"; };
+		58BACF2419B85B2B00A72391 /* SystemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SystemViewController.m; sourceTree = "<group>"; };
 		58D95F4619A5BDF4007139AB /* GCDAsyncSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDAsyncSocket.h; sourceTree = "<group>"; };
 		58D95F4719A5BDF4007139AB /* GCDAsyncSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDAsyncSocket.m; sourceTree = "<group>"; };
 		58D95F4A19A5E2E7007139AB /* imNWMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = imNWMessage.h; sourceTree = "<group>"; };
@@ -318,6 +322,7 @@
 		585971D71999F0C700258CB1 /* IMiPhone */ = {
 			isa = PBXGroup;
 			children = (
+				58BACF2219B85B1100A72391 /* System */,
 				58BACF1519B8006000A72391 /* Register */,
 				116B6E7319AEF83500DB1B5E /* Persistence */,
 				585971E31999F0C700258CB1 /* Main.storyboard */,
@@ -465,6 +470,15 @@
 				58BACF1F19B84D6700A72391 /* RegInfoViewController.m */,
 			);
 			name = Register;
+			sourceTree = "<group>";
+		};
+		58BACF2219B85B1100A72391 /* System */ = {
+			isa = PBXGroup;
+			children = (
+				58BACF2319B85B2B00A72391 /* SystemViewController.h */,
+				58BACF2419B85B2B00A72391 /* SystemViewController.m */,
+			);
+			name = System;
 			sourceTree = "<group>";
 		};
 		58D95F4E19A5EB7F007139AB /* MessageProxy */ = {
@@ -644,6 +658,7 @@
 				58B496EA19A7186A0082AE30 /* Reachability.m in Sources */,
 				58B496E019A7186A0082AE30 /* NSString+MKNetworkKitAdditions.m in Sources */,
 				58BACF1319B5E89D00A72391 /* VPImageCropperViewController.m in Sources */,
+				58BACF2519B85B2B00A72391 /* SystemViewController.m in Sources */,
 				58B496DE19A7186A0082AE30 /* NSDictionary+RequestEncoding.m in Sources */,
 				116B6E8319AF1C7900DB1B5E /* BaseDAO.m in Sources */,
 				58D95F4819A5BDF4007139AB /* GCDAsyncSocket.m in Sources */,
@@ -672,6 +687,7 @@
 				116AB14519B731CB00092E2C /* SqlightDriver.m in Sources */,
 				116AB14419B731C700092E2C /* SqlightAdapter.m in Sources */,
 				116AB14B19B731E100092E2C /* GroupDAO.m in Sources */,
+				58BACF2619B85B2B00A72391 /* SystemViewController.m in Sources */,
 				116AB14719B731D300092E2C /* GroupMessage.m in Sources */,
 				58BACF2119B84D6700A72391 /* RegInfoViewController.m in Sources */,
 			);
