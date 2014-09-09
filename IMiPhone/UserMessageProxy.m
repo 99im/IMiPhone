@@ -14,7 +14,7 @@
 
 static UserMessageProxy *sharedUserMessageProxy = nil;
 
-+ (UserMessageProxy *)sharedProxy
++ (imNWProxy *)sharedProxy
 {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
@@ -22,14 +22,6 @@ static UserMessageProxy *sharedUserMessageProxy = nil;
     });
     return sharedUserMessageProxy;
 }
-
-- (void)parseMessage:(imNWMessage *)message
-{
-    if ([message.type isEqualToString:TYPE_REGISTER] == YES) {
-        [self parseTypeRegister:[message getResponseJson]];
-    }
-}
-
 
 - (void)sendTypeRegister:(NSString *)phone code:(NSString *)code password:(NSString *)password
 {

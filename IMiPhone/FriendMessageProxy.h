@@ -8,14 +8,13 @@
 
 #import <Foundation/Foundation.h>
 #import "imNWMessage.h"
+#import "imNWProxy.h"
 
 #define MARK_FRIEND @"friend"
 
-@interface FriendMessageProxy : NSObject
+@interface FriendMessageProxy : imNWProxy
 
-+ (FriendMessageProxy*)sharedProxy;
-
-- (void)parseMessage:(imNWMessage *)message;
++ (imNWProxy*)sharedProxy;
 
 - (void)sendTypeGroups;
 - (void)parseTypeGroups:(id)json;

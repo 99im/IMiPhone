@@ -21,9 +21,13 @@
 @property (nonatomic, retain) NSString *path;
 @property (nonatomic, strong) NSMutableArray *responseBlocks;
 
++ (imNWMessage *)createForSocket:(NSString *)mark withType:(NSString *)type;
++ (imNWMessage *)createForHttp:(NSString *)host onPath:(NSString *)path withParams:(NSMutableDictionary *)params;
+
 - (NSData *)getSocketData;
 - (NSMutableDictionary *)getHttpParams;
 - (NSDictionary *)getResponseJson;
 - (void)excute;
+- (void)send:(NSMutableDictionary *)info;
 
 @end
