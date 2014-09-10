@@ -44,43 +44,7 @@
 		585971F11999F0C700258CB1 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 585971F01999F0C700258CB1 /* XCTest.framework */; };
 		585971F21999F0C700258CB1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 585971D11999F0C700258CB1 /* Foundation.framework */; };
 		585971F31999F0C700258CB1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 585971D51999F0C700258CB1 /* UIKit.framework */; };
-		5859721519A1DE1000258CB1 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5859721419A1DE1000258CB1 /* RegisterViewController.m */; };
 		5859721819A1DEE500258CB1 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5859721719A1DEE500258CB1 /* LoginViewController.m */; };
-		58A54C4019BF0B64007B5633 /* imRms.m in Sources */ = {isa = PBXBuildFile; fileRef = 116B6E7A19AEF83500DB1B5E /* imRms.m */; };
-		58A54C4119BF0B64007B5633 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5859721719A1DEE500258CB1 /* LoginViewController.m */; };
-		58A54C4219BF0B64007B5633 /* imAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 585971E11999F0C700258CB1 /* imAppDelegate.m */; };
-		58A54C4319BF0B64007B5633 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58BACF0219B57E6C00A72391 /* ProfileViewController.m */; };
-		58A54C4419BF0B64007B5633 /* imViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 585971E71999F0C700258CB1 /* imViewController.m */; };
-		58A54C4519BF0B64007B5633 /* MainTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A5B4F719ADC05F0007C2F3 /* MainTabBarController.m */; };
-		58A54C4619BF0B64007B5633 /* ChatTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A5B4FB19ADC3CA0007C2F3 /* ChatTableViewController.m */; };
-		58A54C4719BF0B64007B5633 /* FriendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A5B50319ADF6770007C2F3 /* FriendViewController.m */; };
-		58A54C4819BF0B64007B5633 /* FriendBarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 58AF047219AF040C0077DCBC /* FriendBarCell.m */; };
-		58A54C4919BF0B64007B5633 /* FriendTitleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 58AF047619AF04570077DCBC /* FriendTitleCell.m */; };
-		58A54C4A19BF0B64007B5633 /* FriendGroupCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 58AF047A19AF046E0077DCBC /* FriendGroupCell.m */; };
-		58A54C4B19BF0B64007B5633 /* UserMessageProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D95F5019A5ECA4007139AB /* UserMessageProxy.m */; };
-		58A54C4C19BF0B64007B5633 /* FriendMessageProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 58AF049119AF37C70077DCBC /* FriendMessageProxy.m */; };
-		58A54C4D19BF0B64007B5633 /* NSAlert+MKNetworkKitAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B496C319A7186A0082AE30 /* NSAlert+MKNetworkKitAdditions.m */; };
-		58A54C4E19BF0B64007B5633 /* NSData+MKBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B496C519A7186A0082AE30 /* NSData+MKBase64.m */; };
-		58A54C4F19BF0B64007B5633 /* NSDate+RFC1123.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B496C719A7186A0082AE30 /* NSDate+RFC1123.m */; };
-		58A54C5019BF0B64007B5633 /* NSDictionary+RequestEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B496C919A7186A0082AE30 /* NSDictionary+RequestEncoding.m */; };
-		58A54C5119BF0B64007B5633 /* NSString+MKNetworkKitAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B496CB19A7186A0082AE30 /* NSString+MKNetworkKitAdditions.m */; };
-		58A54C5219BF0B64007B5633 /* UIAlertView+MKNetworkKitAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B496CD19A7186A0082AE30 /* UIAlertView+MKNetworkKitAdditions.m */; };
-		58A54C5319BF0B64007B5633 /* UIImageView+MKNetworkKitAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B496CF19A7186A0082AE30 /* UIImageView+MKNetworkKitAdditions.m */; };
-		58A54C5419BF0B64007B5633 /* MKNetworkEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B496D119A7186A0082AE30 /* MKNetworkEngine.m */; };
-		58A54C5519BF0B64007B5633 /* MKNetworkOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B496D419A7186A0082AE30 /* MKNetworkOperation.m */; };
-		58A54C5619BF0B64007B5633 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B496D719A7186A0082AE30 /* Reachability.m */; };
-		58A54C5719BF0B64007B5633 /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D95F4719A5BDF4007139AB /* GCDAsyncSocket.m */; };
-		58A54C5819BF0B64007B5633 /* AsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F2AA3819A487E300DC2FFB /* AsyncSocket.m */; };
-		58A54C5919BF0B64007B5633 /* imNWManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F2AA3D19A48D2300DC2FFB /* imNWManager.m */; };
-		58A54C5A19BF0B64007B5633 /* imNWSocketConnect.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F2AA4119A497BA00DC2FFB /* imNWSocketConnect.m */; };
-		58A54C5B19BF0B64007B5633 /* imNWMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D95F4B19A5E2E7007139AB /* imNWMessage.m */; };
-		58A54C5C19BF0B64007B5633 /* imNWHttpConnect.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B496F319A71AFB0082AE30 /* imNWHttpConnect.m */; };
-		58A54C5D19BF0B7D007B5633 /* imUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F2AA3319A2F85400DC2FFB /* imUtil.m */; };
-		58A54C5E19BF0B7D007B5633 /* imPhotoPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 58BACF0E19B5DAB900A72391 /* imPhotoPicker.m */; };
-		58A54C5F19BF0B93007B5633 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5859721419A1DE1000258CB1 /* RegisterViewController.m */; };
-		58A54C6019BF0B93007B5633 /* FriendDataProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 58AF049719B056050077DCBC /* FriendDataProxy.m */; };
-		58A54C6119BF0B93007B5633 /* VPImageCropperViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58BACF1219B5E89D00A72391 /* VPImageCropperViewController.m */; };
-		58A54C6219BF0C84007B5633 /* crypt.c in Sources */ = {isa = PBXBuildFile; fileRef = 58BACEFD19B4410C00A72391 /* crypt.c */; };
 		58A5B4F819ADC05F0007C2F3 /* MainTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A5B4F719ADC05F0007C2F3 /* MainTabBarController.m */; };
 		58A5B4FC19ADC3CA0007C2F3 /* ChatTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A5B4FB19ADC3CA0007C2F3 /* ChatTableViewController.m */; };
 		58AF047319AF040C0077DCBC /* FriendBarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 58AF047219AF040C0077DCBC /* FriendBarCell.m */; };
@@ -109,14 +73,16 @@
 		58BACF0B19B5C12800A72391 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58BACF0A19B5C12800A72391 /* MobileCoreServices.framework */; };
 		58BACF0F19B5DAB900A72391 /* imPhotoPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 58BACF0E19B5DAB900A72391 /* imPhotoPicker.m */; };
 		58BACF1319B5E89D00A72391 /* VPImageCropperViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58BACF1219B5E89D00A72391 /* VPImageCropperViewController.m */; };
-		58BACF1819B800A900A72391 /* RegStep1ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58BACF1719B800A900A72391 /* RegStep1ViewController.m */; };
-		58BACF1919B800A900A72391 /* RegStep1ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58BACF1719B800A900A72391 /* RegStep1ViewController.m */; };
-		58BACF1C19B83D8400A72391 /* RegStep2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58BACF1B19B83D8400A72391 /* RegStep2ViewController.m */; };
-		58BACF1D19B83D8400A72391 /* RegStep2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58BACF1B19B83D8400A72391 /* RegStep2ViewController.m */; };
-		58BACF2019B84D6700A72391 /* RegInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58BACF1F19B84D6700A72391 /* RegInfoViewController.m */; };
-		58BACF2119B84D6700A72391 /* RegInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58BACF1F19B84D6700A72391 /* RegInfoViewController.m */; };
-		58BACF2519B85B2B00A72391 /* SystemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58BACF2419B85B2B00A72391 /* SystemViewController.m */; };
-		58BACF2619B85B2B00A72391 /* SystemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58BACF2419B85B2B00A72391 /* SystemViewController.m */; };
+		58BC1E3319C0304900722A00 /* RegInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58BC1E2A19C0304900722A00 /* RegInfoViewController.m */; };
+		58BC1E3419C0304900722A00 /* RegInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58BC1E2A19C0304900722A00 /* RegInfoViewController.m */; };
+		58BC1E3519C0304900722A00 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58BC1E2C19C0304900722A00 /* RegisterViewController.m */; };
+		58BC1E3619C0304900722A00 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58BC1E2C19C0304900722A00 /* RegisterViewController.m */; };
+		58BC1E3719C0304900722A00 /* RegStep1ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58BC1E2E19C0304900722A00 /* RegStep1ViewController.m */; };
+		58BC1E3819C0304900722A00 /* RegStep1ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58BC1E2E19C0304900722A00 /* RegStep1ViewController.m */; };
+		58BC1E3919C0304900722A00 /* RegStep2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58BC1E3019C0304900722A00 /* RegStep2ViewController.m */; };
+		58BC1E3A19C0304900722A00 /* RegStep2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58BC1E3019C0304900722A00 /* RegStep2ViewController.m */; };
+		58BC1E3B19C0304900722A00 /* SystemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58BC1E3219C0304900722A00 /* SystemViewController.m */; };
+		58BC1E3C19C0304900722A00 /* SystemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58BC1E3219C0304900722A00 /* SystemViewController.m */; };
 		58D95F4819A5BDF4007139AB /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D95F4719A5BDF4007139AB /* GCDAsyncSocket.m */; };
 		58D95F4C19A5E2E7007139AB /* imNWMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D95F4B19A5E2E7007139AB /* imNWMessage.m */; };
 		58D95F5119A5ECA4007139AB /* UserMessageProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D95F5019A5ECA4007139AB /* UserMessageProxy.m */; };
@@ -177,8 +143,6 @@
 		5859720A19A1CD9100258CB1 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		5859720B19A1CD9200258CB1 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		5859721119A1D28100258CB1 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = "zh-Hans"; path = "zh-Hans.lproj/Main.storyboard"; sourceTree = "<group>"; };
-		5859721319A1DE1000258CB1 /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
-		5859721419A1DE1000258CB1 /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
 		5859721619A1DEE500258CB1 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		5859721719A1DEE500258CB1 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		58A5B4F619ADC05F0007C2F3 /* MainTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainTabBarController.h; sourceTree = "<group>"; };
@@ -233,14 +197,16 @@
 		58BACF0E19B5DAB900A72391 /* imPhotoPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = imPhotoPicker.m; sourceTree = "<group>"; };
 		58BACF1119B5E89D00A72391 /* VPImageCropperViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPImageCropperViewController.h; sourceTree = "<group>"; };
 		58BACF1219B5E89D00A72391 /* VPImageCropperViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPImageCropperViewController.m; sourceTree = "<group>"; };
-		58BACF1619B800A900A72391 /* RegStep1ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegStep1ViewController.h; sourceTree = "<group>"; };
-		58BACF1719B800A900A72391 /* RegStep1ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegStep1ViewController.m; sourceTree = "<group>"; };
-		58BACF1A19B83D8400A72391 /* RegStep2ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegStep2ViewController.h; sourceTree = "<group>"; };
-		58BACF1B19B83D8400A72391 /* RegStep2ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegStep2ViewController.m; sourceTree = "<group>"; };
-		58BACF1E19B84D6700A72391 /* RegInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegInfoViewController.h; sourceTree = "<group>"; };
-		58BACF1F19B84D6700A72391 /* RegInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegInfoViewController.m; sourceTree = "<group>"; };
-		58BACF2319B85B2B00A72391 /* SystemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SystemViewController.h; sourceTree = "<group>"; };
-		58BACF2419B85B2B00A72391 /* SystemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SystemViewController.m; sourceTree = "<group>"; };
+		58BC1E2919C0304900722A00 /* RegInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RegInfoViewController.h; path = IMiPhone/RegInfoViewController.h; sourceTree = "<group>"; };
+		58BC1E2A19C0304900722A00 /* RegInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RegInfoViewController.m; path = IMiPhone/RegInfoViewController.m; sourceTree = "<group>"; };
+		58BC1E2B19C0304900722A00 /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RegisterViewController.h; path = IMiPhone/RegisterViewController.h; sourceTree = "<group>"; };
+		58BC1E2C19C0304900722A00 /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RegisterViewController.m; path = IMiPhone/RegisterViewController.m; sourceTree = "<group>"; };
+		58BC1E2D19C0304900722A00 /* RegStep1ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RegStep1ViewController.h; path = IMiPhone/RegStep1ViewController.h; sourceTree = "<group>"; };
+		58BC1E2E19C0304900722A00 /* RegStep1ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RegStep1ViewController.m; path = IMiPhone/RegStep1ViewController.m; sourceTree = "<group>"; };
+		58BC1E2F19C0304900722A00 /* RegStep2ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RegStep2ViewController.h; path = IMiPhone/RegStep2ViewController.h; sourceTree = "<group>"; };
+		58BC1E3019C0304900722A00 /* RegStep2ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RegStep2ViewController.m; path = IMiPhone/RegStep2ViewController.m; sourceTree = "<group>"; };
+		58BC1E3119C0304900722A00 /* SystemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SystemViewController.h; path = IMiPhone/SystemViewController.h; sourceTree = "<group>"; };
+		58BC1E3219C0304900722A00 /* SystemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SystemViewController.m; path = IMiPhone/SystemViewController.m; sourceTree = "<group>"; };
 		58D95F4619A5BDF4007139AB /* GCDAsyncSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDAsyncSocket.h; sourceTree = "<group>"; };
 		58D95F4719A5BDF4007139AB /* GCDAsyncSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDAsyncSocket.m; sourceTree = "<group>"; };
 		58D95F4A19A5E2E7007139AB /* imNWMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = imNWMessage.h; sourceTree = "<group>"; };
@@ -348,6 +314,9 @@
 		585971C51999F0C700258CB1 = {
 			isa = PBXGroup;
 			children = (
+				58BC1E3D19C0304E00722A00 /* Register */,
+				58BC1E3119C0304900722A00 /* SystemViewController.h */,
+				58BC1E3219C0304900722A00 /* SystemViewController.m */,
 				585971D71999F0C700258CB1 /* IMiPhone */,
 				585971F61999F0C700258CB1 /* IMiPhoneTests */,
 				585971D01999F0C700258CB1 /* Frameworks */,
@@ -518,28 +487,19 @@
 			path = Reachability;
 			sourceTree = "<group>";
 		};
-		58BACF1519B8006000A72391 /* Register */ = {
+		58BC1E3D19C0304E00722A00 /* Register */ = {
 			isa = PBXGroup;
 			children = (
-				5859721319A1DE1000258CB1 /* RegisterViewController.h */,
-				5859721419A1DE1000258CB1 /* RegisterViewController.m */,
-				58BACF1619B800A900A72391 /* RegStep1ViewController.h */,
-				58BACF1719B800A900A72391 /* RegStep1ViewController.m */,
-				58BACF1A19B83D8400A72391 /* RegStep2ViewController.h */,
-				58BACF1B19B83D8400A72391 /* RegStep2ViewController.m */,
-				58BACF1E19B84D6700A72391 /* RegInfoViewController.h */,
-				58BACF1F19B84D6700A72391 /* RegInfoViewController.m */,
+				58BC1E2919C0304900722A00 /* RegInfoViewController.h */,
+				58BC1E2A19C0304900722A00 /* RegInfoViewController.m */,
+				58BC1E2B19C0304900722A00 /* RegisterViewController.h */,
+				58BC1E2C19C0304900722A00 /* RegisterViewController.m */,
+				58BC1E2D19C0304900722A00 /* RegStep1ViewController.h */,
+				58BC1E2E19C0304900722A00 /* RegStep1ViewController.m */,
+				58BC1E2F19C0304900722A00 /* RegStep2ViewController.h */,
+				58BC1E3019C0304900722A00 /* RegStep2ViewController.m */,
 			);
 			name = Register;
-			sourceTree = "<group>";
-		};
-		58BACF2219B85B1100A72391 /* System */ = {
-			isa = PBXGroup;
-			children = (
-				58BACF2319B85B2B00A72391 /* SystemViewController.h */,
-				58BACF2419B85B2B00A72391 /* SystemViewController.m */,
-			);
-			name = System;
 			sourceTree = "<group>";
 		};
 		58D95F4E19A5EB7F007139AB /* MessageProxy */ = {
@@ -696,9 +656,9 @@
 				585971E21999F0C700258CB1 /* imAppDelegate.m in Sources */,
 				58F2AA3419A2F85400DC2FFB /* imUtil.m in Sources */,
 				58D95F5119A5ECA4007139AB /* UserMessageProxy.m in Sources */,
-				58BACF1C19B83D8400A72391 /* RegStep2ViewController.m in Sources */,
 				116B6E9519B058A400DB1B5E /* SqlightAdapter.m in Sources */,
 				58B496E819A7186A0082AE30 /* MKNetworkOperation.m in Sources */,
+				58BC1E3519C0304900722A00 /* RegisterViewController.m in Sources */,
 				58BACF0F19B5DAB900A72391 /* imPhotoPicker.m in Sources */,
 				116AB15219BF19DA00092E2C /* ChatCell.m in Sources */,
 				116B6E9619B058A400DB1B5E /* SqlightDriver.m in Sources */,
@@ -711,7 +671,6 @@
 				58B496D819A7186A0082AE30 /* NSAlert+MKNetworkKitAdditions.m in Sources */,
 				58B496E219A7186A0082AE30 /* UIAlertView+MKNetworkKitAdditions.m in Sources */,
 				116B6E8C19B0538300DB1B5E /* GroupDAO.m in Sources */,
-				58BACF1819B800A900A72391 /* RegStep1ViewController.m in Sources */,
 				116B6E7D19AEF83500DB1B5E /* imRms.m in Sources */,
 				58B496DA19A7186A0082AE30 /* NSData+MKBase64.m in Sources */,
 				58EF8C4319BEF08C00C5A7AC /* imNWProxy.m in Sources */,
@@ -721,22 +680,23 @@
 				58F2AA4219A497BA00DC2FFB /* imNWSocketConnect.m in Sources */,
 				58BACF0319B57E6C00A72391 /* ProfileViewController.m in Sources */,
 				58A5B4F819ADC05F0007C2F3 /* MainTabBarController.m in Sources */,
-				5859721519A1DE1000258CB1 /* RegisterViewController.m in Sources */,
 				58A5B4FC19ADC3CA0007C2F3 /* ChatTableViewController.m in Sources */,
 				58B496EA19A7186A0082AE30 /* Reachability.m in Sources */,
 				58B496E019A7186A0082AE30 /* NSString+MKNetworkKitAdditions.m in Sources */,
 				58BACF1319B5E89D00A72391 /* VPImageCropperViewController.m in Sources */,
-				58BACF2519B85B2B00A72391 /* SystemViewController.m in Sources */,
 				58B496DE19A7186A0082AE30 /* NSDictionary+RequestEncoding.m in Sources */,
 				116B6E8319AF1C7900DB1B5E /* BaseDAO.m in Sources */,
 				58D95F4819A5BDF4007139AB /* GCDAsyncSocket.m in Sources */,
-				58BACF2019B84D6700A72391 /* RegInfoViewController.m in Sources */,
 				58B496E619A7186A0082AE30 /* MKNetworkEngine.m in Sources */,
 				116B6E8019AF0F8C00DB1B5E /* DatabaseConfig.m in Sources */,
 				5859721819A1DEE500258CB1 /* LoginViewController.m in Sources */,
+				58BC1E3919C0304900722A00 /* RegStep2ViewController.m in Sources */,
+				58BC1E3719C0304900722A00 /* RegStep1ViewController.m in Sources */,
 				58F2AA3E19A48D2300DC2FFB /* imNWManager.m in Sources */,
 				58F2AA3919A487E300DC2FFB /* AsyncSocket.m in Sources */,
+				58BC1E3B19C0304900722A00 /* SystemViewController.m in Sources */,
 				58AF047319AF040C0077DCBC /* FriendBarCell.m in Sources */,
+				58BC1E3319C0304900722A00 /* RegInfoViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -747,22 +707,23 @@
 				116AB14E19B733E900092E2C /* FriendDataProxy.m in Sources */,
 				116AB14A19B731DE00092E2C /* Group.m in Sources */,
 				116AB14619B731CF00092E2C /* SqlightResult.m in Sources */,
+				58BC1E3819C0304900722A00 /* RegStep1ViewController.m in Sources */,
+				58BC1E3419C0304900722A00 /* RegInfoViewController.m in Sources */,
+				58BC1E3619C0304900722A00 /* RegisterViewController.m in Sources */,
 				116AB14D19B733C400092E2C /* FriendDataProxyTest.m in Sources */,
 				1120945A19B601EF0012D607 /* IMiPhoneTests.m in Sources */,
 				58EF8C4419BEF08C00C5A7AC /* imNWProxy.m in Sources */,
-				58BACF1919B800A900A72391 /* RegStep1ViewController.m in Sources */,
+				58BC1E3A19C0304900722A00 /* RegStep2ViewController.m in Sources */,
 				116AB14819B731D600092E2C /* DatabaseConfig.m in Sources */,
 				116AB14919B731DA00092E2C /* BaseDAO.m in Sources */,
-				58BACF1D19B83D8400A72391 /* RegStep2ViewController.m in Sources */,
+				58BC1E3C19C0304900722A00 /* SystemViewController.m in Sources */,
 				116AB14119B7315000092E2C /* PersistenceTest.m in Sources */,
 				116AB14519B731CB00092E2C /* SqlightDriver.m in Sources */,
 				116AB14419B731C700092E2C /* SqlightAdapter.m in Sources */,
 				116AB14B19B731E100092E2C /* GroupDAO.m in Sources */,
 				58EF8C4619BF04B600C5A7AC /* imNetWorkTest.m in Sources */,
 				58EF8C4019BEEE1600C5A7AC /* AccountMessageProxy.m in Sources */,
-				58BACF2619B85B2B00A72391 /* SystemViewController.m in Sources */,
 				116AB14719B731D300092E2C /* GroupMessage.m in Sources */,
-				58BACF2119B84D6700A72391 /* RegInfoViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
