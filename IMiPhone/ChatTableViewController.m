@@ -44,28 +44,38 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
+
     // Return the number of rows in the section.
-    return 0;
+    return 4;
 }
 
-/*
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"chatTableCell" forIndexPath:indexPath];
     
     // Configure the cell...
+//    UIImageView *imagePortrait = (UIImageView *)[cell viewWithTag:0];
+//    imagePortrait.image = [UIImage imageNamed:@"chatDefault.png"];
+    
+    UILabel *labelTitle = (UILabel *)[cell viewWithTag:1];
+    labelTitle.text = @"五道口乒乓球";
+    
+    UILabel *labelTime = (UILabel *)[cell viewWithTag:2];
+    labelTime.text = @"1分钟前";
+    
+    UILabel *labelLastMsg = (UILabel *)[cell viewWithTag:3];
+    labelLastMsg.text = @"准备好心情就出发";
     
     return cell;
 }
-*/
+
 
 /*
 // Override to support conditional editing of the table view.

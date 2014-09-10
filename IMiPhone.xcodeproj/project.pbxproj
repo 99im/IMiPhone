@@ -19,6 +19,9 @@
 		116AB14919B731DA00092E2C /* BaseDAO.m in Sources */ = {isa = PBXBuildFile; fileRef = 116B6E8219AF1C7900DB1B5E /* BaseDAO.m */; };
 		116AB14A19B731DE00092E2C /* Group.m in Sources */ = {isa = PBXBuildFile; fileRef = 116B6E8819B0534000DB1B5E /* Group.m */; };
 		116AB14B19B731E100092E2C /* GroupDAO.m in Sources */ = {isa = PBXBuildFile; fileRef = 116B6E8B19B0538300DB1B5E /* GroupDAO.m */; };
+		116AB14D19B733C400092E2C /* FriendDataProxyTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 116AB14C19B733C400092E2C /* FriendDataProxyTest.m */; };
+		116AB14E19B733E900092E2C /* FriendDataProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 58AF049719B056050077DCBC /* FriendDataProxy.m */; };
+		116AB15219BF19DA00092E2C /* ChatCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 116AB15119BF19DA00092E2C /* ChatCell.m */; };
 		116B6E7B19AEF83500DB1B5E /* GroupMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 116B6E7619AEF83500DB1B5E /* GroupMessage.m */; };
 		116B6E7D19AEF83500DB1B5E /* imRms.m in Sources */ = {isa = PBXBuildFile; fileRef = 116B6E7A19AEF83500DB1B5E /* imRms.m */; };
 		116B6E8019AF0F8C00DB1B5E /* DatabaseConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 116B6E7F19AF0F8C00DB1B5E /* DatabaseConfig.m */; };
@@ -85,6 +88,9 @@
 		116AB13E19B7315000092E2C /* IMiPhoneTests-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "IMiPhoneTests-Info.plist"; sourceTree = "<group>"; };
 		116AB13F19B7315000092E2C /* PersistenceTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersistenceTest.m; sourceTree = "<group>"; };
 		116AB14219B7318C00092E2C /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
+		116AB14C19B733C400092E2C /* FriendDataProxyTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendDataProxyTest.m; sourceTree = "<group>"; };
+		116AB15019BF19DA00092E2C /* ChatCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatCell.h; sourceTree = "<group>"; };
+		116AB15119BF19DA00092E2C /* ChatCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatCell.m; sourceTree = "<group>"; };
 		116B6E7519AEF83500DB1B5E /* GroupMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupMessage.h; sourceTree = "<group>"; };
 		116B6E7619AEF83500DB1B5E /* GroupMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupMessage.m; sourceTree = "<group>"; };
 		116B6E7919AEF83500DB1B5E /* imRms.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = imRms.h; sourceTree = "<group>"; };
@@ -225,6 +231,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		116AB14F19BF194E00092E2C /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				58A5B4FB19ADC3CA0007C2F3 /* ChatTableViewController.m */,
+				58A5B4FA19ADC3CA0007C2F3 /* ChatTableViewController.h */,
+				116AB15019BF19DA00092E2C /* ChatCell.h */,
+				116AB15119BF19DA00092E2C /* ChatCell.m */,
+			);
+			name = Chat;
+			sourceTree = "<group>";
+		};
 		116B6E7319AEF83500DB1B5E /* Persistence */ = {
 			isa = PBXGroup;
 			children = (
@@ -306,6 +323,7 @@
 		585971D71999F0C700258CB1 /* IMiPhone */ = {
 			isa = PBXGroup;
 			children = (
+				116AB14F19BF194E00092E2C /* Chat */,
 				116B6E7319AEF83500DB1B5E /* Persistence */,
 				585971E31999F0C700258CB1 /* Main.storyboard */,
 				5859721619A1DEE500258CB1 /* LoginViewController.h */,
@@ -320,8 +338,6 @@
 				5859721419A1DE1000258CB1 /* RegisterViewController.m */,
 				58A5B4F619ADC05F0007C2F3 /* MainTabBarController.h */,
 				58A5B4F719ADC05F0007C2F3 /* MainTabBarController.m */,
-				58A5B4FA19ADC3CA0007C2F3 /* ChatTableViewController.h */,
-				58A5B4FB19ADC3CA0007C2F3 /* ChatTableViewController.m */,
 				58AF046C19AF00C60077DCBC /* Friend */,
 				58AF049419B053930077DCBC /* DataProxy */,
 				58D95F4E19A5EB7F007139AB /* MessageProxy */,
@@ -352,6 +368,7 @@
 				116AB13F19B7315000092E2C /* PersistenceTest.m */,
 				585971FC1999F0C700258CB1 /* IMiPhoneTests.m */,
 				585971F71999F0C700258CB1 /* Supporting Files */,
+				116AB14C19B733C400092E2C /* FriendDataProxyTest.m */,
 			);
 			path = IMiPhoneTests;
 			sourceTree = "<group>";
@@ -594,6 +611,7 @@
 				116B6E9519B058A400DB1B5E /* SqlightAdapter.m in Sources */,
 				58B496E819A7186A0082AE30 /* MKNetworkOperation.m in Sources */,
 				58BACF0F19B5DAB900A72391 /* imPhotoPicker.m in Sources */,
+				116AB15219BF19DA00092E2C /* ChatCell.m in Sources */,
 				116B6E9619B058A400DB1B5E /* SqlightDriver.m in Sources */,
 				58D95F4C19A5E2E7007139AB /* imNWMessage.m in Sources */,
 				116B6E9719B058A400DB1B5E /* SqlightResult.m in Sources */,
@@ -632,8 +650,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				116AB14E19B733E900092E2C /* FriendDataProxy.m in Sources */,
 				116AB14A19B731DE00092E2C /* Group.m in Sources */,
 				116AB14619B731CF00092E2C /* SqlightResult.m in Sources */,
+				116AB14D19B733C400092E2C /* FriendDataProxyTest.m in Sources */,
 				1120945A19B601EF0012D607 /* IMiPhoneTests.m in Sources */,
 				116AB14819B731D600092E2C /* DatabaseConfig.m in Sources */,
 				116AB14919B731DA00092E2C /* BaseDAO.m in Sources */,
@@ -781,6 +801,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "IMiPhone/IMiPhone-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = "";
 				INFOPLIST_FILE = "IMiPhone/IMiPhone-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
