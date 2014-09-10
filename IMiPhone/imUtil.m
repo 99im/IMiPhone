@@ -12,20 +12,30 @@
 
 + (BOOL)checkPassword:(NSString *)password
 {
-    //BOOL result = NO;
-    //NSString *regex = @"//w{6,20}";
-    //NSPredicate *test = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regex];
-    //return [test evaluateWithObject:password];
     NSRegularExpression *regularExpression = [[NSRegularExpression alloc] initWithPattern:@"^[\x21-\x73]{6,20}$" options:NSRegularExpressionCaseInsensitive error:nil];
     NSUInteger numberofMatch = [regularExpression numberOfMatchesInString:password options:NSMatchingReportProgress range:NSMakeRange(0, password.length)];
     if(numberofMatch > 0)
     {
-        NSLog(@"%@ isNumbericString: YES", password);
         return YES;
     }
     else
     {
-        NSLog(@"%@ isNumbericString: NO", password);
+        NSLog(@"check password error: %@", password);
+        return NO;
+    }
+}
+
++ (BOOL)checkPhone:(NSString *)phone
+{
+    NSRegularExpression *regularExpression = [[NSRegularExpression alloc] initWithPattern:@"^[0-9]{11}$" options:NSRegularExpressionCaseInsensitive error:nil];
+    NSUInteger numberofMatch = [regularExpression numberOfMatchesInString:phone options:NSMatchingReportProgress range:NSMakeRange(0, phone.length)];
+    if(numberofMatch > 0)
+    {
+        return YES;
+    }
+    else
+    {
+        NSLog(@"check phone error: %@", phone);
         return NO;
     }
 }

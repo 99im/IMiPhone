@@ -12,6 +12,8 @@
 
 + (BOOL)checkPassword:(NSString *)password;
 
++ (BOOL)checkPhone:(NSString *)phone;
+
 + (BOOL)checkPoint:(CGPoint)point inRectangle:(CGRect)rect;
 
 @end

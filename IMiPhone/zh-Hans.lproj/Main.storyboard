@@ -143,6 +143,7 @@
                     </navigationItem>
                     <size key="freeformSize" width="320" height="568"/>
                     <connections>
+                        <outlet property="lblCountryCode" destination="qaC-Oz-KQT" id="5O9-44-WdS"/>
                         <outlet property="tfPhonenum" destination="dda-bN-zvH" id="fRq-bP-yX3"/>
                     </connections>
                 </viewController>
@@ -229,7 +230,7 @@
                     <navigationItem key="navigationItem" title="密码" id="F94-8s-hjf">
                         <barButtonItem key="rightBarButtonItem" title="完成" id="1xY-Tr-fQJ">
                             <connections>
-                                <segue destination="ost-3r-BpH" kind="modal" identifier="regStep2DoneSegue" modalTransitionStyle="crossDissolve" id="tCh-ps-9zq"/>
+                                <segue destination="tkh-RH-kvT" kind="modal" id="frE-fO-03U"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -240,6 +241,44 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4gX-lM-TeU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1980" y="459"/>
+        </scene>
+        <!--Reg Info View Controller-->
+        <scene sceneID="3JT-yM-dsG">
+            <objects>
+                <viewController id="tkh-RH-kvT" customClass="RegInfoViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="giT-Vk-Pba"/>
+                        <viewControllerLayoutGuide type="bottom" id="sLE-fT-fW9"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="e4w-ti-2hr">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cer-KH-ivo">
+                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </scrollView>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Dv2-AA-WGX">
+                                <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem title="完善资料" id="PJw-u0-V7Z">
+                                        <barButtonItem key="rightBarButtonItem" title="完成" id="kSz-Fq-s50">
+                                            <connections>
+                                                <segue destination="MIG-TR-klW" kind="modal" id="hLQ-8M-NX4"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="cAO-1W-K8w"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ASR-EU-oGu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2443" y="459"/>
         </scene>
         <!--System View Controller - 设置-->
         <scene sceneID="dAi-qL-ydz">
@@ -328,7 +367,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cL5-ZQ-nIb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1854" y="-921"/>
+            <point key="canvasLocation" x="3964" y="-620"/>
         </scene>
         <!--Navigation Controller - 聊天-->
         <scene sceneID="Dsx-qw-qAw">
@@ -344,7 +383,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YKa-kF-VdK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1320" y="-921"/>
+            <point key="canvasLocation" x="3445" y="-620"/>
         </scene>
         <!--Profile View Controller-->
         <scene sceneID="3N0-ev-ULm">
@@ -405,6 +444,7 @@
                     <connections>
                         <segue destination="vfo-zI-J32" kind="relationship" relationship="viewControllers" id="TRg-4t-gPM"/>
                         <segue destination="BLa-S2-8cc" kind="relationship" relationship="viewControllers" id="dou-qM-MeI"/>
+                        <segue destination="9i6-PA-S74" kind="relationship" relationship="viewControllers" id="MNZ-L0-J0n"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nhd-dT-7rP" userLabel="First Responder" sceneMemberID="firstResponder"/>

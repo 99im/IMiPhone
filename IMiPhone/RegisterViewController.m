@@ -48,4 +48,17 @@
     }
 }
 
+- (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender
+{
+    if ([identifier isEqualToString:@"regPhoneDoneSegue"]) {
+        if ([imUtil checkPhone:self.tfPhonenum.text]) {
+            return YES;
+        }
+        else {
+            return NO;
+        }
+    }
+    return YES;
+}
+
 @end

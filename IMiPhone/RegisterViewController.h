@@ -11,5 +11,6 @@
 @interface RegisterViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UITextField *tfPhonenum;
+@property (weak, nonatomic) IBOutlet UILabel *lblCountryCode;
 
 @end
