@@ -19,6 +19,7 @@
     
     MKNetworkEngine *engine = [[MKNetworkEngine alloc] initWithHostName:message.host];
     MKNetworkOperation *op = nil;
+    //不能根据params是否为nil来决定POST还是GET，此处需要修改
     if (params == nil) {
         op = [engine operationWithPath:message.path];
     }

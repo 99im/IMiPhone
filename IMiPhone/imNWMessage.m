@@ -63,8 +63,8 @@
 
 - (void)excute
 {
-    NSString *mark = [self.mark capitalizedString];
-    NSString *clz = [NSString stringWithFormat:@"%@MessageProxy", mark];
+    NSString *markCapitalized = [self.mark capitalizedString];
+    NSString *clz = [NSString stringWithFormat:@"%@MessageProxy", markCapitalized];
     Class clsProxy = NSClassFromString(clz);
     if (clsProxy) {
         imNWProxy *proxy = [clsProxy sharedProxy];
@@ -77,13 +77,15 @@
 
 - (void)send:(NSMutableDictionary *)info
 {
-    NSMutableDictionary *json = [[NSMutableDictionary alloc] init];
-    [json setObject:mark forKey:@"mark"];
-    [json setObject:type forKey:@"type"];
-    if (info) {
-        [json setObject:info forKey:@"info"];
+    if (self.connect == CONNECT_SOCKET) {
+        NSMutableDictionary *json = [[NSMutableDictionary alloc] init];
+        [json setObject:mark forKey:@"mark"];
+        [json setObject:type forKey:@"type"];
+        if (info) {
+            [json setObject:info forKey:@"info"];
+        }
+        self.data = [NSJSONSerialization dataWithJSONObject:json options:0 error:nil];
     }
-    self.data = [NSJSONSerialization dataWithJSONObject:json options:0 error:nil];
     [[imNWManager sharedNWManager] sendMessage:self withResponse:nil];
 }
 

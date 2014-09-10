@@ -16,5 +16,6 @@
 #endif
 
 #define CRYPT YES
+#define HTTPSHOST @""
 
 #import <MobileCoreServices/MobileCoreServices.h>

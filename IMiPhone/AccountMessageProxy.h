@@ -15,7 +15,6 @@
 
 + (imNWProxy*)sharedProxy;
 
-- (void)sendTypeMobcode:(NSString *)code withCountry:(NSString *)country;
-- (void)parseTypeMobcode:(id)json;
+- (void)sendTypeMobcode:(NSString *)phone withCountry:(NSString *)country;
 
 @end

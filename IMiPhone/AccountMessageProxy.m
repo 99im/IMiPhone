@@ -8,6 +8,7 @@
 
 #import "AccountMessageProxy.h"
 #import "imNWMessage.h"
+#import "imNWManager.h"
 
 @implementation AccountMessageProxy
 
@@ -22,18 +23,16 @@ static AccountMessageProxy *sharedAccountMessageProxy = nil;
     return sharedAccountMessageProxy;
 }
 
-- (void)sendTypeMobcode:(NSString *)code withCountry:(NSString *)country
+- (void)sendTypeMobcode:(NSString *)phone withCountry:(NSString *)country
 {
-    imNWMessage *message = [imNWMessage createForSocket:MARK_ACCOUNT withType:@"mobcode"];
-    NSMutableDictionary *info = [[NSMutableDictionary alloc] init];
-    [info setObject:@"test" forKey:@"token"];
-    [info setObject:@"1_ty0717" forKey:@"verify"];
-    [message send:info];
-}
-
-- (void)parseTypeMobcode:(id)json
-{
-    
+    //使用https
+    NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
+    [params setObject:country forKey:@"mobCountry"];
+    [params setObject:phone forKey:@"mobile"];
+    imNWMessage *message = [imNWMessage createForHttp:HTTPSHOST onPath:@"/account/mobcode/" withParams:params];
+    [[imNWManager sharedNWManager] sendMessage:message withResponse:^(NSString *responseString, NSData *responseData) {
+        ;
+    }];
 }
 
 @end
