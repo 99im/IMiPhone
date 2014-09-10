@@ -10,4 +10,6 @@
 
 @interface FriendBarCell : UITableViewCell
 
+@property (weak, nonatomic) IBOutlet UIImageView *imgMyFriends;
+
 @end

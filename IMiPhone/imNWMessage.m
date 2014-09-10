@@ -7,8 +7,8 @@
 //
 
 #import "imNWMessage.h"
-#import "UserMessageProxy.h"
-#import "FriendMessageProxy.h"
+#import "imNWProxy.h"
+#import "imNWManager.h"
 
 @implementation imNWMessage
 
@@ -17,6 +17,25 @@
 @synthesize type;
 @synthesize host;
 @synthesize path;
+
++ (imNWMessage *)createForSocket:(NSString *)mark withType:(NSString *)type
+{
+    imNWMessage *message = [[imNWMessage alloc] init];
+    message.connect = CONNECT_SOCKET;
+    message.mark = mark;
+    message.type = type;
+    return message;
+}
+
++ (imNWMessage *)createForHttp:(NSString *)host onPath:(NSString *)path withParams:(NSMutableDictionary *)params
+{
+    imNWMessage *message = [[imNWMessage alloc] init];
+    message.connect = CONNECT_HTTP;
+    message.host = host;
+    message.path = path;
+    message.data = params;
+    return message;
+}
 
 - (NSData *)getSocketData
 {
@@ -44,12 +63,28 @@
 
 - (void)excute
 {
-    if ([self.mark isEqualToString:MARK_USER] == YES) {
-        [[UserMessageProxy sharedProxy] parseMessage:self];
+    NSString *mark = [self.mark capitalizedString];
+    NSString *clz = [NSString stringWithFormat:@"%@MessageProxy", mark];
+    Class clsProxy = NSClassFromString(clz);
+    if (clsProxy) {
+        imNWProxy *proxy = [clsProxy sharedProxy];
+        [proxy parseMessage:self];
     }
-    else if ([self.mark isEqualToString:MARK_FRIEND] == YES) {
-        [[FriendMessageProxy sharedProxy] parseMessage:self];
+    else {
+        NSAssert1(YES, @"No such Class: %@", clz);
     }
+}
+
+- (void)send:(NSMutableDictionary *)info
+{
+    NSMutableDictionary *json = [[NSMutableDictionary alloc] init];
+    [json setObject:mark forKey:@"mark"];
+    [json setObject:type forKey:@"type"];
+    if (info) {
+        [json setObject:info forKey:@"info"];
+    }
+    self.data = [NSJSONSerialization dataWithJSONObject:json options:0 error:nil];
+    [[imNWManager sharedNWManager] sendMessage:self withResponse:nil];
 }
 
 @end

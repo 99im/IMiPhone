@@ -1,19 +1,19 @@
 //
-//  RegisterViewController.m
+//  RegStep2ViewController.m
 //  IMiPhone
 //
-//  Created by 尹晓君 on 14-8-18.
+//  Created by 尹晓君 on 14-9-4.
 //  Copyright (c) 2014年 尹晓君. All rights reserved.
 //
 
-#import "RegisterViewController.h"
-#import "RegStep1ViewController.h"
+#import "RegStep2ViewController.h"
+#import "imUtil.h"
 
-@interface RegisterViewController ()
+@interface RegStep2ViewController ()
 
 @end
 
-@implementation RegisterViewController
+@implementation RegStep2ViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -36,6 +36,14 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)doneonclick:(id)sender {
+    NSString *password = self.tfPassword.text;
+    if ([imUtil checkPassword:password]) {
+        NSLog(@"invalid password");
+    }
+}
+
+/*
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -43,9 +51,7 @@
 {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
-    if ([segue.identifier isEqualToString:@"regPhoneDoneSegue"]) {
-        //RegStep1ViewController *regStep1ViewController = segue.destinationViewController;
-    }
 }
+*/
 
 @end

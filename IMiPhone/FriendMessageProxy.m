@@ -14,20 +14,13 @@
 
 static FriendMessageProxy *sharedFriendMessageProxy = nil;
 
-+ (FriendMessageProxy *)sharedProxy
++ (imNWProxy *)sharedProxy
 {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         sharedFriendMessageProxy = [[self alloc] init];
     });
     return sharedFriendMessageProxy;
-}
-
-- (void)parseMessage:(imNWMessage *)message
-{
-    if ([message.type isEqualToString:TYPE_GROUPS] == YES) {
-        [self parseTypeGroups:[message getResponseJson]];
-    }
 }
 
 - (void)sendTypeGroups

@@ -14,14 +14,13 @@
 
 #import <Foundation/Foundation.h>
 #import "imNWMessage.h"
+#import "imNWProxy.h"
 
 #define MARK_USER @"user"
 
-@interface UserMessageProxy : NSObject
+@interface UserMessageProxy : imNWProxy
 
-+ (UserMessageProxy*)sharedProxy;
-
-- (void)parseMessage:(imNWMessage *)message;
++ (imNWProxy*)sharedProxy;
 
 - (void)sendTypeRegister:(NSString *)phone code:(NSString *)code password:(NSString *)password;
 - (void)parseTypeRegister:(id)json;

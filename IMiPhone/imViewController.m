@@ -22,13 +22,12 @@
     [super viewDidLoad];
         
 	// Do any additional setup after loading the view, typically from a nib.
-    
-    imNWMessage *message = [[imNWMessage alloc] init];
-    message.host = @"gamify.tianya.cn";
-    srand((unsigned)time(0));
-    message.path = [NSString stringWithFormat:@"/app/bobing/server/?&r=%i",rand()];
-    message.connect = CONNECT_HTTP;
     [[imNWManager sharedNWManager] initHttpConnect];
+    
+    NSString *host = @"gamify.tianya.cn";
+    srand((unsigned)time(0));
+    NSString *path = [NSString stringWithFormat:@"/app/bobing/server/?&r=%i",rand()];
+    imNWMessage *message = [imNWMessage createForHttp:host onPath:path withParams:nil];
     [[imNWManager sharedNWManager] sendMessage:message withResponse:^(NSString *responseString, NSData *responseData) {
         NSLog(@"Http connect response string: %@", responseString);
         NSLog(@"Http connect response data: %@", [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding]);
@@ -42,7 +41,6 @@
         [[imNWManager sharedNWManager] initSocketConnect];
         [[imNWManager sharedNWManager].socketConnect connect:socketHost port:[socketPort integerValue]];
     }];
-    
 }
 
 - (void)didReceiveMemoryWarning

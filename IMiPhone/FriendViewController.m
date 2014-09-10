@@ -11,8 +11,13 @@
 #import "FriendTitleCell.h"
 #import "FriendGroupCell.h"
 #import "FriendDataProxy.h"
+#import "ProfileViewController.h"
+#import "imUtil.h"
 
-@interface FriendViewController ()
+@interface FriendViewController () <UIGestureRecognizerDelegate>
+
+@property (nonatomic, retain) UITapGestureRecognizer *tapGestureRecognizer;
+@property (nonatomic, retain) ProfileViewController *profileViewController;
 
 @end
 
@@ -125,6 +130,9 @@
 
 - (void)tapHandler:(UITapGestureRecognizer *)sender
 {
+    CGPoint point = [sender locationInView:self.view];
+    NSLog(@"FriendViewController tapHandler: x: %f, y: %f", point.x, point.y);
+    
     if (profileViewController) {
         [profileViewController.view removeFromSuperview];
         profileViewController = nil;
@@ -132,8 +140,6 @@
         [self.view removeGestureRecognizer:tapGestureRecognizer];
         tapGestureRecognizer = nil;
     }
-    CGPoint point = [sender locationInView:self.view];
-    NSLog(@"tapHandler: x: %f, y: %f", point.x, point.y);
 }
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer
