@@ -7,3 +7,7 @@
 */
 "FriendTitleOwnGroup" = "我的群组";
 "FriendTitleMyGroup" = "我参加的群组";
+"OK" = "确定";
+"Alert" = "警告";
+"Alert.Phone" = "请输入正确的手机号码";
+"Alert.Password" = "密码格式不正确。长度为6-20位，由数字、字母或特殊字符组成。";

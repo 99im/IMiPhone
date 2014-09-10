@@ -14,7 +14,7 @@
 
 static FriendMessageProxy *sharedFriendMessageProxy = nil;
 
-+ (imNWProxy *)sharedProxy
++ (FriendMessageProxy *)sharedProxy
 {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{

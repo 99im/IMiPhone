@@ -9,7 +9,7 @@
 #import "RegStep2ViewController.h"
 #import "imUtil.h"
 
-@interface RegStep2ViewController ()
+@interface RegStep2ViewController () <UITextFieldDelegate>
 
 @end
 
@@ -28,6 +28,8 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.navigationItem.hidesBackButton = YES;
+    [self.tfPassword setDelegate:self];
 }
 
 - (void)didReceiveMemoryWarning
@@ -36,14 +38,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)doneonclick:(id)sender {
-    NSString *password = self.tfPassword.text;
-    if ([imUtil checkPassword:password]) {
-        NSLog(@"invalid password");
-    }
-}
-
-/*
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -52,6 +46,22 @@
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
 }
-*/
+
+- (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender
+{
+    if ([identifier isEqualToString:@"regStep2DoneSegue"]) {
+        return [imUtil checkPassword:self.tfPassword.text];
+    }
+    return YES;
+}
+
+#pragma mark - UITextField Delegate Method
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [imUtil checkPassword:self.tfPassword.text];
+    [textField resignFirstResponder];
+    return YES;
+}
 
 @end
