@@ -30,6 +30,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.lblCountryPhone.text = self.countryPhone;
+    [self.tfCode becomeFirstResponder];
 }
 
 - (void)didReceiveMemoryWarning

@@ -199,6 +199,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="btnResendCode" destination="efp-cr-b2o" id="Edl-qF-cHr"/>
                         <outlet property="lblCountryPhone" destination="IbX-9W-CbE" id="xEn-7w-nFa"/>
                         <outlet property="tfCode" destination="XXS-kK-4qr" id="zEJ-LG-HUO"/>
                     </connections>
@@ -224,6 +225,9 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="alphabet" returnKeyType="done" secureTextEntry="YES"/>
+                                <connections>
+                                    <outlet property="delegate" destination="R74-bw-QsJ" id="wHB-hk-CiK"/>
+                                </connections>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>

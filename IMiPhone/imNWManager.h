@@ -20,7 +20,6 @@ message.connect = CONNECT_HTTP;
     NSLog(@"Http connect response data: %@", [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding]);
 }];
 */
-
 #import <Foundation/Foundation.h>
 #import "imNWSocketConnect.h"
 #import "imNWHttpConnect.h"

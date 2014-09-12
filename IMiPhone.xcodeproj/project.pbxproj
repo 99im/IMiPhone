@@ -159,6 +159,7 @@
 		116B6E9319B058A400DB1B5E /* SqlightResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SqlightResult.m; sourceTree = "<group>"; };
 		116B6E9419B058A400DB1B5E /* Sqlite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sqlite.h; sourceTree = "<group>"; };
 		11DF9F8419A2276C00AE5D89 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "zh-Hans"; path = "zh-Hans.lproj/splash.jpg"; sourceTree = "<group>"; };
+		582011F519C2C2E300D48658 /* MessageDefine.pch */ = {isa = PBXFileReference; fileEncoding = 2147486000; lastKnownFileType = sourcecode.c.h; path = MessageDefine.pch; sourceTree = "<group>"; };
 		585971CE1999F0C700258CB1 /* IMiPhone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IMiPhone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		585971D11999F0C700258CB1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		585971D31999F0C700258CB1 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -419,6 +420,7 @@
 				585971DA1999F0C700258CB1 /* InfoPlist.strings */,
 				585971DD1999F0C700258CB1 /* main.m */,
 				585971DF1999F0C700258CB1 /* IMiPhone-Prefix.pch */,
+				582011F519C2C2E300D48658 /* MessageDefine.pch */,
 				58AF048A19AF10560077DCBC /* Localizable.strings */,
 			);
 			name = "Supporting Files";
