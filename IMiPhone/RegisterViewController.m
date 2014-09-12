@@ -8,6 +8,7 @@
 
 #import "RegisterViewController.h"
 #import "RegStep1ViewController.h"
+#import "AccountMessageProxy.h"
 
 @interface RegisterViewController ()
 
@@ -28,6 +29,7 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [self.tfPhonenum becomeFirstResponder];
 }
 
 - (void)didReceiveMemoryWarning
@@ -44,7 +46,8 @@
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
     if ([segue.identifier isEqualToString:@"regPhoneDoneSegue"]) {
-        //RegStep1ViewController *regStep1ViewController = segue.destinationViewController;
+        RegStep1ViewController *regStep1ViewController = segue.destinationViewController;
+        regStep1ViewController.countryPhone = [NSString stringWithFormat:@"%@ %@", self.lblCountryCode.text, self.tfPhonenum.text ];
     }
 }
 
@@ -52,6 +55,7 @@
 {
     if ([identifier isEqualToString:@"regPhoneDoneSegue"]) {
         if ([imUtil checkPhone:self.tfPhonenum.text]) {
+            [[AccountMessageProxy sharedProxy] sendTypeMobcode:self.tfPhonenum.text withCountry:@"+86"];
             return YES;
         }
         else {

@@ -14,7 +14,7 @@
 
 @interface FriendMessageProxy : imNWProxy
 
-+ (imNWProxy*)sharedProxy;
++ (FriendMessageProxy*)sharedProxy;
 
 - (void)sendTypeGroups;
 - (void)parseTypeGroups:(id)json;

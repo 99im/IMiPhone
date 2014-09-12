@@ -14,7 +14,7 @@
 
 static UserMessageProxy *sharedUserMessageProxy = nil;
 
-+ (imNWProxy *)sharedProxy
++ (UserMessageProxy *)sharedProxy
 {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
