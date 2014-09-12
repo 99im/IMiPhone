@@ -39,9 +39,11 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.lblCountryPhone.text = self.countryPhone;
+    [self.tfCode becomeFirstResponder];
     self.totalTime = 60;
     [self setBtnSendTitle:[NSString stringWithFormat:@"%d",self.totalTime]] ;
-//    self.btnResendCode.enabled = NO;
+    self.btnResendCode.enabled = NO;
     self.btnState = btnStateWaiting;
     [self startResendTimer];
 }
