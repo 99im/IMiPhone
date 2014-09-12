@@ -7,5 +7,4 @@
 */
 "FriendTitleOwnGroup" = "我的群组";
 "FriendTitleMyGroup" = "我参加的群组";
-"Send" = "发送";
-"Resend" = "重新发送";
+"ResendCode" = "重发验证码";
