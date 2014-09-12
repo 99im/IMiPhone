@@ -1,0 +1,6 @@
+/private/etc/hosts
+
+192.168.132.176 local.admin.taiqiu.com
+192.168.132.176 local.img.taiqiu.com
+192.168.132.176 local.static.taiqiu.com
+192.168.132.176 local.taiqiu.com
