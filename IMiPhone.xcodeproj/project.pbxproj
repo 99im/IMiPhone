@@ -632,7 +632,7 @@
 		585971C61999F0C700258CB1 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				CLASSPREFIX = im;
+				CLASSPREFIX = IM;
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "尹晓君";
 			};

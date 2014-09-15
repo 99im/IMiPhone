@@ -10,8 +10,8 @@
             <objects>
                 <viewController storyboardIdentifier="imViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="vXZ-lx-hvc" customClass="imViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
-                        <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
+                        <viewControllerLayoutGuide type="top" id="ncr-s0-Hgg"/>
+                        <viewControllerLayoutGuide type="bottom" id="LLr-Ba-HUU"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -62,8 +62,8 @@
             <objects>
                 <viewController storyboardIdentifier="LoginViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Ogp-wt-lK2" customClass="LoginViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Iis-76-5Oe"/>
-                        <viewControllerLayoutGuide type="bottom" id="YOz-Qs-eIk"/>
+                        <viewControllerLayoutGuide type="top" id="ZoA-mt-RgO"/>
+                        <viewControllerLayoutGuide type="bottom" id="kP5-pR-TMp"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="0dl-mD-GMj">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -105,8 +105,8 @@
             <objects>
                 <viewController storyboardIdentifier="RegisterViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="WVo-lK-JtN" customClass="RegisterViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="xjO-pV-5dn"/>
-                        <viewControllerLayoutGuide type="bottom" id="c64-AY-vTh"/>
+                        <viewControllerLayoutGuide type="top" id="Fhq-yw-X1A"/>
+                        <viewControllerLayoutGuide type="bottom" id="Lth-xq-ijb"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8Dx-uU-kbW">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -156,8 +156,8 @@
             <objects>
                 <viewController id="KMP-8q-3L8" customClass="RegStep1ViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="QdR-m9-Fey"/>
-                        <viewControllerLayoutGuide type="bottom" id="q0w-xu-rJW"/>
+                        <viewControllerLayoutGuide type="top" id="OQy-gY-RgZ"/>
+                        <viewControllerLayoutGuide type="bottom" id="KHM-2D-VYg"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="puO-i4-409">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -213,8 +213,8 @@
             <objects>
                 <viewController id="R74-bw-QsJ" customClass="RegStep2ViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="rRj-Me-tmg"/>
-                        <viewControllerLayoutGuide type="bottom" id="ymb-cY-TCW"/>
+                        <viewControllerLayoutGuide type="top" id="RqX-5S-3L8"/>
+                        <viewControllerLayoutGuide type="bottom" id="0yC-Vk-Lzx"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="omk-R5-KSy" customClass="Reg">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -252,16 +252,129 @@
             <objects>
                 <viewController id="tkh-RH-kvT" customClass="RegInfoViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="giT-Vk-Pba"/>
-                        <viewControllerLayoutGuide type="bottom" id="sLE-fT-fW9"/>
+                        <viewControllerLayoutGuide type="top" id="uux-v4-LM9"/>
+                        <viewControllerLayoutGuide type="bottom" id="Gp5-ht-31e"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="e4w-ti-2hr">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cer-KH-ivo">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" keyboardDismissMode="interactive" translatesAutoresizingMaskIntoConstraints="NO" id="cer-KH-ivo">
                                 <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SZm-I1-Ve7">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="751"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ChatDefault" translatesAutoresizingMaskIntoConstraints="NO" id="3of-L6-5dr">
+                                                <rect key="frame" x="20" y="20" width="80" height="80"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            </imageView>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="昵称" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZAY-Do-Zyv">
+                                                <rect key="frame" x="20" y="108" width="50" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xJT-Rn-N6w">
+                                                <rect key="frame" x="20" y="137" width="120" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="tkh-RH-kvT" id="2Cm-K8-b7u"/>
+                                                </connections>
+                                            </textField>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="性别" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UB8-b1-DmK">
+                                                <rect key="frame" x="20" y="175" width="50" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="YB3-9O-O7x">
+                                                <rect key="frame" x="20" y="204" width="123" height="29"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <segments>
+                                                    <segment title="男"/>
+                                                    <segment title="女"/>
+                                                </segments>
+                                            </segmentedControl>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="生日" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kvx-0o-J0y">
+                                                <rect key="frame" x="20" y="240" width="50" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="星座" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YAk-AB-7bi">
+                                                <rect key="frame" x="20" y="439" width="50" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="座" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cQY-zB-y6T">
+                                                <rect key="frame" x="78" y="439" width="80" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="职业" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rkl-if-R5Z">
+                                                <rect key="frame" x="20" y="468" width="50" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="idy-GN-8KN">
+                                                <rect key="frame" x="20" y="497" width="160" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="tkh-RH-kvT" id="TWc-rS-fyx"/>
+                                                </connections>
+                                            </textField>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="兴趣" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7SW-Bl-AEP">
+                                                <rect key="frame" x="20" y="535" width="50" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1Cf-gF-MyU">
+                                                <rect key="frame" x="20" y="564" width="160" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="tkh-RH-kvT" id="8lR-Kd-c4q"/>
+                                                </connections>
+                                            </textField>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="个人签名" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4mW-dJ-cJC">
+                                                <rect key="frame" x="20" y="602" width="80" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="请输入个人签名，最多100字！" translatesAutoresizingMaskIntoConstraints="NO" id="P4B-l8-rNN">
+                                                <rect key="frame" x="20" y="631" width="280" height="100"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="tkh-RH-kvT" id="KQj-AX-cOj"/>
+                                                </connections>
+                                            </textView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="SZm-I1-Ve7" firstAttribute="top" secondItem="cer-KH-ivo" secondAttribute="top" id="T4z-KE-1Wr"/>
+                                    <constraint firstItem="SZm-I1-Ve7" firstAttribute="leading" secondItem="cer-KH-ivo" secondAttribute="leading" id="efK-Og-FpY"/>
+                                    <constraint firstAttribute="bottom" secondItem="SZm-I1-Ve7" secondAttribute="bottom" id="fI0-us-kIk"/>
+                                    <constraint firstAttribute="trailing" secondItem="SZm-I1-Ve7" secondAttribute="trailing" id="hqL-0v-SSW"/>
+                                </constraints>
                             </scrollView>
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Dv2-AA-WGX">
                                 <rect key="frame" x="0.0" y="20" width="320" height="44"/>
@@ -278,8 +391,19 @@
                             </navigationBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="cer-KH-ivo" firstAttribute="top" secondItem="e4w-ti-2hr" secondAttribute="top" constant="64" id="7K1-yh-KO7"/>
+                            <constraint firstAttribute="bottom" secondItem="cer-KH-ivo" secondAttribute="bottom" id="CB7-0k-M15"/>
+                            <constraint firstItem="cer-KH-ivo" firstAttribute="leading" secondItem="e4w-ti-2hr" secondAttribute="leading" id="O3Q-jl-asZ"/>
+                            <constraint firstAttribute="trailing" secondItem="cer-KH-ivo" secondAttribute="trailing" id="h5q-j5-HzC"/>
+                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="cAO-1W-K8w"/>
+                    <connections>
+                        <outlet property="scrollView" destination="cer-KH-ivo" id="bqb-xK-7he"/>
+                        <outlet property="tfCareer" destination="idy-GN-8KN" id="ysL-3y-g74"/>
+                        <outlet property="tfNickname" destination="xJT-Rn-N6w" id="Q1s-zd-0PY"/>
+                        <outlet property="tvSignature" destination="P4B-l8-rNN" id="Tsm-eG-rHr"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ASR-EU-oGu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -290,8 +414,8 @@
             <objects>
                 <viewController storyboardIdentifier="systemViewController" id="9i6-PA-S74" customClass="SystemViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Sgc-Os-5ls"/>
-                        <viewControllerLayoutGuide type="bottom" id="kDm-HO-1Y6"/>
+                        <viewControllerLayoutGuide type="top" id="vE9-UY-6T2"/>
+                        <viewControllerLayoutGuide type="bottom" id="GlK-BV-71C"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="AvD-kn-LUk">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -395,8 +519,8 @@
             <objects>
                 <viewController storyboardIdentifier="ProfileViewController" autoresizesArchivedViewToFullSize="NO" automaticallyAdjustsScrollViewInsets="NO" id="uzw-4X-jkc" customClass="ProfileViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="uR7-c8-eib"/>
-                        <viewControllerLayoutGuide type="bottom" id="Hdl-jL-vPr"/>
+                        <viewControllerLayoutGuide type="top" id="rgk-du-bVm"/>
+                        <viewControllerLayoutGuide type="bottom" id="eE3-er-LN1"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="0iL-qn-f7n">
                         <rect key="frame" x="0.0" y="0.0" width="200" height="320"/>
@@ -461,8 +585,8 @@
             <objects>
                 <viewController storyboardIdentifier="friendViewController" id="BLa-S2-8cc" customClass="FriendViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="XoA-ck-7aZ"/>
-                        <viewControllerLayoutGuide type="bottom" id="x1h-yj-9db"/>
+                        <viewControllerLayoutGuide type="top" id="Wem-nW-rZg"/>
+                        <viewControllerLayoutGuide type="bottom" id="Nql-bE-FbS"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="UpR-aF-QNP">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
