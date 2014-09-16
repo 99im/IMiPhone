@@ -10,4 +10,9 @@
 
 @interface RegInfoViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (weak, nonatomic) IBOutlet UITextField *tfNickname;
+@property (weak, nonatomic) IBOutlet UITextField *tfCareer;
+@property (weak, nonatomic) IBOutlet UITextView *tvSignature;
+
 @end

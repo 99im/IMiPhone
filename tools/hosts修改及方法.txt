@@ -1,3 +1,7 @@
+苹果Mac操作系统下怎么显示隐藏文件
+显示：defaults write com.apple.finder AppleShowAllFiles -bool true
+隐藏：defaults write com.apple.finder AppleShowAllFiles -bool false 
+
 /private/etc/hosts
 
 192.168.132.176 local.admin.taiqiu.com
