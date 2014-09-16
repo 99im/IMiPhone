@@ -55,7 +55,7 @@
 {
     if ([identifier isEqualToString:@"regPhoneDoneSegue"]) {
         if ([imUtil checkPhone:self.tfPhonenum.text]) {
-            [[AccountMessageProxy sharedProxy] sendTypeMobcode:self.tfPhonenum.text withCountry:@"+86"];
+            [[AccountMessageProxy sharedProxy] sendTypeMobcode:self.tfPhonenum.text withCountry:CHINA_CODE];
             return YES;
         }
         else {

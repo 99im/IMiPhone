@@ -29,9 +29,13 @@ static AccountMessageProxy *sharedAccountMessageProxy = nil;
     NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
     [params setObject:country forKey:KEYQ__ACCOUNT_MOBCODE__MOBCOUNTRY];
     [params setObject:phone forKey:KEYQ__ACCOUNT_MOBCODE__MOBILE];
-    imNWMessage *message = [imNWMessage createForHttp:HTTPSHOST onPath:PATH__ACCOUNT_MOBCODE_ withParams:params];
+    imNWMessage *message = [imNWMessage createForHttp:HTTPHOST onPath:PATH__ACCOUNT_MOBCODE_ withParams:params withMethod:METHOD_POST ssl:NO];
     [[imNWManager sharedNWManager] sendMessage:message withResponse:^(NSString *responseString, NSData *responseData) {
-        ;
+        NSError *err = nil;
+        NSMutableDictionary *json = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingAllowFragments error:&err];
+        if (err) {
+            NSAssert1(YES, @"JSON create error: %@", err);
+        }
     }];
 }
 
@@ -43,9 +47,13 @@ static AccountMessageProxy *sharedAccountMessageProxy = nil;
     [params setObject:password forKey:KEYQ__ACCOUNT_REGISTER__PASSWORD];
     //set phone
     //set country
-    imNWMessage *message = [imNWMessage createForHttp:HTTPSHOST onPath:PATH__ACCOUNT_REGISTER_ withParams:params];
+    imNWMessage *message = [imNWMessage createForHttp:HTTPHOST onPath:PATH__ACCOUNT_REGISTER_ withParams:params withMethod:METHOD_POST ssl:NO];
     [[imNWManager sharedNWManager] sendMessage:message withResponse:^(NSString *responseString, NSData *responseData) {
-        ;
+        NSError *err = nil;
+        NSMutableDictionary *json = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingAllowFragments error:&err];
+        if (err) {
+            NSAssert1(YES, @"JSON create error: %@", err);
+        }
     }];
 }
 
@@ -56,9 +64,16 @@ static AccountMessageProxy *sharedAccountMessageProxy = nil;
     [params setObject:mobile forKey:KEYQ__ACCOUNT_LOGIN__MOBILE];
     [params setObject:mobCountry forKey:KEYQ__ACCOUNT_LOGIN__MOBCOUNTRY];
     [params setObject:password forKey:KEYQ__ACCOUNT_LOGIN__PASSWORD];
-    imNWMessage *message = [imNWMessage createForHttp:HTTPSHOST onPath:PATH__ACCOUNT_LOGIN_ withParams:params];
+    imNWMessage *message = [imNWMessage createForHttp:HTTPHOST onPath:PATH__ACCOUNT_LOGIN_ withParams:params withMethod:METHOD_POST ssl:NO ];
     [[imNWManager sharedNWManager] sendMessage:message withResponse:^(NSString *responseString, NSData *responseData) {
-        ;
+        NSError *err = nil;
+        NSMutableDictionary *json = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingAllowFragments error:&err];
+        if (err) {
+            NSAssert1(YES, @"JSON create error: %@", err);
+        }
+        else {
+            
+        }
     }];
 }
 
@@ -67,9 +82,16 @@ static AccountMessageProxy *sharedAccountMessageProxy = nil;
     //使用http
     NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
     [params setObject:verify forKey:KEYQ__ACCOUNT_MYINFO__VERIFY];
-    imNWMessage *message = [imNWMessage createForHttp:HTTPSHOST onPath:PATH__ACCOUNT_MYINFO_ withParams:params];
+    imNWMessage *message = [imNWMessage createForHttp:HTTPHOST onPath:PATH__ACCOUNT_MYINFO_ withParams:params withMethod:METHOD_POST ssl:NO];
     [[imNWManager sharedNWManager] sendMessage:message withResponse:^(NSString *responseString, NSData *responseData) {
-        ;
+        NSError *err = nil;
+        NSMutableDictionary *json = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingAllowFragments error:&err];
+        if (err) {
+            NSAssert1(YES, @"JSON create error: %@", err);
+        }
+        else {
+            
+        }
     }];
 }
 
@@ -80,9 +102,16 @@ static AccountMessageProxy *sharedAccountMessageProxy = nil;
     [params setObject:gender forKey:KEYQ__ACCOUNT_UPDATEINFO__GENDER];
     [params setObject:birth forKey:KEYQ__ACCOUNT_UPDATEINFO__BIRTHDAY];
     [params setObject:nick forKey:KEYQ__ACCOUNT_UPDATEINFO__NICK];
-    imNWMessage *message = [imNWMessage createForHttp:HTTPSHOST onPath:PATH__ACCOUNT_UPDATEINFO_ withParams:params];
+    imNWMessage *message = [imNWMessage createForHttp:HTTPHOST onPath:PATH__ACCOUNT_UPDATEINFO_ withParams:params withMethod:METHOD_POST ssl:NO];
     [[imNWManager sharedNWManager] sendMessage:message withResponse:^(NSString *responseString, NSData *responseData) {
-        ;
+        NSError *err = nil;
+        NSMutableDictionary *json = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingAllowFragments error:&err];
+        if (err) {
+            NSAssert1(YES, @"JSON create error: %@", err);
+        }
+        else {
+            
+        }
     }];
 }
 

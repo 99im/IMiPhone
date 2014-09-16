@@ -788,6 +788,7 @@
 				58F2AA3E19A48D2300DC2FFB /* imNWManager.m in Sources */,
 				58F2AA3919A487E300DC2FFB /* AsyncSocket.m in Sources */,
 				58C14DD619C81447009334E1 /* FriendsViewController.m in Sources */,
+				11A1409A19C2F58C00B2D0B6 /* LoginDataProxy.m in Sources */,
 				58BC1E3B19C0304900722A00 /* SystemViewController.m in Sources */,
 				58AF047319AF040C0077DCBC /* FriendBarCell.m in Sources */,
 				58BC1E3319C0304900722A00 /* RegInfoViewController.m in Sources */,

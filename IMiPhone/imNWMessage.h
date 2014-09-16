@@ -20,9 +20,11 @@
 @property (nonatomic, retain) NSString *host;
 @property (nonatomic, retain) NSString *path;
 @property (nonatomic, strong) NSMutableArray *responseBlocks;
+@property (nonatomic) BOOL useSSL;
+@property (nonatomic, retain) NSString *method;
 
 + (imNWMessage *)createForSocket:(NSString *)mark withType:(NSString *)type;
-+ (imNWMessage *)createForHttp:(NSString *)host onPath:(NSString *)path withParams:(NSMutableDictionary *)params;
++ (imNWMessage *)createForHttp:(NSString *)host onPath:(NSString *)path withParams:(NSMutableDictionary *)params withMethod:(NSString *)method ssl:(BOOL)useSSL;
 
 - (NSData *)getSocketData;
 - (NSMutableDictionary *)getHttpParams;

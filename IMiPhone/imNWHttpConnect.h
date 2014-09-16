@@ -9,10 +9,11 @@
 #import <Foundation/Foundation.h>
 #import "imNWMessage.h"
 #import "MKNetworkKit/MKNetworkOperation.h"
+#import "MKNetworkEngine.h"
 
 typedef void (^imNWResponseBlock)(NSString* responseString, NSData* responseData);
 
-@interface imNWHttpConnect : NSObject
+@interface imNWHttpConnect : MKNetworkEngine
 
 - (void)sendHttpRequest:(imNWMessage *)message withResponse:(imNWResponseBlock)response;
 

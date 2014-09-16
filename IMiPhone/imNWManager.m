@@ -34,7 +34,7 @@ static imNWManager *sharedNWManager = nil;
 
 - (void)initHttpConnect
 {
-    httpConnect = [[imNWHttpConnect alloc] init];
+    httpConnect = [[imNWHttpConnect alloc] initWithHostName:HTTPHOST portNumber:HTTPPORT apiPath:nil customHeaderFields:nil];
 }
 
 - (void)sendMessage:(imNWMessage *)message withResponse:(imNWResponseBlock)response

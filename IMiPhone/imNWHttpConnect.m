@@ -17,15 +17,7 @@
 {
     NSMutableDictionary *params = [message getHttpParams];
     
-    MKNetworkEngine *engine = [[MKNetworkEngine alloc] initWithHostName:message.host];
-    MKNetworkOperation *op = nil;
-    //不能根据params是否为nil来决定POST还是GET，此处需要修改
-    if (params == nil) {
-        op = [engine operationWithPath:message.path];
-    }
-    else {
-        op = [engine operationWithPath:message.path params:params httpMethod:@"POST"];
-    }
+    MKNetworkOperation *op = [self operationWithPath:message.path params:params httpMethod:message.method ssl:message.useSSL];
     [op addCompletionHandler:^(MKNetworkOperation *completedOperation) {
         if (response) {
             response([completedOperation responseString], [completedOperation responseData]);
@@ -36,7 +28,7 @@
         [self errorHandler:completedOperation error:error];
     }];
     
-    [engine enqueueOperation:op];
+    [self enqueueOperation:op];
 }
 
 - (void)completionHandler:(MKNetworkOperation *)operation

@@ -17,6 +17,8 @@
 @synthesize type;
 @synthesize host;
 @synthesize path;
+@synthesize useSSL;
+@synthesize method;
 
 + (imNWMessage *)createForSocket:(NSString *)mark withType:(NSString *)type
 {
@@ -27,13 +29,15 @@
     return message;
 }
 
-+ (imNWMessage *)createForHttp:(NSString *)host onPath:(NSString *)path withParams:(NSMutableDictionary *)params
++ (imNWMessage *)createForHttp:(NSString *)host onPath:(NSString *)path withParams:(NSMutableDictionary *)params withMethod:(NSString *)method ssl:(BOOL)useSSL
 {
     imNWMessage *message = [[imNWMessage alloc] init];
     message.connect = CONNECT_HTTP;
     message.host = host;
     message.path = path;
     message.data = params;
+    message.method = method;
+    message.useSSL = useSSL;
     return message;
 }
 
