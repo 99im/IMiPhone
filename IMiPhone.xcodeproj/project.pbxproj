@@ -31,6 +31,8 @@
 		116B6E9519B058A400DB1B5E /* SqlightAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 116B6E8F19B058A400DB1B5E /* SqlightAdapter.m */; };
 		116B6E9619B058A400DB1B5E /* SqlightDriver.m in Sources */ = {isa = PBXBuildFile; fileRef = 116B6E9119B058A400DB1B5E /* SqlightDriver.m */; };
 		116B6E9719B058A400DB1B5E /* SqlightResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 116B6E9319B058A400DB1B5E /* SqlightResult.m */; };
+		11A1409A19C2F58C00B2D0B6 /* LoginDataProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 11A1409919C2F58C00B2D0B6 /* LoginDataProxy.m */; };
+		11A1409B19C2F58C00B2D0B6 /* LoginDataProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 11A1409919C2F58C00B2D0B6 /* LoginDataProxy.m */; };
 		11DF9F8319A2276C00AE5D89 /* splash.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 11DF9F8519A2276C00AE5D89 /* splash.jpg */; };
 		585971D21999F0C700258CB1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 585971D11999F0C700258CB1 /* Foundation.framework */; };
 		585971D41999F0C700258CB1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 585971D31999F0C700258CB1 /* CoreGraphics.framework */; };
@@ -158,6 +160,8 @@
 		116B6E9219B058A400DB1B5E /* SqlightResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SqlightResult.h; sourceTree = "<group>"; };
 		116B6E9319B058A400DB1B5E /* SqlightResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SqlightResult.m; sourceTree = "<group>"; };
 		116B6E9419B058A400DB1B5E /* Sqlite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sqlite.h; sourceTree = "<group>"; };
+		11A1409819C2F58C00B2D0B6 /* LoginDataProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginDataProxy.h; sourceTree = "<group>"; };
+		11A1409919C2F58C00B2D0B6 /* LoginDataProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginDataProxy.m; sourceTree = "<group>"; };
 		11DF9F8419A2276C00AE5D89 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "zh-Hans"; path = "zh-Hans.lproj/splash.jpg"; sourceTree = "<group>"; };
 		582011F519C2C2E300D48658 /* MessageDefine.pch */ = {isa = PBXFileReference; fileEncoding = 2147486000; lastKnownFileType = sourcecode.c.h; path = MessageDefine.pch; sourceTree = "<group>"; };
 		585971CE1999F0C700258CB1 /* IMiPhone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IMiPhone.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -475,6 +479,8 @@
 			children = (
 				58AF049619B056050077DCBC /* FriendDataProxy.h */,
 				58AF049719B056050077DCBC /* FriendDataProxy.m */,
+				11A1409819C2F58C00B2D0B6 /* LoginDataProxy.h */,
+				11A1409919C2F58C00B2D0B6 /* LoginDataProxy.m */,
 			);
 			name = DataProxy;
 			sourceTree = "<group>";
@@ -731,6 +737,7 @@
 				58BC1E3719C0304900722A00 /* RegStep1ViewController.m in Sources */,
 				58F2AA3E19A48D2300DC2FFB /* imNWManager.m in Sources */,
 				58F2AA3919A487E300DC2FFB /* AsyncSocket.m in Sources */,
+				11A1409A19C2F58C00B2D0B6 /* LoginDataProxy.m in Sources */,
 				58BC1E3B19C0304900722A00 /* SystemViewController.m in Sources */,
 				58AF047319AF040C0077DCBC /* FriendBarCell.m in Sources */,
 				58BC1E3319C0304900722A00 /* RegInfoViewController.m in Sources */,
@@ -751,6 +758,7 @@
 				58BC1E5D19C06BAE00722A00 /* UIImageView+MKNetworkKitAdditions.m in Sources */,
 				58BC1E5E19C06BAE00722A00 /* crypt.c in Sources */,
 				58BC1E3E19C06B9000722A00 /* ChatTableViewController.m in Sources */,
+				11A1409B19C2F58C00B2D0B6 /* LoginDataProxy.m in Sources */,
 				58BC1E3F19C06B9000722A00 /* ChatCell.m in Sources */,
 				58BC1E4019C06B9000722A00 /* LoginViewController.m in Sources */,
 				58BC1E4119C06B9000722A00 /* imAppDelegate.m in Sources */,
