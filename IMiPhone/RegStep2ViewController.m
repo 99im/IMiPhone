@@ -7,7 +7,8 @@
 //
 
 #import "RegStep2ViewController.h"
-#import "imUtil.h"
+#import "AccountMessageProxy.h"
+
 
 @interface RegStep2ViewController () <UITextFieldDelegate>
 
@@ -47,12 +48,10 @@
     // Pass the selected object to the new view controller.
 }
 
-- (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender
-{
-    if ([identifier isEqualToString:@"regStep2DoneSegue"]) {
-        return [imUtil checkPassword:self.tfPassword.text];
+- (IBAction)doneSelector:(id)sender {
+    if ([imUtil checkPassword:self.tfPassword.text]) {
+        [[AccountMessageProxy sharedProxy] sendTypeRegister:self.tfPassword.text];
     }
-    return YES;
 }
 
 #pragma mark - UITextField Delegate Method

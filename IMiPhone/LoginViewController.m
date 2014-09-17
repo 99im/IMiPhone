@@ -7,19 +7,13 @@
 //
 
 #import "LoginViewController.h"
-#import "imRms.h"
-#import "DatabaseConfig.h"
-@interface LoginViewController ()
+#import "AccountMessageProxy.h"
 
-@property (nonatomic, retain) NSString *uid;
-@property (nonatomic, retain) NSString *psw;
+@interface LoginViewController ()
 
 @end
 
 @implementation LoginViewController
-
-@synthesize uid;
-@synthesize psw;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -34,24 +28,8 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    uid = [imRms userDefaultsRead:@"userid"];
-    if(uid == nil)
-    {
-        uid = @"";
-        [imRms userDefaultsWrite:@"userid" withValue:uid];
-    }
-    NSLog(@"%@",uid);
-    self.username.text = uid;
-    
-    psw = [imRms userDefaultsRead:@"password"];
-    if(psw == nil)
-    {
-        psw = @"";
-        [imRms userDefaultsWrite:@"password" withValue:psw];
-    }
-    NSLog(@"%@",psw);
-    self.password.text = psw;
-   
+//    self.tfUsername.text = uid;
+//    self.tfPassword.text = psw;
 }
 
 - (void)didReceiveMemoryWarning
@@ -71,18 +49,16 @@
 }
 */
 
-- (IBAction)doneonclick:(id)sender {
-    uid = self.username.text;
-    [imRms userDefaultsWrite:@"userid" withValue:uid];
-    psw = self.password.text;
-    [imRms userDefaultsWrite:@"password" withValue:psw];
+- (IBAction)doneSelector:(id)sender {
+    if (self.tfUsername.text.length > 0 && self.tfPassword.text.length > 0) {
+        [[AccountMessageProxy sharedProxy] sendTypeLogin:self.tfUsername.text fromCountry:@"" withPwd:self.tfPassword.text];
+    }
     
-    UIStoryboard* mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    UITabBarController *mainTabBarController = [mainStoryboard instantiateViewControllerWithIdentifier:@"mainTabBarController"];
-    //    registerViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
-    [self presentViewController:mainTabBarController animated:YES completion:^{
-        NSLog(@"Present TabBar View: mainTabBarController");
-    }];
-    [DatabaseConfig shareDatabaseConfig].databaseName = [uid stringByAppendingString:@".sqlite"];
+//    UIStoryboard* mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+//    UITabBarController *mainTabBarController = [mainStoryboard instantiateViewControllerWithIdentifier:@"mainTabBarController"];
+//    //    registerViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+//    [self presentViewController:mainTabBarController animated:YES completion:^{
+//        NSLog(@"Present TabBar View: mainTabBarController");
+//    }];
 }
 @end

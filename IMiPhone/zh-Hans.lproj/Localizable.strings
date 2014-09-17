@@ -11,4 +11,5 @@
 "Alert" = "警告";
 "Alert.Phone" = "请输入正确的手机号码";
 "Alert.Password" = "密码格式不正确。长度为6-20位，由数字、字母或特殊字符组成。";
+"Alert.LoginError" = "登录失败，原因之后补充。错误码：%i";
 "ResendCode" = "重发验证码";

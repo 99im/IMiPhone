@@ -18,7 +18,10 @@
     NSMutableDictionary *params = [message getHttpParams];
     
     MKNetworkOperation *op = [self operationWithPath:message.path params:params httpMethod:message.method ssl:message.useSSL];
+    
     [op addCompletionHandler:^(MKNetworkOperation *completedOperation) {
+        NSLog(@"Http connect response string: %@", [completedOperation responseString]);
+        NSLog(@"Http connect response data: %@", [[NSString alloc] initWithData:[completedOperation responseData] encoding:NSUTF8StringEncoding]);
         if (response) {
             response([completedOperation responseString], [completedOperation responseData]);
         } else {
@@ -29,12 +32,13 @@
     }];
     
     [self enqueueOperation:op];
+    NSLog(@"Http connect request: %@", op.url);
 }
 
 - (void)completionHandler:(MKNetworkOperation *)operation
 {
-    NSLog(@"Http connect response string: %@", [operation responseString]);
-    NSLog(@"Http connect response data: %@", [[NSString alloc] initWithData:[operation responseData] encoding:NSUTF8StringEncoding]);
+//    NSLog(@"Http connect response string: %@", [operation responseString]);
+//    NSLog(@"Http connect response data: %@", [[NSString alloc] initWithData:[operation responseData] encoding:NSUTF8StringEncoding]);
     NSDictionary *json = [NSJSONSerialization JSONObjectWithData:[operation responseData] options:NSJSONReadingAllowFragments error:nil];
     imNWMessage *message = [[imNWMessage alloc] init];
     message.data = json;

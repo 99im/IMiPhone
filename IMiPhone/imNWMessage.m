@@ -16,6 +16,7 @@
 @synthesize mark;
 @synthesize type;
 @synthesize host;
+@synthesize port;
 @synthesize path;
 @synthesize useSSL;
 @synthesize method;
@@ -29,11 +30,10 @@
     return message;
 }
 
-+ (imNWMessage *)createForHttp:(NSString *)host onPath:(NSString *)path withParams:(NSMutableDictionary *)params withMethod:(NSString *)method ssl:(BOOL)useSSL
++ (imNWMessage *)createForHttp:(NSString *)path withParams:(NSMutableDictionary *)params withMethod:(NSString *)method ssl:(BOOL)useSSL
 {
     imNWMessage *message = [[imNWMessage alloc] init];
     message.connect = CONNECT_HTTP;
-    message.host = host;
     message.path = path;
     message.data = params;
     message.method = method;
@@ -91,6 +91,13 @@
         self.data = [NSJSONSerialization dataWithJSONObject:json options:0 error:nil];
     }
     [[imNWManager sharedNWManager] sendMessage:self withResponse:nil];
+}
+
+- (void)useHost:(NSString *)phost andPort:(int)nport
+{
+    //底层暂不支持多http路径，需要扩展，使用dictionary持有不同host和port的http connect
+    self.host = phost;
+    self.port = nport;
 }
 
 @end

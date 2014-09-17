@@ -12,6 +12,6 @@
 
 @property (weak, nonatomic) IBOutlet UITextField *tfPhonenum;
 @property (weak, nonatomic) IBOutlet UILabel *lblCountryCode;
-@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+- (IBAction)nextStepSelector:(id)sender;
 
 @end

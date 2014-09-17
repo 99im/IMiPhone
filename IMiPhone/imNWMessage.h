@@ -18,18 +18,20 @@
 @property (nonatomic, retain) NSString *type;
 @property (nonatomic, retain) id data;
 @property (nonatomic, retain) NSString *host;
+@property (nonatomic) int port;
 @property (nonatomic, retain) NSString *path;
 @property (nonatomic, strong) NSMutableArray *responseBlocks;
 @property (nonatomic) BOOL useSSL;
 @property (nonatomic, retain) NSString *method;
 
 + (imNWMessage *)createForSocket:(NSString *)mark withType:(NSString *)type;
-+ (imNWMessage *)createForHttp:(NSString *)host onPath:(NSString *)path withParams:(NSMutableDictionary *)params withMethod:(NSString *)method ssl:(BOOL)useSSL;
++ (imNWMessage *)createForHttp:(NSString *)path withParams:(NSMutableDictionary *)params withMethod:(NSString *)method ssl:(BOOL)useSSL;
 
 - (NSData *)getSocketData;
 - (NSMutableDictionary *)getHttpParams;
 - (NSDictionary *)getResponseJson;
 - (void)excute;
 - (void)send:(NSMutableDictionary *)info;
+- (void)useHost:(NSString *)phost andPort:(int)nport;
 
 @end
