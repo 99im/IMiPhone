@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AddTP</key>
+	<array>
+		<string>通讯录好友</string>
+		<string>添加微信好友</string>
+		<string>添加QQ好友</string>
+		<string>添加微博好友</string>
+	</array>
+</dict>
+</plist>

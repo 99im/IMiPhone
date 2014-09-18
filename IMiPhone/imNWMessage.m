@@ -35,6 +35,11 @@
     imNWMessage *message = [[imNWMessage alloc] init];
     message.connect = CONNECT_HTTP;
     message.path = path;
+    if (params == nil) {
+        params = [NSMutableDictionary dictionary];
+    }
+    #warning 获取verify值
+    [params setObject:@"" forKey:HTTP_KEY_VERIFY];
     message.data = params;
     message.method = method;
     message.useSSL = useSSL;

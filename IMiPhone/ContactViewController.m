@@ -51,10 +51,13 @@
 
 - (void)openSubTags:(int)tag
 {
+    if (tag == -1) {
+        tag = 0;
+    }
     UIStoryboard* mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     UIViewController *viewController = nil;
     NSString *subviewId = nil;
-    
+    NSString *subviewTitle = [self.segSubTags titleForSegmentAtIndex:tag];
     switch (tag) {
         case 1:
             subviewId = @"recommendViewController";
@@ -78,6 +81,7 @@
         UIView *view = viewController.view;
         [self.subviewContainer addSubview:view];
         self.curSubView = subviewId;
+        self.navigationItem.title = subviewTitle;
     }
 }
 

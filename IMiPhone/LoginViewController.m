@@ -53,12 +53,6 @@
     if (self.tfUsername.text.length > 0 && self.tfPassword.text.length > 0) {
         [[AccountMessageProxy sharedProxy] sendTypeLogin:self.tfUsername.text fromCountry:@"" withPwd:self.tfPassword.text];
     }
-    
-//    UIStoryboard* mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-//    UITabBarController *mainTabBarController = [mainStoryboard instantiateViewControllerWithIdentifier:@"mainTabBarController"];
-//    //    registerViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
-//    [self presentViewController:mainTabBarController animated:YES completion:^{
-//        NSLog(@"Present TabBar View: mainTabBarController");
-//    }];
+    [self performSegueWithIdentifier:@"loginDoneSegue" sender:self];
 }
 @end
