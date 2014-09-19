@@ -11,5 +11,6 @@
 @interface RegStep2ViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UITextField *tfPassword;
+- (IBAction)doneSelector:(id)sender;
 
 @end

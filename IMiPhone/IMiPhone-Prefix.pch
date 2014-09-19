@@ -18,6 +18,12 @@
 #endif
 
 #define CRYPT YES
-#define HTTPSHOST @""
+#define HTTPHOST @"local.taiqiu.com"
+#define HTTPPORT 7070
+#define METHOD_POST @"POST"
+#define METHOD_GET @"GET"
+#define HTTP_KEY_VERIFY @"verify"
+
+#define CHINA_CODE @"+86"
 
 #import <MobileCoreServices/MobileCoreServices.h>

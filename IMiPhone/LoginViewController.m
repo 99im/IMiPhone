@@ -7,19 +7,13 @@
 //
 
 #import "LoginViewController.h"
-#import "imRms.h"
-#import "DatabaseConfig.h"
-@interface LoginViewController ()
+#import "AccountMessageProxy.h"
 
-@property (nonatomic, retain) NSString *uid;
-@property (nonatomic, retain) NSString *psw;
+@interface LoginViewController ()
 
 @end
 
 @implementation LoginViewController
-
-@synthesize uid;
-@synthesize psw;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {

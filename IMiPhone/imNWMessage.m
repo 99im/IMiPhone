@@ -16,7 +16,10 @@
 @synthesize mark;
 @synthesize type;
 @synthesize host;
+@synthesize port;
 @synthesize path;
+@synthesize useSSL;
+@synthesize method;
 
 + (imNWMessage *)createForSocket:(NSString *)mark withType:(NSString *)type
 {
@@ -27,13 +30,19 @@
     return message;
 }
 
-+ (imNWMessage *)createForHttp:(NSString *)host onPath:(NSString *)path withParams:(NSMutableDictionary *)params
++ (imNWMessage *)createForHttp:(NSString *)path withParams:(NSMutableDictionary *)params withMethod:(NSString *)method ssl:(BOOL)useSSL
 {
     imNWMessage *message = [[imNWMessage alloc] init];
     message.connect = CONNECT_HTTP;
-    message.host = host;
     message.path = path;
+    if (params == nil) {
+        params = [NSMutableDictionary dictionary];
+    }
+    #warning 获取verify值
+    [params setObject:@"" forKey:HTTP_KEY_VERIFY];
     message.data = params;
+    message.method = method;
+    message.useSSL = useSSL;
     return message;
 }
 
@@ -87,6 +96,13 @@
         self.data = [NSJSONSerialization dataWithJSONObject:json options:0 error:nil];
     }
     [[imNWManager sharedNWManager] sendMessage:self withResponse:nil];
+}
+
+- (void)useHost:(NSString *)phost andPort:(int)nport
+{
+    //底层暂不支持多http路径，需要扩展，使用dictionary持有不同host和port的http connect
+    self.host = phost;
+    self.port = nport;
 }
 
 @end

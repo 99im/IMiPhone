@@ -30,6 +30,7 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.pickBirthday.hidden = YES;
 }
 
 - (void)didReceiveMemoryWarning
@@ -64,6 +65,12 @@
     
     [super viewWillDisappear:animated];
 }
+
+- (IBAction)btnBirthdayOnClick:(id)sender {
+    self.pickBirthday.hidden = YES;
+}
+
+#pragma mark - keyboard Hide and Show
 
 - (void)keyboardDidShow:(NSNotification *)notification
 {

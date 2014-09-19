@@ -38,6 +38,13 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)nextStepSelector:(id)sender {
+    if ([imUtil checkPhone:self.tfPhonenum.text]) {
+        [[AccountMessageProxy sharedProxy] sendTypeMobcode:self.tfPhonenum.text withCountry:CHINA_CODE];
+        [self performSegueWithIdentifier:@"regPhoneDoneSegue" sender:self];
+    }
+}
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -49,20 +56,6 @@
         RegStep1ViewController *regStep1ViewController = segue.destinationViewController;
         regStep1ViewController.countryPhone = [NSString stringWithFormat:@"%@ %@", self.lblCountryCode.text, self.tfPhonenum.text ];
     }
-}
-
-- (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender
-{
-    if ([identifier isEqualToString:@"regPhoneDoneSegue"]) {
-        if ([imUtil checkPhone:self.tfPhonenum.text]) {
-            [[AccountMessageProxy sharedProxy] sendTypeMobcode:self.tfPhonenum.text withCountry:@"+86"];
-            return YES;
-        }
-        else {
-            return NO;
-        }
-    }
-    return YES;
 }
 
 @end

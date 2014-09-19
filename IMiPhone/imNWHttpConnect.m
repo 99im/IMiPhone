@@ -17,16 +17,11 @@
 {
     NSMutableDictionary *params = [message getHttpParams];
     
-    MKNetworkEngine *engine = [[MKNetworkEngine alloc] initWithHostName:message.host];
-    MKNetworkOperation *op = nil;
-    //不能根据params是否为nil来决定POST还是GET，此处需要修改
-    if (params == nil) {
-        op = [engine operationWithPath:message.path];
-    }
-    else {
-        op = [engine operationWithPath:message.path params:params httpMethod:@"POST"];
-    }
+    MKNetworkOperation *op = [self operationWithPath:message.path params:params httpMethod:message.method ssl:message.useSSL];
+    
     [op addCompletionHandler:^(MKNetworkOperation *completedOperation) {
+        NSLog(@"Http connect response string: %@", [completedOperation responseString]);
+        NSLog(@"Http connect response data: %@", [[NSString alloc] initWithData:[completedOperation responseData] encoding:NSUTF8StringEncoding]);
         if (response) {
             response([completedOperation responseString], [completedOperation responseData]);
         } else {
@@ -36,13 +31,14 @@
         [self errorHandler:completedOperation error:error];
     }];
     
-    [engine enqueueOperation:op];
+    [self enqueueOperation:op];
+    NSLog(@"Http connect request: %@", op.url);
 }
 
 - (void)completionHandler:(MKNetworkOperation *)operation
 {
-    NSLog(@"Http connect response string: %@", [operation responseString]);
-    NSLog(@"Http connect response data: %@", [[NSString alloc] initWithData:[operation responseData] encoding:NSUTF8StringEncoding]);
+//    NSLog(@"Http connect response string: %@", [operation responseString]);
+//    NSLog(@"Http connect response data: %@", [[NSString alloc] initWithData:[operation responseData] encoding:NSUTF8StringEncoding]);
     NSDictionary *json = [NSJSONSerialization JSONObjectWithData:[operation responseData] options:NSJSONReadingAllowFragments error:nil];
     imNWMessage *message = [[imNWMessage alloc] init];
     message.data = json;
