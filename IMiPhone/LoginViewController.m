@@ -34,20 +34,20 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    uid = [imRms userDefaultsRead:@"userid"];
+    uid = [imRms userDefaultsReadString:@"userid"];
     if(uid == nil)
     {
         uid = @"";
-        [imRms userDefaultsWrite:@"userid" withValue:uid];
+        [imRms userDefaultsWrite:@"userid" withStringValue:uid];
     }
     NSLog(@"%@",uid);
     self.username.text = uid;
     
-    psw = [imRms userDefaultsRead:@"password"];
+    psw = [imRms userDefaultsReadString:@"password"];
     if(psw == nil)
     {
         psw = @"";
-        [imRms userDefaultsWrite:@"password" withValue:psw];
+        [imRms userDefaultsWrite:@"password" withStringValue:psw];
     }
     NSLog(@"%@",psw);
     self.password.text = psw;
@@ -73,9 +73,9 @@
 
 - (IBAction)doneonclick:(id)sender {
     uid = self.username.text;
-    [imRms userDefaultsWrite:@"userid" withValue:uid];
+    [imRms userDefaultsWrite:@"userid" withStringValue:uid];
     psw = self.password.text;
-    [imRms userDefaultsWrite:@"password" withValue:psw];
+    [imRms userDefaultsWrite:@"password" withStringValue:psw];
     
     UIStoryboard* mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     UITabBarController *mainTabBarController = [mainStoryboard instantiateViewControllerWithIdentifier:@"mainTabBarController"];

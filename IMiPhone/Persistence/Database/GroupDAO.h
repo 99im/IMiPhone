@@ -10,5 +10,5 @@
 #import "Group.h"
 
 @interface GroupDAO : BaseDAO
-+ (GroupDAO*)sharedManager;
++ (GroupDAO*)sharedDAO;
 @end

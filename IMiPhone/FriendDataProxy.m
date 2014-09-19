@@ -23,4 +23,5 @@ static FriendDataProxy *sharedFriendDataProxy = nil;
     return sharedFriendDataProxy;
 }
 
+
 @end
