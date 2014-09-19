@@ -6,9 +6,9 @@
 //  Copyright (c) 2014年 尹晓君. All rights reserved.
 //
 
-#import "AddByInputTVCell.h"
+#import "AddByInputTableViewCell.h"
 
-@implementation AddByInputTVCell
+@implementation AddByInputTableViewCell
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {

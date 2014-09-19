@@ -1,27 +1,18 @@
 //
-//  AddTableViewController.m
+//  TPContactsTableViewController.m
 //  IMiPhone
 //
-//  Created by 尹晓君 on 14-9-18.
+//  Created by 尹晓君 on 14-9-19.
 //  Copyright (c) 2014年 尹晓君. All rights reserved.
 //
 
-#import "AddTableViewController.h"
-#import "AddByInputTableViewCell.h"
+#import "TPContactsTableViewController.h"
 
-@interface AddTableViewController ()
-
-@property (nonatomic, retain) NSArray *arrTPs;
-@property (nonatomic, retain) AddByInputTableViewCell *userIdCell;
-@property (nonatomic, retain) AddByInputTableViewCell *groupIdCell;
+@interface TPContactsTableViewController ()
 
 @end
 
-@implementation AddTableViewController
-
-const int sectionInput = 0;
-const int sectionTP = 1;
-const int sectionNum = 2;
+@implementation TPContactsTableViewController
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -41,9 +32,6 @@ const int sectionNum = 2;
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    NSBundle *bundle = [NSBundle mainBundle];
-    NSString *plistPath = [bundle pathForResource:@"contact" ofType:@"plist"];
-    self.arrTPs = [[[NSDictionary alloc] initWithContentsOfFile:plistPath] objectForKey:@"AddTP"];
 }
 
 - (void)didReceiveMemoryWarning
@@ -52,69 +40,32 @@ const int sectionNum = 2;
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)addTouchUpInside:(id)sender {
-    
-//    NSLog(@"Table selected section: %i, row: %i", self.tableView.indexPathForSelectedRow.section, self.tableView.indexPathForSelectedRow.row);
-    if (sender == self.userIdCell.btnAdd) {
-        NSLog(self.userIdCell.tfAddTarget.text);
-    }
-    else if (sender == self.groupIdCell.btnAdd) {
-         NSLog(self.groupIdCell.tfAddTarget.text);
-    }
-}
-
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
+#warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return sectionNum;
+    return 0;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    switch (section) {
-        case sectionInput:
-            return 2;
-        case sectionTP:
-            return self.arrTPs.count;
-    }
     return 0;
 }
 
+/*
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    switch (indexPath.section) {
-        case sectionInput:
-        {
-            AddByInputTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"addByInputCell" forIndexPath:indexPath];
-            if (indexPath.row == 0) {
-                cell.tfAddTarget.placeholder = NSLocalizedString(@"Contact.Add.UserID", nil);
-                self.userIdCell = cell;
-            }
-            else if (indexPath.row == 1)
-            {
-                cell.tfAddTarget.placeholder = NSLocalizedString(@"Contact.Add.GroupID", nil);
-                self.groupIdCell = cell;
-            }
-            return cell;
-        }
-        case sectionTP:
-        {
-            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"addByTPCell" forIndexPath:indexPath];
-            cell.textLabel.text = [self.arrTPs objectAtIndex:indexPath.row];
-            return cell;
-        }
-        default:
-            break;
-    }
-    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
     
     // Configure the cell...
     
-    return nil;
+    return cell;
 }
+*/
 
 /*
 // Override to support conditional editing of the table view.

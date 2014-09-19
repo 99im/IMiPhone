@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AddByInputTVCell : UITableViewCell
+@interface AddByInputTableViewCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UITextField *tfAddTarget;
 @property (weak, nonatomic) IBOutlet UIButton *btnAdd;
