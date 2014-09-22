@@ -7,20 +7,20 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "User.h"
+#import "DPUser.h"
 
 @interface UserDataProxy : NSObject
 
 @property(getter = getLastLoginUserId,setter = setLastLoginUserId:) NSString *lastLoginUserId;
 @property(getter = getVerify,setter = setVerify:) NSString *verify;
-@property User *user;
+@property DPUser *user;
 
 
 
 + (UserDataProxy *)sharedProxy;
 
 -(void)initUserFromRms;
--(void)updateUser:(User *)userInfo;
+-(void)updateUser:(DPUser *)userInfo;
 
 
 @end
