@@ -57,10 +57,10 @@ static UserDataProxy *sharedProxy = nil;
 {
     NSDictionary *userInfoDic = (NSDictionary *)[imRms userDefaultsReadObject:[KEY_USER_INFO_PRE stringByAppendingString:_lastLoginUserId]];
   if(_user == nil)
-      _user = [[User alloc] init];
+      _user = [[DPUser alloc] init];
   if(userInfoDic == nil)
    {
-       _user.user_id = _lastLoginUserId;
+       _user.uid = _lastLoginUserId;
        [imRms userDefaultsWrite:[KEY_USER_INFO_PRE stringByAppendingString:_lastLoginUserId] withObjectValue:[DataUtil getDicFromNormalClass:_user]];
        ;
    }
@@ -69,7 +69,7 @@ static UserDataProxy *sharedProxy = nil;
        [DataUtil updateObject:_user by:userInfoDic];
    }
 }
--(void)updateUser:(User *)userInfo
+-(void)updateUser:(DPUser *)userInfo
 {
     _user = userInfo;
     NSDictionary *userInfoDic = [DataUtil getDicFromNormalClass:_user];

@@ -36,8 +36,8 @@
 		116BF87419C81E680015561B /* AudioRecordManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 116BF87019C81E030015561B /* AudioRecordManager.m */; };
 		116BF87719C96F8F0015561B /* UserDataProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 116BF87619C96F8F0015561B /* UserDataProxy.m */; };
 		116BF87819C96F8F0015561B /* UserDataProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 116BF87619C96F8F0015561B /* UserDataProxy.m */; };
-		116BF87F19C981AD0015561B /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 116BF87E19C981AD0015561B /* User.m */; };
-		116BF88019C981AE0015561B /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 116BF87E19C981AD0015561B /* User.m */; };
+		116BF87F19C981AD0015561B /* DPUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 116BF87E19C981AD0015561B /* DPUser.m */; };
+		116BF88019C981AE0015561B /* DPUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 116BF87E19C981AD0015561B /* DPUser.m */; };
 		116BF88219CC01C70015561B /* UserDataProxyTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 116BF88119CC01C70015561B /* UserDataProxyTest.m */; };
 		116BF88519CC29360015561B /* DataUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 116BF88419CC29360015561B /* DataUtil.m */; };
 		116BF88619CC29360015561B /* DataUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 116BF88419CC29360015561B /* DataUtil.m */; };
@@ -55,7 +55,6 @@
 		585971F21999F0C700258CB1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 585971D11999F0C700258CB1 /* Foundation.framework */; };
 		585971F31999F0C700258CB1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 585971D51999F0C700258CB1 /* UIKit.framework */; };
 		5859721819A1DEE500258CB1 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5859721719A1DEE500258CB1 /* LoginViewController.m */; };
-		5887FD2919CC00EF001BFAFB /* TPContactsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5887FD2819CC00EF001BFAFB /* TPContactsTableViewController.m */; };
 		5887FD2A19CC00EF001BFAFB /* TPContactsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5887FD2819CC00EF001BFAFB /* TPContactsTableViewController.m */; };
 		58A5B4F819ADC05F0007C2F3 /* MainTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A5B4F719ADC05F0007C2F3 /* MainTabBarController.m */; };
 		58A5B4FC19ADC3CA0007C2F3 /* ChatTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A5B4FB19ADC3CA0007C2F3 /* ChatTableViewController.m */; };
@@ -131,7 +130,6 @@
 		58BC1E5F19C06BD700722A00 /* imRms.m in Sources */ = {isa = PBXBuildFile; fileRef = 116B6E7A19AEF83500DB1B5E /* imRms.m */; };
 		58C14DD219C80D67009334E1 /* ContactViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C14DD119C80D67009334E1 /* ContactViewController.m */; };
 		58C14DD319C80D67009334E1 /* ContactViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C14DD119C80D67009334E1 /* ContactViewController.m */; };
-		58C14DD619C81447009334E1 /* FriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C14DD519C81447009334E1 /* FriendsViewController.m */; };
 		58C14DD719C81447009334E1 /* FriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C14DD519C81447009334E1 /* FriendsViewController.m */; };
 		58C14DDA19C81562009334E1 /* RecommendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C14DD919C81562009334E1 /* RecommendViewController.m */; };
 		58C14DDB19C81562009334E1 /* RecommendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C14DD919C81562009334E1 /* RecommendViewController.m */; };
@@ -191,8 +189,8 @@
 		116BF87219C81E3F0015561B /* AudioRecordTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioRecordTest.m; sourceTree = "<group>"; };
 		116BF87519C96F8F0015561B /* UserDataProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserDataProxy.h; sourceTree = "<group>"; };
 		116BF87619C96F8F0015561B /* UserDataProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserDataProxy.m; sourceTree = "<group>"; };
-		116BF87D19C981AD0015561B /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = User.h; path = Persistence/Database/User.h; sourceTree = "<group>"; };
-		116BF87E19C981AD0015561B /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = User.m; path = Persistence/Database/User.m; sourceTree = "<group>"; };
+		116BF87D19C981AD0015561B /* DPUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DPUser.h; path = Persistence/Database/DPUser.h; sourceTree = "<group>"; };
+		116BF87E19C981AD0015561B /* DPUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DPUser.m; path = Persistence/Database/DPUser.m; sourceTree = "<group>"; };
 		116BF88119CC01C70015561B /* UserDataProxyTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserDataProxyTest.m; sourceTree = "<group>"; };
 		116BF88319CC29360015561B /* DataUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataUtil.h; sourceTree = "<group>"; };
 		116BF88419CC29360015561B /* DataUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataUtil.m; sourceTree = "<group>"; };
@@ -532,8 +530,8 @@
 		58AF049419B053930077DCBC /* DataProxy */ = {
 			isa = PBXGroup;
 			children = (
-				116BF87D19C981AD0015561B /* User.h */,
-				116BF87E19C981AD0015561B /* User.m */,
+				116BF87D19C981AD0015561B /* DPUser.h */,
+				116BF87E19C981AD0015561B /* DPUser.m */,
 				116BF87519C96F8F0015561B /* UserDataProxy.h */,
 				116BF87619C96F8F0015561B /* UserDataProxy.m */,
 				58AF049619B056050077DCBC /* FriendDataProxy.h */,
@@ -829,7 +827,7 @@
 				58BC1E3919C0304900722A00 /* RegStep2ViewController.m in Sources */,
 				58BC1E3719C0304900722A00 /* RegStep1ViewController.m in Sources */,
 				58F2AA3E19A48D2300DC2FFB /* imNWManager.m in Sources */,
-				116BF87F19C981AD0015561B /* User.m in Sources */,
+				116BF87F19C981AD0015561B /* DPUser.m in Sources */,
 				58F2AA3919A487E300DC2FFB /* AsyncSocket.m in Sources */,
 				58BC1E3B19C0304900722A00 /* SystemViewController.m in Sources */,
 				58AF047319AF040C0077DCBC /* FriendBarCell.m in Sources */,
@@ -858,7 +856,7 @@
 				58BC1E4019C06B9000722A00 /* LoginViewController.m in Sources */,
 				58BC1E4119C06B9000722A00 /* imAppDelegate.m in Sources */,
 				58BC1E4219C06B9000722A00 /* ProfileViewController.m in Sources */,
-				116BF88019C981AE0015561B /* User.m in Sources */,
+				116BF88019C981AE0015561B /* DPUser.m in Sources */,
 				58BC1E4319C06B9000722A00 /* imViewController.m in Sources */,
 				58BC1E4419C06B9000722A00 /* MainTabBarController.m in Sources */,
 				58BC1E4519C06B9000722A00 /* FriendViewController.m in Sources */,
