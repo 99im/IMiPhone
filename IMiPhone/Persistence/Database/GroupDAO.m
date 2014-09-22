@@ -11,16 +11,19 @@
 #import "DatabaseConfig.h"
 @implementation GroupDAO
 
-NSString *const tableName = @"tb_group";
-NSString *const primaryKey = @"group_id";
 
-+(GroupDAO*)sharedManager
+
++(GroupDAO*)sharedDAO
 {
     static GroupDAO* sharedGroupDAO = nil;
     static dispatch_once_t once;
     dispatch_once(&once,
                   ^{
+            
+
                       sharedGroupDAO = [[self alloc] init];
+                      NSString *tableName = @"tb_group";
+                      NSString *primaryKey = @"group_id";
                       [sharedGroupDAO createTableIfNotExist:tableName withDataMode:[Group class] withPrimaryKey:primaryKey];
                   }
                   );

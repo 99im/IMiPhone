@@ -9,6 +9,9 @@
 #import <XCTest/XCTest.h>
 #import "GroupDAO.h"
 #import "DatabaseConfig.h"
+#import "imRms.h"
+#import "Group.h"
+#import "DataUtil.h"
 
 @interface PersistenceTest : XCTestCase
 
@@ -85,7 +88,7 @@
 {
     [DatabaseConfig shareDatabaseConfig].databaseName = @"tree1";
     
-    BaseDAO *dao = [GroupDAO sharedManager];
+    BaseDAO *dao = [GroupDAO sharedDAO];
     
     Group *g = [[Group alloc]init];
     g.group_id = 10;
@@ -135,6 +138,15 @@
         value = [dict objectForKey: key];
         NSLog (@"Key: %@ for value: %@", key, value);
     }
+}
+-(void)testRms
+{
+    Group *g = [[Group alloc] init];
+    g.group_name = @"trees";
+    NSDictionary *ds =[DataUtil getDicFromNormalClass:g];
+    [imRms userDefaultsWrite:@"aa" withObjectValue:ds];
+    id obj = [imRms userDefaultsReadObject:@"aa"];
+    NSLog(@"group_name:%@",[obj valueForKey:@"group_name"]);
 }
 
 @end

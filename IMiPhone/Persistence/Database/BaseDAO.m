@@ -9,7 +9,7 @@
 #import "BaseDAO.h"
 #import "DatabaseConfig.h"
 #import <objc/runtime.h>
-
+#import "DataUtil.h"
 
 @interface BaseDAO()
     @property NSString *tableName;
@@ -20,44 +20,7 @@
 
 static NSDictionary *dicSQLDataType;
 
-+ (NSDictionary *)getDicFromNormalClass:(id) classInstance
-{
-    //创建可变字典
-    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-    unsigned int outCount;
-    objc_property_t *props = class_copyPropertyList([classInstance class], &outCount);
-    for(int i=0;i<outCount;i++){
-        objc_property_t prop = props[i];
-        NSString *propName = [[NSString alloc]initWithCString:property_getName(prop) encoding:NSUTF8StringEncoding];
-        id propValue = [classInstance valueForKey:propName];
 
-        if(propValue){
-            [dict setObject:propValue forKey:propName];
-        }
-    }
-    free(props);
-    return dict;
-}
-+ (NSArray *)getArrPropsFromDataModeClass:(Class) cls
-{
-    NSMutableArray *mutArray=[NSMutableArray array];
-    
-    unsigned int ivarsCnt = 0;
-    //　获取类成员变量列表，ivarsCnt为类成员数量
-    Ivar *ivars = class_copyIvarList(cls, &ivarsCnt);
-    //　遍历成员变量列表，其中每个变量都是Ivar类型的结构体
-    for (const Ivar *p = ivars; p < ivars + ivarsCnt; ++p)
-    {
-        Ivar const ivar = *p;
-        //　获取变量名
-        NSString *key = [NSString stringWithUTF8String:ivar_getName(ivar)];
-        if (key)
-        {
-            [mutArray addObject:key];
-        }
-    }
-    return mutArray;
-}
 
 
 -(NSArray *)getInfoFromDataMode:(Class)cls withPrimaryKey:(NSString *)pKey
@@ -145,7 +108,7 @@ static NSDictionary *dicSQLDataType;
 }
 - (int)insert:(NSObject *)data
 {
-    NSDictionary *dataDic = [BaseDAO getDicFromNormalClass:data];
+    NSDictionary *dataDic = [DataUtil getDicFromNormalClass:data];
     SqlightResult *result  = [self.sqlight insertData:dataDic];
     NSLog(@"insert Result msg:%@ code:%d data:%@", result.msg, result.code, result.data);
     return result.code;
@@ -158,7 +121,7 @@ static NSDictionary *dicSQLDataType;
 }
 - (NSMutableArray *)query:(NSString *)condition Bind:(NSArray *)bind
 {
-    NSArray *arrProps = [BaseDAO getArrPropsFromDataModeClass:self.dataMode];
+    NSArray *arrProps = [DataUtil getArrPropsFromDataModeClass:self.dataMode];
     SqlightResult *result = [self.sqlight selectFields:arrProps
                                       ByCondition:condition Bind:bind];
     NSLog(@"query Result msg:%@ code:%d data:%@", result.msg, result.code, result.data);

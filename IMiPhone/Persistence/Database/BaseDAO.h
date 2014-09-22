@@ -13,9 +13,6 @@
 
 @interface BaseDAO : NSObject
 
-+ (NSDictionary *) getDicFromNormalClass:(id) classInstance;
-+ (NSArray *)getArrPropsFromDataModeClass:(Class) cls;
-
 - (int)createTableIfNotExist:(NSString *)name withDataMode:(Class)cls withPrimaryKey:(NSString *)pKey;
 - (int)dropTable;
 //sample code:     Group *g = [[Group alloc] init];    g.group_name = @"桌球小组";  BaseDAO *dao = [ChildDao shareManager];[dao insert(g)];

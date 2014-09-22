@@ -34,8 +34,13 @@
 		116BF87119C81E030015561B /* AudioRecordManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 116BF87019C81E030015561B /* AudioRecordManager.m */; };
 		116BF87319C81E3F0015561B /* AudioRecordTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 116BF87219C81E3F0015561B /* AudioRecordTest.m */; };
 		116BF87419C81E680015561B /* AudioRecordManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 116BF87019C81E030015561B /* AudioRecordManager.m */; };
-		11A1409A19C2F58C00B2D0B6 /* LoginDataProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 11A1409919C2F58C00B2D0B6 /* LoginDataProxy.m */; };
-		11A1409B19C2F58C00B2D0B6 /* LoginDataProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 11A1409919C2F58C00B2D0B6 /* LoginDataProxy.m */; };
+		116BF87719C96F8F0015561B /* UserDataProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 116BF87619C96F8F0015561B /* UserDataProxy.m */; };
+		116BF87819C96F8F0015561B /* UserDataProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 116BF87619C96F8F0015561B /* UserDataProxy.m */; };
+		116BF87F19C981AD0015561B /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 116BF87E19C981AD0015561B /* User.m */; };
+		116BF88019C981AE0015561B /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 116BF87E19C981AD0015561B /* User.m */; };
+		116BF88219CC01C70015561B /* UserDataProxyTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 116BF88119CC01C70015561B /* UserDataProxyTest.m */; };
+		116BF88519CC29360015561B /* DataUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 116BF88419CC29360015561B /* DataUtil.m */; };
+		116BF88619CC29360015561B /* DataUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 116BF88419CC29360015561B /* DataUtil.m */; };
 		11DF9F8319A2276C00AE5D89 /* splash.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 11DF9F8519A2276C00AE5D89 /* splash.jpg */; };
 		585971D21999F0C700258CB1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 585971D11999F0C700258CB1 /* Foundation.framework */; };
 		585971D41999F0C700258CB1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 585971D31999F0C700258CB1 /* CoreGraphics.framework */; };
@@ -184,8 +189,13 @@
 		116BF86F19C81E030015561B /* AudioRecordManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioRecordManager.h; sourceTree = "<group>"; };
 		116BF87019C81E030015561B /* AudioRecordManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioRecordManager.m; sourceTree = "<group>"; };
 		116BF87219C81E3F0015561B /* AudioRecordTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioRecordTest.m; sourceTree = "<group>"; };
-		11A1409819C2F58C00B2D0B6 /* LoginDataProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginDataProxy.h; sourceTree = "<group>"; };
-		11A1409919C2F58C00B2D0B6 /* LoginDataProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginDataProxy.m; sourceTree = "<group>"; };
+		116BF87519C96F8F0015561B /* UserDataProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserDataProxy.h; sourceTree = "<group>"; };
+		116BF87619C96F8F0015561B /* UserDataProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserDataProxy.m; sourceTree = "<group>"; };
+		116BF87D19C981AD0015561B /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = User.h; path = Persistence/Database/User.h; sourceTree = "<group>"; };
+		116BF87E19C981AD0015561B /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = User.m; path = Persistence/Database/User.m; sourceTree = "<group>"; };
+		116BF88119CC01C70015561B /* UserDataProxyTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserDataProxyTest.m; sourceTree = "<group>"; };
+		116BF88319CC29360015561B /* DataUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataUtil.h; sourceTree = "<group>"; };
+		116BF88419CC29360015561B /* DataUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataUtil.m; sourceTree = "<group>"; };
 		11DF9F8419A2276C00AE5D89 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "zh-Hans"; path = "zh-Hans.lproj/splash.jpg"; sourceTree = "<group>"; };
 		582011F519C2C2E300D48658 /* MessageDefine.pch */ = {isa = PBXFileReference; fileEncoding = 2147486000; lastKnownFileType = sourcecode.c.h; path = MessageDefine.pch; sourceTree = "<group>"; };
 		585971CE1999F0C700258CB1 /* IMiPhone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IMiPhone.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -476,6 +486,7 @@
 		585971F61999F0C700258CB1 /* IMiPhoneTests */ = {
 			isa = PBXGroup;
 			children = (
+				116BF88119CC01C70015561B /* UserDataProxyTest.m */,
 				116BF87219C81E3F0015561B /* AudioRecordTest.m */,
 				116AB13F19B7315000092E2C /* PersistenceTest.m */,
 				585971FC1999F0C700258CB1 /* IMiPhoneTests.m */,
@@ -521,10 +532,12 @@
 		58AF049419B053930077DCBC /* DataProxy */ = {
 			isa = PBXGroup;
 			children = (
+				116BF87D19C981AD0015561B /* User.h */,
+				116BF87E19C981AD0015561B /* User.m */,
+				116BF87519C96F8F0015561B /* UserDataProxy.h */,
+				116BF87619C96F8F0015561B /* UserDataProxy.m */,
 				58AF049619B056050077DCBC /* FriendDataProxy.h */,
 				58AF049719B056050077DCBC /* FriendDataProxy.m */,
-				11A1409819C2F58C00B2D0B6 /* LoginDataProxy.h */,
-				11A1409919C2F58C00B2D0B6 /* LoginDataProxy.m */,
 			);
 			name = DataProxy;
 			sourceTree = "<group>";
@@ -638,6 +651,8 @@
 				58F2AA3319A2F85400DC2FFB /* imUtil.m */,
 				58BACF0D19B5DAB900A72391 /* imPhotoPicker.h */,
 				58BACF0E19B5DAB900A72391 /* imPhotoPicker.m */,
+				116BF88319CC29360015561B /* DataUtil.h */,
+				116BF88419CC29360015561B /* DataUtil.m */,
 			);
 			name = Util;
 			sourceTree = "<group>";
@@ -780,6 +795,7 @@
 				116B6E9619B058A400DB1B5E /* SqlightDriver.m in Sources */,
 				58D95F4C19A5E2E7007139AB /* imNWMessage.m in Sources */,
 				116B6E9719B058A400DB1B5E /* SqlightResult.m in Sources */,
+				116BF87719C96F8F0015561B /* UserDataProxy.m in Sources */,
 				58EF8C3F19BEEE1600C5A7AC /* AccountMessageProxy.m in Sources */,
 				116B6E7B19AEF83500DB1B5E /* GroupMessage.m in Sources */,
 				58B496F419A71AFB0082AE30 /* imNWHttpConnect.m in Sources */,
@@ -792,6 +808,7 @@
 				116BF87119C81E030015561B /* AudioRecordManager.m in Sources */,
 				58EF8C4319BEF08C00C5A7AC /* imNWProxy.m in Sources */,
 				585971E81999F0C700258CB1 /* imViewController.m in Sources */,
+				116BF88519CC29360015561B /* DataUtil.m in Sources */,
 				585971DE1999F0C700258CB1 /* main.m in Sources */,
 				58B496DC19A7186A0082AE30 /* NSDate+RFC1123.m in Sources */,
 				58C14DE219C82630009334E1 /* CategoryViewController.m in Sources */,
@@ -812,10 +829,8 @@
 				58BC1E3919C0304900722A00 /* RegStep2ViewController.m in Sources */,
 				58BC1E3719C0304900722A00 /* RegStep1ViewController.m in Sources */,
 				58F2AA3E19A48D2300DC2FFB /* imNWManager.m in Sources */,
+				116BF87F19C981AD0015561B /* User.m in Sources */,
 				58F2AA3919A487E300DC2FFB /* AsyncSocket.m in Sources */,
-				58C14DD619C81447009334E1 /* FriendsViewController.m in Sources */,
-				11A1409A19C2F58C00B2D0B6 /* LoginDataProxy.m in Sources */,
-				5887FD2919CC00EF001BFAFB /* TPContactsTableViewController.m in Sources */,
 				58BC1E3B19C0304900722A00 /* SystemViewController.m in Sources */,
 				58AF047319AF040C0077DCBC /* FriendBarCell.m in Sources */,
 				58BC1E3319C0304900722A00 /* RegInfoViewController.m in Sources */,
@@ -832,22 +847,24 @@
 				58BC1E5719C06BAE00722A00 /* NSAlert+MKNetworkKitAdditions.m in Sources */,
 				58BC1E5819C06BAE00722A00 /* NSData+MKBase64.m in Sources */,
 				58BC1E5919C06BAE00722A00 /* NSDate+RFC1123.m in Sources */,
+				116BF87819C96F8F0015561B /* UserDataProxy.m in Sources */,
 				58BC1E5A19C06BAE00722A00 /* NSDictionary+RequestEncoding.m in Sources */,
 				58BC1E5B19C06BAE00722A00 /* NSString+MKNetworkKitAdditions.m in Sources */,
 				58BC1E5C19C06BAE00722A00 /* UIAlertView+MKNetworkKitAdditions.m in Sources */,
 				58BC1E5D19C06BAE00722A00 /* UIImageView+MKNetworkKitAdditions.m in Sources */,
 				58BC1E5E19C06BAE00722A00 /* crypt.c in Sources */,
 				58BC1E3E19C06B9000722A00 /* ChatTableViewController.m in Sources */,
-				11A1409B19C2F58C00B2D0B6 /* LoginDataProxy.m in Sources */,
 				58BC1E3F19C06B9000722A00 /* ChatCell.m in Sources */,
 				58BC1E4019C06B9000722A00 /* LoginViewController.m in Sources */,
 				58BC1E4119C06B9000722A00 /* imAppDelegate.m in Sources */,
 				58BC1E4219C06B9000722A00 /* ProfileViewController.m in Sources */,
+				116BF88019C981AE0015561B /* User.m in Sources */,
 				58BC1E4319C06B9000722A00 /* imViewController.m in Sources */,
 				58BC1E4419C06B9000722A00 /* MainTabBarController.m in Sources */,
 				58BC1E4519C06B9000722A00 /* FriendViewController.m in Sources */,
 				58BC1E4619C06B9000722A00 /* FriendBarCell.m in Sources */,
 				58BC1E4719C06B9000722A00 /* FriendTitleCell.m in Sources */,
+				116BF88619CC29360015561B /* DataUtil.m in Sources */,
 				58BC1E4819C06B9000722A00 /* FriendGroupCell.m in Sources */,
 				58C14DD319C80D67009334E1 /* ContactViewController.m in Sources */,
 				58BC1E4919C06B9000722A00 /* UserMessageProxy.m in Sources */,
@@ -877,6 +894,7 @@
 				58C14DDB19C81562009334E1 /* RecommendViewController.m in Sources */,
 				116AB14D19B733C400092E2C /* FriendDataProxyTest.m in Sources */,
 				1120945A19B601EF0012D607 /* IMiPhoneTests.m in Sources */,
+				116BF88219CC01C70015561B /* UserDataProxyTest.m in Sources */,
 				58EF8C4419BEF08C00C5A7AC /* imNWProxy.m in Sources */,
 				58C14DE319C82630009334E1 /* CategoryViewController.m in Sources */,
 				58C14DD719C81447009334E1 /* FriendsViewController.m in Sources */,
