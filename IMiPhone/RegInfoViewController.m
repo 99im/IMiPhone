@@ -8,14 +8,17 @@
 
 #import "RegInfoViewController.h"
 
-@interface RegInfoViewController () <UITextFieldDelegate, UITextViewDelegate>
+@interface RegInfoViewController () <UITextFieldDelegate, UITextViewDelegate, UIGestureRecognizerDelegate>
 
 @property (nonatomic, retain) UITextField *tfActive;
 @property (nonatomic, retain) UITextView *tvActive;
 
+@property (nonatomic, retain) UITapGestureRecognizer *tap;
+
 @end
 
 @implementation RegInfoViewController
+@synthesize tap;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -31,6 +34,11 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.pickBirthday.hidden = YES;
+    tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapHandler:)];
+    [self.view addGestureRecognizer:tap];
+    tap.delegate = self;
+    tap.cancelsTouchesInView = NO;
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -67,7 +75,18 @@
 }
 
 - (IBAction)btnBirthdayOnClick:(id)sender {
-    self.pickBirthday.hidden = YES;
+    if(self.pickBirthday.hidden == YES)
+    {
+        self.pickBirthday.hidden = NO;
+        [self.scrollView scrollRectToVisible:self.btnBirthday.frame animated:YES];//测试下是否会滚动到选择日期按钮可见
+
+//        CGRect rectPick = self.pickBirthday.frame;
+//        CGPoint pBtnBirthdayBottom = self.btnBirthday.frame.origin;
+//        pBtnBirthdayBottom.y += self.btnBirthday.frame.size.height;
+//        if (self.btnBirthday && CGRectContainsPoint(rectPick, pBtnBirthdayBottom)) {
+//            [self.scrollView scrollRectToVisible:self.btnBirthday.frame animated:YES];
+//        }
+    }
 }
 
 #pragma mark - keyboard Hide and Show
@@ -137,5 +156,29 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+#pragma mark -datepicker
+
+- (void)tapHandler:(UITapGestureRecognizer *)sender
+{
+    CGPoint point = [sender locationInView:self.view];
+    NSLog(@"RegInfoViewController tapHandler: x: %f, y: %f", point.x, point.y);
+    
+    if(point.x < self.pickBirthday.bounds.origin.x
+       || point.y < self.pickBirthday.bounds.origin.y
+       || point.x > self.pickBirthday.bounds.origin.x + self.pickBirthday.bounds.size.width
+       || point.y > self.pickBirthday.bounds.origin.y + self.pickBirthday.bounds.size.height)
+    {
+        self.pickBirthday.hidden = YES;
+        NSString * dataStr = [self.pickBirthday.date description];
+        [self.btnBirthday setTitle:dataStr forState:UIControlStateNormal];
+        [self.btnBirthday setTitle:dataStr forState:UIControlStateSelected];
+        //界面移回原位置
+        UIEdgeInsets contentInsets = UIEdgeInsetsZero;
+        self.scrollView.contentInset = contentInsets;
+        self.scrollView.scrollIndicatorInsets = contentInsets;
+    }
+    
+}
 
 @end

@@ -45,12 +45,12 @@
 }
 - (void)testInitUserFromDB
 {
-    [[UserDataProxy sharedProxy] initUserFromDB];
+    [[UserDataProxy sharedProxy] initUserFromRms];
     NSLog(@"user:%@",[UserDataProxy sharedProxy].user.user_id);
 }
 - (void)testUpdateUser
 {
-    [[UserDataProxy sharedProxy] initUserFromDB];
+    [[UserDataProxy sharedProxy] initUserFromRms];
     User *user = [UserDataProxy sharedProxy].user;
     user.user_nick_name = @"昵称";
     user.user_gender = 0;

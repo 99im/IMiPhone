@@ -11,6 +11,8 @@
 #import "DatabaseConfig.h"
 #import "imRms.h"
 #import "Group.h"
+#import "DataUtil.h"
+
 @interface PersistenceTest : XCTestCase
 
 @end
@@ -141,7 +143,7 @@
 {
     Group *g = [[Group alloc] init];
     g.group_name = @"trees";
-    NSDictionary *ds =[BaseDAO getDicFromNormalClass:g];
+    NSDictionary *ds =[DataUtil getDicFromNormalClass:g];
     [imRms userDefaultsWrite:@"aa" withObjectValue:ds];
     id obj = [imRms userDefaultsReadObject:@"aa"];
     NSLog(@"group_name:%@",[obj valueForKey:@"group_name"]);
