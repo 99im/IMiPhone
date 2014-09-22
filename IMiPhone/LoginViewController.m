@@ -28,24 +28,8 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    uid = [imRms userDefaultsReadString:@"userid"];
-    if(uid == nil)
-    {
-        uid = @"";
-        [imRms userDefaultsWrite:@"userid" withStringValue:uid];
-    }
-    NSLog(@"%@",uid);
-    self.username.text = uid;
-    
-    psw = [imRms userDefaultsReadString:@"password"];
-    if(psw == nil)
-    {
-        psw = @"";
-        [imRms userDefaultsWrite:@"password" withStringValue:psw];
-    }
-    NSLog(@"%@",psw);
-    self.password.text = psw;
-   
+    //    self.tfUsername.text = uid;
+    //    self.tfPassword.text = psw;
 }
 
 - (void)didReceiveMemoryWarning
@@ -55,28 +39,20 @@
 }
 
 /*
-#pragma mark - Navigation
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+ {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
-- (IBAction)doneonclick:(id)sender {
-    uid = self.username.text;
-    [imRms userDefaultsWrite:@"userid" withStringValue:uid];
-    psw = self.password.text;
-    [imRms userDefaultsWrite:@"password" withStringValue:psw];
-    
-    UIStoryboard* mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    UITabBarController *mainTabBarController = [mainStoryboard instantiateViewControllerWithIdentifier:@"mainTabBarController"];
-    //    registerViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
-    [self presentViewController:mainTabBarController animated:YES completion:^{
-        NSLog(@"Present TabBar View: mainTabBarController");
-    }];
-    [DatabaseConfig shareDatabaseConfig].databaseName = [uid stringByAppendingString:@".sqlite"];
+- (IBAction)doneSelector:(id)sender {
+    if (self.tfUsername.text.length > 0 && self.tfPassword.text.length > 0) {
+        [[AccountMessageProxy sharedProxy] sendTypeLogin:self.tfUsername.text fromCountry:@"" withPwd:self.tfPassword.text];
+    }
+    [self performSegueWithIdentifier:@"loginDoneSegue" sender:self];
 }
 @end
