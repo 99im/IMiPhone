@@ -13,6 +13,9 @@ example: local.taiqiu.com:7070/account/updateinfo/?verify=15_1410252423_b1388aee
 #define KEYQ__ACCOUNT_UPDATEINFO__GENDER @"gender" //gender int 可选 0 男 1 女
 #define KEYQ__ACCOUNT_UPDATEINFO__BIRTHDAY @"birthday" //birthday date 可选 生日 2012-01-22
 #define KEYQ__ACCOUNT_UPDATEINFO__NICK @"nick" //nick string 可选 用户昵称
+#define KEYQ__ACCOUNT_UPDATEINFO__INTEREST @"interest" //interest string 可选 兴趣爱好 多个兴趣使用,隔开
+#define KEYQ__ACCOUNT_UPDATEINFO__CAREER @"career" //career string 可选 职业 最长不超过64个字节
+#define KEYQ__ACCOUNT_UPDATEINFO__INTRO @"intro" //intro string 可选自我介绍（字数限制待定）
 #define KEYP__ACCOUNT_UPDATEINFO__ERROR_CODE @"error_code" //error_code
 
 /*

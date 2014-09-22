@@ -53,11 +53,12 @@ static AccountMessageProxy *sharedAccountMessageProxy = nil;
     }];
 }
 
-- (void)sendTypeRegister:(NSString *)mobcode withPwd:(NSString *)password
+- (void)sendTypeRegister:(NSString *)password
 {
     //使用http
     NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
-    [params setObject:mobcode forKey:KEYQ__ACCOUNT_REGISTER__MOBCODE];
+#warning 获取mobilecode
+    [params setObject:@"" forKey:KEYQ__ACCOUNT_REGISTER__MOBCODE];
     [params setObject:password forKey:KEYQ__ACCOUNT_REGISTER__PASSWORD];
     //set phone
     //set country
