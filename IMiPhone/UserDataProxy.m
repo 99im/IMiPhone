@@ -35,6 +35,15 @@ static UserDataProxy *sharedProxy = nil;
     });
     return sharedProxy;
 }
+
+- (id)init
+{
+    if((self = [super init]))
+    {
+        self.verify = @"";
+    }
+    return self;
+}
 - (NSString *)getLastLoginUserId
 {
     _lastLoginUserId = [imRms userDefaultsReadString:KEY_USER_LAST_LOGIN_USER_ID];
