@@ -7,7 +7,6 @@
 //
 
 #import "RegisterViewController.h"
-#import "RegStep1ViewController.h"
 #import "AccountMessageProxy.h"
 
 @interface RegisterViewController ()
@@ -52,10 +51,10 @@
 {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
-    if ([segue.identifier isEqualToString:@"regPhoneDoneSegue"]) {
-        RegStep1ViewController *regStep1ViewController = segue.destinationViewController;
-        regStep1ViewController.countryPhone = [NSString stringWithFormat:@"%@ %@", self.lblCountryCode.text, self.tfPhonenum.text ];
-    }
+//    if ([segue.identifier isEqualToString:@"regPhoneDoneSegue"]) {
+//        RegStep1ViewController *regStep1ViewController = segue.destinationViewController;
+//        regStep1ViewController.countryPhone = [NSString stringWithFormat:@"%@ %@", self.lblCountryCode.text, self.tfPhonenum.text ];
+//    }
 }
 
 @end

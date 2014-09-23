@@ -13,7 +13,6 @@
 
 #define KEY_USER_LAST_LOGIN_USER_ID @"key_user_last_login_id"
 #define KEY_USER_VERIFY @"key_user_verify"
-
 #define KEY_USER_INFO_PRE @"key_user_info_"
 
 
@@ -21,6 +20,11 @@
 @synthesize lastLoginUserId = _lastLoginUserId;
 @synthesize verify = _verify;
 @synthesize user = _user;
+@synthesize mobcode = _mobcode;
+@synthesize countryCode = _countryCode;
+@synthesize mobile = _mobile;
+@synthesize uid = _uid;
+@synthesize password = _password;
 
 static UserDataProxy *sharedProxy = nil;
 + (UserDataProxy *)sharedProxy

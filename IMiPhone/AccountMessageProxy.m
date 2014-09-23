@@ -7,6 +7,7 @@
 //
 
 #import "AccountMessageProxy.h"
+#import "UserDataProxy.h"
 #import "imNWMessage.h"
 #import "imNWManager.h"
 
@@ -26,6 +27,9 @@ static AccountMessageProxy *sharedAccountMessageProxy = nil;
 - (void)sendTypeMobcode:(NSString *)phone withCountry:(NSString *)country
 {
     //使用http
+    [UserDataProxy sharedProxy].mobile = phone;
+    [UserDataProxy sharedProxy].countryCode = country;
+    
     NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
     [params setObject:country forKey:KEYQ__ACCOUNT_MOBCODE__MOBCOUNTRY];
     [params setObject:phone forKey:KEYQ__ACCOUNT_MOBCODE__MOBILE];
@@ -37,12 +41,7 @@ static AccountMessageProxy *sharedAccountMessageProxy = nil;
             NSAssert1(YES, @"JSON create error: %@", err);
         }
         else {
-            id objErrorCode = [json objectForKey:KEYP__ACCOUNT_MOBCODE__ERROR_CODE];
-            int errorcode;
-            if([objErrorCode isKindOfClass:[NSNumber class]])
-            {
-                errorcode = [objErrorCode intValue];
-            }
+            int errorcode = [[json objectForKey:KEYP__ACCOUNT_MOBCODE__ERROR_CODE] intValue];
             if (errorcode == 0) {
                 
             }
@@ -53,14 +52,16 @@ static AccountMessageProxy *sharedAccountMessageProxy = nil;
     }];
 }
 
-- (void)sendTypeRegister:(NSString *)mobcode withPwd:(NSString *)password
+- (void)sendTypeRegister:(NSString *)password
 {
     //使用http
+    [UserDataProxy sharedProxy].password = password;
+    
     NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
-    [params setObject:mobcode forKey:KEYQ__ACCOUNT_REGISTER__MOBCODE];
+    [params setObject:[UserDataProxy sharedProxy].mobcode forKey:KEYQ__ACCOUNT_REGISTER__MOBCODE];
     [params setObject:password forKey:KEYQ__ACCOUNT_REGISTER__PASSWORD];
-    //set phone
-    //set country
+    [params setObject:[UserDataProxy sharedProxy].mobile forKey:KEYQ__ACCOUNT_REGISTER__MOBILE];
+    [params setObject:[UserDataProxy sharedProxy].countryCode forKey:KEYQ__ACCOUNT_REGISTER__MOBCOUNTRY];
     imNWMessage *message = [imNWMessage createForHttp:PATH__ACCOUNT_REGISTER_ withParams:params withMethod:METHOD__ACCOUNT_REGISTER_ ssl:NO];
     [[imNWManager sharedNWManager] sendMessage:message withResponse:^(NSString *responseString, NSData *responseData) {
         NSError *err = nil;
@@ -69,7 +70,14 @@ static AccountMessageProxy *sharedAccountMessageProxy = nil;
             NSAssert1(YES, @"JSON create error: %@", err);
         }
         else {
-            
+            int errorcode = [[json objectForKey:KEYP__ACCOUNT_MOBCODE__ERROR_CODE] intValue];
+            if (errorcode == 0) {
+                NSUInteger uid = [[json objectForKey:KEYP__ACCOUNT_REGISTER__UID] unsignedIntegerValue];
+                [UserDataProxy sharedProxy].uid = uid;
+            }
+            else {
+                NSAssert1(YES, @"Http connect response error: %i", errorcode);
+            }
         }
     }];
 }
@@ -89,12 +97,7 @@ static AccountMessageProxy *sharedAccountMessageProxy = nil;
             NSAssert1(YES, @"JSON create error: %@", err);
         }
         else {
-            id objErrorCode = [json objectForKey:KEYP__ACCOUNT_LOGIN__ERROR_CODE];
-            int errorcode;
-            if([objErrorCode isKindOfClass:[NSNumber class]])
-            {
-                errorcode = [objErrorCode intValue];
-            }
+            int errorcode = [[json objectForKey:KEYP__ACCOUNT_LOGIN__ERROR_CODE] intValue];
             if (errorcode == 0) {
                 NSString *uid = [json objectForKey:KEYP__ACCOUNT_LOGIN__UID];
                 NSString *verify = [json objectForKey:KEYP__ACCOUNT_LOGIN__VERIFY];
