@@ -13,6 +13,9 @@
 @property (nonatomic, retain) UITextField *tfActive;
 @property (nonatomic, retain) UITextView *tvActive;
 
+@property (nonatomic) float scrollViewOffY;
+
+
 @property (nonatomic, retain) UITapGestureRecognizer *tap;
 
 @end
@@ -78,14 +81,22 @@
     if(self.pickBirthday.hidden == YES)
     {
         self.pickBirthday.hidden = NO;
-        [self.scrollView scrollRectToVisible:self.btnBirthday.frame animated:YES];//测试下是否会滚动到选择日期按钮可见
+        self.pickBirthday.backgroundColor = [UIColor grayColor];
+        self.scrollViewOffY = self.scrollView.contentOffset.y;
+//        [self.scrollView scrollRectToVisible:self.btnBirthday.frame animated:YES];//测试下是否会滚动到选择日期按钮可见
 
-//        CGRect rectPick = self.pickBirthday.frame;
-//        CGPoint pBtnBirthdayBottom = self.btnBirthday.frame.origin;
-//        pBtnBirthdayBottom.y += self.btnBirthday.frame.size.height;
-//        if (self.btnBirthday && CGRectContainsPoint(rectPick, pBtnBirthdayBottom)) {
-//            [self.scrollView scrollRectToVisible:self.btnBirthday.frame animated:YES];
-//        }
+        CGRect rectPick = self.pickBirthday.frame;
+        CGPoint btnP = CGPointMake(0.0,0.0);
+        CGPoint btnViewP = [self.btnBirthday convertPoint:btnP toView:self.view];
+        btnViewP.y += self.btnBirthday.frame.size.height;
+
+        if (self.btnBirthday && CGRectContainsPoint(rectPick, btnViewP)) {
+           
+            CGPoint offset = self.scrollView.contentOffset;
+            offset.y = btnViewP.y - rectPick.origin.y;
+            [self.scrollView setContentOffset:offset animated:YES];
+
+        }
     }
 }
 
@@ -164,19 +175,26 @@
     CGPoint point = [sender locationInView:self.view];
     NSLog(@"RegInfoViewController tapHandler: x: %f, y: %f", point.x, point.y);
     
-    if(point.x < self.pickBirthday.bounds.origin.x
-       || point.y < self.pickBirthday.bounds.origin.y
-       || point.x > self.pickBirthday.bounds.origin.x + self.pickBirthday.bounds.size.width
-       || point.y > self.pickBirthday.bounds.origin.y + self.pickBirthday.bounds.size.height)
+    if(point.x < self.pickBirthday.frame.origin.x
+       || point.y < self.pickBirthday.frame.origin.y
+       || point.x > self.pickBirthday.frame.origin.x + self.pickBirthday.frame.size.width
+       || point.y > self.pickBirthday.frame.origin.y + self.pickBirthday.frame.size.height)
     {
         self.pickBirthday.hidden = YES;
+        
         NSString * dataStr = [self.pickBirthday.date description];
+        int endIndex = [dataStr rangeOfString:@" "].location;
+        dataStr = [dataStr substringWithRange:NSMakeRange(0, endIndex)];
+        NSDate * c = self.pickBirthday.date;
+        NSLog(@"%@",[c description]);
+        
         [self.btnBirthday setTitle:dataStr forState:UIControlStateNormal];
         [self.btnBirthday setTitle:dataStr forState:UIControlStateSelected];
         //界面移回原位置
-        UIEdgeInsets contentInsets = UIEdgeInsetsZero;
-        self.scrollView.contentInset = contentInsets;
-        self.scrollView.scrollIndicatorInsets = contentInsets;
+        CGPoint offset = self.scrollView.contentOffset;
+        offset.y = self.scrollViewOffY;
+        [self.scrollView setContentOffset:offset animated:YES];
+
     }
     
 }
