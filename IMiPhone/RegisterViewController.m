@@ -8,8 +8,9 @@
 
 #import "RegisterViewController.h"
 #import "AccountMessageProxy.h"
+#import "IMNWProxyProtocol.h"
 
-@interface RegisterViewController ()
+@interface RegisterViewController () <IMNWProxyProtocol>
 
 @end
 
@@ -29,18 +30,19 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self.tfPhonenum becomeFirstResponder];
+    [self registerMessageNotification];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+    [self removeMessageNotification];
 }
 
 - (IBAction)nextStepSelector:(id)sender {
     if ([imUtil checkPhone:self.tfPhonenum.text]) {
         [[AccountMessageProxy sharedProxy] sendTypeMobcode:self.tfPhonenum.text withCountry:CHINA_CODE];
-        [self performSegueWithIdentifier:@"regPhoneDoneSegue" sender:self];
     }
 }
 
@@ -55,6 +57,25 @@
 //        RegStep1ViewController *regStep1ViewController = segue.destinationViewController;
 //        regStep1ViewController.countryPhone = [NSString stringWithFormat:@"%@ %@", self.lblCountryCode.text, self.tfPhonenum.text ];
 //    }
+}
+
+#pragma mark - IMNWProxyProtocol Method
+
+- (void)registerMessageNotification
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sendAccountMobcodeResult:) name:NOTI__ACCOUNT_MOBCODE_ object:nil];
+}
+
+- (void)removeMessageNotification
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)sendAccountMobcodeResult:(NSNotification *)notification
+{
+    if (![notification object]) {
+        [self performSegueWithIdentifier:@"regPhoneDoneSegue" sender:self];
+    }
 }
 
 @end

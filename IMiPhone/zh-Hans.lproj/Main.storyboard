@@ -505,11 +505,11 @@
             </objects>
             <point key="canvasLocation" x="3971" y="-620"/>
         </scene>
-        <!--聊天-->
+        <!--消息-->
         <scene sceneID="Dsx-qw-qAw">
             <objects>
                 <navigationController definesPresentationContext="YES" id="vfo-zI-J32" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="聊天" id="YxR-lP-vZR"/>
+                    <tabBarItem key="tabBarItem" title="消息" id="YxR-lP-vZR"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="IKa-7X-56I">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

@@ -29,7 +29,7 @@
 
 - (void)testGetLastLoginId
 {
-    NSLog(@"lastLoginUserId:%@",[UserDataProxy sharedProxy].lastLoginUserId);
+    NSLog(@"lastLoginUserId:%@",[UserDataProxy sharedProxy].lastLoginMobile);
 }
 - (void)testGetVerify
 {
@@ -37,7 +37,7 @@
 }
 - (void)testSetLastLoginId
 {
-    [UserDataProxy sharedProxy].lastLoginUserId = @"tree";
+    [UserDataProxy sharedProxy].lastLoginMobile = @"tree";
 }
 - (void)testSetVerify
 {

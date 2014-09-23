@@ -10,6 +10,7 @@
 #import "UserDataProxy.h"
 #import "imNWMessage.h"
 #import "imNWManager.h"
+#import "NSNumber+IMNWError.h"
 
 @implementation AccountMessageProxy
 
@@ -43,10 +44,16 @@ static AccountMessageProxy *sharedAccountMessageProxy = nil;
         else {
             int errorcode = [[json objectForKey:KEYP__ACCOUNT_MOBCODE__ERROR_CODE] intValue];
             if (errorcode == 0) {
-                
+                [[NSNotificationCenter defaultCenter] postNotificationName:NOTI__ACCOUNT_MOBCODE_ object:nil];
             }
             else {
                 NSAssert1(YES, @"Http connect response error: %i", errorcode);
+                NSNumber *errorCodeNumber = [NSNumber numberWithInt:errorcode];
+                NSString *errorMessage = [errorCodeNumber errorMessage];
+                NSDictionary *userInfo = [NSDictionary dictionaryWithObject:errorMessage
+                                                                     forKey:NSLocalizedDescriptionKey];
+                NSError *error = [NSError errorWithDomain:PATH__ACCOUNT_MOBCODE_ code:errorcode userInfo:userInfo];
+                [[NSNotificationCenter defaultCenter] postNotificationName:NOTI__ACCOUNT_MOBCODE_ object:error];
             }
         }
     }];
@@ -72,8 +79,10 @@ static AccountMessageProxy *sharedAccountMessageProxy = nil;
         else {
             int errorcode = [[json objectForKey:KEYP__ACCOUNT_MOBCODE__ERROR_CODE] intValue];
             if (errorcode == 0) {
-                NSUInteger uid = [[json objectForKey:KEYP__ACCOUNT_REGISTER__UID] unsignedIntegerValue];
+                NSInteger uid = [[json objectForKey:KEYP__ACCOUNT_REGISTER__UID] integerValue];
                 [UserDataProxy sharedProxy].uid = uid;
+                [UserDataProxy sharedProxy].lastLoginCountry = [UserDataProxy sharedProxy].mobile;
+                [UserDataProxy sharedProxy].lastLoginMobile = [UserDataProxy sharedProxy].countryCode;
             }
             else {
                 NSAssert1(YES, @"Http connect response error: %i", errorcode);
@@ -85,6 +94,9 @@ static AccountMessageProxy *sharedAccountMessageProxy = nil;
 - (void)sendTypeLogin:(NSString *)mobile fromCountry:(NSString *)mobCountry withPwd:(NSString *)password
 {
     //使用http
+    [UserDataProxy sharedProxy].lastLoginCountry = mobCountry;
+    [UserDataProxy sharedProxy].lastLoginMobile = mobile;
+    
     NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
     [params setObject:mobile forKey:KEYQ__ACCOUNT_LOGIN__MOBILE];
     [params setObject:mobCountry forKey:KEYQ__ACCOUNT_LOGIN__MOBCOUNTRY];
@@ -99,13 +111,21 @@ static AccountMessageProxy *sharedAccountMessageProxy = nil;
         else {
             int errorcode = [[json objectForKey:KEYP__ACCOUNT_LOGIN__ERROR_CODE] intValue];
             if (errorcode == 0) {
-                NSString *uid = [json objectForKey:KEYP__ACCOUNT_LOGIN__UID];
+                NSInteger uid = [[json objectForKey:KEYP__ACCOUNT_LOGIN__UID] integerValue];
                 NSString *verify = [json objectForKey:KEYP__ACCOUNT_LOGIN__VERIFY];
+                [UserDataProxy sharedProxy].uid = uid;
+                [UserDataProxy sharedProxy].verify = verify;
             }
             else {
                 UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Alert", nil) message:[NSString stringWithFormat:NSLocalizedString(@"Alert.LoginError", nil), errorcode] delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", nil) otherButtonTitles:nil];
                 [alertView show];
                 NSAssert1(YES, @"Http connect response error: %i", errorcode);
+                NSNumber *errorCodeNumber = [NSNumber numberWithInt:errorcode];
+                NSString *errorMessage = [errorCodeNumber errorMessage];
+                NSDictionary *userInfo = [NSDictionary dictionaryWithObject:errorMessage
+                                                                     forKey:NSLocalizedDescriptionKey];
+                NSError *error = [NSError errorWithDomain:PATH__ACCOUNT_LOGIN_ code:errorcode userInfo:userInfo];
+                [[NSNotificationCenter defaultCenter] postNotificationName:NOTI__ACCOUNT_LOGIN_ object:error];
             }
         }
     }];

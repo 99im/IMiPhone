@@ -143,6 +143,8 @@
 		58C14DEB19CAD70F009334E1 /* AddByInputTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C14DE919CAD70F009334E1 /* AddByInputTableViewCell.m */; };
 		58C14DED19CAE196009334E1 /* contact.plist in Resources */ = {isa = PBXBuildFile; fileRef = 58C14DEC19CAE196009334E1 /* contact.plist */; };
 		58C14DEE19CAE196009334E1 /* contact.plist in Resources */ = {isa = PBXBuildFile; fileRef = 58C14DEC19CAE196009334E1 /* contact.plist */; };
+		58D026C419D17D4800BE4748 /* NSNumber+IMNWError.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D026C319D17D4800BE4748 /* NSNumber+IMNWError.m */; };
+		58D026C519D17D4800BE4748 /* NSNumber+IMNWError.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D026C319D17D4800BE4748 /* NSNumber+IMNWError.m */; };
 		58D95F4819A5BDF4007139AB /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D95F4719A5BDF4007139AB /* GCDAsyncSocket.m */; };
 		58D95F4C19A5E2E7007139AB /* imNWMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D95F4B19A5E2E7007139AB /* imNWMessage.m */; };
 		58D95F5119A5ECA4007139AB /* UserMessageProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D95F5019A5ECA4007139AB /* UserMessageProxy.m */; };
@@ -295,6 +297,9 @@
 		58C14DE819CAD70F009334E1 /* AddByInputTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddByInputTableViewCell.h; sourceTree = "<group>"; };
 		58C14DE919CAD70F009334E1 /* AddByInputTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddByInputTableViewCell.m; sourceTree = "<group>"; };
 		58C14DEC19CAE196009334E1 /* contact.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = contact.plist; sourceTree = "<group>"; };
+		58D026BD19D15F7D00BE4748 /* IMNWProxyProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMNWProxyProtocol.h; sourceTree = "<group>"; };
+		58D026C219D17D4800BE4748 /* NSNumber+IMNWError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNumber+IMNWError.h"; sourceTree = "<group>"; };
+		58D026C319D17D4800BE4748 /* NSNumber+IMNWError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSNumber+IMNWError.m"; sourceTree = "<group>"; };
 		58D95F4619A5BDF4007139AB /* GCDAsyncSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDAsyncSocket.h; sourceTree = "<group>"; };
 		58D95F4719A5BDF4007139AB /* GCDAsyncSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDAsyncSocket.m; sourceTree = "<group>"; };
 		58D95F4A19A5E2E7007139AB /* imNWMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = imNWMessage.h; sourceTree = "<group>"; };
@@ -625,6 +630,17 @@
 			name = Contact;
 			sourceTree = "<group>";
 		};
+		58D026C619D1902400BE4748 /* AsyncSocket */ = {
+			isa = PBXGroup;
+			children = (
+				58D95F4619A5BDF4007139AB /* GCDAsyncSocket.h */,
+				58D95F4719A5BDF4007139AB /* GCDAsyncSocket.m */,
+				58F2AA3719A487E300DC2FFB /* AsyncSocket.h */,
+				58F2AA3819A487E300DC2FFB /* AsyncSocket.m */,
+			);
+			name = AsyncSocket;
+			sourceTree = "<group>";
+		};
 		58D95F4E19A5EB7F007139AB /* MessageProxy */ = {
 			isa = PBXGroup;
 			children = (
@@ -658,11 +674,8 @@
 		58F2AA3619A4876900DC2FFB /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				58D026C619D1902400BE4748 /* AsyncSocket */,
 				58B496C019A7186A0082AE30 /* MKNetworkKit */,
-				58D95F4619A5BDF4007139AB /* GCDAsyncSocket.h */,
-				58D95F4719A5BDF4007139AB /* GCDAsyncSocket.m */,
-				58F2AA3719A487E300DC2FFB /* AsyncSocket.h */,
-				58F2AA3819A487E300DC2FFB /* AsyncSocket.m */,
 				58F2AA3C19A48D2300DC2FFB /* imNWManager.h */,
 				58F2AA3D19A48D2300DC2FFB /* imNWManager.m */,
 				58F2AA4019A497BA00DC2FFB /* imNWSocketConnect.h */,
@@ -673,6 +686,9 @@
 				58B496F319A71AFB0082AE30 /* imNWHttpConnect.m */,
 				58EF8C4119BEF08C00C5A7AC /* imNWProxy.h */,
 				58EF8C4219BEF08C00C5A7AC /* imNWProxy.m */,
+				58D026BD19D15F7D00BE4748 /* IMNWProxyProtocol.h */,
+				58D026C219D17D4800BE4748 /* NSNumber+IMNWError.h */,
+				58D026C319D17D4800BE4748 /* NSNumber+IMNWError.m */,
 			);
 			name = Network;
 			sourceTree = "<group>";
@@ -828,6 +844,7 @@
 				58BC1E3719C0304900722A00 /* RegStep1ViewController.m in Sources */,
 				58F2AA3E19A48D2300DC2FFB /* imNWManager.m in Sources */,
 				116BF87F19C981AD0015561B /* DPUser.m in Sources */,
+				58D026C419D17D4800BE4748 /* NSNumber+IMNWError.m in Sources */,
 				58F2AA3919A487E300DC2FFB /* AsyncSocket.m in Sources */,
 				58BC1E3B19C0304900722A00 /* SystemViewController.m in Sources */,
 				58AF047319AF040C0077DCBC /* FriendBarCell.m in Sources */,
@@ -854,6 +871,7 @@
 				58BC1E3E19C06B9000722A00 /* ChatTableViewController.m in Sources */,
 				58BC1E3F19C06B9000722A00 /* ChatCell.m in Sources */,
 				58BC1E4019C06B9000722A00 /* LoginViewController.m in Sources */,
+				58D026C519D17D4800BE4748 /* NSNumber+IMNWError.m in Sources */,
 				58BC1E4119C06B9000722A00 /* imAppDelegate.m in Sources */,
 				58BC1E4219C06B9000722A00 /* ProfileViewController.m in Sources */,
 				116BF88019C981AE0015561B /* DPUser.m in Sources */,

@@ -8,8 +8,9 @@
 
 #import "LoginViewController.h"
 #import "AccountMessageProxy.h"
+#import "IMNWProxyProtocol.h"
 
-@interface LoginViewController ()
+@interface LoginViewController () <IMNWProxyProtocol>
 
 @end
 
@@ -30,12 +31,14 @@
     // Do any additional setup after loading the view.
     //    self.tfUsername.text = uid;
     //    self.tfPassword.text = psw;
+    [self registerMessageNotification];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+    [self registerMessageNotification];
 }
 
 /*
@@ -55,4 +58,24 @@
     }
     [self performSegueWithIdentifier:@"loginDoneSegue" sender:self];
 }
+
+#pragma mark - IMNWProxyProtocol Method
+
+- (void)registerMessageNotification
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sendAccountLogin:) name:NOTI__ACCOUNT_LOGIN_ object:nil];
+}
+
+- (void)removeMessageNotification
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)sendAccountLogin:(NSNotification *)notification
+{
+    if (![notification object]) {
+        
+    }
+}
+
 @end

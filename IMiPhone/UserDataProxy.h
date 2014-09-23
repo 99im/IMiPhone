@@ -11,7 +11,9 @@
 
 @interface UserDataProxy : NSObject
 
-@property (nonatomic, retain, getter=getLastLoginUserId, setter=setLastLoginUserId:) NSString *lastLoginUserId;
+@property (nonatomic, retain, getter=getLastLoginCountry, setter=setLastLoginCountry:) NSString *lastLoginCountry;
+@property (nonatomic, retain, getter=getLastLoginMobile, setter=setLastLoginMobile:) NSString *lastLoginMobile;
+@property (nonatomic, retain, getter=getLastLoginOid, setter=setLastLoginOid:) NSString *lastLoginOid;
 @property (nonatomic, retain, getter=getVerify, setter=setVerify:) NSString *verify;
 @property (nonatomic, retain) DPUser *user;
 @property (nonatomic) NSUInteger uid;
@@ -22,8 +24,7 @@
 
 + (UserDataProxy *)sharedProxy;
 
--(void)initUserFromRms;
--(void)updateUser:(DPUser *)userInfo;
-
+- (void)initUserFromRms;
+- (void)updateUser:(DPUser *)userInfo;
 
 @end

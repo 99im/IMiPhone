@@ -1,3 +1,108 @@
+#define MARK_FRIEND @"friend"
+
+/*
+mark: friend
+type: /friend/focus-cancel/
+method: http-get
+describe: 取消关注某用户
+example: http://local.taiqiu.com:7070/friend/focus-cancel/?focusUid=16&verify=17_1411380649_8cd8f6306fb1232f98573dae4e137f50
+
+{
+"error_code": 0
+}
+*/
+#define PATH__FRIEND_FOCUS-CANCEL_ @"/friend/focus-cancel/"
+#define NOTI__FRIEND_FOCUS-CANCEL_ @"MPfriendfocus-cancelNotifiction"
+#define METHOD__FRIEND_FOCUS-CANCEL_ @"GET"
+#define KEYQ__FRIEND_FOCUS-CANCEL__FOCUSUID @"focusUid" //focusUid int 用户uid
+#define KEYP__FRIEND_FOCUS-CANCEL__ERROR_CODE @"error_code" //error_code int 0
+
+/*
+mark: friend
+type: /friend/fan-list/
+method: http-get
+describe: 获取粉丝列表
+example: http://local.taiqiu.com:7070/friend/fan-list/?start=0&pageNum=20&verify=17_1411380649_8cd8f6306fb1232f98573dae4e137f50
+
+{
+"error_code": 0,
+"list": [
+{
+"fanUid": 16,
+"byName": "",
+"memo": "",
+"groups": "",
+"relation": 0,
+"isFriends": 1
+}
+]
+}
+*/
+#define PATH__FRIEND_FAN-LIST_ @"/friend/fan-list/"
+#define NOTI__FRIEND_FAN-LIST_ @"MPfriendfan-listNotifiction"
+#define METHOD__FRIEND_FAN-LIST_ @"GET"
+#define KEYQ__FRIEND_FAN-LIST__START @"start" //start int 开始编号
+#define KEYQ__FRIEND_FAN-LIST__PAGENUM @"pageNum" //pageNum int 可选（默认20） 数量
+#define KEYP__FRIEND_FAN-LIST__ERROR_CODE @"error_code" //error_code int 
+#define KEYP__FRIEND_FAN-LIST__LIST @"list" //list
+#define KEYP__FRIEND_FAN-LIST__LIST_FANUID @"fanUid" // fanUid int 用户uid
+#define KEYP__FRIEND_FAN-LIST__LIST_BYNAME @"byName" // byName string 别名
+#define KEYP__FRIEND_FAN-LIST__LIST_MEMO @"memo" // memo string 备注
+#define KEYP__FRIEND_FAN-LIST__LIST_GROUPS @"groups" // groups string 分组信息
+#define KEYP__FRIEND_FAN-LIST__LIST_RELATION @"relation" // relation int 关系
+#define KEYP__FRIEND_FAN-LIST__LIST_ISFRIENDS @"isFriends" // isFriends int 是否是好友
+
+/*
+mark: friend
+type: /friend/focus-list/
+method: http-get
+describe: 获取关注列表
+example: http://local.taiqiu.com:7070/friend/focus-list/?start=0&pageNum=20&verify=17_1411380649_8cd8f6306fb1232f98573dae4e137f50
+
+{
+"error_code": 0,
+"list": [
+{
+"focusUid": "16",
+"byName": "",
+"memo": "",
+"groups": "",
+"relation": "0",
+"isFriends": "1"
+}
+]
+}
+*/
+#define PATH__FRIEND_FOCUS-LIST_ @"/friend/focus-list/"
+#define NOTI__FRIEND_FOCUS-LIST_ @"MPfriendfocus-listNotifiction"
+#define METHOD__FRIEND_FOCUS-LIST_ @"GET"
+#define KEYQ__FRIEND_FOCUS-LIST__START @"start" //start int 开始编号
+#define KEYQ__FRIEND_FOCUS-LIST__PAGENUM @"pageNum" //pageNum int 可选（默认20） 数量
+#define KEYP__FRIEND_FOCUS-LIST__ERROR_CODE @"error_code" //error_code int 
+#define KEYP__FRIEND_FOCUS-LIST__LIST @"list" //list
+#define KEYP__FRIEND_FOCUS-LIST__LIST_FOCUSUID @"focusUid" // focusUid int 用户uid
+#define KEYP__FRIEND_FOCUS-LIST__LIST_BYNAME @"byName" // byName string 别名
+#define KEYP__FRIEND_FOCUS-LIST__LIST_MEMO @"memo" // memo string 备注
+#define KEYP__FRIEND_FOCUS-LIST__LIST_GROUPS @"groups" // groups string 分组信息
+#define KEYP__FRIEND_FOCUS-LIST__LIST_RELATION @"relation" // relation int 关系
+#define KEYP__FRIEND_FOCUS-LIST__LIST_ISFRIENDS @"isFriends" // isFriends int 是否是好友
+
+/*
+mark: friend
+type: /friend/focus-add/
+method: http-get
+describe: 关注某个用户
+example: local.taiqiu.com:7070/friend/focus-add/?focusUid=17&verify=16_1411380260_8e01b76b234112ca88fdb3645eacac44
+
+{
+"error_code": 0
+}
+*/
+#define PATH__FRIEND_FOCUS-ADD_ @"/friend/focus-add/"
+#define NOTI__FRIEND_FOCUS-ADD_ @"MPfriendfocus-addNotifiction"
+#define METHOD__FRIEND_FOCUS-ADD_ @"GET"
+#define KEYQ__FRIEND_FOCUS-ADD__FOCUSUID @"focusUid" //focusUid int 目标用户uid
+#define KEYP__FRIEND_FOCUS-ADD__ERROR_CODE @"error_code" //error_code int 0
 #define MARK_ACCOUNT @"account"
 
 /*
@@ -9,6 +114,7 @@ example: local.taiqiu.com:7070/account/updateinfo/?verify=15_1410252423_b1388aee
 
 */
 #define PATH__ACCOUNT_UPDATEINFO_ @"/account/updateinfo/"
+#define NOTI__ACCOUNT_UPDATEINFO_ @"MPaccountupdateinfoNotifiction"
 #define METHOD__ACCOUNT_UPDATEINFO_ @"GET"
 #define KEYQ__ACCOUNT_UPDATEINFO__GENDER @"gender" //gender int 可选 0 男 1 女
 #define KEYQ__ACCOUNT_UPDATEINFO__BIRTHDAY @"birthday" //birthday date 可选 生日 2012-01-22
@@ -28,6 +134,7 @@ example: http://local.taiqiu.com:7070/account/myinfo/
 {"error_code":0,"uinfo":{"uid":"15","nick":"32222222","mobile":"13811121213","mobCountry":"+86","email":"","gender":"0","city":"","status":"0"}}
 */
 #define PATH__ACCOUNT_MYINFO_ @"/account/myinfo/"
+#define NOTI__ACCOUNT_MYINFO_ @"MPaccountmyinfoNotifiction"
 #define METHOD__ACCOUNT_MYINFO_ @"GET"
 #define KEYQ__ACCOUNT_MYINFO__VERIFY @"verify" //verify string 由login获得 有效期一年
 #define KEYP__ACCOUNT_MYINFO__ERROR_CODE @"error_code" //error_code 0
@@ -56,6 +163,7 @@ example: local.taiqiu.com:7070/account/login/?mobCountry=%2B86&mobile=1381112121
 {"error_code":0,"uid":15,"verify":"15_1410252423_b1388aeea1a1c94e7ae4aa4e8f6b2e83"}
 */
 #define PATH__ACCOUNT_LOGIN_ @"/account/login/"
+#define NOTI__ACCOUNT_LOGIN_ @"MPaccountloginNotifiction"
 #define METHOD__ACCOUNT_LOGIN_ @"POST"
 #define KEYQ__ACCOUNT_LOGIN__MOBCOUNTRY @"mobCountry" //mobCountry : string 国家通讯代码（目前只支持+86）
 #define KEYQ__ACCOUNT_LOGIN__MOBILE @"mobile" //mobile     : string 手机号
@@ -72,6 +180,7 @@ describe: 用户手机号注册
 example: http://local.taiqiu.com:7070/account/register/?mobCountry=%2B86&mobile=13811121213&password=222222222&mobCode=22&nick=tc
 */
 #define PATH__ACCOUNT_REGISTER_ @"/account/register/"
+#define NOTI__ACCOUNT_REGISTER_ @"MPaccountregisterNotifiction"
 #define METHOD__ACCOUNT_REGISTER_ @"POST"
 #define KEYQ__ACCOUNT_REGISTER__MOBCODE @"mobCode" //mobCode string 手机验证码
 #define KEYQ__ACCOUNT_REGISTER__MOBCOUNTRY @"mobCountry" //mobCountry string 国家通讯代码（目前只支持+86）
@@ -94,6 +203,7 @@ example: http://local.taiqiu.com:7070/account/mobcode/?mobCountry=%2B86&mobile=1
 }
 */
 #define PATH__ACCOUNT_MOBCODE_ @"/account/mobcode/"
+#define NOTI__ACCOUNT_MOBCODE_ @"MPaccountmobcodeNotifiction"
 #define METHOD__ACCOUNT_MOBCODE_ @"GET"
 #define KEYQ__ACCOUNT_MOBCODE__MOBCOUNTRY @"mobCountry" //mobCountry : string 国家通讯代码（目前只支持+86）
 #define KEYQ__ACCOUNT_MOBCODE__MOBILE @"mobile" //mobile     : string 手机号
