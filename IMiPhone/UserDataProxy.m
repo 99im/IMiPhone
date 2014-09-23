@@ -31,29 +31,29 @@ static UserDataProxy *sharedProxy = nil;
     });
     return sharedProxy;
 }
--(NSString *)getLastLoginUserId
+- (NSString *)getLastLoginUserId
 {
     _lastLoginUserId = [imRms userDefaultsReadString:KEY_USER_LAST_LOGIN_USER_ID];
     return _lastLoginUserId;
 }
--(void)setLastLoginUserId:(NSString*)value
+- (void)setLastLoginUserId:(NSString*)value
 {
     _lastLoginUserId = value;
     [DatabaseConfig shareDatabaseConfig].databaseName = _lastLoginUserId;
     [imRms userDefaultsWrite:KEY_USER_LAST_LOGIN_USER_ID withStringValue:_lastLoginUserId];
 }
--(NSString *)getVerify
+- (NSString *)getVerify
 {
     _verify = [imRms userDefaultsReadString:KEY_USER_VERIFY];
     return _verify;
 }
--(void)setVerify:(NSString*)value
+- (void)setVerify:(NSString*)value
 {
     _verify = value;
     [imRms userDefaultsWrite:KEY_USER_VERIFY withStringValue:_verify];
 }
 
--(void)initUserFromRms
+- (void)initUserFromRms
 {
     NSDictionary *userInfoDic = (NSDictionary *)[imRms userDefaultsReadObject:[KEY_USER_INFO_PRE stringByAppendingString:_lastLoginUserId]];
   if(_user == nil)
@@ -69,7 +69,7 @@ static UserDataProxy *sharedProxy = nil;
        [DataUtil updateObject:_user by:userInfoDic];
    }
 }
--(void)updateUser:(DPUser *)userInfo
+- (void)updateUser:(DPUser *)userInfo
 {
     _user = userInfo;
     NSDictionary *userInfoDic = [DataUtil getDicFromNormalClass:_user];

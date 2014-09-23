@@ -19,8 +19,8 @@
 
 + (UserDataProxy *)sharedProxy;
 
--(void)initUserFromRms;
--(void)updateUser:(DPUser *)userInfo;
+- (void)initUserFromRms;
+- (void)updateUser:(DPUser *)userInfo;
 
 
 @end
