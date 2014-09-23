@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="KMJ-qM-QtR">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="KMJ-qM-QtR">
     <dependencies>
         <deployment defaultVersion="1536" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
@@ -266,8 +266,12 @@
                                     <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SZm-I1-Ve7">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="619"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="HeadBg" translatesAutoresizingMaskIntoConstraints="NO" id="3of-L6-5dr">
+                                            <imageView clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="HeadBg" translatesAutoresizingMaskIntoConstraints="NO" id="3of-L6-5dr">
                                                 <rect key="frame" x="20" y="20" width="80" height="80"/>
+                                                <gestureRecognizers/>
+                                                <connections>
+                                                    <outletCollection property="gestureRecognizers" destination="PIC-zU-Cic" appends="YES" id="rG6-NB-3n7"/>
+                                                </connections>
                                             </imageView>
                                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="昵称" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZAY-Do-Zyv">
                                                 <rect key="frame" x="20" y="108" width="50" height="21"/>
@@ -419,6 +423,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ASR-EU-oGu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="PIC-zU-Cic"/>
             </objects>
             <point key="canvasLocation" x="2443" y="459"/>
         </scene>
@@ -497,9 +502,7 @@
                             <outlet property="delegate" destination="YUK-gQ-SGN" id="cjb-gn-E2P"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="聊天" id="r12-fG-D0S">
-                        <barButtonItem key="rightBarButtonItem" title="..." id="149-Fb-Sce"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="聊天" id="r12-fG-D0S"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cL5-ZQ-nIb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

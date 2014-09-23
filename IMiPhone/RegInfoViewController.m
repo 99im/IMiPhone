@@ -7,8 +7,9 @@
 //
 
 #import "RegInfoViewController.h"
+#import "imPhotoPicker.h"
 
-@interface RegInfoViewController () <UITextFieldDelegate, UITextViewDelegate, UIGestureRecognizerDelegate>
+@interface RegInfoViewController () <UITextFieldDelegate, UITextViewDelegate, UIGestureRecognizerDelegate,VPImageCropperDelegate>
 
 @property (nonatomic, retain) UITextField *tfActive;
 @property (nonatomic, retain) UITextView *tvActive;
@@ -174,7 +175,10 @@
 {
     CGPoint point = [sender locationInView:self.view];
     NSLog(@"RegInfoViewController tapHandler: x: %f, y: %f", point.x, point.y);
-    
+    if (self.pickBirthday.hidden) {
+         NSLog(@"self.pickBirthday.hidden == YES");
+        return;
+    }
     if(point.x < self.pickBirthday.frame.origin.x
        || point.y < self.pickBirthday.frame.origin.y
        || point.x > self.pickBirthday.frame.origin.x + self.pickBirthday.frame.size.width
@@ -183,7 +187,7 @@
         self.pickBirthday.hidden = YES;
         
         NSString * dataStr = [self.pickBirthday.date description];
-        int endIndex = [dataStr rangeOfString:@" "].location;
+        NSUInteger endIndex = [dataStr rangeOfString:@" "].location;
         dataStr = [dataStr substringWithRange:NSMakeRange(0, endIndex)];
         NSDate * c = self.pickBirthday.date;
         NSLog(@"%@",[c description]);
@@ -198,5 +202,10 @@
     }
     
 }
+#pragma mark -photopicker
+- (IBAction)handleTapHead:(UITapGestureRecognizer *)sender {
+    [[imPhotoPicker sharedPicker] showChoiceSheet:self inView:self.view];
+}
+
 
 @end
