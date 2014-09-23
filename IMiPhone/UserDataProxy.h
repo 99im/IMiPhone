@@ -11,11 +11,14 @@
 
 @interface UserDataProxy : NSObject
 
-@property(getter = getLastLoginUserId,setter = setLastLoginUserId:) NSString *lastLoginUserId;
-@property(getter = getVerify,setter = setVerify:) NSString *verify;
-@property DPUser *user;
-
-
+@property (nonatomic, retain, getter=getLastLoginUserId, setter=setLastLoginUserId:) NSString *lastLoginUserId;
+@property (nonatomic, retain, getter=getVerify, setter=setVerify:) NSString *verify;
+@property (nonatomic, retain) DPUser *user;
+@property (nonatomic) NSUInteger uid;
+@property (nonatomic, retain) NSString *mobcode;
+@property (nonatomic, retain) NSString *countryCode;
+@property (nonatomic, retain) NSString *mobile;
+@property (nonatomic, retain) NSString *password;
 
 + (UserDataProxy *)sharedProxy;
 

@@ -57,7 +57,9 @@
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-    [imUtil checkPassword:self.tfPassword.text];
+    if ([imUtil checkPassword:self.tfPassword.text]) {
+        [[AccountMessageProxy sharedProxy] sendTypeRegister:self.tfPassword.text];
+    }
     [textField resignFirstResponder];
     return YES;
 }

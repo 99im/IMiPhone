@@ -13,6 +13,7 @@
 @synthesize nickName;
 @synthesize gender;//性别
 @synthesize phone;
+@synthesize countryCode;
 @synthesize address;
 @synthesize profile;//个人简介
 @synthesize portraitUrl;//头像本地url

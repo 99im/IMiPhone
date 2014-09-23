@@ -13,6 +13,7 @@
 @property (nonatomic, retain) NSString *nickName;
 @property (nonatomic) int gender;//性别
 @property (nonatomic, retain) NSString *phone;
+@property (nonatomic, retain) NSString *countryCode;
 @property (nonatomic, retain) NSString *address;
 @property (nonatomic, retain) NSString *profile;//个人简介
 @property (nonatomic, retain) NSString *portraitUrl;//头像本地url

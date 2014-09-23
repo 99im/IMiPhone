@@ -33,6 +33,7 @@ example: http://local.taiqiu.com:7070/account/myinfo/
 #define KEYP__ACCOUNT_MYINFO__ERROR_CODE @"error_code" //error_code 0
 #define KEYP__ACCOUNT_MYINFO__UINFO @"uinfo" //uinfo
 #define KEYP__ACCOUNT_MYINFO__UINFO_UID @"uid" // uid 15
+#define KEYP__ACCOUNT_MYINFO__UINFO_OID @"oid" // oid 15 --靓号
 #define KEYP__ACCOUNT_MYINFO__UINFO_NICK @"nick" // nick 32222222
 #define KEYP__ACCOUNT_MYINFO__UINFO_MOBILE @"mobile" // mobile 13811121213
 #define KEYP__ACCOUNT_MYINFO__UINFO_MOBCOUNTRY @"mobCountry" // mobCountry +86
@@ -72,7 +73,7 @@ example: http://local.taiqiu.com:7070/account/register/?mobCountry=%2B86&mobile=
 */
 #define PATH__ACCOUNT_REGISTER_ @"/account/register/"
 #define METHOD__ACCOUNT_REGISTER_ @"POST"
-#define KEYQ__ACCOUNT_REGISTER__MOBCODE @"mobcode" //mobcode string 手机验证码
+#define KEYQ__ACCOUNT_REGISTER__MOBCODE @"mobCode" //mobCode string 手机验证码
 #define KEYQ__ACCOUNT_REGISTER__MOBCOUNTRY @"mobCountry" //mobCountry string 国家通讯代码（目前只支持+86）
 #define KEYQ__ACCOUNT_REGISTER__MOBILE @"mobile" //mobile string 手机号
 #define KEYQ__ACCOUNT_REGISTER__NICK @"nick" //nick string 可选 16个字符以内

@@ -21,7 +21,7 @@
     
     [op addCompletionHandler:^(MKNetworkOperation *completedOperation) {
         NSLog(@"Http connect response string: %@", [completedOperation responseString]);
-        NSLog(@"Http connect response data: %@", [[NSString alloc] initWithData:[completedOperation responseData] encoding:NSUTF8StringEncoding]);
+        //NSLog(@"Http connect response data: %@", [[NSString alloc] initWithData:[completedOperation responseData] encoding:NSUTF8StringEncoding]);
         if (response) {
             response([completedOperation responseString], [completedOperation responseData]);
         } else {
@@ -33,6 +33,9 @@
     
     [self enqueueOperation:op];
     NSLog(@"Http connect request: %@", op.url);
+    if ([message.method isEqualToString:METHOD_POST]) {
+        NSLog(@"Http connect request params: %@", op.readonlyPostDictionary);
+    }
 }
 
 - (void)completionHandler:(MKNetworkOperation *)operation

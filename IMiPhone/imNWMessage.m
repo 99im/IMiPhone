@@ -9,6 +9,7 @@
 #import "imNWMessage.h"
 #import "imNWProxy.h"
 #import "imNWManager.h"
+#import "UserDataProxy.h"
 
 @implementation imNWMessage
 
@@ -39,7 +40,7 @@
         params = [NSMutableDictionary dictionary];
     }
     #warning 获取verify值
-    [params setObject:@"" forKey:HTTP_KEY_VERIFY];
+    [params setObject:[UserDataProxy sharedProxy].verify forKey:HTTP_KEY_VERIFY];
     message.data = params;
     message.method = method;
     message.useSSL = useSSL;
