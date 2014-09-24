@@ -8,6 +8,7 @@
 
 #import "RegInfoViewController.h"
 #import "imPhotoPicker.h"
+#import "UserDataProxy.h"
 
 @interface RegInfoViewController () <UITextFieldDelegate, UITextViewDelegate, UIGestureRecognizerDelegate,VPImageCropperDelegate>
 
@@ -42,7 +43,7 @@
     [self.view addGestureRecognizer:tap];
     tap.delegate = self;
     tap.cancelsTouchesInView = NO;
-
+    self.lblOid.text = [NSString stringWithFormat:@"%@: %@", NSLocalizedString(@"oid", nil), [UserDataProxy sharedProxy].user.oid];
 }
 
 - (void)didReceiveMemoryWarning

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="KMJ-qM-QtR">
     <dependencies>
+        <deployment defaultVersion="1536" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
     <scenes>
@@ -295,6 +296,11 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UQV-7n-pi6">
+                                                <rect key="frame" x="78" y="175" width="40" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                             <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="YB3-9O-O7x">
                                                 <rect key="frame" x="20" y="204" width="123" height="29"/>
                                                 <segments>
@@ -366,9 +372,10 @@
                                                     <outlet property="delegate" destination="tkh-RH-kvT" id="KQj-AX-cOj"/>
                                                 </connections>
                                             </textView>
-                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UQV-7n-pi6">
-                                                <rect key="frame" x="78" y="175" width="40" height="21"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="IM号：" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qoK-TL-uBL">
+                                                <rect key="frame" x="124" y="47" width="160" height="25"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -404,8 +411,6 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="cer-KH-ivo" firstAttribute="top" secondItem="e4w-ti-2hr" secondAttribute="top" constant="64" id="7K1-yh-KO7"/>
-                            <constraint firstAttribute="bottom" secondItem="cer-KH-ivo" secondAttribute="bottom" id="CB7-0k-M15"/>
-                            <constraint firstAttribute="bottom" secondItem="cer-KH-ivo" secondAttribute="bottom" id="J4R-Bg-SYP"/>
                             <constraint firstAttribute="bottom" secondItem="HTa-gL-rdw" secondAttribute="bottom" id="Mnl-KX-YC6"/>
                             <constraint firstItem="cer-KH-ivo" firstAttribute="leading" secondItem="e4w-ti-2hr" secondAttribute="leading" id="O3Q-jl-asZ"/>
                             <constraint firstAttribute="bottom" secondItem="cer-KH-ivo" secondAttribute="bottom" id="eXk-LZ-C7B"/>
@@ -416,6 +421,7 @@
                         <outlet property="btnBirthday" destination="lQS-Aa-0BZ" id="APJ-Fr-29g"/>
                         <outlet property="ctlSex" destination="YB3-9O-O7x" id="gzr-Tz-Fge"/>
                         <outlet property="imgHead" destination="3of-L6-5dr" id="5In-Xz-F7q"/>
+                        <outlet property="lblOid" destination="qoK-TL-uBL" id="nAL-ok-cCq"/>
                         <outlet property="lblSex" destination="UQV-7n-pi6" id="AV2-df-m63"/>
                         <outlet property="pickBirthday" destination="HTa-gL-rdw" id="Yh7-u4-1O6"/>
                         <outlet property="scrollView" destination="cer-KH-ivo" id="bqb-xK-7he"/>
@@ -947,7 +953,7 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="hLQ-8M-NX4"/>
         <segue reference="fNZ-Tb-k0o"/>
-        <segue reference="jj6-rV-QBG"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -12,6 +12,7 @@
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIImageView *imgHead;
+@property (weak, nonatomic) IBOutlet UILabel *lblOid;
 @property (weak, nonatomic) IBOutlet UITextField *tfNickname;
 @property (weak, nonatomic) IBOutlet UILabel *lblSex;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *ctlSex;

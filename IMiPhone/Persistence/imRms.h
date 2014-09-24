@@ -9,29 +9,29 @@
 
 @interface imRms : NSObject
 
-+ (bool) userDefaultsWrite:(NSString *)key withBoolValue:(int)value;
++ (BOOL) userDefaultsWrite:(NSString *)key withBoolValue:(NSInteger)value;
 
-+ (int) userDefaultsReadBool:(NSString*)key;
++ (BOOL) userDefaultsReadBool:(NSString*)key;
 
-+ (bool) userDefaultsWrite:(NSString *)key withDoubleValue:(double)value;
++ (BOOL) userDefaultsWrite:(NSString *)key withDoubleValue:(double)value;
 
 + (double) userDefaultsReadDouble:(NSString*)key;
 
-+ (bool) userDefaultsWrite:(NSString *)key withIntValue:(int)value;
++ (BOOL) userDefaultsWrite:(NSString *)key withIntValue:(NSInteger)value;
 
-+ (int) userDefaultsReadInt:(NSString*)key;
++ (NSInteger) userDefaultsReadInt:(NSString*)key;
 
-+ (bool) userDefaultsWrite:(NSString *)key withFloatValue:(float)value;
++ (BOOL) userDefaultsWrite:(NSString *)key withFloatValue:(float)value;
 
 + (float) userDefaultsReadFloat:(NSString*)key;
 
-+ (bool) userDefaultsWrite:(NSString *)key withStringValue:(NSString *)value;
++ (BOOL) userDefaultsWrite:(NSString *)key withStringValue:(NSString *)value;
 
-+ (NSString*) userDefaultsReadString:(NSString*)key;
++ (NSString *) userDefaultsReadString:(NSString*)key;
 
-+ (bool) userDefaultsWrite:(NSString *)key withObjectValue:(NSObject *)value;
++ (BOOL) userDefaultsWrite:(NSString *)key withObjectValue:(id)value;
 
-+ (NSObject*) userDefaultsReadObject:(NSString*)key;
++ (id) userDefaultsReadObject:(NSString*)key;
 
 
 @end

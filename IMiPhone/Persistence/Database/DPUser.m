@@ -9,13 +9,21 @@
 #import "DPUser.h"
 
 @implementation DPUser
-@synthesize  uid;
-@synthesize nickName;
-@synthesize gender;//性别
-@synthesize phone;
-@synthesize countryCode;
-@synthesize address;
-@synthesize profile;//个人简介
-@synthesize portraitUrl;//头像本地url
-@synthesize lastLoginTime;
+
+@synthesize uid;
+@synthesize oid;
+@synthesize nick;
+@synthesize mobile;
+@synthesize mobCountry;
+@synthesize email;
+@synthesize gender;
+@synthesize city;
+@synthesize status;
+@synthesize vip;
+@synthesize birthday;
+@synthesize lunarbirth;
+@synthesize career;
+@synthesize interest;
+@synthesize intro;
+
 @end

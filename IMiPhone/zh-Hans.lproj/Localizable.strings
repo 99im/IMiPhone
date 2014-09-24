@@ -15,3 +15,4 @@
 "ResendCode" = "重发验证码";
 "Contact.Add.UserID" = "请输入靓号";
 "Contact.Add.GroupID" = "请输入群组号";
+"oid" = "IM号";

@@ -14,11 +14,12 @@
 @property (nonatomic, retain, getter=getLastLoginCountry, setter=setLastLoginCountry:) NSString *lastLoginCountry;
 @property (nonatomic, retain, getter=getLastLoginMobile, setter=setLastLoginMobile:) NSString *lastLoginMobile;
 @property (nonatomic, retain, getter=getLastLoginOid, setter=setLastLoginOid:) NSString *lastLoginOid;
+@property (nonatomic, getter=getLastLoginUid, setter=setLastLoginUid:) NSInteger lastLoginUid;
 @property (nonatomic, retain, getter=getVerify, setter=setVerify:) NSString *verify;
 @property (nonatomic, retain) DPUser *user;
 @property (nonatomic) NSUInteger uid;
 @property (nonatomic, retain) NSString *mobcode;
-@property (nonatomic, retain) NSString *countryCode;
+@property (nonatomic, retain) NSString *mobCountry;
 @property (nonatomic, retain) NSString *mobile;
 @property (nonatomic, retain) NSString *password;
 
