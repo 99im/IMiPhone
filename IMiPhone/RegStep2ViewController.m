@@ -8,9 +8,9 @@
 
 #import "RegStep2ViewController.h"
 #import "AccountMessageProxy.h"
+#import "IMNWProxyProtocol.h"
 
-
-@interface RegStep2ViewController () <UITextFieldDelegate>
+@interface RegStep2ViewController () <UITextFieldDelegate, IMNWProxyProtocol>
 
 @end
 
@@ -62,6 +62,25 @@
     }
     [textField resignFirstResponder];
     return YES;
+}
+
+#pragma mark - IMNWProxyProtocol Method
+
+- (void)registerMessageNotification
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sendTypeMyinfoResult:) name:NOTI__ACCOUNT_MYINFO_ object:nil];
+}
+
+- (void)removeMessageNotification
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)sendTypeMyinfoResult:(NSNotification *)notification
+{
+    if (![notification object]) {
+        [self performSegueWithIdentifier:@"regStep2DoneSegue" sender:self];
+    }
 }
 
 @end

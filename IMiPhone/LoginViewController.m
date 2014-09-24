@@ -29,8 +29,6 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    //    self.tfUsername.text = uid;
-    //    self.tfPassword.text = psw;
     [self registerMessageNotification];
 }
 
@@ -62,7 +60,8 @@
 
 - (void)registerMessageNotification
 {
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sendAccountLogin:) name:NOTI__ACCOUNT_LOGIN_ object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sendAccountLoginResult:) name:NOTI__ACCOUNT_LOGIN_ object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sendAccountMyinfoResult:) name:NOTI__ACCOUNT_MYINFO_ object:nil];
 }
 
 - (void)removeMessageNotification
@@ -70,10 +69,18 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
-- (void)sendAccountLogin:(NSNotification *)notification
+- (void)sendAccountLoginResult:(NSNotification *)notification
 {
     if (![notification object]) {
-        [self performSegueWithIdentifier:@"loginDoneSegue" sender:self];
+        [[AccountMessageProxy sharedProxy] sendTypeMyinfo];
+    }
+}
+
+- (void)sendAccountMyinfoResult:(NSNotification *)notification
+{
+    if (![notification object]) {
+        [self performSegueWithIdentifier:@"login2mainSegue" sender:self];
+        //[self performSegueWithIdentifier:@"login2reginfoSegue" sender:self];
     }
 }
 

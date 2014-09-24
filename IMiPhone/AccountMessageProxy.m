@@ -132,12 +132,10 @@ static AccountMessageProxy *sharedAccountMessageProxy = nil;
     }];
 }
 
-- (void)sendTypeMyinfo:(NSString *)verify
+- (void)sendTypeMyinfo
 {
     //使用http
-    NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
-    [params setObject:verify forKey:KEYQ__ACCOUNT_MYINFO__VERIFY];
-    imNWMessage *message = [imNWMessage createForHttp:PATH__ACCOUNT_MYINFO_ withParams:params withMethod:METHOD__ACCOUNT_MYINFO_ ssl:NO];
+    imNWMessage *message = [imNWMessage createForHttp:PATH__ACCOUNT_MYINFO_ withParams:nil withMethod:METHOD__ACCOUNT_MYINFO_ ssl:NO];
     [[imNWManager sharedNWManager] sendMessage:message withResponse:^(NSString *responseString, NSData *responseData) {
         NSError *err = nil;
         NSMutableDictionary *json = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingAllowFragments error:&err];
@@ -145,7 +143,20 @@ static AccountMessageProxy *sharedAccountMessageProxy = nil;
             NSAssert1(YES, @"JSON create error: %@", err);
         }
         else {
-            
+            int errorcode = [[json objectForKey:KEYP__ACCOUNT_MYINFO__ERROR_CODE] intValue];
+            if (errorcode == 0) {
+                [[NSNotificationCenter defaultCenter] postNotificationName:NOTI__ACCOUNT_MYINFO_ object:nil];
+            }
+            else {
+                NSAssert1(YES, @"Http connect response error: %i", errorcode);
+                NSNumber *errorCodeNumber = [NSNumber numberWithInt:errorcode];
+                NSString *errorMessage = [errorCodeNumber errorMessage];
+                NSDictionary *userInfo = [NSDictionary dictionaryWithObject:errorMessage
+                                                                     forKey:NSLocalizedDescriptionKey];
+                NSError *error = [NSError errorWithDomain:PATH__ACCOUNT_MYINFO_ code:errorcode userInfo:userInfo];
+                [[NSNotificationCenter defaultCenter] postNotificationName:NOTI__ACCOUNT_MYINFO_ object:error];
+            }
+
         }
     }];
 }

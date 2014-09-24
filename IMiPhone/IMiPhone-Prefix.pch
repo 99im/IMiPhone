@@ -20,6 +20,7 @@
 #define CRYPT YES
 #define HTTPHOST @"local.taiqiu.com"
 #define HTTPPORT 7070
+#define MSG_OK 0
 #define METHOD_POST @"POST"
 #define METHOD_GET @"GET"
 #define HTTP_KEY_VERIFY @"verify"

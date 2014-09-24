@@ -52,7 +52,7 @@ const int sectionNum = 2;
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)addTouchUpInside:(id)sender {
+- (IBAction)searchTouchUpInside:(id)sender {
     
 //    NSLog(@"Table selected section: %i, row: %i", self.tableView.indexPathForSelectedRow.section, self.tableView.indexPathForSelectedRow.row);
     if (sender == self.userIdCell.btnAdd) {

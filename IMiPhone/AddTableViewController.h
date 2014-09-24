@@ -10,6 +10,6 @@
 
 @interface AddTableViewController : UITableViewController
 
-- (IBAction)addTouchUpInside:(id)sender;
+- (IBAction)searchTouchUpInside:(id)sender;
 
 @end
