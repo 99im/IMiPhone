@@ -23,14 +23,4 @@ static FriendMessageProxy *sharedFriendMessageProxy = nil;
     return sharedFriendMessageProxy;
 }
 
-- (void)sendTypeGroups
-{
-    
-}
-
-- (void)parseTypeGroups:(id)json
-{
-    
-}
-
 @end

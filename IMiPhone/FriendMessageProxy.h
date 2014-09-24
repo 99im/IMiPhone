@@ -16,7 +16,4 @@
 
 + (FriendMessageProxy*)sharedProxy;
 
-- (void)sendTypeGroups;
-- (void)parseTypeGroups:(id)json;
-
 @end

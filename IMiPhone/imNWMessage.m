@@ -39,7 +39,6 @@
     if (params == nil) {
         params = [NSMutableDictionary dictionary];
     }
-    #warning 获取verify值
     [params setObject:[UserDataProxy sharedProxy].verify forKey:HTTP_KEY_VERIFY];
     message.data = params;
     message.method = method;

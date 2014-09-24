@@ -22,7 +22,4 @@
 
 + (UserMessageProxy*)sharedProxy;
 
-- (void)sendTypeRegister:(NSString *)phone code:(NSString *)code password:(NSString *)password;
-- (void)parseTypeRegister:(id)json;
-
 @end
