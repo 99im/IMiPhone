@@ -11,11 +11,11 @@ example: http://local.taiqiu.com:7070/friend/focus-cancel/?focusUid=16&verify=17
 "error_code": 0
 }
 */
-#define PATH__FRIEND_FOCUS-CANCEL_ @"/friend/focus-cancel/"
-#define NOTI__FRIEND_FOCUS-CANCEL_ @"MPfriendfocus-cancelNotifiction"
-#define METHOD__FRIEND_FOCUS-CANCEL_ @"GET"
-#define KEYQ__FRIEND_FOCUS-CANCEL__FOCUSUID @"focusUid" //focusUid int 用户uid
-#define KEYP__FRIEND_FOCUS-CANCEL__ERROR_CODE @"error_code" //error_code int 0
+#define PATH__FRIEND_FOCUS_CANCEL_ @"/friend/focus-cancel/"
+#define NOTI__FRIEND_FOCUS_CANCEL_ @"MPfriendfocus-cancelNotifiction"
+#define METHOD__FRIEND_FOCUS_CANCEL_ @"GET"
+#define KEYQ__FRIEND_FOCUS_CANCEL__FOCUSUID @"focusUid" //focusUid int 用户uid
+#define KEYP__FRIEND_FOCUS_CANCEL__ERROR_CODE @"error_code" //error_code int 0
 
 /*
 mark: friend
@@ -38,19 +38,19 @@ example: http://local.taiqiu.com:7070/friend/fan-list/?start=0&pageNum=20&verify
 ]
 }
 */
-#define PATH__FRIEND_FAN-LIST_ @"/friend/fan-list/"
-#define NOTI__FRIEND_FAN-LIST_ @"MPfriendfan-listNotifiction"
-#define METHOD__FRIEND_FAN-LIST_ @"GET"
-#define KEYQ__FRIEND_FAN-LIST__START @"start" //start int 开始编号
-#define KEYQ__FRIEND_FAN-LIST__PAGENUM @"pageNum" //pageNum int 可选（默认20） 数量
-#define KEYP__FRIEND_FAN-LIST__ERROR_CODE @"error_code" //error_code int 
-#define KEYP__FRIEND_FAN-LIST__LIST @"list" //list
-#define KEYP__FRIEND_FAN-LIST__LIST_FANUID @"fanUid" // fanUid int 用户uid
-#define KEYP__FRIEND_FAN-LIST__LIST_BYNAME @"byName" // byName string 别名
-#define KEYP__FRIEND_FAN-LIST__LIST_MEMO @"memo" // memo string 备注
-#define KEYP__FRIEND_FAN-LIST__LIST_GROUPS @"groups" // groups string 分组信息
-#define KEYP__FRIEND_FAN-LIST__LIST_RELATION @"relation" // relation int 关系
-#define KEYP__FRIEND_FAN-LIST__LIST_ISFRIENDS @"isFriends" // isFriends int 是否是好友
+#define PATH__FRIEND_FAN_LIST_ @"/friend/fan-list/"
+#define NOTI__FRIEND_FAN_LIST_ @"MPfriendfan-listNotifiction"
+#define METHOD__FRIEND_FAN_LIST_ @"GET"
+#define KEYQ__FRIEND_FAN_LIST__START @"start" //start int 开始编号
+#define KEYQ__FRIEND_FAN_LIST__PAGENUM @"pageNum" //pageNum int 可选（默认20） 数量
+#define KEYP__FRIEND_FAN_LIST__ERROR_CODE @"error_code" //error_code int 
+#define KEYP__FRIEND_FAN_LIST__LIST @"list" //list
+#define KEYP__FRIEND_FAN_LIST__LIST_FANUID @"fanUid" // fanUid int 用户uid
+#define KEYP__FRIEND_FAN_LIST__LIST_BYNAME @"byName" // byName string 别名
+#define KEYP__FRIEND_FAN_LIST__LIST_MEMO @"memo" // memo string 备注
+#define KEYP__FRIEND_FAN_LIST__LIST_GROUPS @"groups" // groups string 分组信息
+#define KEYP__FRIEND_FAN_LIST__LIST_RELATION @"relation" // relation int 关系
+#define KEYP__FRIEND_FAN_LIST__LIST_ISFRIENDS @"isFriends" // isFriends int 是否是好友
 
 /*
 mark: friend
@@ -73,19 +73,19 @@ example: http://local.taiqiu.com:7070/friend/focus-list/?start=0&pageNum=20&veri
 ]
 }
 */
-#define PATH__FRIEND_FOCUS-LIST_ @"/friend/focus-list/"
-#define NOTI__FRIEND_FOCUS-LIST_ @"MPfriendfocus-listNotifiction"
-#define METHOD__FRIEND_FOCUS-LIST_ @"GET"
-#define KEYQ__FRIEND_FOCUS-LIST__START @"start" //start int 开始编号
-#define KEYQ__FRIEND_FOCUS-LIST__PAGENUM @"pageNum" //pageNum int 可选（默认20） 数量
-#define KEYP__FRIEND_FOCUS-LIST__ERROR_CODE @"error_code" //error_code int 
-#define KEYP__FRIEND_FOCUS-LIST__LIST @"list" //list
-#define KEYP__FRIEND_FOCUS-LIST__LIST_FOCUSUID @"focusUid" // focusUid int 用户uid
-#define KEYP__FRIEND_FOCUS-LIST__LIST_BYNAME @"byName" // byName string 别名
-#define KEYP__FRIEND_FOCUS-LIST__LIST_MEMO @"memo" // memo string 备注
-#define KEYP__FRIEND_FOCUS-LIST__LIST_GROUPS @"groups" // groups string 分组信息
-#define KEYP__FRIEND_FOCUS-LIST__LIST_RELATION @"relation" // relation int 关系
-#define KEYP__FRIEND_FOCUS-LIST__LIST_ISFRIENDS @"isFriends" // isFriends int 是否是好友
+#define PATH__FRIEND_FOCUS_LIST_ @"/friend/focus-list/"
+#define NOTI__FRIEND_FOCUS_LIST_ @"MPfriendfocus-listNotifiction"
+#define METHOD__FRIEND_FOCUS_LIST_ @"GET"
+#define KEYQ__FRIEND_FOCUS_LIST__START @"start" //start int 开始编号
+#define KEYQ__FRIEND_FOCUS_LIST__PAGENUM @"pageNum" //pageNum int 可选（默认20） 数量
+#define KEYP__FRIEND_FOCUS_LIST__ERROR_CODE @"error_code" //error_code int 
+#define KEYP__FRIEND_FOCUS_LIST__LIST @"list" //list
+#define KEYP__FRIEND_FOCUS_LIST__LIST_FOCUSUID @"focusUid" // focusUid int 用户uid
+#define KEYP__FRIEND_FOCUS_LIST__LIST_BYNAME @"byName" // byName string 别名
+#define KEYP__FRIEND_FOCUS_LIST__LIST_MEMO @"memo" // memo string 备注
+#define KEYP__FRIEND_FOCUS_LIST__LIST_GROUPS @"groups" // groups string 分组信息
+#define KEYP__FRIEND_FOCUS_LIST__LIST_RELATION @"relation" // relation int 关系
+#define KEYP__FRIEND_FOCUS_LIST__LIST_ISFRIENDS @"isFriends" // isFriends int 是否是好友
 
 /*
 mark: friend
@@ -98,11 +98,11 @@ example: local.taiqiu.com:7070/friend/focus-add/?focusUid=17&verify=16_141138026
 "error_code": 0
 }
 */
-#define PATH__FRIEND_FOCUS-ADD_ @"/friend/focus-add/"
-#define NOTI__FRIEND_FOCUS-ADD_ @"MPfriendfocus-addNotifiction"
-#define METHOD__FRIEND_FOCUS-ADD_ @"GET"
-#define KEYQ__FRIEND_FOCUS-ADD__FOCUSUID @"focusUid" //focusUid int 目标用户uid
-#define KEYP__FRIEND_FOCUS-ADD__ERROR_CODE @"error_code" //error_code int 0
+#define PATH__FRIEND_FOCUS_ADD_ @"/friend/focus-add/"
+#define NOTI__FRIEND_FOCUS_ADD_ @"MPfriendfocus-addNotifiction"
+#define METHOD__FRIEND_FOCUS_ADD_ @"GET"
+#define KEYQ__FRIEND_FOCUS_ADD__FOCUSUID @"focusUid" //focusUid int 目标用户uid
+#define KEYP__FRIEND_FOCUS_ADD__ERROR_CODE @"error_code" //error_code int 0
 #define MARK_ACCOUNT @"account"
 
 /*

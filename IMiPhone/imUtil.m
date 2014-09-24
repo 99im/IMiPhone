@@ -55,4 +55,19 @@
     return YES;
 }
 
+
++ (BOOL)checkBlankString:(NSString *)content
+{
+    if (content == nil || content == NULL) {
+        return YES;
+    }
+    if ([content isKindOfClass:[NSNull class]]) {
+        return YES;
+    }
+    if ([[content stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] length] == 0) {
+        return YES;
+    }
+    return NO;
+}
+
 @end

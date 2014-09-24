@@ -10,7 +10,7 @@
 #import "AccountMessageProxy.h"
 #import "IMNWProxyProtocol.h"
 
-@interface LoginViewController () <IMNWProxyProtocol>
+@interface LoginViewController () <IMNWProxyProtocol, UITextFieldDelegate>
 
 @end
 
@@ -53,10 +53,9 @@
  */
 
 - (IBAction)doneSelector:(id)sender {
-    if (self.tfUsername.text.length > 0 && self.tfPassword.text.length > 0) {
-        [[AccountMessageProxy sharedProxy] sendTypeLogin:self.tfUsername.text fromCountry:@"" withPwd:self.tfPassword.text];
+    if (![imUtil checkBlankString:self.tfPassword.text] && ![imUtil checkBlankString:self.tfUsername.text]) {
+        [[AccountMessageProxy sharedProxy] sendTypeLogin:self.tfUsername.text fromCountry:CHINA_CODE withPwd:self.tfPassword.text];
     }
-    [self performSegueWithIdentifier:@"loginDoneSegue" sender:self];
 }
 
 #pragma mark - IMNWProxyProtocol Method
@@ -74,8 +73,19 @@
 - (void)sendAccountLogin:(NSNotification *)notification
 {
     if (![notification object]) {
-        
+        [self performSegueWithIdentifier:@"loginDoneSegue" sender:self];
     }
+}
+
+#pragma mark - UITextField Delegate Method
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    if (![imUtil checkBlankString:self.tfPassword.text] && ![imUtil checkBlankString:self.tfUsername.text]) {
+        [[AccountMessageProxy sharedProxy] sendTypeLogin:self.tfUsername.text fromCountry:CHINA_CODE withPwd:self.tfPassword.text];
+    }
+    [textField resignFirstResponder];
+    return YES;
 }
 
 @end

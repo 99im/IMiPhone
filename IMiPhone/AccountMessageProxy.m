@@ -115,6 +115,7 @@ static AccountMessageProxy *sharedAccountMessageProxy = nil;
                 NSString *verify = [json objectForKey:KEYP__ACCOUNT_LOGIN__VERIFY];
                 [UserDataProxy sharedProxy].uid = uid;
                 [UserDataProxy sharedProxy].verify = verify;
+                [[NSNotificationCenter defaultCenter] postNotificationName:NOTI__ACCOUNT_LOGIN_ object:nil];
             }
             else {
                 UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Alert", nil) message:[NSString stringWithFormat:NSLocalizedString(@"Alert.LoginError", nil), errorcode] delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", nil) otherButtonTitles:nil];

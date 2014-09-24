@@ -16,4 +16,9 @@
 
 + (BOOL)checkPoint:(CGPoint)point inRectangle:(CGRect)rect;
 
+/*
+ 检测字符串是否为空串
+ */
++ (BOOL)checkBlankString:(NSString *)content;
+
 @end
