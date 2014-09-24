@@ -41,6 +41,8 @@
 		116BF88219CC01C70015561B /* UserDataProxyTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 116BF88119CC01C70015561B /* UserDataProxyTest.m */; };
 		116BF88519CC29360015561B /* DataUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 116BF88419CC29360015561B /* DataUtil.m */; };
 		116BF88619CC29360015561B /* DataUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 116BF88419CC29360015561B /* DataUtil.m */; };
+		11795E2819D297CD003FD9A7 /* DPFriend.m in Sources */ = {isa = PBXBuildFile; fileRef = 11795E2719D297CD003FD9A7 /* DPFriend.m */; };
+		11795E2919D297CD003FD9A7 /* DPFriend.m in Sources */ = {isa = PBXBuildFile; fileRef = 11795E2719D297CD003FD9A7 /* DPFriend.m */; };
 		11DF9F8319A2276C00AE5D89 /* splash.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 11DF9F8519A2276C00AE5D89 /* splash.jpg */; };
 		585971D21999F0C700258CB1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 585971D11999F0C700258CB1 /* Foundation.framework */; };
 		585971D41999F0C700258CB1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 585971D31999F0C700258CB1 /* CoreGraphics.framework */; };
@@ -196,8 +198,10 @@
 		116BF88119CC01C70015561B /* UserDataProxyTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserDataProxyTest.m; sourceTree = "<group>"; };
 		116BF88319CC29360015561B /* DataUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataUtil.h; sourceTree = "<group>"; };
 		116BF88419CC29360015561B /* DataUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataUtil.m; sourceTree = "<group>"; };
+		11795E2619D297CD003FD9A7 /* DPFriend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPFriend.h; sourceTree = "<group>"; };
+		11795E2719D297CD003FD9A7 /* DPFriend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPFriend.m; sourceTree = "<group>"; };
 		11DF9F8419A2276C00AE5D89 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "zh-Hans"; path = "zh-Hans.lproj/splash.jpg"; sourceTree = "<group>"; };
-		582011F519C2C2E300D48658 /* MessageDefine.pch */ = {isa = PBXFileReference; fileEncoding = 2147486000; lastKnownFileType = sourcecode.c.h; path = MessageDefine.pch; sourceTree = "<group>"; };
+		582011F519C2C2E300D48658 /* MessageDefine.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageDefine.pch; sourceTree = "<group>"; };
 		585971CE1999F0C700258CB1 /* IMiPhone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IMiPhone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		585971D11999F0C700258CB1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		585971D31999F0C700258CB1 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -535,6 +539,8 @@
 		58AF049419B053930077DCBC /* DataProxy */ = {
 			isa = PBXGroup;
 			children = (
+				11795E2619D297CD003FD9A7 /* DPFriend.h */,
+				11795E2719D297CD003FD9A7 /* DPFriend.m */,
 				116BF87D19C981AD0015561B /* DPUser.h */,
 				116BF87E19C981AD0015561B /* DPUser.m */,
 				116BF87519C96F8F0015561B /* UserDataProxy.h */,
@@ -809,6 +815,7 @@
 				116B6E9619B058A400DB1B5E /* SqlightDriver.m in Sources */,
 				58D95F4C19A5E2E7007139AB /* imNWMessage.m in Sources */,
 				116B6E9719B058A400DB1B5E /* SqlightResult.m in Sources */,
+				11795E2819D297CD003FD9A7 /* DPFriend.m in Sources */,
 				116BF87719C96F8F0015561B /* UserDataProxy.m in Sources */,
 				58EF8C3F19BEEE1600C5A7AC /* AccountMessageProxy.m in Sources */,
 				116B6E7B19AEF83500DB1B5E /* GroupMessage.m in Sources */,
@@ -885,6 +892,7 @@
 				58C14DD319C80D67009334E1 /* ContactViewController.m in Sources */,
 				58BC1E4919C06B9000722A00 /* UserMessageProxy.m in Sources */,
 				58BC1E4A19C06B9000722A00 /* FriendMessageProxy.m in Sources */,
+				11795E2919D297CD003FD9A7 /* DPFriend.m in Sources */,
 				58BC1E4B19C06B9000722A00 /* MKNetworkEngine.m in Sources */,
 				58BC1E4C19C06B9000722A00 /* MKNetworkOperation.m in Sources */,
 				58BC1E4D19C06B9000722A00 /* Reachability.m in Sources */,

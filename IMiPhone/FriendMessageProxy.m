@@ -7,6 +7,9 @@
 //
 
 #import "FriendMessageProxy.h"
+#import "imNWManager.h"
+#import "imNWMessage.h"
+#import "NSNumber+IMNWError.h"
 
 #define TYPE_GROUPS @"groups"
 
@@ -23,12 +26,33 @@ static FriendMessageProxy *sharedFriendMessageProxy = nil;
     return sharedFriendMessageProxy;
 }
 
-- (void)sendTypeGroups
+- (void)sendTypeFocusAdd:(NSNumber *)uid
 {
+    //使用http
+    NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
+    [params setObject:uid forKey:KEYQ__FRIEND_FOCUS_ADD__FOCUSUID];
+    imNWMessage *message = [imNWMessage createForHttp:PATH__FRIEND_FOCUS_ADD_ withParams:params withMethod:METHOD__FRIEND_FOCUS_ADD_ ssl:NO];
+    [[imNWManager sharedNWManager] sendMessage:message withResponse:^(NSString *responseString, NSData *responseData) {
+        NSError *err = nil;
+        NSMutableDictionary *json = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingAllowFragments error:&err];
+        if (err) {
+            NSAssert1(YES, @"JSON create error: %@", err);
+        }
+        else {
+            
+        }
+        if (json) {
+            NSInteger errorcode = [[json objectForKey:KEYP__FRIEND_FOCUS_ADD__ERROR_CODE] intValue];
+            if (errorcode != 0) {
+                NSNumber *errorCodeNumber = [NSNumber numberWithInteger:errorcode];
+                NSLog(@"%@",[errorCodeNumber errorMessage]);
+            }
+        }
+    }];
     
 }
 
-- (void)parseTypeGroups:(id)json
+- (void)parseTypeFocusAdd:(id)json
 {
     
 }

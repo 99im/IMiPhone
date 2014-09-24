@@ -16,7 +16,7 @@
 
 + (FriendMessageProxy*)sharedProxy;
 
-- (void)sendTypeGroups;
-- (void)parseTypeGroups:(id)json;
+- (void)sendTypeFocusAdd:(NSNumber *)uid;
+- (void)parseTypeFocusAdd:(id)json;
 
 @end

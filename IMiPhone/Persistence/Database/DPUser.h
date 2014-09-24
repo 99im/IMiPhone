@@ -9,9 +9,10 @@
 #import <Foundation/Foundation.h>
 
 @interface DPUser : NSObject
-@property (nonatomic, retain) NSString *uid;
+
+@property (nonatomic)        NSInteger uid;
 @property (nonatomic, retain) NSString *nickName;
-@property (nonatomic) int gender;//性别
+@property (nonatomic)        NSInteger gender;//性别
 @property (nonatomic, retain) NSString *phone;
 @property (nonatomic, retain) NSString *countryCode;
 @property (nonatomic, retain) NSString *address;
