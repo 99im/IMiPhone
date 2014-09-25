@@ -19,6 +19,8 @@
 
 @property (nonatomic, retain) UITapGestureRecognizer *tap;
 
+@property (nonatomic, retain) NSString *strDateForServer;
+
 @end
 
 @implementation RegInfoViewController
@@ -212,10 +214,14 @@
 //        NSDate * c = self.pickBirthday.date;
 //        NSLog(@"%@",[c description]);
         
-        dataStr =[NSDateFormatter localizedStringFromDate:self.pickBirthday.date dateStyle:NSDateFormatterShortStyle timeStyle:NSDateFormatterNoStyle];
-        
+        NSDateFormatter *dataFormatter = [[NSDateFormatter alloc] init];
+        [dataFormatter setDateFormat:NSLocalizedString(@"DateFormatClient", nil)];
+        dataStr = [dataFormatter stringFromDate:self.pickBirthday.date];
         [self.btnBirthday setTitle:dataStr forState:UIControlStateNormal];
         [self.btnBirthday setTitle:dataStr forState:UIControlStateSelected];
+        //保存服务端能够识别日期格式
+        [dataFormatter setDateFormat:NSLocalizedString(@"DateFormatServer", nil)];
+        self.strDateForServer = [dataFormatter stringFromDate:self.pickBirthday.date];
     }
     
 }
