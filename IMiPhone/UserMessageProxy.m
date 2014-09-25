@@ -7,6 +7,9 @@
 //
 
 #import "UserMessageProxy.h"
+#import "imNWMessage.h"
+#import "imNWManager.h"
+#import "NSNumber+IMNWError.h"
 
 #define TYPE_REGISTER @"register"
 
@@ -21,6 +24,43 @@ static UserMessageProxy *sharedUserMessageProxy = nil;
         sharedUserMessageProxy = [[self alloc] init];
     });
     return sharedUserMessageProxy;
+}
+
+- (void)sendTypeRegister:(NSString *)phone code:(NSString *)code password:(NSString *)password
+{
+    
+}
+
+- (void)parseTypeRegister:(id)json
+{
+    
+}
+
+- (void)sendTypeSearch:(NSString *)oid
+{
+    //使用http
+    NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
+    [params setObject:oid forKey:KEYQ__USER_SEARCH__OID];
+   
+    imNWMessage *message = [imNWMessage createForHttp:PATH__ACCOUNT_UPDATEINFO_ withParams:params withMethod:METHOD__ACCOUNT_UPDATEINFO_ ssl:NO];
+    [[imNWManager sharedNWManager] sendMessage:message withResponse:^(NSString *responseString, NSData *responseData) {
+        NSError *err = nil;
+        NSMutableDictionary *json = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingAllowFragments error:&err];
+        if (err) {
+            NSAssert1(YES, @"JSON create error: %@", err);
+        }
+        else {
+            NSArray *userList = [json valueForKey:KEYP__USER_SEARCH__LIST];
+            if (userList) {
+                for (NSInteger i = 0; i < userList.count; i++) {
+                    NSDictionary *userInfo = userList[i];
+                    NSLog(@"user nick:%@",[userInfo valueForKey:@"nick"]);
+                }
+            }
+            
+        }
+    }];
+   
 }
 
 @end

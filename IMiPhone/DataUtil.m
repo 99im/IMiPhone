@@ -9,24 +9,29 @@
 #import "DataUtil.h"
 
 @implementation DataUtil
-+ (NSDictionary *)getDicFromNormalClass:(id) classInstance
+
++ (NSDictionary *)getDicFromNormalClass:(id)classInstance
 {
     //创建可变字典
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
     unsigned int outCount;
     objc_property_t *props = class_copyPropertyList([classInstance class], &outCount);
+    
     for(int i=0;i<outCount;i++){
         objc_property_t prop = props[i];
-        NSString *propName = [[NSString alloc]initWithCString:property_getName(prop) encoding:NSUTF8StringEncoding];
+        NSString *propName = [[NSString alloc] initWithCString:property_getName(prop) encoding:NSUTF8StringEncoding];
         id propValue = [classInstance valueForKey:propName];
         
-        if(propValue){
+        if(propValue) {
             [dict setObject:propValue forKey:propName];
         }
+        
     }
+    
     free(props);
     return dict;
 }
+
 + (NSArray *)getArrPropsFromDataModeClass:(Class) cls
 {
     NSMutableArray *mutArray=[NSMutableArray array];
