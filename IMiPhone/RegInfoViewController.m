@@ -39,6 +39,8 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [self registerMessageNotification];
+    
     self.pickBirthday.hidden = YES;
     tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapHandler:)];
     [self.view addGestureRecognizer:tap];
@@ -52,6 +54,7 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+    [self removeMessageNotification];
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -114,7 +117,7 @@
         [alertView show];
         return;
     }
-    [[AccountMessageProxy sharedProxy] sendTypeUpdateinfo:self.ctlSex.selectedSegmentIndex birthday:self.btnBirthday.titleLabel.text nickname:self.tfNickname.text];
+    [[AccountMessageProxy sharedProxy] sendTypeUpdateinfo:self.ctlSex.selectedSegmentIndex birthday:self.strDateForServer nickname:self.tfNickname.text];
 }
 
 - (IBAction)ctlSexValueChanged:(id)sender {
