@@ -16,9 +16,12 @@
 
 + (BOOL)checkPoint:(CGPoint)point inRectangle:(CGRect)rect;
 
-/*
- 检测字符串是否为空串
- */
++ (BOOL)checkNick:(NSString *)nick;
+
+///计算中英文混排字符串长度，中文按两个字符计算
++ (NSInteger)countStringLength:(NSString *)content;
+
+///检测字符串是否为空，包括nil、NULL、长度为0、长度不为0的whitespace
 + (BOOL)checkBlankString:(NSString *)content;
 
 @end

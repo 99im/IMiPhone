@@ -55,7 +55,6 @@
     return YES;
 }
 
-
 + (BOOL)checkBlankString:(NSString *)content
 {
     if (content == nil || content == NULL) {
@@ -68,6 +67,36 @@
         return YES;
     }
     return NO;
+}
+
++ (BOOL)checkNick:(NSString *)nick
+{
+    int length = [self countStringLength:nick];
+    if (length <= NICK_LENGTH_MAX) {
+        return YES;
+    }
+    else {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Alert", nil) message:NSLocalizedString(@"Alert.Nick", nil) delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", nil) otherButtonTitles:nil];
+        [alertView show];
+        NSLog(@"check phone error: %@", nick);
+        return NO;
+    }
+}
+
++ (NSInteger)countStringLength:(NSString *)content
+{
+    NSInteger conLength = 0;
+    char *pContent = (char *)[content cStringUsingEncoding:NSUnicodeStringEncoding];
+    for (int i = 0; i < [content lengthOfBytesUsingEncoding:NSUnicodeStringEncoding]; i++) {
+        if (*pContent) {
+            pContent++;
+            conLength++;
+        }
+        else {
+            pContent++;
+        }
+    }
+    return conLength;
 }
 
 @end

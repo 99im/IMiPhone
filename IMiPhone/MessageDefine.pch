@@ -347,6 +347,9 @@ example: http://local.taiqiu.com:7070/account/myinfo/
 #define KEYP__ACCOUNT_MYINFO__UINFO_VIP @"vip" // vip 0
 #define KEYP__ACCOUNT_MYINFO__UINFO_BIRTHDAY @"birthday" // birthday 0000-00-00
 #define KEYP__ACCOUNT_MYINFO__UINFO_LUNARBIRTH @"lunarbirth" // lunarbirth 0
+#define KEYP__ACCOUNT_MYINFO__UINFO_CAREER @"career" // career
+#define KEYP__ACCOUNT_MYINFO__UINFO_INTEREST @"interest" // interest
+#define KEYP__ACCOUNT_MYINFO__UINFO_INTRO @"intro" // intro
 
 /*
 mark: account

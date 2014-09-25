@@ -8,14 +8,14 @@
 
 #import "RegInfoViewController.h"
 #import "imPhotoPicker.h"
+#import "UserDataProxy.h"
+#import "AccountMessageProxy.h"
+#import "IMNWProxyProtocol.h"
 
-@interface RegInfoViewController () <UITextFieldDelegate, UITextViewDelegate, UIGestureRecognizerDelegate,VPImageCropperDelegate>
+@interface RegInfoViewController () <UITextFieldDelegate, UITextViewDelegate, UIGestureRecognizerDelegate,VPImageCropperDelegate, IMNWProxyProtocol>
 
 @property (nonatomic, retain) UITextField *tfActive;
 @property (nonatomic, retain) UITextView *tvActive;
-
-@property (nonatomic) float scrollViewOffY;
-
 
 @property (nonatomic, retain) UITapGestureRecognizer *tap;
 
@@ -42,7 +42,8 @@
     [self.view addGestureRecognizer:tap];
     tap.delegate = self;
     tap.cancelsTouchesInView = NO;
-
+    self.lblOid.text = [NSString stringWithFormat:@"%@: %@", NSLocalizedString(@"oid", nil), [UserDataProxy sharedProxy].user.oid];
+    self.lblSex.text = [self.ctlSex titleForSegmentAtIndex:self.ctlSex.selectedSegmentIndex];
 }
 
 - (void)didReceiveMemoryWarning
@@ -55,8 +56,8 @@
 {
     self.scrollView.contentSize = CGSizeMake(320, 751);
     //self.scrollView.frame = CGRectMake(0, 64, 320, 504);
-    NSLog(@" self.scrollView.contentSize %f,%f", self.scrollView.contentSize.height, self.scrollView.contentSize.width);
-    NSLog(@" self.scrollView.frame %f,%f", self.scrollView.frame.size.height, self.scrollView.frame.size.width);
+    //NSLog(@" self.scrollView.contentSize %f,%f", self.scrollView.contentSize.height, self.scrollView.contentSize.width);
+    //NSLog(@" self.scrollView.frame %f,%f", self.scrollView.frame.size.height, self.scrollView.frame.size.width);
     
     //注册键盘出现通知
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector (keyboardDidShow:)
@@ -83,22 +84,38 @@
     {
         self.pickBirthday.hidden = NO;
         self.pickBirthday.backgroundColor = [UIColor grayColor];
-        self.scrollViewOffY = self.scrollView.contentOffset.y;
-//        [self.scrollView scrollRectToVisible:self.btnBirthday.frame animated:YES];//测试下是否会滚动到选择日期按钮可见
 
         CGRect rectPick = self.pickBirthday.frame;
-        CGPoint btnP = CGPointMake(0.0,0.0);
-        CGPoint btnViewP = [self.btnBirthday convertPoint:btnP toView:self.view];
-        btnViewP.y += self.btnBirthday.frame.size.height;
-
-        if (self.btnBirthday && CGRectContainsPoint(rectPick, btnViewP)) {
-           
-            CGPoint offset = self.scrollView.contentOffset;
-            offset.y = btnViewP.y - rectPick.origin.y;
-            [self.scrollView setContentOffset:offset animated:YES];
-
+        UIEdgeInsets contentInsets = UIEdgeInsetsMake(0.0, 0.0, rectPick.size.height, 0.0);
+        self.scrollView.contentInset = contentInsets;
+        CGRect aRect = self.view.frame;
+        aRect.size.height -= rectPick.size.height;
+        if (self.btnBirthday && !CGRectContainsPoint(aRect, self.btnBirthday.frame.origin)) {
+            [self.scrollView scrollRectToVisible:self.btnBirthday.frame animated:YES];
+        }
+        else if (self.btnBirthday && !CGRectContainsPoint(aRect, self.btnBirthday.frame.origin)) {
+            [self.scrollView scrollRectToVisible:self.btnBirthday.frame animated:YES];
         }
     }
+}
+
+- (IBAction)doneSelector:(id)sender {
+    if ([imUtil checkBlankString:self.tfNickname.text]) {
+        return;
+    }
+    if (![imUtil checkNick:self.tfNickname.text]) {
+        return;
+    }
+    if (self.btnBirthday.titleLabel.text.length == 4) {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Alert", nil) message:NSLocalizedString(@"Alert.Birthday", nil) delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", nil) otherButtonTitles:nil];
+        [alertView show];
+        return;
+    }
+    [[AccountMessageProxy sharedProxy] sendTypeUpdateinfo:self.ctlSex.selectedSegmentIndex birthday:self.btnBirthday.titleLabel.text nickname:self.tfNickname.text];
+}
+
+- (IBAction)ctlSexValueChanged:(id)sender {
+    self.lblSex.text = [self.ctlSex titleForSegmentAtIndex:self.ctlSex.selectedSegmentIndex];
 }
 
 #pragma mark - keyboard Hide and Show
@@ -148,6 +165,7 @@
 }
 
 #pragma mark - UITextViewDelegate method
+
 - (void)textViewDidBeginEditing:(UITextView *)textView
 {
     self.tvActive = textView;
@@ -174,7 +192,7 @@
 - (void)tapHandler:(UITapGestureRecognizer *)sender
 {
     CGPoint point = [sender locationInView:self.view];
-    NSLog(@"RegInfoViewController tapHandler: x: %f, y: %f", point.x, point.y);
+    //NSLog(@"RegInfoViewController tapHandler: x: %f, y: %f", point.x, point.y);
     if (self.pickBirthday.hidden) {
          NSLog(@"self.pickBirthday.hidden == YES");
         return;
@@ -196,11 +214,6 @@
         
         [self.btnBirthday setTitle:dataStr forState:UIControlStateNormal];
         [self.btnBirthday setTitle:dataStr forState:UIControlStateSelected];
-        //界面移回原位置
-        CGPoint offset = self.scrollView.contentOffset;
-        offset.y = self.scrollViewOffY;
-        [self.scrollView setContentOffset:offset animated:YES];
-
     }
     
 }
@@ -209,5 +222,23 @@
     [[imPhotoPicker sharedPicker] showChoiceSheet:self inView:self.view];
 }
 
+#pragma mark - IMNWProxyProtocol Method
+
+- (void)registerMessageNotification
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sendAccountUpdateinfoResult:) name:NOTI__ACCOUNT_UPDATEINFO_ object:nil];
+}
+
+- (void)removeMessageNotification
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)sendAccountUpdateinfoResult:(NSNotification *)notification
+{
+    if (![notification object]) {
+        [self performSegueWithIdentifier:@"regInfoDoneSegue" sender:self];
+    }
+}
 
 @end

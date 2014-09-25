@@ -9,6 +9,7 @@
 #import "LoginViewController.h"
 #import "AccountMessageProxy.h"
 #import "IMNWProxyProtocol.h"
+#import "UserDataProxy.h"
 
 @interface LoginViewController () <IMNWProxyProtocol, UITextFieldDelegate>
 
@@ -30,6 +31,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self registerMessageNotification];
+    self.tfUsername.text = [UserDataProxy sharedProxy].lastLoginMobile;
 }
 
 - (void)didReceiveMemoryWarning
@@ -79,8 +81,12 @@
 - (void)sendAccountMyinfoResult:(NSNotification *)notification
 {
     if (![notification object]) {
-        [self performSegueWithIdentifier:@"login2mainSegue" sender:self];
-        //[self performSegueWithIdentifier:@"login2reginfoSegue" sender:self];
+        if ([imUtil checkBlankString:[UserDataProxy sharedProxy].user.nick]) {
+            [self performSegueWithIdentifier:@"login2reginfoSegue" sender:self];
+        }
+        else {
+            [self performSegueWithIdentifier:@"login2mainSegue" sender:self];
+        }
     }
 }
 

@@ -14,6 +14,7 @@
 #define KEY_USER_LAST_LOGIN_COUNTRY @"key_user_last_login_country"
 #define KEY_USER_LAST_LOGIN_MOBILE @"key_user_last_login_mobile"
 #define KEY_USER_LAST_LOGIN_OID @"key_user_last_login_oid"
+#define KEY_USER_LAST_LOGIN_UID @"key_user_last_login_uid"
 #define KEY_USER_VERIFY @"key_user_verify"
 #define KEY_USER_INFO_PRE @"key_user_info_"
 
@@ -23,10 +24,11 @@
 @synthesize lastLoginCountry = _lastLoginCountry;
 @synthesize lastLoginMobile = _lastLoginMobile;
 @synthesize lastLoginOid = _lastLoginOid;
+@synthesize lastLoginUid = _lastLoginUid;
 @synthesize verify = _verify;
 @synthesize user = _user;
 @synthesize mobcode = _mobcode;
-@synthesize countryCode = _countryCode;
+@synthesize mobCountry = _mobCountry;
 @synthesize mobile = _mobile;
 @synthesize uid = _uid;
 @synthesize password = _password;
@@ -83,7 +85,21 @@ static UserDataProxy *sharedProxy = nil;
 {
     _lastLoginOid = lastLoginOid;
     [DatabaseConfig shareDatabaseConfig].databaseName = _lastLoginOid;
+    [self initUserFromRms];
     [imRms userDefaultsWrite:KEY_USER_LAST_LOGIN_OID withStringValue:_lastLoginOid];
+}
+
+- (NSInteger)getLastLoginUid
+{
+    _lastLoginUid = [imRms userDefaultsReadInt:KEY_USER_LAST_LOGIN_UID];
+    return _lastLoginUid;
+}
+- (void)setLastLoginUid:(NSInteger)lastLoginUid
+{
+    _lastLoginUid = lastLoginUid;
+    [DatabaseConfig shareDatabaseConfig].databaseName = [NSString stringWithFormat:@"%d", _lastLoginUid];
+    [imRms userDefaultsWrite:KEY_USER_LAST_LOGIN_UID withStringValue:[NSString stringWithFormat:@"%d", _lastLoginUid]];
+    [self initUserFromRms];
 }
 
 - (NSString *)getVerify
@@ -99,14 +115,13 @@ static UserDataProxy *sharedProxy = nil;
 
 - (void)initUserFromRms
 {
-    NSDictionary *userInfoDic = (NSDictionary *)[imRms userDefaultsReadObject:[KEY_USER_INFO_PRE stringByAppendingString:_lastLoginMobile]];
+    NSDictionary *userInfoDic = (NSDictionary *)[imRms userDefaultsReadObject:[KEY_USER_INFO_PRE stringByAppendingString:[NSString stringWithFormat:@"%d", _lastLoginUid]]];
   if(_user == nil)
       _user = [[DPUser alloc] init];
   if(userInfoDic == nil)
    {
-       _user.uid = _lastLoginMobile;
+       _user.uid = _lastLoginUid;
        [imRms userDefaultsWrite:[KEY_USER_INFO_PRE stringByAppendingString:_lastLoginMobile] withObjectValue:[DataUtil getDicFromNormalClass:_user]];
-       ;
    }
    else
    {
