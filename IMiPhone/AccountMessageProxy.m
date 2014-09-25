@@ -179,11 +179,11 @@ static AccountMessageProxy *sharedAccountMessageProxy = nil;
     }];
 }
 
-- (void)sendTypeUpdateinfo:(NSNumber *)gender birthday:(NSString *)birth nickname:(NSString *)nick
+- (void)sendTypeUpdateinfo:(NSInteger)gender birthday:(NSString *)birth nickname:(NSString *)nick
 {
     //使用http
     NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
-    [params setObject:gender forKey:KEYQ__ACCOUNT_UPDATEINFO__GENDER];
+    [params setObject:[NSNumber numberWithInteger:gender] forKey:KEYQ__ACCOUNT_UPDATEINFO__GENDER];
     [params setObject:birth forKey:KEYQ__ACCOUNT_UPDATEINFO__BIRTHDAY];
     [params setObject:nick forKey:KEYQ__ACCOUNT_UPDATEINFO__NICK];
     imNWMessage *message = [imNWMessage createForHttp:PATH__ACCOUNT_UPDATEINFO_ withParams:params withMethod:METHOD__ACCOUNT_UPDATEINFO_ ssl:NO];
@@ -194,7 +194,19 @@ static AccountMessageProxy *sharedAccountMessageProxy = nil;
             NSAssert1(YES, @"JSON create error: %@", err);
         }
         else {
-            
+            int errorcode = [[json objectForKey:KEYP__ACCOUNT_UPDATEINFO__ERROR_CODE] intValue];
+            if (errorcode == 0) {
+                [[NSNotificationCenter defaultCenter] postNotificationName:NOTI__ACCOUNT_UPDATEINFO_ object:nil];
+            }
+            else {
+                NSAssert1(YES, @"Http connect response error: %i", errorcode);
+                NSNumber *errorCodeNumber = [NSNumber numberWithInt:errorcode];
+                NSString *errorMessage = [errorCodeNumber errorMessage];
+                NSDictionary *userInfo = [NSDictionary dictionaryWithObject:errorMessage
+                                                                     forKey:NSLocalizedDescriptionKey];
+                NSError *error = [NSError errorWithDomain:PATH__ACCOUNT_UPDATEINFO_ code:errorcode userInfo:userInfo];
+                [[NSNotificationCenter defaultCenter] postNotificationName:NOTI__ACCOUNT_UPDATEINFO_ object:error];
+            }
         }
     }];
 }

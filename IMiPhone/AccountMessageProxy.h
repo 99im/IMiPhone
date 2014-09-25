@@ -19,6 +19,6 @@
 - (void)sendTypeRegister:(NSString *)password;
 - (void)sendTypeLogin:(NSString *)mobile fromCountry:(NSString *)mobCountry withPwd:(NSString *)password;
 - (void)sendTypeMyinfo;
-- (void)sendTypeUpdateinfo:(NSNumber *)gender birthday:(NSString *)birth nickname:(NSString *)nick;
+- (void)sendTypeUpdateinfo:(NSInteger)gender birthday:(NSString *)birth nickname:(NSString *)nick;
 
 @end

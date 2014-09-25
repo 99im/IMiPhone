@@ -16,3 +16,5 @@
 "Contact.Add.UserID" = "请输入靓号";
 "Contact.Add.GroupID" = "请输入群组号";
 "oid" = "IM号";
+"Alert.Nick" = "昵称最大长度为16个英文字符或8个中文字。";
+"Alert.Birthday" = "请选择您的生日。";

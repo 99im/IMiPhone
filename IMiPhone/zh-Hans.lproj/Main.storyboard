@@ -307,6 +307,9 @@
                                                     <segment title="男"/>
                                                     <segment title="女"/>
                                                 </segments>
+                                                <connections>
+                                                    <action selector="ctlSexValueChanged:" destination="tkh-RH-kvT" eventType="valueChanged" id="xAr-lN-ApH"/>
+                                                </connections>
                                             </segmentedControl>
                                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="生日" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kvx-0o-J0y">
                                                 <rect key="frame" x="20" y="240" width="50" height="21"/>
@@ -401,7 +404,7 @@
                                     <navigationItem title="完善资料" id="PJw-u0-V7Z">
                                         <barButtonItem key="rightBarButtonItem" title="完成" id="kSz-Fq-s50">
                                             <connections>
-                                                <segue destination="MIG-TR-klW" kind="modal" id="hLQ-8M-NX4"/>
+                                                <action selector="doneSelector:" destination="tkh-RH-kvT" id="o4V-mR-zJV"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -429,6 +432,7 @@
                         <outlet property="tfHobby" destination="1Cf-gF-MyU" id="7Ks-BX-Wz6"/>
                         <outlet property="tfNickname" destination="xJT-Rn-N6w" id="Q1s-zd-0PY"/>
                         <outlet property="tvSignature" destination="P4B-l8-rNN" id="Tsm-eG-rHr"/>
+                        <segue destination="MIG-TR-klW" kind="modal" identifier="regInfoDoneSegue" id="SUU-2p-Sgf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ASR-EU-oGu" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -953,7 +957,7 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="hLQ-8M-NX4"/>
+        <segue reference="SUU-2p-Sgf"/>
         <segue reference="fNZ-Tb-k0o"/>
     </inferredMetricsTieBreakers>
 </document>
