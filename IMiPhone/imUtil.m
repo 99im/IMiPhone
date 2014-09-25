@@ -99,4 +99,13 @@
     return conLength;
 }
 
++ (void)clearFirstResponder
+{
+    UIWindow *keyWindow = [[UIApplication sharedApplication] keyWindow];
+    UIView *firstResponder = [keyWindow performSelector:@selector(firstResponder)];
+    if (firstResponder) {
+        [firstResponder resignFirstResponder];
+    }
+}
+
 @end

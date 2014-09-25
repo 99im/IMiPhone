@@ -24,4 +24,7 @@
 ///检测字符串是否为空，包括nil、NULL、长度为0、长度不为0的whitespace
 + (BOOL)checkBlankString:(NSString *)content;
 
+///清除当前第一响应者的响应状态，放弃第一响应；
++ (void)clearFirstResponder;
+
 @end

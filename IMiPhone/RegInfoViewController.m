@@ -80,6 +80,7 @@
 }
 
 - (IBAction)btnBirthdayOnClick:(id)sender {
+    [imUtil clearFirstResponder];
     if(self.pickBirthday.hidden == YES)
     {
         self.pickBirthday.hidden = NO;
@@ -115,6 +116,7 @@
 }
 
 - (IBAction)ctlSexValueChanged:(id)sender {
+    [imUtil clearFirstResponder];
     self.lblSex.text = [self.ctlSex titleForSegmentAtIndex:self.ctlSex.selectedSegmentIndex];
 }
 
