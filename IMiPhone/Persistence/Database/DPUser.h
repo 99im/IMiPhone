@@ -10,14 +10,21 @@
 
 @interface DPUser : NSObject
 
-@property (nonatomic)        NSInteger uid;
-@property (nonatomic, retain) NSString *nickName;
-@property (nonatomic)        NSInteger gender;//性别
-@property (nonatomic, retain) NSString *phone;
-@property (nonatomic, retain) NSString *countryCode;
-@property (nonatomic, retain) NSString *address;
-@property (nonatomic, retain) NSString *profile;//个人简介
-@property (nonatomic, retain) NSString *portraitUrl;//头像本地url
-@property (nonatomic, retain) NSString *lastLoginTime;
+
+@property (nonatomic) NSInteger uid;
+@property (nonatomic, retain) NSString *oid;
+@property (nonatomic, retain) NSString *nick;
+@property (nonatomic, retain) NSString *mobile;
+@property (nonatomic, retain) NSString *mobCountry;
+@property (nonatomic, retain) NSString *email;
+@property (nonatomic) NSInteger gender;
+@property (nonatomic, retain) NSString *city;
+@property (nonatomic) NSInteger status;
+@property (nonatomic) NSInteger vip;
+@property (nonatomic, retain) NSString *birthday;
+@property (nonatomic, retain) NSString *lunarbirth;
+@property (nonatomic, retain) NSString *career;
+@property (nonatomic, retain) NSString *interest;
+@property (nonatomic, retain) NSString *intro;
 
 @end
