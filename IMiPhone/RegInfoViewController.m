@@ -169,7 +169,7 @@
 }
 */
 
-#pragma mark -datepicker
+#pragma mark - datepicker
 
 - (void)tapHandler:(UITapGestureRecognizer *)sender
 {
@@ -186,11 +186,13 @@
     {
         self.pickBirthday.hidden = YES;
         
-        NSString * dataStr = [self.pickBirthday.date description];
-        NSUInteger endIndex = [dataStr rangeOfString:@" "].location;
-        dataStr = [dataStr substringWithRange:NSMakeRange(0, endIndex)];
-        NSDate * c = self.pickBirthday.date;
-        NSLog(@"%@",[c description]);
+        NSString * dataStr;// = [self.pickBirthday.date description];
+//        NSUInteger endIndex = [dataStr rangeOfString:@" "].location;
+//        dataStr = [dataStr substringWithRange:NSMakeRange(0, endIndex)];
+//        NSDate * c = self.pickBirthday.date;
+//        NSLog(@"%@",[c description]);
+        
+        dataStr =[NSDateFormatter localizedStringFromDate:self.pickBirthday.date dateStyle:NSDateFormatterShortStyle timeStyle:NSDateFormatterNoStyle];
         
         [self.btnBirthday setTitle:dataStr forState:UIControlStateNormal];
         [self.btnBirthday setTitle:dataStr forState:UIControlStateSelected];
@@ -202,7 +204,7 @@
     }
     
 }
-#pragma mark -photopicker
+#pragma mark - photopicker
 - (IBAction)handleTapHead:(UITapGestureRecognizer *)sender {
     [[imPhotoPicker sharedPicker] showChoiceSheet:self inView:self.view];
 }
