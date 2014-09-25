@@ -208,12 +208,7 @@
     {
         self.pickBirthday.hidden = YES;
         
-        NSString * dataStr;// = [self.pickBirthday.date description];
-//        NSUInteger endIndex = [dataStr rangeOfString:@" "].location;
-//        dataStr = [dataStr substringWithRange:NSMakeRange(0, endIndex)];
-//        NSDate * c = self.pickBirthday.date;
-//        NSLog(@"%@",[c description]);
-        
+        NSString * dataStr;
         NSDateFormatter *dataFormatter = [[NSDateFormatter alloc] init];
         [dataFormatter setDateFormat:NSLocalizedString(@"DateFormatClient", nil)];
         dataStr = [dataFormatter stringFromDate:self.pickBirthday.date];
