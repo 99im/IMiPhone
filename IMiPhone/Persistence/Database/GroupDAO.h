@@ -7,7 +7,7 @@
 //
 
 #import "BaseDAO.h"
-#import "Group.h"
+#import "DBGroup.h"
 
 @interface GroupDAO : BaseDAO
 + (GroupDAO*)sharedDAO;

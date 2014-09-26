@@ -7,7 +7,7 @@
 //
 
 #import "GroupDAO.h"
-#import "Group.h"
+#import "DBGroup.h"
 #import "DatabaseConfig.h"
 @implementation GroupDAO
 
@@ -24,7 +24,7 @@
                       sharedGroupDAO = [[self alloc] init];
                       NSString *tableName = @"tb_group";
                       NSString *primaryKey = @"group_id";
-                      [sharedGroupDAO createTableIfNotExist:tableName withDataMode:[Group class] withPrimaryKey:primaryKey];
+                      [sharedGroupDAO createTableIfNotExist:tableName withDataMode:[DBGroup class] withPrimaryKey:primaryKey];
                   }
                   );
     return sharedGroupDAO;

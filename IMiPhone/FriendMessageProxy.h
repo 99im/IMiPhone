@@ -19,4 +19,6 @@
 - (void)sendTypeFocusAdd:(NSNumber *)uid;
 - (void)parseTypeFocusAdd:(id)json;
 
+- (void)sendTypeFocusAdd:(NSNumber *)uid;
+
 @end

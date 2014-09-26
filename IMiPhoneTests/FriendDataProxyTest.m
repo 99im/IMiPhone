@@ -8,7 +8,7 @@
 
 #import <XCTest/XCTest.h>
 
-#import "Group.h"
+#import "DBGroup.h"
 
 @interface FriendDataProxyTest : XCTestCase
 
@@ -25,7 +25,7 @@
 {
     [super setUp];
     // Put setup code here. This method is called before the invocation of each test method in the class.
-    self.arrTest = [[NSMutableArray alloc] initWithObjects:[[Group alloc] init],@"b",nil];
+    self.arrTest = [[NSMutableArray alloc] initWithObjects:[[DBGroup alloc] init],@"b",nil];
 }
 
 - (void)tearDown

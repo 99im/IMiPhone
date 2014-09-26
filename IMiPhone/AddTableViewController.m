@@ -46,12 +46,16 @@ const int sectionNum = 2;
     NSBundle *bundle = [NSBundle mainBundle];
     NSString *plistPath = [bundle pathForResource:@"contact" ofType:@"plist"];
     self.arrTPs = [[[NSDictionary alloc] initWithContentsOfFile:plistPath] objectForKey:@"AddTP"];
+    
+    //监听搜索用户结果的监听
+     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(skipToSearchResult:) name:NOTI__USER_SEARCH_ object:nil];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (IBAction)searchTouchUpInside:(id)sender {
@@ -169,4 +173,12 @@ const int sectionNum = 2;
 }
 */
 
+#pragma mark - serchResult
+- (void)skipToSearchResult:(NSNotification *)notification
+{
+    NSArray *a = notification.object;
+    if (notification.object) {
+        if ([notification.object isKindOfClass:[NSArray class]])              [self performSegueWithIdentifier:@"Add2NickSegue" sender:notification.object];
+        }
+}
 @end

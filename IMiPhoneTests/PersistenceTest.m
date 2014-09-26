@@ -10,7 +10,7 @@
 #import "GroupDAO.h"
 #import "DatabaseConfig.h"
 #import "imRms.h"
-#import "Group.h"
+#import "DBGroup.h"
 #import "DataUtil.h"
 
 @interface PersistenceTest : XCTestCase
@@ -74,7 +74,7 @@
 
 - (void)testKeyValue
 {
-    Group *g = [[Group alloc] init];
+    DBGroup *g = [[DBGroup alloc] init];
     g.group_name = @"桌球小组";
     NSLog(@"group_id:%@",[g valueForKey:@"group_id"]);
     //      [g setValue:@"undi" forKey:@"un" ];
@@ -90,7 +90,7 @@
     
     BaseDAO *dao = [GroupDAO sharedDAO];
     
-    Group *g = [[Group alloc]init];
+    DBGroup *g = [[DBGroup alloc]init];
     g.group_id = 10;
     g.group_name = @"桌球小组";
     g.members = @"tree";
@@ -117,7 +117,7 @@
     
     if (arrResult && arrResult.count > 0) {
         for (int i = 0; i < arrResult.count; i++) {
-            Group *tempG = arrResult[i];
+            DBGroup *tempG = arrResult[i];
             NSLog(@"query group_id:%d,group_name:%@,members:%@",tempG.group_id,tempG.group_name,tempG.members);
         }
     }
@@ -141,7 +141,7 @@
 }
 -(void)testRms
 {
-    Group *g = [[Group alloc] init];
+    DBGroup *g = [[DBGroup alloc] init];
     g.group_name = @"trees";
     NSDictionary *ds =[DataUtil getDicFromNormalClass:g];
     [imRms userDefaultsWrite:@"aa" withObjectValue:ds];

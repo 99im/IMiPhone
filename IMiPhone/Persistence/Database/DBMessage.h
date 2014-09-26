@@ -8,8 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
-@interface GroupMessage : NSObject
-@property (nonatomic) NSInteger group_id;
-@property (nonatomic, retain) NSString * user_id;
-@property (nonatomic, retain) NSString * content;
+@interface DBMessage : NSObject
+
+@property (nonatomic) NSInteger senderUid;
+@property (nonatomic, retain) NSString *content;
+@property (nonatomic, retain) NSString *sendTime;
+
 @end

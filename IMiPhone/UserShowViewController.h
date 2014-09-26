@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface UserShowViewController : UIViewController
+@interface UserShowViewController : UIViewController <UIAlertViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *lblNickname;
 @property (weak, nonatomic) IBOutlet UILabel *lblOid;

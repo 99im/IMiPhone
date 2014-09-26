@@ -7,8 +7,13 @@
 //
 
 #import "UserShowViewController.h"
+#import "UserDataProxy.h"
+#import "FriendDataProxy.h"
+#import "FriendMessageProxy.h"
 
 @interface UserShowViewController ()
+
+@property (nonatomic, retain) UIAlertView * alertView;
 
 @end
 
@@ -17,6 +22,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    NSDictionary *userInfo = [UserDataProxy sharedProxy].arrSearchUserResult[0];
+    [self.lblNickname setText:[userInfo valueForKey:KEY_USER_SERCH_USER_INFO_NICK]];
+    [self.lblOid setText:[userInfo valueForKey:KEY_USER_SERCH_USER_INFO_OID]];
+    
+    [self    focusTouchUpInside:nil];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -35,5 +46,24 @@
 */
 
 - (IBAction)focusTouchUpInside:(id)sender {
+    
+    if (self.alertView == nil) {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Alert.Tip", nil) message:NSLocalizedString(@"Alert.Tip.Focus", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"Cancel", nil) otherButtonTitles:NSLocalizedString(@"OK", nil), nil];
+        [alertView show];
+    }
 }
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 0) {
+        NSLog(@"cancel");
+    }
+    else if(buttonIndex == 1){
+        NSLog(@"OK");
+        NSDictionary *userInfo = [UserDataProxy sharedProxy].arrSearchUserResult[0];
+        [[FriendMessageProxy sharedProxy] sendTypeFocusAdd:[userInfo valueForKey:KEY_USER_SERCH_USER_INFO_UID]];
+    }
+    self.alertView = nil;
+}
+
 @end

@@ -47,6 +47,10 @@ static FriendMessageProxy *sharedFriendMessageProxy = nil;
                 NSNumber *errorCodeNumber = [NSNumber numberWithInteger:errorcode];
                 NSLog(@"%@",[errorCodeNumber errorMessage]);
             }
+            else
+            {
+                
+            }
         }
     }];
     

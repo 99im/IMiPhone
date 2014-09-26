@@ -6,11 +6,12 @@
 //  Copyright (c) 2014年 尹晓君. All rights reserved.
 //
 
-#import "GroupMessage.h"
+#import "DBMessage.h"
 
-@implementation GroupMessage
+@implementation DBMessage
 
-@dynamic group_id;
-@dynamic user_id;
-@dynamic content;
+@synthesize senderUid;
+@synthesize content;
+@synthesize sendTime;
+
 @end

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		110F560A19D55792003B9EB4 /* DBMessageGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 110F560919D55792003B9EB4 /* DBMessageGroup.m */; };
+		110F560B19D55792003B9EB4 /* DBMessageGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 110F560919D55792003B9EB4 /* DBMessageGroup.m */; };
 		110FCCA119ADF83C0087CBCB /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 110FCCA019ADF83A0087CBCB /* libsqlite3.dylib */; };
 		1120945A19B601EF0012D607 /* IMiPhoneTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 585971FC1999F0C700258CB1 /* IMiPhoneTests.m */; };
 		116AB14119B7315000092E2C /* PersistenceTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 116AB13F19B7315000092E2C /* PersistenceTest.m */; };
@@ -14,19 +16,19 @@
 		116AB14419B731C700092E2C /* SqlightAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 116B6E8F19B058A400DB1B5E /* SqlightAdapter.m */; };
 		116AB14519B731CB00092E2C /* SqlightDriver.m in Sources */ = {isa = PBXBuildFile; fileRef = 116B6E9119B058A400DB1B5E /* SqlightDriver.m */; };
 		116AB14619B731CF00092E2C /* SqlightResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 116B6E9319B058A400DB1B5E /* SqlightResult.m */; };
-		116AB14719B731D300092E2C /* GroupMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 116B6E7619AEF83500DB1B5E /* GroupMessage.m */; };
+		116AB14719B731D300092E2C /* DBMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 116B6E7619AEF83500DB1B5E /* DBMessage.m */; };
 		116AB14819B731D600092E2C /* DatabaseConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 116B6E7F19AF0F8C00DB1B5E /* DatabaseConfig.m */; };
 		116AB14919B731DA00092E2C /* BaseDAO.m in Sources */ = {isa = PBXBuildFile; fileRef = 116B6E8219AF1C7900DB1B5E /* BaseDAO.m */; };
-		116AB14A19B731DE00092E2C /* Group.m in Sources */ = {isa = PBXBuildFile; fileRef = 116B6E8819B0534000DB1B5E /* Group.m */; };
+		116AB14A19B731DE00092E2C /* DBGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 116B6E8819B0534000DB1B5E /* DBGroup.m */; };
 		116AB14B19B731E100092E2C /* GroupDAO.m in Sources */ = {isa = PBXBuildFile; fileRef = 116B6E8B19B0538300DB1B5E /* GroupDAO.m */; };
 		116AB14D19B733C400092E2C /* FriendDataProxyTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 116AB14C19B733C400092E2C /* FriendDataProxyTest.m */; };
 		116AB14E19B733E900092E2C /* FriendDataProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 58AF049719B056050077DCBC /* FriendDataProxy.m */; };
 		116AB15219BF19DA00092E2C /* ChatCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 116AB15119BF19DA00092E2C /* ChatCell.m */; };
-		116B6E7B19AEF83500DB1B5E /* GroupMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 116B6E7619AEF83500DB1B5E /* GroupMessage.m */; };
+		116B6E7B19AEF83500DB1B5E /* DBMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 116B6E7619AEF83500DB1B5E /* DBMessage.m */; };
 		116B6E7D19AEF83500DB1B5E /* imRms.m in Sources */ = {isa = PBXBuildFile; fileRef = 116B6E7A19AEF83500DB1B5E /* imRms.m */; };
 		116B6E8019AF0F8C00DB1B5E /* DatabaseConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 116B6E7F19AF0F8C00DB1B5E /* DatabaseConfig.m */; };
 		116B6E8319AF1C7900DB1B5E /* BaseDAO.m in Sources */ = {isa = PBXBuildFile; fileRef = 116B6E8219AF1C7900DB1B5E /* BaseDAO.m */; };
-		116B6E8919B0534000DB1B5E /* Group.m in Sources */ = {isa = PBXBuildFile; fileRef = 116B6E8819B0534000DB1B5E /* Group.m */; };
+		116B6E8919B0534000DB1B5E /* DBGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 116B6E8819B0534000DB1B5E /* DBGroup.m */; };
 		116B6E8C19B0538300DB1B5E /* GroupDAO.m in Sources */ = {isa = PBXBuildFile; fileRef = 116B6E8B19B0538300DB1B5E /* GroupDAO.m */; };
 		116B6E9519B058A400DB1B5E /* SqlightAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 116B6E8F19B058A400DB1B5E /* SqlightAdapter.m */; };
 		116B6E9619B058A400DB1B5E /* SqlightDriver.m in Sources */ = {isa = PBXBuildFile; fileRef = 116B6E9119B058A400DB1B5E /* SqlightDriver.m */; };
@@ -153,6 +155,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		110F560819D55792003B9EB4 /* DBMessageGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBMessageGroup.h; sourceTree = "<group>"; };
+		110F560919D55792003B9EB4 /* DBMessageGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBMessageGroup.m; sourceTree = "<group>"; };
 		110FCCA019ADF83A0087CBCB /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		116AB13E19B7315000092E2C /* IMiPhoneTests-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "IMiPhoneTests-Info.plist"; sourceTree = "<group>"; };
 		116AB13F19B7315000092E2C /* PersistenceTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersistenceTest.m; sourceTree = "<group>"; };
@@ -160,16 +164,16 @@
 		116AB14C19B733C400092E2C /* FriendDataProxyTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendDataProxyTest.m; sourceTree = "<group>"; };
 		116AB15019BF19DA00092E2C /* ChatCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatCell.h; sourceTree = "<group>"; };
 		116AB15119BF19DA00092E2C /* ChatCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatCell.m; sourceTree = "<group>"; };
-		116B6E7519AEF83500DB1B5E /* GroupMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupMessage.h; sourceTree = "<group>"; };
-		116B6E7619AEF83500DB1B5E /* GroupMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupMessage.m; sourceTree = "<group>"; };
+		116B6E7519AEF83500DB1B5E /* DBMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBMessage.h; sourceTree = "<group>"; };
+		116B6E7619AEF83500DB1B5E /* DBMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBMessage.m; sourceTree = "<group>"; };
 		116B6E7919AEF83500DB1B5E /* imRms.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = imRms.h; sourceTree = "<group>"; };
 		116B6E7A19AEF83500DB1B5E /* imRms.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = imRms.m; sourceTree = "<group>"; };
 		116B6E7E19AF0F8C00DB1B5E /* DatabaseConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatabaseConfig.h; sourceTree = "<group>"; };
 		116B6E7F19AF0F8C00DB1B5E /* DatabaseConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatabaseConfig.m; sourceTree = "<group>"; };
 		116B6E8119AF1C7900DB1B5E /* BaseDAO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseDAO.h; sourceTree = "<group>"; };
 		116B6E8219AF1C7900DB1B5E /* BaseDAO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseDAO.m; sourceTree = "<group>"; };
-		116B6E8719B0534000DB1B5E /* Group.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Group.h; sourceTree = "<group>"; };
-		116B6E8819B0534000DB1B5E /* Group.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Group.m; sourceTree = "<group>"; };
+		116B6E8719B0534000DB1B5E /* DBGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBGroup.h; sourceTree = "<group>"; };
+		116B6E8819B0534000DB1B5E /* DBGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBGroup.m; sourceTree = "<group>"; };
 		116B6E8A19B0538300DB1B5E /* GroupDAO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupDAO.h; sourceTree = "<group>"; };
 		116B6E8B19B0538300DB1B5E /* GroupDAO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupDAO.m; sourceTree = "<group>"; };
 		116B6E8E19B058A400DB1B5E /* SqlightAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SqlightAdapter.h; sourceTree = "<group>"; };
@@ -364,15 +368,17 @@
 		116B6E7419AEF83500DB1B5E /* Database */ = {
 			isa = PBXGroup;
 			children = (
+				110F560819D55792003B9EB4 /* DBMessageGroup.h */,
+				110F560919D55792003B9EB4 /* DBMessageGroup.m */,
 				116B6E8D19B058A400DB1B5E /* SQLight */,
-				116B6E7519AEF83500DB1B5E /* GroupMessage.h */,
-				116B6E7619AEF83500DB1B5E /* GroupMessage.m */,
+				116B6E7519AEF83500DB1B5E /* DBMessage.h */,
+				116B6E7619AEF83500DB1B5E /* DBMessage.m */,
 				116B6E7E19AF0F8C00DB1B5E /* DatabaseConfig.h */,
 				116B6E7F19AF0F8C00DB1B5E /* DatabaseConfig.m */,
 				116B6E8119AF1C7900DB1B5E /* BaseDAO.h */,
 				116B6E8219AF1C7900DB1B5E /* BaseDAO.m */,
-				116B6E8719B0534000DB1B5E /* Group.h */,
-				116B6E8819B0534000DB1B5E /* Group.m */,
+				116B6E8719B0534000DB1B5E /* DBGroup.h */,
+				116B6E8819B0534000DB1B5E /* DBGroup.m */,
 				116B6E8A19B0538300DB1B5E /* GroupDAO.h */,
 				116B6E8B19B0538300DB1B5E /* GroupDAO.m */,
 			);
@@ -773,9 +779,10 @@
 				58BACF0919B5805800A72391 /* crypt.c in Sources */,
 				58BACF0819B5804700A72391 /* FriendMessageProxy.m in Sources */,
 				58BACF0719B5803F00A72391 /* FriendDataProxy.m in Sources */,
+				110F560A19D55792003B9EB4 /* DBMessageGroup.m in Sources */,
 				58C14DD219C80D67009334E1 /* ContactViewController.m in Sources */,
 				58C14DEA19CAD70F009334E1 /* AddByInputTableViewCell.m in Sources */,
-				116B6E8919B0534000DB1B5E /* Group.m in Sources */,
+				116B6E8919B0534000DB1B5E /* DBGroup.m in Sources */,
 				585971E21999F0C700258CB1 /* imAppDelegate.m in Sources */,
 				58F2AA3419A2F85400DC2FFB /* imUtil.m in Sources */,
 				58D95F5119A5ECA4007139AB /* UserMessageProxy.m in Sources */,
@@ -790,7 +797,7 @@
 				11795E2819D297CD003FD9A7 /* DPFriend.m in Sources */,
 				116BF87719C96F8F0015561B /* UserDataProxy.m in Sources */,
 				58EF8C3F19BEEE1600C5A7AC /* AccountMessageProxy.m in Sources */,
-				116B6E7B19AEF83500DB1B5E /* GroupMessage.m in Sources */,
+				116B6E7B19AEF83500DB1B5E /* DBMessage.m in Sources */,
 				58B496F419A71AFB0082AE30 /* imNWHttpConnect.m in Sources */,
 				58B496E419A7186A0082AE30 /* UIImageView+MKNetworkKitAdditions.m in Sources */,
 				58B496D819A7186A0082AE30 /* NSAlert+MKNetworkKitAdditions.m in Sources */,
@@ -869,12 +876,13 @@
 				58BC1E5119C06B9000722A00 /* imNWSocketConnect.m in Sources */,
 				58BC1E5219C06B9000722A00 /* imNWMessage.m in Sources */,
 				58C14DE719CAB631009334E1 /* AddTableViewController.m in Sources */,
+				110F560B19D55792003B9EB4 /* DBMessageGroup.m in Sources */,
 				58BC1E5319C06B9000722A00 /* imNWHttpConnect.m in Sources */,
 				58BC1E5419C06B9000722A00 /* VPImageCropperViewController.m in Sources */,
 				58BC1E5519C06B9000722A00 /* imUtil.m in Sources */,
 				58BC1E5619C06B9000722A00 /* imPhotoPicker.m in Sources */,
 				116AB14E19B733E900092E2C /* FriendDataProxy.m in Sources */,
-				116AB14A19B731DE00092E2C /* Group.m in Sources */,
+				116AB14A19B731DE00092E2C /* DBGroup.m in Sources */,
 				116AB14619B731CF00092E2C /* SqlightResult.m in Sources */,
 				58BC1E3819C0304900722A00 /* RegStep1ViewController.m in Sources */,
 				5887FD2A19CC00EF001BFAFB /* TPContactsTableViewController.m in Sources */,
@@ -900,7 +908,7 @@
 				116AB14B19B731E100092E2C /* GroupDAO.m in Sources */,
 				58EF8C4619BF04B600C5A7AC /* imNetWorkTest.m in Sources */,
 				58EF8C4019BEEE1600C5A7AC /* AccountMessageProxy.m in Sources */,
-				116AB14719B731D300092E2C /* GroupMessage.m in Sources */,
+				116AB14719B731D300092E2C /* DBMessage.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

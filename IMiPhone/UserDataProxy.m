@@ -33,6 +33,8 @@
 @synthesize uid = _uid;
 @synthesize password = _password;
 
+@synthesize arrSearchUserResult;
+
 static UserDataProxy *sharedProxy = nil;
 + (UserDataProxy *)sharedProxy
 {

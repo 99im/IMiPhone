@@ -6,12 +6,13 @@
 //  Copyright (c) 2014年 尹晓君. All rights reserved.
 //
 
-#import "Group.h"
+#import "DBGroup.h"
 
-@implementation Group
-//@synthesize test;
-@synthesize group_id;
-@synthesize group_name;
+@implementation DBGroup
+
+@synthesize groupId;
+@synthesize groupName;
 @synthesize members;
+@synthesize portraitUrl;
 
 @end
