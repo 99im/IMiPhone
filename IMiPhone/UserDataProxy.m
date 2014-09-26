@@ -30,7 +30,6 @@
 @synthesize mobcode = _mobcode;
 @synthesize mobCountry = _mobCountry;
 @synthesize mobile = _mobile;
-@synthesize uid = _uid;
 @synthesize password = _password;
 
 static UserDataProxy *sharedProxy = nil;
@@ -60,7 +59,6 @@ static UserDataProxy *sharedProxy = nil;
 - (void)setLastLoginCountry:(NSString *)lastLoginCountry
 {
     _lastLoginCountry = lastLoginCountry;
-    [DatabaseConfig shareDatabaseConfig].databaseName = _lastLoginCountry;
     [imRms userDefaultsWrite:KEY_USER_LAST_LOGIN_COUNTRY withStringValue:_lastLoginCountry];
 }
 
@@ -72,7 +70,6 @@ static UserDataProxy *sharedProxy = nil;
 - (void)setLastLoginMobile:(NSString *)lastLoginMobile
 {
     _lastLoginMobile = lastLoginMobile;
-    [DatabaseConfig shareDatabaseConfig].databaseName = _lastLoginMobile;
     [imRms userDefaultsWrite:KEY_USER_LAST_LOGIN_MOBILE withStringValue:_lastLoginMobile];
 }
 
@@ -84,8 +81,6 @@ static UserDataProxy *sharedProxy = nil;
 - (void)setLastLoginOid:(NSString *)lastLoginOid
 {
     _lastLoginOid = lastLoginOid;
-    [DatabaseConfig shareDatabaseConfig].databaseName = _lastLoginOid;
-    [self initUserFromRms];
     [imRms userDefaultsWrite:KEY_USER_LAST_LOGIN_OID withStringValue:_lastLoginOid];
 }
 

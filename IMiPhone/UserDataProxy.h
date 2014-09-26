@@ -17,7 +17,6 @@
 @property (nonatomic, getter=getLastLoginUid, setter=setLastLoginUid:) NSInteger lastLoginUid;
 @property (nonatomic, retain, getter=getVerify, setter=setVerify:) NSString *verify;
 @property (nonatomic, retain) DPUser *user;
-@property (nonatomic) NSUInteger uid;
 @property (nonatomic, retain) NSString *mobcode;
 @property (nonatomic, retain) NSString *mobCountry;
 @property (nonatomic, retain) NSString *mobile;

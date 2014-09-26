@@ -44,6 +44,8 @@
 		11795E2819D297CD003FD9A7 /* DPFriend.m in Sources */ = {isa = PBXBuildFile; fileRef = 11795E2719D297CD003FD9A7 /* DPFriend.m */; };
 		11795E2919D297CD003FD9A7 /* DPFriend.m in Sources */ = {isa = PBXBuildFile; fileRef = 11795E2719D297CD003FD9A7 /* DPFriend.m */; };
 		11DF9F8319A2276C00AE5D89 /* splash.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 11DF9F8519A2276C00AE5D89 /* splash.jpg */; };
+		58438C0D19D412E400B6962B /* NearbyTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58438C0C19D412E400B6962B /* NearbyTableViewController.m */; };
+		58438C1119D420C800B6962B /* SystemTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58438C1019D420C800B6962B /* SystemTableViewController.m */; };
 		585971D21999F0C700258CB1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 585971D11999F0C700258CB1 /* Foundation.framework */; };
 		585971D41999F0C700258CB1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 585971D31999F0C700258CB1 /* CoreGraphics.framework */; };
 		585971D61999F0C700258CB1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 585971D51999F0C700258CB1 /* UIKit.framework */; };
@@ -90,8 +92,6 @@
 		58BC1E3819C0304900722A00 /* RegStep1ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58BC1E2E19C0304900722A00 /* RegStep1ViewController.m */; };
 		58BC1E3919C0304900722A00 /* RegStep2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58BC1E3019C0304900722A00 /* RegStep2ViewController.m */; };
 		58BC1E3A19C0304900722A00 /* RegStep2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58BC1E3019C0304900722A00 /* RegStep2ViewController.m */; };
-		58BC1E3B19C0304900722A00 /* SystemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58BC1E3219C0304900722A00 /* SystemViewController.m */; };
-		58BC1E3C19C0304900722A00 /* SystemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58BC1E3219C0304900722A00 /* SystemViewController.m */; };
 		58BC1E3E19C06B9000722A00 /* ChatTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A5B4FB19ADC3CA0007C2F3 /* ChatTableViewController.m */; };
 		58BC1E3F19C06B9000722A00 /* ChatCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 116AB15119BF19DA00092E2C /* ChatCell.m */; };
 		58BC1E4019C06B9000722A00 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5859721719A1DEE500258CB1 /* LoginViewController.m */; };
@@ -193,6 +193,10 @@
 		11795E2719D297CD003FD9A7 /* DPFriend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPFriend.m; sourceTree = "<group>"; };
 		11DF9F8419A2276C00AE5D89 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "zh-Hans"; path = "zh-Hans.lproj/splash.jpg"; sourceTree = "<group>"; };
 		582011F519C2C2E300D48658 /* MessageDefine.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageDefine.pch; sourceTree = "<group>"; };
+		58438C0B19D412E400B6962B /* NearbyTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NearbyTableViewController.h; sourceTree = "<group>"; };
+		58438C0C19D412E400B6962B /* NearbyTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NearbyTableViewController.m; sourceTree = "<group>"; };
+		58438C0F19D420C800B6962B /* SystemTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SystemTableViewController.h; sourceTree = "<group>"; };
+		58438C1019D420C800B6962B /* SystemTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SystemTableViewController.m; sourceTree = "<group>"; };
 		585971CE1999F0C700258CB1 /* IMiPhone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IMiPhone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		585971D11999F0C700258CB1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		585971D31999F0C700258CB1 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -267,8 +271,6 @@
 		58BC1E2E19C0304900722A00 /* RegStep1ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RegStep1ViewController.m; path = IMiPhone/RegStep1ViewController.m; sourceTree = "<group>"; };
 		58BC1E2F19C0304900722A00 /* RegStep2ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RegStep2ViewController.h; path = IMiPhone/RegStep2ViewController.h; sourceTree = "<group>"; };
 		58BC1E3019C0304900722A00 /* RegStep2ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RegStep2ViewController.m; path = IMiPhone/RegStep2ViewController.m; sourceTree = "<group>"; };
-		58BC1E3119C0304900722A00 /* SystemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SystemViewController.h; sourceTree = "<group>"; };
-		58BC1E3219C0304900722A00 /* SystemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SystemViewController.m; sourceTree = "<group>"; };
 		58C14DD019C80D67009334E1 /* ContactViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactViewController.h; sourceTree = "<group>"; };
 		58C14DD119C80D67009334E1 /* ContactViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactViewController.m; sourceTree = "<group>"; };
 		58C14DD419C81447009334E1 /* FriendsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendsViewController.h; sourceTree = "<group>"; };
@@ -393,6 +395,25 @@
 			path = SQLight;
 			sourceTree = "<group>";
 		};
+		58438C0A19D412C400B6962B /* Nearby */ = {
+			isa = PBXGroup;
+			children = (
+				58438C0B19D412E400B6962B /* NearbyTableViewController.h */,
+				58438C0C19D412E400B6962B /* NearbyTableViewController.m */,
+			);
+			name = Nearby;
+			sourceTree = "<group>";
+		};
+		58438C0E19D41DDD00B6962B /* System */ = {
+			isa = PBXGroup;
+			children = (
+				58438C0F19D420C800B6962B /* SystemTableViewController.h */,
+				58438C1019D420C800B6962B /* SystemTableViewController.m */,
+			);
+			name = System;
+			path = ..;
+			sourceTree = "<group>";
+		};
 		585971C51999F0C700258CB1 = {
 			isa = PBXGroup;
 			children = (
@@ -432,10 +453,12 @@
 		585971D71999F0C700258CB1 /* IMiPhone */ = {
 			isa = PBXGroup;
 			children = (
+				58438C0A19D412C400B6962B /* Nearby */,
 				58A9133C19D2BC4E008E5A25 /* User */,
 				58C14DCF19C80D40009334E1 /* Contact */,
 				58BC1E3D19C0304E00722A00 /* Account */,
 				116AB14F19BF194E00092E2C /* Chat */,
+				58438C0E19D41DDD00B6962B /* System */,
 				116B6E7319AEF83500DB1B5E /* Persistence */,
 				585971E31999F0C700258CB1 /* Main.storyboard */,
 				585971E01999F0C700258CB1 /* imAppDelegate.h */,
@@ -444,8 +467,6 @@
 				585971E71999F0C700258CB1 /* imViewController.m */,
 				58A5B4F619ADC05F0007C2F3 /* MainTabBarController.h */,
 				58A5B4F719ADC05F0007C2F3 /* MainTabBarController.m */,
-				58BC1E3119C0304900722A00 /* SystemViewController.h */,
-				58BC1E3219C0304900722A00 /* SystemViewController.m */,
 				58AF049419B053930077DCBC /* DataProxy */,
 				58D95F4E19A5EB7F007139AB /* MessageProxy */,
 				58F2AA3619A4876900DC2FFB /* Network */,
@@ -788,6 +809,7 @@
 				58D95F4C19A5E2E7007139AB /* imNWMessage.m in Sources */,
 				116B6E9719B058A400DB1B5E /* SqlightResult.m in Sources */,
 				11795E2819D297CD003FD9A7 /* DPFriend.m in Sources */,
+				58438C1119D420C800B6962B /* SystemTableViewController.m in Sources */,
 				116BF87719C96F8F0015561B /* UserDataProxy.m in Sources */,
 				58EF8C3F19BEEE1600C5A7AC /* AccountMessageProxy.m in Sources */,
 				116B6E7B19AEF83500DB1B5E /* GroupMessage.m in Sources */,
@@ -816,6 +838,7 @@
 				58D95F4819A5BDF4007139AB /* GCDAsyncSocket.m in Sources */,
 				58B496E619A7186A0082AE30 /* MKNetworkEngine.m in Sources */,
 				116B6E8019AF0F8C00DB1B5E /* DatabaseConfig.m in Sources */,
+				58438C0D19D412E400B6962B /* NearbyTableViewController.m in Sources */,
 				5859721819A1DEE500258CB1 /* LoginViewController.m in Sources */,
 				58C14DE619CAB631009334E1 /* AddTableViewController.m in Sources */,
 				58BC1E3919C0304900722A00 /* RegStep2ViewController.m in Sources */,
@@ -824,7 +847,6 @@
 				116BF87F19C981AD0015561B /* DPUser.m in Sources */,
 				58D026C419D17D4800BE4748 /* NSNumber+IMNWError.m in Sources */,
 				58F2AA3919A487E300DC2FFB /* AsyncSocket.m in Sources */,
-				58BC1E3B19C0304900722A00 /* SystemViewController.m in Sources */,
 				58A9134019D2BDBA008E5A25 /* UserShowViewController.m in Sources */,
 				58BC1E3319C0304900722A00 /* RegInfoViewController.m in Sources */,
 				58C14DDE19C82594009334E1 /* GroupViewController.m in Sources */,
@@ -893,7 +915,6 @@
 				116AB14819B731D600092E2C /* DatabaseConfig.m in Sources */,
 				116BF87419C81E680015561B /* AudioRecordManager.m in Sources */,
 				116AB14919B731DA00092E2C /* BaseDAO.m in Sources */,
-				58BC1E3C19C0304900722A00 /* SystemViewController.m in Sources */,
 				116AB14119B7315000092E2C /* PersistenceTest.m in Sources */,
 				116AB14519B731CB00092E2C /* SqlightDriver.m in Sources */,
 				116AB14419B731C700092E2C /* SqlightAdapter.m in Sources */,

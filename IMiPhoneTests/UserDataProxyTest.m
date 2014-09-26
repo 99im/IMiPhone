@@ -46,15 +46,15 @@
 - (void)testInitUserFromDB
 {
     [[UserDataProxy sharedProxy] initUserFromRms];
-    NSLog(@"user:%@",[UserDataProxy sharedProxy].user.uid);
+    NSLog(@"user:%d",[UserDataProxy sharedProxy].user.uid);
 }
 - (void)testUpdateUser
 {
     [[UserDataProxy sharedProxy] initUserFromRms];
     DPUser *user = [UserDataProxy sharedProxy].user;
-    user.nickName = @"昵称";
+    user.nick = @"昵称";
     user.gender = 0;
     [[UserDataProxy sharedProxy] updateUser:user];
-    NSLog(@"user:%@",[UserDataProxy sharedProxy].user.nickName);
+    NSLog(@"user:%@",[UserDataProxy sharedProxy].user.nick);
 }
 @end
