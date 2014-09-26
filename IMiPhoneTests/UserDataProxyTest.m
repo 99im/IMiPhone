@@ -46,7 +46,7 @@
 - (void)testInitUserFromDB
 {
     [[UserDataProxy sharedProxy] initUserFromRms];
-    NSLog(@"user:%@",[UserDataProxy sharedProxy].user.uid);
+    NSLog(@"user:%d",[UserDataProxy sharedProxy].user.uid);
 }
 - (void)testUpdateUser
 {

@@ -80,7 +80,6 @@ static AccountMessageProxy *sharedAccountMessageProxy = nil;
             int errorcode = [[json objectForKey:KEYP__ACCOUNT_MOBCODE__ERROR_CODE] intValue];
             if (errorcode == 0) {
                 NSInteger uid = [[json objectForKey:KEYP__ACCOUNT_REGISTER__UID] integerValue];
-                [UserDataProxy sharedProxy].uid = uid;
                 [UserDataProxy sharedProxy].lastLoginCountry = [UserDataProxy sharedProxy].mobile;
                 [UserDataProxy sharedProxy].lastLoginMobile = [UserDataProxy sharedProxy].mobCountry;
                 [UserDataProxy sharedProxy].lastLoginUid = uid;
@@ -114,7 +113,6 @@ static AccountMessageProxy *sharedAccountMessageProxy = nil;
             if (errorcode == 0) {
                 NSInteger uid = [[json objectForKey:KEYP__ACCOUNT_LOGIN__UID] integerValue];
                 NSString *verify = [json objectForKey:KEYP__ACCOUNT_LOGIN__VERIFY];
-                [UserDataProxy sharedProxy].uid = uid;
                 [UserDataProxy sharedProxy].verify = verify;
                 [UserDataProxy sharedProxy].lastLoginUid = uid;
                 [[NSNotificationCenter defaultCenter] postNotificationName:NOTI__ACCOUNT_LOGIN_ object:nil];

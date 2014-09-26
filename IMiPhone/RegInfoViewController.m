@@ -84,7 +84,7 @@
     [super viewWillDisappear:animated];
 }
 
-- (IBAction)btnBirthdayOnClick:(id)sender {
+- (IBAction)btnBirthdayTouchUpInside:(id)sender {
     [imUtil clearFirstResponder];
     if(self.pickBirthday.hidden == YES)
     {

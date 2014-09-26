@@ -22,7 +22,7 @@
 @property (weak, nonatomic) IBOutlet UITextView *tvSignature;
 @property (weak, nonatomic) IBOutlet UIDatePicker *pickBirthday;
 
-- (IBAction)btnBirthdayOnClick:(id)sender;
+- (IBAction)btnBirthdayTouchUpInside:(id)sender;
 - (IBAction)doneSelector:(id)sender;
 - (IBAction)ctlSexValueChanged:(id)sender;
 
