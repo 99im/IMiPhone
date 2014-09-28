@@ -48,9 +48,7 @@ static UserDataProxy *sharedProxy = nil;
 {
     if((self = [super init]))
     {
-        if (self.verify == nil) {
-             self.verify = @"";
-        }
+        _lastLoginUid = NAN;
     }
     return self;
 }
@@ -125,17 +123,17 @@ static UserDataProxy *sharedProxy = nil;
 - (void)initUserFromRms
 {
     NSDictionary *userInfoDic = (NSDictionary *)[imRms userDefaultsReadObject:KEY_USER_INFO_PRE isBindUid:YES];
-  if(_user == nil)
+    if(_user == nil)
       _user = [[DPUser alloc] init];
-  if(userInfoDic == nil)
-   {
+    if(userInfoDic == nil)
+    {
        _user.uid = _lastLoginUid;
        [imRms userDefaultsWrite:KEY_USER_INFO_PRE withObjectValue:[DataUtil getDicFromNormalClass:_user] isBindUid:YES];
-   }
-   else
-   {
+    }
+    else
+    {
        [DataUtil updateObject:_user by:userInfoDic];
-   }
+    }
 }
 - (void)updateUser:(DPUser *)userInfo
 {

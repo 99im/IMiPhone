@@ -23,7 +23,8 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    self.cellMyInfo.textLabel.text = @"test";
+    self.cellMyInfo.textLabel.text = [UserDataProxy sharedProxy].user.nick;
+    self.cellMyInfo.detailTextLabel.text = [UserDataProxy sharedProxy].user.oid;
 }
 
 - (void)didReceiveMemoryWarning {

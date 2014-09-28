@@ -11,9 +11,9 @@
 
 @interface DataUtil : NSObject
 
-+ (NSDictionary *) getDicFromNormalClass:(id) classInstance;
++ (NSDictionary *)getDicFromNormalClass:(id)classInstance;
 
-+ (NSArray *)getArrPropsFromDataModeClass:(Class) cls;
++ (NSArray *)getArrPropsFromDataModeClass:(Class)cls;
 
 + (void)updateObject:(NSObject *)obj by:(NSDictionary *)dataDic;
 

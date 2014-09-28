@@ -13,6 +13,6 @@
 @property (nonatomic, retain) NSMutableArray *arrMessages;
 @property (nonatomic, retain) NSMutableArray *arrMessageGroups;
 
-+ (MessageDataProxy*)sharedProxy;
++ (MessageDataProxy *)sharedProxy;
 
 @end
