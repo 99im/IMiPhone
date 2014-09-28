@@ -120,18 +120,20 @@ static UserDataProxy *sharedProxy = nil;
 
 - (DPUser *)getUser
 {
-    NSDictionary *userInfoDic = (NSDictionary *)[imRms userDefaultsReadObject:KEY_USER_INFO_PRE isBindUid:YES];
-    if(_user == nil)
-      _user = [[DPUser alloc] init];
-    if(userInfoDic == nil)
-    {
-       _user.uid = _lastLoginUid;
-       [imRms userDefaultsWrite:KEY_USER_INFO_PRE withObjectValue:[DataUtil getDicFromNormalClass:_user] isBindUid:YES];
+    if (_user == nil) {
+        _user = [[DPUser alloc] init];
+        NSDictionary *userInfoDic = (NSDictionary *)[imRms userDefaultsReadObject:KEY_USER_INFO_PRE isBindUid:YES];
+        if (userInfoDic == nil)
+        {
+            _user.uid = _lastLoginUid;
+            [imRms userDefaultsWrite:KEY_USER_INFO_PRE withObjectValue:[DataUtil getDicFromNormalClass:_user] isBindUid:YES];
+        }
+        else
+        {
+            [DataUtil updateObject:_user by:userInfoDic];
+        }
     }
-    else
-    {
-       [DataUtil updateObject:_user by:userInfoDic];
-    }
+    return _user;
 }
 - (void)setUser:(DPUser *)userInfo
 {
