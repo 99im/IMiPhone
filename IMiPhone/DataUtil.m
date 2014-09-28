@@ -54,11 +54,12 @@
 }
 + (void)updateObject:(NSObject *)obj by:(NSDictionary *)dataDic
 {
-    for (NSString *key in [dataDic allKeys]) {
-        if([obj validateValue:nil forKey:key error:nil])
-        {
-            [obj setValue:[dataDic valueForKey:key] forKey:key];
-        }
-    }
+    [obj setValuesForKeysWithDictionary:dataDic];
+//    for (NSString *key in [dataDic allKeys]) {
+//        if([obj validateValue:nil forKey:key error:nil])
+//        {
+//            [obj setValue:[dataDic valueForKey:key] forKey:key];
+//        }
+//    }
 }
 @end

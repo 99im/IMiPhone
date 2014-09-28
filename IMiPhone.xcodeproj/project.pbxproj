@@ -11,6 +11,7 @@
 		110487A319D79DFB0002AB36 /* MessageDAO.m in Sources */ = {isa = PBXBuildFile; fileRef = 110487A119D79DFB0002AB36 /* MessageDAO.m */; };
 		110487A619D7A35C0002AB36 /* MessageGroupDAO.m in Sources */ = {isa = PBXBuildFile; fileRef = 110487A519D7A35C0002AB36 /* MessageGroupDAO.m */; };
 		110487A719D7A35C0002AB36 /* MessageGroupDAO.m in Sources */ = {isa = PBXBuildFile; fileRef = 110487A519D7A35C0002AB36 /* MessageGroupDAO.m */; };
+		110487A919D7DA560002AB36 /* OSTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 110487A819D7DA560002AB36 /* OSTest.m */; };
 		110F560A19D55792003B9EB4 /* DBMessageGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 110F560919D55792003B9EB4 /* DBMessageGroup.m */; };
 		110F560B19D55792003B9EB4 /* DBMessageGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 110F560919D55792003B9EB4 /* DBMessageGroup.m */; };
 		110F560E19D56A9E003B9EB4 /* MessageDataProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 110F560D19D56A9E003B9EB4 /* MessageDataProxy.m */; };
@@ -171,6 +172,7 @@
 		110487A119D79DFB0002AB36 /* MessageDAO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageDAO.m; sourceTree = "<group>"; };
 		110487A419D7A35C0002AB36 /* MessageGroupDAO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageGroupDAO.h; sourceTree = "<group>"; };
 		110487A519D7A35C0002AB36 /* MessageGroupDAO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageGroupDAO.m; sourceTree = "<group>"; };
+		110487A819D7DA560002AB36 /* OSTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSTest.m; sourceTree = "<group>"; };
 		110F560819D55792003B9EB4 /* DBMessageGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBMessageGroup.h; sourceTree = "<group>"; };
 		110F560919D55792003B9EB4 /* DBMessageGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBMessageGroup.m; sourceTree = "<group>"; };
 		110F560C19D56A9E003B9EB4 /* MessageDataProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageDataProxy.h; sourceTree = "<group>"; };
@@ -530,6 +532,7 @@
 			isa = PBXGroup;
 			children = (
 				116BF88119CC01C70015561B /* UserDataProxyTest.m */,
+				110487A819D7DA560002AB36 /* OSTest.m */,
 				116BF87219C81E3F0015561B /* AudioRecordTest.m */,
 				116AB13F19B7315000092E2C /* PersistenceTest.m */,
 				585971FC1999F0C700258CB1 /* IMiPhoneTests.m */,
@@ -968,6 +971,7 @@
 				58C14DDF19C82594009334E1 /* GroupViewController.m in Sources */,
 				58BC1E3A19C0304900722A00 /* RegStep2ViewController.m in Sources */,
 				116AB14819B731D600092E2C /* DatabaseConfig.m in Sources */,
+				110487A919D7DA560002AB36 /* OSTest.m in Sources */,
 				116BF87419C81E680015561B /* AudioRecordManager.m in Sources */,
 				116AB14919B731DA00092E2C /* BaseDAO.m in Sources */,
 				110F560F19D56A9E003B9EB4 /* MessageDataProxy.m in Sources */,

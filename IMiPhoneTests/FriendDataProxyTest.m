@@ -26,9 +26,9 @@
     [super setUp];
     // Put setup code here. This method is called before the invocation of each test method in the class.
     self.arrTest = [[NSMutableArray alloc] initWithObjects:[[DBGroup alloc] init],@"b",nil];
-    self setValuesForKeysWithDictionary:<#(NSDictionary *)#>
-    self
-    [self.arrTest addObserver:self forKeyPath:<#(NSString *)#> options:<#(NSKeyValueObservingOptions)#> context:<#(void *)#>]
+//    self setValuesForKeysWithDictionary:<#(NSDictionary *)#>
+//    self
+//    [self.arrTest addObserver:self forKeyPath:<#(NSString *)#> options:<#(NSKeyValueObservingOptions)#> context:<#(void *)#>]
 }
 
 - (void)tearDown
