@@ -18,7 +18,6 @@
 #define KEY_USER_VERIFY @"key_user_verify"
 #define KEY_USER_INFO_PRE @"key_user_info_"
 
-
 @implementation UserDataProxy
 
 @synthesize lastLoginCountry = _lastLoginCountry;
@@ -106,7 +105,6 @@ static UserDataProxy *sharedProxy = nil;
     [DatabaseConfig shareDatabaseConfig].databaseName = [NSString stringWithFormat:@"%d", _lastLoginUid];
     [imRms setUid:_lastLoginUid];
     [imRms userDefaultsWrite:KEY_USER_LAST_LOGIN_UID withStringValue:[NSString stringWithFormat:@"%d", _lastLoginUid] isBindUid:NO];
-    [self initUserFromRms];
 }
 
 - (NSString *)getVerify
@@ -122,22 +120,24 @@ static UserDataProxy *sharedProxy = nil;
     [imRms userDefaultsWrite:KEY_USER_VERIFY withStringValue:_verify isBindUid:NO];
 }
 
-- (void)initUserFromRms
+- (DPUser *)getUser
 {
-    NSDictionary *userInfoDic = (NSDictionary *)[imRms userDefaultsReadObject:KEY_USER_INFO_PRE isBindUid:YES];
-  if(_user == nil)
-      _user = [[DPUser alloc] init];
-  if(userInfoDic == nil)
-   {
-       _user.uid = _lastLoginUid;
-       [imRms userDefaultsWrite:KEY_USER_INFO_PRE withObjectValue:[DataUtil getDicFromNormalClass:_user] isBindUid:YES];
-   }
-   else
-   {
-       [DataUtil updateObject:_user by:userInfoDic];
-   }
+    if (_user == nil) {
+        _user = [[DPUser alloc] init];
+        NSDictionary *userInfoDic = (NSDictionary *)[imRms userDefaultsReadObject:KEY_USER_INFO_PRE isBindUid:YES];
+        if (userInfoDic == nil)
+        {
+            _user.uid = _lastLoginUid;
+            [imRms userDefaultsWrite:KEY_USER_INFO_PRE withObjectValue:[DataUtil getDicFromNormalClass:_user] isBindUid:YES];
+        }
+        else
+        {
+            [DataUtil updateObject:_user by:userInfoDic];
+        }
+    }
+    return _user;
 }
-- (void)updateUser:(DPUser *)userInfo
+- (void)setUser:(DPUser *)userInfo
 {
     _user = userInfo;
     NSDictionary *userInfoDic = [DataUtil getDicFromNormalClass:_user];

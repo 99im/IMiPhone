@@ -75,7 +75,7 @@
 - (void)testKeyValue
 {
     DBGroup *g = [[DBGroup alloc] init];
-    g.group_name = @"桌球小组";
+    g.groupName = @"桌球小组";
     NSLog(@"group_id:%@",[g valueForKey:@"group_id"]);
     //      [g setValue:@"undi" forKey:@"un" ];
     //    NSLog(@"undefine_id:%@",[g valueForKey:@"un"]);
@@ -91,13 +91,13 @@
     BaseDAO *dao = [GroupDAO sharedDAO];
     
     DBGroup *g = [[DBGroup alloc]init];
-    g.group_id = 10;
-    g.group_name = @"桌球小组";
+    g.groupId = 10;
+    g.groupName = @"桌球小组";
     g.members = @"tree";
     [dao insert:g];
     
-    g.group_id = 5;
-    g.group_name = @"小组2";
+    g.groupId = 5;
+    g.groupName = @"小组2";
     g.members = @"tree,river";
     int result = [dao insert:g];
 
@@ -118,7 +118,7 @@
     if (arrResult && arrResult.count > 0) {
         for (int i = 0; i < arrResult.count; i++) {
             DBGroup *tempG = arrResult[i];
-            NSLog(@"query group_id:%d,group_name:%@,members:%@",tempG.group_id,tempG.group_name,tempG.members);
+            NSLog(@"query group_id:%d,group_name:%@,members:%@",tempG.groupId,tempG.groupName,tempG.members);
         }
     }
     
@@ -148,8 +148,8 @@
 //    id obj = [imRms userDefaultsReadObject:@"aa"];
 //    NSLog(@"group_name:%@",[obj valueForKey:@"group_name"]);
     
-    NSString *keys = @"aaa";
-    [imRms userDefaultsWrite:keys, withBoolValue:"", isBindUid:YES];
+    NSString *keys = @"bb";
+    [imRms userDefaultsWrite:keys withBoolValue:NO isBindUid:YES];
     NSLog(keys);
 }
 

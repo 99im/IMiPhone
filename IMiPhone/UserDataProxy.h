@@ -20,7 +20,7 @@
 @property (nonatomic, retain, getter=getLastLoginOid, setter=setLastLoginOid:) NSString *lastLoginOid;
 @property (nonatomic, getter=getLastLoginUid, setter=setLastLoginUid:) NSInteger lastLoginUid;
 @property (nonatomic, retain, getter=getVerify, setter=setVerify:) NSString *verify;
-@property (nonatomic, retain) DPUser *user;
+@property (nonatomic, retain, getter=getUser, setter=setUser:) DPUser *user;
 @property (nonatomic, retain) NSString *mobcode;
 @property (nonatomic, retain) NSString *mobCountry;
 @property (nonatomic, retain) NSString *mobile;
@@ -30,7 +30,7 @@
 
 + (UserDataProxy *)sharedProxy;
 
-- (void)initUserFromRms;
-- (void)updateUser:(DPUser *)userInfo;
+//- (void)initUserFromRms;
+//- (void)updateUser:(DPUser *)userInfo;
 
 @end
