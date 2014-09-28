@@ -48,14 +48,17 @@ static UserDataProxy *sharedProxy = nil;
 {
     if((self = [super init]))
     {
-        self.verify = @"";
+        if (self.verify == nil) {
+             self.verify = @"";
+        }
     }
     return self;
 }
 
 - (NSString *)getLastLoginCountry
 {
-    _lastLoginCountry = [imRms userDefaultsReadString:KEY_USER_LAST_LOGIN_COUNTRY];
+    if (_lastLoginCountry == nil)
+        _lastLoginCountry = [imRms userDefaultsReadString:KEY_USER_LAST_LOGIN_COUNTRY];
     return _lastLoginCountry;
 }
 - (void)setLastLoginCountry:(NSString *)lastLoginCountry
@@ -66,7 +69,10 @@ static UserDataProxy *sharedProxy = nil;
 
 - (NSString *)getLastLoginMobile
 {
-    _lastLoginMobile = [imRms userDefaultsReadString:KEY_USER_LAST_LOGIN_MOBILE];
+    if (_lastLoginMobile == nil) {
+        _lastLoginMobile = [imRms userDefaultsReadString:KEY_USER_LAST_LOGIN_MOBILE];
+    }
+
     return _lastLoginMobile;
 }
 - (void)setLastLoginMobile:(NSString *)lastLoginMobile
@@ -77,7 +83,9 @@ static UserDataProxy *sharedProxy = nil;
 
 - (NSString *)getLastLoginOid
 {
-    _lastLoginOid = [imRms userDefaultsReadString:KEY_USER_LAST_LOGIN_OID];
+    if (_lastLoginOid == nil) {
+        _lastLoginOid = [imRms userDefaultsReadString:KEY_USER_LAST_LOGIN_OID];
+    }
     return _lastLoginOid;
 }
 - (void)setLastLoginOid:(NSString *)lastLoginOid
@@ -88,7 +96,8 @@ static UserDataProxy *sharedProxy = nil;
 
 - (NSInteger)getLastLoginUid
 {
-    _lastLoginUid = [imRms userDefaultsReadInt:KEY_USER_LAST_LOGIN_UID];
+    if (_lastLoginUid == 0)
+        _lastLoginUid = [imRms userDefaultsReadInt:KEY_USER_LAST_LOGIN_UID];
     return _lastLoginUid;
 }
 - (void)setLastLoginUid:(NSInteger)lastLoginUid
@@ -101,7 +110,9 @@ static UserDataProxy *sharedProxy = nil;
 
 - (NSString *)getVerify
 {
-    _verify = [imRms userDefaultsReadString:KEY_USER_VERIFY];
+    if (_verify == nil) {
+        _verify = [imRms userDefaultsReadString:KEY_USER_VERIFY];
+    }
     return _verify;
 }
 - (void)setVerify:(NSString *)value

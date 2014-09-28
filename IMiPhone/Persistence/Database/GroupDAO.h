@@ -10,5 +10,7 @@
 #import "DBGroup.h"
 
 @interface GroupDAO : BaseDAO
+
 + (GroupDAO*)sharedDAO;
+
 @end

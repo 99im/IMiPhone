@@ -23,7 +23,7 @@
 
                       sharedGroupDAO = [[self alloc] init];
                       NSString *tableName = @"tb_group";
-                      NSString *primaryKey = @"group_id";
+                      NSString *primaryKey = @"groupId";
                       [sharedGroupDAO createTableIfNotExist:tableName withDataMode:[DBGroup class] withPrimaryKey:primaryKey];
                   }
                   );

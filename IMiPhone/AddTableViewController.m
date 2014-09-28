@@ -176,7 +176,6 @@ const int sectionNum = 2;
 #pragma mark - serchResult
 - (void)skipToSearchResult:(NSNotification *)notification
 {
-    NSArray *a = notification.object;
     if (notification.object) {
         if ([notification.object isKindOfClass:[NSArray class]])              [self performSegueWithIdentifier:@"Add2NickSegue" sender:notification.object];
         }
