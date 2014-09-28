@@ -484,7 +484,7 @@
                             <outlet property="delegate" destination="YUK-gQ-SGN" id="cjb-gn-E2P"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="聊天" id="r12-fG-D0S"/>
+                    <navigationItem key="navigationItem" title="消息" id="r12-fG-D0S"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cL5-ZQ-nIb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -585,7 +585,7 @@
         <!--Friends View Controller-->
         <scene sceneID="C4j-vt-dTx">
             <objects>
-                <viewController storyboardIdentifier="friendsViewController" id="cKY-mx-qRB" customClass="FriendsViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FriendsViewController" id="cKY-mx-qRB" customClass="FriendsViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="fNJ-HM-iz4"/>
                         <viewControllerLayoutGuide type="bottom" id="WfH-2P-q0D"/>
@@ -868,23 +868,49 @@
             </objects>
             <point key="canvasLocation" x="4719" y="1864"/>
         </scene>
-        <!--Category View Controller-->
-        <scene sceneID="Lxo-qB-50z">
+        <!--Category Table View Controller-->
+        <scene sceneID="zVa-Nj-YXI">
             <objects>
-                <viewController storyboardIdentifier="categoryViewController" id="pmf-LA-W6t" customClass="CategoryViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="KGZ-zl-On0"/>
-                        <viewControllerLayoutGuide type="bottom" id="PtD-1z-R35"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="xHv-G1-ddF">
+                <tableViewController storyboardIdentifier="CategoryTableViewController" id="Z1b-GW-NPt" customClass="CategoryTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Nsv-T5-khs">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="vwr-t4-2ca" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="CategoryTVCell" textLabel="S4o-ls-uup" detailTextLabel="4rV-Iw-sIu" imageView="Ls1-tt-jOe" style="IBUITableViewCellStyleValue1" id="qN5-iz-Dxo">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qN5-iz-Dxo" id="e10-0u-msV">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="关注" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="S4o-ls-uup">
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="0位" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="4rV-Iw-sIu">
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="E454E593-AF42-47DD-AB3E-BCF24CBFC157" id="Ls1-tt-jOe">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </imageView>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Z1b-GW-NPt" id="e3R-92-lyC"/>
+                            <outlet property="delegate" destination="Z1b-GW-NPt" id="X2Q-xp-zax"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fYB-ei-dNA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5100" y="1864"/>
+            <point key="canvasLocation" x="5090" y="1864"/>
         </scene>
         <!--Title-->
         <scene sceneID="vmC-LE-ZZQ">
@@ -899,7 +925,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="shB-ap-Tqj">
-                                <rect key="frame" x="0.0" y="20" width="320" height="496"/>
+                                <rect key="frame" x="0.0" y="100" width="320" height="416"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="c0g-nm-GUp">
@@ -1061,6 +1087,105 @@
     </scenes>
     <resources>
         <image name="ChatDefault" width="68" height="68"/>
+        <image name="E454E593-AF42-47DD-AB3E-BCF24CBFC157" width="27" height="27">
+            <mutableData key="keyedArchiveRepresentation">
+YnBsaXN0MDDUAQIDBAUGPj9YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
+GR4fIyQsLzI4O1UkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw
+c1dOU0NvbG9ygAKADRIgwAAAgAOAC1h7MjcsIDI3fdIVChYYWk5TLm9iamVjdHOhF4AEgArSFQoaHaIb
+HIAFgAaACRAA0iAKISJfEBROU1RJRkZSZXByZXNlbnRhdGlvboAHgAhPERPSTU0AKgAAC2wAAAAAAAAA
+AAAAAAAAAAAAIw8SJNpue938Y3f//Fhs//xYbP/8WGz//Fhs//xYbP/8WGz//Fhs//xYbP/8WGz//Fhs
+//xYbP/8WGz//Fhs//xjd//abnvdIw8SJAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgEBAl4MDh65FJj
+5/tWav78WGz//Fhs//xYbP/8WGz//Fhs//xYbP/8WGz//Fhs//xYbP/8WGz//Fhs//xYbP/8WGz//Fhs
+//xYbP/7Vmr+5FJj53gwOHoIBAQJAAAAAAAAAAAAAAAACgMFC6U7SKf6WW39/Flu//xYbP/8WGz//Fhs
+//xYbP/8WGz//Fhs//xYbP/8WGz//Fhs//xYbP/8WGz//Fhs//xYbP/8WGz//Fhs//xYbP/8WGz//Flu
+//pZbf2lO0inCgMFCwAAAAAAAQEBeDA3evxZbf/8WW3//Fhs//xYbP/8WGz//Fhs//xYbP/8WGz//Fhs
+//xYbP/8WGz//Fhs//xYbP/8WGz//Fhs//xYbP/8WGz//Fhs//xYbP/8WGz//Fhs//xZbf/8WW3/eDA3
+egABAQEjEBIk5VFj6Pxabv/8WGz//Fhs//xYbP/8WGz//Fhs//xYbP/8WGz//Fhs//xYbP/8WGz//Fhs
+//xYbP/8WGz//Fhs//xYbP/8WGz//Fhs//xYbP/8WGz//Fhs//xYbP/8Wm7/5VFj6CMQEiTab3vd/Fdr
+//xYbP/8WGz//Fhs//xYbP/8WGz//Fhs//xXa//8U2j//FJn//xUaf/8WGz//Fhs//xYbP/8VWn//FNn
+//xUaP/8V2v//Fhs//xYbP/8WGz//Fhs//xYbP/8WGz//Fdr/9pve938Y3f//Fhs//xYbP/8WGz//Fhs
+//xYbP/8WGz//FRp//xkdv/9hZP//Y6b//x5if/8WW3//FNo//xYbP/8dYX//YiX//yAkP/8YXT//FRo
+//xYbP/8WGz//Fhs//xYbP/8WGz//Fhs//xjd//8WGz//Fhs//xYbP/8WGz//Fhs//xYbP/8VWn//Y6b
+//7p7P/////////////8/P/+zNP//H+O//7Fzf//+vv////////////+5en//YmX//xVaf/8WGz//Fhs
+//xYbP/8WGz//Fhs//xYbP/8WGz//Fhs//xYbP/8WGz//Fhs//xUaP/9hZP///z8//7R1v/8f47//Gx+
+//2Xo///7vD////////x8v/9nqr//HSE//2Fk//+1dr///v7//2Fk//8VGj//Fhs//xYbP/8WGz//Fhs
+//xYbP/8WGz//Fhs//xYbP/8WGz//Fhs//xbb//+3uL//tvg//xdcf/8U2j//FVq//xQZf/8eYn//ufq
+//x6jP/8UGX//FVp//xSZ//8XnL//t3g//7e4v/8W2///Fds//xYbP/8WGz//Fhs//xYbP/8WGz//Fhs
+//xYbP/8WGz//FVp//x4iP///v7//ZKh//xSZv/8WGz//Fhs//xYbP/8WGz//G+B//xXa//8WGz//Fhs
+//xYbP/8Umb//ZKf///+/v/8eYn//FVp//xYbP/8WGz//Fhs//xYbP/8WGz//Fhs//xYbP/8WGz//FNn
+//2Lmf///////HKD//xVaf/8WGz//Fhs//xYbP/8WGz//FZq//xYbP/8WGz//Fhs//xYbP/8VWn//HKC
+///////9i5r//FNn//xYbP/8WGz//Fhs//xYbP/8WGz//Fhs//xYbP/8WGz//FJn//2Kmf///////HKD
+//xVaf/8WGz//Fhs//xYbP/8WGz//Fhs//xYbP/8WGz//Fhs//xYbP/8VWr//HKD///////9ipn//FJn
+//xYbP/8WGz//Fhs//xYbP/8WGz//Fhs//xYbP/8WGz//FVq//xzg///+/v//aCr//xSZ//8WGz//Fhs
+//xYbP/8WGz//Fhs//xYbP/8WGz//Fhs//xYbP/8Umf//aGs///7+//8c4P//FVp//xYbP/8WGz//Fhs
+//xYbP/8WGz//Fhs//xYbP/8WGz//Fhs//xXa//+ydD//+3v//xneP/8VWn//Fhs//xYbP/8WGz//Fhs
+//xYbP/8WGz//Fhs//xVaf/8Z3r//+7w//7Jz//8V2v//Fhs//xYbP/8WGz//Fhs//xYbP/8WGz//Fhs
+//xYbP/8WGz//Fhs//xVaf/8c4P///b3//7K0P/8W2///FZq//xYbP/8WGz//Fhs//xYbP/8WGz//FZq
+//xcb//+y9H///b2//xyg//8VWn//Fhs//xYbP/8WGz//Fhs//xYbP/8WGz//Fhs//xYbP/8WGz//Fhs
+//xYbP/8VGj//ZCc///+///+w8r//F1x//xVaf/8WGz//Fhs//xYbP/8VWn//F1x//7Dyv///////Y+c
+//xUaP/8WGz//Fhs//xYbP/8WGz//Fhs//xYbP/8WGz//Fhs//xYbP/8WGz//Fhs//xYbP/8WGz//FRp
+//2Wo////////tDV//xpfP/8U2j//Fdr//xTaP/8aXz//tDV///////9mKT//FRp//xYbP/8WGz//Fhs
+//xYbP/8WGz//Fhs//xYbP/8WGz//Fhs//xYbP/8WGz//Fhs//xYbP/8WGz//Fhs//xUaP/9i5n///X1
+//7p7f/9hpT//FZq//2GlP/+6e3///P1//2KmP/8VGj//Fhs//xYbP/8WGz//Fhs//xYbP/8WGz//Fhs
+//xYbP/8WGz//Fhs//xYbP/8WGz//Fhs//xYbP/8WGz//Fhs//xYbP/8U2j//HSF//7Y2////v7//tbb
+///+/v/+2Nz//HWF//xTaP/8WGz//Fhs//xYbP/8WGz//Fhs//xYbP/8WGz//Fhs//xYbP/8Y3f//Fhs
+//xYbP/8WGz//Fhs//xYbP/8WGz//Fhs//xYbP/8WGz//FRp//xecf/9pa7//uDk//2lrv/8XnH//FRp
+//xYbP/8WGz//Fhs//xYbP/8WGz//Fhs//xYbP/8WGz//Fhs//xjd//abnvd/Fdr//xYbP/8WGz//Fhs
+//xYbP/8WGz//Fhs//xYbP/8WGz//Fhs//xXa//8VGn//Fhs//xUaf/8V2v//Fhs//xYbP/8WGz//Fhs
+//xYbP/8WGz//Fhs//xYbP/8WGz//Fdr/9pve90hEBEi41Fj5vxabv/8WGz//Fhs//xYbP/8WGz//Fhs
+//xYbP/8WGz//Fhs//xYbP/8WGz//Fhs//xYbP/8WGz//Fhs//xYbP/8WGz//Fhs//xYbP/8WGz//Fhs
+//xYbP/8Wm7/41Fj5iEQESIAAQEBdi43ePtYa/78WW3//Fhs//xYbP/8WGz//Fhs//xYbP/8WGz//Fhs
+//xYbP/8WGz//Fhs//xYbP/8WGz//Fhs//xYbP/8WGz//Fhs//xYbP/8WGz//Fhs//xZbf/7WGv+di43
+eAABAQEAAAAACQQFCqU8SKf5WG38/Flu//xYbP/8WGz//Fhs//xYbP/8WGz//Fhs//xYbP/8WGz//Fhs
+//xYbP/8WGz//Fhs//xYbP/8WGz//Fhs//xYbP/8WGz//Flu//lYbfylPEinCQQFCgAAAAAAAAAAAAAA
+AAkFBQp2Ljd441Fj5vtWav78WGz//Fhs//xYbP/8WGz//Fhs//xYbP/8WGz//Fhs//xYbP/8WGz//Fhs
+//xYbP/8WGz//Fhs//xYbP/7Vmr+41Fj5nYuN3gJBQUKAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIg8S
+I9pue938Y3f//Fhs//xYbP/8WGz//Fhs//xYbP/8WGz//Fhs//xYbP/8WGz//Fhs//xYbP/8WGz//Fhs
+//xjd//abnvdIg8SIwAAAAAAAAAAAAAAAAAAAAAADgEAAAMAAAABABsAAAEBAAMAAAABABsAAAECAAMA
+AAAEAAAMGgEDAAMAAAABAAEAAAEGAAMAAAABAAIAAAERAAQAAAABAAAACAESAAMAAAABAAEAAAEVAAMA
+AAABAAQAAAEWAAMAAAABABsAAAEXAAQAAAABAAALZAEcAAMAAAABAAEAAAFSAAMAAAABAAEAAAFTAAMA
+AAAEAAAMIodzAAcAAAeoAAAMKgAAAAAACAAIAAgACAABAAEAAQABAAAHqGFwcGwCIAAAbW50clJHQiBY
+WVogB9kAAgAZAAsAGgALYWNzcEFQUEwAAAAAYXBwbAAAAAAAAAAAAAAAAAAAAAAAAPbWAAEAAAAA0y1h
+cHBsAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAALZGVzYwAAAQgA
+AABvZHNjbQAAAXgAAAVsY3BydAAABuQAAAA4d3RwdAAABxwAAAAUclhZWgAABzAAAAAUZ1hZWgAAB0QA
+AAAUYlhZWgAAB1gAAAAUclRSQwAAB2wAAAAOY2hhZAAAB3wAAAAsYlRSQwAAB2wAAAAOZ1RSQwAAB2wA
+AAAOZGVzYwAAAAAAAAAUR2VuZXJpYyBSR0IgUHJvZmlsZQAAAAAAAAAAAAAAFEdlbmVyaWMgUkdCIFBy
+b2ZpbGUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAG1sdWMA
+AAAAAAAAHgAAAAxza1NLAAAAKAAAAXhockhSAAAAKAAAAaBjYUVTAAAAJAAAAchwdEJSAAAAJgAAAex1
+a1VBAAAAKgAAAhJmckZVAAAAKAAAAjx6aFRXAAAAFgAAAmRpdElUAAAAKAAAAnpuYk5PAAAAJgAAAqJr
+b0tSAAAAFgAAAshjc0NaAAAAIgAAAt5oZUlMAAAAHgAAAwBkZURFAAAALAAAAx5odUhVAAAAKAAAA0pz
+dlNFAAAAJgAAAqJ6aENOAAAAFgAAA3JqYUpQAAAAGgAAA4hyb1JPAAAAJAAAA6JlbEdSAAAAIgAAA8Zw
+dFBPAAAAJgAAA+hubE5MAAAAKAAABA5lc0VTAAAAJgAAA+h0aFRIAAAAJAAABDZ0clRSAAAAIgAABFpm
+aUZJAAAAKAAABHxwbFBMAAAALAAABKRydVJVAAAAIgAABNBhckVHAAAAJgAABPJlblVTAAAAJgAABRhk
+YURLAAAALgAABT4AVgFhAGUAbwBiAGUAYwBuAP0AIABSAEcAQgAgAHAAcgBvAGYAaQBsAEcAZQBuAGUA
+cgBpAQ0AawBpACAAUgBHAEIAIABwAHIAbwBmAGkAbABQAGUAcgBmAGkAbAAgAFIARwBCACAAZwBlAG4A
+6AByAGkAYwBQAGUAcgBmAGkAbAAgAFIARwBCACAARwBlAG4A6QByAGkAYwBvBBcEMAQzBDAEOwRMBD0E
+OAQ5ACAEPwRABD4ERAQwBDkEOwAgAFIARwBCAFAAcgBvAGYAaQBsACAAZwDpAG4A6QByAGkAcQB1AGUA
+IABSAFYAQpAadSgAIABSAEcAQgAggnJfaWPPj/AAUAByAG8AZgBpAGwAbwAgAFIARwBCACAAZwBlAG4A
+ZQByAGkAYwBvAEcAZQBuAGUAcgBpAHMAawAgAFIARwBCAC0AcAByAG8AZgBpAGzHfLwYACAAUgBHAEIA
+INUEuFzTDMd8AE8AYgBlAGMAbgD9ACAAUgBHAEIAIABwAHIAbwBmAGkAbAXkBegF1QXkBdkF3AAgAFIA
+RwBCACAF2wXcBdwF2QBBAGwAbABnAGUAbQBlAGkAbgBlAHMAIABSAEcAQgAtAFAAcgBvAGYAaQBsAMEA
+bAB0AGEAbADhAG4AbwBzACAAUgBHAEIAIABwAHIAbwBmAGkAbGZukBoAIABSAEcAQgAgY8+P8GWHTvZO
+AIIsACAAUgBHAEIAIDDXMO0w1TChMKQw6wBQAHIAbwBmAGkAbAAgAFIARwBCACAAZwBlAG4AZQByAGkA
+YwOTA7UDvQO5A7oDzAAgA8ADwQO/A8YDrwO7ACAAUgBHAEIAUABlAHIAZgBpAGwAIABSAEcAQgAgAGcA
+ZQBuAOkAcgBpAGMAbwBBAGwAZwBlAG0AZQBlAG4AIABSAEcAQgAtAHAAcgBvAGYAaQBlAGwOQg4bDiMO
+RA4fDiUOTAAgAFIARwBCACAOFw4xDkgOJw5EDhsARwBlAG4AZQBsACAAUgBHAEIAIABQAHIAbwBmAGkA
+bABpAFkAbABlAGkAbgBlAG4AIABSAEcAQgAtAHAAcgBvAGYAaQBpAGwAaQBVAG4AaQB3AGUAcgBzAGEA
+bABuAHkAIABwAHIAbwBmAGkAbAAgAFIARwBCBB4EMQRJBDgEOQAgBD8EQAQ+BEQEOAQ7BEwAIABSAEcA
+QgZFBkQGQQAgBioGOQYxBkoGQQAgAFIARwBCACAGJwZEBjkGJwZFAEcAZQBuAGUAcgBpAGMAIABSAEcA
+QgAgAFAAcgBvAGYAaQBsAGUARwBlAG4AZQByAGUAbAAgAFIARwBCAC0AYgBlAHMAawByAGkAdgBlAGwA
+cwBldGV4dAAAAABDb3B5cmlnaHQgMjAwNyBBcHBsZSBJbmMuLCBhbGwgcmlnaHRzIHJlc2VydmVkLgBY
+WVogAAAAAAAA81IAAQAAAAEWz1hZWiAAAAAAAAB0TQAAPe4AAAPQWFlaIAAAAAAAAFp1AACscwAAFzRY
+WVogAAAAAAAAKBoAABWfAAC4NmN1cnYAAAAAAAAAAQHNAABzZjMyAAAAAAABDEIAAAXe///zJgAAB5IA
+AP2R///7ov///aMAAAPcAADAbNIlJicoWiRjbGFzc25hbWVYJGNsYXNzZXNfEBBOU0JpdG1hcEltYWdl
+UmVwoykqK18QEE5TQml0bWFwSW1hZ2VSZXBaTlNJbWFnZVJlcFhOU09iamVjdNIlJi0uV05TQXJyYXmi
+LSvSJSYwMV5OU011dGFibGVBcnJheaMwLSvTMzQKNTY3V05TV2hpdGVcTlNDb2xvclNwYWNlRDAgMAAQ
+A4AM0iUmOTpXTlNDb2xvcqI5K9IlJjw9V05TSW1hZ2WiPCtfEA9OU0tleWVkQXJjaGl2ZXLRQEFUcm9v
+dIABAAgAEQAaACMALQAyADcARgBMAFcAXgBlAHIAeQCBAIMAhQCKAIwAjgCXAJwApwCpAKsArQCyALUA
+twC5ALsAvQDCANkA2wDdFLMUuBTDFMwU3xTjFPYVARUKFQ8VFxUaFR8VLhUyFTkVQRVOFVMVVRVXFVwV
+ZBVnFWwVdBV3FYkVjBWRAAAAAAAAAgEAAAAAAAAAQgAAAAAAAAAAAAAAAAAAFZM
+</mutableData>
+        </image>
         <image name="HeadBg" width="100" height="100"/>
         <image name="splash.jpg" width="640" height="400"/>
     </resources>
