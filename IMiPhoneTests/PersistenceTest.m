@@ -142,11 +142,15 @@
 -(void)testRms
 {
     DBGroup *g = [[DBGroup alloc] init];
-    g.group_name = @"trees";
+    g.groupName = @"trees";
     NSDictionary *ds =[DataUtil getDicFromNormalClass:g];
-    [imRms userDefaultsWrite:@"aa" withObjectValue:ds];
-    id obj = [imRms userDefaultsReadObject:@"aa"];
-    NSLog(@"group_name:%@",[obj valueForKey:@"group_name"]);
+//    [imRms userDefaultsWrite:@"aa" withObjectValue:ds,YES];
+//    id obj = [imRms userDefaultsReadObject:@"aa"];
+//    NSLog(@"group_name:%@",[obj valueForKey:@"group_name"]);
+    
+    NSString *keys = @"aaa";
+    [imRms userDefaultsWrite:keys, withBoolValue:"", isBindUid:YES];
+    NSLog(keys);
 }
 
 @end

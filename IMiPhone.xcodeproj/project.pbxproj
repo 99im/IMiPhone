@@ -501,8 +501,6 @@
 				585971E71999F0C700258CB1 /* imViewController.m */,
 				58A5B4F619ADC05F0007C2F3 /* MainTabBarController.h */,
 				58A5B4F719ADC05F0007C2F3 /* MainTabBarController.m */,
-				110F561419D56E07003B9EB4 /* DPMessageGroups.h */,
-				110F561519D56E07003B9EB4 /* DPMessageGroups.m */,
 				58AF049419B053930077DCBC /* DataProxy */,
 				58D95F4E19A5EB7F007139AB /* MessageProxy */,
 				58F2AA3619A4876900DC2FFB /* Network */,
@@ -571,6 +569,8 @@
 		58AF049419B053930077DCBC /* DataProxy */ = {
 			isa = PBXGroup;
 			children = (
+				110F561419D56E07003B9EB4 /* DPMessageGroups.h */,
+				110F561519D56E07003B9EB4 /* DPMessageGroups.m */,
 				110F561819D57013003B9EB4 /* DPMessageGroup.h */,
 				110F561919D57013003B9EB4 /* DPMessageGroup.m */,
 				110F561019D56CF8003B9EB4 /* DPMessage.h */,

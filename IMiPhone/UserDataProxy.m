@@ -58,19 +58,19 @@ static UserDataProxy *sharedProxy = nil;
 - (NSString *)getLastLoginCountry
 {
     if (_lastLoginCountry == nil)
-        _lastLoginCountry = [imRms userDefaultsReadString:KEY_USER_LAST_LOGIN_COUNTRY];
+        _lastLoginCountry = [imRms userDefaultsReadString:KEY_USER_LAST_LOGIN_COUNTRY isBindUid:NO];
     return _lastLoginCountry;
 }
 - (void)setLastLoginCountry:(NSString *)lastLoginCountry
 {
     _lastLoginCountry = lastLoginCountry;
-    [imRms userDefaultsWrite:KEY_USER_LAST_LOGIN_COUNTRY withStringValue:_lastLoginCountry];
+    [imRms userDefaultsWrite:KEY_USER_LAST_LOGIN_COUNTRY withStringValue:_lastLoginCountry isBindUid:NO];
 }
 
 - (NSString *)getLastLoginMobile
 {
     if (_lastLoginMobile == nil) {
-        _lastLoginMobile = [imRms userDefaultsReadString:KEY_USER_LAST_LOGIN_MOBILE];
+        _lastLoginMobile = [imRms userDefaultsReadString:KEY_USER_LAST_LOGIN_MOBILE isBindUid:NO];
     }
 
     return _lastLoginMobile;
@@ -78,58 +78,59 @@ static UserDataProxy *sharedProxy = nil;
 - (void)setLastLoginMobile:(NSString *)lastLoginMobile
 {
     _lastLoginMobile = lastLoginMobile;
-    [imRms userDefaultsWrite:KEY_USER_LAST_LOGIN_MOBILE withStringValue:_lastLoginMobile];
+    [imRms userDefaultsWrite:KEY_USER_LAST_LOGIN_MOBILE withStringValue:_lastLoginMobile isBindUid:NO];
 }
 
 - (NSString *)getLastLoginOid
 {
     if (_lastLoginOid == nil) {
-        _lastLoginOid = [imRms userDefaultsReadString:KEY_USER_LAST_LOGIN_OID];
+        _lastLoginOid = [imRms userDefaultsReadString:KEY_USER_LAST_LOGIN_OID isBindUid:NO];
     }
     return _lastLoginOid;
 }
 - (void)setLastLoginOid:(NSString *)lastLoginOid
 {
     _lastLoginOid = lastLoginOid;
-    [imRms userDefaultsWrite:KEY_USER_LAST_LOGIN_OID withStringValue:_lastLoginOid];
+    [imRms userDefaultsWrite:KEY_USER_LAST_LOGIN_OID withStringValue:_lastLoginOid isBindUid:NO];
 }
 
 - (NSInteger)getLastLoginUid
 {
-    if (_lastLoginUid == 0)
-        _lastLoginUid = [imRms userDefaultsReadInt:KEY_USER_LAST_LOGIN_UID];
+    if (_lastLoginUid == NAN)
+        _lastLoginUid = [imRms userDefaultsReadInt:KEY_USER_LAST_LOGIN_UID isBindUid:NO];
     return _lastLoginUid;
 }
 - (void)setLastLoginUid:(NSInteger)lastLoginUid
 {
     _lastLoginUid = lastLoginUid;
     [DatabaseConfig shareDatabaseConfig].databaseName = [NSString stringWithFormat:@"%d", _lastLoginUid];
-    [imRms userDefaultsWrite:KEY_USER_LAST_LOGIN_UID withStringValue:[NSString stringWithFormat:@"%d", _lastLoginUid]];
+    [imRms setUid:_lastLoginUid];
+    [imRms userDefaultsWrite:KEY_USER_LAST_LOGIN_UID withStringValue:[NSString stringWithFormat:@"%d", _lastLoginUid] isBindUid:NO];
     [self initUserFromRms];
 }
 
 - (NSString *)getVerify
 {
     if (_verify == nil) {
-        _verify = [imRms userDefaultsReadString:KEY_USER_VERIFY];
+        _verify = [imRms userDefaultsReadString:KEY_USER_VERIFY isBindUid:NO];
     }
     return _verify;
 }
 - (void)setVerify:(NSString *)value
 {
     _verify = value;
-    [imRms userDefaultsWrite:KEY_USER_VERIFY withStringValue:_verify];
+    [imRms userDefaultsWrite:KEY_USER_VERIFY withStringValue:_verify isBindUid:NO];
 }
 
 - (void)initUserFromRms
 {
-    NSDictionary *userInfoDic = (NSDictionary *)[imRms userDefaultsReadObject:[KEY_USER_INFO_PRE stringByAppendingString:[NSString stringWithFormat:@"%d", _lastLoginUid]]];
+    NSDictionary *userInfoDic = (NSDictionary *)[imRms userDefaultsReadObject:KEY_USER_INFO_PRE isBindUid:YES];
   if(_user == nil)
       _user = [[DPUser alloc] init];
   if(userInfoDic == nil)
    {
        _user.uid = _lastLoginUid;
-       [imRms userDefaultsWrite:[KEY_USER_INFO_PRE stringByAppendingString:_lastLoginMobile] withObjectValue:[DataUtil getDicFromNormalClass:_user]];
+       [imRms userDefaultsWrite:KEY_USER_INFO_PRE withObjectValue:[DataUtil getDicFromNormalClass:_user] isBindUid:YES];
    }
    else
    {
@@ -140,7 +141,7 @@ static UserDataProxy *sharedProxy = nil;
 {
     _user = userInfo;
     NSDictionary *userInfoDic = [DataUtil getDicFromNormalClass:_user];
-    [imRms userDefaultsWrite:[KEY_USER_INFO_PRE stringByAppendingString:_lastLoginMobile] withObjectValue:userInfoDic];
+    [imRms userDefaultsWrite:KEY_USER_INFO_PRE withObjectValue:userInfoDic isBindUid:YES];
 }
 
 @end

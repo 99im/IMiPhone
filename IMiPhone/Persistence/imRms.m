@@ -10,80 +10,122 @@
 
 @implementation imRms
 
+static NSInteger rmsBindUid;
 
-+ (BOOL) userDefaultsWrite:(NSString *)key withStringValue:(NSString *)value
++(void)setUid:(NSInteger)uid
 {
+    rmsBindUid = uid;
+}
+
++ (BOOL)userDefaultsWrite:(NSString *)key withStringValue:(NSString *)value isBindUid:(BOOL)bind
+{
+//    rmsBindUid = @"addd";
+    if (bind) {
+        key = [key stringByAppendingFormat:@"%ld",rmsBindUid];
+    }
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
     [ud setObject:value forKey:key];
     return YES;
 }
-+ (NSString *) userDefaultsReadString:(NSString *)key
++ (NSString *)userDefaultsReadString:(NSString *)key isBindUid:(BOOL)bind
 {
+    if (bind) {
+        key = [key stringByAppendingFormat:@"%ld",rmsBindUid];
+    }
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
     return [ud stringForKey:key];
 }
-+ (BOOL) userDefaultsWrite:(NSString *)key withObjectValue:(id)value
++ (BOOL)userDefaultsWrite:(NSString *)key withObjectValue:(id)value isBindUid:(BOOL)bind
 {
+    if (bind) {
+        key = [key stringByAppendingFormat:@"%ld",rmsBindUid];
+    }
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
     [ud setObject:value forKey:key];
     return YES;
 }
-+ (id) userDefaultsReadObject:(NSString *)key
++ (id)userDefaultsReadObject:(NSString *)key isBindUid:(BOOL)bind
 {
+    if (bind) {
+        key = [key stringByAppendingFormat:@"%ld",rmsBindUid];
+    }
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
     return [ud objectForKey:key];
 }
 
-+ (BOOL) userDefaultsWrite:(NSString *)key withBoolValue:(NSInteger)value
++ (BOOL)userDefaultsWrite:(NSString *)key withBoolValue:(NSInteger)value isBindUid:(BOOL)bind
 {
+    if (bind) {
+        key = [key stringByAppendingFormat:@"%ld",rmsBindUid];
+    }
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
     [ud setBool:value forKey:key];
     return YES;
 }
 
-+ (BOOL) userDefaultsReadBool:(NSString *)key
++ (BOOL)userDefaultsReadBool:(NSString *)key isBindUid:(BOOL)bind
 {
+    if (bind) {
+        key = [key stringByAppendingFormat:@"%ld",rmsBindUid];
+    }
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
     return [ud boolForKey:key];
 }
 
-+ (BOOL) userDefaultsWrite:(NSString *)key withDoubleValue:(double)value
++ (BOOL)userDefaultsWrite:(NSString *)key withDoubleValue:(double)value isBindUid:(BOOL)bind
 {
+    if (bind) {
+        key = [key stringByAppendingFormat:@"%ld",rmsBindUid];
+    }
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
     [ud setDouble:value forKey:key];
     return YES;
 }
 
-+ (double) userDefaultsReadDouble:(NSString *)key
++ (double)userDefaultsReadDouble:(NSString *)key isBindUid:(BOOL)bind
 {
+    if (bind) {
+        key = [key stringByAppendingFormat:@"%ld",rmsBindUid];
+    }
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
     return [ud doubleForKey:key];
 }
 
-+ (BOOL) userDefaultsWrite:(NSString *)key withIntValue:(NSInteger)value
++ (BOOL)userDefaultsWrite:(NSString *)key withIntValue:(NSInteger)value isBindUid:(BOOL)bind
 {
+    if (bind) {
+        key = [key stringByAppendingFormat:@"%ld",rmsBindUid];
+    }
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
     [ud setInteger:value forKey:key];
     return YES;
 }
-+ (NSInteger) userDefaultsReadInt:(NSString*)key
++ (NSInteger)userDefaultsReadInt:(NSString*)key isBindUid:(BOOL)bind
 {
+    if (bind) {
+        key = [key stringByAppendingFormat:@"%ld",rmsBindUid];
+    }
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
     return [ud integerForKey:key];
 }
 
-+ (BOOL) userDefaultsWrite:(NSString *)key withFloatValue:(float)value
++ (BOOL)userDefaultsWrite:(NSString *)key withFloatValue:(float)value isBindUid:(BOOL)bind
 {
+    if (bind) {
+        key = [key stringByAppendingFormat:@"%ld",rmsBindUid];
+    }
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
     [ud setFloat:value forKey:key];
     return YES;
 }
 
-+ (float) userDefaultsReadFloat:(NSString *)key
++ (float)userDefaultsReadFloat:(NSString *)key isBindUid:(BOOL)bind
 {
+    if (bind) {
+        key = [key stringByAppendingFormat:@"%ld",rmsBindUid];
+    }
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
     return [ud floatForKey:key];
 }
-
 
 @end

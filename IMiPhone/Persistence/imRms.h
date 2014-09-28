@@ -9,29 +9,30 @@
 
 @interface imRms : NSObject
 
-+ (BOOL) userDefaultsWrite:(NSString *)key withBoolValue:(NSInteger)value;
++ (void)setUid:(NSInteger)uid;
 
-+ (BOOL) userDefaultsReadBool:(NSString*)key;
++ (BOOL)userDefaultsWrite:(NSString *)key withBoolValue:(NSInteger)value isBindUid:(BOOL)bind;
 
-+ (BOOL) userDefaultsWrite:(NSString *)key withDoubleValue:(double)value;
++ (BOOL)userDefaultsReadBool:(NSString*)key isBindUid:(BOOL)bind;
 
-+ (double) userDefaultsReadDouble:(NSString*)key;
++ (BOOL)userDefaultsWrite:(NSString *)key withDoubleValue:(double)value isBindUid:(BOOL)bind;
 
-+ (BOOL) userDefaultsWrite:(NSString *)key withIntValue:(NSInteger)value;
++ (double)userDefaultsReadDouble:(NSString*)key isBindUid:(BOOL)bind;
 
-+ (NSInteger) userDefaultsReadInt:(NSString*)key;
++ (BOOL)userDefaultsWrite:(NSString *)key withIntValue:(NSInteger)value isBindUid:(BOOL)bind;
 
-+ (BOOL) userDefaultsWrite:(NSString *)key withFloatValue:(float)value;
++ (NSInteger)userDefaultsReadInt:(NSString*)key isBindUid:(BOOL)bind;
 
-+ (float) userDefaultsReadFloat:(NSString*)key;
++ (BOOL)userDefaultsWrite:(NSString *)key withFloatValue:(float)value isBindUid:(BOOL)bind;
 
-+ (BOOL) userDefaultsWrite:(NSString *)key withStringValue:(NSString *)value;
++ (float)userDefaultsReadFloat:(NSString*)key isBindUid:(BOOL)bind;
 
-+ (NSString *) userDefaultsReadString:(NSString*)key;
++ (BOOL)userDefaultsWrite:(NSString *)key withStringValue:(NSString *)value isBindUid:(BOOL)bind;
 
-+ (BOOL) userDefaultsWrite:(NSString *)key withObjectValue:(id)value;
++ (NSString *)userDefaultsReadString:(NSString*)key isBindUid:(BOOL)bind;
 
-+ (id) userDefaultsReadObject:(NSString*)key;
++ (BOOL)userDefaultsWrite:(NSString *)key withObjectValue:(id)value isBindUid:(BOOL)bind;
 
++ (id)userDefaultsReadObject:(NSString*)key isBindUid:(BOOL)bind;
 
 @end
