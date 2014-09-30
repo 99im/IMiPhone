@@ -2,6 +2,21 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>Category</key>
+	<array>
+		<dict>
+			<key>title</key>
+			<string>关注</string>
+			<key>image</key>
+			<string>MyFocus</string>
+		</dict>
+		<dict>
+			<key>title</key>
+			<string>粉丝</string>
+			<key>image</key>
+			<string>MyFans</string>
+		</dict>
+	</array>
 	<key>AddTP</key>
 	<array>
 		<string>通讯录好友</string>

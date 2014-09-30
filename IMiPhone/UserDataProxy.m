@@ -47,9 +47,7 @@ static UserDataProxy *sharedProxy = nil;
 {
     if((self = [super init]))
     {
-        if (self.verify == nil) {
-             self.verify = @"";
-        }
+        _lastLoginUid = NAN;
     }
     return self;
 }

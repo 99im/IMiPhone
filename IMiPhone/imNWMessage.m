@@ -39,7 +39,9 @@
     if (params == nil) {
         params = [NSMutableDictionary dictionary];
     }
-    [params setObject:[UserDataProxy sharedProxy].verify forKey:HTTP_KEY_VERIFY];
+    if ([UserDataProxy sharedProxy].verify) {
+        [params setObject:[UserDataProxy sharedProxy].verify forKey:HTTP_KEY_VERIFY];
+    }
     message.data = params;
     message.method = method;
     message.useSSL = useSSL;

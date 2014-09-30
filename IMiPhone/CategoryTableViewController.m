@@ -1,30 +1,33 @@
 //
-//  SystemTableViewController.m
+//  CategoryTableViewController.m
 //  IMiPhone
 //
-//  Created by 尹晓君 on 14-9-25.
+//  Created by 尹晓君 on 14-9-28.
 //  Copyright (c) 2014年 尹晓君. All rights reserved.
 //
 
-#import "SystemTableViewController.h"
-#import "UserDataProxy.h"
+#import "CategoryTableViewController.h"
 
-@interface SystemTableViewController ()
+@interface CategoryTableViewController ()
+
+@property (nonatomic, retain) NSArray *arrCategorys;
 
 @end
 
-@implementation SystemTableViewController
+@implementation CategoryTableViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    NSBundle *bundle = [NSBundle mainBundle];
+    NSString *plistPath = [bundle pathForResource:@"contact" ofType:@"plist"];
+    self.arrCategorys = [[[NSDictionary alloc] initWithContentsOfFile:plistPath] objectForKey:@"Category"];
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    self.cellMyInfo.textLabel.text = [UserDataProxy sharedProxy].user.nick;
-    self.cellMyInfo.detailTextLabel.text = [UserDataProxy sharedProxy].user.oid;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -36,37 +39,24 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    if ([cell.reuseIdentifier isEqualToString:@"systemLogoutTVCell"]) {
-        [UserDataProxy sharedProxy].lastLoginUid = NAN;
-        [UserDataProxy sharedProxy].verify = nil;
-        [self performSegueWithIdentifier:@"logoutDoneSegue" sender:nil];
-    }
+    
 }
 
 #pragma mark - Table view data source
-/*
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
-    return 0;
-}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 0;
+    return self.arrCategorys.count;
 }
-*/
-/*
+
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
-    
-    // Configure the cell...
-    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CategoryTVCell" forIndexPath:indexPath];
+    cell.textLabel.text = [[self.arrCategorys objectAtIndex:indexPath.row] objectForKey:@"title"];
+    [cell.imageView setImage:[UIImage imageNamed:[[self.arrCategorys objectAtIndex:indexPath.row] objectForKey:@"image"]]];
     return cell;
 }
-*/
+
 
 /*
 // Override to support conditional editing of the table view.

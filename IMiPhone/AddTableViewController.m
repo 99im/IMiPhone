@@ -62,12 +62,9 @@ const int sectionNum = 2;
     
 //    NSLog(@"Table selected section: %i, row: %i", self.tableView.indexPathForSelectedRow.section, self.tableView.indexPathForSelectedRow.row);
     if (sender == self.userIdCell.btnAdd) {
-        NSLog(self.userIdCell.tfAddTarget.text);
-        
         [[UserMessageProxy sharedProxy] sendTypeSearch:self.userIdCell.tfAddTarget.text];
     }
     else if (sender == self.groupIdCell.btnAdd) {
-         NSLog(self.groupIdCell.tfAddTarget.text);
     }
 }
 

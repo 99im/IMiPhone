@@ -66,11 +66,11 @@
             subviewId = @"groupViewController";
             break;
         case 3:
-            subviewId = @"categoryViewController";
+            subviewId = @"CategoryTableViewController";
             break;
         case 0:
         default:
-            subviewId = @"friendsViewController";
+            subviewId = @"FriendsViewController";
             break;
     }
     if (![subviewId isEqualToString:self.curSubView]) {
