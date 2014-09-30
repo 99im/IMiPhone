@@ -9,7 +9,7 @@
 #import "BaseDAO.h"
 #import "DatabaseConfig.h"
 #import <objc/runtime.h>
-#import "DataUtil.h"
+#import "ImDataUtil.h"
 
 @interface BaseDAO()
     @property NSString *tableName;
@@ -19,9 +19,6 @@
 @implementation BaseDAO
 
 static NSDictionary *dicSQLDataType;
-
-
-
 
 -(NSArray *)getInfoFromDataMode:(Class)cls withPrimaryKey:(NSString *)pKey
 {
@@ -52,11 +49,7 @@ static NSDictionary *dicSQLDataType;
         if (key && type)
         {
             NSString *typeStr;
-            if(type[0] == '@')
-                typeStr = @"NSString";
-            else
-                typeStr = [NSString stringWithFormat:@"%c",type[0]];
-
+            typeStr = [NSString stringWithFormat:@"%c",type[0]];
 //            NSLog(@"why%@:",[NSString stringWithFormat:@"%c", type[0]]);
 //            NSLog(@"dic string:%@",[[DatabaseConfig instance].dicSQLDataType valueForKey:@"@"]);
             NSString *sqlType = [[DatabaseConfig shareDatabaseConfig].dicSQLDataType valueForKey:typeStr];
@@ -73,7 +66,7 @@ static NSDictionary *dicSQLDataType;
 
 
 
-- (int)createTableIfNotExist:(NSString *)name withDataMode:(Class)cls withPrimaryKey:(NSString *)pKey
+- (NSInteger)createTableIfNotExist:(NSString *)name withDataMode:(Class)cls withPrimaryKey:(NSString *)pKey
 {
     NSString *dbName = [DatabaseConfig shareDatabaseConfig].databaseName;
     self.tableName = name;
@@ -100,20 +93,20 @@ static NSDictionary *dicSQLDataType;
     }
     return -1;
 }
-- (int)dropTable;
+- (NSInteger)dropTable;
 {
     SqlightResult *result  = [self.sqlight dropTable:self.tableName];
     NSLog(@"Drop table Result msg:%@ code:%d data:%@", result.msg, result.code, result.data);
     return 0;
 }
-- (int)insert:(NSObject *)data
+- (NSInteger)insert:(NSObject *)data
 {
-    NSDictionary *dataDic = [DataUtil getDicFromNormalClass:data];
+    NSDictionary *dataDic = [ImDataUtil getDicFromNormalClass:data];
     SqlightResult *result  = [self.sqlight insertData:dataDic];
     NSLog(@"insert Result msg:%@ code:%d data:%@", result.msg, result.code, result.data);
     return result.code;
 }
-- (int)deleteByCondition:(NSString *)condition Bind:(NSMutableArray *)bind;
+- (NSInteger)deleteByCondition:(NSString *)condition Bind:(NSMutableArray *)bind;
 {
     SqlightResult *result  = [self.sqlight deleteByCondition:condition Bind:bind];
     NSLog(@"delete Result msg:%@ code:%d data:%@", result.msg, result.code, result.data);
@@ -121,26 +114,49 @@ static NSDictionary *dicSQLDataType;
 }
 - (NSMutableArray *)query:(NSString *)condition Bind:(NSArray *)bind
 {
-    NSArray *arrProps = [DataUtil getArrPropsFromDataModeClass:self.dataMode];
-    SqlightResult *result = [self.sqlight selectFields:arrProps
-                                      ByCondition:condition Bind:bind];
+    NSArray *arrProps = [ImDataUtil getArrPropsFromDataModeClass:self.dataMode];
+    
+    NSMutableArray *fields = [NSMutableArray array];
+    for (NSInteger i = 0; i < arrProps.count; i++) {
+        [fields addObject:arrProps[i][0]];
+    }
+    SqlightResult *result = [self.sqlight selectFields:fields
+                                           ByCondition:condition Bind:bind];
     NSLog(@"query Result msg:%@ code:%d data:%@", result.msg, result.code, result.data);
     NSMutableArray *arrResult = [NSMutableArray array];
     if (result.data) {
+        NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
         for (int i = 0; i < result.data.count; i++) {
-             NSData *dataModeInstance = [[self.dataMode alloc] init];
+            NSObject *dataModeInstance = [[self.dataMode alloc] init];
             NSArray *arrTempData = result.data[i];
             for (int j = 0; j < arrTempData.count; j++) {
-            [dataModeInstance setValue:arrTempData[j] forKey:arrProps[j]];
-        }
+                id value;
+                if ([arrProps[j][1] isEqualToString:@"@"]) {
+                    value =arrTempData[j];
+                }
+                else {
+                    value = [numberFormatter numberFromString:arrTempData[j]];
+                }
+                [dataModeInstance setValue:value forKey:arrProps[j][0]];
+            }
             [arrResult addObject:dataModeInstance];
         }
     }
     return arrResult;
 }
-- (int)update:(NSDictionary *)data ByCondition:(NSString *)condition Bind:(NSArray *)bind
+- (NSInteger)update:(NSObject *)data ByCondition:(NSString *)condition Bind:(NSArray *)bind
 {
-    SqlightResult *result = [self.sqlight updateData:data ByCondition:condition Bind:bind];
+    NSMutableDictionary *dicData = [ImDataUtil getDicFromNormalClass:data];
+    //更新的表字段字典中，移除筛选条件字段
+    NSArray *arrConditonKey = [condition componentsSeparatedByString:@"=?"];
+    NSInteger count = arrConditonKey.count - 1;//排除数组掉最后一个元素（空字符串）
+    for (NSInteger i = 0; i < count; i++) {
+        NSString *conditionKey = arrConditonKey[i];
+        if ([dicData validateValue:nil forKey:conditionKey error:nil]) {
+            [dicData removeObjectForKey:conditionKey];
+        }
+    }
+    SqlightResult *result = [self.sqlight updateData:dicData ByCondition:condition Bind:bind];
     NSLog(@"update Result msg:%@ code:%d data:%@", result.msg, result.code, result.data);
     return result.code;
 }

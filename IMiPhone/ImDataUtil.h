@@ -9,12 +9,15 @@
 #import <Foundation/Foundation.h>
 #import <objc/runtime.h>
 
-@interface DataUtil : NSObject
+@interface ImDataUtil : NSObject
 
-+ (NSDictionary *) getDicFromNormalClass:(id) classInstance;
++ (NSMutableDictionary *) getDicFromNormalClass:(id) classInstance;
 
+//返回arrR[0][0]属性名，arrR[0][1]属性类型
 + (NSArray *)getArrPropsFromDataModeClass:(Class) cls;
 
 + (void)updateObject:(NSObject *)obj by:(NSDictionary *)dataDic;
+
++ (void)copyFrom:(NSObject *)src To:(NSObject *)dest;
 
 @end

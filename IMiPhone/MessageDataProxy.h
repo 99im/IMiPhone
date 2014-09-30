@@ -6,13 +6,18 @@
 //  Copyright (c) 2014年 尹晓君. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import "MessageDAO.h"
+#import "MessageGroupDAO.h"
+#import "DPMessage.h"
+#import "DPMessageGroup.h"
+#import "ImDataUtil.h"
 
 @interface MessageDataProxy : NSObject
 
-@property (nonatomic, retain) NSMutableArray *arrMessages;
-@property (nonatomic, retain) NSMutableArray *arrMessageGroups;
-
 + (MessageDataProxy*)sharedProxy;
+
+//修改数组中元素内容，需用数组replace操作，以触发observer的相关逻辑
+- (NSMutableArray *)mutableArrayMessages;
+- (NSMutableArray *)mutableArrayMessageGroups;
 
 @end

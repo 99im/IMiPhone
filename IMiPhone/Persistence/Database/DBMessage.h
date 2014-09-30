@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+#define DB_PRIMARY_KEY_SENDER_ID @"senderUid"
+
 @interface DBMessage : NSObject
 
 @property (nonatomic) NSInteger senderUid;

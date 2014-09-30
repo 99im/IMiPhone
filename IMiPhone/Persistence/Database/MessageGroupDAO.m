@@ -7,7 +7,6 @@
 //
 
 #import "MessageGroupDAO.h"
-#import "DBMessageGroup.h"
 
 @implementation MessageGroupDAO
 
@@ -19,7 +18,7 @@ static MessageGroupDAO *messageGroupDAO = nil;
     dispatch_once(&onceToken, ^{
         messageGroupDAO = [[MessageGroupDAO alloc] init];
         NSString *tableName = @"tb_message_group";
-        NSString *primaryKey = @"messageGroupId";
+        NSString *primaryKey = DB_PRIMARY_KEY_MESSAGE_PROUP_ID;
         [messageGroupDAO createTableIfNotExist:tableName withDataMode:[DBMessageGroup class] withPrimaryKey:primaryKey];
     });
     return messageGroupDAO;

@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+#define DB_PRIMARY_KEY_GROUP_ID @"groupId"
+
 @interface DBGroup : NSObject
 
 @property (nonatomic) NSInteger  groupId;

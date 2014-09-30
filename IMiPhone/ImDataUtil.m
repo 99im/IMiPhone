@@ -6,11 +6,11 @@
 //  Copyright (c) 2014年 尹晓君. All rights reserved.
 //
 
-#import "DataUtil.h"
+#import "ImDataUtil.h"
 
-@implementation DataUtil
+@implementation ImDataUtil
 
-+ (NSDictionary *)getDicFromNormalClass:(id)classInstance
++ (NSMutableDictionary *)getDicFromNormalClass:(id)classInstance
 {
     //创建可变字典
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
@@ -45,9 +45,15 @@
         Ivar const ivar = *p;
         //　获取变量名
         NSString *key = [NSString stringWithUTF8String:ivar_getName(ivar)];
+        //获取变量类型
+        const char *type = ivar_getTypeEncoding(ivar);
+
         if (key)
         {
-            [mutArray addObject:key];
+            NSString *typeStr;
+            typeStr = [NSString stringWithFormat:@"%c",type[0]];
+            NSMutableArray *arrKeyAndType = [NSMutableArray arrayWithObjects:key,typeStr, nil];
+            [mutArray addObject:arrKeyAndType];
         }
     }
     return mutArray;
@@ -62,4 +68,27 @@
 //        }
 //    }
 }
+
++ (void)copyFrom:(NSObject *)src To:(NSObject *)dest;
+{
+    if (src == nil) {
+        NSLog(@"copyFrom src == nil");
+        return;
+    }
+    if (dest == nil) {
+        NSLog(@"copyTo dest == nil");
+        return;
+    }
+    NSArray *arrDestProps = [ImDataUtil getArrPropsFromDataModeClass:[dest class]];
+    if (arrDestProps) {
+        for (NSInteger i = 0; i < arrDestProps.count; i++) {
+            NSString *key = arrDestProps[i][0];
+            id autoReleaseI;
+            if ([src validateValue:&autoReleaseI forKey:key error:nil]) {
+                [dest setValue:[src valueForKey:key] forKey:key];
+            }
+        }
+    }
+}
+
 @end
