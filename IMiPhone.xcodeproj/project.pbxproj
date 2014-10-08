@@ -59,6 +59,10 @@
 		116BF88619CC29360015561B /* ImDataUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 116BF88419CC29360015561B /* ImDataUtil.m */; };
 		11795E2819D297CD003FD9A7 /* DPFriend.m in Sources */ = {isa = PBXBuildFile; fileRef = 11795E2719D297CD003FD9A7 /* DPFriend.m */; };
 		11795E2919D297CD003FD9A7 /* DPFriend.m in Sources */ = {isa = PBXBuildFile; fileRef = 11795E2719D297CD003FD9A7 /* DPFriend.m */; };
+		11B1C62819E4E069003D2711 /* ChatMessageProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B1C62719E4E069003D2711 /* ChatMessageProxy.m */; };
+		11B1C62919E4E069003D2711 /* ChatMessageProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B1C62719E4E069003D2711 /* ChatMessageProxy.m */; };
+		11B1C62C19E51AFB003D2711 /* ChatDataProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B1C62B19E51AFB003D2711 /* ChatDataProxy.m */; };
+		11B1C62D19E51AFB003D2711 /* ChatDataProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B1C62B19E51AFB003D2711 /* ChatDataProxy.m */; };
 		11DF9F8319A2276C00AE5D89 /* splash.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 11DF9F8519A2276C00AE5D89 /* splash.jpg */; };
 		5825D8F119D808CA004FF6FF /* CategoryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5825D8F019D808CA004FF6FF /* CategoryTableViewController.m */; };
 		5825D8F219D8105E004FF6FF /* FriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C14DD519C81447009334E1 /* FriendsViewController.m */; };
@@ -225,6 +229,10 @@
 		116BF88419CC29360015561B /* ImDataUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImDataUtil.m; sourceTree = "<group>"; };
 		11795E2619D297CD003FD9A7 /* DPFriend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPFriend.h; sourceTree = "<group>"; };
 		11795E2719D297CD003FD9A7 /* DPFriend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPFriend.m; sourceTree = "<group>"; };
+		11B1C62619E4E069003D2711 /* ChatMessageProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatMessageProxy.h; sourceTree = "<group>"; };
+		11B1C62719E4E069003D2711 /* ChatMessageProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatMessageProxy.m; sourceTree = "<group>"; };
+		11B1C62A19E51AFB003D2711 /* ChatDataProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatDataProxy.h; sourceTree = "<group>"; };
+		11B1C62B19E51AFB003D2711 /* ChatDataProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatDataProxy.m; sourceTree = "<group>"; };
 		11DF9F8419A2276C00AE5D89 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "zh-Hans"; path = "zh-Hans.lproj/splash.jpg"; sourceTree = "<group>"; };
 		5825D8EF19D808CA004FF6FF /* CategoryTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryTableViewController.h; sourceTree = "<group>"; };
 		5825D8F019D808CA004FF6FF /* CategoryTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoryTableViewController.m; sourceTree = "<group>"; };
@@ -583,6 +591,8 @@
 		58AF049419B053930077DCBC /* DataProxy */ = {
 			isa = PBXGroup;
 			children = (
+				11B1C62A19E51AFB003D2711 /* ChatDataProxy.h */,
+				11B1C62B19E51AFB003D2711 /* ChatDataProxy.m */,
 				110F561419D56E07003B9EB4 /* DPMessageGroups.h */,
 				110F561519D56E07003B9EB4 /* DPMessageGroups.m */,
 				110F561819D57013003B9EB4 /* DPMessageGroup.h */,
@@ -706,6 +716,8 @@
 		58D95F4E19A5EB7F007139AB /* MessageProxy */ = {
 			isa = PBXGroup;
 			children = (
+				11B1C62619E4E069003D2711 /* ChatMessageProxy.h */,
+				11B1C62719E4E069003D2711 /* ChatMessageProxy.m */,
 				58D95F4F19A5ECA4007139AB /* UserMessageProxy.h */,
 				58D95F5019A5ECA4007139AB /* UserMessageProxy.m */,
 				58AF049019AF37C70077DCBC /* FriendMessageProxy.h */,
@@ -884,6 +896,7 @@
 				58B496D819A7186A0082AE30 /* NSAlert+MKNetworkKitAdditions.m in Sources */,
 				58A331AD19E52CDE005BE980 /* CategoryContactTableViewCell.m in Sources */,
 				58B496E219A7186A0082AE30 /* UIAlertView+MKNetworkKitAdditions.m in Sources */,
+				11B1C62819E4E069003D2711 /* ChatMessageProxy.m in Sources */,
 				58A331AA19E51A95005BE980 /* CategoryListTableViewController.m in Sources */,
 				116B6E8C19B0538300DB1B5E /* GroupDAO.m in Sources */,
 				116B6E7D19AEF83500DB1B5E /* imRms.m in Sources */,
@@ -910,6 +923,7 @@
 				110F561A19D57013003B9EB4 /* DPMessageGroup.m in Sources */,
 				58438C0D19D412E400B6962B /* NearbyTableViewController.m in Sources */,
 				5859721819A1DEE500258CB1 /* LoginViewController.m in Sources */,
+				11B1C62C19E51AFB003D2711 /* ChatDataProxy.m in Sources */,
 				58C14DE619CAB631009334E1 /* AddTableViewController.m in Sources */,
 				58BC1E3919C0304900722A00 /* RegStep2ViewController.m in Sources */,
 				58BC1E3719C0304900722A00 /* RegStep1ViewController.m in Sources */,
@@ -982,6 +996,7 @@
 				58BC1E3619C0304900722A00 /* RegisterViewController.m in Sources */,
 				58C14DDB19C81562009334E1 /* RecommendViewController.m in Sources */,
 				116AB14D19B733C400092E2C /* FriendDataProxyTest.m in Sources */,
+				11B1C62919E4E069003D2711 /* ChatMessageProxy.m in Sources */,
 				1120945A19B601EF0012D607 /* IMiPhoneTests.m in Sources */,
 				116BF88219CC01C70015561B /* UserDataProxyTest.m in Sources */,
 				58EF8C4419BEF08C00C5A7AC /* imNWProxy.m in Sources */,
@@ -997,6 +1012,7 @@
 				116AB14519B731CB00092E2C /* SqlightDriver.m in Sources */,
 				116AB14419B731C700092E2C /* SqlightAdapter.m in Sources */,
 				116AB14B19B731E100092E2C /* GroupDAO.m in Sources */,
+				11B1C62D19E51AFB003D2711 /* ChatDataProxy.m in Sources */,
 				58EF8C4619BF04B600C5A7AC /* imNetWorkTest.m in Sources */,
 				58EF8C4019BEEE1600C5A7AC /* AccountMessageProxy.m in Sources */,
 				116AB14719B731D300092E2C /* DBMessage.m in Sources */,

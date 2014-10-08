@@ -17,9 +17,10 @@
 + (FriendMessageProxy*)sharedProxy;
 
 - (void)sendTypeFocusAdd:(NSNumber *)uid;
-- (void)parseTypeFocusAdd:(id)json;
+//- (void)parseTypeFocusAdd:(id)json;
 
-- (void)sendTypeFocusAdd:(NSNumber *)uid;
+- (void)sendTypeFocusCancel:(NSNumber *)uid;
+//- (void)parseTypeFocusCancel:(id)json;
 
 - (void)sendTypeFocusList:(NSNumber *)start withPageNum:(NSNumber *)pageNum;
 
