@@ -86,36 +86,6 @@ static FriendMessageProxy *sharedFriendMessageProxy = nil;
     }];
 }
 
-- (void)sendTypeFanList:(NSNumber *)start withPageNum:(NSNumber *)pageNum
-{
-    NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
-    [params setObject:start forKey:KEYQ__FRIEND_FAN_LIST__START];
-    [params setObject:pageNum forKey:KEYQ__FRIEND_FAN_LIST__PAGENUM];
-    imNWMessage *message = [imNWMessage createForHttp:PATH__FRIEND_FAN_LIST_ withParams:params withMethod:METHOD__FRIEND_FAN_LIST_ ssl:NO];
-    [[imNWManager sharedNWManager] sendMessage:message withResponse:^(NSString *responseString, NSData *responseData) {
-        NSError *err = nil;
-        NSMutableDictionary *json = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingAllowFragments error:&err];
-        if (err) {
-            NSAssert1(YES, @"JSON create error: %@", err);
-        }
-        else {
-            int errorcode = [[json objectForKey:KEYP__FRIEND_FAN_LIST__ERROR_CODE] intValue];
-            if (errorcode == 0) {
-                [[NSNotificationCenter defaultCenter] postNotificationName:NOTI__FRIEND_FAN_LIST_ object:nil];
-            }
-            else {
-                NSAssert1(YES, @"Http connect response error: %i", errorcode);
-                NSNumber *errorCodeNumber = [NSNumber numberWithInt:errorcode];
-                NSString *errorMessage = [errorCodeNumber errorMessage];
-                NSDictionary *userInfo = [NSDictionary dictionaryWithObject:errorMessage
-                                                                     forKey:NSLocalizedDescriptionKey];
-                NSError *error = [NSError errorWithDomain:PATH__FRIEND_FAN_LIST_ code:errorcode userInfo:userInfo];
-                [[NSNotificationCenter defaultCenter] postNotificationName:NOTI__FRIEND_FAN_LIST_ object:error];
-            }
-        }
-    }];
-}
-
 - (void)sendTypeFocusCancel:(NSNumber *)uid
 {
     NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
