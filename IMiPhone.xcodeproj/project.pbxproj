@@ -82,6 +82,8 @@
 		585971F31999F0C700258CB1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 585971D51999F0C700258CB1 /* UIKit.framework */; };
 		5859721819A1DEE500258CB1 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5859721719A1DEE500258CB1 /* LoginViewController.m */; };
 		5887FD2A19CC00EF001BFAFB /* TPContactsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5887FD2819CC00EF001BFAFB /* TPContactsTableViewController.m */; };
+		58A331AA19E51A95005BE980 /* CategoryListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A331A919E51A95005BE980 /* CategoryListTableViewController.m */; };
+		58A331AD19E52CDE005BE980 /* CategoryContactTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A331AC19E52CDE005BE980 /* CategoryContactTableViewCell.m */; };
 		58A5B4F819ADC05F0007C2F3 /* MainTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A5B4F719ADC05F0007C2F3 /* MainTabBarController.m */; };
 		58A5B4FC19ADC3CA0007C2F3 /* ChatTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A5B4FB19ADC3CA0007C2F3 /* ChatTableViewController.m */; };
 		58A9134019D2BDBA008E5A25 /* UserShowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A9133F19D2BDBA008E5A25 /* UserShowViewController.m */; };
@@ -261,6 +263,10 @@
 		5859721719A1DEE500258CB1 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginViewController.m; path = IMiPhone/LoginViewController.m; sourceTree = "<group>"; };
 		5887FD2719CC00EF001BFAFB /* TPContactsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPContactsTableViewController.h; sourceTree = "<group>"; };
 		5887FD2819CC00EF001BFAFB /* TPContactsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPContactsTableViewController.m; sourceTree = "<group>"; };
+		58A331A819E51A95005BE980 /* CategoryListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryListTableViewController.h; sourceTree = "<group>"; };
+		58A331A919E51A95005BE980 /* CategoryListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoryListTableViewController.m; sourceTree = "<group>"; };
+		58A331AB19E52CDE005BE980 /* CategoryContactTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryContactTableViewCell.h; sourceTree = "<group>"; };
+		58A331AC19E52CDE005BE980 /* CategoryContactTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoryContactTableViewCell.m; sourceTree = "<group>"; };
 		58A5B4F619ADC05F0007C2F3 /* MainTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainTabBarController.h; sourceTree = "<group>"; };
 		58A5B4F719ADC05F0007C2F3 /* MainTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainTabBarController.m; sourceTree = "<group>"; };
 		58A5B4FA19ADC3CA0007C2F3 /* ChatTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatTableViewController.h; sourceTree = "<group>"; };
@@ -686,6 +692,10 @@
 				5887FD2819CC00EF001BFAFB /* TPContactsTableViewController.m */,
 				5825D8EF19D808CA004FF6FF /* CategoryTableViewController.h */,
 				5825D8F019D808CA004FF6FF /* CategoryTableViewController.m */,
+				58A331A819E51A95005BE980 /* CategoryListTableViewController.h */,
+				58A331A919E51A95005BE980 /* CategoryListTableViewController.m */,
+				58A331AB19E52CDE005BE980 /* CategoryContactTableViewCell.h */,
+				58A331AC19E52CDE005BE980 /* CategoryContactTableViewCell.m */,
 			);
 			name = Contact;
 			sourceTree = "<group>";
@@ -882,6 +892,7 @@
 				58B496F419A71AFB0082AE30 /* imNWHttpConnect.m in Sources */,
 				58B496E419A7186A0082AE30 /* UIImageView+MKNetworkKitAdditions.m in Sources */,
 				58B496D819A7186A0082AE30 /* NSAlert+MKNetworkKitAdditions.m in Sources */,
+				58A331AD19E52CDE005BE980 /* CategoryContactTableViewCell.m in Sources */,
 				58B496E219A7186A0082AE30 /* UIAlertView+MKNetworkKitAdditions.m in Sources */,
 				11B1C62819E4E069003D2711 /* ChatMessageProxy.m in Sources */,
 				116B6E8C19B0538300DB1B5E /* GroupDAO.m in Sources */,

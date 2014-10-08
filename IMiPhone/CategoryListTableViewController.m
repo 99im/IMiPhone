@@ -1,28 +1,21 @@
 //
-//  CategoryTableViewController.m
+//  CategoryListTableViewController.m
 //  IMiPhone
 //
-//  Created by 尹晓君 on 14-9-28.
+//  Created by 尹晓君 on 14-10-8.
 //  Copyright (c) 2014年 尹晓君. All rights reserved.
 //
 
-#import "CategoryTableViewController.h"
-#import "FriendMessageProxy.h"
+#import "CategoryListTableViewController.h"
 
-@interface CategoryTableViewController ()
-
-@property (nonatomic, retain) NSArray *arrCategorys;
+@interface CategoryListTableViewController ()
 
 @end
 
-@implementation CategoryTableViewController
+@implementation CategoryListTableViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    NSBundle *bundle = [NSBundle mainBundle];
-    NSString *plistPath = [bundle pathForResource:@"contact" ofType:@"plist"];
-    self.arrCategorys = [[[NSDictionary alloc] initWithContentsOfFile:plistPath] objectForKey:@"Category"];
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -36,41 +29,29 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - Table view delegate
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    NSString *categoryId = nil;
-    for (NSDictionary *dicCategory in self.arrCategorys) {
-        if ([cell.textLabel.text isEqualToString:[dicCategory objectForKey:@"title"]]) {
-            categoryId = [dicCategory objectForKey:@"id"];
-            break;
-        }
-    }
-    if ([categoryId isEqualToString:@"focus"]) {
-        [[FriendMessageProxy sharedProxy] sendTypeFocusList:[NSNumber numberWithInt:0] withPageNum:[NSNumber numberWithInt:LIST_PAGENUM]];
-    }
-    else if ([categoryId isEqualToString:@"fan"]) {
-        [[FriendMessageProxy sharedProxy] sendTypeFanList:[NSNumber numberWithInt:0] withPageNum:[NSNumber numberWithInt:LIST_PAGENUM]];
-    }
-}
-
 #pragma mark - Table view data source
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    // Return the number of rows in the section.
-    return self.arrCategorys.count;
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+#warning Potentially incomplete method implementation.
+    // Return the number of sections.
+    return 0;
 }
 
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+#warning Incomplete method implementation.
+    // Return the number of rows in the section.
+    return 0;
+}
 
+/*
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CategoryTVCell" forIndexPath:indexPath];
-    cell.textLabel.text = [[self.arrCategorys objectAtIndex:indexPath.row] objectForKey:@"title"];
-    [cell.imageView setImage:[UIImage imageNamed:[[self.arrCategorys objectAtIndex:indexPath.row] objectForKey:@"image"]]];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+    
+    // Configure the cell...
+    
     return cell;
 }
-
+*/
 
 /*
 // Override to support conditional editing of the table view.

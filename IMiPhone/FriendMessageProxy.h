@@ -22,4 +22,8 @@
 - (void)sendTypeFocusCancel:(NSNumber *)uid;
 //- (void)parseTypeFocusCancel:(id)json;
 
+- (void)sendTypeFocusList:(NSNumber *)start withPageNum:(NSNumber *)pageNum;
+
+- (void)sendTypeFanList:(NSNumber *)start withPageNum:(NSNumber *)pageNum;
+
 @end

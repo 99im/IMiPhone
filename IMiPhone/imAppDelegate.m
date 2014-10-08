@@ -9,6 +9,7 @@
 #import "imAppDelegate.h"
 #import "MainTabBarController.h"
 #import "UserDataProxy.h"
+#import "imNWManager.h"
 
 @implementation imAppDelegate
 
@@ -20,6 +21,8 @@
         MainTabBarController *mainTabBarController = [storyBoard instantiateViewControllerWithIdentifier:@"mainTabBarController"];
         self.window.rootViewController = mainTabBarController;
     }
+    
+    [[imNWManager sharedNWManager] initHttpConnect];
     
     return YES;
 }

@@ -23,3 +23,5 @@
 "Alert.Birthday" = "请选择您的生日。";
 "DateFormatClient" = "yyyy年MM月dd日";
 "DateFormatServer" = "yyyy-MM-dd";
+"Category.Focus" = "关注";
+"Category.Fan" = "粉丝";
