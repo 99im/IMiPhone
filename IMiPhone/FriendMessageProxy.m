@@ -71,6 +71,7 @@ static FriendMessageProxy *sharedFriendMessageProxy = nil;
         else {
             int errorcode = [[json objectForKey:KEYP__FRIEND_FOCUS_LIST__ERROR_CODE] intValue];
             if (errorcode == 0) {
+                //数据处理
                 [[NSNotificationCenter defaultCenter] postNotificationName:NOTI__FRIEND_FOCUS_LIST_ object:nil];
             }
             else {
@@ -101,6 +102,7 @@ static FriendMessageProxy *sharedFriendMessageProxy = nil;
         else {
             int errorcode = [[json objectForKey:KEYP__FRIEND_FAN_LIST__ERROR_CODE] intValue];
             if (errorcode == 0) {
+                //数据处理
                 [[NSNotificationCenter defaultCenter] postNotificationName:NOTI__FRIEND_FAN_LIST_ object:nil];
             }
             else {

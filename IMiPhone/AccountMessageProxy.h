@@ -17,8 +17,11 @@
 
 - (void)sendTypeMobcode:(NSString *)phone withCountry:(NSString *)country;
 - (void)sendTypeRegister:(NSString *)password;
-- (void)sendTypeLogin:(NSString *)mobile fromCountry:(NSString *)mobCountry withPwd:(NSString *)password;
+- (void)sendHttpLogin:(NSString *)mobile fromCountry:(NSString *)mobCountry withPwd:(NSString *)password;
 - (void)sendTypeMyinfo;
 - (void)sendTypeUpdateinfo:(NSInteger)gender birthday:(NSString *)birth nickname:(NSString *)nick;
+
+- (void)sendTypeLogin:(NSString *)verify;
+- (void)parseTypeLogin:(id)json;
 
 @end

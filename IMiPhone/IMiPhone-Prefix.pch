@@ -14,13 +14,17 @@
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
     #import "imUtil.h"
-    #import "MessageDefine.pch"
+    #import "MessageHttpDefine.pch"
+    #import "MessageSocketDefine.pch"
 #endif
 
 #define CRYPT YES
-#define HTTPHOST @"local.taiqiu.com"
-#define HTTPPORT 7070
-#define MSG_OK 0
+#define SOCKET_HOST @"local.taiqiu.com"
+#define SOCKET_PORT 8000
+#define HTTP_HOST @"local.taiqiu.com"
+#define HTTP_PORT 7070
+#define ERRORCODE_OK 0
+#define RES_OK 1
 #define METHOD_POST @"POST"
 #define METHOD_GET @"GET"
 #define HTTP_KEY_VERIFY @"verify"

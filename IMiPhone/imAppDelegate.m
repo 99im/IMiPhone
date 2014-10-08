@@ -20,6 +20,9 @@
         UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
         MainTabBarController *mainTabBarController = [storyBoard instantiateViewControllerWithIdentifier:@"mainTabBarController"];
         self.window.rootViewController = mainTabBarController;
+        
+        [[imNWManager sharedNWManager] initSocketConnect];
+        [[imNWManager sharedNWManager].socketConnect connect:SOCKET_HOST port:SOCKET_PORT];
     }
     
     [[imNWManager sharedNWManager] initHttpConnect];

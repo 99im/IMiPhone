@@ -91,7 +91,7 @@ static AccountMessageProxy *sharedAccountMessageProxy = nil;
     }];
 }
 
-- (void)sendTypeLogin:(NSString *)mobile fromCountry:(NSString *)mobCountry withPwd:(NSString *)password
+- (void)sendHttpLogin:(NSString *)mobile fromCountry:(NSString *)mobCountry withPwd:(NSString *)password
 {
     //使用http
     [UserDataProxy sharedProxy].lastLoginCountry = mobCountry;
@@ -207,6 +207,32 @@ static AccountMessageProxy *sharedAccountMessageProxy = nil;
             }
         }
     }];
+}
+
+- (void)sendTypeLogin:(NSString *)verify
+{
+    NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
+    [params setObject:verify forKey:KEYQ_ACCOUNT_LOGIN_VERIFY];
+    imNWMessage *message = [imNWMessage createForSocket:MARK_ACCOUNT withType:TYPE_ACCOUNT_LOGIN];
+    [message send:params];
+}
+
+- (void)parseTypeLogin:(id)json
+{
+    int res = [[json objectForKey:KEYP_ACCOUNT_LOGIN_RES] intValue];
+    if (res == RES_OK) {
+        NSInteger uid = [[json objectForKey:KEYP_ACCOUNT_LOGIN_UID] integerValue];
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_ACCOUNT_LOGIN object:nil];
+    }
+    else {
+        NSAssert1(YES, @"Socket connect response error: %i", res);
+        NSNumber *errorCodeNumber = [NSNumber numberWithInt:res];
+        NSString *errorMessage = [errorCodeNumber errorMessage];
+        NSDictionary *userInfo = [NSDictionary dictionaryWithObject:errorMessage
+                                                             forKey:NSLocalizedDescriptionKey];
+        NSError *error = [NSError errorWithDomain:[NSString stringWithFormat:@"%@_%@", MARK_ACCOUNT, TYPE_ACCOUNT_LOGIN] code:res userInfo:userInfo];
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_ACCOUNT_LOGIN object:error];
+    }
 }
 
 @end

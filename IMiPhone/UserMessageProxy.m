@@ -27,16 +27,6 @@ static UserMessageProxy *sharedUserMessageProxy = nil;
     return sharedUserMessageProxy;
 }
 
-- (void)sendTypeRegister:(NSString *)phone code:(NSString *)code password:(NSString *)password
-{
-    
-}
-
-- (void)parseTypeRegister:(id)json
-{
-    
-}
-
 - (void)sendTypeSearch:(NSString *)oid
 {
     //使用http

@@ -54,7 +54,7 @@
 
 - (IBAction)doneSelector:(id)sender {
     if (![imUtil checkBlankString:self.tfPassword.text] && ![imUtil checkBlankString:self.tfUsername.text]) {
-        [[AccountMessageProxy sharedProxy] sendTypeLogin:self.tfUsername.text fromCountry:CHINA_CODE withPwd:self.tfPassword.text];
+        [[AccountMessageProxy sharedProxy] sendHttpLogin:self.tfUsername.text fromCountry:CHINA_CODE withPwd:self.tfPassword.text];
     }
 }
 
@@ -62,8 +62,8 @@
 
 - (void)registerMessageNotification
 {
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sendAccountLoginResult:) name:NOTI__ACCOUNT_LOGIN_ object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sendAccountMyinfoResult:) name:NOTI__ACCOUNT_MYINFO_ object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sendHttpLoginResult:) name:NOTI__ACCOUNT_LOGIN_ object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sendHttpMyinfoResult:) name:NOTI__ACCOUNT_MYINFO_ object:nil];
 }
 
 - (void)removeMessageNotification
@@ -71,14 +71,14 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
-- (void)sendAccountLoginResult:(NSNotification *)notification
+- (void)sendHttpLoginResult:(NSNotification *)notification
 {
     if (![notification object]) {
         [[AccountMessageProxy sharedProxy] sendTypeMyinfo];
     }
 }
 
-- (void)sendAccountMyinfoResult:(NSNotification *)notification
+- (void)sendHttpMyinfoResult:(NSNotification *)notification
 {
     if (![notification object]) {
         if ([imUtil checkBlankString:[UserDataProxy sharedProxy].user.nick]) {
@@ -95,7 +95,7 @@
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     if (![imUtil checkBlankString:self.tfPassword.text] && ![imUtil checkBlankString:self.tfUsername.text]) {
-        [[AccountMessageProxy sharedProxy] sendTypeLogin:self.tfUsername.text fromCountry:CHINA_CODE withPwd:self.tfPassword.text];
+        [[AccountMessageProxy sharedProxy] sendHttpLogin:self.tfUsername.text fromCountry:CHINA_CODE withPwd:self.tfPassword.text];
     }
     [textField resignFirstResponder];
     return YES;

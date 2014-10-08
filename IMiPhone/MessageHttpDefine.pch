@@ -1,10 +1,80 @@
+
+
+#define MARK_FRIEND @"friend"
+
+/*
+mark: friend
+type: /friend/friend-list/
+method: http-get
+describe: è·å–å¥½å‹åˆ—è¡¨ï¼ˆåŒå‘å…³æ³¨ï¼‰
+example: http://local.taiqiu.com:7070/friend/friend-list/?verify=17_1411380649_8cd8f6306fb1232f98573dae4e137f50
+{
+"error_code": 0,
+"list": [
+{
+"friendUid": 16,
+"byName": "",
+"memo": "",
+"groups": "",
+"relation": 0,
+"uinfo": {
+"uid": 16,
+"oid": "16",
+"nick": "è°è°è°",
+"city": "",
+"vip": 0
+}
+}
+]
+}
+*/
+#define PATH__FRIEND_FRIEND_LIST_ @"/friend/friend-list/"
+#define NOTI__FRIEND_FRIEND_LIST_ @"MPfriendfriend-listNotifiction"
+#define METHOD__FRIEND_FRIEND_LIST_ @"GET"
+#define KEYQ__FRIEND_FRIEND_LIST__VERFIY @"verfiy" //verfiy string
+#define KEYP__FRIEND_FRIEND_LIST__ERROR_CODE @"error_code" //error_code int 0
+#define KEYP__FRIEND_FRIEND_LIST__LIST @"list" //list
+#define KEYP__FRIEND_FRIEND_LIST__LIST_FRIENDUID @"friendUid" // friendUid
+#define KEYP__FRIEND_FRIEND_LIST__LIST_BYNAME @"byName" // byName
+#define KEYP__FRIEND_FRIEND_LIST__LIST_MEMO @"memo" // memo
+#define KEYP__FRIEND_FRIEND_LIST__LIST_GROUPS @"groups" // groups
+#define KEYP__FRIEND_FRIEND_LIST__LIST_RELATION @"relation" // relation
+#define KEYP__FRIEND_FRIEND_LIST__LIST_UINFO @"uinfo" // uinfo
+#define KEYP__FRIEND_FRIEND_LIST__LIST_UINFO_UID @"uid" //  uid
+#define KEYP__FRIEND_FRIEND_LIST__LIST_UINFO_OID @"oid" //  oid
+#define KEYP__FRIEND_FRIEND_LIST__LIST_UINFO_NICK @"nick" //  nick
+
+/*
+mark: friend
+type: /friend/brief/
+method: http-get
+describe: è·å–å¥½å‹ç³»ç»Ÿæ¦‚è¦
+
+example: http://local.taiqiu.com:7070/friend/brief/?focusUid=16&verify=17_1411380649_8cd8f6306fb1232f98573dae4e137f50
+
+{
+"error_code": 0,
+"fanTotal": 1,
+"focusTotal": 1,
+"friendTotal": 1
+}
+*/
+#define PATH__FRIEND_BRIEF_ @"/friend/brief/"
+#define NOTI__FRIEND_BRIEF_ @"MPfriendbriefNotifiction"
+#define METHOD__FRIEND_BRIEF_ @"GET"
+#define KEYQ__FRIEND_BRIEF__VERIFY @"verify" //verify string
+#define KEYP__FRIEND_BRIEF__FOCUSTOTAL @"focusTotal" //focusTotal
+#define KEYP__FRIEND_BRIEF__FANTOTAL @"fanTotal" //fanTotal
+#define KEYP__FRIEND_BRIEF__FRIENDTOTAL @"friendTotal" //friendTotal
+
+
 #define MARK_CHAT @"chat"
 
 /*
 mark: chat
 type: /chat/p2pchatlist/
 method: http-get
-describe: »ñÈ¡ÏûÏ¢ÁĞ±í
+describe: è·å–æ¶ˆæ¯åˆ—è¡¨
 example: http://local.taiqiu.com:7070/chat/p2pchatlist/?&targetUid=16&beforeMid=20&start=0&pageNum=20&verify=17_1411380649_8cd8f6306fb1232f98573dae4e137f50
 
 {
@@ -42,26 +112,26 @@ example: http://local.taiqiu.com:7070/chat/p2pchatlist/?&targetUid=16&beforeMid=
 #define PATH__CHAT_P2PCHATLIST_ @"/chat/p2pchatlist/"
 #define NOTI__CHAT_P2PCHATLIST_ @"MPchatp2pchatlistNotifiction"
 #define METHOD__CHAT_P2PCHATLIST_ @"GET"
-#define KEYQ__CHAT_P2PCHATLIST__TARGETUID @"targetUid" //targetUid int ºÃÓÑuid
-#define KEYQ__CHAT_P2PCHATLIST__BEFOREMID @"beforeMid" //beforeMid int »ñÈ¡ÏûÏ¢±àºÅÖ®Ç°µÄÏûÏ¢£¬midµ¹ĞğÅÅÁĞ
-#define KEYQ__CHAT_P2PCHATLIST__AFTERMID @"afterMid" //afterMid int »ñÈ¡ÏûÏ¢±àºÅÖ®ºóµÄÏûÏ¢£¬midÕıĞğÅÅÁĞ (ÈçºÎbeforeMidºÍafterMid¶¼Îª0£¬Ôò·µ»Ø×îĞÂµÄ)
-#define KEYQ__CHAT_P2PCHATLIST__START @"start" //start int ¿ªÊ¼
-#define KEYQ__CHAT_P2PCHATLIST__PAGENUM @"pageNum" //pageNum int ÊıÁ¿£¨Ä¬ÈÏÎª20£©
+#define KEYQ__CHAT_P2PCHATLIST__TARGETUID @"targetUid" //targetUid int å¥½å‹uid
+#define KEYQ__CHAT_P2PCHATLIST__BEFOREMID @"beforeMid" //beforeMid int è·å–æ¶ˆæ¯ç¼–å·ä¹‹å‰çš„æ¶ˆæ¯ï¼Œmidå€’å™æ’åˆ—
+#define KEYQ__CHAT_P2PCHATLIST__AFTERMID @"afterMid" //afterMid int è·å–æ¶ˆæ¯ç¼–å·ä¹‹åçš„æ¶ˆæ¯ï¼Œmidæ­£å™æ’åˆ— (å¦‚ä½•beforeMidå’ŒafterMidéƒ½ä¸º0ï¼Œåˆ™è¿”å›æœ€æ–°çš„)
+#define KEYQ__CHAT_P2PCHATLIST__START @"start" //start int å¼€å§‹
+#define KEYQ__CHAT_P2PCHATLIST__PAGENUM @"pageNum" //pageNum int æ•°é‡ï¼ˆé»˜è®¤ä¸º20ï¼‰
 #define KEYP__CHAT_P2PCHATLIST__ERROR_CODE @"error_code" //error_code
 #define KEYP__CHAT_P2PCHATLIST__LIST @"list" //list
-#define KEYP__CHAT_P2PCHATLIST__LIST_MID @"mid" // mid int ÁÄÌì±àºÅ
-#define KEYP__CHAT_P2PCHATLIST__LIST_GID @"gid" // gid string ÁÄÌì³¡¾°Î¨Ò»±êÊ¾·û 
-#define KEYP__CHAT_P2PCHATLIST__LIST_SUID @"suid" // suid int ·¢ËÍÕßuid
-#define KEYP__CHAT_P2PCHATLIST__LIST_MSGTYPE @"msgType" // msgType int ÏûÏ¢ÀàĞÍ
-#define KEYP__CHAT_P2PCHATLIST__LIST_CONTENT @"content" // content int ÏûÏ¢ÄÚÈİ
-#define KEYP__CHAT_P2PCHATLIST__LIST_CTIME @"ctime" // ctime int Ê±¼ä
-#define KEYP__CHAT_P2PCHATLIST__LIST_STATUS @"status" // status int ×´Ì¬
+#define KEYP__CHAT_P2PCHATLIST__LIST_MID @"mid" // mid int èŠå¤©ç¼–å·
+#define KEYP__CHAT_P2PCHATLIST__LIST_GID @"gid" // gid string èŠå¤©åœºæ™¯å”¯ä¸€æ ‡ç¤ºç¬¦ 
+#define KEYP__CHAT_P2PCHATLIST__LIST_SUID @"suid" // suid int å‘é€è€…uid
+#define KEYP__CHAT_P2PCHATLIST__LIST_MSGTYPE @"msgType" // msgType int æ¶ˆæ¯ç±»å‹
+#define KEYP__CHAT_P2PCHATLIST__LIST_CONTENT @"content" // content int æ¶ˆæ¯å†…å®¹
+#define KEYP__CHAT_P2PCHATLIST__LIST_CTIME @"ctime" // ctime int æ—¶é—´
+#define KEYP__CHAT_P2PCHATLIST__LIST_STATUS @"status" // status int çŠ¶æ€
 
 /*
 mark: chat
 type: /chat/p2pchat/
 method: http-post
-describe: ºÃÓÑÁÄÌì
+describe: å¥½å‹èŠå¤©
 example: http://local.taiqiu.com:7070/chat/p2pchat/?&targetUid=16&msgType=0&content=helloworld&verify=17_1411380649_8cd8f6306fb1232f98573dae4e137f50
 
 {
@@ -73,33 +143,34 @@ example: http://local.taiqiu.com:7070/chat/p2pchat/?&targetUid=16&msgType=0&cont
 #define PATH__CHAT_P2PCHAT_ @"/chat/p2pchat/"
 #define NOTI__CHAT_P2PCHAT_ @"MPchatp2pchatNotifiction"
 #define METHOD__CHAT_P2PCHAT_ @"POST"
-#define KEYQ__CHAT_P2PCHAT__TARGETUID @"targetUid" //targetUid int ºÃÓÑuid
-#define KEYQ__CHAT_P2PCHAT__MSGTYPE @"msgType" //msgType int ÏûÏ¢ÀàĞÍ 0 ÎªÎÄ±¾ 1 ÎªÉùÒô
-#define KEYQ__CHAT_P2PCHAT__CONTENT @"content" //content string ÏûÏ¢ÄÚÈİ
+#define KEYQ__CHAT_P2PCHAT__TARGETUID @"targetUid" //targetUid int å¥½å‹uid
+#define KEYQ__CHAT_P2PCHAT__MSGTYPE @"msgType" //msgType int æ¶ˆæ¯ç±»å‹ 0 ä¸ºæ–‡æœ¬ 1 ä¸ºå£°éŸ³
+#define KEYQ__CHAT_P2PCHAT__CONTENT @"content" //content string æ¶ˆæ¯å†…å®¹
 #define KEYP__CHAT_P2PCHAT__ERROR_CODE @"error_code" //error_code int 0
-#define KEYP__CHAT_P2PCHAT__MID @"mid" //mid int ÏûÏ¢±àºÅ
-#define MARK_FRIEND @"friend"
+#define KEYP__CHAT_P2PCHAT__MID @"mid" //mid int æ¶ˆæ¯ç¼–å·
 
 /*
 mark: friend
 type: /friend/memo-set/
 method: http-get
-describe: ÉèÖÃ ¹Ø×¢»òÕß·ÛË¿µÄ±¸×¢
+describe: è®¾ç½® å…³æ³¨æˆ–è€…ç²‰ä¸çš„å¤‡æ³¨
 example: http://local.taiqiu.com:7070/friend/memo-set/?fUid=17&memo=timssss&verify=16_1411380260_8e01b76b234112ca88fdb3645eacac44
 */
 #define PATH__FRIEND_MEMO_SET_ @"/friend/memo-set/"
 #define NOTI__FRIEND_MEMO_SET_ @"MPfriendmemo-setNotifiction"
 #define METHOD__FRIEND_MEMO_SET_ @"GET"
-#define KEYQ__FRIEND_MEMO_SET__FUID @"fUid" //fUid int Ä¿±êÓÃ»§id
-#define KEYQ__FRIEND_MEMO_SET__MEMO @"memo" //memo string ±¸×¢ÄÚÈİ 0-16¸ö×Ö·û
+#define KEYQ__FRIEND_MEMO_SET__FUID @"fUid" //fUid int ç›®æ ‡ç”¨æˆ·id
+#define KEYQ__FRIEND_MEMO_SET__MEMO @"memo" //memo string å¤‡æ³¨å†…å®¹ 0-16ä¸ªå­—ç¬¦
 #define KEYP__FRIEND_MEMO_SET__ERROR_CODE @"error_code" //error_code int 0
+
+
 #define MARK_USER @"user"
 
 /*
 mark: user
 type: /user/search/
 method: http-get
-describe: ²éÕÒÓÃ»§
+describe: æŸ¥æ‰¾ç”¨æˆ·
 example: http://local.taiqiu.com:7070/user/search/?oid=16&verify=16_1411381682_1d4099117d9d4fca38b4d682367d5b03
 
 {
@@ -118,17 +189,19 @@ example: http://local.taiqiu.com:7070/user/search/?oid=16&verify=16_1411381682_1
 #define PATH__USER_SEARCH_ @"/user/search/"
 #define NOTI__USER_SEARCH_ @"MPusersearchNotifiction"
 #define METHOD__USER_SEARCH_ @"GET"
-#define KEYQ__USER_SEARCH__OID @"oid" //oid string ö¦ºÅ
+#define KEYQ__USER_SEARCH__OID @"oid" //oid string é“å·
 #define KEYP__USER_SEARCH__ERROR_CODE @"error_code" //error_code int 0
 #define KEYP__USER_SEARCH__LIST @"list" //list array
 #define KEYP__USER_SEARCH__LIST_UINFO @"uinfo" // uinfo
+
+
 #define MARK_MSG @"msg"
 
 /*
 mark: msg
 type: /msg/sysmsg-unread-clear/
 method: http-get
-describe: Çå³ıÏµÍ³ÏûÏ¢Î´¶Á±ê¼Ç
+describe: æ¸…é™¤ç³»ç»Ÿæ¶ˆæ¯æœªè¯»æ ‡è®°
 example: http://local.taiqiu.com:7070/msg/sysmsg-unread-clear/?&smids=3,2,0&verify=17_1411380649_8cd8f6306fb1232f98573dae4e137f50
 
 {
@@ -138,16 +211,16 @@ example: http://local.taiqiu.com:7070/msg/sysmsg-unread-clear/?&smids=3,2,0&veri
 #define PATH__MSG_SYSMSG_UNREAD_CLEAR_ @"/msg/sysmsg-unread-clear/"
 #define NOTI__MSG_SYSMSG_UNREAD_CLEAR_ @"MPmsgsysmsg-unread-clearNotifiction"
 #define METHOD__MSG_SYSMSG_UNREAD_CLEAR_ @"GET"
-#define KEYQ__MSG_SYSMSG_UNREAD_CLEAR__SMIDS @"smids" //smids string 1,2,3,4 ÏûÏ¢id
+#define KEYQ__MSG_SYSMSG_UNREAD_CLEAR__SMIDS @"smids" //smids string 1,2,3,4 æ¶ˆæ¯id
 #define KEYP__MSG_SYSMSG_UNREAD_CLEAR__ERROR_CODE @"error_code" //error_code
 
 /*
 mark: msg
 type: /msg/sysmsg-list/
 method: http-get
-describe: »ñÈ¡ÏµÍ³ÏûÏ¢ÁĞ±í
+describe: è·å–ç³»ç»Ÿæ¶ˆæ¯åˆ—è¡¨
 
-todo äÖÈ¾
+todo æ¸²æŸ“
 example: http://local.taiqiu.com:7070/msg/sysmsg-list/?&modids=1,2,3&verify=17_1411380649_8cd8f6306fb1232f98573dae4e137f50
 
 {
@@ -211,7 +284,7 @@ example: http://local.taiqiu.com:7070/msg/sysmsg-list/?&modids=1,2,3&verify=17_1
 #define PATH__MSG_SYSMSG_LIST_ @"/msg/sysmsg-list/"
 #define NOTI__MSG_SYSMSG_LIST_ @"MPmsgsysmsg-listNotifiction"
 #define METHOD__MSG_SYSMSG_LIST_ @"GET"
-#define KEYQ__MSG_SYSMSG_LIST__MODIDS @"modids" //modids string ¿ÉÑ¡ Ä£¿éÏûÏ¢
+#define KEYQ__MSG_SYSMSG_LIST__MODIDS @"modids" //modids string å¯é€‰ æ¨¡å—æ¶ˆæ¯
 #define KEYP__MSG_SYSMSG_LIST__ERROR_CODE @"error_code" //error_code int 0
 #define KEYP__MSG_SYSMSG_LIST__LIST @"list" //list array
 #define KEYP__MSG_SYSMSG_LIST__LIST_UID @"uid" // uid int 
@@ -221,7 +294,7 @@ example: http://local.taiqiu.com:7070/msg/sysmsg-list/?&modids=1,2,3&verify=17_1
 mark: msg
 type: /msg/sysmsg-unread-num/
 method: http-get
-describe: »ñÈ¡ÏµÍ³ÏûÏ¢Î´¶ÁÊıÁ¿
+describe: è·å–ç³»ç»Ÿæ¶ˆæ¯æœªè¯»æ•°é‡
 example: http://local.taiqiu.com:7070/msg/sysmsg-unread-num/?&modids=1,2,3&verify=17_1411380649_8cd8f6306fb1232f98573dae4e137f50
 
 {
@@ -237,17 +310,17 @@ example: http://local.taiqiu.com:7070/msg/sysmsg-unread-num/?&modids=1,2,3&verif
 #define PATH__MSG_SYSMSG_UNREAD_NUM_ @"/msg/sysmsg-unread-num/"
 #define NOTI__MSG_SYSMSG_UNREAD_NUM_ @"MPmsgsysmsg-unread-numNotifiction"
 #define METHOD__MSG_SYSMSG_UNREAD_NUM_ @"GET"
-#define KEYQ__MSG_SYSMSG_UNREAD_NUM__MODIDS @"modids" //modids string 1,2,3 ¶ººÅ¸ô¿ª
+#define KEYQ__MSG_SYSMSG_UNREAD_NUM__MODIDS @"modids" //modids string 1,2,3 é€—å·éš”å¼€
 #define KEYP__MSG_SYSMSG_UNREAD_NUM__ERROR_CODE @"error_code" //error_code int 0
-#define KEYP__MSG_SYSMSG_UNREAD_NUM__NUM @"num" //num int Î´¶ÁÊıÁ¿×ÜÊı
+#define KEYP__MSG_SYSMSG_UNREAD_NUM__NUM @"num" //num int æœªè¯»æ•°é‡æ€»æ•°
 #define KEYP__MSG_SYSMSG_UNREAD_NUM__MODNUMS @"modNums" //modNums object
-#define KEYP__MSG_SYSMSG_UNREAD_NUM__MODNUMS_KEY @"key" // key string modid value±íÊ¾Î´¶ÁÊıÁ¿
+#define KEYP__MSG_SYSMSG_UNREAD_NUM__MODNUMS_KEY @"key" // key string modid valueè¡¨ç¤ºæœªè¯»æ•°é‡
 
 /*
 mark: msg
 type: /msg/unread-clear/
 method: http-get
-describe: Çå¿ÕÏûÏ¢ÌáĞÑ
+describe: æ¸…ç©ºæ¶ˆæ¯æé†’
 
 example: http://local.taiqiu.com:7070/msg/unread-clear/?fields=chat,friend,focus&verify=17_1411380649_8cd8f6306fb1232f98573dae4e137f50
 
@@ -258,14 +331,14 @@ example: http://local.taiqiu.com:7070/msg/unread-clear/?fields=chat,friend,focus
 #define PATH__MSG_UNREAD_CLEAR_ @"/msg/unread-clear/"
 #define NOTI__MSG_UNREAD_CLEAR_ @"MPmsgunread-clearNotifiction"
 #define METHOD__MSG_UNREAD_CLEAR_ @"GET"
-#define KEYQ__MSG_UNREAD_CLEAR__FIELDS @"fields" //fields string ĞèÒªÇå¿ÕµÄÄ£¿é
+#define KEYQ__MSG_UNREAD_CLEAR__FIELDS @"fields" //fields string éœ€è¦æ¸…ç©ºçš„æ¨¡å—
 #define KEYP__MSG_UNREAD_CLEAR__ERROR_CODE @"error_code" //error_code
 
 /*
 mark: msg
 type: /msg/unread/
 method: http-get
-describe:  »ñÈ¡¸÷¸öÄ£¿éÎ´¶ÁÏûÏ¢
+describe:  è·å–å„ä¸ªæ¨¡å—æœªè¯»æ¶ˆæ¯
 example: http://local.taiqiu.com:7070/msg/unread/?focusUid=16&verify=17_1411380649_8cd8f6306fb1232f98573dae4e137f50
 {
 "error_code": 0,
@@ -280,10 +353,9 @@ example: http://local.taiqiu.com:7070/msg/unread/?focusUid=16&verify=17_14113806
 #define PATH__MSG_UNREAD_ @"/msg/unread/"
 #define NOTI__MSG_UNREAD_ @"MPmsgunreadNotifiction"
 #define METHOD__MSG_UNREAD_ @"GET"
-#define KEYQ__MSG_UNREAD__ @"" //
 #define KEYP__MSG_UNREAD__ERROR_CODE @"error_code" //error_code int 0
 #define KEYP__MSG_UNREAD__UNREAD @"unread" //unread object
-#define KEYP__MSG_UNREAD__UNREAD_FRIEND @"friend" // friend int ºÃÓÑÎ´¶ÁÏûÏ¢Êı
+#define KEYP__MSG_UNREAD__UNREAD_FRIEND @"friend" // friend int å¥½å‹æœªè¯»æ¶ˆæ¯æ•°
 #define KEYP__MSG_UNREAD__UNREAD_FAN @"fan" // fan int
 #define KEYP__MSG_UNREAD__UNREAD_FOCUS @"focus" // focus int 
 #define KEYP__MSG_UNREAD__UNREAD_CHAT @"chat" // chat int
@@ -292,7 +364,7 @@ example: http://local.taiqiu.com:7070/msg/unread/?focusUid=16&verify=17_14113806
 mark: friend
 type: /friend/focus-cancel/
 method: http-get
-describe: È¡Ïû¹Ø×¢Ä³ÓÃ»§
+describe: å–æ¶ˆå…³æ³¨æŸç”¨æˆ·
 example: http://local.taiqiu.com:7070/friend/focus-cancel/?focusUid=16&verify=17_1411380649_8cd8f6306fb1232f98573dae4e137f50
 
 {
@@ -302,14 +374,14 @@ example: http://local.taiqiu.com:7070/friend/focus-cancel/?focusUid=16&verify=17
 #define PATH__FRIEND_FOCUS_CANCEL_ @"/friend/focus-cancel/"
 #define NOTI__FRIEND_FOCUS_CANCEL_ @"MPfriendfocus-cancelNotifiction"
 #define METHOD__FRIEND_FOCUS_CANCEL_ @"GET"
-#define KEYQ__FRIEND_FOCUS_CANCEL__FOCUSUID @"focusUid" //focusUid int ÓÃ»§uid
+#define KEYQ__FRIEND_FOCUS_CANCEL__FOCUSUID @"focusUid" //focusUid int ç”¨æˆ·uid
 #define KEYP__FRIEND_FOCUS_CANCEL__ERROR_CODE @"error_code" //error_code int 0
 
 /*
 mark: friend
 type: /friend/fan-list/
 method: http-get
-describe: »ñÈ¡·ÛË¿ÁĞ±í
+describe: è·å–ç²‰ä¸åˆ—è¡¨
 example: http://local.taiqiu.com:7070/friend/fan-list/?start=0&pageNum=20&verify=17_1411380649_8cd8f6306fb1232f98573dae4e137f50
 
 {
@@ -329,23 +401,23 @@ example: http://local.taiqiu.com:7070/friend/fan-list/?start=0&pageNum=20&verify
 #define PATH__FRIEND_FAN_LIST_ @"/friend/fan-list/"
 #define NOTI__FRIEND_FAN_LIST_ @"MPfriendfan-listNotifiction"
 #define METHOD__FRIEND_FAN_LIST_ @"GET"
-#define KEYQ__FRIEND_FAN_LIST__START @"start" //start int ¿ªÊ¼±àºÅ
-#define KEYQ__FRIEND_FAN_LIST__PAGENUM @"pageNum" //pageNum int ¿ÉÑ¡£¨Ä¬ÈÏ20£© ÊıÁ¿
+#define KEYQ__FRIEND_FAN_LIST__START @"start" //start int å¼€å§‹ç¼–å·
+#define KEYQ__FRIEND_FAN_LIST__PAGENUM @"pageNum" //pageNum int å¯é€‰ï¼ˆé»˜è®¤20ï¼‰ æ•°é‡
 #define KEYP__FRIEND_FAN_LIST__ERROR_CODE @"error_code" //error_code int 
 #define KEYP__FRIEND_FAN_LIST__LIST @"list" //list
-#define KEYP__FRIEND_FAN_LIST__LIST_FANUID @"fanUid" // fanUid int ÓÃ»§uid
-#define KEYP__FRIEND_FAN_LIST__LIST_BYNAME @"byName" // byName string ±ğÃû
-#define KEYP__FRIEND_FAN_LIST__LIST_MEMO @"memo" // memo string ±¸×¢
-#define KEYP__FRIEND_FAN_LIST__LIST_GROUPS @"groups" // groups string ·Ö×éĞÅÏ¢
-#define KEYP__FRIEND_FAN_LIST__LIST_RELATION @"relation" // relation int ¹ØÏµ
-#define KEYP__FRIEND_FAN_LIST__LIST_ISFRIENDS @"isFriends" // isFriends int ÊÇ·ñÊÇºÃÓÑ
-#define KEYP__FRIEND_FAN_LIST__LIST_UINFO @"uinfo" // uinfo object ÓÃ»§ĞÅÏ¢
+#define KEYP__FRIEND_FAN_LIST__LIST_FANUID @"fanUid" // fanUid int ç”¨æˆ·uid
+#define KEYP__FRIEND_FAN_LIST__LIST_BYNAME @"byName" // byName string åˆ«å
+#define KEYP__FRIEND_FAN_LIST__LIST_MEMO @"memo" // memo string å¤‡æ³¨
+#define KEYP__FRIEND_FAN_LIST__LIST_GROUPS @"groups" // groups string åˆ†ç»„ä¿¡æ¯
+#define KEYP__FRIEND_FAN_LIST__LIST_RELATION @"relation" // relation int å…³ç³»
+#define KEYP__FRIEND_FAN_LIST__LIST_ISFRIENDS @"isFriends" // isFriends int æ˜¯å¦æ˜¯å¥½å‹
+#define KEYP__FRIEND_FAN_LIST__LIST_UINFO @"uinfo" // uinfo object ç”¨æˆ·ä¿¡æ¯
 
 /*
 mark: friend
 type: /friend/focus-list/
 method: http-get
-describe: »ñÈ¡¹Ø×¢ÁĞ±í
+describe: è·å–å…³æ³¨åˆ—è¡¨
 example: http://local.taiqiu.com:7070/friend/focus-list/?start=0&pageNum=20&verify=17_1411380649_8cd8f6306fb1232f98573dae4e137f50
 
 {
@@ -365,23 +437,23 @@ example: http://local.taiqiu.com:7070/friend/focus-list/?start=0&pageNum=20&veri
 #define PATH__FRIEND_FOCUS_LIST_ @"/friend/focus-list/"
 #define NOTI__FRIEND_FOCUS_LIST_ @"MPfriendfocus-listNotifiction"
 #define METHOD__FRIEND_FOCUS_LIST_ @"GET"
-#define KEYQ__FRIEND_FOCUS_LIST__START @"start" //start int ¿ªÊ¼±àºÅ
-#define KEYQ__FRIEND_FOCUS_LIST__PAGENUM @"pageNum" //pageNum int ¿ÉÑ¡£¨Ä¬ÈÏ20£© ÊıÁ¿
+#define KEYQ__FRIEND_FOCUS_LIST__START @"start" //start int å¼€å§‹ç¼–å·
+#define KEYQ__FRIEND_FOCUS_LIST__PAGENUM @"pageNum" //pageNum int å¯é€‰ï¼ˆé»˜è®¤20ï¼‰ æ•°é‡
 #define KEYP__FRIEND_FOCUS_LIST__ERROR_CODE @"error_code" //error_code int 
 #define KEYP__FRIEND_FOCUS_LIST__LIST @"list" //list
-#define KEYP__FRIEND_FOCUS_LIST__LIST_FOCUSUID @"focusUid" // focusUid int ÓÃ»§uid
-#define KEYP__FRIEND_FOCUS_LIST__LIST_BYNAME @"byName" // byName string ±ğÃû
-#define KEYP__FRIEND_FOCUS_LIST__LIST_MEMO @"memo" // memo string ±¸×¢
-#define KEYP__FRIEND_FOCUS_LIST__LIST_GROUPS @"groups" // groups string ·Ö×éĞÅÏ¢
-#define KEYP__FRIEND_FOCUS_LIST__LIST_RELATION @"relation" // relation int ¹ØÏµ
-#define KEYP__FRIEND_FOCUS_LIST__LIST_ISFRIENDS @"isFriends" // isFriends int ÊÇ·ñÊÇºÃÓÑ
-#define KEYP__FRIEND_FOCUS_LIST__LIST_UINFO @"uinfo" // uinfo object ÓÃ»§ĞÅÏ¢
+#define KEYP__FRIEND_FOCUS_LIST__LIST_FOCUSUID @"focusUid" // focusUid int ç”¨æˆ·uid
+#define KEYP__FRIEND_FOCUS_LIST__LIST_BYNAME @"byName" // byName string åˆ«å
+#define KEYP__FRIEND_FOCUS_LIST__LIST_MEMO @"memo" // memo string å¤‡æ³¨
+#define KEYP__FRIEND_FOCUS_LIST__LIST_GROUPS @"groups" // groups string åˆ†ç»„ä¿¡æ¯
+#define KEYP__FRIEND_FOCUS_LIST__LIST_RELATION @"relation" // relation int å…³ç³»
+#define KEYP__FRIEND_FOCUS_LIST__LIST_ISFRIENDS @"isFriends" // isFriends int æ˜¯å¦æ˜¯å¥½å‹
+#define KEYP__FRIEND_FOCUS_LIST__LIST_UINFO @"uinfo" // uinfo object ç”¨æˆ·ä¿¡æ¯
 
 /*
 mark: friend
 type: /friend/focus-add/
 method: http-get
-describe: ¹Ø×¢Ä³¸öÓÃ»§
+describe: å…³æ³¨æŸä¸ªç”¨æˆ·
 example: local.taiqiu.com:7070/friend/focus-add/?focusUid=17&verify=16_1411380260_8e01b76b234112ca88fdb3645eacac44
 
 {
@@ -391,34 +463,36 @@ example: local.taiqiu.com:7070/friend/focus-add/?focusUid=17&verify=16_141138026
 #define PATH__FRIEND_FOCUS_ADD_ @"/friend/focus-add/"
 #define NOTI__FRIEND_FOCUS_ADD_ @"MPfriendfocus-addNotifiction"
 #define METHOD__FRIEND_FOCUS_ADD_ @"GET"
-#define KEYQ__FRIEND_FOCUS_ADD__FOCUSUID @"focusUid" //focusUid int Ä¿±êÓÃ»§uid
+#define KEYQ__FRIEND_FOCUS_ADD__FOCUSUID @"focusUid" //focusUid int ç›®æ ‡ç”¨æˆ·uid
 #define KEYP__FRIEND_FOCUS_ADD__ERROR_CODE @"error_code" //error_code int 0
+
+
 #define MARK_ACCOUNT @"account"
 
 /*
 mark: account
 type: /account/updateinfo/
 method: http-get
-describe: Ìá½»ÓÃ»§ĞÅÏ¢
+describe: æäº¤ç”¨æˆ·ä¿¡æ¯
 example: local.taiqiu.com:7070/account/updateinfo/?verify=15_1410252423_b1388aeea1a1c94e7ae4aa4e8f6b2e83&gender=1&birthday=2012-09-09&nick=felix
 
 */
 #define PATH__ACCOUNT_UPDATEINFO_ @"/account/updateinfo/"
 #define NOTI__ACCOUNT_UPDATEINFO_ @"MPaccountupdateinfoNotifiction"
 #define METHOD__ACCOUNT_UPDATEINFO_ @"GET"
-#define KEYQ__ACCOUNT_UPDATEINFO__GENDER @"gender" //gender int ¿ÉÑ¡ 0 ÄĞ 1 Å®
-#define KEYQ__ACCOUNT_UPDATEINFO__BIRTHDAY @"birthday" //birthday date ¿ÉÑ¡ ÉúÈÕ 2012-01-22
-#define KEYQ__ACCOUNT_UPDATEINFO__NICK @"nick" //nick string ¿ÉÑ¡ ÓÃ»§êÇ³Æ
-#define KEYQ__ACCOUNT_UPDATEINFO__INTEREST @"interest" //interest string ¿ÉÑ¡ ĞËÈ¤°®ºÃ ¶à¸öĞËÈ¤Ê¹ÓÃ,¸ô¿ª
-#define KEYQ__ACCOUNT_UPDATEINFO__CAREER @"career" //career string ¿ÉÑ¡ Ö°Òµ ×î³¤²»³¬¹ı64¸ö×Ö½Ú
-#define KEYQ__ACCOUNT_UPDATEINFO__INTRO @"intro" //intro string ¿ÉÑ¡×ÔÎÒ½éÉÜ£¨×ÖÊıÏŞÖÆ´ı¶¨£©
+#define KEYQ__ACCOUNT_UPDATEINFO__GENDER @"gender" //gender int å¯é€‰ 0 ç”· 1 å¥³
+#define KEYQ__ACCOUNT_UPDATEINFO__BIRTHDAY @"birthday" //birthday date å¯é€‰ ç”Ÿæ—¥ 2012-01-22
+#define KEYQ__ACCOUNT_UPDATEINFO__NICK @"nick" //nick string å¯é€‰ ç”¨æˆ·æ˜µç§°
+#define KEYQ__ACCOUNT_UPDATEINFO__INTEREST @"interest" //interest string å¯é€‰ å…´è¶£çˆ±å¥½ å¤šä¸ªå…´è¶£ä½¿ç”¨,éš”å¼€
+#define KEYQ__ACCOUNT_UPDATEINFO__CAREER @"career" //career string å¯é€‰ èŒä¸š æœ€é•¿ä¸è¶…è¿‡64ä¸ªå­—èŠ‚
+#define KEYQ__ACCOUNT_UPDATEINFO__INTRO @"intro" //intro string å¯é€‰è‡ªæˆ‘ä»‹ç»ï¼ˆå­—æ•°é™åˆ¶å¾…å®šï¼‰
 #define KEYP__ACCOUNT_UPDATEINFO__ERROR_CODE @"error_code" //error_code
 
 /*
 mark: account
 type: /account/myinfo/
 method: http-get
-describe: »ñÈ¡ÎÒµÄĞÅÏ¢
+describe: è·å–æˆ‘çš„ä¿¡æ¯
 example: http://local.taiqiu.com:7070/account/myinfo/
 
 {"error_code":0,"uinfo":{"uid":"15","nick":"32222222","mobile":"13811121213","mobCountry":"+86","email":"","gender":"0","city":"","status":"0"}}
@@ -426,11 +500,11 @@ example: http://local.taiqiu.com:7070/account/myinfo/
 #define PATH__ACCOUNT_MYINFO_ @"/account/myinfo/"
 #define NOTI__ACCOUNT_MYINFO_ @"MPaccountmyinfoNotifiction"
 #define METHOD__ACCOUNT_MYINFO_ @"GET"
-#define KEYQ__ACCOUNT_MYINFO__VERIFY @"verify" //verify string ÓÉlogin»ñµÃ ÓĞĞ§ÆÚÒ»Äê
+#define KEYQ__ACCOUNT_MYINFO__VERIFY @"verify" //verify string ç”±loginè·å¾— æœ‰æ•ˆæœŸä¸€å¹´
 #define KEYP__ACCOUNT_MYINFO__ERROR_CODE @"error_code" //error_code 0
 #define KEYP__ACCOUNT_MYINFO__UINFO @"uinfo" //uinfo
 #define KEYP__ACCOUNT_MYINFO__UINFO_UID @"uid" // uid 15
-#define KEYP__ACCOUNT_MYINFO__UINFO_OID @"oid" // oid 15 --ö¦ºÅ
+#define KEYP__ACCOUNT_MYINFO__UINFO_OID @"oid" // oid 15 --é“å·
 #define KEYP__ACCOUNT_MYINFO__UINFO_NICK @"nick" // nick 32222222
 #define KEYP__ACCOUNT_MYINFO__UINFO_MOBILE @"mobile" // mobile 13811121213
 #define KEYP__ACCOUNT_MYINFO__UINFO_MOBCOUNTRY @"mobCountry" // mobCountry +86
@@ -449,7 +523,7 @@ example: http://local.taiqiu.com:7070/account/myinfo/
 mark: account
 type: /account/login/
 method: http-post
-describe: µÇÂ¼»ñÈ¡verify
+describe: ç™»å½•è·å–verify
 example: local.taiqiu.com:7070/account/login/?mobCountry=%2B86&mobile=13811121213&password=222222222&mobCode=22&nick=32222222
 
 
@@ -458,29 +532,29 @@ example: local.taiqiu.com:7070/account/login/?mobCountry=%2B86&mobile=1381112121
 #define PATH__ACCOUNT_LOGIN_ @"/account/login/"
 #define NOTI__ACCOUNT_LOGIN_ @"MPaccountloginNotifiction"
 #define METHOD__ACCOUNT_LOGIN_ @"POST"
-#define KEYQ__ACCOUNT_LOGIN__MOBCOUNTRY @"mobCountry" //mobCountry : string ¹ú¼ÒÍ¨Ñ¶´úÂë£¨Ä¿Ç°Ö»Ö§³Ö+86£©
-#define KEYQ__ACCOUNT_LOGIN__MOBILE @"mobile" //mobile     : string ÊÖ»úºÅ
-#define KEYQ__ACCOUNT_LOGIN__PASSWORD @"password" //password   : string ÃÜÂë
+#define KEYQ__ACCOUNT_LOGIN__MOBCOUNTRY @"mobCountry" //mobCountry : string å›½å®¶é€šè®¯ä»£ç ï¼ˆç›®å‰åªæ”¯æŒ+86ï¼‰
+#define KEYQ__ACCOUNT_LOGIN__MOBILE @"mobile" //mobile     : string æ‰‹æœºå·
+#define KEYQ__ACCOUNT_LOGIN__PASSWORD @"password" //password   : string å¯†ç 
 #define KEYP__ACCOUNT_LOGIN__ERROR_CODE @"error_code" //error_code
 #define KEYP__ACCOUNT_LOGIN__UID @"uid" //uid
-#define KEYP__ACCOUNT_LOGIN__VERIFY @"verify" //verify      string ÓÃ»§ÈÏÖ¤´® ÓĞĞ§ÆÚÔİ¶¨Ò»Äê 15_1410252423_b1388aeea1a1c94e7ae4aa4e8f6b2e83
+#define KEYP__ACCOUNT_LOGIN__VERIFY @"verify" //verify      string ç”¨æˆ·è®¤è¯ä¸² æœ‰æ•ˆæœŸæš‚å®šä¸€å¹´ 15_1410252423_b1388aeea1a1c94e7ae4aa4e8f6b2e83
 
 /*
 mark: account
 type: /account/register/
 method: http-post
-describe: ÓÃ»§ÊÖ»úºÅ×¢²á
+describe: ç”¨æˆ·æ‰‹æœºå·æ³¨å†Œ
 example: http://local.taiqiu.com:7070/account/register/?mobCountry=%2B86&mobile=13811121213&password=222222222&mobCode=22&nick=tc
 */
 #define PATH__ACCOUNT_REGISTER_ @"/account/register/"
 #define NOTI__ACCOUNT_REGISTER_ @"MPaccountregisterNotifiction"
 #define METHOD__ACCOUNT_REGISTER_ @"POST"
-#define KEYQ__ACCOUNT_REGISTER__MOBCODE @"mobCode" //mobCode string ÊÖ»úÑéÖ¤Âë
-#define KEYQ__ACCOUNT_REGISTER__MOBCOUNTRY @"mobCountry" //mobCountry string ¹ú¼ÒÍ¨Ñ¶´úÂë£¨Ä¿Ç°Ö»Ö§³Ö+86£©
-#define KEYQ__ACCOUNT_REGISTER__MOBILE @"mobile" //mobile string ÊÖ»úºÅ
-#define KEYQ__ACCOUNT_REGISTER__NICK @"nick" //nick string ¿ÉÑ¡ 16¸ö×Ö·ûÒÔÄÚ
-#define KEYQ__ACCOUNT_REGISTER__PASSWORD @"password" //password string 6-18¸ö×Ö·û ÉèÖÃÃÜÂë
-#define KEYQ__ACCOUNT_REGISTER__FROMSOURCE @"fromSource" //fromSource string ¿ÉÑ¡ 128ÒÔÄÚ ×¢²áÀ´Ô´
+#define KEYQ__ACCOUNT_REGISTER__MOBCODE @"mobCode" //mobCode string æ‰‹æœºéªŒè¯ç 
+#define KEYQ__ACCOUNT_REGISTER__MOBCOUNTRY @"mobCountry" //mobCountry string å›½å®¶é€šè®¯ä»£ç ï¼ˆç›®å‰åªæ”¯æŒ+86ï¼‰
+#define KEYQ__ACCOUNT_REGISTER__MOBILE @"mobile" //mobile string æ‰‹æœºå·
+#define KEYQ__ACCOUNT_REGISTER__NICK @"nick" //nick string å¯é€‰ 16ä¸ªå­—ç¬¦ä»¥å†…
+#define KEYQ__ACCOUNT_REGISTER__PASSWORD @"password" //password string 6-18ä¸ªå­—ç¬¦ è®¾ç½®å¯†ç 
+#define KEYQ__ACCOUNT_REGISTER__FROMSOURCE @"fromSource" //fromSource string å¯é€‰ 128ä»¥å†… æ³¨å†Œæ¥æº
 #define KEYP__ACCOUNT_REGISTER__ERROR_CODE @"error_code" //error_code
 #define KEYP__ACCOUNT_REGISTER__UID @"uid" //uid
 
@@ -488,7 +562,7 @@ example: http://local.taiqiu.com:7070/account/register/?mobCountry=%2B86&mobile=
 mark: account
 type: /account/mobcode/
 method: http-get
-describe: ÈÏÖ¤ÊÖ»ú£¬ºó¶Ë·¢ËÍÑéÖ¤ÂëÖÁÊÖ»ú
+describe: è®¤è¯æ‰‹æœºï¼Œåç«¯å‘é€éªŒè¯ç è‡³æ‰‹æœº
 example: http://local.taiqiu.com:7070/account/mobcode/?mobCountry=%2B86&mobile=13811121211
 
 {
@@ -498,6 +572,6 @@ example: http://local.taiqiu.com:7070/account/mobcode/?mobCountry=%2B86&mobile=1
 #define PATH__ACCOUNT_MOBCODE_ @"/account/mobcode/"
 #define NOTI__ACCOUNT_MOBCODE_ @"MPaccountmobcodeNotifiction"
 #define METHOD__ACCOUNT_MOBCODE_ @"GET"
-#define KEYQ__ACCOUNT_MOBCODE__MOBCOUNTRY @"mobCountry" //mobCountry : string ¹ú¼ÒÍ¨Ñ¶´úÂë£¨Ä¿Ç°Ö»Ö§³Ö+86£©
-#define KEYQ__ACCOUNT_MOBCODE__MOBILE @"mobile" //mobile     : string ÊÖ»úºÅ
+#define KEYQ__ACCOUNT_MOBCODE__MOBCOUNTRY @"mobCountry" //mobCountry : string å›½å®¶é€šè®¯ä»£ç ï¼ˆç›®å‰åªæ”¯æŒ+86ï¼‰
+#define KEYQ__ACCOUNT_MOBCODE__MOBILE @"mobile" //mobile     : string æ‰‹æœºå·
 #define KEYP__ACCOUNT_MOBCODE__ERROR_CODE @"error_code" //error_code

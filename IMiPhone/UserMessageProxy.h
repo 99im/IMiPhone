@@ -20,10 +20,7 @@
 
 @interface UserMessageProxy : imNWProxy
 
-+ (UserMessageProxy*)sharedProxy;
-
-- (void)sendTypeRegister:(NSString *)phone code:(NSString *)code password:(NSString *)password;
-- (void)parseTypeRegister:(id)json;
++ (UserMessageProxy *)sharedProxy;
 
 //根据oid（靓号）查找用户
 - (void)sendTypeSearch:(NSString *)oid;

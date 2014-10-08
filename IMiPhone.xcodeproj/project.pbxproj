@@ -226,7 +226,6 @@
 		11795E2619D297CD003FD9A7 /* DPFriend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPFriend.h; sourceTree = "<group>"; };
 		11795E2719D297CD003FD9A7 /* DPFriend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPFriend.m; sourceTree = "<group>"; };
 		11DF9F8419A2276C00AE5D89 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "zh-Hans"; path = "zh-Hans.lproj/splash.jpg"; sourceTree = "<group>"; };
-		582011F519C2C2E300D48658 /* MessageDefine.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageDefine.pch; sourceTree = "<group>"; };
 		5825D8EF19D808CA004FF6FF /* CategoryTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryTableViewController.h; sourceTree = "<group>"; };
 		5825D8F019D808CA004FF6FF /* CategoryTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoryTableViewController.m; sourceTree = "<group>"; };
 		58438C0B19D412E400B6962B /* NearbyTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NearbyTableViewController.h; sourceTree = "<group>"; };
@@ -259,6 +258,8 @@
 		58A331A919E51A95005BE980 /* CategoryListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoryListTableViewController.m; sourceTree = "<group>"; };
 		58A331AB19E52CDE005BE980 /* CategoryContactTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryContactTableViewCell.h; sourceTree = "<group>"; };
 		58A331AC19E52CDE005BE980 /* CategoryContactTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoryContactTableViewCell.m; sourceTree = "<group>"; };
+		58A331AE19E547BC005BE980 /* MessageHttpDefine.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageHttpDefine.pch; sourceTree = "<group>"; };
+		58A331AF19E547CC005BE980 /* MessageSocketDefine.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageSocketDefine.pch; sourceTree = "<group>"; };
 		58A5B4F619ADC05F0007C2F3 /* MainTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainTabBarController.h; sourceTree = "<group>"; };
 		58A5B4F719ADC05F0007C2F3 /* MainTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainTabBarController.m; sourceTree = "<group>"; };
 		58A5B4FA19ADC3CA0007C2F3 /* ChatTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatTableViewController.h; sourceTree = "<group>"; };
@@ -524,12 +525,13 @@
 		585971D81999F0C700258CB1 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				58A331AF19E547CC005BE980 /* MessageSocketDefine.pch */,
+				58A331AE19E547BC005BE980 /* MessageHttpDefine.pch */,
 				5859720819A1CBE500258CB1 /* Image */,
 				585971D91999F0C700258CB1 /* IMiPhone-Info.plist */,
 				585971DA1999F0C700258CB1 /* InfoPlist.strings */,
 				585971DD1999F0C700258CB1 /* main.m */,
 				585971DF1999F0C700258CB1 /* IMiPhone-Prefix.pch */,
-				582011F519C2C2E300D48658 /* MessageDefine.pch */,
 				58AF048A19AF10560077DCBC /* Localizable.strings */,
 				58C14DEC19CAE196009334E1 /* contact.plist */,
 			);

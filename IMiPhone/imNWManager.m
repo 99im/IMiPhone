@@ -34,7 +34,7 @@ static imNWManager *sharedNWManager = nil;
 
 - (void)initHttpConnect
 {
-    httpConnect = [[imNWHttpConnect alloc] initWithHostName:HTTPHOST portNumber:HTTPPORT apiPath:nil customHeaderFields:nil];
+    httpConnect = [[imNWHttpConnect alloc] initWithHostName:HTTP_HOST portNumber:HTTP_PORT apiPath:nil customHeaderFields:nil];
 }
 
 - (void)sendMessage:(imNWMessage *)message withResponse:(imNWResponseBlock)response
@@ -59,9 +59,6 @@ static imNWManager *sharedNWManager = nil;
 - (void)parseMessage:(imNWMessage *)message
 {
     [message excute];
-//    Class markClass = NSClassFromString([NSString stringWithFormat:@"Mark%@", message.mark]);
-//    SEL typeMethod = NSSelectorFromString([NSString stringWithFormat:@"parseType%@", message.type]);
-//    [markClass performSelector:typeMethod withObject:nil];
 }
 
 @end
