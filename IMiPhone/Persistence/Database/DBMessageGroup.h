@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+#define DB_PRIMARY_KEY_MESSAGE_PROUP_ID @"messageGroupId"
+
 @interface DBMessageGroup : NSObject
 
 @property (nonatomic, retain) NSString *messageGroupId;

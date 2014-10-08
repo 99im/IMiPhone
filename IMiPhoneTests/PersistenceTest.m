@@ -11,7 +11,7 @@
 #import "DatabaseConfig.h"
 #import "imRms.h"
 #import "DBGroup.h"
-#import "DataUtil.h"
+#import "ImDataUtil.h"
 
 @interface PersistenceTest : XCTestCase
 
@@ -23,6 +23,7 @@
 {
     [super setUp];
     // Put setup code here. This method is called before the invocation of each test method in the class.
+    [DatabaseConfig shareDatabaseConfig].databaseName = @"tree1";
 }
 
 - (void)tearDown
@@ -86,8 +87,6 @@
 }
 - (void)testGroupDAO
 {
-    [DatabaseConfig shareDatabaseConfig].databaseName = @"tree1";
-    
     BaseDAO *dao = [GroupDAO sharedDAO];
     
     DBGroup *g = [[DBGroup alloc]init];
@@ -101,16 +100,15 @@
     g.members = @"tree,river";
     int result = [dao insert:g];
 
-    XCTAssertTrue(result == SQLITE_OK, @"数据库插入错误！");
-
+//    XCTAssertTrue(result == SQLITE_DONE, @"数据库插入错误！");
+//
     //    [dao deleteByCondition:@"group_name=?" Bind:[NSArray arrayWithObjects:@"桌球小组", nil] ];
+    g.groupName = @"小组桌球";
+    g.members = @"tree4,tree5,tree6,ee,e,e,e,e";
     
-    [dao update:[NSDictionary dictionaryWithObjectsAndKeys:
-                 @"小组桌球",                  @"group_name",
-                 @"234",                 @"group_id",
-                 nil]
-    ByCondition:@"group_id"
-           Bind:[NSArray arrayWithObjects:@"1",nil]];
+    [dao update:g
+    ByCondition:@"groupId=?"
+           Bind:[NSArray arrayWithObjects:@"10",nil]];
     
     //    NSArray *arrResult = [dao query:@"group_id=?" Bind:[NSArray arrayWithObjects:@"1",nil]];
     NSArray *arrResult = [dao query:@"" Bind:[NSArray arrayWithObjects:nil]];
@@ -121,8 +119,6 @@
             NSLog(@"query group_id:%d,group_name:%@,members:%@",tempG.groupId,tempG.groupName,tempG.members);
         }
     }
-    
-    
 }
 -(void)testDescribeDictionary:(NSDictionary *)dict
 {
@@ -143,7 +139,7 @@
 {
     DBGroup *g = [[DBGroup alloc] init];
     g.groupName = @"trees";
-    NSDictionary *ds =[DataUtil getDicFromNormalClass:g];
+    NSDictionary *ds =[ImDataUtil getDicFromNormalClass:g];
 //    [imRms userDefaultsWrite:@"aa" withObjectValue:ds,YES];
 //    id obj = [imRms userDefaultsReadObject:@"aa"];
 //    NSLog(@"group_name:%@",[obj valueForKey:@"group_name"]);

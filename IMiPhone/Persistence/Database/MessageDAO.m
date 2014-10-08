@@ -7,7 +7,6 @@
 //
 
 #import "MessageDAO.h"
-#import "DBMessage.h"
 
 @implementation MessageDAO
 
@@ -19,7 +18,7 @@ static MessageDAO *messageDAO = nil;
     dispatch_once(&onceToken, ^{
         messageDAO = [[MessageDAO alloc] init];
         NSString *tableName = @"tb_message";
-        NSString *primaryKey = @"senderUid";
+        NSString *primaryKey = DB_PRIMARY_KEY_SENDER_ID;
         [messageDAO createTableIfNotExist:tableName withDataMode:[DBMessage class] withPrimaryKey:primaryKey];
     });
     return messageDAO;

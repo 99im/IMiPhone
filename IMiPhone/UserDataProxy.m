@@ -9,7 +9,7 @@
 #import "UserDataProxy.h"
 #import "imRms.h"
 #import "DatabaseConfig.h"
-#import "DataUtil.h"
+#import "ImDataUtil.h"
 
 #define KEY_USER_LAST_LOGIN_COUNTRY @"key_user_last_login_country"
 #define KEY_USER_LAST_LOGIN_MOBILE @"key_user_last_login_mobile"
@@ -126,11 +126,11 @@ static UserDataProxy *sharedProxy = nil;
         if (userInfoDic == nil)
         {
             _user.uid = _lastLoginUid;
-            [imRms userDefaultsWrite:KEY_USER_INFO_PRE withObjectValue:[DataUtil getDicFromNormalClass:_user] isBindUid:YES];
+            [imRms userDefaultsWrite:KEY_USER_INFO_PRE withObjectValue:[ImDataUtil getDicFromNormalClass:_user] isBindUid:YES];
         }
         else
         {
-            [DataUtil updateObject:_user by:userInfoDic];
+            [ImDataUtil updateObject:_user by:userInfoDic];
         }
     }
     return _user;
@@ -138,7 +138,7 @@ static UserDataProxy *sharedProxy = nil;
 - (void)setUser:(DPUser *)userInfo
 {
     _user = userInfo;
-    NSDictionary *userInfoDic = [DataUtil getDicFromNormalClass:_user];
+    NSDictionary *userInfoDic = [ImDataUtil getDicFromNormalClass:_user];
     [imRms userDefaultsWrite:KEY_USER_INFO_PRE withObjectValue:userInfoDic isBindUid:YES];
 }
 

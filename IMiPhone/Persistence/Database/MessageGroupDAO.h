@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "BaseDAO.h"
+#import "DBMessageGroup.h"
 
 @interface MessageGroupDAO : BaseDAO
 
