@@ -895,6 +895,7 @@
 				58A331AD19E52CDE005BE980 /* CategoryContactTableViewCell.m in Sources */,
 				58B496E219A7186A0082AE30 /* UIAlertView+MKNetworkKitAdditions.m in Sources */,
 				11B1C62819E4E069003D2711 /* ChatMessageProxy.m in Sources */,
+				58A331AA19E51A95005BE980 /* CategoryListTableViewController.m in Sources */,
 				116B6E8C19B0538300DB1B5E /* GroupDAO.m in Sources */,
 				116B6E7D19AEF83500DB1B5E /* imRms.m in Sources */,
 				58B496DA19A7186A0082AE30 /* NSData+MKBase64.m in Sources */,
