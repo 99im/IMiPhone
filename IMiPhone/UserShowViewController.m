@@ -26,8 +26,6 @@
     NSDictionary *userInfo = [UserDataProxy sharedProxy].arrSearchUserResult[0];
     [self.lblNickname setText:[userInfo valueForKey:KEY_USER_SERCH_USER_INFO_NICK]];
     [self.lblOid setText:[userInfo valueForKey:KEY_USER_SERCH_USER_INFO_OID]];
-    
-    [self    focusTouchUpInside:nil];
 }
 
 - (void)didReceiveMemoryWarning {

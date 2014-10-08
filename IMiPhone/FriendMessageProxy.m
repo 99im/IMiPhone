@@ -42,7 +42,7 @@ static FriendMessageProxy *sharedFriendMessageProxy = nil;
             
         }
         if (json) {
-            NSInteger errorcode = [[json objectForKey:KEYP__FRIEND_FOCUS_ADD__ERROR_CODE] intValue];
+            NSInteger errorcode = [[json objectForKey:KEYP__FRIEND_FOCUS_ADD__ERROR_CODE] integerValue];
             if (errorcode != 0) {
                 NSNumber *errorCodeNumber = [NSNumber numberWithInteger:errorcode];
                 NSLog(@"%@",[errorCodeNumber errorMessage]);
@@ -59,6 +59,29 @@ static FriendMessageProxy *sharedFriendMessageProxy = nil;
 - (void)parseTypeFocusAdd:(id)json
 {
     
+}
+
+- (void)sendTypeFocusCancel:(NSNumber *)uid
+{
+    NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
+    [params setObject:uid forKey:KEYQ__FRIEND_FOCUS_CANCEL__FOCUSUID];
+    imNWMessage *message = [imNWMessage createForHttp:PATH__FRIEND_FOCUS_CANCEL_ withParams:params withMethod:METHOD__FRIEND_FOCUS_CANCEL_ ssl:NO];
+    [[imNWManager sharedNWManager] sendMessage:message withResponse:^(NSString *responseString, NSData *responseData) {
+        NSError *err = nil;
+        NSMutableDictionary *json = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingAllowFragments error:&err];
+        NSAssert1(err == nil, @"JSON create error: %@", err);
+        if (json) {
+            NSInteger errorcode = [[json objectForKey:KEYP__FRIEND_FOCUS_CANCEL__ERROR_CODE] integerValue];
+            if (errorcode != 0) {
+                NSNumber *errorCodeNumber = [NSNumber numberWithInteger:errorcode];
+                NSLog(@"%@",[errorCodeNumber errorMessage]);
+            }
+            else{
+                
+            }
+        }
+
+    }];
 }
 
 @end

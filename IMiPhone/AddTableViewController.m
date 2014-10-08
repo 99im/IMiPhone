@@ -174,7 +174,9 @@ const int sectionNum = 2;
 - (void)skipToSearchResult:(NSNotification *)notification
 {
     if (notification.object) {
-        if ([notification.object isKindOfClass:[NSArray class]])              [self performSegueWithIdentifier:@"Add2NickSegue" sender:notification.object];
+        if ([notification.object isKindOfClass:[NSArray class]])
+             self.hidesBottomBarWhenPushed = YES;
+            [self performSegueWithIdentifier:@"Add2NickSegue" sender:notification.object];
         }
 }
 @end
