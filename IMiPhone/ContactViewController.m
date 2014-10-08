@@ -10,7 +10,8 @@
 
 @interface ContactViewController ()
 
-@property (nonatomic, retain) NSString *curSubView;
+@property (nonatomic, retain) NSString *curSubViewId;
+@property (nonatomic, retain) UIViewController *curViewController;
 
 @end
 
@@ -54,8 +55,6 @@
     if (tag == -1) {
         tag = 0;
     }
-    UIStoryboard* mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    UIViewController *viewController = nil;
     NSString *subviewId = nil;
     NSString *subviewTitle = [self.segSubTags titleForSegmentAtIndex:tag];
     switch (tag) {
@@ -73,14 +72,18 @@
             subviewId = @"FriendsViewController";
             break;
     }
-    if (![subviewId isEqualToString:self.curSubView]) {
-        for (UIView *subview in [self.subviewContainer subviews]) {
-            [subview removeFromSuperview];
-        }
+    if (![subviewId isEqualToString:self.curSubViewId]) {
+        [self.curViewController.view removeFromSuperview];
+        [self.curViewController removeFromParentViewController];
+        
+        UIStoryboard* mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        UIViewController *viewController = nil;
         viewController = [mainStoryboard instantiateViewControllerWithIdentifier:subviewId];
         UIView *view = viewController.view;
         [self.subviewContainer addSubview:view];
-        self.curSubView = subviewId;
+        [self addChildViewController:viewController];
+        self.curViewController = viewController;
+        self.curSubViewId = subviewId;
         self.navigationItem.title = subviewTitle;
     }
 }
