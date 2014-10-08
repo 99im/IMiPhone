@@ -7,8 +7,6 @@
 //
 
 #import "imViewController.h"
-#import "imNWManager.h"
-
 
 @interface imViewController ()
 
@@ -21,7 +19,6 @@
     [super viewDidLoad];
         
 	// Do any additional setup after loading the view, typically from a nib.
-    [[imNWManager sharedNWManager] initHttpConnect];
 }
 
 - (void)didReceiveMemoryWarning

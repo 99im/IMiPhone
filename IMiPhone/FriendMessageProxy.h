@@ -21,4 +21,8 @@
 
 - (void)sendTypeFocusAdd:(NSNumber *)uid;
 
+- (void)sendTypeFocusList:(NSNumber *)start withPageNum:(NSNumber *)pageNum;
+
+- (void)sendTypeFanList:(NSNumber *)start withPageNum:(NSNumber *)pageNum;
+
 @end

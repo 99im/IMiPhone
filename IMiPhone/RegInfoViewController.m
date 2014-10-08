@@ -232,7 +232,7 @@
 
 - (void)registerMessageNotification
 {
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sendAccountUpdateinfoResult:) name:NOTI__ACCOUNT_UPDATEINFO_ object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sendTypeUpdateinfoResult:) name:NOTI__ACCOUNT_UPDATEINFO_ object:nil];
 }
 
 - (void)removeMessageNotification
@@ -240,7 +240,7 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
-- (void)sendAccountUpdateinfoResult:(NSNotification *)notification
+- (void)sendTypeUpdateinfoResult:(NSNotification *)notification
 {
     if (![notification object]) {
         [self performSegueWithIdentifier:@"regInfoDoneSegue" sender:self];

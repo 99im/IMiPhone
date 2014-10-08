@@ -68,7 +68,7 @@
 
 - (void)registerMessageNotification
 {
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sendTypeMyinfoResult:) name:NOTI__ACCOUNT_MYINFO_ object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sendTypeRegisterResult:) name:NOTI__ACCOUNT_REGISTER_ object:nil];
 }
 
 - (void)removeMessageNotification
@@ -76,7 +76,7 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
-- (void)sendTypeMyinfoResult:(NSNotification *)notification
+- (void)sendTypeRegisterResult:(NSNotification *)notification
 {
     if (![notification object]) {
         [self performSegueWithIdentifier:@"regStep2DoneSegue" sender:self];

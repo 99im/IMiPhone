@@ -5,12 +5,16 @@
 	<key>Category</key>
 	<array>
 		<dict>
+			<key>id</key>
+			<string>focus</string>
 			<key>title</key>
 			<string>关注</string>
 			<key>image</key>
 			<string>MyFocus</string>
 		</dict>
 		<dict>
+			<key>id</key>
+			<string>fan</string>
 			<key>title</key>
 			<string>粉丝</string>
 			<key>image</key>
