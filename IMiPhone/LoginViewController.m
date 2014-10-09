@@ -73,14 +73,14 @@
 
 - (void)sendHttpLoginResult:(NSNotification *)notification
 {
-    if (![notification object]) {
+    if (!notification.object) {
         [[AccountMessageProxy sharedProxy] sendTypeMyinfo];
     }
 }
 
 - (void)sendHttpMyinfoResult:(NSNotification *)notification
 {
-    if (![notification object]) {
+    if (!notification.object) {
         if ([imUtil checkBlankString:[UserDataProxy sharedProxy].user.nick]) {
             [self performSegueWithIdentifier:@"login2reginfoSegue" sender:self];
         }

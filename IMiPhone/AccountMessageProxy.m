@@ -209,17 +209,18 @@ static AccountMessageProxy *sharedAccountMessageProxy = nil;
     }];
 }
 
-- (void)sendTypeLogin:(NSString *)verify
+- (void)sendTypeLogin
 {
     NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
-    [params setObject:verify forKey:KEYQ_ACCOUNT_LOGIN_VERIFY];
+    [params setObject:[UserDataProxy sharedProxy].verify forKey:KEYQ_ACCOUNT_LOGIN_VERIFY];
     IMNWMessage *message = [IMNWMessage createForSocket:MARK_ACCOUNT withType:TYPE_ACCOUNT_LOGIN];
     [message send:params];
 }
 
 - (void)parseTypeLogin:(id)json
 {
-    int res = [[json objectForKey:KEYP_ACCOUNT_LOGIN_RES] intValue];
+    NSMutableDictionary *info = [json objectForKey:SOCKET_INFO];
+    int res = [[info objectForKey:KEYP_ACCOUNT_LOGIN_RES] intValue];
     if (res == RES_OK) {
         NSInteger uid = [[json objectForKey:KEYP_ACCOUNT_LOGIN_UID] integerValue];
         [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_ACCOUNT_LOGIN object:nil];
@@ -228,6 +229,7 @@ static AccountMessageProxy *sharedAccountMessageProxy = nil;
         NSAssert1(YES, @"Socket connect response error: %i", res);
         NSNumber *errorCodeNumber = [NSNumber numberWithInt:res];
         NSString *errorMessage = [errorCodeNumber errorMessage];
+        NSLog(@"Socket connect response error: %i %@", res, errorMessage);
         NSDictionary *userInfo = [NSDictionary dictionaryWithObject:errorMessage
                                                              forKey:NSLocalizedDescriptionKey];
         NSError *error = [NSError errorWithDomain:[NSString stringWithFormat:@"%@_%@", MARK_ACCOUNT, TYPE_ACCOUNT_LOGIN] code:res userInfo:userInfo];

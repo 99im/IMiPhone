@@ -11,6 +11,10 @@
 #define CONNECT_HTTP 0
 #define CONNECT_SOCKET 1
 
+#define SOCKET_INFO @"info"
+#define SOCKET_MARK @"mark"
+#define SOCKET_TYPE @"type"
+
 @interface IMNWMessage : NSObject
 
 @property (nonatomic) int connect;

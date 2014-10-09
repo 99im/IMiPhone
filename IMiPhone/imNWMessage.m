@@ -90,10 +90,10 @@
 {
     if (self.connect == CONNECT_SOCKET) {
         NSMutableDictionary *json = [[NSMutableDictionary alloc] init];
-        [json setObject:mark forKey:@"mark"];
-        [json setObject:type forKey:@"type"];
+        [json setObject:mark forKey:SOCKET_MARK];
+        [json setObject:type forKey:SOCKET_TYPE];
         if (info) {
-            [json setObject:info forKey:@"info"];
+            [json setObject:info forKey:SOCKET_INFO];
         }
         self.data = [NSJSONSerialization dataWithJSONObject:json options:0 error:nil];
     }

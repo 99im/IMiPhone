@@ -242,7 +242,7 @@
 
 - (void)sendTypeUpdateinfoResult:(NSNotification *)notification
 {
-    if (![notification object]) {
+    if (!notification.object) {
         [self performSegueWithIdentifier:@"regInfoDoneSegue" sender:self];
     }
 }

@@ -12,6 +12,7 @@
 #import "IMNWManager.h"
 #import "IMNWProxyProtocol.h"
 #import "IMNWSocketConnect.h"
+#import "AccountMessageProxy.h"
 
 @interface imViewController () <IMNWProxyProtocol>
 
@@ -58,9 +59,9 @@
 
 - (void)socketConnectResult:(NSNotification *)notification
 {
-    if (![notification object]) {
+    //if (!notification.object) {
         [self performSegueWithIdentifier:@"Start2MainSegue" sender:self];
-    }
+    //}
 }
 
 @end

@@ -10,6 +10,7 @@
 #import "IMNWMessage.h"
 #import "IMNWManager.h"
 #import "crypt.h"
+#import "AccountMessageProxy.h"
 
 #define TAG_MSG 0
 #define TAG_CRYPT 1
@@ -62,11 +63,9 @@ char cryptKey[17];
 - (void)socket:(GCDAsyncSocket *)sender didConnectToHost:(NSString *)host port:(uint16_t)port
 {
     NSLog(@"Socket connect succceed: %@ : %hu", host, port);
-    [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_SOCKET_CONNECT object:nil];
-    
-    if (self.dataToSend) {
-        [self sendData:self.dataToSend];
-        self.dataToSend = nil;
+    if (!CRYPT) {
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sendTypeLogin:) name:NOTI_ACCOUNT_LOGIN object:nil];
+        [[AccountMessageProxy sharedProxy] sendTypeLogin];
     }
 }
 
@@ -83,12 +82,16 @@ char cryptKey[17];
         [data getBytes:originalKey length:data.length];
         keyRevert(originalKey, cryptKey);
         [self.socket readDataToData:term withTimeout:-1 tag:TAG_MSG];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sendTypeLogin:) name:NOTI_ACCOUNT_LOGIN object:nil];
+        [[AccountMessageProxy sharedProxy] sendTypeLogin];
     }
 }
 
 - (void)socketDidDisconnect:(GCDAsyncSocket *)sender withError:(NSError *)err
 {
     NSLog(@"Socket disconnect with error: %@", err);
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_SOCKET_CONNECT object:err];
     self.dataToSend = nil;
 }
 
@@ -156,6 +159,23 @@ char cryptKey[17];
     if (tag == TAG_MSG) {
         NSLog(@"Socket Send !!!");
     }
+}
+
+- (void)sendTypeLogin:(NSNotification *)notification
+{
+    if (notification.object) {
+        [self.socket disconnect];
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_SOCKET_CONNECT object:notification.object];
+    }
+    else {
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_SOCKET_CONNECT object:nil];
+        if (self.dataToSend) {
+            [self sendData:self.dataToSend];
+        }
+    }
+    
+    self.dataToSend = nil;
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTI_ACCOUNT_LOGIN object:nil];
 }
 
 @end

@@ -73,7 +73,7 @@
 
 - (void)sendAccountMobcodeResult:(NSNotification *)notification
 {
-    if (![notification object]) {
+    if (!notification.object) {
         [self performSegueWithIdentifier:@"regPhoneDoneSegue" sender:self];
     }
 }

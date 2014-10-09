@@ -134,7 +134,7 @@
 
 - (void)sendTypeFocusListResult:(NSNotification *)notification
 {
-    if (![notification object]) {
+    if (!notification.object) {
         self.categoryId = @"focus";
         [self performSegueWithIdentifier:@"CategoryListSegue" sender:self];
     }
@@ -142,7 +142,7 @@
 
 - (void)sendTypeFanListResult:(NSNotification *)notification
 {
-    if (![notification object]) {
+    if (!notification.object) {
         self.categoryId = @"fan";
         [self performSegueWithIdentifier:@"CategoryListSegue" sender:self];
     }

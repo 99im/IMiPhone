@@ -21,7 +21,7 @@
 - (void)sendTypeMyinfo;
 - (void)sendTypeUpdateinfo:(NSInteger)gender birthday:(NSString *)birth nickname:(NSString *)nick;
 
-- (void)sendTypeLogin:(NSString *)verify;
+- (void)sendTypeLogin;
 - (void)parseTypeLogin:(id)json;
 
 @end

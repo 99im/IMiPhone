@@ -78,7 +78,7 @@
 
 - (void)sendTypeRegisterResult:(NSNotification *)notification
 {
-    if (![notification object]) {
+    if (!notification.object) {
         [self performSegueWithIdentifier:@"regStep2DoneSegue" sender:self];
     }
 }
