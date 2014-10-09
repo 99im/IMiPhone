@@ -7,8 +7,13 @@
 //
 
 #import "imViewController.h"
+#import "MainTabBarController.h"
+#import "UserDataProxy.h"
+#import "IMNWManager.h"
+#import "IMNWProxyProtocol.h"
+#import "IMNWSocketConnect.h"
 
-@interface imViewController ()
+@interface imViewController () <IMNWProxyProtocol>
 
 @end
 
@@ -19,12 +24,43 @@
     [super viewDidLoad];
         
 	// Do any additional setup after loading the view, typically from a nib.
+    [self registerMessageNotification];
+    
+    if (![imUtil checkBlankString:[UserDataProxy sharedProxy].verify] && [UserDataProxy sharedProxy].lastLoginUid != NAN) {
+        [[IMNWManager sharedNWManager] initSocketConnect];
+        [[IMNWManager sharedNWManager].socketConnect connect:SOCKET_HOST port:SOCKET_PORT];
+    }
+    else {
+        [self performSegueWithIdentifier:@"Start2AccountSegue" sender:self];
+    }
+    
+    [[IMNWManager sharedNWManager] initHttpConnect];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+    [self removeMessageNotification];
+}
+
+#pragma mark - IMNWProxyProtocol Method
+
+- (void)registerMessageNotification
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(socketConnectResult:) name:NOTI_SOCKET_CONNECT object:nil];
+}
+
+- (void)removeMessageNotification
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)socketConnectResult:(NSNotification *)notification
+{
+    if (![notification object]) {
+        [self performSegueWithIdentifier:@"Start2MainSegue" sender:self];
+    }
 }
 
 @end

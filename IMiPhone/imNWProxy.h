@@ -7,12 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "imNWMessage.h"
+#import "IMNWMessage.h"
 
-@interface imNWProxy : NSObject
+@interface IMNWProxy : NSObject
 
-+ (imNWProxy*)sharedProxy;
++ (IMNWProxy*)sharedProxy;
 
-- (void)parseMessage:(imNWMessage *)message;
+- (void)parseMessage:(IMNWMessage *)message;
 
 @end

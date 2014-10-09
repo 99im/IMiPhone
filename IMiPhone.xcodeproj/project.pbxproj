@@ -101,7 +101,7 @@
 		58B496ED19A7190B0082AE30 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58B496EC19A7190B0082AE30 /* CFNetwork.framework */; };
 		58B496EF19A719230082AE30 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58B496EE19A719230082AE30 /* SystemConfiguration.framework */; };
 		58B496F119A719350082AE30 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58B496F019A719350082AE30 /* Security.framework */; };
-		58B496F419A71AFB0082AE30 /* imNWHttpConnect.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B496F319A71AFB0082AE30 /* imNWHttpConnect.m */; };
+		58B649E519E62900008906F0 /* AccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B649E419E62900008906F0 /* AccountViewController.m */; };
 		58BACF0719B5803F00A72391 /* FriendDataProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 58AF049719B056050077DCBC /* FriendDataProxy.m */; };
 		58BACF0819B5804700A72391 /* FriendMessageProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 58AF049119AF37C70077DCBC /* FriendMessageProxy.m */; };
 		58BACF0919B5805800A72391 /* crypt.c in Sources */ = {isa = PBXBuildFile; fileRef = 58BACEFD19B4410C00A72391 /* crypt.c */; };
@@ -129,10 +129,6 @@
 		58BC1E4D19C06B9000722A00 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B496D719A7186A0082AE30 /* Reachability.m */; };
 		58BC1E4E19C06B9000722A00 /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D95F4719A5BDF4007139AB /* GCDAsyncSocket.m */; };
 		58BC1E4F19C06B9000722A00 /* AsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F2AA3819A487E300DC2FFB /* AsyncSocket.m */; };
-		58BC1E5019C06B9000722A00 /* imNWManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F2AA3D19A48D2300DC2FFB /* imNWManager.m */; };
-		58BC1E5119C06B9000722A00 /* imNWSocketConnect.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F2AA4119A497BA00DC2FFB /* imNWSocketConnect.m */; };
-		58BC1E5219C06B9000722A00 /* imNWMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D95F4B19A5E2E7007139AB /* imNWMessage.m */; };
-		58BC1E5319C06B9000722A00 /* imNWHttpConnect.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B496F319A71AFB0082AE30 /* imNWHttpConnect.m */; };
 		58BC1E5419C06B9000722A00 /* VPImageCropperViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58BACF1219B5E89D00A72391 /* VPImageCropperViewController.m */; };
 		58BC1E5519C06B9000722A00 /* imUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F2AA3319A2F85400DC2FFB /* imUtil.m */; };
 		58BC1E5619C06B9000722A00 /* imPhotoPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 58BACF0E19B5DAB900A72391 /* imPhotoPicker.m */; };
@@ -160,18 +156,18 @@
 		58C14DEE19CAE196009334E1 /* contact.plist in Resources */ = {isa = PBXBuildFile; fileRef = 58C14DEC19CAE196009334E1 /* contact.plist */; };
 		58D026C419D17D4800BE4748 /* NSNumber+IMNWError.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D026C319D17D4800BE4748 /* NSNumber+IMNWError.m */; };
 		58D026C519D17D4800BE4748 /* NSNumber+IMNWError.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D026C319D17D4800BE4748 /* NSNumber+IMNWError.m */; };
+		58D3F28719E63082006589F9 /* IMNWManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D3F28019E63082006589F9 /* IMNWManager.m */; };
+		58D3F28819E63082006589F9 /* IMNWMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D3F28219E63082006589F9 /* IMNWMessage.m */; };
+		58D3F28919E63082006589F9 /* IMNWProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D3F28419E63082006589F9 /* IMNWProxy.m */; };
+		58D3F28A19E63082006589F9 /* IMNWSocketConnect.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D3F28619E63082006589F9 /* IMNWSocketConnect.m */; };
+		58D3F28D19E630A1006589F9 /* IMNWHttpConnect.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D3F28C19E630A1006589F9 /* IMNWHttpConnect.m */; };
 		58D95F4819A5BDF4007139AB /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D95F4719A5BDF4007139AB /* GCDAsyncSocket.m */; };
-		58D95F4C19A5E2E7007139AB /* imNWMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D95F4B19A5E2E7007139AB /* imNWMessage.m */; };
 		58D95F5119A5ECA4007139AB /* UserMessageProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D95F5019A5ECA4007139AB /* UserMessageProxy.m */; };
 		58EF8C3F19BEEE1600C5A7AC /* AccountMessageProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 58EF8C3E19BEEE1600C5A7AC /* AccountMessageProxy.m */; };
 		58EF8C4019BEEE1600C5A7AC /* AccountMessageProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 58EF8C3E19BEEE1600C5A7AC /* AccountMessageProxy.m */; };
-		58EF8C4319BEF08C00C5A7AC /* imNWProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 58EF8C4219BEF08C00C5A7AC /* imNWProxy.m */; };
-		58EF8C4419BEF08C00C5A7AC /* imNWProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 58EF8C4219BEF08C00C5A7AC /* imNWProxy.m */; };
 		58EF8C4619BF04B600C5A7AC /* imNetWorkTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 58EF8C4519BF04B600C5A7AC /* imNetWorkTest.m */; };
 		58F2AA3419A2F85400DC2FFB /* imUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F2AA3319A2F85400DC2FFB /* imUtil.m */; };
 		58F2AA3919A487E300DC2FFB /* AsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F2AA3819A487E300DC2FFB /* AsyncSocket.m */; };
-		58F2AA3E19A48D2300DC2FFB /* imNWManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F2AA3D19A48D2300DC2FFB /* imNWManager.m */; };
-		58F2AA4219A497BA00DC2FFB /* imNWSocketConnect.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F2AA4119A497BA00DC2FFB /* imNWSocketConnect.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -303,8 +299,8 @@
 		58B496EC19A7190B0082AE30 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		58B496EE19A719230082AE30 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		58B496F019A719350082AE30 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
-		58B496F219A71AFB0082AE30 /* imNWHttpConnect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = imNWHttpConnect.h; sourceTree = "<group>"; };
-		58B496F319A71AFB0082AE30 /* imNWHttpConnect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = imNWHttpConnect.m; sourceTree = "<group>"; };
+		58B649E319E62900008906F0 /* AccountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountViewController.h; sourceTree = "<group>"; };
+		58B649E419E62900008906F0 /* AccountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountViewController.m; sourceTree = "<group>"; };
 		58BACEFD19B4410C00A72391 /* crypt.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = crypt.c; sourceTree = "<group>"; };
 		58BACEFE19B4410C00A72391 /* crypt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = crypt.h; sourceTree = "<group>"; };
 		58BACF0A19B5C12800A72391 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
@@ -336,25 +332,27 @@
 		58D026BD19D15F7D00BE4748 /* IMNWProxyProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMNWProxyProtocol.h; sourceTree = "<group>"; };
 		58D026C219D17D4800BE4748 /* NSNumber+IMNWError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNumber+IMNWError.h"; sourceTree = "<group>"; };
 		58D026C319D17D4800BE4748 /* NSNumber+IMNWError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSNumber+IMNWError.m"; sourceTree = "<group>"; };
+		58D3F27F19E63082006589F9 /* IMNWManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMNWManager.h; sourceTree = "<group>"; };
+		58D3F28019E63082006589F9 /* IMNWManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMNWManager.m; sourceTree = "<group>"; };
+		58D3F28119E63082006589F9 /* IMNWMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMNWMessage.h; sourceTree = "<group>"; };
+		58D3F28219E63082006589F9 /* IMNWMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMNWMessage.m; sourceTree = "<group>"; };
+		58D3F28319E63082006589F9 /* IMNWProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMNWProxy.h; sourceTree = "<group>"; };
+		58D3F28419E63082006589F9 /* IMNWProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMNWProxy.m; sourceTree = "<group>"; };
+		58D3F28519E63082006589F9 /* IMNWSocketConnect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMNWSocketConnect.h; sourceTree = "<group>"; };
+		58D3F28619E63082006589F9 /* IMNWSocketConnect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMNWSocketConnect.m; sourceTree = "<group>"; };
+		58D3F28B19E630A1006589F9 /* IMNWHttpConnect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMNWHttpConnect.h; sourceTree = "<group>"; };
+		58D3F28C19E630A1006589F9 /* IMNWHttpConnect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMNWHttpConnect.m; sourceTree = "<group>"; };
 		58D95F4619A5BDF4007139AB /* GCDAsyncSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDAsyncSocket.h; sourceTree = "<group>"; };
 		58D95F4719A5BDF4007139AB /* GCDAsyncSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDAsyncSocket.m; sourceTree = "<group>"; };
-		58D95F4A19A5E2E7007139AB /* imNWMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = imNWMessage.h; sourceTree = "<group>"; };
-		58D95F4B19A5E2E7007139AB /* imNWMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = imNWMessage.m; sourceTree = "<group>"; };
 		58D95F4F19A5ECA4007139AB /* UserMessageProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserMessageProxy.h; sourceTree = "<group>"; };
 		58D95F5019A5ECA4007139AB /* UserMessageProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserMessageProxy.m; sourceTree = "<group>"; };
 		58EF8C3D19BEEE1600C5A7AC /* AccountMessageProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountMessageProxy.h; sourceTree = "<group>"; };
 		58EF8C3E19BEEE1600C5A7AC /* AccountMessageProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountMessageProxy.m; sourceTree = "<group>"; };
-		58EF8C4119BEF08C00C5A7AC /* imNWProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = imNWProxy.h; sourceTree = "<group>"; };
-		58EF8C4219BEF08C00C5A7AC /* imNWProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = imNWProxy.m; sourceTree = "<group>"; };
 		58EF8C4519BF04B600C5A7AC /* imNetWorkTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = imNetWorkTest.m; sourceTree = "<group>"; };
 		58F2AA3219A2F85400DC2FFB /* imUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = imUtil.h; sourceTree = "<group>"; };
 		58F2AA3319A2F85400DC2FFB /* imUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = imUtil.m; sourceTree = "<group>"; };
 		58F2AA3719A487E300DC2FFB /* AsyncSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsyncSocket.h; sourceTree = "<group>"; };
 		58F2AA3819A487E300DC2FFB /* AsyncSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsyncSocket.m; sourceTree = "<group>"; };
-		58F2AA3C19A48D2300DC2FFB /* imNWManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = imNWManager.h; sourceTree = "<group>"; };
-		58F2AA3D19A48D2300DC2FFB /* imNWManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = imNWManager.m; sourceTree = "<group>"; };
-		58F2AA4019A497BA00DC2FFB /* imNWSocketConnect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = imNWSocketConnect.h; sourceTree = "<group>"; };
-		58F2AA4119A497BA00DC2FFB /* imNWSocketConnect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = imNWSocketConnect.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -660,6 +658,8 @@
 		58BC1E3D19C0304E00722A00 /* Account */ = {
 			isa = PBXGroup;
 			children = (
+				58B649E319E62900008906F0 /* AccountViewController.h */,
+				58B649E419E62900008906F0 /* AccountViewController.m */,
 				5859721619A1DEE500258CB1 /* LoginViewController.h */,
 				5859721719A1DEE500258CB1 /* LoginViewController.m */,
 				58BC1E2919C0304900722A00 /* RegInfoViewController.h */,
@@ -750,16 +750,16 @@
 			children = (
 				58D026C619D1902400BE4748 /* AsyncSocket */,
 				58B496C019A7186A0082AE30 /* MKNetworkKit */,
-				58F2AA3C19A48D2300DC2FFB /* imNWManager.h */,
-				58F2AA3D19A48D2300DC2FFB /* imNWManager.m */,
-				58F2AA4019A497BA00DC2FFB /* imNWSocketConnect.h */,
-				58F2AA4119A497BA00DC2FFB /* imNWSocketConnect.m */,
-				58D95F4A19A5E2E7007139AB /* imNWMessage.h */,
-				58D95F4B19A5E2E7007139AB /* imNWMessage.m */,
-				58B496F219A71AFB0082AE30 /* imNWHttpConnect.h */,
-				58B496F319A71AFB0082AE30 /* imNWHttpConnect.m */,
-				58EF8C4119BEF08C00C5A7AC /* imNWProxy.h */,
-				58EF8C4219BEF08C00C5A7AC /* imNWProxy.m */,
+				58D3F28B19E630A1006589F9 /* IMNWHttpConnect.h */,
+				58D3F28C19E630A1006589F9 /* IMNWHttpConnect.m */,
+				58D3F27F19E63082006589F9 /* IMNWManager.h */,
+				58D3F28019E63082006589F9 /* IMNWManager.m */,
+				58D3F28119E63082006589F9 /* IMNWMessage.h */,
+				58D3F28219E63082006589F9 /* IMNWMessage.m */,
+				58D3F28319E63082006589F9 /* IMNWProxy.h */,
+				58D3F28419E63082006589F9 /* IMNWProxy.m */,
+				58D3F28519E63082006589F9 /* IMNWSocketConnect.h */,
+				58D3F28619E63082006589F9 /* IMNWSocketConnect.m */,
 				58D026BD19D15F7D00BE4748 /* IMNWProxyProtocol.h */,
 				58D026C219D17D4800BE4748 /* NSNumber+IMNWError.h */,
 				58D026C319D17D4800BE4748 /* NSNumber+IMNWError.m */,
@@ -883,39 +883,41 @@
 				58BACF0F19B5DAB900A72391 /* imPhotoPicker.m in Sources */,
 				116AB15219BF19DA00092E2C /* ChatCell.m in Sources */,
 				116B6E9619B058A400DB1B5E /* SqlightDriver.m in Sources */,
-				58D95F4C19A5E2E7007139AB /* imNWMessage.m in Sources */,
 				116B6E9719B058A400DB1B5E /* SqlightResult.m in Sources */,
 				5825D8F119D808CA004FF6FF /* CategoryTableViewController.m in Sources */,
+				58D3F28819E63082006589F9 /* IMNWMessage.m in Sources */,
 				11795E2819D297CD003FD9A7 /* DPFriend.m in Sources */,
+				58D3F28919E63082006589F9 /* IMNWProxy.m in Sources */,
 				58438C1119D420C800B6962B /* SystemTableViewController.m in Sources */,
 				116BF87719C96F8F0015561B /* UserDataProxy.m in Sources */,
 				58EF8C3F19BEEE1600C5A7AC /* AccountMessageProxy.m in Sources */,
 				116B6E7B19AEF83500DB1B5E /* DBMessage.m in Sources */,
-				58B496F419A71AFB0082AE30 /* imNWHttpConnect.m in Sources */,
+				58B649E519E62900008906F0 /* AccountViewController.m in Sources */,
 				58B496E419A7186A0082AE30 /* UIImageView+MKNetworkKitAdditions.m in Sources */,
 				58B496D819A7186A0082AE30 /* NSAlert+MKNetworkKitAdditions.m in Sources */,
 				58A331AD19E52CDE005BE980 /* CategoryContactTableViewCell.m in Sources */,
 				58B496E219A7186A0082AE30 /* UIAlertView+MKNetworkKitAdditions.m in Sources */,
 				11B1C62819E4E069003D2711 /* ChatMessageProxy.m in Sources */,
 				58A331AA19E51A95005BE980 /* CategoryListTableViewController.m in Sources */,
+				58D3F28A19E63082006589F9 /* IMNWSocketConnect.m in Sources */,
 				116B6E8C19B0538300DB1B5E /* GroupDAO.m in Sources */,
 				116B6E7D19AEF83500DB1B5E /* imRms.m in Sources */,
 				58B496DA19A7186A0082AE30 /* NSData+MKBase64.m in Sources */,
 				116BF87119C81E030015561B /* AudioRecordManager.m in Sources */,
-				58EF8C4319BEF08C00C5A7AC /* imNWProxy.m in Sources */,
 				585971E81999F0C700258CB1 /* imViewController.m in Sources */,
 				116BF88519CC29360015561B /* ImDataUtil.m in Sources */,
 				585971DE1999F0C700258CB1 /* main.m in Sources */,
 				58B496DC19A7186A0082AE30 /* NSDate+RFC1123.m in Sources */,
-				58F2AA4219A497BA00DC2FFB /* imNWSocketConnect.m in Sources */,
 				58A5B4F819ADC05F0007C2F3 /* MainTabBarController.m in Sources */,
 				58A5B4FC19ADC3CA0007C2F3 /* ChatTableViewController.m in Sources */,
 				58B496EA19A7186A0082AE30 /* Reachability.m in Sources */,
 				58B496E019A7186A0082AE30 /* NSString+MKNetworkKitAdditions.m in Sources */,
 				58BACF1319B5E89D00A72391 /* VPImageCropperViewController.m in Sources */,
+				58D3F28719E63082006589F9 /* IMNWManager.m in Sources */,
 				58B496DE19A7186A0082AE30 /* NSDictionary+RequestEncoding.m in Sources */,
 				116B6E8319AF1C7900DB1B5E /* BaseDAO.m in Sources */,
 				58D95F4819A5BDF4007139AB /* GCDAsyncSocket.m in Sources */,
+				58D3F28D19E630A1006589F9 /* IMNWHttpConnect.m in Sources */,
 				110F561219D56CF8003B9EB4 /* DPMessage.m in Sources */,
 				58B496E619A7186A0082AE30 /* MKNetworkEngine.m in Sources */,
 				110487A619D7A35C0002AB36 /* MessageGroupDAO.m in Sources */,
@@ -927,7 +929,6 @@
 				58C14DE619CAB631009334E1 /* AddTableViewController.m in Sources */,
 				58BC1E3919C0304900722A00 /* RegStep2ViewController.m in Sources */,
 				58BC1E3719C0304900722A00 /* RegStep1ViewController.m in Sources */,
-				58F2AA3E19A48D2300DC2FFB /* imNWManager.m in Sources */,
 				116BF87F19C981AD0015561B /* DPUser.m in Sources */,
 				58D026C419D17D4800BE4748 /* NSNumber+IMNWError.m in Sources */,
 				58F2AA3919A487E300DC2FFB /* AsyncSocket.m in Sources */,
@@ -974,14 +975,10 @@
 				58BC1E4D19C06B9000722A00 /* Reachability.m in Sources */,
 				58BC1E4E19C06B9000722A00 /* GCDAsyncSocket.m in Sources */,
 				58BC1E4F19C06B9000722A00 /* AsyncSocket.m in Sources */,
-				58BC1E5019C06B9000722A00 /* imNWManager.m in Sources */,
 				116BF87319C81E3F0015561B /* AudioRecordTest.m in Sources */,
-				58BC1E5119C06B9000722A00 /* imNWSocketConnect.m in Sources */,
 				110F561319D56CF8003B9EB4 /* DPMessage.m in Sources */,
-				58BC1E5219C06B9000722A00 /* imNWMessage.m in Sources */,
 				58C14DE719CAB631009334E1 /* AddTableViewController.m in Sources */,
 				110F560B19D55792003B9EB4 /* DBMessageGroup.m in Sources */,
-				58BC1E5319C06B9000722A00 /* imNWHttpConnect.m in Sources */,
 				110487A319D79DFB0002AB36 /* MessageDAO.m in Sources */,
 				58BC1E5419C06B9000722A00 /* VPImageCropperViewController.m in Sources */,
 				58BC1E5519C06B9000722A00 /* imUtil.m in Sources */,
@@ -999,7 +996,6 @@
 				11B1C62919E4E069003D2711 /* ChatMessageProxy.m in Sources */,
 				1120945A19B601EF0012D607 /* IMiPhoneTests.m in Sources */,
 				116BF88219CC01C70015561B /* UserDataProxyTest.m in Sources */,
-				58EF8C4419BEF08C00C5A7AC /* imNWProxy.m in Sources */,
 				58C14DD719C81447009334E1 /* FriendsViewController.m in Sources */,
 				58C14DDF19C82594009334E1 /* GroupViewController.m in Sources */,
 				58BC1E3A19C0304900722A00 /* RegStep2ViewController.m in Sources */,

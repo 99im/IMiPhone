@@ -6,12 +6,12 @@
 //  Copyright (c) 2014年 尹晓君. All rights reserved.
 //
 
-#import "imNWMessage.h"
-#import "imNWProxy.h"
-#import "imNWManager.h"
+#import "IMNWMessage.h"
+#import "IMNWProxy.h"
+#import "IMNWManager.h"
 #import "UserDataProxy.h"
 
-@implementation imNWMessage
+@implementation IMNWMessage
 
 @synthesize connect;
 @synthesize mark;
@@ -22,18 +22,18 @@
 @synthesize useSSL;
 @synthesize method;
 
-+ (imNWMessage *)createForSocket:(NSString *)mark withType:(NSString *)type
++ (IMNWMessage *)createForSocket:(NSString *)mark withType:(NSString *)type
 {
-    imNWMessage *message = [[imNWMessage alloc] init];
+    IMNWMessage *message = [[IMNWMessage alloc] init];
     message.connect = CONNECT_SOCKET;
     message.mark = mark;
     message.type = type;
     return message;
 }
 
-+ (imNWMessage *)createForHttp:(NSString *)path withParams:(NSMutableDictionary *)params withMethod:(NSString *)method ssl:(BOOL)useSSL
++ (IMNWMessage *)createForHttp:(NSString *)path withParams:(NSMutableDictionary *)params withMethod:(NSString *)method ssl:(BOOL)useSSL
 {
-    imNWMessage *message = [[imNWMessage alloc] init];
+    IMNWMessage *message = [[IMNWMessage alloc] init];
     message.connect = CONNECT_HTTP;
     message.path = path;
     if (params == nil) {
@@ -78,7 +78,7 @@
     NSString *clz = [NSString stringWithFormat:@"%@MessageProxy", markCapitalized];
     Class clsProxy = NSClassFromString(clz);
     if (clsProxy) {
-        imNWProxy *proxy = [clsProxy sharedProxy];
+        IMNWProxy *proxy = [clsProxy sharedProxy];
         [proxy parseMessage:self];
     }
     else {
@@ -97,7 +97,7 @@
         }
         self.data = [NSJSONSerialization dataWithJSONObject:json options:0 error:nil];
     }
-    [[imNWManager sharedNWManager] sendMessage:self withResponse:nil];
+    [[IMNWManager sharedNWManager] sendMessage:self withResponse:nil];
 }
 
 - (void)useHost:(NSString *)phost andPort:(int)nport

@@ -20,7 +20,7 @@
 
 #define CRYPT YES
 #define SOCKET_HOST @"local.taiqiu.com"
-#define SOCKET_PORT 8000
+#define SOCKET_PORT 7000
 #define HTTP_HOST @"local.taiqiu.com"
 #define HTTP_PORT 7070
 #define ERRORCODE_OK 0

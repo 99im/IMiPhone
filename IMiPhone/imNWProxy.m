@@ -6,13 +6,13 @@
 //  Copyright (c) 2014年 尹晓君. All rights reserved.
 //
 
-#import "imNWProxy.h"
+#import "IMNWProxy.h"
 
-@implementation imNWProxy
+@implementation IMNWProxy
 
-static imNWProxy *sharedNWProxy = nil;
+static IMNWProxy *sharedNWProxy = nil;
 
-+ (imNWProxy *)sharedProxy
++ (IMNWProxy *)sharedProxy
 {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
@@ -21,7 +21,7 @@ static imNWProxy *sharedNWProxy = nil;
     return sharedNWProxy;
 }
 
-- (void)parseMessage:(imNWMessage *)message
+- (void)parseMessage:(IMNWMessage *)message
 {
     NSString *type = [message.type capitalizedString];
     NSString *method = [NSString stringWithFormat:@"parseType%@:", type];

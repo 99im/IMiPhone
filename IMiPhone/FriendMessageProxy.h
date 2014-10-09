@@ -7,12 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "imNWMessage.h"
-#import "imNWProxy.h"
+#import "IMNWMessage.h"
+#import "IMNWProxy.h"
 
 #define MARK_FRIEND @"friend"
 
-@interface FriendMessageProxy : imNWProxy
+@interface FriendMessageProxy : IMNWProxy
 
 + (FriendMessageProxy*)sharedProxy;
 

@@ -7,8 +7,8 @@
 //
 
 #import "UserMessageProxy.h"
-#import "imNWMessage.h"
-#import "imNWManager.h"
+#import "IMNWMessage.h"
+#import "IMNWManager.h"
 #import "NSNumber+IMNWError.h"
 #import "UserDataProxy.h"
 
@@ -33,8 +33,8 @@ static UserMessageProxy *sharedUserMessageProxy = nil;
     NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
     [params setObject:oid forKey:KEYQ__USER_SEARCH__OID];
    
-    imNWMessage *message = [imNWMessage createForHttp:PATH__USER_SEARCH_ withParams:params withMethod:METHOD__USER_SEARCH_ ssl:NO];
-    [[imNWManager sharedNWManager] sendMessage:message withResponse:^(NSString *responseString, NSData *responseData) {
+    IMNWMessage *message = [IMNWMessage createForHttp:PATH__USER_SEARCH_ withParams:params withMethod:METHOD__USER_SEARCH_ ssl:NO];
+    [[IMNWManager sharedNWManager] sendMessage:message withResponse:^(NSString *responseString, NSData *responseData) {
         NSError *err = nil;
         NSMutableDictionary *json = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingAllowFragments error:&err];
         if (err) {

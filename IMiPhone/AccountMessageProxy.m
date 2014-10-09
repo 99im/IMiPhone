@@ -8,8 +8,8 @@
 
 #import "AccountMessageProxy.h"
 #import "UserDataProxy.h"
-#import "imNWMessage.h"
-#import "imNWManager.h"
+#import "IMNWMessage.h"
+#import "IMNWManager.h"
 #import "NSNumber+IMNWError.h"
 
 @implementation AccountMessageProxy
@@ -34,8 +34,8 @@ static AccountMessageProxy *sharedAccountMessageProxy = nil;
     NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
     [params setObject:country forKey:KEYQ__ACCOUNT_MOBCODE__MOBCOUNTRY];
     [params setObject:phone forKey:KEYQ__ACCOUNT_MOBCODE__MOBILE];
-    imNWMessage *message = [imNWMessage createForHttp:PATH__ACCOUNT_MOBCODE_ withParams:params withMethod:METHOD__ACCOUNT_MOBCODE_ ssl:NO];
-    [[imNWManager sharedNWManager] sendMessage:message withResponse:^(NSString *responseString, NSData *responseData) {
+    IMNWMessage *message = [IMNWMessage createForHttp:PATH__ACCOUNT_MOBCODE_ withParams:params withMethod:METHOD__ACCOUNT_MOBCODE_ ssl:NO];
+    [[IMNWManager sharedNWManager] sendMessage:message withResponse:^(NSString *responseString, NSData *responseData) {
         NSError *err = nil;
         NSMutableDictionary *json = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingAllowFragments error:&err];
         if (err) {
@@ -69,8 +69,8 @@ static AccountMessageProxy *sharedAccountMessageProxy = nil;
     [params setObject:password forKey:KEYQ__ACCOUNT_REGISTER__PASSWORD];
     [params setObject:[UserDataProxy sharedProxy].mobile forKey:KEYQ__ACCOUNT_REGISTER__MOBILE];
     [params setObject:[UserDataProxy sharedProxy].mobCountry forKey:KEYQ__ACCOUNT_REGISTER__MOBCOUNTRY];
-    imNWMessage *message = [imNWMessage createForHttp:PATH__ACCOUNT_REGISTER_ withParams:params withMethod:METHOD__ACCOUNT_REGISTER_ ssl:NO];
-    [[imNWManager sharedNWManager] sendMessage:message withResponse:^(NSString *responseString, NSData *responseData) {
+    IMNWMessage *message = [IMNWMessage createForHttp:PATH__ACCOUNT_REGISTER_ withParams:params withMethod:METHOD__ACCOUNT_REGISTER_ ssl:NO];
+    [[IMNWManager sharedNWManager] sendMessage:message withResponse:^(NSString *responseString, NSData *responseData) {
         NSError *err = nil;
         NSMutableDictionary *json = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingAllowFragments error:&err];
         if (err) {
@@ -101,8 +101,8 @@ static AccountMessageProxy *sharedAccountMessageProxy = nil;
     [params setObject:mobile forKey:KEYQ__ACCOUNT_LOGIN__MOBILE];
     [params setObject:mobCountry forKey:KEYQ__ACCOUNT_LOGIN__MOBCOUNTRY];
     [params setObject:password forKey:KEYQ__ACCOUNT_LOGIN__PASSWORD];
-    imNWMessage *message = [imNWMessage createForHttp:PATH__ACCOUNT_LOGIN_ withParams:params withMethod:METHOD__ACCOUNT_LOGIN_ ssl:NO ];
-    [[imNWManager sharedNWManager] sendMessage:message withResponse:^(NSString *responseString, NSData *responseData) {
+    IMNWMessage *message = [IMNWMessage createForHttp:PATH__ACCOUNT_LOGIN_ withParams:params withMethod:METHOD__ACCOUNT_LOGIN_ ssl:NO ];
+    [[IMNWManager sharedNWManager] sendMessage:message withResponse:^(NSString *responseString, NSData *responseData) {
         NSError *err = nil;
         NSMutableDictionary *json = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingAllowFragments error:&err];
         if (err) {
@@ -135,8 +135,8 @@ static AccountMessageProxy *sharedAccountMessageProxy = nil;
 - (void)sendTypeMyinfo
 {
     //使用http
-    imNWMessage *message = [imNWMessage createForHttp:PATH__ACCOUNT_MYINFO_ withParams:nil withMethod:METHOD__ACCOUNT_MYINFO_ ssl:NO];
-    [[imNWManager sharedNWManager] sendMessage:message withResponse:^(NSString *responseString, NSData *responseData) {
+    IMNWMessage *message = [IMNWMessage createForHttp:PATH__ACCOUNT_MYINFO_ withParams:nil withMethod:METHOD__ACCOUNT_MYINFO_ ssl:NO];
+    [[IMNWManager sharedNWManager] sendMessage:message withResponse:^(NSString *responseString, NSData *responseData) {
         NSError *err = nil;
         NSMutableDictionary *json = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingAllowFragments error:&err];
         if (err) {
@@ -184,8 +184,8 @@ static AccountMessageProxy *sharedAccountMessageProxy = nil;
     [params setObject:[NSNumber numberWithInteger:gender] forKey:KEYQ__ACCOUNT_UPDATEINFO__GENDER];
     [params setObject:birth forKey:KEYQ__ACCOUNT_UPDATEINFO__BIRTHDAY];
     [params setObject:nick forKey:KEYQ__ACCOUNT_UPDATEINFO__NICK];
-    imNWMessage *message = [imNWMessage createForHttp:PATH__ACCOUNT_UPDATEINFO_ withParams:params withMethod:METHOD__ACCOUNT_UPDATEINFO_ ssl:NO];
-    [[imNWManager sharedNWManager] sendMessage:message withResponse:^(NSString *responseString, NSData *responseData) {
+    IMNWMessage *message = [IMNWMessage createForHttp:PATH__ACCOUNT_UPDATEINFO_ withParams:params withMethod:METHOD__ACCOUNT_UPDATEINFO_ ssl:NO];
+    [[IMNWManager sharedNWManager] sendMessage:message withResponse:^(NSString *responseString, NSData *responseData) {
         NSError *err = nil;
         NSMutableDictionary *json = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingAllowFragments error:&err];
         if (err) {
@@ -213,7 +213,7 @@ static AccountMessageProxy *sharedAccountMessageProxy = nil;
 {
     NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
     [params setObject:verify forKey:KEYQ_ACCOUNT_LOGIN_VERIFY];
-    imNWMessage *message = [imNWMessage createForSocket:MARK_ACCOUNT withType:TYPE_ACCOUNT_LOGIN];
+    IMNWMessage *message = [IMNWMessage createForSocket:MARK_ACCOUNT withType:TYPE_ACCOUNT_LOGIN];
     [message send:params];
 }
 

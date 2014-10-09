@@ -7,26 +7,12 @@
 //
 
 #import "imAppDelegate.h"
-#import "MainTabBarController.h"
-#import "UserDataProxy.h"
-#import "imNWManager.h"
 
 @implementation imAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
-    if (![imUtil checkBlankString:[UserDataProxy sharedProxy].verify] && [UserDataProxy sharedProxy].lastLoginUid != NAN) {
-        UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        MainTabBarController *mainTabBarController = [storyBoard instantiateViewControllerWithIdentifier:@"mainTabBarController"];
-        self.window.rootViewController = mainTabBarController;
-        
-        [[imNWManager sharedNWManager] initSocketConnect];
-        [[imNWManager sharedNWManager].socketConnect connect:SOCKET_HOST port:SOCKET_PORT];
-    }
-    
-    [[imNWManager sharedNWManager] initHttpConnect];
-    
     return YES;
 }
 							

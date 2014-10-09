@@ -21,21 +21,21 @@ message.connect = CONNECT_HTTP;
 }];
 */
 #import <Foundation/Foundation.h>
-#import "imNWSocketConnect.h"
-#import "imNWHttpConnect.h"
-#import "imNWMessage.h"
+#import "IMNWSocketConnect.h"
+#import "IMNWHttpConnect.h"
+#import "IMNWMessage.h"
 
-@interface imNWManager : NSObject
+@interface IMNWManager : NSObject
 
-@property (nonatomic, retain) imNWSocketConnect *socketConnect;
-@property (nonatomic, retain) imNWHttpConnect *httpConnect;
+@property (nonatomic, retain) IMNWSocketConnect *socketConnect;
+@property (nonatomic, retain) IMNWHttpConnect *httpConnect;
 
-+ (imNWManager*)sharedNWManager;
++ (IMNWManager*)sharedNWManager;
 
 - (void)initSocketConnect;
 - (void)initHttpConnect;
 
-- (void)sendMessage:(imNWMessage *)message withResponse:(imNWResponseBlock)response;
-- (void)parseMessage:(imNWMessage *)message;
+- (void)sendMessage:(IMNWMessage *)message withResponse:(imNWResponseBlock)response;
+- (void)parseMessage:(IMNWMessage *)message;
 
 @end

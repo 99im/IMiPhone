@@ -11,7 +11,7 @@
 #define CONNECT_HTTP 0
 #define CONNECT_SOCKET 1
 
-@interface imNWMessage : NSObject
+@interface IMNWMessage : NSObject
 
 @property (nonatomic) int connect;
 @property (nonatomic, retain) NSString *mark;
@@ -32,7 +32,7 @@
  *
  *  @return 返回消息实例
  */
-+ (imNWMessage *)createForSocket:(NSString *)mark withType:(NSString *)type;
++ (IMNWMessage *)createForSocket:(NSString *)mark withType:(NSString *)type;
 
 /**
  *  创建http基础消息，随后通过imNWManager发送消息
@@ -44,7 +44,7 @@
  *
  *  @return 返回消息实例
  */
-+ (imNWMessage *)createForHttp:(NSString *)path withParams:(NSMutableDictionary *)params withMethod:(NSString *)method ssl:(BOOL)useSSL;
++ (IMNWMessage *)createForHttp:(NSString *)path withParams:(NSMutableDictionary *)params withMethod:(NSString *)method ssl:(BOOL)useSSL;
 
 - (NSData *)getSocketData;
 - (NSMutableDictionary *)getHttpParams;

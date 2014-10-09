@@ -13,12 +13,12 @@
 //  类名根据模块固定格式"Mark"+MARK，注意MARK的大小写
 
 #import <Foundation/Foundation.h>
-#import "imNWMessage.h"
-#import "imNWProxy.h"
+#import "IMNWMessage.h"
+#import "IMNWProxy.h"
 
 #define MARK_USER @"user"
 
-@interface UserMessageProxy : imNWProxy
+@interface UserMessageProxy : IMNWProxy
 
 + (UserMessageProxy *)sharedProxy;
 

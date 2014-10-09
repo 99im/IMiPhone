@@ -6,16 +6,16 @@
 //  Copyright (c) 2014年 尹晓君. All rights reserved.
 //
 
-#import "imNWManager.h"
+#import "IMNWManager.h"
 
-@implementation imNWManager
+@implementation IMNWManager
 
 @synthesize socketConnect;
 @synthesize httpConnect;
 
-static imNWManager *sharedNWManager = nil;
+static IMNWManager *sharedNWManager = nil;
 
-+ (imNWManager*)sharedNWManager
++ (IMNWManager*)sharedNWManager
 {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
@@ -28,16 +28,16 @@ static imNWManager *sharedNWManager = nil;
 {
     //static dispatch_once_t onceToken;
     //dispatch_once(&onceToken, ^{
-        socketConnect = [[imNWSocketConnect alloc] init];
+        socketConnect = [[IMNWSocketConnect alloc] init];
     //});
 }
 
 - (void)initHttpConnect
 {
-    httpConnect = [[imNWHttpConnect alloc] initWithHostName:HTTP_HOST portNumber:HTTP_PORT apiPath:nil customHeaderFields:nil];
+    httpConnect = [[IMNWHttpConnect alloc] initWithHostName:HTTP_HOST portNumber:HTTP_PORT apiPath:nil customHeaderFields:nil];
 }
 
-- (void)sendMessage:(imNWMessage *)message withResponse:(imNWResponseBlock)response
+- (void)sendMessage:(IMNWMessage *)message withResponse:(imNWResponseBlock)response
 {
     switch (message.connect) {
         case CONNECT_HTTP:
@@ -56,7 +56,7 @@ static imNWManager *sharedNWManager = nil;
     }
 }
 
-- (void)parseMessage:(imNWMessage *)message
+- (void)parseMessage:(IMNWMessage *)message
 {
     [message excute];
 }

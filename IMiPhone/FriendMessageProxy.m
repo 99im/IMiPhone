@@ -7,8 +7,8 @@
 //
 
 #import "FriendMessageProxy.h"
-#import "imNWManager.h"
-#import "imNWMessage.h"
+#import "IMNWManager.h"
+#import "IMNWMessage.h"
 #import "NSNumber+IMNWError.h"
 
 #define TYPE_GROUPS @"groups"
@@ -31,8 +31,8 @@ static FriendMessageProxy *sharedFriendMessageProxy = nil;
     //使用http
     NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
     [params setObject:uid forKey:KEYQ__FRIEND_FOCUS_ADD__FOCUSUID];
-    imNWMessage *message = [imNWMessage createForHttp:PATH__FRIEND_FOCUS_ADD_ withParams:params withMethod:METHOD__FRIEND_FOCUS_ADD_ ssl:NO];
-    [[imNWManager sharedNWManager] sendMessage:message withResponse:^(NSString *responseString, NSData *responseData) {
+    IMNWMessage *message = [IMNWMessage createForHttp:PATH__FRIEND_FOCUS_ADD_ withParams:params withMethod:METHOD__FRIEND_FOCUS_ADD_ ssl:NO];
+    [[IMNWManager sharedNWManager] sendMessage:message withResponse:^(NSString *responseString, NSData *responseData) {
         NSError *err = nil;
         NSMutableDictionary *json = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingAllowFragments error:&err];
         if (err) {
@@ -61,8 +61,8 @@ static FriendMessageProxy *sharedFriendMessageProxy = nil;
     NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
     [params setObject:start forKey:KEYQ__FRIEND_FOCUS_LIST__START];
     [params setObject:pageNum forKey:KEYQ__FRIEND_FOCUS_LIST__PAGENUM];
-    imNWMessage *message = [imNWMessage createForHttp:PATH__FRIEND_FOCUS_LIST_ withParams:params withMethod:METHOD__FRIEND_FOCUS_LIST_ ssl:NO];
-    [[imNWManager sharedNWManager] sendMessage:message withResponse:^(NSString *responseString, NSData *responseData) {
+    IMNWMessage *message = [IMNWMessage createForHttp:PATH__FRIEND_FOCUS_LIST_ withParams:params withMethod:METHOD__FRIEND_FOCUS_LIST_ ssl:NO];
+    [[IMNWManager sharedNWManager] sendMessage:message withResponse:^(NSString *responseString, NSData *responseData) {
         NSError *err = nil;
         NSMutableDictionary *json = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingAllowFragments error:&err];
         if (err) {
@@ -91,8 +91,8 @@ static FriendMessageProxy *sharedFriendMessageProxy = nil;
 {
     NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
     [params setObject:uid forKey:KEYQ__FRIEND_FOCUS_CANCEL__FOCUSUID];
-    imNWMessage *message = [imNWMessage createForHttp:PATH__FRIEND_FOCUS_CANCEL_ withParams:params withMethod:METHOD__FRIEND_FOCUS_CANCEL_ ssl:NO];
-    [[imNWManager sharedNWManager] sendMessage:message withResponse:^(NSString *responseString, NSData *responseData) {
+    IMNWMessage *message = [IMNWMessage createForHttp:PATH__FRIEND_FOCUS_CANCEL_ withParams:params withMethod:METHOD__FRIEND_FOCUS_CANCEL_ ssl:NO];
+    [[IMNWManager sharedNWManager] sendMessage:message withResponse:^(NSString *responseString, NSData *responseData) {
         NSError *err = nil;
         NSMutableDictionary *json = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingAllowFragments error:&err];
         NSAssert1(err == nil, @"JSON create error: %@", err);
@@ -115,8 +115,8 @@ static FriendMessageProxy *sharedFriendMessageProxy = nil;
     NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
     [params setObject:start forKey:KEYQ__FRIEND_FAN_LIST__START];
     [params setObject:pageNum forKey:KEYQ__FRIEND_FAN_LIST__PAGENUM];
-    imNWMessage *message = [imNWMessage createForHttp:PATH__FRIEND_FAN_LIST_ withParams:params withMethod:METHOD__FRIEND_FAN_LIST_ ssl:NO];
-    [[imNWManager sharedNWManager] sendMessage:message withResponse:^(NSString *responseString, NSData *responseData) {
+    IMNWMessage *message = [IMNWMessage createForHttp:PATH__FRIEND_FAN_LIST_ withParams:params withMethod:METHOD__FRIEND_FAN_LIST_ ssl:NO];
+    [[IMNWManager sharedNWManager] sendMessage:message withResponse:^(NSString *responseString, NSData *responseData) {
         NSError *err = nil;
         NSMutableDictionary *json = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingAllowFragments error:&err];
         if (err) {

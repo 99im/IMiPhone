@@ -6,14 +6,14 @@
 //  Copyright (c) 2014年 尹晓君. All rights reserved.
 //
 
-#import "imNWHttpConnect.h"
+#import "IMNWHttpConnect.h"
 #import "MKNetworkEngine.h"
-#import "imNWMessage.h"
-#import "imNWManager.h"
+#import "IMNWMessage.h"
+#import "IMNWManager.h"
 
-@implementation imNWHttpConnect
+@implementation IMNWHttpConnect
 
-- (void)sendHttpRequest:(imNWMessage *)message withResponse:(imNWResponseBlock)response
+- (void)sendHttpRequest:(IMNWMessage *)message withResponse:(imNWResponseBlock)response
 {
     NSMutableDictionary *params = [message getHttpParams];
     
@@ -43,11 +43,11 @@
 //    NSLog(@"Http connect response string: %@", [operation responseString]);
 //    NSLog(@"Http connect response data: %@", [[NSString alloc] initWithData:[operation responseData] encoding:NSUTF8StringEncoding]);
     NSDictionary *json = [NSJSONSerialization JSONObjectWithData:[operation responseData] options:NSJSONReadingAllowFragments error:nil];
-    imNWMessage *message = [[imNWMessage alloc] init];
+    IMNWMessage *message = [[IMNWMessage alloc] init];
     message.data = json;
     message.mark = [json objectForKey:@"mark"];
     message.type = [json objectForKey:@"type"];
-    [[imNWManager sharedNWManager] parseMessage:message];
+    [[IMNWManager sharedNWManager] parseMessage:message];
 }
 
 - (void)errorHandler:(MKNetworkOperation *)operation error:(NSError *)error

@@ -6,22 +6,25 @@
 //  Copyright (c) 2014年 尹晓君. All rights reserved.
 //
 
-#import "imNWSocketConnect.h"
-#import "imNWMessage.h"
-#import "imNWManager.h"
+#import "IMNWSocketConnect.h"
+#import "IMNWMessage.h"
+#import "IMNWManager.h"
 #import "crypt.h"
 
 #define TAG_MSG 0
 #define TAG_CRYPT 1
 
-@interface imNWSocketConnect ()
+#define SOCKET_TIMEOUT 10.0
+
+@interface IMNWSocketConnect ()
 
 @property (nonatomic, retain) NSString *host;
 @property (nonatomic) NSInteger port;
+@property (nonatomic, retain) NSData *dataToSend;
 
 @end
 
-@implementation imNWSocketConnect
+@implementation IMNWSocketConnect
 
 NSData *term = nil;
 char cryptKey[17];
@@ -38,10 +41,15 @@ char cryptKey[17];
 
 - (void)connect:(NSString *)hostIP port:(uint16_t)hostPort
 {
+    self.host = hostIP;
+    self.port = hostPort;
+    
     NSError *err = nil;
-    if(![self.socket connectToHost:hostIP onPort:hostPort error:&err])
+    if(![self.socket connectToHost:hostIP onPort:hostPort withTimeout:SOCKET_TIMEOUT error:&err])
     {
         NSLog(@"Socket connect error: %@", err);
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_SOCKET_CONNECT object:err];
+        self.dataToSend = nil;
     }
     if (CRYPT) {
         [self.socket readDataToData:term withTimeout:-1 tag:TAG_CRYPT];
@@ -54,6 +62,12 @@ char cryptKey[17];
 - (void)socket:(GCDAsyncSocket *)sender didConnectToHost:(NSString *)host port:(uint16_t)port
 {
     NSLog(@"Socket connect succceed: %@ : %hu", host, port);
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_SOCKET_CONNECT object:nil];
+    
+    if (self.dataToSend) {
+        [self sendData:self.dataToSend];
+        self.dataToSend = nil;
+    }
 }
 
 - (void)socket:(GCDAsyncSocket *)sender didReadData:(NSData *)data withTag:(long)tag
@@ -63,6 +77,8 @@ char cryptKey[17];
         [self.socket readDataToData:term withTimeout:-1 tag:TAG_MSG];
     }
     else if (tag == TAG_CRYPT) {
+        NSString *content = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+        NSLog(@"Socket Received CRYPT: %@", content);
         char originalKey[17];
         [data getBytes:originalKey length:data.length];
         keyRevert(originalKey, cryptKey);
@@ -73,6 +89,7 @@ char cryptKey[17];
 - (void)socketDidDisconnect:(GCDAsyncSocket *)sender withError:(NSError *)err
 {
     NSLog(@"Socket disconnect with error: %@", err);
+    self.dataToSend = nil;
 }
 
 - (void)handlerData:(NSData *)data
@@ -99,32 +116,38 @@ char cryptKey[17];
     if (err) {
         NSLog(@"JSON create error: %@", err);
     }
-    imNWMessage *message = [[imNWMessage alloc] init];
+    IMNWMessage *message = [[IMNWMessage alloc] init];
     message.data = json;
     message.mark = [json objectForKey:@"mark"];
     message.type = [json objectForKey:@"type"];
-    [[imNWManager sharedNWManager] parseMessage:message];
+    [[IMNWManager sharedNWManager] parseMessage:message];
     
     [self.socket readDataToData:term withTimeout:-1 tag:TAG_MSG];
 }
 
 - (void)sendData:(NSData *)data
 {
-    NSString *content = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-    NSLog(@"Socket Send: %@ , length: %i", content, data.length);
-    if (CRYPT) {
-        cryptKey[0] = rand() % 127 + 1;
-        cryptKey[1] = rand() % 127 + 1;
-        char *dataBytes = (char*)[data bytes];
-        bitEncode(dataBytes, data.length, cryptKey, 16);
-        NSMutableData *dataEncoded = [NSMutableData data];
-        [dataEncoded appendBytes:cryptKey length:2];
-        [dataEncoded appendBytes:dataBytes length:data.length];
-        [self.socket writeData:dataEncoded withTimeout:-1 tag:TAG_MSG];
-        [self.socket writeData:term withTimeout:-1 tag:TAG_MSG];
+    if (self.socket.isDisconnected) {
+        self.dataToSend = data;
+        [self connect:self.host port:self.port];
     }
-    else {
-        [self.socket writeData:data withTimeout:-1 tag:TAG_MSG];
+    else if (self.socket.isConnected) {
+        NSString *content = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+        NSLog(@"Socket Send: %@ , length: %i", content, data.length);
+        if (CRYPT) {
+            cryptKey[0] = rand() % 127 + 1;
+            cryptKey[1] = rand() % 127 + 1;
+            char *dataBytes = (char*)[data bytes];
+            bitEncode(dataBytes, data.length, cryptKey, 16);
+            NSMutableData *dataEncoded = [NSMutableData data];
+            [dataEncoded appendBytes:cryptKey length:2];
+            [dataEncoded appendBytes:dataBytes length:data.length];
+            [self.socket writeData:dataEncoded withTimeout:-1 tag:TAG_MSG];
+            [self.socket writeData:term withTimeout:-1 tag:TAG_MSG];
+        }
+        else {
+            [self.socket writeData:data withTimeout:-1 tag:TAG_MSG];
+        }
     }
 }
 

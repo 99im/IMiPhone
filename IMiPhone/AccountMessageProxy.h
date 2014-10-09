@@ -7,11 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "imNWProxy.h"
+#import "IMNWProxy.h"
 
 #define MARK_ACCOUNT @"account"
 
-@interface AccountMessageProxy : imNWProxy
+@interface AccountMessageProxy : IMNWProxy
 
 + (AccountMessageProxy*)sharedProxy;
 

@@ -7,8 +7,8 @@
 //
 
 #import <XCTest/XCTest.h>
-#import "imNWMessage.h"
-#import "imNWManager.h"
+#import "IMNWMessage.h"
+#import "IMNWManager.h"
 #import "AccountMessageProxy.h"
 
 @interface imNetWorkTest : XCTestCase
@@ -31,13 +31,13 @@
 
 - (void)testSocketResponseRoute
 {
-    imNWMessage *message = [imNWMessage createForSocket:@"account" withType:@"mobcode"];
+    IMNWMessage *message = [IMNWMessage createForSocket:@"account" withType:@"mobcode"];
     [message excute];
 }
 
 - (void)testAccountRegister
 {
-    [[imNWManager sharedNWManager] initHttpConnect];
+    [[IMNWManager sharedNWManager] initHttpConnect];
     [[AccountMessageProxy sharedProxy] sendTypeMobcode:@"18601277178" withCountry:CHINA_CODE];
 //    imNWMessage *message = [[imNWMessage alloc] init];
 //    message.connect = CONNECT_SOCKET;

@@ -9,7 +9,9 @@
 #import <Foundation/Foundation.h>
 #import "GCDAsyncSocket.h"
 
-@interface imNWSocketConnect : NSObject
+#define NOTI_SOCKET_CONNECT @"NWSocketConnectNotifiction"
+
+@interface IMNWSocketConnect : NSObject
 
 @property (nonatomic, retain) GCDAsyncSocket *socket;
 

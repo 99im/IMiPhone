@@ -40,7 +40,7 @@ static ChatMessageProxy *messageProxy = nil;
     [params setObject:[NSNumber numberWithInteger:msgType] forKey:KEYQ__CHAT_P2PCHAT__MSGTYPE];
     [params setObject:content forKey:KEYQ__CHAT_P2PCHAT__CONTENT];
     
-    imNWMessage *message = [imNWMessage createForSocket:MARK_CHAT withType:PATH__CHAT_P2PCHAT_];
+    IMNWMessage *message = [IMNWMessage createForSocket:MARK_CHAT withType:PATH__CHAT_P2PCHAT_];
     [message send:params];
 }
 

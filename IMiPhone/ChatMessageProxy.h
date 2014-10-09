@@ -7,8 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "imNWMessage.h"
-#import "imNWManager.h"
+#import "IMNWMessage.h"
+#import "IMNWManager.h"
 #import "NSNumber+IMNWError.h"
 
 #define CHAT_MASSAGE_TYPE_TEXT 0
