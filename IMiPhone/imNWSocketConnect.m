@@ -14,6 +14,13 @@
 #define TAG_MSG 0
 #define TAG_CRYPT 1
 
+@interface imNWSocketConnect ()
+
+@property (nonatomic, retain) NSString *host;
+@property (nonatomic) NSInteger port;
+
+@end
+
 @implementation imNWSocketConnect
 
 NSData *term = nil;
