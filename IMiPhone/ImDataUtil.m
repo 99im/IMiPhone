@@ -58,7 +58,7 @@
     }
     return mutArray;
 }
-+ (void)updateObject:(NSObject *)obj by:(NSDictionary *)dataDic
++ (void)updateObject:(id)obj by:(NSDictionary *)dataDic
 {
     [obj setValuesForKeysWithDictionary:dataDic];
 //    for (NSString *key in [dataDic allKeys]) {
@@ -69,7 +69,7 @@
 //    }
 }
 
-+ (void)copyFrom:(NSObject *)src To:(NSObject *)dest;
++ (void)copyFrom:(id)src To:(id)dest;
 {
     if (src == nil) {
         NSLog(@"copyFrom src == nil");

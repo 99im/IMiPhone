@@ -176,7 +176,7 @@ const int sectionNum = 2;
     if (notification.object) {
         if ([notification.object isKindOfClass:[NSArray class]])
              self.hidesBottomBarWhenPushed = YES;
-            [self performSegueWithIdentifier:@"Add2NickSegue" sender:notification.object];
+            [self performSegueWithIdentifier:@"Add2ResultSegue" sender:self];
         }
 }
 @end

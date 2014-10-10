@@ -38,6 +38,14 @@
     [self registerMessageNotification];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    CGRect rect = self.curViewController.view.bounds;
+    NSLog(@"%f, %f, %f", rect.origin.x, rect.origin.y, rect.size.height);
+    rect = self.subviewContainer.bounds;
+    NSLog(@"%f, %f, %f", rect.origin.x, rect.origin.y, rect.size.height);
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

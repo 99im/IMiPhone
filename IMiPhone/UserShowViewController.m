@@ -10,6 +10,7 @@
 #import "UserDataProxy.h"
 #import "FriendDataProxy.h"
 #import "FriendMessageProxy.h"
+#import "UserMessageProxy.h"
 
 @interface UserShowViewController ()
 
@@ -24,8 +25,16 @@
     // Do any additional setup after loading the view.
     
     NSDictionary *userInfo = [UserDataProxy sharedProxy].arrSearchUserResult[0];
-    [self.lblNickname setText:[userInfo valueForKey:KEY_USER_SERCH_USER_INFO_NICK]];
-    [self.lblOid setText:[userInfo valueForKey:KEY_USER_SERCH_USER_INFO_OID]];
+    [self.lblNickname setText:[userInfo objectForKey:KEYP__USER_SEARCH__LIST_UINFO_NICK]];
+    [self.lblOid setText:[userInfo objectForKey:KEYP__USER_SEARCH__LIST_UINFO_OID]];
+    
+    NSInteger userRelation = [[userInfo valueForKey:KEYP__USER_SEARCH__LIST_UINFO_RELATION] integerValue];
+    if (userRelation == RELATION_STRANGER || userRelation == RELATION_FAN) {
+        [self showStrangerButton:YES];
+    }
+    else {
+        [self showStrangerButton:NO];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -43,6 +52,14 @@
 }
 */
 
+- (void)showStrangerButton:(BOOL)value
+{
+    self.btnChat.hidden = value;
+    self.btnBlackList.hidden = !value;
+    self.btnFocus.hidden = !value;
+    self.btnMessage.hidden = !value;
+}
+
 - (IBAction)focusTouchUpInside:(id)sender {
     
     if (self.alertView == nil) {
@@ -59,7 +76,7 @@
     else if(buttonIndex == 1){
         NSLog(@"OK");
         NSDictionary *userInfo = [UserDataProxy sharedProxy].arrSearchUserResult[0];
-        [[FriendMessageProxy sharedProxy] sendTypeFocusAdd:[userInfo valueForKey:KEY_USER_SERCH_USER_INFO_UID]];
+        [[FriendMessageProxy sharedProxy] sendTypeFocusAdd:[userInfo objectForKey:KEYP__USER_SEARCH__LIST_UINFO_UID]];
     }
     self.alertView = nil;
 }

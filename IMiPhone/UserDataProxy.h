@@ -6,10 +6,6 @@
 //  Copyright (c) 2014年 尹晓君. All rights reserved.
 //
 
-#define KEY_USER_SERCH_USER_INFO_NICK @"nick"
-#define KEY_USER_SERCH_USER_INFO_OID @"oid"
-#define KEY_USER_SERCH_USER_INFO_UID @"uid"
-
 #import <Foundation/Foundation.h>
 #import "DPUser.h"
 

@@ -12,7 +12,13 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *lblNickname;
 @property (weak, nonatomic) IBOutlet UILabel *lblOid;
+@property (weak, nonatomic) IBOutlet UIButton *btnChat;
+@property (weak, nonatomic) IBOutlet UIButton *btnMessage;
+@property (weak, nonatomic) IBOutlet UIButton *btnBlackList;
+@property (weak, nonatomic) IBOutlet UIButton *btnFocus;
 
 - (IBAction)focusTouchUpInside:(id)sender;
+
+- (void)showStrangerButton:(BOOL)value;
 
 @end

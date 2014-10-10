@@ -42,19 +42,11 @@ static UserMessageProxy *sharedUserMessageProxy = nil;
             [[NSNotificationCenter defaultCenter] postNotificationName:NOTI__USER_SEARCH_ object:err];
         }
         else {
-            NSArray *userList = [json valueForKey:KEYP__USER_SEARCH__LIST];
-            if (userList) {
-                for (NSInteger i = 0; i < userList.count; i++) {
-                    NSDictionary *userInfo = userList[i];
-                    NSLog(@"user nick:%@",[userInfo valueForKey:@"nick"]);
-                }
-            }
+            NSArray *userList = [json objectForKey:KEYP__USER_SEARCH__LIST];
             [UserDataProxy sharedProxy].arrSearchUserResult = userList;
             [[NSNotificationCenter defaultCenter] postNotificationName:NOTI__USER_SEARCH_ object:userList];
         }
-        
     }];
-   
 }
 
 @end

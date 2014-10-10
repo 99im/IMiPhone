@@ -193,6 +193,12 @@ example: http://local.taiqiu.com:7070/user/search/?oid=16&verify=16_1411381682_1
 #define KEYP__USER_SEARCH__ERROR_CODE @"error_code" //error_code int 0
 #define KEYP__USER_SEARCH__LIST @"list" //list array
 #define KEYP__USER_SEARCH__LIST_UINFO @"uinfo" // uinfo
+#define KEYP__USER_SEARCH__LIST_UINFO_UID @"uid" //  uid
+#define KEYP__USER_SEARCH__LIST_UINFO_OID @"oid" //  oid
+#define KEYP__USER_SEARCH__LIST_UINFO_NICK @"nick" //  nick
+#define KEYP__USER_SEARCH__LIST_UINFO_CITY @"city" //  city
+#define KEYP__USER_SEARCH__LIST_UINFO_VIP @"vip" //  vip
+#define KEYP__USER_SEARCH__LIST_UINFO_RELATION @"relation" //  relation
 
 
 #define MARK_MSG @"msg"

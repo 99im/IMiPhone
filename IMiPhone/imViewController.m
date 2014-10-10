@@ -26,6 +26,7 @@
         
 	// Do any additional setup after loading the view, typically from a nib.
     [self registerMessageNotification];
+    [[IMNWManager sharedNWManager] initHttpConnect];
     
     if (![imUtil checkBlankString:[UserDataProxy sharedProxy].verify] && [UserDataProxy sharedProxy].lastLoginUid != NAN) {
         [[IMNWManager sharedNWManager] initSocketConnect];
@@ -34,8 +35,6 @@
     else {
         [self performSegueWithIdentifier:@"Start2AccountSegue" sender:self];
     }
-    
-    [[IMNWManager sharedNWManager] initHttpConnect];
 }
 
 - (void)didReceiveMemoryWarning
