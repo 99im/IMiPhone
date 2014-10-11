@@ -15,6 +15,8 @@
 "Alert.LoginError" = "登录失败，原因之后补充。错误码：%i";
 "Alert.Tip" = "提示";
 "Alert.Tip.Focus" = "确认要关注对方吗？";
+"Alert.Tip.Focus.Success" = "关注成功";
+"Alert.Tip.Focus.Cancel.Success" = "取消关注成功";
 "ResendCode" = "重发验证码";
 "Contact.Add.UserID" = "请输入靓号";
 "Contact.Add.GroupID" = "请输入群组号";
@@ -25,3 +27,9 @@
 "DateFormatServer" = "yyyy-MM-dd";
 "Category.Focus" = "关注";
 "Category.Fan" = "粉丝";
+"Remark" = "备注";
+"Focus.Cancel" = "取消关注";
+"Black.List.Report" = "拉黑举报";
+
+
+

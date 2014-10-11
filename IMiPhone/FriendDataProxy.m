@@ -8,9 +8,15 @@
 
 #import "FriendDataProxy.h"
 
+@interface FriendDataProxy()
+
+@property (nonatomic, retain) NSMutableArray *arrContact;
+
+@end
+
 @implementation FriendDataProxy
 
-@synthesize arrGroups;
+@synthesize arrContact = _arrContact;
 
 static FriendDataProxy *sharedFriendDataProxy = nil;
 
@@ -23,5 +29,23 @@ static FriendDataProxy *sharedFriendDataProxy = nil;
     return sharedFriendDataProxy;
 }
 
+#pragma mark - contact
+
+- (NSMutableArray *)mutableArrayContact
+{
+//    if (_arrContact == nil) {
+//        //数据量大的话，可以考虑异步加载
+//        NSMutableArray *arrDBContact = [[ContactDAO sharedDAO] query:@"" Bind:[NSMutableArray arrayWithObjects:nil]];
+//        _arrMessages = [NSMutableArray array];
+//        DPMessage *tempMessage;
+//        if (arrDBMessages) {
+//            for (NSInteger i = 0; i < arrDBMessages.count; i++) {
+//                tempMessage = [[DPMessage alloc] init];
+//                [ImDataUtil copyFrom:arrDBMessages[i] To:tempMessage];
+//            }
+//        }
+//    }
+    return [self mutableArrayValueForKey:@"arrContact"];
+}
 
 @end

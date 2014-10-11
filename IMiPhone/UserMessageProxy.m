@@ -43,8 +43,12 @@ static UserMessageProxy *sharedUserMessageProxy = nil;
         }
         else {
             NSArray *userList = [json objectForKey:KEYP__USER_SEARCH__LIST];
-            [UserDataProxy sharedProxy].arrSearchUserResult = userList;
-            [[NSNotificationCenter defaultCenter] postNotificationName:NOTI__USER_SEARCH_ object:userList];
+            NSDictionary *userInfo = nil;
+            if (userList && userList.count > 0) {
+                userInfo = userList[0];
+            }
+            [UserDataProxy sharedProxy].showUserInfo = userInfo;
+            [[NSNotificationCenter defaultCenter] postNotificationName:NOTI__USER_SEARCH_ object:nil];
         }
     }];
 }

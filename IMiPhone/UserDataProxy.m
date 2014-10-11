@@ -31,7 +31,7 @@
 @synthesize mobile = _mobile;
 @synthesize password = _password;
 
-@synthesize arrSearchUserResult;
+@synthesize showUserInfo;
 
 static UserDataProxy *sharedProxy = nil;
 + (UserDataProxy *)sharedProxy

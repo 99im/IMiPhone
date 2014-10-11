@@ -57,6 +57,17 @@
 		116BF88219CC01C70015561B /* UserDataProxyTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 116BF88119CC01C70015561B /* UserDataProxyTest.m */; };
 		116BF88519CC29360015561B /* ImDataUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 116BF88419CC29360015561B /* ImDataUtil.m */; };
 		116BF88619CC29360015561B /* ImDataUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 116BF88419CC29360015561B /* ImDataUtil.m */; };
+		1171F7C119E8DAE300865A0B /* TPContactsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5887FD2819CC00EF001BFAFB /* TPContactsTableViewController.m */; };
+		1171F7C419E8DE4000865A0B /* AddressInviteTVTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1171F7C319E8DE4000865A0B /* AddressInviteTVTableViewCell.m */; };
+		1171F7C519E8DE4000865A0B /* AddressInviteTVTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1171F7C319E8DE4000865A0B /* AddressInviteTVTableViewCell.m */; };
+		1171F7C819E8DE6300865A0B /* AddressAddTVTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1171F7C719E8DE6300865A0B /* AddressAddTVTableViewCell.m */; };
+		1171F7C919E8DE6300865A0B /* AddressAddTVTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1171F7C719E8DE6300865A0B /* AddressAddTVTableViewCell.m */; };
+		1171F7CC19E9154F00865A0B /* DPContactPerson.m in Sources */ = {isa = PBXBuildFile; fileRef = 1171F7CB19E9154F00865A0B /* DPContactPerson.m */; };
+		1171F7CD19E9154F00865A0B /* DPContactPerson.m in Sources */ = {isa = PBXBuildFile; fileRef = 1171F7CB19E9154F00865A0B /* DPContactPerson.m */; };
+		1171F7D019E9269100865A0B /* ContactDAO.m in Sources */ = {isa = PBXBuildFile; fileRef = 1171F7CF19E9269100865A0B /* ContactDAO.m */; };
+		1171F7D119E9269100865A0B /* ContactDAO.m in Sources */ = {isa = PBXBuildFile; fileRef = 1171F7CF19E9269100865A0B /* ContactDAO.m */; };
+		1171F7D419E9278A00865A0B /* DBContactPerson.m in Sources */ = {isa = PBXBuildFile; fileRef = 1171F7D319E9278A00865A0B /* DBContactPerson.m */; };
+		1171F7D519E9278A00865A0B /* DBContactPerson.m in Sources */ = {isa = PBXBuildFile; fileRef = 1171F7D319E9278A00865A0B /* DBContactPerson.m */; };
 		11795E2819D297CD003FD9A7 /* DPFriend.m in Sources */ = {isa = PBXBuildFile; fileRef = 11795E2719D297CD003FD9A7 /* DPFriend.m */; };
 		11795E2919D297CD003FD9A7 /* DPFriend.m in Sources */ = {isa = PBXBuildFile; fileRef = 11795E2719D297CD003FD9A7 /* DPFriend.m */; };
 		11B1C62819E4E069003D2711 /* ChatMessageProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B1C62719E4E069003D2711 /* ChatMessageProxy.m */; };
@@ -223,6 +234,16 @@
 		116BF88119CC01C70015561B /* UserDataProxyTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserDataProxyTest.m; sourceTree = "<group>"; };
 		116BF88319CC29360015561B /* ImDataUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImDataUtil.h; sourceTree = "<group>"; };
 		116BF88419CC29360015561B /* ImDataUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImDataUtil.m; sourceTree = "<group>"; };
+		1171F7C219E8DE4000865A0B /* AddressInviteTVTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressInviteTVTableViewCell.h; sourceTree = "<group>"; };
+		1171F7C319E8DE4000865A0B /* AddressInviteTVTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressInviteTVTableViewCell.m; sourceTree = "<group>"; };
+		1171F7C619E8DE6300865A0B /* AddressAddTVTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressAddTVTableViewCell.h; sourceTree = "<group>"; };
+		1171F7C719E8DE6300865A0B /* AddressAddTVTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressAddTVTableViewCell.m; sourceTree = "<group>"; };
+		1171F7CA19E9154F00865A0B /* DPContactPerson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPContactPerson.h; sourceTree = "<group>"; };
+		1171F7CB19E9154F00865A0B /* DPContactPerson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPContactPerson.m; sourceTree = "<group>"; };
+		1171F7CE19E9269100865A0B /* ContactDAO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactDAO.h; sourceTree = "<group>"; };
+		1171F7CF19E9269100865A0B /* ContactDAO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactDAO.m; sourceTree = "<group>"; };
+		1171F7D219E9278A00865A0B /* DBContactPerson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBContactPerson.h; sourceTree = "<group>"; };
+		1171F7D319E9278A00865A0B /* DBContactPerson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBContactPerson.m; sourceTree = "<group>"; };
 		11795E2619D297CD003FD9A7 /* DPFriend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPFriend.h; sourceTree = "<group>"; };
 		11795E2719D297CD003FD9A7 /* DPFriend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPFriend.m; sourceTree = "<group>"; };
 		11B1C62619E4E069003D2711 /* ChatMessageProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatMessageProxy.h; sourceTree = "<group>"; };
@@ -411,23 +432,27 @@
 		116B6E7419AEF83500DB1B5E /* Database */ = {
 			isa = PBXGroup;
 			children = (
-				110487A419D7A35C0002AB36 /* MessageGroupDAO.h */,
-				110487A519D7A35C0002AB36 /* MessageGroupDAO.m */,
-				110487A019D79DFB0002AB36 /* MessageDAO.h */,
-				110487A119D79DFB0002AB36 /* MessageDAO.m */,
-				110F560819D55792003B9EB4 /* DBMessageGroup.h */,
-				110F560919D55792003B9EB4 /* DBMessageGroup.m */,
 				116B6E8D19B058A400DB1B5E /* SQLight */,
-				116B6E7519AEF83500DB1B5E /* DBMessage.h */,
-				116B6E7619AEF83500DB1B5E /* DBMessage.m */,
 				116B6E7E19AF0F8C00DB1B5E /* DatabaseConfig.h */,
 				116B6E7F19AF0F8C00DB1B5E /* DatabaseConfig.m */,
 				116B6E8119AF1C7900DB1B5E /* BaseDAO.h */,
 				116B6E8219AF1C7900DB1B5E /* BaseDAO.m */,
+				116B6E7519AEF83500DB1B5E /* DBMessage.h */,
+				116B6E7619AEF83500DB1B5E /* DBMessage.m */,
+				110487A019D79DFB0002AB36 /* MessageDAO.h */,
+				110487A119D79DFB0002AB36 /* MessageDAO.m */,
+				110F560919D55792003B9EB4 /* DBMessageGroup.m */,
+				110F560819D55792003B9EB4 /* DBMessageGroup.h */,
+				110487A419D7A35C0002AB36 /* MessageGroupDAO.h */,
+				110487A519D7A35C0002AB36 /* MessageGroupDAO.m */,
 				116B6E8719B0534000DB1B5E /* DBGroup.h */,
 				116B6E8819B0534000DB1B5E /* DBGroup.m */,
 				116B6E8A19B0538300DB1B5E /* GroupDAO.h */,
 				116B6E8B19B0538300DB1B5E /* GroupDAO.m */,
+				1171F7CE19E9269100865A0B /* ContactDAO.h */,
+				1171F7CF19E9269100865A0B /* ContactDAO.m */,
+				1171F7D219E9278A00865A0B /* DBContactPerson.h */,
+				1171F7D319E9278A00865A0B /* DBContactPerson.m */,
 			);
 			path = Database;
 			sourceTree = "<group>";
@@ -607,6 +632,8 @@
 				116BF87619C96F8F0015561B /* UserDataProxy.m */,
 				58AF049619B056050077DCBC /* FriendDataProxy.h */,
 				58AF049719B056050077DCBC /* FriendDataProxy.m */,
+				1171F7CA19E9154F00865A0B /* DPContactPerson.h */,
+				1171F7CB19E9154F00865A0B /* DPContactPerson.m */,
 			);
 			name = DataProxy;
 			sourceTree = "<group>";
@@ -698,6 +725,10 @@
 				58A331A919E51A95005BE980 /* CategoryListTableViewController.m */,
 				58A331AB19E52CDE005BE980 /* CategoryContactTableViewCell.h */,
 				58A331AC19E52CDE005BE980 /* CategoryContactTableViewCell.m */,
+				1171F7C219E8DE4000865A0B /* AddressInviteTVTableViewCell.h */,
+				1171F7C319E8DE4000865A0B /* AddressInviteTVTableViewCell.m */,
+				1171F7C619E8DE6300865A0B /* AddressAddTVTableViewCell.h */,
+				1171F7C719E8DE6300865A0B /* AddressAddTVTableViewCell.m */,
 			);
 			name = Contact;
 			sourceTree = "<group>";
@@ -865,6 +896,7 @@
 			files = (
 				5825D8F219D8105E004FF6FF /* FriendsViewController.m in Sources */,
 				58BACF0919B5805800A72391 /* crypt.c in Sources */,
+				1171F7C819E8DE6300865A0B /* AddressAddTVTableViewCell.m in Sources */,
 				58BACF0819B5804700A72391 /* FriendMessageProxy.m in Sources */,
 				110F560E19D56A9E003B9EB4 /* MessageDataProxy.m in Sources */,
 				58BACF0719B5803F00A72391 /* FriendDataProxy.m in Sources */,
@@ -898,12 +930,14 @@
 				58A331AD19E52CDE005BE980 /* CategoryContactTableViewCell.m in Sources */,
 				58B496E219A7186A0082AE30 /* UIAlertView+MKNetworkKitAdditions.m in Sources */,
 				11B1C62819E4E069003D2711 /* ChatMessageProxy.m in Sources */,
+				1171F7CC19E9154F00865A0B /* DPContactPerson.m in Sources */,
 				58A331AA19E51A95005BE980 /* CategoryListTableViewController.m in Sources */,
 				58D3F28A19E63082006589F9 /* IMNWSocketConnect.m in Sources */,
 				116B6E8C19B0538300DB1B5E /* GroupDAO.m in Sources */,
 				116B6E7D19AEF83500DB1B5E /* imRms.m in Sources */,
 				58B496DA19A7186A0082AE30 /* NSData+MKBase64.m in Sources */,
 				116BF87119C81E030015561B /* AudioRecordManager.m in Sources */,
+				1171F7C419E8DE4000865A0B /* AddressInviteTVTableViewCell.m in Sources */,
 				585971E81999F0C700258CB1 /* imViewController.m in Sources */,
 				116BF88519CC29360015561B /* ImDataUtil.m in Sources */,
 				585971DE1999F0C700258CB1 /* main.m in Sources */,
@@ -917,6 +951,7 @@
 				58B496DE19A7186A0082AE30 /* NSDictionary+RequestEncoding.m in Sources */,
 				116B6E8319AF1C7900DB1B5E /* BaseDAO.m in Sources */,
 				58D95F4819A5BDF4007139AB /* GCDAsyncSocket.m in Sources */,
+				1171F7D019E9269100865A0B /* ContactDAO.m in Sources */,
 				58D3F28D19E630A1006589F9 /* IMNWHttpConnect.m in Sources */,
 				110F561219D56CF8003B9EB4 /* DPMessage.m in Sources */,
 				58B496E619A7186A0082AE30 /* MKNetworkEngine.m in Sources */,
@@ -924,7 +959,9 @@
 				116B6E8019AF0F8C00DB1B5E /* DatabaseConfig.m in Sources */,
 				110F561A19D57013003B9EB4 /* DPMessageGroup.m in Sources */,
 				58438C0D19D412E400B6962B /* NearbyTableViewController.m in Sources */,
+				1171F7D419E9278A00865A0B /* DBContactPerson.m in Sources */,
 				5859721819A1DEE500258CB1 /* LoginViewController.m in Sources */,
+				1171F7C119E8DAE300865A0B /* TPContactsTableViewController.m in Sources */,
 				11B1C62C19E51AFB003D2711 /* ChatDataProxy.m in Sources */,
 				58C14DE619CAB631009334E1 /* AddTableViewController.m in Sources */,
 				58BC1E3919C0304900722A00 /* RegStep2ViewController.m in Sources */,
@@ -946,6 +983,7 @@
 				58BC1E5F19C06BD700722A00 /* imRms.m in Sources */,
 				58BC1E5719C06BAE00722A00 /* NSAlert+MKNetworkKitAdditions.m in Sources */,
 				110487AB19D90BFE0002AB36 /* MessageDataProxyTest.m in Sources */,
+				1171F7C919E8DE6300865A0B /* AddressAddTVTableViewCell.m in Sources */,
 				58BC1E5819C06BAE00722A00 /* NSData+MKBase64.m in Sources */,
 				58BC1E5919C06BAE00722A00 /* NSDate+RFC1123.m in Sources */,
 				116BF87819C96F8F0015561B /* UserDataProxy.m in Sources */,
@@ -953,6 +991,7 @@
 				58BC1E5B19C06BAE00722A00 /* NSString+MKNetworkKitAdditions.m in Sources */,
 				58BC1E5C19C06BAE00722A00 /* UIAlertView+MKNetworkKitAdditions.m in Sources */,
 				58BC1E5D19C06BAE00722A00 /* UIImageView+MKNetworkKitAdditions.m in Sources */,
+				1171F7D519E9278A00865A0B /* DBContactPerson.m in Sources */,
 				58BC1E5E19C06BAE00722A00 /* crypt.c in Sources */,
 				58BC1E3E19C06B9000722A00 /* ChatTableViewController.m in Sources */,
 				58BC1E3F19C06B9000722A00 /* ChatCell.m in Sources */,
@@ -961,6 +1000,7 @@
 				58D026C519D17D4800BE4748 /* NSNumber+IMNWError.m in Sources */,
 				58BC1E4119C06B9000722A00 /* imAppDelegate.m in Sources */,
 				116BF88019C981AE0015561B /* DPUser.m in Sources */,
+				1171F7CD19E9154F00865A0B /* DPContactPerson.m in Sources */,
 				58BC1E4319C06B9000722A00 /* imViewController.m in Sources */,
 				58BC1E4419C06B9000722A00 /* MainTabBarController.m in Sources */,
 				110F561B19D57013003B9EB4 /* DPMessageGroup.m in Sources */,
@@ -974,6 +1014,7 @@
 				58BC1E4C19C06B9000722A00 /* MKNetworkOperation.m in Sources */,
 				58BC1E4D19C06B9000722A00 /* Reachability.m in Sources */,
 				58BC1E4E19C06B9000722A00 /* GCDAsyncSocket.m in Sources */,
+				1171F7C519E8DE4000865A0B /* AddressInviteTVTableViewCell.m in Sources */,
 				58BC1E4F19C06B9000722A00 /* AsyncSocket.m in Sources */,
 				116BF87319C81E3F0015561B /* AudioRecordTest.m in Sources */,
 				110F561319D56CF8003B9EB4 /* DPMessage.m in Sources */,
@@ -999,6 +1040,7 @@
 				58C14DD719C81447009334E1 /* FriendsViewController.m in Sources */,
 				58C14DDF19C82594009334E1 /* GroupViewController.m in Sources */,
 				58BC1E3A19C0304900722A00 /* RegStep2ViewController.m in Sources */,
+				1171F7D119E9269100865A0B /* ContactDAO.m in Sources */,
 				116AB14819B731D600092E2C /* DatabaseConfig.m in Sources */,
 				110487A919D7DA560002AB36 /* OSTest.m in Sources */,
 				116BF87419C81E680015561B /* AudioRecordManager.m in Sources */,

@@ -45,11 +45,15 @@ static FriendMessageProxy *sharedFriendMessageProxy = nil;
             NSInteger errorcode = [[json objectForKey:KEYP__FRIEND_FOCUS_ADD__ERROR_CODE] integerValue];
             if (errorcode != 0) {
                 NSNumber *errorCodeNumber = [NSNumber numberWithInteger:errorcode];
-                NSLog(@"%@",[errorCodeNumber errorMessage]);
+                NSString *errorMessage = [errorCodeNumber errorMessage];
+                NSDictionary *userInfo = [NSDictionary dictionaryWithObject:errorMessage
+                                                                     forKey:NSLocalizedDescriptionKey];
+                NSError *error = [NSError errorWithDomain:PATH__FRIEND_FOCUS_ADD_ code:errorcode userInfo:userInfo];
+                [[NSNotificationCenter defaultCenter] postNotificationName:NOTI__FRIEND_FOCUS_ADD_ object:error];
             }
             else
             {
-                
+                [[NSNotificationCenter defaultCenter] postNotificationName:NOTI__FRIEND_FOCUS_ADD_ object:nil];
             }
         }
     }];
@@ -99,11 +103,16 @@ static FriendMessageProxy *sharedFriendMessageProxy = nil;
         if (json) {
             NSInteger errorcode = [[json objectForKey:KEYP__FRIEND_FOCUS_CANCEL__ERROR_CODE] integerValue];
             if (errorcode != 0) {
+                
                 NSNumber *errorCodeNumber = [NSNumber numberWithInteger:errorcode];
-                NSLog(@"%@",[errorCodeNumber errorMessage]);
+                NSString *errorMessage = [errorCodeNumber errorMessage];
+                NSDictionary *userInfo = [NSDictionary dictionaryWithObject:errorMessage
+                                                                     forKey:NSLocalizedDescriptionKey];
+                NSError *error = [NSError errorWithDomain:PATH__FRIEND_FOCUS_CANCEL_ code:errorcode userInfo:userInfo];
+                [[NSNotificationCenter defaultCenter] postNotificationName:NOTI__FRIEND_FOCUS_CANCEL_ object:error];
             }
             else{
-                
+                 [[NSNotificationCenter defaultCenter] postNotificationName:NOTI__FRIEND_FOCUS_CANCEL_ object:nil];
             }
         }
 

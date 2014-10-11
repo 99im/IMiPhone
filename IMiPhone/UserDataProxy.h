@@ -22,7 +22,7 @@
 @property (nonatomic, retain) NSString *mobile;
 @property (nonatomic, retain) NSString *password;
 
-@property (nonatomic, retain) NSArray *arrSearchUserResult;
+@property (nonatomic, retain) NSDictionary *showUserInfo;
 
 + (UserDataProxy *)sharedProxy;
 

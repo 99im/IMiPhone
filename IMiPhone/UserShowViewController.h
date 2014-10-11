@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface UserShowViewController : UIViewController <UIAlertViewDelegate>
+@interface UserShowViewController : UIViewController <UIAlertViewDelegate, UIActionSheetDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *lblNickname;
 @property (weak, nonatomic) IBOutlet UILabel *lblOid;
@@ -16,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *btnMessage;
 @property (weak, nonatomic) IBOutlet UIButton *btnBlackList;
 @property (weak, nonatomic) IBOutlet UIButton *btnFocus;
+@property (weak, nonatomic) IBOutlet UIButton *btnMore;
 
 - (IBAction)focusTouchUpInside:(id)sender;
 
