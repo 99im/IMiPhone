@@ -27,4 +27,7 @@
 ///清除当前第一响应者的响应状态，放弃第一响应；
 + (void)clearFirstResponder;
 
+//显示提示框，指定时间后自动消失
++ (void)alertViewMessage:(NSString *)msg disappearAfter:(NSTimeInterval)ti;
+
 @end

@@ -14,7 +14,7 @@
 
 @interface UserShowViewController ()
 
-@property (nonatomic, retain) UIAlertView * alertView;
+@property (nonatomic, retain) UIAlertView *alertViewFocus;
 
 @end
 
@@ -24,7 +24,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    NSDictionary *userInfo = [UserDataProxy sharedProxy].arrSearchUserResult[0];
+    NSDictionary *userInfo = [UserDataProxy sharedProxy].showUserInfo;
     [self.lblNickname setText:[userInfo objectForKey:KEYP__USER_SEARCH__LIST_UINFO_NICK]];
     [self.lblOid setText:[userInfo objectForKey:KEYP__USER_SEARCH__LIST_UINFO_OID]];
     
@@ -58,27 +58,104 @@
     self.btnBlackList.hidden = !value;
     self.btnFocus.hidden = !value;
     self.btnMessage.hidden = !value;
+    self.btnMore.hidden = value;
 }
 
+#pragma mark - reactive the buttons event
 - (IBAction)focusTouchUpInside:(id)sender {
-    
-    if (self.alertView == nil) {
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Alert.Tip", nil) message:NSLocalizedString(@"Alert.Tip.Focus", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"Cancel", nil) otherButtonTitles:NSLocalizedString(@"OK", nil), nil];
-        [alertView show];
+
+    if (self.alertViewFocus == nil) {
+        self.alertViewFocus = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Alert.Tip", nil) message:NSLocalizedString(@"Alert.Tip.Focus", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"Cancel", nil) otherButtonTitles:NSLocalizedString(@"OK", nil), nil];
+        [self.alertViewFocus show];
     }
+}
+
+- (IBAction)btnBlackListTouchUpInside:(id)sender {
+}
+
+- (IBAction)btnMessageTouchUpInside:(id)sender {
+}
+
+- (IBAction)btnChatTouchUpInside:(id)sender {
+}
+
+- (IBAction)btnMoreTouchUpInside:(id)sender {
+   UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:NSLocalizedString(@"Cancel", nil) destructiveButtonTitle:nil otherButtonTitles:NSLocalizedString(@"Remark", nil), NSLocalizedString(@"Focus.Cancel", nil), NSLocalizedString(@"Black.List.Report", nil), nil];
+    [actionSheet showInView:self.view];
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
+     NSDictionary *userInfo = [UserDataProxy sharedProxy].showUserInfo;
+    if (alertView == self.alertViewFocus) {
+        if (buttonIndex == 0) {
+            NSLog(@"cancel");
+        }
+        else if(buttonIndex == 1) {
+            NSLog(@"OK");
+            [[FriendMessageProxy sharedProxy] sendTypeFocusAdd:[userInfo objectForKey:KEYP__USER_SEARCH__LIST_UINFO_UID]];
+        }
+        self.alertViewFocus = nil;
+    }
+    
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    NSDictionary *userInfo = [UserDataProxy sharedProxy].showUserInfo;
     if (buttonIndex == 0) {
+         NSLog(@"remark");
+    }
+    else if(buttonIndex == 1) {
+        NSLog(@"Focus Cancel");
+        [[FriendMessageProxy sharedProxy] sendTypeFocusCancel:[userInfo objectForKey:KEYP__USER_SEARCH__LIST_UINFO_UID]];
+    }
+    else if (buttonIndex == 2) {
+        NSLog(@"Black list and report");
+    }
+    else if (buttonIndex == 3) {
         NSLog(@"cancel");
     }
-    else if(buttonIndex == 1){
-        NSLog(@"OK");
-        NSDictionary *userInfo = [UserDataProxy sharedProxy].arrSearchUserResult[0];
-        [[FriendMessageProxy sharedProxy] sendTypeFocusAdd:[userInfo objectForKey:KEYP__USER_SEARCH__LIST_UINFO_UID]];
+}
+
+#pragma mark - IMNWProxyProtocol Method
+- (void)registerMessageNotification
+{
+    //监听搜索用户结果的监听
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showFocusAddResult:) name:NOTI__FRIEND_FOCUS_ADD_ object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showFocusCancelResult:) name:NOTI__FRIEND_FOCUS_CANCEL_ object:nil];
+}
+
+- (void)removeMessageNotification
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+#pragma mark - show oprate result
+- (void)showFocusAddResult:(NSNotification *)notification
+{
+    NSString *strTip;
+    if (notification.object) {
+        //添加失败
+        strTip = [((NSError *)notification.object).userInfo objectForKey:NSLocalizedDescriptionKey];
     }
-    self.alertView = nil;
+    else{
+        strTip = NSLocalizedString(@"Alert.Tip.Focus.Success", nil);
+    }
+    [imUtil alertViewMessage:strTip disappearAfter:2.0f];
+}
+
+- (void)showFocusCancelResult:(NSNotification *)notification
+{
+    NSString *strTip;
+    if (notification.object) {
+        //取消失败
+        strTip = [((NSError *)notification.object).userInfo objectForKey:NSLocalizedDescriptionKey];
+    }
+    else{
+        strTip = NSLocalizedString(@"Alert.Tip.Focus.Cancel.Success", nil);
+    }
+    [imUtil alertViewMessage:strTip disappearAfter:2.0f];
 }
 
 @end

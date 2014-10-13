@@ -17,4 +17,6 @@
 
 + (FriendDataProxy *)sharedProxy;
 
+- (NSMutableArray *)mutableArrayContact;
+
 @end

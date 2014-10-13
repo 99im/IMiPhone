@@ -108,4 +108,17 @@
     }
 }
 
++ (void)alertViewMessage:(NSString *)msg disappearAfter:(NSTimeInterval)ti
+{
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Alert", nil) message:NSLocalizedString(@"Alert.Nick", nil) delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", nil) otherButtonTitles:nil];
+    [alertView show];
+    [self performSelector:@selector(dimissAlert:) withObject:alertView afterDelay:2.0];
+}
+
++ (void) dimissAlert:(UIAlertView *)alert {
+    if(alert)     {
+        [alert dismissWithClickedButtonIndex:[alert cancelButtonIndex] animated:YES];
+    }
+}
+
 @end

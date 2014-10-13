@@ -680,7 +680,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="addressAddTVCell" id="LvF-pn-0fv">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="addressAddTVCell" id="LvF-pn-0fv" customClass="AddressAddTVTableViewCell">
                                 <rect key="frame" x="0.0" y="119" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="LvF-pn-0fv" id="9Qu-cN-8Yu">
@@ -711,11 +711,21 @@
                                             <state key="normal" title="添加">
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
+                                            <connections>
+                                                <action selector="btnAddTouchUpInside:" destination="LvF-pn-0fv" eventType="touchUpInside" id="sS7-eX-32z"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="btnAdd" destination="Oyv-eg-RXi" id="AZ9-vz-d7V"/>
+                                    <outlet property="imgPortrait" destination="tdT-aS-m9a" id="UjU-xx-W5Z"/>
+                                    <outlet property="lblContactName" destination="Sr6-XT-sEi" id="td6-cy-7ZZ"/>
+                                    <outlet property="lblDistance" destination="jkH-lV-I6e" id="USO-LB-jjg"/>
+                                    <outlet property="lblNick" destination="VC2-Iy-SnQ" id="Cud-IO-grJ"/>
+                                </connections>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="addressInviteTVCell" id="Wbq-Ww-JGF">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="addressInviteTVCell" id="Wbq-Ww-JGF" customClass="AddressInviteTVTableViewCell">
                                 <rect key="frame" x="0.0" y="163" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Wbq-Ww-JGF" id="hez-os-PGD">
@@ -732,9 +742,16 @@
                                             <state key="normal" title="邀请">
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
+                                            <connections>
+                                                <action selector="btnInviteTouchUpInside:" destination="Wbq-Ww-JGF" eventType="touchUpInside" id="aCw-ah-yEY"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="btnInvite" destination="5Es-Gm-fXy" id="lyJ-F1-iiC"/>
+                                    <outlet property="lblName" destination="uKs-ar-Pxe" id="hI0-VH-i5U"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -774,18 +791,27 @@
                                 <state key="normal" title="拉黑举报">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="btnBlackListTouchUpInside:" destination="Ixd-6h-fyu" eventType="touchUpInside" id="oBP-eB-pHq"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Omi-G2-oWd">
                                 <rect key="frame" x="0.0" y="538" width="102" height="30"/>
                                 <state key="normal" title="发送消息">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="btnMessageTouchUpInside:" destination="Ixd-6h-fyu" eventType="touchUpInside" id="wOU-nA-3cO"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y8v-na-mKc">
                                 <rect key="frame" x="0.0" y="538" width="320" height="30"/>
                                 <state key="normal" title="对话">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="btnChatTouchUpInside:" destination="Ixd-6h-fyu" eventType="touchUpInside" id="D0P-Vv-0Yk"/>
+                                </connections>
                             </button>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tbe-oe-gHj">
                                 <rect key="frame" x="0.0" y="64" width="320" height="466"/>
@@ -833,13 +859,27 @@
                             <constraint firstAttribute="bottom" secondItem="5Ar-5g-u0F" secondAttribute="bottom" id="tYf-Ih-9YY"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="昵称" id="fKD-ZS-EPg"/>
+                    <navigationItem key="navigationItem" title="昵称" id="fKD-ZS-EPg">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="bej-yp-FRX">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Jn4-E5-kfk">
+                                <rect key="frame" x="-23" y="-15" width="71" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="更多">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="btnMoreTouchUpInside:" destination="Ixd-6h-fyu" eventType="touchUpInside" id="eGe-wA-MzV"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="btnBlackList" destination="5Ar-5g-u0F" id="1H3-oS-oCZ"/>
                         <outlet property="btnChat" destination="Y8v-na-mKc" id="2bb-JY-hZE"/>
                         <outlet property="btnFocus" destination="bFz-SV-ZjS" id="Tdc-bj-ytU"/>
                         <outlet property="btnMessage" destination="Omi-G2-oWd" id="rr0-Hf-tOW"/>
+                        <outlet property="btnMore" destination="Jn4-E5-kfk" id="7ge-jB-LRO"/>
                         <outlet property="lblNickname" destination="AuH-ti-VQO" id="alT-KH-bG5"/>
                         <outlet property="lblOid" destination="CNp-ev-GaV" id="VrI-wq-KBD"/>
                     </connections>

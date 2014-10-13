@@ -10,6 +10,7 @@
 #import "AddByInputTableViewCell.h"
 #import "FriendMessageProxy.h"
 #import "UserMessageProxy.h"
+#import "UserDataProxy.h"
 
 @interface AddTableViewController ()
 
@@ -47,15 +48,14 @@ const int sectionNum = 2;
     NSString *plistPath = [bundle pathForResource:@"contact" ofType:@"plist"];
     self.arrTPs = [[[NSDictionary alloc] initWithContentsOfFile:plistPath] objectForKey:@"AddTP"];
     
-    //监听搜索用户结果的监听
-     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(skipToSearchResult:) name:NOTI__USER_SEARCH_ object:nil];
+    [self registerMessageNotification];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [self removeMessageNotification];
 }
 
 - (IBAction)searchTouchUpInside:(id)sender {
@@ -173,10 +173,23 @@ const int sectionNum = 2;
 #pragma mark - serchResult
 - (void)skipToSearchResult:(NSNotification *)notification
 {
-    if (notification.object) {
-        if ([notification.object isKindOfClass:[NSArray class]])
-             self.hidesBottomBarWhenPushed = YES;
-            [self performSegueWithIdentifier:@"Add2ResultSegue" sender:self];
-        }
+    if ([UserDataProxy sharedProxy].showUserInfo) {
+        self.hidesBottomBarWhenPushed = YES;
+        [self performSegueWithIdentifier:@"Add2ResultSegue" sender:self];
+    }
 }
+
+#pragma mark - IMNWProxyProtocol Method
+- (void)registerMessageNotification
+{
+    //监听搜索用户结果的监听
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(skipToSearchResult:) name:NOTI__USER_SEARCH_ object:nil];
+}
+
+- (void)removeMessageNotification
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+
 @end
