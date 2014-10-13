@@ -952,7 +952,7 @@
                                             <color key="textColor" red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="E56B48A1-FC29-4B8A-9663-064177BD03A9" id="Ls1-tt-jOe">
+                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="2A7056CD-6B01-4CBA-B751-5438E4F60035" id="Ls1-tt-jOe">
                                             <autoresizingMask key="autoresizingMask"/>
                                         </imageView>
                                     </subviews>
@@ -1221,8 +1221,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="ChatDefault" width="68" height="68"/>
-        <image name="E56B48A1-FC29-4B8A-9663-064177BD03A9" width="27" height="27">
+        <image name="2A7056CD-6B01-4CBA-B751-5438E4F60035" width="27" height="27">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPj9YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQsLzI4O1UkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw
@@ -1321,6 +1320,7 @@ twC5ALsAvQDCANkA2wDdFLMUuBTDFMwU3xTjFPYVARUKFQ8VFxUaFR8VLhUyFTkVQRVOFVMVVRVXFVwV
 ZBVnFWwVdBV3FYkVjBWRAAAAAAAAAgEAAAAAAAAAQgAAAAAAAAAAAAAAAAAAFZM
 </mutableData>
         </image>
+        <image name="ChatDefault" width="68" height="68"/>
         <image name="HeadBg" width="100" height="100"/>
         <image name="splash.jpg" width="640" height="400"/>
     </resources>
