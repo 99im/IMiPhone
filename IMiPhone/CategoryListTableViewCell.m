@@ -11,13 +11,17 @@
 @implementation CategoryListTableViewCell
 
 - (void)awakeFromNib {
-    // Initialization code
+  // Initialization code
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
+  [super setSelected:selected animated:animated];
 
-    // Configure the view for the selected state
+  // Configure the view for the selected state
+}
+- (IBAction)cancelFocusTouchUp:(id)sender {
+  NSLog(@"cancelFocus : %i", self.UserId);
+  [[FriendMessageProxy sharedProxy] sendTypeFocusCancel:self.UserId];
 }
 
 @end

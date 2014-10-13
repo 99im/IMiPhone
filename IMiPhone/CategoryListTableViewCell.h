@@ -7,8 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FriendMessageProxy.h"
 
 @interface CategoryListTableViewCell : UITableViewCell
+
+@property(nonatomic, retain) NSString *NickName;
+@property(nonatomic) NSNumber *UserId;
+
 @property(weak, nonatomic) IBOutlet UILabel *LblUserName;
 
 @end

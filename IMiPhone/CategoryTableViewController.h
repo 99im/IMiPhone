@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
+#define CONTACT_LIST_USERS_FOR_FOCUS 1
+#define CONTACT_LIST_USERS_FOR_FANS 2
+
 @interface CategoryTableViewController : UITableViewController
 
 @end

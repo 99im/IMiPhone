@@ -10,8 +10,11 @@
 
 @interface FriendDataProxy : NSObject
 
-@property (nonatomic, retain) NSArray *arrGroups;
+@property(nonatomic, retain) NSArray *arrGroups;
 
-+ (FriendDataProxy*)sharedProxy;
+@property(nonatomic, retain) NSMutableArray *UserListNickNames;
+@property(nonatomic, retain) NSMutableArray *UserListUserIds;
+
++ (FriendDataProxy *)sharedProxy;
 
 @end

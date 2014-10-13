@@ -51,7 +51,9 @@
   CategoryListTableViewCell *cell =
       [tableView dequeueReusableCellWithIdentifier:@"CellUserList"
                                       forIndexPath:indexPath];
-  cell.LblUserName.text = @"张3李4王5";
+  cell.NickName = @"张3李4王5";
+  cell.UserId = [NSNumber numberWithInt:18];
+  cell.LblUserName.text = cell.NickName;
   // Configure the cell...
 
   return cell;
