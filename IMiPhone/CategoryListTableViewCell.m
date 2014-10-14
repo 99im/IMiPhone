@@ -24,4 +24,52 @@
   [[FriendMessageProxy sharedProxy] sendTypeFocusCancel:self.userId];
 }
 
+- (void)fillWithIndexPath:(NSIndexPath *)indexPath {
+  // NSArray *listUserInfo;
+  NSObject *user;
+  NSObject *uinfo;
+  NSInteger row = indexPath.row;
+  uint currUserListType = [FriendDataProxy sharedProxy].currUserListType;
+  if (currUserListType == USER_LIST_FOR_FOCUS) {
+    // listUserInfo = [FriendDataProxy sharedProxy].listMyFocus;
+    user = [[FriendDataProxy sharedProxy].listMyFocus objectAtIndex:row];
+    uinfo = [user valueForKey:KEYP__FRIEND_FOCUS_LIST__LIST_UINFO];
+
+    // TODO : define KEYP__FRIEND_FAN_LIST__LIST_UINFO_NICK
+    self.nickName =
+        [uinfo valueForKey:KEYP__FRIEND_FRIEND_LIST__LIST_UINFO_NICK];
+    // TODO : define KEYP__FRIEND_FAN_LIST__LIST_UINFO_UID
+    self.userId = [uinfo valueForKey:KEYP__FRIEND_FRIEND_LIST__LIST_UINFO_UID];
+    self.isFriend = NO;
+  } else if (currUserListType == USER_LIST_FOR_FANS) {
+    // listUserInfo = [FriendDataProxy sharedProxy].listMyFans;
+    user = [[FriendDataProxy sharedProxy].listMyFans objectAtIndex:row];
+    uinfo = [user valueForKey:KEYP__FRIEND_FAN_LIST__LIST_UINFO];
+
+    // TODO : define KEYP__FRIEND_FAN_LIST__LIST_UINFO_NICK
+    self.nickName =
+        [uinfo valueForKey:KEYP__FRIEND_FRIEND_LIST__LIST_UINFO_NICK];
+    // TODO : define KEYP__FRIEND_FAN_LIST__LIST_UINFO_UID
+    self.userId = [uinfo valueForKey:KEYP__FRIEND_FRIEND_LIST__LIST_UINFO_UID];
+
+    // NSLog(@"%s",typeof([user
+    // valueForKey:KEYP__FRIEND_FAN_LIST__LIST_ISFRIENDS]));
+
+    if ([[user valueForKey:KEYP__FRIEND_FAN_LIST__LIST_ISFRIENDS]
+            isEqualToString:@"1"]) {
+      self.isFriend = YES;
+    } else {
+      self.isFriend = NO;
+    }
+  }
+
+  NSLog(@"row %li  \nisFriend:%i  \n%@ uinfo: \n%@\n======\n", row,
+        self.isFriend, user, uinfo);
+  self.LblUserName.text = self.nickName;
+  if (self.isFriend == YES) {
+    //[self.BtnFocusOrCancel setTitle:<#(NSString *)#>
+    //forState:<#(UIControlState)#>]
+  } else {
+  }
+}
 @end

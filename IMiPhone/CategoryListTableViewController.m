@@ -58,45 +58,8 @@
   CategoryListTableViewCell *cell =
       [tableView dequeueReusableCellWithIdentifier:@"CellUserList"
                                       forIndexPath:indexPath];
-  NSArray *listUserInfo;
-  NSObject *user;
-  NSObject *uinfo;
-  uint currUserListType = [FriendDataProxy sharedProxy].currUserListType;
-  if (currUserListType == USER_LIST_FOR_FOCUS) {
-    // listUserInfo = [FriendDataProxy sharedProxy].listMyFocus;
-    user =
-        [[FriendDataProxy sharedProxy].listMyFocus objectAtIndex:indexPath.row];
-    uinfo = [user valueForKey:KEYP__FRIEND_FOCUS_LIST__LIST_UINFO];
 
-    // TODO : define KEYP__FRIEND_FAN_LIST__LIST_UINFO_NICK
-    cell.nickName =
-        [uinfo valueForKey:KEYP__FRIEND_FRIEND_LIST__LIST_UINFO_NICK];
-    // TODO : define KEYP__FRIEND_FAN_LIST__LIST_UINFO_UID
-    cell.userId = [uinfo valueForKey:KEYP__FRIEND_FRIEND_LIST__LIST_UINFO_UID];
-    //[cell.BtnFocusOrCancel setTitle:@"取消关注" forState:(UIControlState)]
-    cell.isFriend = NO;
-  } else if (currUserListType == USER_LIST_FOR_FANS) {
-    // listUserInfo = [FriendDataProxy sharedProxy].listMyFans;
-    user =
-        [[FriendDataProxy sharedProxy].listMyFans objectAtIndex:indexPath.row];
-    uinfo = [user valueForKey:KEYP__FRIEND_FAN_LIST__LIST_UINFO];
-
-    // TODO : define KEYP__FRIEND_FAN_LIST__LIST_UINFO_NICK
-    cell.nickName =
-        [uinfo valueForKey:KEYP__FRIEND_FRIEND_LIST__LIST_UINFO_NICK];
-    // TODO : define KEYP__FRIEND_FAN_LIST__LIST_UINFO_UID
-    cell.userId = [uinfo valueForKey:KEYP__FRIEND_FRIEND_LIST__LIST_UINFO_UID];
-    if ([[user valueForKey:KEYP__FRIEND_FAN_LIST__LIST_ISFRIENDS]
-            isEqualToString:@"1"]) {
-      cell.isFriend = YES;
-    } else {
-      cell.isFriend = NO;
-    }
-  }
-
-  NSLog(@"row %i    \n%@ \n======\n", (int)indexPath.row, user);
-  cell.LblUserName.text = cell.nickName;
-  // Configure the cell...
+  [cell fillWithIndexPath:indexPath];
 
   return cell;
 }

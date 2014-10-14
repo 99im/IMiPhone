@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FriendDataProxy.h"
 #import "FriendMessageProxy.h"
 
 @interface CategoryListTableViewCell : UITableViewCell
@@ -17,5 +18,7 @@
 
 @property(weak, nonatomic) IBOutlet UILabel *LblUserName;
 @property(weak, nonatomic) IBOutlet UIButton *BtnFocusOrCancel;
+
+- (void)fillWithIndexPath:(NSIndexPath *)indexPath;
 
 @end
