@@ -110,7 +110,7 @@
 
 + (void)alertViewMessage:(NSString *)msg disappearAfter:(NSTimeInterval)ti
 {
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Alert", nil) message:NSLocalizedString(@"Alert.Nick", nil) delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", nil) otherButtonTitles:nil];
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"" message:msg delegate:nil cancelButtonTitle:nil otherButtonTitles:nil];
     [alertView show];
     [self performSelector:@selector(dimissAlert:) withObject:alertView afterDelay:2.0];
 }
