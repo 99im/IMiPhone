@@ -20,7 +20,7 @@
   // Configure the view for the selected state
 }
 - (IBAction)cancelFocusTouchUp:(id)sender {
-  NSLog(@"cancelFocus : %i", self.UserId);
+  // NSLog(@"cancelFocus : %i", self.UserId);
   [[FriendMessageProxy sharedProxy] sendTypeFocusCancel:self.UserId];
 }
 

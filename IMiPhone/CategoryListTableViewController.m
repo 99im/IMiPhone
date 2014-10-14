@@ -43,7 +43,7 @@
     numberOfRowsInSection:(NSInteger)section {
 #warning Incomplete method implementation.
   // Return the number of rows in the section.
-  return 4;
+  return [[FriendDataProxy sharedProxy].listMyFocus count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView
@@ -51,9 +51,17 @@
   CategoryListTableViewCell *cell =
       [tableView dequeueReusableCellWithIdentifier:@"CellUserList"
                                       forIndexPath:indexPath];
-  cell.NickName = @"张3李4王5";
-  cell.UserId = [NSNumber numberWithInt:18];
-  cell.LblUserName.text = cell.NickName;
+
+  NSArray *listUserInfo = [FriendDataProxy sharedProxy].listMyFocus;
+
+  NSObject *User = [listUserInfo objectAtIndex:indexPath.row];
+
+  NSLog(@"row %i    \n%@ \n======\n", (int)indexPath.row, User);
+
+  cell.NickName = [User valueForKey:KEYP__FRIEND_FRIEND_LIST__LIST_UINFO_NICK];
+  cell.UserId = [User valueForKey:KEYP__FRIEND_FRIEND_LIST__LIST_UINFO_UID];
+  cell.LblUserName.text =
+      [User valueForKey:KEYP__FRIEND_FRIEND_LIST__LIST_UINFO_NICK];
   // Configure the cell...
 
   return cell;

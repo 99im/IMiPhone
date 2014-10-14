@@ -12,8 +12,8 @@
 
 //@property (nonatomic, retain) NSArray *arrGroups;
 
-@property(nonatomic, retain) NSMutableArray *UserListNickNames;
-@property(nonatomic, retain) NSMutableArray *UserListUserIds;
+@property(nonatomic, retain) NSArray *listMyFocus;
+@property(nonatomic, retain) NSArray *listMyFans;
 
 + (FriendDataProxy *)sharedProxy;
 - (NSMutableArray *)mutableArrayContact;

@@ -179,7 +179,7 @@
 		58EF8C4619BF04B600C5A7AC /* imNetWorkTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 58EF8C4519BF04B600C5A7AC /* imNetWorkTest.m */; };
 		58F2AA3419A2F85400DC2FFB /* imUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F2AA3319A2F85400DC2FFB /* imUtil.m */; };
 		58F2AA3919A487E300DC2FFB /* AsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F2AA3819A487E300DC2FFB /* AsyncSocket.m */; };
-		AB5554E119EBDC0800B413F3 /* CategoryListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AB5554E019EBDC0800B413F3 /* CategoryListTableViewCell.m */; };
+		AB72235119ED110700E603E2 /* CategoryListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AB5554E719EBEAFA00B413F3 /* CategoryListTableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -375,8 +375,6 @@
 		58F2AA3319A2F85400DC2FFB /* imUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = imUtil.m; sourceTree = "<group>"; };
 		58F2AA3719A487E300DC2FFB /* AsyncSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsyncSocket.h; sourceTree = "<group>"; };
 		58F2AA3819A487E300DC2FFB /* AsyncSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsyncSocket.m; sourceTree = "<group>"; };
-		AB5554DF19EBDC0800B413F3 /* CategoryListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryListTableViewCell.h; sourceTree = "<group>"; };
-		AB5554E019EBDC0800B413F3 /* CategoryListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoryListTableViewCell.m; sourceTree = "<group>"; };
 		AB5554E619EBEAEF00B413F3 /* CategoryListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryListTableViewCell.h; sourceTree = "<group>"; };
 		AB5554E719EBEAFA00B413F3 /* CategoryListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoryListTableViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -710,8 +708,6 @@
 		58C14DCF19C80D40009334E1 /* Contact */ = {
 			isa = PBXGroup;
 			children = (
-				AB5554DF19EBDC0800B413F3 /* CategoryListTableViewCell.h */,
-				AB5554E019EBDC0800B413F3 /* CategoryListTableViewCell.m */,
 				58C14DD019C80D67009334E1 /* ContactViewController.h */,
 				58C14DD119C80D67009334E1 /* ContactViewController.m */,
 				58C14DD419C81447009334E1 /* FriendsViewController.h */,
@@ -730,14 +726,14 @@
 				5825D8F019D808CA004FF6FF /* CategoryTableViewController.m */,
 				58A331A819E51A95005BE980 /* CategoryListTableViewController.h */,
 				58A331A919E51A95005BE980 /* CategoryListTableViewController.m */,
+				AB5554E619EBEAEF00B413F3 /* CategoryListTableViewCell.h */,
+				AB5554E719EBEAFA00B413F3 /* CategoryListTableViewCell.m */,
 				58A331AB19E52CDE005BE980 /* CategoryContactTableViewCell.h */,
 				58A331AC19E52CDE005BE980 /* CategoryContactTableViewCell.m */,
 				1171F7C219E8DE4000865A0B /* AddressInviteTVTableViewCell.h */,
 				1171F7C319E8DE4000865A0B /* AddressInviteTVTableViewCell.m */,
 				1171F7C619E8DE6300865A0B /* AddressAddTVTableViewCell.h */,
 				1171F7C719E8DE6300865A0B /* AddressAddTVTableViewCell.m */,
-				AB5554E619EBEAEF00B413F3 /* CategoryListTableViewCell.h */,
-				AB5554E719EBEAFA00B413F3 /* CategoryListTableViewCell.m */,
 			);
 			name = Contact;
 			sourceTree = "<group>";
@@ -903,6 +899,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AB72235119ED110700E603E2 /* CategoryListTableViewCell.m in Sources */,
 				5825D8F219D8105E004FF6FF /* FriendsViewController.m in Sources */,
 				58BACF0919B5805800A72391 /* crypt.c in Sources */,
 				1171F7C819E8DE6300865A0B /* AddressAddTVTableViewCell.m in Sources */,
@@ -973,7 +970,6 @@
 				1171F7C119E8DAE300865A0B /* TPContactsTableViewController.m in Sources */,
 				11B1C62C19E51AFB003D2711 /* ChatDataProxy.m in Sources */,
 				58C14DE619CAB631009334E1 /* AddTableViewController.m in Sources */,
-				AB5554E119EBDC0800B413F3 /* CategoryListTableViewCell.m in Sources */,
 				58BC1E3919C0304900722A00 /* RegStep2ViewController.m in Sources */,
 				58BC1E3719C0304900722A00 /* RegStep1ViewController.m in Sources */,
 				116BF87F19C981AD0015561B /* DPUser.m in Sources */,
