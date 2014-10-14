@@ -11,9 +11,11 @@
 
 @interface CategoryListTableViewCell : UITableViewCell
 
-@property(nonatomic, retain) NSString *NickName;
-@property(nonatomic) NSNumber *UserId;
+@property(nonatomic, retain) NSString *nickName;
+@property(nonatomic) NSNumber *userId;
+@property(nonatomic) BOOL isFriend;
 
 @property(weak, nonatomic) IBOutlet UILabel *LblUserName;
+@property(weak, nonatomic) IBOutlet UIButton *BtnFocusOrCancel;
 
 @end

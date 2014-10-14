@@ -21,7 +21,7 @@
 }
 - (IBAction)cancelFocusTouchUp:(id)sender {
   // NSLog(@"cancelFocus : %i", self.UserId);
-  [[FriendMessageProxy sharedProxy] sendTypeFocusCancel:self.UserId];
+  [[FriendMessageProxy sharedProxy] sendTypeFocusCancel:self.userId];
 }
 
 @end
