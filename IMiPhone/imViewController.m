@@ -28,6 +28,18 @@
     [self registerMessageNotification];
     [[IMNWManager sharedNWManager] initHttpConnect];
     
+//    if (![imUtil checkBlankString:[UserDataProxy sharedProxy].verify] && [UserDataProxy sharedProxy].lastLoginUid != NAN) {
+//        [[IMNWManager sharedNWManager] initSocketConnect];
+//        [[IMNWManager sharedNWManager].socketConnect connect:SOCKET_HOST port:SOCKET_PORT];
+//    }
+//    else {
+//        [self performSegueWithIdentifier:@"Start2AccountSegue" sender:self];
+//    }
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
     if (![imUtil checkBlankString:[UserDataProxy sharedProxy].verify] && [UserDataProxy sharedProxy].lastLoginUid != NAN) {
         [[IMNWManager sharedNWManager] initSocketConnect];
         [[IMNWManager sharedNWManager].socketConnect connect:SOCKET_HOST port:SOCKET_PORT];
