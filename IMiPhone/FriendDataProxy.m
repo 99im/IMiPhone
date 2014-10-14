@@ -18,6 +18,7 @@
 
 @synthesize arrContact = _arrContact;
 
+@synthesize currUserListType;
 @synthesize listMyFocus;
 @synthesize listMyFans;
 

@@ -10,8 +10,12 @@
 
 @interface FriendDataProxy : NSObject
 
+#define USER_LIST_FOR_FOCUS 1
+#define USER_LIST_FOR_FANS 2
+
 //@property (nonatomic, retain) NSArray *arrGroups;
 
+@property(nonatomic) uint currUserListType;
 @property(nonatomic, retain) NSArray *listMyFocus;
 @property(nonatomic, retain) NSArray *listMyFans;
 

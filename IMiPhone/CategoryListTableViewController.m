@@ -41,9 +41,16 @@
 
 - (NSInteger)tableView:(UITableView *)tableView
     numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete method implementation.
-  // Return the number of rows in the section.
-  return [[FriendDataProxy sharedProxy].listMyFocus count];
+  NSArray *listUserInfo;
+  uint currUserListType = [FriendDataProxy sharedProxy].currUserListType;
+  if (currUserListType == USER_LIST_FOR_FOCUS) {
+    listUserInfo = [FriendDataProxy sharedProxy].listMyFocus;
+  } else if (currUserListType == USER_LIST_FOR_FANS) {
+    listUserInfo = [FriendDataProxy sharedProxy].listMyFans;
+  } else {
+    return 0;
+  }
+  return [listUserInfo count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView
@@ -51,17 +58,22 @@
   CategoryListTableViewCell *cell =
       [tableView dequeueReusableCellWithIdentifier:@"CellUserList"
                                       forIndexPath:indexPath];
+  NSArray *listUserInfo;
+  uint currUserListType = [FriendDataProxy sharedProxy].currUserListType;
+  if (currUserListType == USER_LIST_FOR_FOCUS) {
+    listUserInfo = [FriendDataProxy sharedProxy].listMyFocus;
+  } else if (currUserListType == USER_LIST_FOR_FANS) {
+    listUserInfo = [FriendDataProxy sharedProxy].listMyFans;
+  }
 
-  NSArray *listUserInfo = [FriendDataProxy sharedProxy].listMyFocus;
+  NSObject *user = [listUserInfo objectAtIndex:indexPath.row];
+  NSObject *uinfo = [user valueForKey:KEYP__FRIEND_FOCUS_LIST__LIST_UINFO];
 
-  NSObject *User = [listUserInfo objectAtIndex:indexPath.row];
+  NSLog(@"row %i    \n%@ \n======\n", (int)indexPath.row, user);
 
-  NSLog(@"row %i    \n%@ \n======\n", (int)indexPath.row, User);
-
-  cell.NickName = [User valueForKey:KEYP__FRIEND_FRIEND_LIST__LIST_UINFO_NICK];
-  cell.UserId = [User valueForKey:KEYP__FRIEND_FRIEND_LIST__LIST_UINFO_UID];
-  cell.LblUserName.text =
-      [User valueForKey:KEYP__FRIEND_FRIEND_LIST__LIST_UINFO_NICK];
+  cell.NickName = [uinfo valueForKey:KEYP__FRIEND_FRIEND_LIST__LIST_UINFO_NICK];
+  cell.UserId = [uinfo valueForKey:KEYP__FRIEND_FRIEND_LIST__LIST_UINFO_UID];
+  cell.LblUserName.text = cell.NickName;
   // Configure the cell...
 
   return cell;

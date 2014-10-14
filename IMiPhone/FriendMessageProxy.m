@@ -92,12 +92,14 @@ static FriendMessageProxy *sharedFriendMessageProxy = nil;
                 objectForKey:KEYP__FRIEND_FOCUS_LIST__ERROR_CODE] intValue];
             if (errorcode == 0) {
               //数据处理
-              NSArray *listUserInfo = [json valueForKeyPath:@"list.uinfo"];
+              // NSArray *listUserInfo = [json valueForKeyPath:@"list.uinfo"];
+              NSArray *listUserInfo =
+                  [json objectForKey:KEYP__FRIEND_FOCUS_LIST__LIST];
 
               [FriendDataProxy sharedProxy].listMyFocus = listUserInfo;
 
               // NSLog(@"json\n%@\n", json);
-              NSLog(@"uinfo\n%@", listUserInfo);
+              NSLog(@"myFocus\n%@", listUserInfo);
 
               // gjus
               [[NSNotificationCenter defaultCenter]
@@ -187,6 +189,14 @@ static FriendMessageProxy *sharedFriendMessageProxy = nil;
                 [json objectForKey:KEYP__FRIEND_FAN_LIST__ERROR_CODE] intValue];
             if (errorcode == 0) {
               //数据处理
+              NSArray *listUserInfo =
+                  [json objectForKey:KEYP__FRIEND_FAN_LIST__LIST];
+
+              [FriendDataProxy sharedProxy].listMyFans = listUserInfo;
+
+              NSLog(@"json\n%@\n", json);
+              NSLog(@"myFans \n%@", listUserInfo);
+
               [[NSNotificationCenter defaultCenter]
                   postNotificationName:NOTI__FRIEND_FAN_LIST_
                                 object:nil];
