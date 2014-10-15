@@ -21,7 +21,10 @@
 @property(nonatomic, retain) NSArray *listMyFans;
 
 + (FriendDataProxy *)sharedProxy;
-- (NSMutableArray *)mutableArrayContact;
 - (NSInteger)getCountOfUsers:(int)byType;
+- (NSMutableArray *)mutableArrayContact;
+- (NSMutableArray *)mutableArrayUsersFromContact;
+
+- (void)__testInitContactData;
 
 @end

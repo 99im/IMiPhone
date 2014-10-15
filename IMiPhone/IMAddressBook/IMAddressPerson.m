@@ -10,14 +10,14 @@
 
 @implementation IMAddressPerson
 
-@synchronized firstName;
-@synchronized lastName;
-@synchronized arrPhones;
-@synchronized arrEmails;
-@synchronized company;
-@synchronized nickName;
-@synchronized department;
-@synchronized birthday;
-@synchronized blogUrl;
+@synthesize firstName;
+@synthesize lastName;
+@synthesize arrPhones;
+@synthesize arrEmails;
+@synthesize company;
+@synthesize nickName;
+@synthesize department;
+@synthesize birthday;
+@synthesize blogUrl;
 
 @end
