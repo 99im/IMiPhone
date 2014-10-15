@@ -14,7 +14,7 @@
 
 @property(nonatomic, retain) NSString *nickName;
 @property(nonatomic) NSNumber *userId;
-@property(nonatomic) BOOL isFriend;
+@property(nonatomic) BOOL isFocused;
 
 @property(weak, nonatomic) IBOutlet UILabel *LblUserName;
 @property(weak, nonatomic) IBOutlet UIButton *BtnFocusOrCancel;

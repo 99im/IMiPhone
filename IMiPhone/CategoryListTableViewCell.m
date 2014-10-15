@@ -20,14 +20,19 @@
   // Configure the view for the selected state
 }
 - (IBAction)cancelFocusTouchUp:(id)sender {
-  // NSLog(@"cancelFocus : %i", self.UserId);
-  [[FriendMessageProxy sharedProxy] sendTypeFocusCancel:self.userId];
+  if (self.isFocused == YES) {
+    // NSLog(@"cancelFocus : %i", self.UserId);
+    [[FriendMessageProxy sharedProxy] sendTypeFocusCancel:self.userId];
+  } else {
+    [[FriendMessageProxy sharedProxy] sendTypeFocusAdd:self.userId];
+  }
 }
 
 - (void)fillWithIndexPath:(NSIndexPath *)indexPath {
   // NSArray *listUserInfo;
   NSObject *user;
   NSObject *uinfo;
+  NSInteger isFriend;
   NSInteger row = indexPath.row;
   uint currUserListType = [FriendDataProxy sharedProxy].currUserListType;
   if (currUserListType == USER_LIST_FOR_FOCUS) {
@@ -40,7 +45,7 @@
         [uinfo valueForKey:KEYP__FRIEND_FRIEND_LIST__LIST_UINFO_NICK];
     // TODO : define KEYP__FRIEND_FAN_LIST__LIST_UINFO_UID
     self.userId = [uinfo valueForKey:KEYP__FRIEND_FRIEND_LIST__LIST_UINFO_UID];
-    self.isFriend = NO;
+    self.isFocused = YES;
   } else if (currUserListType == USER_LIST_FOR_FANS) {
     // listUserInfo = [FriendDataProxy sharedProxy].listMyFans;
     user = [[FriendDataProxy sharedProxy].listMyFans objectAtIndex:row];
@@ -55,21 +60,26 @@
     // NSLog(@"%s",typeof([user
     // valueForKey:KEYP__FRIEND_FAN_LIST__LIST_ISFRIENDS]));
 
-    if ([[user valueForKey:KEYP__FRIEND_FAN_LIST__LIST_ISFRIENDS]
-            isEqualToString:@"1"]) {
-      self.isFriend = YES;
+    isFriend =
+        [[user valueForKey:KEYP__FRIEND_FAN_LIST__LIST_ISFRIENDS] integerValue];
+
+    if (isFriend == 1) {
+      self.isFocused = YES;
     } else {
-      self.isFriend = NO;
+      self.isFocused = NO;
     }
   }
 
-  NSLog(@"row %li  \nisFriend:%i  \n%@ uinfo: \n%@\n======\n", row,
-        self.isFriend, user, uinfo);
+  NSLog(@"row %li  \nisFocused:%i : %li  \n%@ uinfo: \n%@\n======\n", row,
+        self.isFocused, isFriend, user, uinfo);
   self.LblUserName.text = self.nickName;
-  if (self.isFriend == YES) {
-    //[self.BtnFocusOrCancel setTitle:<#(NSString *)#>
-    //forState:<#(UIControlState)#>]
+  if (self.isFocused == YES) {
+    [self.BtnFocusOrCancel setTitle:@"取消关注" forState:UIControlStateNormal];
+    [self.BtnFocusOrCancel setTitle:@"取消关注"
+                           forState:UIControlStateSelected];
   } else {
+    [self.BtnFocusOrCancel setTitle:@"关注TA" forState:UIControlStateNormal];
+    [self.BtnFocusOrCancel setTitle:@"关注TA" forState:UIControlStateSelected];
   }
 }
 @end
