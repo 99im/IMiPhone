@@ -48,5 +48,18 @@ static FriendDataProxy *sharedFriendDataProxy = nil;
   //    }
   return [self mutableArrayValueForKey:@"arrContact"];
 }
-
+- (NSInteger)getCountOfUsers:(int)byType {
+  if (byType == USER_LIST_FOR_FOCUS) {
+    return [listMyFocus count];
+  } else if (byType == USER_LIST_FOR_FANS) {
+    return [listMyFans count];
+  } else if (byType == USER_LIST_FOR_CURR) {
+    if (currUserListType == USER_LIST_FOR_FOCUS) {
+      return [listMyFocus count];
+    } else if (currUserListType == USER_LIST_FOR_FANS) {
+      return [listMyFans count];
+    }
+  }
+  return 0;
+}
 @end

@@ -41,16 +41,17 @@
 
 - (NSInteger)tableView:(UITableView *)tableView
     numberOfRowsInSection:(NSInteger)section {
-  NSArray *listUserInfo;
-  uint currUserListType = [FriendDataProxy sharedProxy].currUserListType;
-  if (currUserListType == USER_LIST_FOR_FOCUS) {
-    listUserInfo = [FriendDataProxy sharedProxy].listMyFocus;
-  } else if (currUserListType == USER_LIST_FOR_FANS) {
-    listUserInfo = [FriendDataProxy sharedProxy].listMyFans;
-  } else {
-    return 0;
-  }
-  return [listUserInfo count];
+  return [[FriendDataProxy sharedProxy] getCountOfUsers:USER_LIST_FOR_CURR];
+  //  NSArray *listUserInfo;
+  //  uint currUserListType = [FriendDataProxy sharedProxy].currUserListType;
+  //  if (currUserListType == USER_LIST_FOR_FOCUS) {
+  //    listUserInfo = [FriendDataProxy sharedProxy].listMyFocus;
+  //  } else if (currUserListType == USER_LIST_FOR_FANS) {
+  //    listUserInfo = [FriendDataProxy sharedProxy].listMyFans;
+  //  } else {
+  //    return 0;
+  //  }
+  //  return [listUserInfo count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView

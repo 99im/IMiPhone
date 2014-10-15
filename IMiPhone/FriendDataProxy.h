@@ -12,6 +12,7 @@
 
 #define USER_LIST_FOR_FOCUS 1
 #define USER_LIST_FOR_FANS 2
+#define USER_LIST_FOR_CURR 3
 
 //@property (nonatomic, retain) NSArray *arrGroups;
 
@@ -21,5 +22,6 @@
 
 + (FriendDataProxy *)sharedProxy;
 - (NSMutableArray *)mutableArrayContact;
+- (NSInteger)getCountOfUsers:(int)byType;
 
 @end

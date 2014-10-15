@@ -19,13 +19,18 @@
 
   // Configure the view for the selected state
 }
-- (IBAction)cancelFocusTouchUp:(id)sender {
+/**
+ *  按钮动作：关注TA/取消关注
+ *
+ *  @param sender 按钮
+ */
+- (IBAction)btnFocusOrCancelTouchUp:(id)sender {
   if (self.isFocused == YES) {
-    // NSLog(@"cancelFocus : %i", self.UserId);
     [[FriendMessageProxy sharedProxy] sendTypeFocusCancel:self.userId];
   } else {
     [[FriendMessageProxy sharedProxy] sendTypeFocusAdd:self.userId];
   }
+  // TODO : 刷新列表页:关注/粉丝
 }
 
 - (void)fillWithIndexPath:(NSIndexPath *)indexPath {
@@ -72,14 +77,15 @@
 
   NSLog(@"row %li  \nisFocused:%i : %li  \n%@ uinfo: \n%@\n======\n", row,
         self.isFocused, isFriend, user, uinfo);
-  self.LblUserName.text = self.nickName;
+  self.lblUserName.text = self.nickName;
   if (self.isFocused == YES) {
-    [self.BtnFocusOrCancel setTitle:@"取消关注" forState:UIControlStateNormal];
-    [self.BtnFocusOrCancel setTitle:@"取消关注"
+    [self.btnFocusOrCancel setTitle:@"取消关注" forState:UIControlStateNormal];
+    [self.btnFocusOrCancel setTitle:@"取消关注"
                            forState:UIControlStateSelected];
   } else {
-    [self.BtnFocusOrCancel setTitle:@"关注TA" forState:UIControlStateNormal];
-    [self.BtnFocusOrCancel setTitle:@"关注TA" forState:UIControlStateSelected];
+    [self.btnFocusOrCancel setTitle:@"关注TA" forState:UIControlStateNormal];
+    [self.btnFocusOrCancel setTitle:@"关注TA" forState:UIControlStateSelected];
   }
 }
+
 @end
