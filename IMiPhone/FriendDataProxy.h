@@ -1,25 +1,26 @@
 //
-//  FriendDataProxy.h
+//  CategoryListTableViewCell.h
 //  IMiPhone
 //
-//  Created by 尹晓君 on 14-8-29.
+//  Created by 雷运梁 on 14-10-11.
 //  Copyright (c) 2014年 尹晓君. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
+#import "FriendDataProxy.h"
+#import "FriendMessageProxy.h"
 
-@interface FriendDataProxy : NSObject
+@interface CategoryListTableViewCell : UITableViewCell
 
-//@property (nonatomic, retain) NSArray *arrGroups;
+@property(nonatomic, retain) NSString *nickName;
+@property(nonatomic) NSNumber *userId;
+@property(nonatomic) BOOL isFocused;
 
-@property(nonatomic, retain) NSMutableArray *UserListNickNames;
-@property(nonatomic, retain) NSMutableArray *UserListUserIds;
+@property(weak, nonatomic) IBOutlet UIImageView *imgAvatar;
+@property(weak, nonatomic) IBOutlet UILabel *lblUserName;
+@property(weak, nonatomic) IBOutlet UIButton *btnFocusOrCancel;
 
-+ (FriendDataProxy *)sharedProxy;
-
-- (NSMutableArray *)mutableArrayContact;
-- (NSMutableArray *)mutableArrayUsersFromContact;
-
-- (void)__testInitContactData;
+- (void)fillWithIndexPath:(NSIndexPath *)indexPath;
+- (IBAction)btnFocusOrCancelTouchUp:(id)sender;
 
 @end
