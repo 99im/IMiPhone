@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FriendDataProxy.h"
 
 @interface CategoryListTableViewController : UITableViewController
 

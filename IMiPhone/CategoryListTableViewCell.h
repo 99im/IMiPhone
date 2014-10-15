@@ -7,13 +7,20 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FriendDataProxy.h"
 #import "FriendMessageProxy.h"
 
 @interface CategoryListTableViewCell : UITableViewCell
 
-@property(nonatomic, retain) NSString *NickName;
-@property(nonatomic) NSNumber *UserId;
+@property(nonatomic, retain) NSString *nickName;
+@property(nonatomic) NSNumber *userId;
+@property(nonatomic) BOOL isFocused;
 
-@property(weak, nonatomic) IBOutlet UILabel *LblUserName;
+@property(weak, nonatomic) IBOutlet UIImageView *imgAvatar;
+@property(weak, nonatomic) IBOutlet UILabel *lblUserName;
+@property(weak, nonatomic) IBOutlet UIButton *btnFocusOrCancel;
+
+- (void)fillWithIndexPath:(NSIndexPath *)indexPath;
+- (IBAction)btnFocusOrCancelTouchUp:(id)sender;
 
 @end

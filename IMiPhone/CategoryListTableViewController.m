@@ -41,9 +41,17 @@
 
 - (NSInteger)tableView:(UITableView *)tableView
     numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete method implementation.
-  // Return the number of rows in the section.
-  return 4;
+  return [[FriendDataProxy sharedProxy] getCountOfUsers:USER_LIST_FOR_CURR];
+  //  NSArray *listUserInfo;
+  //  uint currUserListType = [FriendDataProxy sharedProxy].currUserListType;
+  //  if (currUserListType == USER_LIST_FOR_FOCUS) {
+  //    listUserInfo = [FriendDataProxy sharedProxy].listMyFocus;
+  //  } else if (currUserListType == USER_LIST_FOR_FANS) {
+  //    listUserInfo = [FriendDataProxy sharedProxy].listMyFans;
+  //  } else {
+  //    return 0;
+  //  }
+  //  return [listUserInfo count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView
@@ -51,10 +59,8 @@
   CategoryListTableViewCell *cell =
       [tableView dequeueReusableCellWithIdentifier:@"CellUserList"
                                       forIndexPath:indexPath];
-  cell.NickName = @"张3李4王5";
-  cell.UserId = [NSNumber numberWithInt:18];
-  cell.LblUserName.text = cell.NickName;
-  // Configure the cell...
+
+  [cell fillWithIndexPath:indexPath];
 
   return cell;
 }

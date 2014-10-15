@@ -9,12 +9,13 @@
 #import <Foundation/Foundation.h>
 #import "IMNWMessage.h"
 #import "IMNWProxy.h"
+#import "FriendDataProxy.h"
 
 #define MARK_FRIEND @"friend"
 
 @interface FriendMessageProxy : IMNWProxy
 
-+ (FriendMessageProxy*)sharedProxy;
++ (FriendMessageProxy *)sharedProxy;
 
 - (void)sendTypeFocusAdd:(NSNumber *)uid;
 //- (void)parseTypeFocusAdd:(id)json;
