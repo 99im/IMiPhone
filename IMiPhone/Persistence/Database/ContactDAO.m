@@ -12,7 +12,7 @@
 
 static ContactDAO* sharedContactDAO = nil;
 
-+(ContactDAO*)sharedDAO
++ (ContactDAO *)sharedDAO
 {
     static dispatch_once_t once;
     dispatch_once(&once,

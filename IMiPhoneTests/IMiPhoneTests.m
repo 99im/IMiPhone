@@ -41,4 +41,37 @@
     }
 }
 
+- (void)testObjType
+{
+    NSString *str = @"2";
+    NSInteger intA = 1;
+    NSNumber *num = [NSNumber numberWithInt:33];
+
+//    NSLog(@"%@",[str class]);
+//    NSLog(@"%@",[NSString class]);
+//    NSLog(@"%@",[num class]);
+//    NSLog(@"%@",[NSNumber class]);
+//    
+//    if ([str class] == [NSString class]) {
+//        NSLog(@" ====");
+//    }
+    
+    num  = [NSNumber numberWithFloat:11.222f];
+  NSLog(  [NSString stringWithFormat:@"%@",num]);
+    
+    
+ }
+
+- (void)testNilAndNull
+{
+    id a = nil;
+    if (a) {
+        NSLog(@"nil!!!!!!!");
+    }
+    a = [NSNull null];
+    if (a) {
+        NSLog(@"null!!!!!!!");
+    }
+}
+
 @end

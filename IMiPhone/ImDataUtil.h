@@ -20,4 +20,6 @@
 
 + (void)copyFrom:(NSObject *)src To:(NSObject *)dest;
 
++ (NSInteger)getIndexOf:(NSArray *)srcArray byItemKey:(NSString *)key withValue:(id)value;
+
 @end

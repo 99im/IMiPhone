@@ -1,14 +1,16 @@
 //
-//  User.h
+//  DBUser.h
 //  IMiPhone
 //
-//  Created by 王 国良 on 14-9-17.
+//  Created by 王 国良 on 14-10-14.
 //  Copyright (c) 2014年 尹晓君. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 
-@interface DPUser : NSObject
+#define DB_PRIMARY_KEY_USER_UID @"uid"
+
+@interface DBUser : NSObject
 
 @property (nonatomic) NSInteger uid;
 @property (nonatomic, retain) NSString *oid;

@@ -91,4 +91,21 @@
     }
 }
 
++ (NSInteger)getIndexOf:(NSArray *)srcArray byItemKey:(NSString *)key withValue:(id)value
+{
+    NSInteger resultIndex = NSNotFound;
+    if (srcArray) {
+        resultIndex = [srcArray indexOfObjectPassingTest:^BOOL(id obj, NSUInteger idx, BOOL *stop) {
+            BOOL result = NO;
+            if (obj && [obj validateValue:nil forKey:key error:nil]) {
+                id tempItemValue = [obj valueForKey:key];
+                
+                result = [[NSString stringWithFormat:@"%@",tempItemValue] isEqualToString:[NSString stringWithFormat:@"%@",value] ];
+            }
+            return result;
+        }];
+    }
+    return resultIndex;
+}
+
 @end

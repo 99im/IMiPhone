@@ -11,6 +11,6 @@
 
 @interface ContactDAO : BaseDAO
 
-+ (ContactDAO*)sharedDAO;
++ (ContactDAO *)sharedDAO;
 
 @end

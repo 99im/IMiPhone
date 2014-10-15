@@ -26,7 +26,6 @@
 
 + (UserDataProxy *)sharedProxy;
 
-//- (void)initUserFromRms;
-//- (void)updateUser:(DPUser *)userInfo;
+- (NSMutableArray *)mutableArrayUsers;
 
 @end

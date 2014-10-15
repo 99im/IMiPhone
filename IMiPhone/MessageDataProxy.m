@@ -43,6 +43,7 @@ static MessageDataProxy *messageDataProxy = nil;
             for (NSInteger i = 0; i < arrDBMessages.count; i++) {
                 tempMessage = [[DPMessage alloc] init];
                 [ImDataUtil copyFrom:arrDBMessages[i] To:tempMessage];
+                [_arrMessages addObject:tempMessage];
             }
         }
     }
@@ -95,6 +96,7 @@ static MessageDataProxy *messageDataProxy = nil;
             for (NSInteger i = 0; i < arrDBMessageGroups.count; i++) {
                 tempMessageGroup = [[DPMessageGroup alloc] init];
                 [ImDataUtil copyFrom:arrDBMessageGroups[i] To:tempMessageGroup];
+                 [_arrMessageGroups addObject:tempMessageGroup];
             }
         }
     }

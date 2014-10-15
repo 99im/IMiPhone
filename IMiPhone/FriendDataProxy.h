@@ -16,6 +16,10 @@
 @property(nonatomic, retain) NSMutableArray *UserListUserIds;
 
 + (FriendDataProxy *)sharedProxy;
+
 - (NSMutableArray *)mutableArrayContact;
+- (NSMutableArray *)mutableArrayUsersFromContact;
+
+- (void)__testInitContactData;
 
 @end

@@ -10,6 +10,7 @@
 #import "imRms.h"
 #import "DatabaseConfig.h"
 #import "ImDataUtil.h"
+#import "UserDAO.h"
 
 #define KEY_USER_LAST_LOGIN_COUNTRY @"key_user_last_login_country"
 #define KEY_USER_LAST_LOGIN_MOBILE @"key_user_last_login_mobile"
@@ -17,6 +18,12 @@
 #define KEY_USER_LAST_LOGIN_UID @"key_user_last_login_uid"
 #define KEY_USER_VERIFY @"key_user_verify"
 #define KEY_USER_INFO_PRE @"key_user_info_"
+
+@interface UserDataProxy()
+
+@property (nonatomic, retain) NSMutableArray *arrUsers;
+
+@end
 
 @implementation UserDataProxy
 
@@ -32,6 +39,8 @@
 @synthesize password = _password;
 
 @synthesize showUserInfo;
+
+@synthesize arrUsers = _arrUsers;
 
 static UserDataProxy *sharedProxy = nil;
 + (UserDataProxy *)sharedProxy
@@ -141,5 +150,59 @@ static UserDataProxy *sharedProxy = nil;
     NSDictionary *userInfoDic = [ImDataUtil getDicFromNormalClass:_user];
     [imRms userDefaultsWrite:KEY_USER_INFO_PRE withObjectValue:userInfoDic isBindUid:YES];
 }
+
+#pragma mark - users
+
+- (NSMutableArray *)mutableArrayUsers
+{
+    if (_arrUsers == nil) {
+        //数据量大的话，可以考虑异步加载
+        NSMutableArray *arrDBUsers = [[UserDAO sharedDAO] query:@"" Bind:[NSMutableArray arrayWithObjects:nil]];
+        _arrUsers = [NSMutableArray array];
+        DPUser *tempUser;
+        if (arrDBUsers) {
+            for (NSInteger i = 0; i < arrDBUsers.count; i++) {
+                tempUser = [[DPUser alloc] init];
+                [ImDataUtil copyFrom:arrDBUsers[i] To:tempUser];
+                [_arrUsers addObject:tempUser];
+            }
+        }
+    }
+    return [self mutableArrayValueForKey:@"arrUsers"];
+}
+
+- (void)insertObject:(id)object inArrUsersAtIndex:(NSUInteger)index
+{
+    DBUser *tempDBUser = [[DBUser alloc] init];
+    [ImDataUtil copyFrom:object To:tempDBUser];
+    [[UserDAO sharedDAO] insert:tempDBUser];
+    [self.arrUsers insertObject:object atIndex:index];
+    NSLog(@"arrUsers insert message id:%d", ((DPUser *)object).uid);
+}
+
+-(void)removeObjectFromArrUsersAtIndex:(NSUInteger)index
+
+{
+    DPUser *dpUser = self.arrUsers[index];
+    [[UserDAO sharedDAO] deleteByCondition:[DB_PRIMARY_KEY_USER_UID stringByAppendingString:@"=?"]
+                                         Bind:[NSMutableArray arrayWithObjects:[NSString stringWithFormat:@"%d",dpUser.uid],nil]];
+    [self.arrUsers removeObjectAtIndex:index];
+    NSLog(@"remove arrUsers at index :%d",index);
+    
+}
+
+- (void)replaceObjectInArrUsersAtIndex:(NSUInteger)index withObject:(id)object
+{
+    DBUser *tempDBUser = [[DBUser alloc] init];
+    [ImDataUtil copyFrom:object To:tempDBUser];
+    
+    [[UserDAO sharedDAO] update:
+     tempDBUser
+                       ByCondition:[DB_PRIMARY_KEY_USER_UID stringByAppendingString:@"=?"]
+                              Bind:[NSMutableArray arrayWithObjects:[NSString stringWithFormat:@"%d",tempDBUser.uid],nil]];
+    [self.arrUsers replaceObjectAtIndex:index withObject:object];
+    NSLog(@"replace arrUsers at %d,with new uid:%@",index,((DPUser *)object).uid);
+}
+
 
 @end
