@@ -63,13 +63,13 @@
         //构造联系人数据
         IMAddressPerson *adrressPerson = [[IMAddressPerson alloc] init];
         adrressPerson.firstName = (NSString*)CFBridgingRelease(ABRecordCopyValue(person, kABPersonFirstNameProperty));;
-        adrressPerson.lastName = lastname;
-        //姓
-        NSString *firstName =
-        //姓音标
-        //        NSString *firstNamePhonetic = (NSString*)CFBridgingRelease(ABRecordCopyValue(person, kABPersonFirstNamePhoneticProperty));
-        //名
-        NSString *lastname = (NSString*)CFBridgingRelease(ABRecordCopyValue(person, kABPersonLastNameProperty));
+//        adrressPerson.lastName = lastname;
+//        //姓
+//        NSString *firstName =
+//        //姓音标
+//        //        NSString *firstNamePhonetic = (NSString*)CFBridgingRelease(ABRecordCopyValue(person, kABPersonFirstNamePhoneticProperty));
+//        //名
+//        NSString *lastname = (NSString*)CFBridgingRelease(ABRecordCopyValue(person, kABPersonLastNameProperty));
         //名音标
         //        NSString *lastnamePhonetic = (NSString*)CFBridgingRelease(ABRecordCopyValue(person, kABPersonLastNamePhoneticProperty));
         //公司
@@ -127,17 +127,17 @@
         CFRelease(url);
         
        
-        NSDictionary* dic = @{@"first_name": firstName?firstName:[NSNull null],
-                              @"last_name": lastname?lastname:[NSNull null],
-                              @"home_phone": phoneString?phoneString:[NSNull null],
-                              @"email": emailString?emailString:[NSNull null],
-                              @"company": Organization?Organization:[NSNull null],
-                              @"nick_name": nickname?nickname:[NSNull null],
-                              @"department": department?department:[NSNull null],
-                              @"birthday": [NSNumber numberWithDouble:birthdayString],
-                              @"blog_index": urlString?urlString:[NSNull null]
-                              };
-        [contactArray addObject:dic];
+//        NSDictionary* dic = @{@"first_name": firstName?firstName:[NSNull null],
+//                              @"last_name": lastname?lastname:[NSNull null],
+//                              @"home_phone": phoneString?phoneString:[NSNull null],
+//                              @"email": emailString?emailString:[NSNull null],
+//                              @"company": Organization?Organization:[NSNull null],
+//                              @"nick_name": nickname?nickname:[NSNull null],
+//                              @"department": department?department:[NSNull null],
+//                              @"birthday": [NSNumber numberWithDouble:birthdayString],
+//                              @"blog_index": urlString?urlString:[NSNull null]
+//                              };
+//        [contactArray addObject:dic];
         emailString = nil;
         urlString = nil;
         phoneString = nil;

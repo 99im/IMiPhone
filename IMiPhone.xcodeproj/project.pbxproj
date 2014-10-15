@@ -75,6 +75,8 @@
 		117AC69C19EE766200143973 /* DBUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 117AC69719EE766200143973 /* DBUser.m */; };
 		117AC69D19EE766200143973 /* DBUserFromContact.m in Sources */ = {isa = PBXBuildFile; fileRef = 117AC69919EE766200143973 /* DBUserFromContact.m */; };
 		117AC69E19EE766200143973 /* UsersFromContactDAO.m in Sources */ = {isa = PBXBuildFile; fileRef = 117AC69B19EE766200143973 /* UsersFromContactDAO.m */; };
+		117AC6A119EE7BCF00143973 /* UserDAO.m in Sources */ = {isa = PBXBuildFile; fileRef = 117AC6A019EE7BCF00143973 /* UserDAO.m */; };
+		117AC6A419EE7C2F00143973 /* DPUserFromContact.m in Sources */ = {isa = PBXBuildFile; fileRef = 117AC6A319EE7C2F00143973 /* DPUserFromContact.m */; };
 		11B1C62819E4E069003D2711 /* ChatMessageProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B1C62719E4E069003D2711 /* ChatMessageProxy.m */; };
 		11B1C62919E4E069003D2711 /* ChatMessageProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B1C62719E4E069003D2711 /* ChatMessageProxy.m */; };
 		11B1C62C19E51AFB003D2711 /* ChatDataProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B1C62B19E51AFB003D2711 /* ChatDataProxy.m */; };
@@ -262,6 +264,10 @@
 		117AC69919EE766200143973 /* DBUserFromContact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBUserFromContact.m; sourceTree = "<group>"; };
 		117AC69A19EE766200143973 /* UsersFromContactDAO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UsersFromContactDAO.h; sourceTree = "<group>"; };
 		117AC69B19EE766200143973 /* UsersFromContactDAO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UsersFromContactDAO.m; sourceTree = "<group>"; };
+		117AC69F19EE7BCF00143973 /* UserDAO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserDAO.h; sourceTree = "<group>"; };
+		117AC6A019EE7BCF00143973 /* UserDAO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserDAO.m; sourceTree = "<group>"; };
+		117AC6A219EE7C2F00143973 /* DPUserFromContact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPUserFromContact.h; sourceTree = "<group>"; };
+		117AC6A319EE7C2F00143973 /* DPUserFromContact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPUserFromContact.m; sourceTree = "<group>"; };
 		11B1C62619E4E069003D2711 /* ChatMessageProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatMessageProxy.h; sourceTree = "<group>"; };
 		11B1C62719E4E069003D2711 /* ChatMessageProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatMessageProxy.m; sourceTree = "<group>"; };
 		11B1C62A19E51AFB003D2711 /* ChatDataProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatDataProxy.h; sourceTree = "<group>"; };
@@ -450,6 +456,8 @@
 		116B6E7419AEF83500DB1B5E /* Database */ = {
 			isa = PBXGroup;
 			children = (
+				117AC69F19EE7BCF00143973 /* UserDAO.h */,
+				117AC6A019EE7BCF00143973 /* UserDAO.m */,
 				117AC69619EE766200143973 /* DBUser.h */,
 				117AC69719EE766200143973 /* DBUser.m */,
 				117AC69819EE766200143973 /* DBUserFromContact.h */,
@@ -649,6 +657,8 @@
 		58AF049419B053930077DCBC /* DataProxy */ = {
 			isa = PBXGroup;
 			children = (
+				117AC6A219EE7C2F00143973 /* DPUserFromContact.h */,
+				117AC6A319EE7C2F00143973 /* DPUserFromContact.m */,
 				11B1C62A19E51AFB003D2711 /* ChatDataProxy.h */,
 				11B1C62B19E51AFB003D2711 /* ChatDataProxy.m */,
 				110F561419D56E07003B9EB4 /* DPMessageGroups.h */,
@@ -932,6 +942,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				117AC6A419EE7C2F00143973 /* DPUserFromContact.m in Sources */,
 				AB72235119ED110700E603E2 /* CategoryListTableViewCell.m in Sources */,
 				5825D8F219D8105E004FF6FF /* FriendsViewController.m in Sources */,
 				58BACF0919B5805800A72391 /* crypt.c in Sources */,
@@ -945,6 +956,7 @@
 				58C14DD219C80D67009334E1 /* ContactViewController.m in Sources */,
 				58C14DEA19CAD70F009334E1 /* AddByInputTableViewCell.m in Sources */,
 				116B6E8919B0534000DB1B5E /* DBGroup.m in Sources */,
+				117AC6A119EE7BCF00143973 /* UserDAO.m in Sources */,
 				585971E21999F0C700258CB1 /* imAppDelegate.m in Sources */,
 				110487A219D79DFB0002AB36 /* MessageDAO.m in Sources */,
 				58F2AA3419A2F85400DC2FFB /* imUtil.m in Sources */,
