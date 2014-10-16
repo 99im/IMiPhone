@@ -10,7 +10,14 @@
 
 @interface DPContactPerson : NSObject
 
-@property (nonatomic, retain) NSString *name;
-@property (nonatomic, retain) NSString *phone;
+@property (nonatomic, retain) NSString *firstName;
+@property (nonatomic, retain) NSString *lastName;
+@property (nonatomic, retain) NSString *phones;
+@property (nonatomic, retain) NSString *emails;
+@property (nonatomic, retain) NSString *company;
+@property (nonatomic, retain) NSString *nickName;
+@property (nonatomic, retain) NSString *department;
+@property (nonatomic        ) double birthday;
+@property (nonatomic, retain) NSString *blogUrls;
 
 @end

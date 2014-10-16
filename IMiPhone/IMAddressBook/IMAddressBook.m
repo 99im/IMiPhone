@@ -8,7 +8,6 @@
 
 #import "IMAddressBook.h"
 
-
 @implementation IMAddressBook
 
 //获取通讯录
@@ -62,27 +61,25 @@
         ABRecordRef person = CFArrayGetValueAtIndex(results, i);
         //构造联系人数据
         IMAddressPerson *adrressPerson = [[IMAddressPerson alloc] init];
-        adrressPerson.firstName = (NSString*)CFBridgingRelease(ABRecordCopyValue(person, kABPersonFirstNameProperty));;
-//        adrressPerson.lastName = lastname;
-//        //姓
-//        NSString *firstName =
-//        //姓音标
-//        //        NSString *firstNamePhonetic = (NSString*)CFBridgingRelease(ABRecordCopyValue(person, kABPersonFirstNamePhoneticProperty));
-//        //名
-//        NSString *lastname = (NSString*)CFBridgingRelease(ABRecordCopyValue(person, kABPersonLastNameProperty));
+        //姓
+        adrressPerson.firstName = (NSString*)CFBridgingRelease(ABRecordCopyValue(person, kABPersonFirstNameProperty));
+        //名
+        adrressPerson.lastName = (NSString*)CFBridgingRelease(ABRecordCopyValue(person, kABPersonLastNameProperty));
+        //姓音标
+        //        NSString *firstNamePhonetic = (NSString*)CFBridgingRelease(ABRecordCopyValue(person, kABPersonFirstNamePhoneticProperty));
         //名音标
         //        NSString *lastnamePhonetic = (NSString*)CFBridgingRelease(ABRecordCopyValue(person, kABPersonLastNamePhoneticProperty));
         //公司
-        NSString *Organization = (NSString*)CFBridgingRelease(ABRecordCopyValue(person, kABPersonOrganizationProperty));
+        adrressPerson.company = (NSString*)CFBridgingRelease(ABRecordCopyValue(person, kABPersonOrganizationProperty));
         //读取jobtitle工作
         //        NSString *jobtitle = (NSString*)CFBridgingRelease(ABRecordCopyValue(person, kABPersonJobTitleProperty));
         //读取department部门
-        NSString *department = (NSString*)CFBridgingRelease(ABRecordCopyValue(person, kABPersonDepartmentProperty));
+        adrressPerson.department = (NSString*)CFBridgingRelease(ABRecordCopyValue(person, kABPersonDepartmentProperty));
         //读取birthday生日
         NSDate *birthday = (NSDate*)CFBridgingRelease(ABRecordCopyValue(person, kABPersonBirthdayProperty));
         //读取nickname呢称
-        double birthdayString = [birthday timeIntervalSince1970];
-        NSString *nickname = (NSString*)CFBridgingRelease(ABRecordCopyValue(person, kABPersonNicknameProperty));
+        adrressPerson.birthday = [birthday timeIntervalSince1970];
+        adrressPerson.nickName = (NSString*)CFBridgingRelease(ABRecordCopyValue(person, kABPersonNicknameProperty));
         //读取电话多值
         NSString* phoneString = @"";
         ABMultiValueRef phone = ABRecordCopyValue(person, kABPersonPhoneProperty);
@@ -126,24 +123,17 @@
         }
         CFRelease(url);
         
-       
-//        NSDictionary* dic = @{@"first_name": firstName?firstName:[NSNull null],
-//                              @"last_name": lastname?lastname:[NSNull null],
-//                              @"home_phone": phoneString?phoneString:[NSNull null],
-//                              @"email": emailString?emailString:[NSNull null],
-//                              @"company": Organization?Organization:[NSNull null],
-//                              @"nick_name": nickname?nickname:[NSNull null],
-//                              @"department": department?department:[NSNull null],
-//                              @"birthday": [NSNumber numberWithDouble:birthdayString],
-//                              @"blog_index": urlString?urlString:[NSNull null]
-//                              };
-//        [contactArray addObject:dic];
+        adrressPerson.emails = emailString;
+        adrressPerson.phones = phoneString;
+        adrressPerson.blogUrls = urlString;
+        [contactArray addObject:adrressPerson];
+
         emailString = nil;
         urlString = nil;
         phoneString = nil;
     }
     CFRelease(results);
-    contactArray = nil;  
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFY_IMADRRESSBOOK_GET_DATA object:contactArray];
     
 }
 

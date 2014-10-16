@@ -12,12 +12,12 @@
 
 @synthesize firstName;
 @synthesize lastName;
-@synthesize arrPhones;
-@synthesize arrEmails;
+@synthesize phones;
+@synthesize emails;
 @synthesize company;
 @synthesize nickName;
 @synthesize department;
 @synthesize birthday;
-@synthesize blogUrl;
+@synthesize blogUrls;
 
 @end

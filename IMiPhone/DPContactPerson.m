@@ -10,7 +10,14 @@
 
 @implementation DPContactPerson
 
-@synthesize name;
-@synthesize phone;
+@synthesize firstName;
+@synthesize lastName;
+@synthesize phones;
+@synthesize emails;
+@synthesize company;
+@synthesize nickName;
+@synthesize department;
+@synthesize birthday;
+@synthesize blogUrls;
 
 @end

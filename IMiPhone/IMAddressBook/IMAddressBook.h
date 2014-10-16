@@ -10,11 +10,10 @@
 #import <AddressBook/AddressBook.h>
 #import "IMAddressPerson.h"
 
+#define NOTIFY_IMADRRESSBOOK_GET_DATA @"notify_imadrressbook_get_data"
+
 @interface IMAddressBook : NSObject
 
 + (void)getUserAddressBook;
-
-+ (void)constructInThread:(ABAddressBookRef)ab;
-
 
 @end

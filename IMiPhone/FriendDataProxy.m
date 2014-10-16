@@ -66,14 +66,14 @@ static FriendDataProxy *sharedFriendDataProxy = nil;
     [ImDataUtil copyFrom:object To:tempDBPerson];
     [[ContactDAO sharedDAO] insert:tempDBPerson];
     [self.arrContact insertObject:object atIndex:index];
-    NSLog(@"arrContact insert person name:%@", ((DPContactPerson *)object).name);
+    NSLog(@"arrContact insert person name:%@", ((DPContactPerson *)object).nickName);
 }
 
 -(void)removeObjectFromArrContactAtIndex:(NSUInteger)index
 {
     DPContactPerson *dpPerson = self.arrContact[index];
     [[ContactDAO sharedDAO] deleteByCondition:[DB_PRIMARY_KEY_CONTACT_PERSON_PHONE stringByAppendingString:@"=?"]
-                                         Bind:[NSMutableArray arrayWithObjects:dpPerson.phone,nil]];
+                                         Bind:[NSMutableArray arrayWithObjects:dpPerson.phones,nil]];
     [self.arrContact removeObjectAtIndex:index];
     NSLog(@"remove arrContact at index :%d",index);
     
@@ -87,21 +87,22 @@ static FriendDataProxy *sharedFriendDataProxy = nil;
     [[ContactDAO sharedDAO] update:
      tempDBPerson
                        ByCondition:[DB_PRIMARY_KEY_CONTACT_PERSON_PHONE stringByAppendingString:@"=?"]
-                              Bind:[NSMutableArray arrayWithObjects:tempDBPerson.phone,nil]];
+                              Bind:[NSMutableArray arrayWithObjects:tempDBPerson.phones,nil]];
     [self.arrContact replaceObjectAtIndex:index withObject:object];
-    NSLog(@"replace arrContact at %d,with new phone:%@",index,((DPContactPerson *)object).phone);
+    NSLog(@"replace arrContact at %d,with new phone:%@",index,((DPContactPerson *)object).phones);
 }
 
 #pragma mark - for test
 - (void)__testInitContactData
 {
     DPContactPerson *dpPerson = [[DPContactPerson alloc] init];
-    dpPerson.name = @"王国良";
-    dpPerson.phone = @"15001029617";
+    dpPerson.firstName = @"王";
+    dpPerson.lastName = @"国良";
+    dpPerson.phones = @"15001029617";
     [[self mutableArrayContact] addObject:dpPerson];
     dpPerson = [[DPContactPerson alloc] init];
-    dpPerson.name = @"阿束";
-    dpPerson.phone = @"13766666666";
+    dpPerson.firstName = @"阿束";
+    dpPerson.phones = @"13766666666";
     [[self mutableArrayContact] addObject:dpPerson];
     
     DPUserFromContact *dpUserFromContact = [[DPUserFromContact alloc] init];
