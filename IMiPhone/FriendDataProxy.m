@@ -162,6 +162,8 @@ static FriendDataProxy *sharedFriendDataProxy = nil;
     NSLog(@"replace arrUsersFromContact at %d,with new uid:%d",index,((DPUserFromContact *)object).uid);
 }
 
+//mutableArrayFriends
+
 - (NSInteger)getCountOfUsers:(int)byType {
     if (byType == USER_LIST_FOR_FOCUS) {
         return [listMyFocus count];

@@ -7,6 +7,7 @@
 //
 
 #import "imUtil.h"
+#import "NSNumber+IMNWError.h"
 
 @implementation imUtil
 
@@ -119,6 +120,20 @@
     if(alert)     {
         [alert dismissWithClickedButtonIndex:[alert cancelButtonIndex] animated:YES];
     }
+}
+
++ (NSError *)wrapServerError:(NSInteger)errorcode withDomain:(NSString *)domain
+{
+    NSNumber *errorCodeNumber =
+    [NSNumber numberWithInteger:errorcode];
+    NSString *errorMessage = [errorCodeNumber errorMessage];
+    NSDictionary *userInfo =
+    [NSDictionary dictionaryWithObject:errorMessage
+                                forKey:NSLocalizedDescriptionKey];
+    NSError *error = [NSError errorWithDomain:domain
+                                         code:errorcode
+                                     userInfo:userInfo];
+    return error;
 }
 
 @end

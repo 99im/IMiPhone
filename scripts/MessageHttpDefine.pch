@@ -4,6 +4,21 @@
 
 /*
 mark: friend
+type: /contact/upload/
+method: http-post
+describe: 上传通讯录
+example: http://local.taiqiu.com:7070/contact/upload/?verify=16_1411380260_8e01b76b234112ca88fdb3645eacac44
+
+contact=[{%22mobile%22:%2212345678908%22},{%22mobile%22:%2215001029616%22}]
+*/
+#define PATH__CONTACT_UPLOAD_ @"/contact/upload/"
+#define NOTI__CONTACT_UPLOAD_ @"MPcontactuploadNotifiction"
+#define METHOD__CONTACT_UPLOAD_ @"POST"
+#define KEYQ__CONTACT_UPLOAD__CONTACT @"contact" //contact json 串 [{"mobile":"12345678908","mobCountry":"+86","detail":""},{"mobile":"15001029616"}]
+#define KEYP__CONTACT_UPLOAD__ERROR_CODE @"error_code" //error_code 0
+
+/*
+mark: friend
 type: /friend/friend-list/
 method: http-get
 describe: 获取好友列表（双向关注）
@@ -31,7 +46,8 @@ example: http://local.taiqiu.com:7070/friend/friend-list/?verify=17_1411380649_8
 #define PATH__FRIEND_FRIEND_LIST_ @"/friend/friend-list/"
 #define NOTI__FRIEND_FRIEND_LIST_ @"MPfriendfriend-listNotifiction"
 #define METHOD__FRIEND_FRIEND_LIST_ @"GET"
-#define KEYQ__FRIEND_FRIEND_LIST__VERFIY @"verfiy" //verfiy string
+#define KEYQ__FRIEND_FRIEND_LIST__START @"start" //start int 开始编号
+#define KEYQ__FRIEND_FRIEND_LIST__PAGENUM @"pageNum" //pageNum int 可选（默认20） 数量
 #define KEYP__FRIEND_FRIEND_LIST__ERROR_CODE @"error_code" //error_code int 0
 #define KEYP__FRIEND_FRIEND_LIST__LIST @"list" //list
 #define KEYP__FRIEND_FRIEND_LIST__LIST_FRIENDUID @"friendUid" // friendUid
@@ -198,7 +214,7 @@ example: http://local.taiqiu.com:7070/user/search/?oid=16&verify=16_1411381682_1
 #define KEYP__USER_SEARCH__LIST_UINFO_NICK @"nick" //  nick
 #define KEYP__USER_SEARCH__LIST_UINFO_CITY @"city" //  city
 #define KEYP__USER_SEARCH__LIST_UINFO_VIP @"vip" //  vip
-#define KEYP__USER_SEARCH__LIST_UINFO_RELATION @"relation" //  relation
+#define KEYP__USER_SEARCH__LIST_UINFO_RELATION @"relation" //  relation 0 无关系 1好友 2  偶像 3 粉丝
 
 
 #define MARK_MSG @"msg"

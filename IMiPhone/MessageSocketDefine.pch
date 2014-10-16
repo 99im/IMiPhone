@@ -1,5 +1,40 @@
 
 
+#define MARK_FRIEND @"friend"
+
+/*
+mark: friend
+type: /contact/userlist/
+describe: 获取通讯录好友列表
+example: http://local.taiqiu.com:7070/contact/userlist/?contact=[{%22mobile%22%EF%BC%9A%E2%80%9C12345678908%E2%80%9D}]&verify=16_1411380260_8e01b76b234112ca88fdb3645eacac44
+
+{
+"error_code": 0,
+"list": [
+{
+"uid": 27,
+"oid": "27",
+"nick": "tree",
+"city": "",
+"vip": 0,
+"relation": 3
+}
+]
+}
+*/
+#define TYPE_FRIEND__CONTACT_USERLIST_ @"/contact/userlist/"
+#define NOTI_FRIEND__CONTACT_USERLIST_ @"MPfriendcontactuserlistNotifiction"
+#define KEYP_FRIEND__CONTACT_USERLIST__ERROR_CODE @"error_code" //error_code int 0
+#define KEYP_FRIEND__CONTACT_USERLIST__ERROR_CODE_LIST @"list" // list array
+#define KEYP_FRIEND__CONTACT_USERLIST__ERROR_CODE_UINFO @"uinfo" // uinfo
+#define KEYP_FRIEND__CONTACT_USERLIST__ERROR_CODE_UINFO_UID @"uid" //  uid
+#define KEYP_FRIEND__CONTACT_USERLIST__ERROR_CODE_UINFO_OID @"oid" //  oid
+#define KEYP_FRIEND__CONTACT_USERLIST__ERROR_CODE_UINFO_NICK @"nick" //  nick
+#define KEYP_FRIEND__CONTACT_USERLIST__ERROR_CODE_UINFO_CITY @"city" //  city
+#define KEYP_FRIEND__CONTACT_USERLIST__ERROR_CODE_UINFO_VIP @"vip" //  vip
+#define KEYP_FRIEND__CONTACT_USERLIST__ERROR_CODE_UINFO_RELATION @"relation" //  relation 0 无关系 1好友 2  偶像 3 粉丝
+
+
 #define MARK_CHAT @"chat"
 
 /*

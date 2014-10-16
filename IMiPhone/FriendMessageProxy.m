@@ -10,6 +10,8 @@
 #import "IMNWManager.h"
 #import "IMNWMessage.h"
 #import "NSNumber+IMNWError.h"
+#import "imUtil.h"
+#import "FriendDataProxy.h"
 
 #define TYPE_GROUPS @"groups"
 
@@ -216,6 +218,42 @@ static FriendMessageProxy *sharedFriendMessageProxy = nil;
             }
           }
       }];
+}
+
+- (void)sendTypeFriendList:(NSNumber *)start withPageNum:(NSNumber *)pageNum
+{
+    NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
+    [params setObject:start forKey:KEYQ__FRIEND_FRIEND_LIST__START];
+    [params setObject:pageNum forKey:KEYQ__FRIEND_FRIEND_LIST__PAGENUM];
+    IMNWMessage *message = [IMNWMessage
+                            createForHttp:PATH__FRIEND_FRIEND_LIST_
+                            withParams:params
+                            withMethod:METHOD__FRIEND_FRIEND_LIST_
+                            ssl:NO];
+    [[IMNWManager sharedNWManager]
+     sendMessage:message
+     withResponse:    ^(NSString *responseString, NSData *responseData) {
+         NSError *err = nil;
+         NSMutableDictionary *json = [NSJSONSerialization
+                                      JSONObjectWithData:responseData
+                                      options:NSJSONReadingAllowFragments
+                                      error:&err];
+         if (err) {
+             NSAssert1(YES, @"JSON create error: %@", err);
+         } else {
+             NSInteger errorcode = [[json objectForKey:KEYP__FRIEND_FRIEND_LIST__ERROR_CODE] integerValue];
+             if (errorcode == 0) {
+                 NSLog(@"%@",[json objectForKey:KEYP__FRIEND_FRIEND_LIST__LIST]);
+                 [[NSNotificationCenter defaultCenter]
+                  postNotificationName:NOTI__FRIEND_FRIEND_LIST_
+                  object:nil];
+             }
+             else {
+                 NSAssert1(YES, @"Http connect response error: %i", errorcode);
+                 //                 NSError *error = [imUtil wrapServerError:errorcode withDomain:PATH__FRIEND_FRIEND_LIST_];
+             }
+         }
+     }];
 }
 
 @end

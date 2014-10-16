@@ -27,4 +27,6 @@
 
 - (void)sendTypeFanList:(NSNumber *)start withPageNum:(NSNumber *)pageNum;
 
+- (void)sendTypeFriendList:(NSNumber *)start withPageNum:(NSNumber *)pageNum;
+
 @end

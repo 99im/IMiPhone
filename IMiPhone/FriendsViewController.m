@@ -7,6 +7,7 @@
 //
 
 #import "FriendsViewController.h"
+#import "FriendMessageProxy.h"
 
 @interface FriendsViewController ()
 
@@ -27,6 +28,7 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [[FriendMessageProxy sharedProxy] sendTypeFriendList:[NSNumber numberWithInteger:0] withPageNum:[NSNumber numberWithInteger:50]] ;
 }
 
 - (void)didReceiveMemoryWarning
