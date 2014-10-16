@@ -11,6 +11,7 @@
 #import "DatabaseConfig.h"
 #import "ImDataUtil.h"
 #import "UserDAO.h"
+#import "ImDataUtil.h"
 
 #define KEY_USER_LAST_LOGIN_COUNTRY @"key_user_last_login_country"
 #define KEY_USER_LAST_LOGIN_MOBILE @"key_user_last_login_mobile"
@@ -175,6 +176,11 @@ static UserDataProxy *sharedProxy = nil;
 {
     DBUser *tempDBUser = [[DBUser alloc] init];
     [ImDataUtil copyFrom:object To:tempDBUser];
+    NSInteger findIndex = [ImDataUtil getIndexOf:self.arrUsers byItemKey:DB_PRIMARY_KEY_USER_UID withValue:[NSNumber numberWithInteger:tempDBUser.uid]];
+    if (findIndex != NSNotFound) {
+        [self replaceObjectInArrUsersAtIndex:findIndex withObject:object];
+        return;
+    }
     [[UserDAO sharedDAO] insert:tempDBUser];
     [self.arrUsers insertObject:object atIndex:index];
     NSLog(@"arrUsers insert message id:%d", ((DPUser *)object).uid);
