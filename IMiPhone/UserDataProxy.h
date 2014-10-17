@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "DPUser.h"
+#import "UserDAO.h"
 
 @interface UserDataProxy : NSObject
 
@@ -22,10 +23,13 @@
 @property (nonatomic, retain) NSString *mobile;
 @property (nonatomic, retain) NSString *password;
 
-@property (nonatomic, retain) NSDictionary *showUserInfo;
+@property (nonatomic) NSInteger showUserInfoUid;
+@property (nonatomic) NSInteger showUserInfoRleation;
 
 + (UserDataProxy *)sharedProxy;
 
 - (NSMutableArray *)mutableArrayUsers;
+
+- (DPUser *)getUserInfoFromUid:(NSInteger) uid;
 
 @end

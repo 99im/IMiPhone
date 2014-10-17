@@ -52,7 +52,7 @@ static NSDictionary *dicSQLDataType;
             typeStr = [NSString stringWithFormat:@"%c",type[0]];
 //            NSLog(@"why%@:",[NSString stringWithFormat:@"%c", type[0]]);
 //            NSLog(@"dic string:%@",[[DatabaseConfig instance].dicSQLDataType valueForKey:@"@"]);
-            NSString *sqlType = [[DatabaseConfig shareDatabaseConfig].dicSQLDataType valueForKey:typeStr];
+            NSString *sqlType = [[DatabaseConfig shareDatabaseConfig].dicSQLDataType objectForKey:typeStr];
             NSString *keyAndType = [[key stringByAppendingString:@" "] stringByAppendingString:sqlType];
             if([key isEqualToString:pKey])//主键
             {

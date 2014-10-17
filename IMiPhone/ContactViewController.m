@@ -10,6 +10,7 @@
 #import "IMNWProxyProtocol.h"
 #import "CategoryListTableViewController.h"
 #import "AddTableViewController.h"
+#import "UserShowViewController.h"
 
 @interface ContactViewController () <IMNWProxyProtocol>
 
@@ -96,7 +97,7 @@
             break;
         case 0:
         default:
-            subviewId = @"FriendsViewController";
+            subviewId = @"FriendTableViewController";
             break;
     }
     if (![subviewId isEqualToString:self.curSubViewId]) {

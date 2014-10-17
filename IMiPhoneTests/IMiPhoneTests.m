@@ -71,7 +71,8 @@
     a = [NSNull null];
     if (a) {
         NSLog(@"null!!!!!!!");
-    }
+    }    NSLog([@"NOTIFY_FRIEND_TABLE_VIEW_CELL_USER_TOUCH_PORTRAIT" lowercaseString]);
 }
+
 
 @end

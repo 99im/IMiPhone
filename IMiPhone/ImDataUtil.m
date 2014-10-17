@@ -85,7 +85,10 @@
             NSString *key = arrDestProps[i][0];
             id autoReleaseI;
             if ([src validateValue:&autoReleaseI forKey:key error:nil]) {
-                [dest setValue:[src valueForKey:key] forKey:key];
+               id value = [src valueForKey:key];
+                if (value != nil) {
+                    [dest setValue:value forKey:key];
+                }
             }
         }
     }

@@ -24,11 +24,11 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    NSDictionary *userInfo = [UserDataProxy sharedProxy].showUserInfo;
-    [self.lblNickname setText:[userInfo objectForKey:KEYP__USER_SEARCH__LIST_UINFO_NICK]];
-    [self.lblOid setText:[userInfo objectForKey:KEYP__USER_SEARCH__LIST_UINFO_OID]];
+    DPUser *userInfo = [[UserDataProxy sharedProxy] getUserInfoFromUid:[UserDataProxy sharedProxy].showUserInfoUid];
+    [self.lblNickname setText:userInfo.nick];
+    [self.lblOid setText:userInfo.oid];
     
-    NSInteger userRelation = [[userInfo valueForKey:KEYP__USER_SEARCH__LIST_UINFO_RELATION] integerValue];
+    NSInteger userRelation = [UserDataProxy sharedProxy].showUserInfoRleation;
     if (userRelation == RELATION_STRANGER || userRelation == RELATION_FAN) {
         [self showStrangerButton:YES];
     }
@@ -89,14 +89,14 @@
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-     NSDictionary *userInfo = [UserDataProxy sharedProxy].showUserInfo;
+     DPUser *userInfo = [[UserDataProxy sharedProxy] getUserInfoFromUid:[UserDataProxy sharedProxy].showUserInfoUid];
     if (alertView == self.alertViewFocus) {
         if (buttonIndex == 0) {
             NSLog(@"cancel");
         }
         else if(buttonIndex == 1) {
             NSLog(@"OK");
-            [[FriendMessageProxy sharedProxy] sendTypeFocusAdd:[userInfo objectForKey:KEYP__USER_SEARCH__LIST_UINFO_UID]];
+            [[FriendMessageProxy sharedProxy] sendTypeFocusAdd:[NSNumber numberWithInteger:userInfo.uid]];
         }
         self.alertViewFocus = nil;
     }
@@ -105,13 +105,13 @@
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    NSDictionary *userInfo = [UserDataProxy sharedProxy].showUserInfo;
+    DPUser *userInfo = [[UserDataProxy sharedProxy] getUserInfoFromUid:[UserDataProxy sharedProxy].showUserInfoUid];
     if (buttonIndex == 0) {
          NSLog(@"remark");
     }
     else if(buttonIndex == 1) {
         NSLog(@"Focus Cancel");
-        [[FriendMessageProxy sharedProxy] sendTypeFocusCancel:[userInfo objectForKey:KEYP__USER_SEARCH__LIST_UINFO_UID]];
+        [[FriendMessageProxy sharedProxy] sendTypeFocusCancel:[NSNumber numberWithInteger:userInfo.uid]];
     }
     else if (buttonIndex == 2) {
         NSLog(@"Black list and report");

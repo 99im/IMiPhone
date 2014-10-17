@@ -196,7 +196,7 @@
 
 #pragma mark - datepicker
 
-- (void)tapHandler:(UITapGestureRecognizer *)sender
+- (IBAction)tapHandler:(UITapGestureRecognizer *)sender
 {
     CGPoint point = [sender locationInView:self.view];
     //NSLog(@"RegInfoViewController tapHandler: x: %f, y: %f", point.x, point.y);

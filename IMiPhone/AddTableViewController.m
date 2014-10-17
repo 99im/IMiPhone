@@ -173,10 +173,8 @@ const int sectionNum = 2;
 #pragma mark - serchResult
 - (void)skipToSearchResult:(NSNotification *)notification
 {
-    if ([UserDataProxy sharedProxy].showUserInfo) {
-        self.hidesBottomBarWhenPushed = YES;
-        [self performSegueWithIdentifier:@"Add2ResultSegue" sender:self];
-    }
+//        self.hidesBottomBarWhenPushed = YES;
+    [self performSegueWithIdentifier:@"Add2ResultSegue" sender:self];
 }
 
 #pragma mark - IMNWProxyProtocol Method
