@@ -9,18 +9,29 @@
 #import "FriendTableViewController.h"
 #import "FriendMessageProxy.h"
 #import "FriendDataProxy.h"
-#import "FriendTableViewCellSearch.h"
 #import "FriendTableViewCellUser.h"
-#import "FriendTableViewCellViewContact.h"
 #import "UserDataProxy.h"
 #import "UserMessageProxy.h"
 #import "UserShowViewController.h"
 
+
+//typedef NS_ENUM(NSInteger, FriendTableViewSection) ｛
+
+
 @interface FriendTableViewController ()
+
+@property (nonatomic, retain) UIButton *btnViewContact;
+
+@property (nonatomic, retain) NSArray *searchResults;
 
 @end
 
 @implementation FriendTableViewController
+
+@synthesize searchBar;
+
+@synthesize btnViewContact;
+@synthesize searchResults;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -32,7 +43,14 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 
     [self registerMessageNotification];
-}
+    [[FriendMessageProxy sharedProxy] sendTypeFriendList:[NSNumber numberWithInteger:0] withPageNum:[NSNumber numberWithInteger:50]];
+    //添加footview 按钮
+    UITableViewHeaderFooterView *view = [self.tableView footerViewForSection:0];
+    UIView* footerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 360, 57.0)];
+    btnViewContact = [[UIButton alloc] initWithFrame:footerView.frame];
+    btnViewContact.titleLabel.text = NSLocalizedString(@"View.Contact.Friends", null);
+    [footerView addSubview:btnViewContact];
+    [view addSubview:footerView];}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -52,47 +70,47 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     // Return the number of sections.
-    return 3;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
-    if (section == 0) {
-        return 1;
+    
+//     if ([tableView           isEqual:self.searchDisplayController.searchResultsTableView]){
+//
+    
+    if([tableView isEqual:self.searchDisplayController.searchResultsTableView]) {
+        return searchResults.count;
     }
-    else if (section == 1) {
+    else {
         return [[FriendDataProxy sharedProxy] mutableArrayFriends].count;
     }
-    else if (section == 2) {
-        return 1;
-    }
-    return 0;
+    
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+
+    static NSString *cellIdentifier = @"FriendTableViewCellUser";
     UITableViewCell *cell = nil;
-    if (indexPath.section == 0) {
-         cell = [tableView dequeueReusableCellWithIdentifier:@"FriendTableViewCellSearch" forIndexPath:indexPath];
-        
+//    NSLog(@"refresh:%@..self:%@,",tableView,self.tableView);
+    NSLog(@"%@",indexPath);
+    cell = [self.tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
+
+    DPFriend *friend;
+    if ([tableView isEqual:self.searchDisplayController.searchResultsTableView]) {
+         friend = [self.searchResults objectAtIndex:indexPath.row];
     }
-    else if (indexPath.section == 1) {
-        cell = [tableView dequeueReusableCellWithIdentifier:@"FriendTableViewCellUser" forIndexPath:indexPath];
-        DPFriend *friend = [[[FriendDataProxy sharedProxy] mutableArrayFriends] objectAtIndex:indexPath.row];
-        DPUser *user = [[UserDataProxy sharedProxy] getUserInfoFromUid:friend.uid];
-        if (user) {
+    else {
+         friend = [[[FriendDataProxy sharedProxy] mutableArrayFriends] objectAtIndex:indexPath.row];
+    }
+    DPUser *user = [[UserDataProxy sharedProxy] getUserInfoFromUid:friend.uid];
+    if (user) {
             [((FriendTableViewCellUser *)cell).lblNick setText:user.nick];
             ((FriendTableViewCellUser *)cell).data = user;
-        }
-        else {
-            NSAssert(YES, @"数据中心没有找到用户信息！");
-        }
     }
-    else if (indexPath.section == 2) {
-        cell = [tableView dequeueReusableCellWithIdentifier:@"FriendTableViewCellViewContact" forIndexPath:indexPath];
+    else {
+        NSAssert(YES, @"数据中心没有找到用户信息！");
     }
-    
-    // Configure the cell...
-    
     return cell;
 }
 
@@ -162,6 +180,34 @@
     [UserDataProxy sharedProxy].showUserInfoRleation = RELATION_FRIEND;
     [UserDataProxy sharedProxy].showUserInfoUid = ((DPUser *)notification.object).uid ;
     [self performSegueWithIdentifier:@"FriendTable2UserInfo" sender:self];
+    
+}
+
+
+- (void)filterContentForSearchText:(NSString*)searchText                               scope:(NSString*)scope {
+
+//    NSPredicate *resultPredicate = [NSPredicate                                      predicateWithFormat:@"uid contains[cd] %@",                                     searchText];
+//    
+//    self.searchResults = [[[FriendDataProxy sharedProxy] mutableArrayFriends] filteredArrayUsingPredicate:resultPredicate];
+    
+}
+
+#pragma mark - UISearchDisplayController delegate methods
+
+//UISearchDisplayController的委托方法，负责响应搜索事件：
+-(BOOL)searchDisplayController:(UISearchDisplayController *)controller  shouldReloadTableForSearchString:(NSString *)searchString {
+    
+    [self filterContentForSearchText:searchString                                 scope:[[self.searchDisplayController.searchBar scopeButtonTitles]                                       objectAtIndex:[self.searchDisplayController.searchBar                                                      selectedScopeButtonIndex]]];
+    
+    return YES;
+    
+}
+
+- (BOOL)searchDisplayController:(UISearchDisplayController *)controller  shouldReloadTableForSearchScope:(NSInteger)searchOption {
+    
+    [self filterContentForSearchText:[self.searchDisplayController.searchBar text]                                 scope:[[self.searchDisplayController.searchBar scopeButtonTitles]                                       objectAtIndex:searchOption]];
+    
+    return YES;
     
 }
 

@@ -57,7 +57,7 @@ static UserDataProxy *sharedProxy = nil;
 {
     if((self = [super init]))
     {
-        _lastLoginUid = NAN;
+        _lastLoginUid = NSNotFound;//不能用NAN，NAN为double类型 赋值给int类型时候就是0 但是（0 ＝＝ NAN）返回NO
     }
     return self;
 }
@@ -103,8 +103,12 @@ static UserDataProxy *sharedProxy = nil;
 
 - (NSInteger)getLastLoginUid
 {
-    if (_lastLoginUid == NAN)
+    if (_lastLoginUid == NSNotFound)
+    {
         _lastLoginUid = [imRms userDefaultsReadInt:KEY_USER_LAST_LOGIN_UID isBindUid:NO];
+        [DatabaseConfig shareDatabaseConfig].databaseName = [NSString stringWithFormat:@"%d", _lastLoginUid];
+        [imRms setUid:_lastLoginUid];
+    }
     return _lastLoginUid;
 }
 - (void)setLastLoginUid:(NSInteger)lastLoginUid
@@ -228,4 +232,6 @@ static UserDataProxy *sharedProxy = nil;
     }
     return nil;
 }
+
+
 @end
