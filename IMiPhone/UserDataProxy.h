@@ -10,6 +10,8 @@
 #import "DPUser.h"
 #import "UserDAO.h"
 
+#define NOTIFY_USER_DATA_PROXY_LAST_LOGIN_UID_CHANGE @"notify_user_data_proxy_last_login_uid_change"
+
 @interface UserDataProxy : NSObject
 
 @property (nonatomic, retain, getter=getLastLoginCountry, setter=setLastLoginCountry:) NSString *lastLoginCountry;
