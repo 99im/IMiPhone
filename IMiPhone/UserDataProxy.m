@@ -10,7 +10,6 @@
 #import "imRms.h"
 #import "DatabaseConfig.h"
 #import "ImDataUtil.h"
-#import "UserDAO.h"
 #import "ImDataUtil.h"
 
 #define KEY_USER_LAST_LOGIN_COUNTRY @"key_user_last_login_country"
@@ -39,7 +38,8 @@
 @synthesize mobile = _mobile;
 @synthesize password = _password;
 
-@synthesize showUserInfo;
+@synthesize showUserInfoUid;
+@synthesize showUserInfoRleation;
 
 @synthesize arrUsers = _arrUsers;
 
@@ -57,7 +57,7 @@ static UserDataProxy *sharedProxy = nil;
 {
     if((self = [super init]))
     {
-        _lastLoginUid = NAN;
+        _lastLoginUid = NSNotFound;//不能用NAN，NAN为double类型 赋值给int类型时候就是0 但是（0 ＝＝ NAN）返回NO
     }
     return self;
 }
@@ -103,8 +103,12 @@ static UserDataProxy *sharedProxy = nil;
 
 - (NSInteger)getLastLoginUid
 {
-    if (_lastLoginUid == NAN)
+    if (_lastLoginUid == NSNotFound)
+    {
         _lastLoginUid = [imRms userDefaultsReadInt:KEY_USER_LAST_LOGIN_UID isBindUid:NO];
+        [DatabaseConfig shareDatabaseConfig].databaseName = [NSString stringWithFormat:@"%d", _lastLoginUid];
+        [imRms setUid:_lastLoginUid];
+    }
     return _lastLoginUid;
 }
 - (void)setLastLoginUid:(NSInteger)lastLoginUid
@@ -178,12 +182,14 @@ static UserDataProxy *sharedProxy = nil;
     [ImDataUtil copyFrom:object To:tempDBUser];
     NSInteger findIndex = [ImDataUtil getIndexOf:self.arrUsers byItemKey:DB_PRIMARY_KEY_USER_UID withValue:[NSNumber numberWithInteger:tempDBUser.uid]];
     if (findIndex != NSNotFound) {
-        [self replaceObjectInArrUsersAtIndex:findIndex withObject:object];
-        return;
+        [[self mutableArrayUsers] replaceObjectAtIndex:findIndex withObject:object];
     }
-    [[UserDAO sharedDAO] insert:tempDBUser];
-    [self.arrUsers insertObject:object atIndex:index];
-    NSLog(@"arrUsers insert message id:%d", ((DPUser *)object).uid);
+    else
+    {
+        [[UserDAO sharedDAO] insert:tempDBUser];
+        [self.arrUsers insertObject:object atIndex:index];
+        NSLog(@"arrUsers insert message id:%d", ((DPUser *)object).uid);
+    }
 }
 
 -(void)removeObjectFromArrUsersAtIndex:(NSUInteger)index
@@ -196,18 +202,35 @@ static UserDataProxy *sharedProxy = nil;
     NSLog(@"remove arrUsers at index :%d",index);
     
 }
+     
+//- (void)replaceObjectInArrUsersAtIndex:(NSUInteger)index withObject:(id)object
+//{
+//    DBUser *tempDBUser = [[DBUser alloc] init];
+//    [ImDataUtil copyFrom:object To:tempDBUser];
+//    
+//    [[UserDAO sharedDAO] update:
+//     tempDBUser
+//                       ByCondition:[DB_PRIMARY_KEY_USER_UID stringByAppendingString:@"=?"]
+//                              Bind:[NSMutableArray arrayWithObjects:[NSString stringWithFormat:@"%d",tempDBUser.uid],nil]];
+//    [self.arrUsers replaceObjectAtIndex:index withObject:object];
+//    NSLog(@"replace arrUsers at %d,with new uid:%@",index,((DPUser *)object).uid);
+//}
 
-- (void)replaceObjectInArrUsersAtIndex:(NSUInteger)index withObject:(id)object
+#pragma mark - others
+
+- (DPUser *)getUserInfoFromUid:(NSInteger) uid
 {
-    DBUser *tempDBUser = [[DBUser alloc] init];
-    [ImDataUtil copyFrom:object To:tempDBUser];
-    
-    [[UserDAO sharedDAO] update:
-     tempDBUser
-                       ByCondition:[DB_PRIMARY_KEY_USER_UID stringByAppendingString:@"=?"]
-                              Bind:[NSMutableArray arrayWithObjects:[NSString stringWithFormat:@"%d",tempDBUser.uid],nil]];
-    [self.arrUsers replaceObjectAtIndex:index withObject:object];
-    NSLog(@"replace arrUsers at %d,with new uid:%@",index,((DPUser *)object).uid);
+    NSArray *users = [self mutableArrayUsers];
+    NSInteger findindex = [users indexOfObjectPassingTest:^BOOL(id obj, NSUInteger idx, BOOL *stop) {
+        if (obj && ((DPUser *)obj).uid == uid) {
+            return YES;
+        }
+        return NO;
+    }];
+    if (findindex != NSNotFound) {
+        return [users objectAtIndex:findindex];
+    }
+    return nil;
 }
 
 

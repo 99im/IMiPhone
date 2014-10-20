@@ -10,20 +10,20 @@
 
 @implementation UserDAO
 
-static UserDAO* sharedContactDAO = nil;
+static UserDAO* sharedUserDAO = nil;
 
 + (UserDAO *)sharedDAO
 {
     static dispatch_once_t once;
     dispatch_once(&once,
                   ^{
-                      sharedContactDAO = [[self alloc] init];
+                      sharedUserDAO = [[self alloc] init];
                       NSString *tableName = @"tb_users";
                       NSString *primaryKey = DB_PRIMARY_KEY_USER_UID;
-                      [sharedContactDAO createTableIfNotExist:tableName withDataMode:[DBUser class] withPrimaryKey:primaryKey];
+                      [sharedUserDAO createTableIfNotExist:tableName withDataMode:[DBUser class] withPrimaryKey:primaryKey];
                   }
                   );
-    return sharedContactDAO;
+    return sharedUserDAO;
 }
 
 @end

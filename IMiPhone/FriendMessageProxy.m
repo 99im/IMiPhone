@@ -12,6 +12,8 @@
 #import "NSNumber+IMNWError.h"
 #import "imUtil.h"
 #import "FriendDataProxy.h"
+#import "UserDataProxy.h"
+#import "ImDataUtil.h"
 
 #define TYPE_GROUPS @"groups"
 
@@ -243,7 +245,45 @@ static FriendMessageProxy *sharedFriendMessageProxy = nil;
          } else {
              NSInteger errorcode = [[json objectForKey:KEYP__FRIEND_FRIEND_LIST__ERROR_CODE] integerValue];
              if (errorcode == 0) {
-                 NSLog(@"%@",[json objectForKey:KEYP__FRIEND_FRIEND_LIST__LIST]);
+                 NSArray *list = [json objectForKey:KEYP__FRIEND_FRIEND_LIST__LIST];
+                 NSLog(@"%@",list);
+                 if (list) {
+                     for (NSInteger i = 0; i < list.count; i++) {
+                         NSDictionary *tempFriend = list[i];
+                         DPUser *dpUser = [[DPUser alloc] init];
+                         DPFriend *dpFriend = [[DPFriend alloc] init];
+                         NSDictionary *userInfo = [tempFriend objectForKey:KEYP__FRIEND_FRIEND_LIST__LIST_UINFO];
+                         dpUser.uid = [[userInfo objectForKey:KEYP__FRIEND_FRIEND_LIST__LIST_UINFO_UID] integerValue];
+                         dpUser.oid = [userInfo objectForKey:KEYP__FRIEND_FRIEND_LIST__LIST_UINFO_OID];
+                         dpUser.nick = [userInfo objectForKey:KEYP__FRIEND_FRIEND_LIST__LIST_UINFO_NICK];
+                         
+                         
+                         NSInteger findIndex = [ImDataUtil getIndexOf:[[UserDataProxy sharedProxy] mutableArrayUsers] byItemKey:DB_PRIMARY_KEY_USER_UID withValue:[NSNumber numberWithInteger:dpUser.uid]];;
+
+                         if (findIndex == NSNotFound) {
+                             [[[UserDataProxy sharedProxy] mutableArrayUsers] addObject:dpUser];
+                         }
+                         else {
+                             DPUser *srcUser = [[UserDataProxy sharedProxy] mutableArrayUsers][findIndex];
+                             [ImDataUtil copyFrom:dpUser To:srcUser];
+                             [[UserDataProxy sharedProxy] mutableArrayUsers][findIndex] = srcUser;
+                             
+                         }
+                         dpFriend.uid = [[tempFriend objectForKey:KEYP__FRIEND_FRIEND_LIST__LIST_FRIENDUID]integerValue];
+                         dpFriend.memo = [tempFriend objectForKey:KEYP__FRIEND_FRIEND_LIST__LIST_MEMO];
+                         dpFriend.byName = [tempFriend objectForKey:KEYP__FRIEND_FRIEND_LIST__LIST_BYNAME];
+                         
+                         findIndex = [ImDataUtil getIndexOf:[[FriendDataProxy sharedProxy] mutableArrayFriends] byItemKey:DB_PRIMARY_KEY_FRIEND_UID withValue:[NSNumber numberWithInteger:dpFriend.uid]];
+                         if (findIndex == NSNotFound) {
+                             [[[FriendDataProxy sharedProxy] mutableArrayFriends] addObject:dpFriend];
+                         }
+                         else {
+                             DPFriend *srcFriend = [[FriendDataProxy sharedProxy] mutableArrayFriends][findIndex];
+                             [ImDataUtil copyFrom:dpFriend To:srcFriend];
+                             [[[FriendDataProxy sharedProxy] mutableArrayFriends] replaceObjectAtIndex:findIndex withObject:srcFriend];
+                         }
+                     }
+                 }
                  [[NSNotificationCenter defaultCenter]
                   postNotificationName:NOTI__FRIEND_FRIEND_LIST_
                   object:nil];

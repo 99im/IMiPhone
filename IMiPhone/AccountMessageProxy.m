@@ -222,7 +222,9 @@ static AccountMessageProxy *sharedAccountMessageProxy = nil;
     NSMutableDictionary *info = [json objectForKey:SOCKET_INFO];
     int res = [[info objectForKey:KEYP_ACCOUNT_LOGIN_RES] intValue];
     if (res == RES_OK) {
-        NSInteger uid = [[json objectForKey:KEYP_ACCOUNT_LOGIN_UID] integerValue];
+        NSLog(@"%@",json);
+        NSInteger uid = [[info objectForKey:KEYP_ACCOUNT_LOGIN_UID] integerValue];
+        [UserDataProxy sharedProxy].lastLoginUid = uid;
         [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_ACCOUNT_LOGIN object:nil];
     }
     else {

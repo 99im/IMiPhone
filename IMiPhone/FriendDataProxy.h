@@ -7,6 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "DPFriend.h"
+#import "DPUserFromContact.h"
+#import "DPContactPerson.h"
+#import "ContactDAO.h"
+#import "UsersFromContactDAO.h"
+#import "FriendDAO.h"
 
 @interface FriendDataProxy : NSObject
 

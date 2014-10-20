@@ -8,12 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FriendListTableViewCell : UITableViewCell
+#define NOTIFY_FRIEND_TABLE_VIEW_CELL_USER_TOUCH_PORTRAIT @"notify_friend_table_view_cell_user_touch_portrait"
+
+@interface FriendTableViewCellUser : UITableViewCell <UIGestureRecognizerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIImageView *imgViewPortrait;
 @property (weak, nonatomic) IBOutlet UILabel *lblNick;
 @property (weak, nonatomic) IBOutlet UILabel *lblGenderAndAge;
 @property (weak, nonatomic) IBOutlet UILabel *lblIntro;
 @property (weak, nonatomic) IBOutlet UILabel *lblDistanceAndTime;
+
+@property (weak, nonatomic) id data;
 
 @end
