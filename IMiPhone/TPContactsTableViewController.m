@@ -9,15 +9,28 @@
 #import "TPContactsTableViewController.h"
 #import "IMAddressBook.h"
 #import "FriendMessageProxy.h"
+#import "UserDataProxy.h"
+#import "AddressAddTVTableViewCell.h"
+#import "AddressInviteTVTableViewCell.h"
 
 @interface TPContactsTableViewController ()
 
+@property (nonatomic, retain) NSMutableArray *arrUsers;
 @property (nonatomic, retain) NSMutableArray *arrAddressBookNames;
 @property (nonatomic, retain) NSMutableArray *arrAddressBookPhones;
 
 @end
 
 @implementation TPContactsTableViewController
+enum
+{
+    Section_users = 0,
+    Section_contact = 1
+};
+
+@synthesize arrAddressBookNames;
+@synthesize arrAddressBookPhones;
+@synthesize arrUsers;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -40,6 +53,28 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     [self registerMessageNotification];
+    //筛选数据
+    self.arrUsers = [NSMutableArray array];
+    self.arrAddressBookNames = [NSMutableArray array];
+    self.arrAddressBookPhones = [NSMutableArray array];
+    NSArray *usersFromContact = [[FriendDataProxy sharedProxy] mutableArrayUsersFromContact];
+    for (NSInteger i = 0; i < usersFromContact.count; i++) {
+        DPUserFromContact *userFromContact = [usersFromContact objectAtIndex:i];
+        DPUser *dpUser = [[UserDataProxy sharedProxy] getUserInfoFromUid:userFromContact.uid];
+        [self.arrUsers addObject:dpUser];
+    }
+    NSArray *arrContact = [[FriendDataProxy sharedProxy] mutableArrayContact];
+    for (NSInteger i = 0; i < arrContact.count; i++) {
+        DPContactPerson *dpContactPerson = [arrContact objectAtIndex:i];
+        if (dpContactPerson.phones.length > 0) {
+            NSArray *arrPhones = [dpContactPerson.phones componentsSeparatedByString:@","];
+            for (NSInteger j; j < arrPhones.count; j++) {
+                NSString *fullName = [dpContactPerson.firstName stringByAppendingString:dpContactPerson.lastName];
+                [self.arrAddressBookNames addObject:fullName];
+                [self.arrAddressBookPhones addObject:[arrPhones objectAtIndex:j]];
+            }
+        }
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -63,13 +98,10 @@
 //#warning Incomplete method implementation.
     
     // Return the number of rows in the section.
-    if (section == 0) {
-        NSArray *usersFromContact = [[FriendDataProxy sharedProxy] mutableArrayUsersFromContact];
-        if (usersFromContact) {
-            return usersFromContact.count;
-        }
+    if (section == Section_users) {
+        return self.arrUsers.count;
     }
-    else if (section == 1)
+    else if (section == Section_contact)
     {
         return self.arrAddressBookNames.count;
     }
@@ -79,11 +111,19 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    UITableViewCell *cell;
+    if (indexPath.section == Section_users) {
+        cell = [self.tableView dequeueReusableCellWithIdentifier:@"AddressAddTVTableViewCell" forIndexPath:indexPath];
+//        (AddR)cell
+    }
+    else if (indexPath.section == Section_contact) {
+         cell = [self.tableView dequeueReusableCellWithIdentifier:@"AddressInviteTVTableViewCell" forIndexPath:indexPath];
+    }
 //    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
     
     // Configure the cell...
     
-    return nil;//cell;
+    return cell;
 }
 
 

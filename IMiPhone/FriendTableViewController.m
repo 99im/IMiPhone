@@ -21,7 +21,7 @@
 @interface FriendTableViewController ()
 
 @property (nonatomic, retain) UIButton *btnViewContact;
-
+@property (nonatomic, retain) NSMutableArray *arrFriendsData;
 @property (nonatomic, retain) NSArray *searchResults;
 
 @end
@@ -31,7 +31,9 @@
 @synthesize searchBar;
 
 @synthesize btnViewContact;
+@synthesize arrFriendsData;
 @synthesize searchResults;
+@synthesize searchDisplayController;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -50,7 +52,22 @@
     btnViewContact = [[UIButton alloc] initWithFrame:footerView.frame];
     btnViewContact.titleLabel.text = NSLocalizedString(@"View.Contact.Friends", null);
     [footerView addSubview:btnViewContact];
-    [view addSubview:footerView];}
+//    [view addSubview:btnViewContact];
+//    [self.tableView addSubview:btnViewContact];
+    
+    //组装table数据
+    self.arrFriendsData = [NSMutableArray array];
+    for (NSInteger i = 0; i < [[FriendDataProxy sharedProxy] mutableArrayFriends].count; i++) {
+        DPFriend *friend = [[[FriendDataProxy sharedProxy] mutableArrayFriends] objectAtIndex:i];
+        DPUser *user = [[UserDataProxy sharedProxy] getUserInfoFromUid:friend.uid];
+        if (user) {
+            [self.arrFriendsData addObject:user];
+        }
+    }
+    
+    NSLog(@"y坐标%f",self.tableView.frame.origin.y);
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -83,7 +100,7 @@
         return searchResults.count;
     }
     else {
-        return [[FriendDataProxy sharedProxy] mutableArrayFriends].count;
+        return arrFriendsData.count;
     }
     
 }
@@ -92,24 +109,23 @@
 
     static NSString *cellIdentifier = @"FriendTableViewCellUser";
     UITableViewCell *cell = nil;
-//    NSLog(@"refresh:%@..self:%@,",tableView,self.tableView);
-    NSLog(@"%@",indexPath);
+    NSLog(@"refresh:%@..self:%@,",tableView,self.tableView);
     cell = [self.tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
-
-    DPFriend *friend;
+    DPUser *user;
+    
+    NSLog(@"self.searchDisplayController%@",self.searchDisplayController);
     if ([tableView isEqual:self.searchDisplayController.searchResultsTableView]) {
-         friend = [self.searchResults objectAtIndex:indexPath.row];
+         user = [self.searchResults objectAtIndex:indexPath.row];
     }
     else {
-         friend = [[[FriendDataProxy sharedProxy] mutableArrayFriends] objectAtIndex:indexPath.row];
+         user = [self.arrFriendsData objectAtIndex:indexPath.row];
     }
-    DPUser *user = [[UserDataProxy sharedProxy] getUserInfoFromUid:friend.uid];
     if (user) {
             [((FriendTableViewCellUser *)cell).lblNick setText:user.nick];
             ((FriendTableViewCellUser *)cell).data = user;
     }
     else {
-        NSAssert(YES, @"数据中心没有找到用户信息！");
+        NSAssert(YES, @"数据源中没有找到用户信息！");
     }
     return cell;
 }
@@ -186,9 +202,9 @@
 
 - (void)filterContentForSearchText:(NSString*)searchText                               scope:(NSString*)scope {
 
-//    NSPredicate *resultPredicate = [NSPredicate                                      predicateWithFormat:@"uid contains[cd] %@",                                     searchText];
-//    
-//    self.searchResults = [[[FriendDataProxy sharedProxy] mutableArrayFriends] filteredArrayUsingPredicate:resultPredicate];
+    NSPredicate *resultPredicate = [NSPredicate                                      predicateWithFormat:@"nick contains[cd] %@",                                     searchText];
+    
+    self.searchResults = [self.arrFriendsData filteredArrayUsingPredicate:resultPredicate];
     
 }
 

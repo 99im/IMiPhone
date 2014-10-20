@@ -649,9 +649,11 @@
                         </connections>
                     </tableView>
                     <toolbarItems/>
+                    <nil key="simulatedTopBarMetrics"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="searchBar" destination="cEH-Zm-gOU" id="l3T-Ev-ffR"/>
+                        <outlet property="searchDisplayController" destination="Dmk-hP-yr0" id="9Dg-Du-THI"/>
                         <segue destination="Ixd-6h-fyu" kind="push" identifier="FriendTable2UserInfo" id="D64-tG-s28"/>
                     </connections>
                 </tableViewController>
@@ -1021,7 +1023,7 @@
                                             <color key="textColor" red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="8ECBBF80-FD77-46B6-A0F8-682CC750E80D" id="Ls1-tt-jOe">
+                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="B6A40AAA-07E8-4123-9A8D-6B635BF5C1E9" id="Ls1-tt-jOe">
                                             <autoresizingMask key="autoresizingMask"/>
                                         </imageView>
                                     </subviews>
@@ -1298,7 +1300,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="8ECBBF80-FD77-46B6-A0F8-682CC750E80D" width="27" height="27">
+        <image name="B6A40AAA-07E8-4123-9A8D-6B635BF5C1E9" width="27" height="27">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPj9YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQsLzI4O1UkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw

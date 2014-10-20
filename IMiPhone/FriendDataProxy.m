@@ -64,7 +64,7 @@ static FriendDataProxy *sharedFriendDataProxy = nil;
     [ImDataUtil copyFrom:object To:tempDBPerson];
     NSInteger findIndex = [ImDataUtil getIndexOf:self.arrContact byItemKey:DB_PRIMARY_KEY_CONTACT_PERSON_PHONE withValue:tempDBPerson.phones];
     if (findIndex != NSNotFound) {
-        [self replaceObjectInArrContactAtIndex:findIndex withObject:object];
+        [[self mutableArrayContact] replaceObjectAtIndex:findIndex withObject:object];
     }
     else {
         [[ContactDAO sharedDAO] insert:tempDBPerson];
@@ -83,18 +83,18 @@ static FriendDataProxy *sharedFriendDataProxy = nil;
     
 }
 
-- (void)replaceObjectInArrContactAtIndex:(NSUInteger)index withObject:(id)object
-{
-    DBContactPerson *tempDBPerson = [[DBContactPerson alloc] init];
-    [ImDataUtil copyFrom:object To:tempDBPerson];
-    
-    [[ContactDAO sharedDAO] update:
-     tempDBPerson
-                       ByCondition:[DB_PRIMARY_KEY_CONTACT_PERSON_PHONE stringByAppendingString:@"=?"]
-                              Bind:[NSMutableArray arrayWithObjects:tempDBPerson.phones,nil]];
-    [self.arrContact replaceObjectAtIndex:index withObject:object];
-    NSLog(@"replace arrContact at %d,with new phone:%@",index,((DPContactPerson *)object).phones);
-}
+//- (void)replaceObjectInArrContactAtIndex:(NSUInteger)index withObject:(id)object
+//{
+//    DBContactPerson *tempDBPerson = [[DBContactPerson alloc] init];
+//    [ImDataUtil copyFrom:object To:tempDBPerson];
+//    
+//    [[ContactDAO sharedDAO] update:
+//     tempDBPerson
+//                       ByCondition:[DB_PRIMARY_KEY_CONTACT_PERSON_PHONE stringByAppendingString:@"=?"]
+//                              Bind:[NSMutableArray arrayWithObjects:tempDBPerson.phones,nil]];
+//    [self.arrContact replaceObjectAtIndex:index withObject:object];
+//    NSLog(@"replace arrContact at %d,with new phone:%@",index,((DPContactPerson *)object).phones);
+//}
 
 #pragma mark - for test
 - (void)__testInitContactData
@@ -140,7 +140,7 @@ static FriendDataProxy *sharedFriendDataProxy = nil;
     [ImDataUtil copyFrom:object To:tempDBUserFromContact];
     NSInteger findIndex = [ImDataUtil getIndexOf:self.arrUsersFromContact byItemKey:DB_PRIMARY_KEY_USER_FROM_CONTACT_UID withValue:[NSNumber numberWithInteger:tempDBUserFromContact.uid]];
     if (findIndex != NSNotFound) {
-        [self replaceObjectInArrContactAtIndex:findIndex withObject:object];
+        [[self mutableArrayUsersFromContact] replaceObjectAtIndex:findIndex withObject:object];
     }
     else {
         [[ContactDAO sharedDAO] insert:tempDBUserFromContact];
@@ -159,18 +159,18 @@ static FriendDataProxy *sharedFriendDataProxy = nil;
     
 }
 
-- (void)replaceObjectInArrUsersFromContactAtIndex:(NSUInteger)index withObject:(id)object
-{
-    DBUserFromContact *tempDBUserFromContact = [[DBUserFromContact alloc] init];
-    [ImDataUtil copyFrom:object To:tempDBUserFromContact];
-    
-    [[UsersFromContactDAO sharedDAO] update:
-     tempDBUserFromContact
-                                ByCondition:[DB_PRIMARY_KEY_USER_FROM_CONTACT_UID stringByAppendingString:@"=?"]
-                                       Bind:[NSMutableArray arrayWithObjects:[NSString stringWithFormat:@"%d",tempDBUserFromContact.uid],nil]];
-    [self.arrUsersFromContact replaceObjectAtIndex:index withObject:object];
-    NSLog(@"replace arrUsersFromContact at %d,with new uid:%d",index,((DPUserFromContact *)object).uid);
-}
+//- (void)replaceObjectInArrUsersFromContactAtIndex:(NSUInteger)index withObject:(id)object
+//{
+//    DBUserFromContact *tempDBUserFromContact = [[DBUserFromContact alloc] init];
+//    [ImDataUtil copyFrom:object To:tempDBUserFromContact];
+//    
+//    [[UsersFromContactDAO sharedDAO] update:
+//     tempDBUserFromContact
+//                                ByCondition:[DB_PRIMARY_KEY_USER_FROM_CONTACT_UID stringByAppendingString:@"=?"]
+//                                       Bind:[NSMutableArray arrayWithObjects:[NSString stringWithFormat:@"%d",tempDBUserFromContact.uid],nil]];
+//    [self.arrUsersFromContact replaceObjectAtIndex:index withObject:object];
+//    NSLog(@"replace arrUsersFromContact at %d,with new uid:%d",index,((DPUserFromContact *)object).uid);
+//}
 
 #pragma mark - users
 
@@ -196,11 +196,11 @@ static FriendDataProxy *sharedFriendDataProxy = nil;
 {
     DBFriend *tempDBFriend = [[DBFriend alloc] init];
     [ImDataUtil copyFrom:object To:tempDBFriend];
-//    NSInteger findIndex = [ImDataUtil getIndexOf:self.arrFriends byItemKey:DB_PRIMARY_KEY_FRIEND_UID withValue:[NSNumber numberWithInteger:tempDBFriend.uid]];
-//    if (findIndex != NSNotFound) {
-//        [self replaceObjectInArrFriendsAtIndex:findIndex withObject:object];
-//    }
-//    else
+    NSInteger findIndex = [ImDataUtil getIndexOf:self.arrFriends byItemKey:DB_PRIMARY_KEY_FRIEND_UID withValue:[NSNumber numberWithInteger:tempDBFriend.uid]];
+    if (findIndex != NSNotFound) {
+        [[self mutableArrayFriends] replaceObjectAtIndex:findIndex withObject:object];
+    }
+    else
     {
         [[FriendDAO sharedDAO] insert:tempDBFriend];
         [self.arrFriends insertObject:object atIndex:index];

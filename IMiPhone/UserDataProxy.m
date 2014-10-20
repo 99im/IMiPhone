@@ -180,11 +180,11 @@ static UserDataProxy *sharedProxy = nil;
 {
     DBUser *tempDBUser = [[DBUser alloc] init];
     [ImDataUtil copyFrom:object To:tempDBUser];
-//    NSInteger findIndex = [ImDataUtil getIndexOf:self.arrUsers byItemKey:DB_PRIMARY_KEY_USER_UID withValue:[NSNumber numberWithInteger:tempDBUser.uid]];
-//    if (findIndex != NSNotFound) {
-////        [self replaceObjectInArrUsersAtIndex:findIndex withObject:object];
-//    }
-//    else
+    NSInteger findIndex = [ImDataUtil getIndexOf:self.arrUsers byItemKey:DB_PRIMARY_KEY_USER_UID withValue:[NSNumber numberWithInteger:tempDBUser.uid]];
+    if (findIndex != NSNotFound) {
+        [[self mutableArrayUsers] replaceObjectAtIndex:findIndex withObject:object];
+    }
+    else
     {
         [[UserDAO sharedDAO] insert:tempDBUser];
         [self.arrUsers insertObject:object atIndex:index];
