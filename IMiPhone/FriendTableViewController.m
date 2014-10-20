@@ -64,8 +64,6 @@
             [self.arrFriendsData addObject:user];
         }
     }
-    
-    NSLog(@"y坐标%f",self.tableView.frame.origin.y);
 }
 
 

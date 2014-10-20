@@ -47,6 +47,8 @@ enum
 {
     [super viewDidLoad];
     
+    [[FriendDataProxy sharedProxy] __testInitContactData];
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -61,7 +63,13 @@ enum
     for (NSInteger i = 0; i < usersFromContact.count; i++) {
         DPUserFromContact *userFromContact = [usersFromContact objectAtIndex:i];
         DPUser *dpUser = [[UserDataProxy sharedProxy] getUserInfoFromUid:userFromContact.uid];
-        [self.arrUsers addObject:dpUser];
+        if (dpUser) {
+            [self.arrUsers addObject:dpUser];
+        }
+        else {
+            NSAssert(YES, @"Can not find  contact user from userDataProxy!!!!!");
+        }
+        
     }
     NSArray *arrContact = [[FriendDataProxy sharedProxy] mutableArrayContact];
     for (NSInteger i = 0; i < arrContact.count; i++) {
@@ -114,15 +122,14 @@ enum
     UITableViewCell *cell;
     if (indexPath.section == Section_users) {
         cell = [self.tableView dequeueReusableCellWithIdentifier:@"AddressAddTVTableViewCell" forIndexPath:indexPath];
-//        (AddR)cell
+        DPUser *user = [self.arrUsers objectAtIndex:indexPath.row];
+        ((AddressAddTVTableViewCell *)cell).lblNick.text = user.nick;
     }
     else if (indexPath.section == Section_contact) {
          cell = [self.tableView dequeueReusableCellWithIdentifier:@"AddressInviteTVTableViewCell" forIndexPath:indexPath];
+        ((AddressInviteTVTableViewCell *)cell).lblName.text = [self.arrAddressBookNames objectAtIndex:indexPath.row];
+        ((AddressInviteTVTableViewCell *)cell).lblName.text = [self.arrAddressBookNames objectAtIndex:indexPath.row];
     }
-//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
-    
-    // Configure the cell...
-    
     return cell;
 }
 

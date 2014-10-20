@@ -97,6 +97,7 @@ static FriendDataProxy *sharedFriendDataProxy = nil;
 //}
 
 #pragma mark - for test
+
 - (void)__testInitContactData
 {
     DPContactPerson *dpPerson = [[DPContactPerson alloc] init];
@@ -110,7 +111,7 @@ static FriendDataProxy *sharedFriendDataProxy = nil;
     [[self mutableArrayContact] addObject:dpPerson];
     
     DPUserFromContact *dpUserFromContact = [[DPUserFromContact alloc] init];
-    dpUserFromContact.uid = 26;
+    dpUserFromContact.uid = 27;
     [[self mutableArrayUsersFromContact] addObject:dpUserFromContact];
 }
 
@@ -131,7 +132,7 @@ static FriendDataProxy *sharedFriendDataProxy = nil;
             }
         }
     }
-    return [self mutableArrayValueForKey:@"arrContact"];
+    return [self mutableArrayValueForKey:@"arrUsersFromContact"];
 }
 
 - (void)insertObject:(id)object inArrUsersFromContactAtIndex:(NSUInteger)index
