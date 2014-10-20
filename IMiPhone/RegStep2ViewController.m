@@ -68,7 +68,7 @@
 
 - (void)registerMessageNotification
 {
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sendTypeRegisterResult:) name:NOTI__ACCOUNT_REGISTER_ object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sendTypeRegisterResult:) name:NOTI_H__ACCOUNT_REGISTER_ object:nil];
 }
 
 - (void)removeMessageNotification

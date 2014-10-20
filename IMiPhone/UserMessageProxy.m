@@ -31,26 +31,26 @@ static UserMessageProxy *sharedUserMessageProxy = nil;
 {
     //使用http
     NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
-    [params setObject:oid forKey:KEYQ__USER_SEARCH__OID];
+    [params setObject:oid forKey:KEYQ_H__USER_SEARCH__OID];
    
-    IMNWMessage *message = [IMNWMessage createForHttp:PATH__USER_SEARCH_ withParams:params withMethod:METHOD__USER_SEARCH_ ssl:NO];
+    IMNWMessage *message = [IMNWMessage createForHttp:PATH_H__USER_SEARCH_ withParams:params withMethod:METHOD_H__USER_SEARCH_ ssl:NO];
     [[IMNWManager sharedNWManager] sendMessage:message withResponse:^(NSString *responseString, NSData *responseData) {
         NSError *err = nil;
         NSMutableDictionary *json = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingAllowFragments error:&err];
         if (err) {
             NSAssert1(YES, @"JSON create error: %@", err);
-            [[NSNotificationCenter defaultCenter] postNotificationName:NOTI__USER_SEARCH_ object:err];
+            [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_H__USER_SEARCH_ object:err];
         }
         else {
-            NSArray *userList = [json objectForKey:KEYP__USER_SEARCH__LIST];
+            NSArray *userList = [json objectForKey:KEYP_H__USER_SEARCH__LIST];
             NSDictionary *userInfo = nil;
             if (userList && userList.count > 0) {
                 userInfo = userList[0];
                 
                 DPUser *dpUser = [[DPUser alloc] init];
-                dpUser.uid = [[userInfo objectForKey:KEYP__USER_SEARCH__LIST_UINFO_UID] integerValue];
-                dpUser.oid = [userInfo objectForKey:KEYP__USER_SEARCH__LIST_UINFO_OID];
-                dpUser.nick = [userInfo objectForKey:KEYP__USER_SEARCH__LIST_UINFO_NICK];
+                dpUser.uid = [[userInfo objectForKey:KEYP_H__USER_SEARCH__LIST_UINFO_UID] integerValue];
+                dpUser.oid = [userInfo objectForKey:KEYP_H__USER_SEARCH__LIST_UINFO_OID];
+                dpUser.nick = [userInfo objectForKey:KEYP_H__USER_SEARCH__LIST_UINFO_NICK];
                 
                 NSInteger findIndex = [ImDataUtil getIndexOf:[[UserDataProxy sharedProxy] mutableArrayUsers] byItemKey:DB_PRIMARY_KEY_USER_UID withValue:[NSNumber numberWithInteger:dpUser.uid]];;
                 
@@ -63,9 +63,9 @@ static UserMessageProxy *sharedUserMessageProxy = nil;
                     [[UserDataProxy sharedProxy] mutableArrayUsers][findIndex] = srcUser;
                     
                 }
-                [UserDataProxy sharedProxy].showUserInfoUid = [[userInfo objectForKey:KEYP__USER_SEARCH__LIST_UINFO_UID] integerValue];
-                [UserDataProxy sharedProxy].showUserInfoRleation = [[userInfo objectForKey:KEYP__USER_SEARCH__LIST_UINFO_RELATION] integerValue];
-                [[NSNotificationCenter defaultCenter] postNotificationName:NOTI__USER_SEARCH_ object:nil];
+                [UserDataProxy sharedProxy].showUserInfoUid = [[userInfo objectForKey:KEYP_H__USER_SEARCH__LIST_UINFO_UID] integerValue];
+                [UserDataProxy sharedProxy].showUserInfoRleation = [[userInfo objectForKey:KEYP_H__USER_SEARCH__LIST_UINFO_RELATION] integerValue];
+                [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_H__USER_SEARCH_ object:nil];
             }
         }
     }];

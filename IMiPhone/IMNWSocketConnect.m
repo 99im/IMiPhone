@@ -64,7 +64,7 @@ char cryptKey[17];
 {
     NSLog(@"Socket connect succceed: %@ : %hu", host, port);
     if (!CRYPT) {
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sendTypeLogin:) name:NOTI_ACCOUNT_LOGIN object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sendTypeLogin:) name:NOTI_S_ACCOUNT_LOGIN object:nil];
         [[AccountMessageProxy sharedProxy] sendTypeLogin];
     }
 }
@@ -83,7 +83,7 @@ char cryptKey[17];
         keyRevert(originalKey, cryptKey);
         [self.socket readDataToData:term withTimeout:-1 tag:TAG_MSG];
         
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sendTypeLogin:) name:NOTI_ACCOUNT_LOGIN object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sendTypeLogin:) name:NOTI_S_ACCOUNT_LOGIN object:nil];
         [[AccountMessageProxy sharedProxy] sendTypeLogin];
     }
 }
@@ -175,7 +175,7 @@ char cryptKey[17];
     }
     
     self.dataToSend = nil;
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTI_ACCOUNT_LOGIN object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTI_S_ACCOUNT_LOGIN object:nil];
 }
 
 @end

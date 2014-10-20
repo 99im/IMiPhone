@@ -31,10 +31,10 @@ static FriendMessageProxy *sharedFriendMessageProxy = nil;
 - (void)sendTypeFocusAdd:(NSNumber *)uid {
   //使用http
   NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
-  [params setObject:uid forKey:KEYQ__FRIEND_FOCUS_ADD__FOCUSUID];
-  IMNWMessage *message = [IMNWMessage createForHttp:PATH__FRIEND_FOCUS_ADD_
+  [params setObject:uid forKey:KEYQ_H__FRIEND_FOCUS_ADD__FOCUSUID];
+  IMNWMessage *message = [IMNWMessage createForHttp:PATH_H__FRIEND_FOCUS_ADD_
                                          withParams:params
-                                         withMethod:METHOD__FRIEND_FOCUS_ADD_
+                                         withMethod:METHOD_H__FRIEND_FOCUS_ADD_
                                                 ssl:NO];
   [[IMNWManager sharedNWManager]
        sendMessage:message
@@ -50,7 +50,7 @@ static FriendMessageProxy *sharedFriendMessageProxy = nil;
           }
           if (json) {
             NSInteger errorcode = [[json
-                objectForKey:KEYP__FRIEND_FOCUS_ADD__ERROR_CODE] integerValue];
+                objectForKey:KEYP_H__FRIEND_FOCUS_ADD__ERROR_CODE] integerValue];
             if (errorcode != 0) {
               NSNumber *errorCodeNumber =
                   [NSNumber numberWithInteger:errorcode];
@@ -58,15 +58,15 @@ static FriendMessageProxy *sharedFriendMessageProxy = nil;
               NSDictionary *userInfo =
                   [NSDictionary dictionaryWithObject:errorMessage
                                               forKey:NSLocalizedDescriptionKey];
-              NSError *error = [NSError errorWithDomain:PATH__FRIEND_FOCUS_ADD_
+              NSError *error = [NSError errorWithDomain:PATH_H__FRIEND_FOCUS_ADD_
                                                    code:errorcode
                                                userInfo:userInfo];
               [[NSNotificationCenter defaultCenter]
-                  postNotificationName:NOTI__FRIEND_FOCUS_ADD_
+                  postNotificationName:NOTI_H__FRIEND_FOCUS_ADD_
                                 object:error];
             } else {
               [[NSNotificationCenter defaultCenter]
-                  postNotificationName:NOTI__FRIEND_FOCUS_ADD_
+                  postNotificationName:NOTI_H__FRIEND_FOCUS_ADD_
                                 object:nil];
             }
           }
@@ -75,11 +75,11 @@ static FriendMessageProxy *sharedFriendMessageProxy = nil;
 
 - (void)sendTypeFocusList:(NSNumber *)start withPageNum:(NSNumber *)pageNum {
   NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
-  [params setObject:start forKey:KEYQ__FRIEND_FOCUS_LIST__START];
-  [params setObject:pageNum forKey:KEYQ__FRIEND_FOCUS_LIST__PAGENUM];
-  IMNWMessage *message = [IMNWMessage createForHttp:PATH__FRIEND_FOCUS_LIST_
+  [params setObject:start forKey:KEYQ_H__FRIEND_FOCUS_LIST__START];
+  [params setObject:pageNum forKey:KEYQ_H__FRIEND_FOCUS_LIST__PAGENUM];
+  IMNWMessage *message = [IMNWMessage createForHttp:PATH_H__FRIEND_FOCUS_LIST_
                                          withParams:params
-                                         withMethod:METHOD__FRIEND_FOCUS_LIST_
+                                         withMethod:METHOD_H__FRIEND_FOCUS_LIST_
                                                 ssl:NO];
   [[IMNWManager sharedNWManager]
        sendMessage:message
@@ -93,12 +93,12 @@ static FriendMessageProxy *sharedFriendMessageProxy = nil;
             NSAssert1(YES, @"JSON create error: %@", err);
           } else {
             int errorcode = [[json
-                objectForKey:KEYP__FRIEND_FOCUS_LIST__ERROR_CODE] intValue];
+                objectForKey:KEYP_H__FRIEND_FOCUS_LIST__ERROR_CODE] intValue];
             if (errorcode == 0) {
               //数据处理
               // NSArray *listUserInfo = [json valueForKeyPath:@"list.uinfo"];
               NSArray *listUserInfo =
-                  [json objectForKey:KEYP__FRIEND_FOCUS_LIST__LIST];
+                  [json objectForKey:KEYP_H__FRIEND_FOCUS_LIST__LIST];
 
               [FriendDataProxy sharedProxy].listMyFocus = listUserInfo;
 
@@ -107,7 +107,7 @@ static FriendMessageProxy *sharedFriendMessageProxy = nil;
 
               // gjus
               [[NSNotificationCenter defaultCenter]
-                  postNotificationName:NOTI__FRIEND_FOCUS_LIST_
+                  postNotificationName:NOTI_H__FRIEND_FOCUS_LIST_
                                 object:nil];
             } else {
               NSAssert1(YES, @"Http connect response error: %i", errorcode);
@@ -116,11 +116,11 @@ static FriendMessageProxy *sharedFriendMessageProxy = nil;
               NSDictionary *userInfo =
                   [NSDictionary dictionaryWithObject:errorMessage
                                               forKey:NSLocalizedDescriptionKey];
-              NSError *error = [NSError errorWithDomain:PATH__FRIEND_FOCUS_LIST_
+              NSError *error = [NSError errorWithDomain:PATH_H__FRIEND_FOCUS_LIST_
                                                    code:errorcode
                                                userInfo:userInfo];
               [[NSNotificationCenter defaultCenter]
-                  postNotificationName:NOTI__FRIEND_FOCUS_LIST_
+                  postNotificationName:NOTI_H__FRIEND_FOCUS_LIST_
                                 object:error];
             }
           }
@@ -129,10 +129,10 @@ static FriendMessageProxy *sharedFriendMessageProxy = nil;
 
 - (void)sendTypeFocusCancel:(NSNumber *)uid {
   NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
-  [params setObject:uid forKey:KEYQ__FRIEND_FOCUS_CANCEL__FOCUSUID];
-  IMNWMessage *message = [IMNWMessage createForHttp:PATH__FRIEND_FOCUS_CANCEL_
+  [params setObject:uid forKey:KEYQ_H__FRIEND_FOCUS_CANCEL__FOCUSUID];
+  IMNWMessage *message = [IMNWMessage createForHttp:PATH_H__FRIEND_FOCUS_CANCEL_
                                          withParams:params
-                                         withMethod:METHOD__FRIEND_FOCUS_CANCEL_
+                                         withMethod:METHOD_H__FRIEND_FOCUS_CANCEL_
                                                 ssl:NO];
   [[IMNWManager sharedNWManager]
        sendMessage:message
@@ -146,7 +146,7 @@ static FriendMessageProxy *sharedFriendMessageProxy = nil;
           if (json) {
             NSInteger errorcode =
                 [[json objectForKey:
-                           KEYP__FRIEND_FOCUS_CANCEL__ERROR_CODE] integerValue];
+                           KEYP_H__FRIEND_FOCUS_CANCEL__ERROR_CODE] integerValue];
             if (errorcode != 0) {
               NSNumber *errorCodeNumber =
                   [NSNumber numberWithInteger:errorcode];
@@ -155,15 +155,15 @@ static FriendMessageProxy *sharedFriendMessageProxy = nil;
                   [NSDictionary dictionaryWithObject:errorMessage
                                               forKey:NSLocalizedDescriptionKey];
               NSError *error =
-                  [NSError errorWithDomain:PATH__FRIEND_FOCUS_CANCEL_
+                  [NSError errorWithDomain:PATH_H__FRIEND_FOCUS_CANCEL_
                                       code:errorcode
                                   userInfo:userInfo];
               [[NSNotificationCenter defaultCenter]
-                  postNotificationName:NOTI__FRIEND_FOCUS_CANCEL_
+                  postNotificationName:NOTI_H__FRIEND_FOCUS_CANCEL_
                                 object:error];
             } else {
               [[NSNotificationCenter defaultCenter]
-                  postNotificationName:NOTI__FRIEND_FOCUS_CANCEL_
+                  postNotificationName:NOTI_H__FRIEND_FOCUS_CANCEL_
                                 object:nil];
             }
           }
@@ -172,11 +172,11 @@ static FriendMessageProxy *sharedFriendMessageProxy = nil;
 
 - (void)sendTypeFanList:(NSNumber *)start withPageNum:(NSNumber *)pageNum {
   NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
-  [params setObject:start forKey:KEYQ__FRIEND_FAN_LIST__START];
-  [params setObject:pageNum forKey:KEYQ__FRIEND_FAN_LIST__PAGENUM];
-  IMNWMessage *message = [IMNWMessage createForHttp:PATH__FRIEND_FAN_LIST_
+  [params setObject:start forKey:KEYQ_H__FRIEND_FAN_LIST__START];
+  [params setObject:pageNum forKey:KEYQ_H__FRIEND_FAN_LIST__PAGENUM];
+  IMNWMessage *message = [IMNWMessage createForHttp:PATH_H__FRIEND_FAN_LIST_
                                          withParams:params
-                                         withMethod:METHOD__FRIEND_FAN_LIST_
+                                         withMethod:METHOD_H__FRIEND_FAN_LIST_
                                                 ssl:NO];
   [[IMNWManager sharedNWManager]
        sendMessage:message
@@ -190,11 +190,11 @@ static FriendMessageProxy *sharedFriendMessageProxy = nil;
             NSAssert1(YES, @"JSON create error: %@", err);
           } else {
             int errorcode = [
-                [json objectForKey:KEYP__FRIEND_FAN_LIST__ERROR_CODE] intValue];
+                [json objectForKey:KEYP_H__FRIEND_FAN_LIST__ERROR_CODE] intValue];
             if (errorcode == 0) {
               //数据处理
               NSArray *listUserInfo =
-                  [json objectForKey:KEYP__FRIEND_FAN_LIST__LIST];
+                  [json objectForKey:KEYP_H__FRIEND_FAN_LIST__LIST];
 
               [FriendDataProxy sharedProxy].listMyFans = listUserInfo;
 
@@ -202,7 +202,7 @@ static FriendMessageProxy *sharedFriendMessageProxy = nil;
               NSLog(@"myFans \n%@", listUserInfo);
 
               [[NSNotificationCenter defaultCenter]
-                  postNotificationName:NOTI__FRIEND_FAN_LIST_
+                  postNotificationName:NOTI_H__FRIEND_FAN_LIST_
                                 object:nil];
             } else {
               NSAssert1(YES, @"Http connect response error: %i", errorcode);
@@ -211,11 +211,11 @@ static FriendMessageProxy *sharedFriendMessageProxy = nil;
               NSDictionary *userInfo =
                   [NSDictionary dictionaryWithObject:errorMessage
                                               forKey:NSLocalizedDescriptionKey];
-              NSError *error = [NSError errorWithDomain:PATH__FRIEND_FAN_LIST_
+              NSError *error = [NSError errorWithDomain:PATH_H__FRIEND_FAN_LIST_
                                                    code:errorcode
                                                userInfo:userInfo];
               [[NSNotificationCenter defaultCenter]
-                  postNotificationName:NOTI__FRIEND_FAN_LIST_
+                  postNotificationName:NOTI_H__FRIEND_FAN_LIST_
                                 object:error];
             }
           }
@@ -225,12 +225,12 @@ static FriendMessageProxy *sharedFriendMessageProxy = nil;
 - (void)sendTypeFriendList:(NSNumber *)start withPageNum:(NSNumber *)pageNum
 {
     NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
-    [params setObject:start forKey:KEYQ__FRIEND_FRIEND_LIST__START];
-    [params setObject:pageNum forKey:KEYQ__FRIEND_FRIEND_LIST__PAGENUM];
+    [params setObject:start forKey:KEYQ_H__FRIEND_FRIEND_LIST__START];
+    [params setObject:pageNum forKey:KEYQ_H__FRIEND_FRIEND_LIST__PAGENUM];
     IMNWMessage *message = [IMNWMessage
-                            createForHttp:PATH__FRIEND_FRIEND_LIST_
+                            createForHttp:PATH_H__FRIEND_FRIEND_LIST_
                             withParams:params
-                            withMethod:METHOD__FRIEND_FRIEND_LIST_
+                            withMethod:METHOD_H__FRIEND_FRIEND_LIST_
                             ssl:NO];
     [[IMNWManager sharedNWManager]
      sendMessage:message
@@ -243,19 +243,19 @@ static FriendMessageProxy *sharedFriendMessageProxy = nil;
          if (err) {
              NSAssert1(YES, @"JSON create error: %@", err);
          } else {
-             NSInteger errorcode = [[json objectForKey:KEYP__FRIEND_FRIEND_LIST__ERROR_CODE] integerValue];
+             NSInteger errorcode = [[json objectForKey:KEYP_H__FRIEND_FRIEND_LIST__ERROR_CODE] integerValue];
              if (errorcode == 0) {
-                 NSArray *list = [json objectForKey:KEYP__FRIEND_FRIEND_LIST__LIST];
+                 NSArray *list = [json objectForKey:KEYP_H__FRIEND_FRIEND_LIST__LIST];
                  NSLog(@"%@",list);
                  if (list) {
                      for (NSInteger i = 0; i < list.count; i++) {
                          NSDictionary *tempFriend = list[i];
                          DPUser *dpUser = [[DPUser alloc] init];
                          DPFriend *dpFriend = [[DPFriend alloc] init];
-                         NSDictionary *userInfo = [tempFriend objectForKey:KEYP__FRIEND_FRIEND_LIST__LIST_UINFO];
-                         dpUser.uid = [[userInfo objectForKey:KEYP__FRIEND_FRIEND_LIST__LIST_UINFO_UID] integerValue];
-                         dpUser.oid = [userInfo objectForKey:KEYP__FRIEND_FRIEND_LIST__LIST_UINFO_OID];
-                         dpUser.nick = [userInfo objectForKey:KEYP__FRIEND_FRIEND_LIST__LIST_UINFO_NICK];
+                         NSDictionary *userInfo = [tempFriend objectForKey:KEYP_H__FRIEND_FRIEND_LIST__LIST_UINFO];
+                         dpUser.uid = [[userInfo objectForKey:KEYP_H__FRIEND_FRIEND_LIST__LIST_UINFO_UID] integerValue];
+                         dpUser.oid = [userInfo objectForKey:KEYP_H__FRIEND_FRIEND_LIST__LIST_UINFO_OID];
+                         dpUser.nick = [userInfo objectForKey:KEYP_H__FRIEND_FRIEND_LIST__LIST_UINFO_NICK];
                          
                          
                          NSInteger findIndex = [ImDataUtil getIndexOf:[[UserDataProxy sharedProxy] mutableArrayUsers] byItemKey:DB_PRIMARY_KEY_USER_UID withValue:[NSNumber numberWithInteger:dpUser.uid]];;
@@ -269,9 +269,9 @@ static FriendMessageProxy *sharedFriendMessageProxy = nil;
                              [[UserDataProxy sharedProxy] mutableArrayUsers][findIndex] = srcUser;
                              
                          }
-                         dpFriend.uid = [[tempFriend objectForKey:KEYP__FRIEND_FRIEND_LIST__LIST_FRIENDUID]integerValue];
-                         dpFriend.memo = [tempFriend objectForKey:KEYP__FRIEND_FRIEND_LIST__LIST_MEMO];
-                         dpFriend.byName = [tempFriend objectForKey:KEYP__FRIEND_FRIEND_LIST__LIST_BYNAME];
+                         dpFriend.uid = [[tempFriend objectForKey:KEYP_H__FRIEND_FRIEND_LIST__LIST_FRIENDUID]integerValue];
+                         dpFriend.memo = [tempFriend objectForKey:KEYP_H__FRIEND_FRIEND_LIST__LIST_MEMO];
+                         dpFriend.byName = [tempFriend objectForKey:KEYP_H__FRIEND_FRIEND_LIST__LIST_BYNAME];
                          
                          findIndex = [ImDataUtil getIndexOf:[[FriendDataProxy sharedProxy] mutableArrayFriends] byItemKey:DB_PRIMARY_KEY_FRIEND_UID withValue:[NSNumber numberWithInteger:dpFriend.uid]];
                          if (findIndex == NSNotFound) {
@@ -285,7 +285,7 @@ static FriendMessageProxy *sharedFriendMessageProxy = nil;
                      }
                  }
                  [[NSNotificationCenter defaultCenter]
-                  postNotificationName:NOTI__FRIEND_FRIEND_LIST_
+                  postNotificationName:NOTI_H__FRIEND_FRIEND_LIST_
                   object:nil];
              }
              else {
