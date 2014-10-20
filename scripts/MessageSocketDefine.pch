@@ -5,6 +5,7 @@
 /*
 mark: friend
 type: /contact/userlist/
+kind: socket
 describe: 获取通讯录好友列表
 example: http://local.taiqiu.com:7070/contact/userlist/?contact=[{%22mobile%22%EF%BC%9A%E2%80%9C12345678908%E2%80%9D}]&verify=16_1411380260_8e01b76b234112ca88fdb3645eacac44
 
@@ -22,17 +23,17 @@ example: http://local.taiqiu.com:7070/contact/userlist/?contact=[{%22mobile%22%E
 ]
 }
 */
-#define TYPE_FRIEND__CONTACT_USERLIST_ @"/contact/userlist/"
-#define NOTI_FRIEND__CONTACT_USERLIST_ @"MPfriendcontactuserlistNotifiction"
-#define KEYP_FRIEND__CONTACT_USERLIST__ERROR_CODE @"error_code" //error_code int 0
-#define KEYP_FRIEND__CONTACT_USERLIST__ERROR_CODE_LIST @"list" // list array
-#define KEYP_FRIEND__CONTACT_USERLIST__ERROR_CODE_UINFO @"uinfo" // uinfo
-#define KEYP_FRIEND__CONTACT_USERLIST__ERROR_CODE_UINFO_UID @"uid" //  uid
-#define KEYP_FRIEND__CONTACT_USERLIST__ERROR_CODE_UINFO_OID @"oid" //  oid
-#define KEYP_FRIEND__CONTACT_USERLIST__ERROR_CODE_UINFO_NICK @"nick" //  nick
-#define KEYP_FRIEND__CONTACT_USERLIST__ERROR_CODE_UINFO_CITY @"city" //  city
-#define KEYP_FRIEND__CONTACT_USERLIST__ERROR_CODE_UINFO_VIP @"vip" //  vip
-#define KEYP_FRIEND__CONTACT_USERLIST__ERROR_CODE_UINFO_RELATION @"relation" //  relation 0 无关系 1好友 2  偶像 3 粉丝
+#define TYPE_S_FRIEND__CONTACT_USERLIST_ @"/contact/userlist/"
+#define NOTI_S_FRIEND__CONTACT_USERLIST_ @"MPfriendcontactuserlistNotifiction"
+#define KEYP_S_FRIEND__CONTACT_USERLIST__ERROR_CODE @"error_code" //error_code int 0
+#define KEYP_S_FRIEND__CONTACT_USERLIST__ERROR_CODE_LIST @"list" // list array
+#define KEYP_S_FRIEND__CONTACT_USERLIST__ERROR_CODE_UINFO @"uinfo" // uinfo
+#define KEYP_S_FRIEND__CONTACT_USERLIST__ERROR_CODE_UINFO_UID @"uid" //  uid
+#define KEYP_S_FRIEND__CONTACT_USERLIST__ERROR_CODE_UINFO_OID @"oid" //  oid
+#define KEYP_S_FRIEND__CONTACT_USERLIST__ERROR_CODE_UINFO_NICK @"nick" //  nick
+#define KEYP_S_FRIEND__CONTACT_USERLIST__ERROR_CODE_UINFO_CITY @"city" //  city
+#define KEYP_S_FRIEND__CONTACT_USERLIST__ERROR_CODE_UINFO_VIP @"vip" //  vip
+#define KEYP_S_FRIEND__CONTACT_USERLIST__ERROR_CODE_UINFO_RELATION @"relation" //  relation 0 无关系 1好友 2  偶像 3 粉丝
 
 
 #define MARK_CHAT @"chat"
@@ -40,30 +41,32 @@ example: http://local.taiqiu.com:7070/contact/userlist/?contact=[{%22mobile%22%E
 /*
 mark: chat
 type: p2pchatN
+kind: socket
 describe: 好友聊天通知
 example: {"mark":"chat","type":"p2pchatN","info":{"time":1412751697,"content":"hello","targetUid":17,"msgType":0,"sid":16}}
 */
-#define TYPE_CHAT_P2PCHATN @"p2pchatN"
-#define NOTI_CHAT_P2PCHATN @"MPchatp2pchatNNotifiction"
-#define KEYP_CHAT_P2PCHATN_TARGETUID @"targetUid" //targetUid int 好友uid
-#define KEYP_CHAT_P2PCHATN_MSGTYPE @"msgType" //msgType int 消息类型 0 为文本 1 为声音
-#define KEYP_CHAT_P2PCHATN_CONTENT @"content" //content string 消息内容
-#define KEYP_CHAT_P2PCHATN_TIME @"time" //time int unix时间戳
-#define KEYP_CHAT_P2PCHATN_SENDUID @"sendUid" //sendUid int 发送用户uid
+#define TYPE_S_CHAT_P2PCHATN @"p2pchatN"
+#define NOTI_S_CHAT_P2PCHATN @"MPchatp2pchatNNotifiction"
+#define KEYP_S_CHAT_P2PCHATN_TARGETUID @"targetUid" //targetUid int 好友uid
+#define KEYP_S_CHAT_P2PCHATN_MSGTYPE @"msgType" //msgType int 消息类型 0 为文本 1 为声音
+#define KEYP_S_CHAT_P2PCHATN_CONTENT @"content" //content string 消息内容
+#define KEYP_S_CHAT_P2PCHATN_TIME @"time" //time int unix时间戳
+#define KEYP_S_CHAT_P2PCHATN_SENDUID @"sendUid" //sendUid int 发送用户uid
 
 /*
 mark: chat
 type: p2pchat
+kind: socket
 describe: 好友聊天
 example: {"mark":"chat","type":"p2pchat","info":{"content":"hello","msgType":0,"targetUid":17,"sid":16}}
 
 */
-#define TYPE_CHAT_P2PCHAT @"p2pchat"
-#define NOTI_CHAT_P2PCHAT @"MPchatp2pchatNotifiction"
-#define KEYQ_CHAT_P2PCHAT_TARGETUID @"targetUid" //targetUid int 好友uid
-#define KEYQ_CHAT_P2PCHAT_MSGTYPE @"msgType" //msgType int 消息类型 0 为文本 1 为声音
-#define KEYQ_CHAT_P2PCHAT_CONTENT @"content" //content string 消息内容
-#define KEYP_CHAT_P2PCHAT_RES @"res" //res
+#define TYPE_S_CHAT_P2PCHAT @"p2pchat"
+#define NOTI_S_CHAT_P2PCHAT @"MPchatp2pchatNotifiction"
+#define KEYQ_S_CHAT_P2PCHAT_TARGETUID @"targetUid" //targetUid int 好友uid
+#define KEYQ_S_CHAT_P2PCHAT_MSGTYPE @"msgType" //msgType int 消息类型 0 为文本 1 为声音
+#define KEYQ_S_CHAT_P2PCHAT_CONTENT @"content" //content string 消息内容
+#define KEYP_S_CHAT_P2PCHAT_RES @"res" //res
 
 
 #define MARK_ACCOUNT @"account"
@@ -71,11 +74,12 @@ example: {"mark":"chat","type":"p2pchat","info":{"content":"hello","msgType":0,"
 /*
 mark: account
 type: login
+kind: socket
 describe: 登录长连服务器
 example: 
 */
-#define TYPE_ACCOUNT_LOGIN @"login"
-#define NOTI_ACCOUNT_LOGIN @"MPaccountloginNotifiction"
-#define KEYQ_ACCOUNT_LOGIN_VERIFY @"verify" //verify      string 用户认证串 有效期暂定一年 15_1410252423_b1388aeea1a1c94e7ae4aa4e8f6b2e83
-#define KEYP_ACCOUNT_LOGIN_RES @"res" //res int 1 
-#define KEYP_ACCOUNT_LOGIN_UID @"uid" //uid int 用户uid
+#define TYPE_S_ACCOUNT_LOGIN @"login"
+#define NOTI_S_ACCOUNT_LOGIN @"MPaccountloginNotifiction"
+#define KEYQ_S_ACCOUNT_LOGIN_VERIFY @"verify" //verify      string 用户认证串 有效期暂定一年 15_1410252423_b1388aeea1a1c94e7ae4aa4e8f6b2e83
+#define KEYP_S_ACCOUNT_LOGIN_RES @"res" //res int 1 
+#define KEYP_S_ACCOUNT_LOGIN_UID @"uid" //uid int 用户uid
