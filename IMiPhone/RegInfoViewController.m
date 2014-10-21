@@ -232,7 +232,7 @@
 
 - (void)registerMessageNotification
 {
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sendTypeUpdateinfoResult:) name:NOTI__ACCOUNT_UPDATEINFO_ object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sendTypeUpdateinfoResult:) name:NOTI_H__ACCOUNT_UPDATEINFO_ object:nil];
 }
 
 - (void)removeMessageNotification

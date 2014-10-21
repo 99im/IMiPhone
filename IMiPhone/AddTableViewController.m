@@ -181,7 +181,7 @@ const int sectionNum = 2;
 - (void)registerMessageNotification
 {
     //监听搜索用户结果的监听
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(skipToSearchResult:) name:NOTI__USER_SEARCH_ object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(skipToSearchResult:) name:NOTI_H__USER_SEARCH_ object:nil];
 }
 
 - (void)removeMessageNotification

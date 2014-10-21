@@ -62,8 +62,8 @@
 
 - (void)registerMessageNotification
 {
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sendHttpLoginResult:) name:NOTI__ACCOUNT_LOGIN_ object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sendHttpMyinfoResult:) name:NOTI__ACCOUNT_MYINFO_ object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sendHttpLoginResult:) name:NOTI_H__ACCOUNT_LOGIN_ object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sendHttpMyinfoResult:) name:NOTI_H__ACCOUNT_MYINFO_ object:nil];
 }
 
 - (void)removeMessageNotification

@@ -189,7 +189,7 @@ enum
 {
     //监听通讯录数据获取
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(imAddressBookGetData:) name:NOTIFY_IMADRRESSBOOK_GET_DATA object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(skipToSearchResult:) name:NOTI__CONTACT_UPLOAD_ object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(skipToSearchResult:) name:NOTI_H__CONTACT_UPLOAD_ object:nil];
 }
 
 - (void)removeMessageNotification

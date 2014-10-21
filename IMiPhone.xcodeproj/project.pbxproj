@@ -96,6 +96,10 @@
 		11B1C62C19E51AFB003D2711 /* ChatDataProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B1C62B19E51AFB003D2711 /* ChatDataProxy.m */; };
 		11B1C62D19E51AFB003D2711 /* ChatDataProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B1C62B19E51AFB003D2711 /* ChatDataProxy.m */; };
 		11DF9F8319A2276C00AE5D89 /* splash.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 11DF9F8519A2276C00AE5D89 /* splash.jpg */; };
+		11E1581319F4FFE1008544D1 /* MsgTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11E1581219F4FFE1008544D1 /* MsgTableViewController.m */; };
+		11E1581419F4FFE1008544D1 /* MsgTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11E1581219F4FFE1008544D1 /* MsgTableViewController.m */; };
+		11E1581719F5007F008544D1 /* MsgTableViewCellPrivateChat.m in Sources */ = {isa = PBXBuildFile; fileRef = 11E1581619F5007F008544D1 /* MsgTableViewCellPrivateChat.m */; };
+		11E1581819F5007F008544D1 /* MsgTableViewCellPrivateChat.m in Sources */ = {isa = PBXBuildFile; fileRef = 11E1581619F5007F008544D1 /* MsgTableViewCellPrivateChat.m */; };
 		11FAA8C419EF558E002048FA /* FriendTableViewCellUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 11FAA8C319EF558E002048FA /* FriendTableViewCellUser.m */; };
 		11FAA8C519EF558E002048FA /* FriendTableViewCellUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 11FAA8C319EF558E002048FA /* FriendTableViewCellUser.m */; };
 		11FC326F19F0A92C000A6733 /* FriendTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11FC326E19F0A92C000A6733 /* FriendTableViewController.m */; };
@@ -295,6 +299,10 @@
 		11B1C62A19E51AFB003D2711 /* ChatDataProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatDataProxy.h; sourceTree = "<group>"; };
 		11B1C62B19E51AFB003D2711 /* ChatDataProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatDataProxy.m; sourceTree = "<group>"; };
 		11DF9F8419A2276C00AE5D89 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "zh-Hans"; path = "zh-Hans.lproj/splash.jpg"; sourceTree = "<group>"; };
+		11E1581119F4FFE1008544D1 /* MsgTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MsgTableViewController.h; sourceTree = "<group>"; };
+		11E1581219F4FFE1008544D1 /* MsgTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MsgTableViewController.m; sourceTree = "<group>"; };
+		11E1581519F5007F008544D1 /* MsgTableViewCellPrivateChat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MsgTableViewCellPrivateChat.h; sourceTree = "<group>"; };
+		11E1581619F5007F008544D1 /* MsgTableViewCellPrivateChat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MsgTableViewCellPrivateChat.m; sourceTree = "<group>"; };
 		11FAA8C219EF558E002048FA /* FriendTableViewCellUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendTableViewCellUser.h; sourceTree = "<group>"; };
 		11FAA8C319EF558E002048FA /* FriendTableViewCellUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendTableViewCellUser.m; sourceTree = "<group>"; };
 		11FC326D19F0A92C000A6733 /* FriendTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendTableViewController.h; sourceTree = "<group>"; };
@@ -546,6 +554,17 @@
 			path = IMAddressBook;
 			sourceTree = "<group>";
 		};
+		11E1581019F4FF58008544D1 /* msg */ = {
+			isa = PBXGroup;
+			children = (
+				11E1581119F4FFE1008544D1 /* MsgTableViewController.h */,
+				11E1581219F4FFE1008544D1 /* MsgTableViewController.m */,
+				11E1581519F5007F008544D1 /* MsgTableViewCellPrivateChat.h */,
+				11E1581619F5007F008544D1 /* MsgTableViewCellPrivateChat.m */,
+			);
+			name = msg;
+			sourceTree = "<group>";
+		};
 		58438C0A19D412C400B6962B /* Nearby */ = {
 			isa = PBXGroup;
 			children = (
@@ -604,6 +623,7 @@
 		585971D71999F0C700258CB1 /* IMiPhone */ = {
 			isa = PBXGroup;
 			children = (
+				11E1581019F4FF58008544D1 /* msg */,
 				58438C0A19D412C400B6962B /* Nearby */,
 				58A9133C19D2BC4E008E5A25 /* User */,
 				58C14DCF19C80D40009334E1 /* Contact */,
@@ -1009,6 +1029,7 @@
 				110F561619D56E07003B9EB4 /* DPMessageGroups.m in Sources */,
 				58C14DD219C80D67009334E1 /* ContactViewController.m in Sources */,
 				58C14DEA19CAD70F009334E1 /* AddByInputTableViewCell.m in Sources */,
+				11E1581319F4FFE1008544D1 /* MsgTableViewController.m in Sources */,
 				116B6E8919B0534000DB1B5E /* DBGroup.m in Sources */,
 				117AC6A119EE7BCF00143973 /* UserDAO.m in Sources */,
 				585971E21999F0C700258CB1 /* imAppDelegate.m in Sources */,
@@ -1019,6 +1040,7 @@
 				58B496E819A7186A0082AE30 /* MKNetworkOperation.m in Sources */,
 				58BC1E3519C0304900722A00 /* RegisterViewController.m in Sources */,
 				58BACF0F19B5DAB900A72391 /* imPhotoPicker.m in Sources */,
+				11E1581719F5007F008544D1 /* MsgTableViewCellPrivateChat.m in Sources */,
 				116AB15219BF19DA00092E2C /* ChatCell.m in Sources */,
 				116B6E9619B058A400DB1B5E /* SqlightDriver.m in Sources */,
 				116B6E9719B058A400DB1B5E /* SqlightResult.m in Sources */,
@@ -1097,6 +1119,7 @@
 				110487AB19D90BFE0002AB36 /* MessageDataProxyTest.m in Sources */,
 				1171F7C919E8DE6300865A0B /* AddressAddTVTableViewCell.m in Sources */,
 				58BC1E5819C06BAE00722A00 /* NSData+MKBase64.m in Sources */,
+				11E1581419F4FFE1008544D1 /* MsgTableViewController.m in Sources */,
 				58BC1E5919C06BAE00722A00 /* NSDate+RFC1123.m in Sources */,
 				116BF87819C96F8F0015561B /* UserDataProxy.m in Sources */,
 				117AC6AA19EEB90200143973 /* IMAddressBook.m in Sources */,
@@ -1108,6 +1131,7 @@
 				58BC1E5E19C06BAE00722A00 /* crypt.c in Sources */,
 				58BC1E3E19C06B9000722A00 /* ChatTableViewController.m in Sources */,
 				58BC1E3F19C06B9000722A00 /* ChatCell.m in Sources */,
+				11E1581819F5007F008544D1 /* MsgTableViewCellPrivateChat.m in Sources */,
 				11FAA8C519EF558E002048FA /* FriendTableViewCellUser.m in Sources */,
 				58BC1E4019C06B9000722A00 /* LoginViewController.m in Sources */,
 				110F561719D56E07003B9EB4 /* DPMessageGroups.m in Sources */,

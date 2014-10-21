@@ -32,9 +32,9 @@ static AccountMessageProxy *sharedAccountMessageProxy = nil;
     [UserDataProxy sharedProxy].mobCountry = country;
     
     NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
-    [params setObject:country forKey:KEYQ__ACCOUNT_MOBCODE__MOBCOUNTRY];
-    [params setObject:phone forKey:KEYQ__ACCOUNT_MOBCODE__MOBILE];
-    IMNWMessage *message = [IMNWMessage createForHttp:PATH__ACCOUNT_MOBCODE_ withParams:params withMethod:METHOD__ACCOUNT_MOBCODE_ ssl:NO];
+    [params setObject:country forKey:KEYQ_H__ACCOUNT_MOBCODE__MOBCOUNTRY];
+    [params setObject:phone forKey:KEYQ_H__ACCOUNT_MOBCODE__MOBILE];
+    IMNWMessage *message = [IMNWMessage createForHttp:PATH_H__ACCOUNT_MOBCODE_ withParams:params withMethod:METHOD_H__ACCOUNT_MOBCODE_ ssl:NO];
     [[IMNWManager sharedNWManager] sendMessage:message withResponse:^(NSString *responseString, NSData *responseData) {
         NSError *err = nil;
         NSMutableDictionary *json = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingAllowFragments error:&err];
@@ -42,9 +42,9 @@ static AccountMessageProxy *sharedAccountMessageProxy = nil;
             NSAssert1(YES, @"JSON create error: %@", err);
         }
         else {
-            int errorcode = [[json objectForKey:KEYP__ACCOUNT_MOBCODE__ERROR_CODE] intValue];
+            int errorcode = [[json objectForKey:KEYP_H__ACCOUNT_MOBCODE__ERROR_CODE] intValue];
             if (errorcode == 0) {
-                [[NSNotificationCenter defaultCenter] postNotificationName:NOTI__ACCOUNT_MOBCODE_ object:nil];
+                [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_H__ACCOUNT_MOBCODE_ object:nil];
             }
             else {
                 NSAssert1(YES, @"Http connect response error: %i", errorcode);
@@ -52,8 +52,8 @@ static AccountMessageProxy *sharedAccountMessageProxy = nil;
                 NSString *errorMessage = [errorCodeNumber errorMessage];
                 NSDictionary *userInfo = [NSDictionary dictionaryWithObject:errorMessage
                                                                      forKey:NSLocalizedDescriptionKey];
-                NSError *error = [NSError errorWithDomain:PATH__ACCOUNT_MOBCODE_ code:errorcode userInfo:userInfo];
-                [[NSNotificationCenter defaultCenter] postNotificationName:NOTI__ACCOUNT_MOBCODE_ object:error];
+                NSError *error = [NSError errorWithDomain:PATH_H__ACCOUNT_MOBCODE_ code:errorcode userInfo:userInfo];
+                [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_H__ACCOUNT_MOBCODE_ object:error];
             }
         }
     }];
@@ -65,11 +65,11 @@ static AccountMessageProxy *sharedAccountMessageProxy = nil;
     [UserDataProxy sharedProxy].password = password;
     
     NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
-    [params setObject:[UserDataProxy sharedProxy].mobcode forKey:KEYQ__ACCOUNT_REGISTER__MOBCODE];
-    [params setObject:password forKey:KEYQ__ACCOUNT_REGISTER__PASSWORD];
-    [params setObject:[UserDataProxy sharedProxy].mobile forKey:KEYQ__ACCOUNT_REGISTER__MOBILE];
-    [params setObject:[UserDataProxy sharedProxy].mobCountry forKey:KEYQ__ACCOUNT_REGISTER__MOBCOUNTRY];
-    IMNWMessage *message = [IMNWMessage createForHttp:PATH__ACCOUNT_REGISTER_ withParams:params withMethod:METHOD__ACCOUNT_REGISTER_ ssl:NO];
+    [params setObject:[UserDataProxy sharedProxy].mobcode forKey:KEYQ_H__ACCOUNT_REGISTER__MOBCODE];
+    [params setObject:password forKey:KEYQ_H__ACCOUNT_REGISTER__PASSWORD];
+    [params setObject:[UserDataProxy sharedProxy].mobile forKey:KEYQ_H__ACCOUNT_REGISTER__MOBILE];
+    [params setObject:[UserDataProxy sharedProxy].mobCountry forKey:KEYQ_H__ACCOUNT_REGISTER__MOBCOUNTRY];
+    IMNWMessage *message = [IMNWMessage createForHttp:PATH_H__ACCOUNT_REGISTER_ withParams:params withMethod:METHOD_H__ACCOUNT_REGISTER_ ssl:NO];
     [[IMNWManager sharedNWManager] sendMessage:message withResponse:^(NSString *responseString, NSData *responseData) {
         NSError *err = nil;
         NSMutableDictionary *json = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingAllowFragments error:&err];
@@ -77,9 +77,9 @@ static AccountMessageProxy *sharedAccountMessageProxy = nil;
             NSAssert1(YES, @"JSON create error: %@", err);
         }
         else {
-            int errorcode = [[json objectForKey:KEYP__ACCOUNT_MOBCODE__ERROR_CODE] intValue];
+            int errorcode = [[json objectForKey:KEYP_H__ACCOUNT_MOBCODE__ERROR_CODE] intValue];
             if (errorcode == 0) {
-                NSInteger uid = [[json objectForKey:KEYP__ACCOUNT_REGISTER__UID] integerValue];
+                NSInteger uid = [[json objectForKey:KEYP_H__ACCOUNT_REGISTER__UID] integerValue];
                 [UserDataProxy sharedProxy].lastLoginCountry = [UserDataProxy sharedProxy].mobile;
                 [UserDataProxy sharedProxy].lastLoginMobile = [UserDataProxy sharedProxy].mobCountry;
                 [UserDataProxy sharedProxy].lastLoginUid = uid;
@@ -98,10 +98,10 @@ static AccountMessageProxy *sharedAccountMessageProxy = nil;
     [UserDataProxy sharedProxy].lastLoginMobile = mobile;
     
     NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
-    [params setObject:mobile forKey:KEYQ__ACCOUNT_LOGIN__MOBILE];
-    [params setObject:mobCountry forKey:KEYQ__ACCOUNT_LOGIN__MOBCOUNTRY];
-    [params setObject:password forKey:KEYQ__ACCOUNT_LOGIN__PASSWORD];
-    IMNWMessage *message = [IMNWMessage createForHttp:PATH__ACCOUNT_LOGIN_ withParams:params withMethod:METHOD__ACCOUNT_LOGIN_ ssl:NO ];
+    [params setObject:mobile forKey:KEYQ_H__ACCOUNT_LOGIN__MOBILE];
+    [params setObject:mobCountry forKey:KEYQ_H__ACCOUNT_LOGIN__MOBCOUNTRY];
+    [params setObject:password forKey:KEYQ_H__ACCOUNT_LOGIN__PASSWORD];
+    IMNWMessage *message = [IMNWMessage createForHttp:PATH_H__ACCOUNT_LOGIN_ withParams:params withMethod:METHOD_H__ACCOUNT_LOGIN_ ssl:NO ];
     [[IMNWManager sharedNWManager] sendMessage:message withResponse:^(NSString *responseString, NSData *responseData) {
         NSError *err = nil;
         NSMutableDictionary *json = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingAllowFragments error:&err];
@@ -109,13 +109,13 @@ static AccountMessageProxy *sharedAccountMessageProxy = nil;
             NSAssert1(YES, @"JSON create error: %@", err);
         }
         else {
-            int errorcode = [[json objectForKey:KEYP__ACCOUNT_LOGIN__ERROR_CODE] intValue];
+            int errorcode = [[json objectForKey:KEYP_H__ACCOUNT_LOGIN__ERROR_CODE] intValue];
             if (errorcode == 0) {
-                NSInteger uid = [[json objectForKey:KEYP__ACCOUNT_LOGIN__UID] integerValue];
-                NSString *verify = [json objectForKey:KEYP__ACCOUNT_LOGIN__VERIFY];
+                NSInteger uid = [[json objectForKey:KEYP_H__ACCOUNT_LOGIN__UID] integerValue];
+                NSString *verify = [json objectForKey:KEYP_H__ACCOUNT_LOGIN__VERIFY];
                 [UserDataProxy sharedProxy].verify = verify;
                 [UserDataProxy sharedProxy].lastLoginUid = uid;
-                [[NSNotificationCenter defaultCenter] postNotificationName:NOTI__ACCOUNT_LOGIN_ object:nil];
+                [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_H__ACCOUNT_LOGIN_ object:nil];
             }
             else {
                 UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Alert", nil) message:[NSString stringWithFormat:NSLocalizedString(@"Alert.LoginError", nil), errorcode] delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", nil) otherButtonTitles:nil];
@@ -125,8 +125,8 @@ static AccountMessageProxy *sharedAccountMessageProxy = nil;
                 NSString *errorMessage = [errorCodeNumber errorMessage];
                 NSDictionary *userInfo = [NSDictionary dictionaryWithObject:errorMessage
                                                                      forKey:NSLocalizedDescriptionKey];
-                NSError *error = [NSError errorWithDomain:PATH__ACCOUNT_LOGIN_ code:errorcode userInfo:userInfo];
-                [[NSNotificationCenter defaultCenter] postNotificationName:NOTI__ACCOUNT_LOGIN_ object:error];
+                NSError *error = [NSError errorWithDomain:PATH_H__ACCOUNT_LOGIN_ code:errorcode userInfo:userInfo];
+                [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_H__ACCOUNT_LOGIN_ object:error];
             }
         }
     }];
@@ -135,7 +135,7 @@ static AccountMessageProxy *sharedAccountMessageProxy = nil;
 - (void)sendTypeMyinfo
 {
     //使用http
-    IMNWMessage *message = [IMNWMessage createForHttp:PATH__ACCOUNT_MYINFO_ withParams:nil withMethod:METHOD__ACCOUNT_MYINFO_ ssl:NO];
+    IMNWMessage *message = [IMNWMessage createForHttp:PATH_H__ACCOUNT_MYINFO_ withParams:nil withMethod:METHOD_H__ACCOUNT_MYINFO_ ssl:NO];
     [[IMNWManager sharedNWManager] sendMessage:message withResponse:^(NSString *responseString, NSData *responseData) {
         NSError *err = nil;
         NSMutableDictionary *json = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingAllowFragments error:&err];
@@ -143,25 +143,25 @@ static AccountMessageProxy *sharedAccountMessageProxy = nil;
             NSAssert1(YES, @"JSON create error: %@", err);
         }
         else {
-            int errorcode = [[json objectForKey:KEYP__ACCOUNT_MYINFO__ERROR_CODE] intValue];
+            int errorcode = [[json objectForKey:KEYP_H__ACCOUNT_MYINFO__ERROR_CODE] intValue];
             if (errorcode == 0) {
-                NSMutableDictionary *uinfo = [json objectForKey:KEYP__ACCOUNT_MYINFO__UINFO];
-                [UserDataProxy sharedProxy].user.uid = [[uinfo objectForKey:KEYP__ACCOUNT_MYINFO__UINFO_UID] integerValue];;
-                [UserDataProxy sharedProxy].user.oid = [uinfo objectForKey:KEYP__ACCOUNT_MYINFO__UINFO_OID];
-                [UserDataProxy sharedProxy].user.nick = [uinfo objectForKey:KEYP__ACCOUNT_MYINFO__UINFO_NICK];
-                [UserDataProxy sharedProxy].user.mobile = [uinfo objectForKey:KEYP__ACCOUNT_MYINFO__UINFO_MOBILE];
-                [UserDataProxy sharedProxy].user.mobCountry = [uinfo objectForKey:KEYP__ACCOUNT_MYINFO__UINFO_MOBCOUNTRY];
-                [UserDataProxy sharedProxy].user.email = [uinfo objectForKey:KEYP__ACCOUNT_MYINFO__UINFO_EMAIL];
-                [UserDataProxy sharedProxy].user.gender = [[uinfo objectForKey:KEYP__ACCOUNT_MYINFO__UINFO_GENDER] integerValue];
-                [UserDataProxy sharedProxy].user.city = [uinfo objectForKey:KEYP__ACCOUNT_MYINFO__UINFO_CITY];
-                [UserDataProxy sharedProxy].user.status = [[uinfo objectForKey:KEYP__ACCOUNT_MYINFO__UINFO_STATUS] integerValue];
-                [UserDataProxy sharedProxy].user.vip = [[uinfo objectForKey:KEYP__ACCOUNT_MYINFO__UINFO_VIP] integerValue];
-                [UserDataProxy sharedProxy].user.birthday = [uinfo objectForKey:KEYP__ACCOUNT_MYINFO__UINFO_BIRTHDAY];
-                [UserDataProxy sharedProxy].user.lunarbirth = [uinfo objectForKey:KEYP__ACCOUNT_MYINFO__UINFO_LUNARBIRTH];
-                [UserDataProxy sharedProxy].user.career = [uinfo objectForKey:KEYP__ACCOUNT_MYINFO__UINFO_CAREER];
-                [UserDataProxy sharedProxy].user.interest = [uinfo objectForKey:KEYP__ACCOUNT_MYINFO__UINFO_INTEREST];
-                [UserDataProxy sharedProxy].user.intro = [uinfo objectForKey:KEYP__ACCOUNT_MYINFO__UINFO_INTRO];
-                [[NSNotificationCenter defaultCenter] postNotificationName:NOTI__ACCOUNT_MYINFO_ object:nil];
+                NSMutableDictionary *uinfo = [json objectForKey:KEYP_H__ACCOUNT_MYINFO__UINFO];
+                [UserDataProxy sharedProxy].user.uid = [[uinfo objectForKey:KEYP_H__ACCOUNT_MYINFO__UINFO_UID] integerValue];;
+                [UserDataProxy sharedProxy].user.oid = [uinfo objectForKey:KEYP_H__ACCOUNT_MYINFO__UINFO_OID];
+                [UserDataProxy sharedProxy].user.nick = [uinfo objectForKey:KEYP_H__ACCOUNT_MYINFO__UINFO_NICK];
+                [UserDataProxy sharedProxy].user.mobile = [uinfo objectForKey:KEYP_H__ACCOUNT_MYINFO__UINFO_MOBILE];
+                [UserDataProxy sharedProxy].user.mobCountry = [uinfo objectForKey:KEYP_H__ACCOUNT_MYINFO__UINFO_MOBCOUNTRY];
+                [UserDataProxy sharedProxy].user.email = [uinfo objectForKey:KEYP_H__ACCOUNT_MYINFO__UINFO_EMAIL];
+                [UserDataProxy sharedProxy].user.gender = [[uinfo objectForKey:KEYP_H__ACCOUNT_MYINFO__UINFO_GENDER] integerValue];
+                [UserDataProxy sharedProxy].user.city = [uinfo objectForKey:KEYP_H__ACCOUNT_MYINFO__UINFO_CITY];
+                [UserDataProxy sharedProxy].user.status = [[uinfo objectForKey:KEYP_H__ACCOUNT_MYINFO__UINFO_STATUS] integerValue];
+                [UserDataProxy sharedProxy].user.vip = [[uinfo objectForKey:KEYP_H__ACCOUNT_MYINFO__UINFO_VIP] integerValue];
+                [UserDataProxy sharedProxy].user.birthday = [uinfo objectForKey:KEYP_H__ACCOUNT_MYINFO__UINFO_BIRTHDAY];
+                [UserDataProxy sharedProxy].user.lunarbirth = [uinfo objectForKey:KEYP_H__ACCOUNT_MYINFO__UINFO_LUNARBIRTH];
+                [UserDataProxy sharedProxy].user.career = [uinfo objectForKey:KEYP_H__ACCOUNT_MYINFO__UINFO_CAREER];
+                [UserDataProxy sharedProxy].user.interest = [uinfo objectForKey:KEYP_H__ACCOUNT_MYINFO__UINFO_INTEREST];
+                [UserDataProxy sharedProxy].user.intro = [uinfo objectForKey:KEYP_H__ACCOUNT_MYINFO__UINFO_INTRO];
+                [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_H__ACCOUNT_MYINFO_ object:nil];
             }
             else {
                 NSAssert1(YES, @"Http connect response error: %i", errorcode);
@@ -169,8 +169,8 @@ static AccountMessageProxy *sharedAccountMessageProxy = nil;
                 NSString *errorMessage = [errorCodeNumber errorMessage];
                 NSDictionary *userInfo = [NSDictionary dictionaryWithObject:errorMessage
                                                                      forKey:NSLocalizedDescriptionKey];
-                NSError *error = [NSError errorWithDomain:PATH__ACCOUNT_MYINFO_ code:errorcode userInfo:userInfo];
-                [[NSNotificationCenter defaultCenter] postNotificationName:NOTI__ACCOUNT_MYINFO_ object:error];
+                NSError *error = [NSError errorWithDomain:PATH_H__ACCOUNT_MYINFO_ code:errorcode userInfo:userInfo];
+                [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_H__ACCOUNT_MYINFO_ object:error];
             }
 
         }
@@ -181,10 +181,10 @@ static AccountMessageProxy *sharedAccountMessageProxy = nil;
 {
     //使用http
     NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
-    [params setObject:[NSNumber numberWithInteger:gender] forKey:KEYQ__ACCOUNT_UPDATEINFO__GENDER];
-    [params setObject:birth forKey:KEYQ__ACCOUNT_UPDATEINFO__BIRTHDAY];
-    [params setObject:nick forKey:KEYQ__ACCOUNT_UPDATEINFO__NICK];
-    IMNWMessage *message = [IMNWMessage createForHttp:PATH__ACCOUNT_UPDATEINFO_ withParams:params withMethod:METHOD__ACCOUNT_UPDATEINFO_ ssl:NO];
+    [params setObject:[NSNumber numberWithInteger:gender] forKey:KEYQ_H__ACCOUNT_UPDATEINFO__GENDER];
+    [params setObject:birth forKey:KEYQ_H__ACCOUNT_UPDATEINFO__BIRTHDAY];
+    [params setObject:nick forKey:KEYQ_H__ACCOUNT_UPDATEINFO__NICK];
+    IMNWMessage *message = [IMNWMessage createForHttp:PATH_H__ACCOUNT_UPDATEINFO_ withParams:params withMethod:METHOD_H__ACCOUNT_UPDATEINFO_ ssl:NO];
     [[IMNWManager sharedNWManager] sendMessage:message withResponse:^(NSString *responseString, NSData *responseData) {
         NSError *err = nil;
         NSMutableDictionary *json = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingAllowFragments error:&err];
@@ -192,9 +192,9 @@ static AccountMessageProxy *sharedAccountMessageProxy = nil;
             NSAssert1(YES, @"JSON create error: %@", err);
         }
         else {
-            int errorcode = [[json objectForKey:KEYP__ACCOUNT_UPDATEINFO__ERROR_CODE] intValue];
+            int errorcode = [[json objectForKey:KEYP_H__ACCOUNT_UPDATEINFO__ERROR_CODE] intValue];
             if (errorcode == 0) {
-                [[NSNotificationCenter defaultCenter] postNotificationName:NOTI__ACCOUNT_UPDATEINFO_ object:nil];
+                [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_H__ACCOUNT_UPDATEINFO_ object:nil];
             }
             else {
                 NSAssert1(YES, @"Http connect response error: %i", errorcode);
@@ -202,8 +202,8 @@ static AccountMessageProxy *sharedAccountMessageProxy = nil;
                 NSString *errorMessage = [errorCodeNumber errorMessage];
                 NSDictionary *userInfo = [NSDictionary dictionaryWithObject:errorMessage
                                                                      forKey:NSLocalizedDescriptionKey];
-                NSError *error = [NSError errorWithDomain:PATH__ACCOUNT_UPDATEINFO_ code:errorcode userInfo:userInfo];
-                [[NSNotificationCenter defaultCenter] postNotificationName:NOTI__ACCOUNT_UPDATEINFO_ object:error];
+                NSError *error = [NSError errorWithDomain:PATH_H__ACCOUNT_UPDATEINFO_ code:errorcode userInfo:userInfo];
+                [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_H__ACCOUNT_UPDATEINFO_ object:error];
             }
         }
     }];
@@ -212,20 +212,20 @@ static AccountMessageProxy *sharedAccountMessageProxy = nil;
 - (void)sendTypeLogin
 {
     NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
-    [params setObject:[UserDataProxy sharedProxy].verify forKey:KEYQ_ACCOUNT_LOGIN_VERIFY];
-    IMNWMessage *message = [IMNWMessage createForSocket:MARK_ACCOUNT withType:TYPE_ACCOUNT_LOGIN];
+    [params setObject:[UserDataProxy sharedProxy].verify forKey:KEYQ_S_ACCOUNT_LOGIN_VERIFY];
+    IMNWMessage *message = [IMNWMessage createForSocket:MARK_ACCOUNT withType:TYPE_S_ACCOUNT_LOGIN];
     [message send:params];
 }
 
 - (void)parseTypeLogin:(id)json
 {
     NSMutableDictionary *info = [json objectForKey:SOCKET_INFO];
-    int res = [[info objectForKey:KEYP_ACCOUNT_LOGIN_RES] intValue];
+    int res = [[info objectForKey:KEYP_S_ACCOUNT_LOGIN_RES] intValue];
     if (res == RES_OK) {
         NSLog(@"%@",json);
-        NSInteger uid = [[info objectForKey:KEYP_ACCOUNT_LOGIN_UID] integerValue];
+        NSInteger uid = [[info objectForKey:KEYP_S_ACCOUNT_LOGIN_UID] integerValue];
         [UserDataProxy sharedProxy].lastLoginUid = uid;
-        [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_ACCOUNT_LOGIN object:nil];
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_S_ACCOUNT_LOGIN object:nil];
     }
     else {
         NSAssert1(YES, @"Socket connect response error: %i", res);
@@ -234,8 +234,8 @@ static AccountMessageProxy *sharedAccountMessageProxy = nil;
         NSLog(@"Socket connect response error: %i %@", res, errorMessage);
         NSDictionary *userInfo = [NSDictionary dictionaryWithObject:errorMessage
                                                              forKey:NSLocalizedDescriptionKey];
-        NSError *error = [NSError errorWithDomain:[NSString stringWithFormat:@"%@_%@", MARK_ACCOUNT, TYPE_ACCOUNT_LOGIN] code:res userInfo:userInfo];
-        [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_ACCOUNT_LOGIN object:error];
+        NSError *error = [NSError errorWithDomain:[NSString stringWithFormat:@"%@_%@", MARK_ACCOUNT, TYPE_S_ACCOUNT_LOGIN] code:res userInfo:userInfo];
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_S_ACCOUNT_LOGIN object:error];
     }
 }
 
