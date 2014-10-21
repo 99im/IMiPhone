@@ -34,14 +34,14 @@ static IMNWProxy *sharedNWProxy = nil;
     }
 }
 
-- (NSError *)processErrorCode:(NSInteger)errorcode withPath:(NSString *)path
+- (NSError *)processErrorCode:(NSInteger)errorcode fromSource:(NSString *)source
 {
     NSAssert(YES, @"Network connect response error: %i", errorcode);
     NSNumber *errorCodeNumber = [NSNumber numberWithInt:errorcode];
     NSString *errorMessage = [errorCodeNumber errorMessage];
     NSDictionary *userInfo = [NSDictionary dictionaryWithObject:errorMessage
                                                          forKey:NSLocalizedDescriptionKey];
-    NSError *error = [NSError errorWithDomain:path code:errorcode userInfo:userInfo];
+    NSError *error = [NSError errorWithDomain:source code:errorcode userInfo:userInfo];
     return error;
 }
 

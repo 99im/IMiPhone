@@ -16,6 +16,14 @@
 
 - (void)parseMessage:(IMNWMessage *)message;
 
-- (NSError *)processErrorCode:(NSInteger)error_code withPath:(NSString *)path;
+/**
+ *  消息错误码通用处理方法
+ *
+ *  @param errorcode 错误码，http消息的errorcode或者socket消息的res
+ *  @param source    来源，path或者mark＋type
+ *
+ *  @return 错误类型实例
+ */
+- (NSError *)processErrorCode:(NSInteger)errorcode fromSource:(NSString *)source;
 
 @end

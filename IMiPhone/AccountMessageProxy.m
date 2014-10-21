@@ -197,7 +197,7 @@ static AccountMessageProxy *sharedAccountMessageProxy = nil;
                 [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_H__ACCOUNT_UPDATEINFO_ object:nil];
             }
             else {
-                NSError *error = [self processErrorCode:errorcode withPath:PATH_H__ACCOUNT_UPDATEINFO_];
+                NSError *error = [self processErrorCode:errorcode fromSource:PATH_H__ACCOUNT_UPDATEINFO_];
                 [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_H__ACCOUNT_UPDATEINFO_ object:error];
             }
         }
@@ -223,7 +223,7 @@ static AccountMessageProxy *sharedAccountMessageProxy = nil;
         [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_S_ACCOUNT_LOGIN object:nil];
     }
     else {
-        NSError *error = [self processErrorCode:res withPath:[NSString stringWithFormat:@"%@_%@", MARK_ACCOUNT, TYPE_S_ACCOUNT_LOGIN]];
+        NSError *error = [self processErrorCode:res fromSource:[NSString stringWithFormat:@"%@_%@", MARK_ACCOUNT, TYPE_S_ACCOUNT_LOGIN]];
         [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_S_ACCOUNT_LOGIN object:error];
     }
 }
