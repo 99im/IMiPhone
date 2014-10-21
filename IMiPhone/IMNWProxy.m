@@ -30,9 +30,19 @@ static IMNWProxy *sharedNWProxy = nil;
         [self performSelector:selector withObject:message.data];
     }
     else {
-        NSAssert2(YES, @"%@MessageProxy has no such method: %@", [message.mark capitalizedString], method);
+        NSAssert(YES, @"%@MessageProxy has no such method: %@", [message.mark capitalizedString], method);
     }
 }
 
+- (NSError *)processErrorCode:(NSInteger)errorcode withPath:(NSString *)path
+{
+    NSAssert(YES, @"Network connect response error: %i", errorcode);
+    NSNumber *errorCodeNumber = [NSNumber numberWithInt:errorcode];
+    NSString *errorMessage = [errorCodeNumber errorMessage];
+    NSDictionary *userInfo = [NSDictionary dictionaryWithObject:errorMessage
+                                                         forKey:NSLocalizedDescriptionKey];
+    NSError *error = [NSError errorWithDomain:path code:errorcode userInfo:userInfo];
+    return error;
+}
 
 @end

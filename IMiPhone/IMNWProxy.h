@@ -8,11 +8,14 @@
 
 #import <Foundation/Foundation.h>
 #import "IMNWMessage.h"
+#import "NSNumber+IMNWError.h"
 
 @interface IMNWProxy : NSObject
 
 + (IMNWProxy*)sharedProxy;
 
 - (void)parseMessage:(IMNWMessage *)message;
+
+- (NSError *)processErrorCode:(NSInteger)error_code withPath:(NSString *)path;
 
 @end

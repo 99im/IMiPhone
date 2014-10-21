@@ -39,7 +39,7 @@ static AccountMessageProxy *sharedAccountMessageProxy = nil;
         NSError *err = nil;
         NSMutableDictionary *json = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingAllowFragments error:&err];
         if (err) {
-            NSAssert1(YES, @"JSON create error: %@", err);
+            NSAssert(YES, @"JSON create error: %@", err);
         }
         else {
             int errorcode = [[json objectForKey:KEYP_H__ACCOUNT_MOBCODE__ERROR_CODE] intValue];
@@ -47,7 +47,7 @@ static AccountMessageProxy *sharedAccountMessageProxy = nil;
                 [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_H__ACCOUNT_MOBCODE_ object:nil];
             }
             else {
-                NSAssert1(YES, @"Http connect response error: %i", errorcode);
+                NSAssert(YES, @"Http connect response error: %i", errorcode);
                 NSNumber *errorCodeNumber = [NSNumber numberWithInt:errorcode];
                 NSString *errorMessage = [errorCodeNumber errorMessage];
                 NSDictionary *userInfo = [NSDictionary dictionaryWithObject:errorMessage
@@ -74,7 +74,7 @@ static AccountMessageProxy *sharedAccountMessageProxy = nil;
         NSError *err = nil;
         NSMutableDictionary *json = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingAllowFragments error:&err];
         if (err) {
-            NSAssert1(YES, @"JSON create error: %@", err);
+            NSAssert(YES, @"JSON create error: %@", err);
         }
         else {
             int errorcode = [[json objectForKey:KEYP_H__ACCOUNT_MOBCODE__ERROR_CODE] intValue];
@@ -85,7 +85,7 @@ static AccountMessageProxy *sharedAccountMessageProxy = nil;
                 [UserDataProxy sharedProxy].lastLoginUid = uid;
             }
             else {
-                NSAssert1(YES, @"Http connect response error: %i", errorcode);
+                NSAssert(YES, @"Http connect response error: %i", errorcode);
             }
         }
     }];
@@ -106,7 +106,7 @@ static AccountMessageProxy *sharedAccountMessageProxy = nil;
         NSError *err = nil;
         NSMutableDictionary *json = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingAllowFragments error:&err];
         if (err) {
-            NSAssert1(YES, @"JSON create error: %@", err);
+            NSAssert(YES, @"JSON create error: %@", err);
         }
         else {
             int errorcode = [[json objectForKey:KEYP_H__ACCOUNT_LOGIN__ERROR_CODE] intValue];
@@ -120,7 +120,7 @@ static AccountMessageProxy *sharedAccountMessageProxy = nil;
             else {
                 UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Alert", nil) message:[NSString stringWithFormat:NSLocalizedString(@"Alert.LoginError", nil), errorcode] delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", nil) otherButtonTitles:nil];
                 [alertView show];
-                NSAssert1(YES, @"Http connect response error: %i", errorcode);
+                NSAssert(YES, @"Http connect response error: %i", errorcode);
                 NSNumber *errorCodeNumber = [NSNumber numberWithInt:errorcode];
                 NSString *errorMessage = [errorCodeNumber errorMessage];
                 NSDictionary *userInfo = [NSDictionary dictionaryWithObject:errorMessage
@@ -140,7 +140,7 @@ static AccountMessageProxy *sharedAccountMessageProxy = nil;
         NSError *err = nil;
         NSMutableDictionary *json = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingAllowFragments error:&err];
         if (err) {
-            NSAssert1(YES, @"JSON create error: %@", err);
+            NSAssert(YES, @"JSON create error: %@", err);
         }
         else {
             int errorcode = [[json objectForKey:KEYP_H__ACCOUNT_MYINFO__ERROR_CODE] intValue];
@@ -164,7 +164,7 @@ static AccountMessageProxy *sharedAccountMessageProxy = nil;
                 [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_H__ACCOUNT_MYINFO_ object:nil];
             }
             else {
-                NSAssert1(YES, @"Http connect response error: %i", errorcode);
+                NSAssert(YES, @"Http connect response error: %i", errorcode);
                 NSNumber *errorCodeNumber = [NSNumber numberWithInt:errorcode];
                 NSString *errorMessage = [errorCodeNumber errorMessage];
                 NSDictionary *userInfo = [NSDictionary dictionaryWithObject:errorMessage
@@ -189,7 +189,7 @@ static AccountMessageProxy *sharedAccountMessageProxy = nil;
         NSError *err = nil;
         NSMutableDictionary *json = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingAllowFragments error:&err];
         if (err) {
-            NSAssert1(YES, @"JSON create error: %@", err);
+            NSAssert(YES, @"JSON create error: %@", err);
         }
         else {
             int errorcode = [[json objectForKey:KEYP_H__ACCOUNT_UPDATEINFO__ERROR_CODE] intValue];
@@ -197,12 +197,7 @@ static AccountMessageProxy *sharedAccountMessageProxy = nil;
                 [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_H__ACCOUNT_UPDATEINFO_ object:nil];
             }
             else {
-                NSAssert1(YES, @"Http connect response error: %i", errorcode);
-                NSNumber *errorCodeNumber = [NSNumber numberWithInt:errorcode];
-                NSString *errorMessage = [errorCodeNumber errorMessage];
-                NSDictionary *userInfo = [NSDictionary dictionaryWithObject:errorMessage
-                                                                     forKey:NSLocalizedDescriptionKey];
-                NSError *error = [NSError errorWithDomain:PATH_H__ACCOUNT_UPDATEINFO_ code:errorcode userInfo:userInfo];
+                NSError *error = [self processErrorCode:errorcode withPath:PATH_H__ACCOUNT_UPDATEINFO_];
                 [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_H__ACCOUNT_UPDATEINFO_ object:error];
             }
         }
@@ -228,13 +223,7 @@ static AccountMessageProxy *sharedAccountMessageProxy = nil;
         [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_S_ACCOUNT_LOGIN object:nil];
     }
     else {
-        NSAssert1(YES, @"Socket connect response error: %i", res);
-        NSNumber *errorCodeNumber = [NSNumber numberWithInt:res];
-        NSString *errorMessage = [errorCodeNumber errorMessage];
-        NSLog(@"Socket connect response error: %i %@", res, errorMessage);
-        NSDictionary *userInfo = [NSDictionary dictionaryWithObject:errorMessage
-                                                             forKey:NSLocalizedDescriptionKey];
-        NSError *error = [NSError errorWithDomain:[NSString stringWithFormat:@"%@_%@", MARK_ACCOUNT, TYPE_S_ACCOUNT_LOGIN] code:res userInfo:userInfo];
+        NSError *error = [self processErrorCode:res withPath:[NSString stringWithFormat:@"%@_%@", MARK_ACCOUNT, TYPE_S_ACCOUNT_LOGIN]];
         [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_S_ACCOUNT_LOGIN object:error];
     }
 }

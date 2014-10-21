@@ -38,7 +38,7 @@ static UserMessageProxy *sharedUserMessageProxy = nil;
         NSError *err = nil;
         NSMutableDictionary *json = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingAllowFragments error:&err];
         if (err) {
-            NSAssert1(YES, @"JSON create error: %@", err);
+            NSAssert(YES, @"JSON create error: %@", err);
             [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_H__USER_SEARCH_ object:err];
         }
         else {
