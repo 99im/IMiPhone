@@ -91,7 +91,7 @@
             subviewId = @"recommendViewController";
             break;
         case 2:
-            subviewId = @"groupTableViewController";
+            subviewId = @"storyMyJoinGroups";
             break;
         case 3:
             subviewId = @"CategoryTableViewController";
@@ -122,7 +122,7 @@
         if ([subviewId isEqualToString:@"CategoryTableViewController"]) {
             [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sendTypeFocusListResult:) name:NOTI__FRIEND_FOCUS_LIST_ object:nil];
             [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sendTypeFanListResult:) name:NOTI__FRIEND_FAN_LIST_ object:nil];
-        } else if([subviewId isEqualToString:@"groupViewController"]){
+        } else if([subviewId isEqualToString:@"storyMyJoinGroups"]){
             [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_GROUP_SHOW_MY_LIST
                                                                 object:nil];
         }

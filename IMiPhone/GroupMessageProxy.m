@@ -7,6 +7,7 @@
 //
 
 #import "GroupMessageProxy.h"
+#import "NSNumber+IMNWError.h"
 
 @implementation GroupMessageProxy
 
@@ -22,5 +23,49 @@ static GroupMessageProxy *sharedGroupMessageProxy = nil;
 }
 
 - (void)getMyJoinGroups:(NSNumber *)start withPageNum:(NSNumber *)pageNum {
+  NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
+
+  [params setObject:start forKey:GOL_KEY_PAGE_START];
+  [params setObject:pageNum forKey:GOL_KEY_PAGE_NUM];
+
+  IMNWMessage *message = [IMNWMessage createForHttp:PATH__FRIEND_FRIEND_LIST_
+                                         withParams:params
+                                         withMethod:METHOD__FRIEND_FRIEND_LIST_
+                                                ssl:NO];
+  [[IMNWManager sharedNWManager]
+       sendMessage:message
+      withResponse:^(NSString *responseString, NSData *responseData) {
+          NSError *err = nil;
+          NSMutableDictionary *json = [NSJSONSerialization
+              JSONObjectWithData:responseData
+                         options:NSJSONReadingAllowFragments
+                           error:&err];
+          if (err) {
+            NSAssert1(YES, @"JSON create error: %@", err);
+          } else {
+            int errorcode = [
+                [json objectForKey:KEYP__ACCOUNT_MOBCODE__ERROR_CODE] intValue];
+            if (errorcode == 0) {
+                NSLog(@"group response ok");
+//              [[NSNotificationCenter defaultCenter]
+//                  postNotificationName:NOTI__ACCOUNT_MOBCODE_
+//                                object:nil];
+            } else {
+              NSLog(@"group response error: %i", errorcode);
+//              NSNumber *errorCodeNumber = [NSNumber numberWithInt:errorcode];
+//              NSString *errorMessage = [errorCodeNumber errorMessage];
+//              NSDictionary *userInfo =
+//                  [NSDictionary dictionaryWithObject:errorMessage
+//                                              forKey:NSLocalizedDescriptionKey];
+//              NSError *error = [NSError errorWithDomain:PATH__ACCOUNT_MOBCODE_
+//                                                   code:errorcode
+//                                               userInfo:userInfo];
+//              [[NSNotificationCenter defaultCenter]
+//                  postNotificationName:NOTI__ACCOUNT_MOBCODE_
+//                                object:error];
+            }
+          }
+
+      }];
 }
 @end

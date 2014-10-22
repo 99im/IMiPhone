@@ -7,6 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "IMNWMessage.h"
+#import "IMNWManager.h"
+#import "GroupDataProxy.h"
+
+//全局能用型KEY
+#define GOL_KEY_PAGE_START @"start"
+#define GOL_KEY_PAGE_NUM @"pageNum"
+#define GOL_KEY_GROUP_ID @"groupId"
+#define GOL_KEY_GROUP_NAME @"groupName"
 
 @interface GroupMessageProxy : NSObject
 + (GroupMessageProxy *)sharedProxy;
