@@ -6,9 +6,9 @@
 //  Copyright (c) 2014年 尹晓君. All rights reserved.
 //
 
-#import "MsgTableViewCellPrivateChat.h"
+#import "ChatMsgTableViewCellP2P.h"
 
-@implementation MsgTableViewCellPrivateChat
+@implementation ChatMsgTableViewCellP2P
 
 - (void)awakeFromNib {
     // Initialization code

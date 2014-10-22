@@ -1,5 +1,5 @@
 //
-//  MsgTableViewCellPrivateChat.h
+//  ChatViewController.h
 //  IMiPhone
 //
 //  Created by 王 国良 on 14-10-20.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MsgTableViewCellPrivateChat : UITableViewCell
+@interface ChatViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
 @end

@@ -25,6 +25,10 @@
 		110F561B19D57013003B9EB4 /* DPMessageGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 110F561919D57013003B9EB4 /* DPMessageGroup.m */; };
 		110FCCA119ADF83C0087CBCB /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 110FCCA019ADF83A0087CBCB /* libsqlite3.dylib */; };
 		1120945A19B601EF0012D607 /* IMiPhoneTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 585971FC1999F0C700258CB1 /* IMiPhoneTests.m */; };
+		11335B6919F53D6200FA32FA /* ChatMsgTableViewCellP2G.m in Sources */ = {isa = PBXBuildFile; fileRef = 11335B6819F53D6200FA32FA /* ChatMsgTableViewCellP2G.m */; };
+		11335B6A19F53D6200FA32FA /* ChatMsgTableViewCellP2G.m in Sources */ = {isa = PBXBuildFile; fileRef = 11335B6819F53D6200FA32FA /* ChatMsgTableViewCellP2G.m */; };
+		11335B6D19F5407400FA32FA /* ChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11335B6C19F5407400FA32FA /* ChatViewController.m */; };
+		11335B6E19F5407400FA32FA /* ChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11335B6C19F5407400FA32FA /* ChatViewController.m */; };
 		116AB14119B7315000092E2C /* PersistenceTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 116AB13F19B7315000092E2C /* PersistenceTest.m */; };
 		116AB14319B7318C00092E2C /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 116AB14219B7318C00092E2C /* libsqlite3.0.dylib */; };
 		116AB14419B731C700092E2C /* SqlightAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 116B6E8F19B058A400DB1B5E /* SqlightAdapter.m */; };
@@ -37,7 +41,6 @@
 		116AB14B19B731E100092E2C /* GroupDAO.m in Sources */ = {isa = PBXBuildFile; fileRef = 116B6E8B19B0538300DB1B5E /* GroupDAO.m */; };
 		116AB14D19B733C400092E2C /* FriendDataProxyTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 116AB14C19B733C400092E2C /* FriendDataProxyTest.m */; };
 		116AB14E19B733E900092E2C /* FriendDataProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 58AF049719B056050077DCBC /* FriendDataProxy.m */; };
-		116AB15219BF19DA00092E2C /* ChatCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 116AB15119BF19DA00092E2C /* ChatCell.m */; };
 		116B6E7B19AEF83500DB1B5E /* DBMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 116B6E7619AEF83500DB1B5E /* DBMessage.m */; };
 		116B6E7D19AEF83500DB1B5E /* imRms.m in Sources */ = {isa = PBXBuildFile; fileRef = 116B6E7A19AEF83500DB1B5E /* imRms.m */; };
 		116B6E8019AF0F8C00DB1B5E /* DatabaseConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 116B6E7F19AF0F8C00DB1B5E /* DatabaseConfig.m */; };
@@ -91,6 +94,12 @@
 		117AC6B219EEB9A500143973 /* IMNWSocketConnect.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D3F28619E63082006589F9 /* IMNWSocketConnect.m */; };
 		117AC6B319EEB9D800143973 /* IMNWMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D3F28219E63082006589F9 /* IMNWMessage.m */; };
 		117AC6B419EEBA0000143973 /* DBUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 117AC69719EE766200143973 /* DBUser.m */; };
+		1194301019F74EC200FD9206 /* ChatShareMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1194300F19F74EC200FD9206 /* ChatShareMenuViewController.m */; };
+		1194301119F74EC200FD9206 /* ChatShareMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1194300F19F74EC200FD9206 /* ChatShareMenuViewController.m */; };
+		1194301419F75CED00FD9206 /* ChatInputTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1194301319F75CED00FD9206 /* ChatInputTextView.m */; };
+		1194301519F75CED00FD9206 /* ChatInputTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1194301319F75CED00FD9206 /* ChatInputTextView.m */; };
+		1194301819F75D0100FD9206 /* ChatInputSoundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1194301719F75D0100FD9206 /* ChatInputSoundView.m */; };
+		1194301919F75D0100FD9206 /* ChatInputSoundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1194301719F75D0100FD9206 /* ChatInputSoundView.m */; };
 		11B1C62819E4E069003D2711 /* ChatMessageProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B1C62719E4E069003D2711 /* ChatMessageProxy.m */; };
 		11B1C62919E4E069003D2711 /* ChatMessageProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B1C62719E4E069003D2711 /* ChatMessageProxy.m */; };
 		11B1C62C19E51AFB003D2711 /* ChatDataProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B1C62B19E51AFB003D2711 /* ChatDataProxy.m */; };
@@ -98,8 +107,8 @@
 		11DF9F8319A2276C00AE5D89 /* splash.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 11DF9F8519A2276C00AE5D89 /* splash.jpg */; };
 		11E1581319F4FFE1008544D1 /* MsgTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11E1581219F4FFE1008544D1 /* MsgTableViewController.m */; };
 		11E1581419F4FFE1008544D1 /* MsgTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11E1581219F4FFE1008544D1 /* MsgTableViewController.m */; };
-		11E1581719F5007F008544D1 /* MsgTableViewCellPrivateChat.m in Sources */ = {isa = PBXBuildFile; fileRef = 11E1581619F5007F008544D1 /* MsgTableViewCellPrivateChat.m */; };
-		11E1581819F5007F008544D1 /* MsgTableViewCellPrivateChat.m in Sources */ = {isa = PBXBuildFile; fileRef = 11E1581619F5007F008544D1 /* MsgTableViewCellPrivateChat.m */; };
+		11E1581719F5007F008544D1 /* ChatMsgTableViewCellP2P.m in Sources */ = {isa = PBXBuildFile; fileRef = 11E1581619F5007F008544D1 /* ChatMsgTableViewCellP2P.m */; };
+		11E1581819F5007F008544D1 /* ChatMsgTableViewCellP2P.m in Sources */ = {isa = PBXBuildFile; fileRef = 11E1581619F5007F008544D1 /* ChatMsgTableViewCellP2P.m */; };
 		11FAA8C419EF558E002048FA /* FriendTableViewCellUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 11FAA8C319EF558E002048FA /* FriendTableViewCellUser.m */; };
 		11FAA8C519EF558E002048FA /* FriendTableViewCellUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 11FAA8C319EF558E002048FA /* FriendTableViewCellUser.m */; };
 		11FC326F19F0A92C000A6733 /* FriendTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11FC326E19F0A92C000A6733 /* FriendTableViewController.m */; };
@@ -128,7 +137,7 @@
 		58A331AA19E51A95005BE980 /* CategoryListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A331A919E51A95005BE980 /* CategoryListTableViewController.m */; };
 		58A331AD19E52CDE005BE980 /* CategoryContactTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A331AC19E52CDE005BE980 /* CategoryContactTableViewCell.m */; };
 		58A5B4F819ADC05F0007C2F3 /* MainTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A5B4F719ADC05F0007C2F3 /* MainTabBarController.m */; };
-		58A5B4FC19ADC3CA0007C2F3 /* ChatTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A5B4FB19ADC3CA0007C2F3 /* ChatTableViewController.m */; };
+		58A5B4FC19ADC3CA0007C2F3 /* ChatMsgTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A5B4FB19ADC3CA0007C2F3 /* ChatMsgTableViewController.m */; };
 		58A9134019D2BDBA008E5A25 /* UserShowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A9133F19D2BDBA008E5A25 /* UserShowViewController.m */; };
 		58AF048719AF10560077DCBC /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 58AF048A19AF10560077DCBC /* Localizable.strings */; };
 		58B496D819A7186A0082AE30 /* NSAlert+MKNetworkKitAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B496C319A7186A0082AE30 /* NSAlert+MKNetworkKitAdditions.m */; };
@@ -159,8 +168,7 @@
 		58BC1E3819C0304900722A00 /* RegStep1ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58BC1E2E19C0304900722A00 /* RegStep1ViewController.m */; };
 		58BC1E3919C0304900722A00 /* RegStep2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58BC1E3019C0304900722A00 /* RegStep2ViewController.m */; };
 		58BC1E3A19C0304900722A00 /* RegStep2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58BC1E3019C0304900722A00 /* RegStep2ViewController.m */; };
-		58BC1E3E19C06B9000722A00 /* ChatTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A5B4FB19ADC3CA0007C2F3 /* ChatTableViewController.m */; };
-		58BC1E3F19C06B9000722A00 /* ChatCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 116AB15119BF19DA00092E2C /* ChatCell.m */; };
+		58BC1E3E19C06B9000722A00 /* ChatMsgTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A5B4FB19ADC3CA0007C2F3 /* ChatMsgTableViewController.m */; };
 		58BC1E4019C06B9000722A00 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5859721719A1DEE500258CB1 /* LoginViewController.m */; };
 		58BC1E4119C06B9000722A00 /* imAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 585971E11999F0C700258CB1 /* imAppDelegate.m */; };
 		58BC1E4319C06B9000722A00 /* imViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 585971E71999F0C700258CB1 /* imViewController.m */; };
@@ -231,12 +239,14 @@
 		110F561819D57013003B9EB4 /* DPMessageGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPMessageGroup.h; sourceTree = "<group>"; };
 		110F561919D57013003B9EB4 /* DPMessageGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPMessageGroup.m; sourceTree = "<group>"; };
 		110FCCA019ADF83A0087CBCB /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		11335B6719F53D6200FA32FA /* ChatMsgTableViewCellP2G.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatMsgTableViewCellP2G.h; sourceTree = "<group>"; };
+		11335B6819F53D6200FA32FA /* ChatMsgTableViewCellP2G.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatMsgTableViewCellP2G.m; sourceTree = "<group>"; };
+		11335B6B19F5407400FA32FA /* ChatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatViewController.h; sourceTree = "<group>"; };
+		11335B6C19F5407400FA32FA /* ChatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatViewController.m; sourceTree = "<group>"; };
 		116AB13E19B7315000092E2C /* IMiPhoneTests-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "IMiPhoneTests-Info.plist"; sourceTree = "<group>"; };
 		116AB13F19B7315000092E2C /* PersistenceTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersistenceTest.m; sourceTree = "<group>"; };
 		116AB14219B7318C00092E2C /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
 		116AB14C19B733C400092E2C /* FriendDataProxyTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendDataProxyTest.m; sourceTree = "<group>"; };
-		116AB15019BF19DA00092E2C /* ChatCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatCell.h; sourceTree = "<group>"; };
-		116AB15119BF19DA00092E2C /* ChatCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatCell.m; sourceTree = "<group>"; };
 		116B6E7519AEF83500DB1B5E /* DBMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBMessage.h; sourceTree = "<group>"; };
 		116B6E7619AEF83500DB1B5E /* DBMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBMessage.m; sourceTree = "<group>"; };
 		116B6E7919AEF83500DB1B5E /* imRms.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = imRms.h; sourceTree = "<group>"; };
@@ -294,6 +304,12 @@
 		117AC6A319EE7C2F00143973 /* DPUserFromContact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPUserFromContact.m; sourceTree = "<group>"; };
 		117AC6A519EEB8A100143973 /* ContactTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactTest.m; sourceTree = "<group>"; };
 		117AC6A619EEB8A100143973 /* IMDataUtilTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMDataUtilTest.m; sourceTree = "<group>"; };
+		1194300E19F74EC200FD9206 /* ChatShareMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatShareMenuViewController.h; sourceTree = "<group>"; };
+		1194300F19F74EC200FD9206 /* ChatShareMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatShareMenuViewController.m; sourceTree = "<group>"; };
+		1194301219F75CED00FD9206 /* ChatInputTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatInputTextView.h; sourceTree = "<group>"; };
+		1194301319F75CED00FD9206 /* ChatInputTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatInputTextView.m; sourceTree = "<group>"; };
+		1194301619F75D0100FD9206 /* ChatInputSoundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatInputSoundView.h; sourceTree = "<group>"; };
+		1194301719F75D0100FD9206 /* ChatInputSoundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatInputSoundView.m; sourceTree = "<group>"; };
 		11B1C62619E4E069003D2711 /* ChatMessageProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatMessageProxy.h; sourceTree = "<group>"; };
 		11B1C62719E4E069003D2711 /* ChatMessageProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatMessageProxy.m; sourceTree = "<group>"; };
 		11B1C62A19E51AFB003D2711 /* ChatDataProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatDataProxy.h; sourceTree = "<group>"; };
@@ -301,8 +317,8 @@
 		11DF9F8419A2276C00AE5D89 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "zh-Hans"; path = "zh-Hans.lproj/splash.jpg"; sourceTree = "<group>"; };
 		11E1581119F4FFE1008544D1 /* MsgTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MsgTableViewController.h; sourceTree = "<group>"; };
 		11E1581219F4FFE1008544D1 /* MsgTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MsgTableViewController.m; sourceTree = "<group>"; };
-		11E1581519F5007F008544D1 /* MsgTableViewCellPrivateChat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MsgTableViewCellPrivateChat.h; sourceTree = "<group>"; };
-		11E1581619F5007F008544D1 /* MsgTableViewCellPrivateChat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MsgTableViewCellPrivateChat.m; sourceTree = "<group>"; };
+		11E1581519F5007F008544D1 /* ChatMsgTableViewCellP2P.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatMsgTableViewCellP2P.h; sourceTree = "<group>"; };
+		11E1581619F5007F008544D1 /* ChatMsgTableViewCellP2P.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatMsgTableViewCellP2P.m; sourceTree = "<group>"; };
 		11FAA8C219EF558E002048FA /* FriendTableViewCellUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendTableViewCellUser.h; sourceTree = "<group>"; };
 		11FAA8C319EF558E002048FA /* FriendTableViewCellUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendTableViewCellUser.m; sourceTree = "<group>"; };
 		11FC326D19F0A92C000A6733 /* FriendTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendTableViewController.h; sourceTree = "<group>"; };
@@ -347,8 +363,8 @@
 		58A331AF19E547CC005BE980 /* MessageSocketDefine.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageSocketDefine.pch; sourceTree = "<group>"; };
 		58A5B4F619ADC05F0007C2F3 /* MainTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainTabBarController.h; sourceTree = "<group>"; };
 		58A5B4F719ADC05F0007C2F3 /* MainTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainTabBarController.m; sourceTree = "<group>"; };
-		58A5B4FA19ADC3CA0007C2F3 /* ChatTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatTableViewController.h; sourceTree = "<group>"; };
-		58A5B4FB19ADC3CA0007C2F3 /* ChatTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatTableViewController.m; sourceTree = "<group>"; };
+		58A5B4FA19ADC3CA0007C2F3 /* ChatMsgTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatMsgTableViewController.h; sourceTree = "<group>"; };
+		58A5B4FB19ADC3CA0007C2F3 /* ChatMsgTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatMsgTableViewController.m; sourceTree = "<group>"; };
 		58A9133E19D2BDBA008E5A25 /* UserShowViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserShowViewController.h; sourceTree = "<group>"; };
 		58A9133F19D2BDBA008E5A25 /* UserShowViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserShowViewController.m; sourceTree = "<group>"; };
 		58AF048919AF10560077DCBC /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
@@ -469,12 +485,22 @@
 		116AB14F19BF194E00092E2C /* Chat */ = {
 			isa = PBXGroup;
 			children = (
+				11E1581519F5007F008544D1 /* ChatMsgTableViewCellP2P.h */,
+				11E1581619F5007F008544D1 /* ChatMsgTableViewCellP2P.m */,
 				116BF86F19C81E030015561B /* AudioRecordManager.h */,
 				116BF87019C81E030015561B /* AudioRecordManager.m */,
-				58A5B4FB19ADC3CA0007C2F3 /* ChatTableViewController.m */,
-				58A5B4FA19ADC3CA0007C2F3 /* ChatTableViewController.h */,
-				116AB15019BF19DA00092E2C /* ChatCell.h */,
-				116AB15119BF19DA00092E2C /* ChatCell.m */,
+				58A5B4FB19ADC3CA0007C2F3 /* ChatMsgTableViewController.m */,
+				58A5B4FA19ADC3CA0007C2F3 /* ChatMsgTableViewController.h */,
+				11335B6719F53D6200FA32FA /* ChatMsgTableViewCellP2G.h */,
+				11335B6819F53D6200FA32FA /* ChatMsgTableViewCellP2G.m */,
+				11335B6B19F5407400FA32FA /* ChatViewController.h */,
+				11335B6C19F5407400FA32FA /* ChatViewController.m */,
+				1194300E19F74EC200FD9206 /* ChatShareMenuViewController.h */,
+				1194300F19F74EC200FD9206 /* ChatShareMenuViewController.m */,
+				1194301219F75CED00FD9206 /* ChatInputTextView.h */,
+				1194301319F75CED00FD9206 /* ChatInputTextView.m */,
+				1194301619F75D0100FD9206 /* ChatInputSoundView.h */,
+				1194301719F75D0100FD9206 /* ChatInputSoundView.m */,
 			);
 			name = Chat;
 			sourceTree = "<group>";
@@ -559,8 +585,6 @@
 			children = (
 				11E1581119F4FFE1008544D1 /* MsgTableViewController.h */,
 				11E1581219F4FFE1008544D1 /* MsgTableViewController.m */,
-				11E1581519F5007F008544D1 /* MsgTableViewCellPrivateChat.h */,
-				11E1581619F5007F008544D1 /* MsgTableViewCellPrivateChat.m */,
 			);
 			name = msg;
 			sourceTree = "<group>";
@@ -1023,9 +1047,9 @@
 				58B496E819A7186A0082AE30 /* MKNetworkOperation.m in Sources */,
 				58BC1E3519C0304900722A00 /* RegisterViewController.m in Sources */,
 				58BACF0F19B5DAB900A72391 /* imPhotoPicker.m in Sources */,
-				11E1581719F5007F008544D1 /* MsgTableViewCellPrivateChat.m in Sources */,
-				116AB15219BF19DA00092E2C /* ChatCell.m in Sources */,
+				11E1581719F5007F008544D1 /* ChatMsgTableViewCellP2P.m in Sources */,
 				116B6E9619B058A400DB1B5E /* SqlightDriver.m in Sources */,
+				11335B6919F53D6200FA32FA /* ChatMsgTableViewCellP2G.m in Sources */,
 				116B6E9719B058A400DB1B5E /* SqlightResult.m in Sources */,
 				5825D8F119D808CA004FF6FF /* CategoryTableViewController.m in Sources */,
 				58D3F28819E63082006589F9 /* IMNWMessage.m in Sources */,
@@ -1042,6 +1066,7 @@
 				58B496D819A7186A0082AE30 /* NSAlert+MKNetworkKitAdditions.m in Sources */,
 				58A331AD19E52CDE005BE980 /* CategoryContactTableViewCell.m in Sources */,
 				58B496E219A7186A0082AE30 /* UIAlertView+MKNetworkKitAdditions.m in Sources */,
+				11335B6D19F5407400FA32FA /* ChatViewController.m in Sources */,
 				11B1C62819E4E069003D2711 /* ChatMessageProxy.m in Sources */,
 				1171F7CC19E9154F00865A0B /* DPContactPerson.m in Sources */,
 				58A331AA19E51A95005BE980 /* CategoryListTableViewController.m in Sources */,
@@ -1056,13 +1081,15 @@
 				585971DE1999F0C700258CB1 /* main.m in Sources */,
 				58B496DC19A7186A0082AE30 /* NSDate+RFC1123.m in Sources */,
 				58A5B4F819ADC05F0007C2F3 /* MainTabBarController.m in Sources */,
-				58A5B4FC19ADC3CA0007C2F3 /* ChatTableViewController.m in Sources */,
+				1194301019F74EC200FD9206 /* ChatShareMenuViewController.m in Sources */,
+				58A5B4FC19ADC3CA0007C2F3 /* ChatMsgTableViewController.m in Sources */,
 				58B496EA19A7186A0082AE30 /* Reachability.m in Sources */,
 				117AC69419EE763E00143973 /* IMAddressBook.m in Sources */,
 				58B496E019A7186A0082AE30 /* NSString+MKNetworkKitAdditions.m in Sources */,
 				58BACF1319B5E89D00A72391 /* VPImageCropperViewController.m in Sources */,
 				58D3F28719E63082006589F9 /* IMNWManager.m in Sources */,
 				58B496DE19A7186A0082AE30 /* NSDictionary+RequestEncoding.m in Sources */,
+				1194301819F75D0100FD9206 /* ChatInputSoundView.m in Sources */,
 				116B6E8319AF1C7900DB1B5E /* BaseDAO.m in Sources */,
 				58D95F4819A5BDF4007139AB /* GCDAsyncSocket.m in Sources */,
 				1171F7D019E9269100865A0B /* ContactDAO.m in Sources */,
@@ -1074,6 +1101,7 @@
 				117AC69C19EE766200143973 /* DBUser.m in Sources */,
 				116B6E8019AF0F8C00DB1B5E /* DatabaseConfig.m in Sources */,
 				110F561A19D57013003B9EB4 /* DPMessageGroup.m in Sources */,
+				1194301419F75CED00FD9206 /* ChatInputTextView.m in Sources */,
 				58438C0D19D412E400B6962B /* NearbyTableViewController.m in Sources */,
 				117AC69519EE763E00143973 /* IMAddressPerson.m in Sources */,
 				1171F7D419E9278A00865A0B /* DBContactPerson.m in Sources */,
@@ -1112,13 +1140,13 @@
 				58BC1E5D19C06BAE00722A00 /* UIImageView+MKNetworkKitAdditions.m in Sources */,
 				1171F7D519E9278A00865A0B /* DBContactPerson.m in Sources */,
 				58BC1E5E19C06BAE00722A00 /* crypt.c in Sources */,
-				58BC1E3E19C06B9000722A00 /* ChatTableViewController.m in Sources */,
-				58BC1E3F19C06B9000722A00 /* ChatCell.m in Sources */,
-				11E1581819F5007F008544D1 /* MsgTableViewCellPrivateChat.m in Sources */,
+				58BC1E3E19C06B9000722A00 /* ChatMsgTableViewController.m in Sources */,
+				11E1581819F5007F008544D1 /* ChatMsgTableViewCellP2P.m in Sources */,
 				11FAA8C519EF558E002048FA /* FriendTableViewCellUser.m in Sources */,
 				58BC1E4019C06B9000722A00 /* LoginViewController.m in Sources */,
 				110F561719D56E07003B9EB4 /* DPMessageGroups.m in Sources */,
 				58D026C519D17D4800BE4748 /* NSNumber+IMNWError.m in Sources */,
+				1194301919F75D0100FD9206 /* ChatInputSoundView.m in Sources */,
 				58BC1E4119C06B9000722A00 /* imAppDelegate.m in Sources */,
 				116BF88019C981AE0015561B /* DPUser.m in Sources */,
 				1171F7CD19E9154F00865A0B /* DPContactPerson.m in Sources */,
@@ -1127,6 +1155,7 @@
 				110F561B19D57013003B9EB4 /* DPMessageGroup.m in Sources */,
 				116BF88619CC29360015561B /* ImDataUtil.m in Sources */,
 				58C14DD319C80D67009334E1 /* ContactViewController.m in Sources */,
+				1194301119F74EC200FD9206 /* ChatShareMenuViewController.m in Sources */,
 				58BC1E4919C06B9000722A00 /* UserMessageProxy.m in Sources */,
 				58BC1E4A19C06B9000722A00 /* FriendMessageProxy.m in Sources */,
 				11795E2919D297CD003FD9A7 /* DPFriend.m in Sources */,
@@ -1134,6 +1163,7 @@
 				110487A719D7A35C0002AB36 /* MessageGroupDAO.m in Sources */,
 				58BC1E4C19C06B9000722A00 /* MKNetworkOperation.m in Sources */,
 				58BC1E4D19C06B9000722A00 /* Reachability.m in Sources */,
+				11335B6A19F53D6200FA32FA /* ChatMsgTableViewCellP2G.m in Sources */,
 				58BC1E4E19C06B9000722A00 /* GCDAsyncSocket.m in Sources */,
 				1171F7C519E8DE4000865A0B /* AddressInviteTVTableViewCell.m in Sources */,
 				58BC1E4F19C06B9000722A00 /* AsyncSocket.m in Sources */,
@@ -1157,6 +1187,7 @@
 				5887FD2A19CC00EF001BFAFB /* TPContactsTableViewController.m in Sources */,
 				58BC1E3419C0304900722A00 /* RegInfoViewController.m in Sources */,
 				58C14DEB19CAD70F009334E1 /* AddByInputTableViewCell.m in Sources */,
+				11335B6E19F5407400FA32FA /* ChatViewController.m in Sources */,
 				58BC1E3619C0304900722A00 /* RegisterViewController.m in Sources */,
 				58C14DDB19C81562009334E1 /* RecommendViewController.m in Sources */,
 				116AB14D19B733C400092E2C /* FriendDataProxyTest.m in Sources */,
@@ -1189,6 +1220,7 @@
 				58EF8C4019BEEE1600C5A7AC /* AccountMessageProxy.m in Sources */,
 				116AB14719B731D300092E2C /* DBMessage.m in Sources */,
 				11FC327919F0C670000A6733 /* FriendDAO.m in Sources */,
+				1194301519F75CED00FD9206 /* ChatInputTextView.m in Sources */,
 				117AC6AF19EEB99800143973 /* IMNWHttpConnect.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1316,6 +1348,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "IMiPhone/IMiPhone-Prefix.pch";
+				"GCC_WARN_64_TO_32_BIT_CONVERSION[arch=*]" = YES;
 				INFOPLIST_FILE = "IMiPhone/IMiPhone-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;

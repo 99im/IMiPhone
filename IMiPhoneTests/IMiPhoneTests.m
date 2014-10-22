@@ -74,5 +74,17 @@
     }    NSLog([@" NOTIFY_USER_DATA_PROXY_LAST_LOGIN_UID_CHANGE" lowercaseString]);
 }
 
+- (void)testSwitchCase
+{
+    char a = 'a';
+    switch (a) {
+        case 97:
+            NSLog(@"97%c",a);
+            break;
+        default:
+              NSLog(@"default%c",a);
+            break;
+    }
+}
 
 @end

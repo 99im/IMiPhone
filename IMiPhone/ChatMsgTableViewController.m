@@ -6,13 +6,13 @@
 //  Copyright (c) 2014年 尹晓君. All rights reserved.
 //
 
-#import "ChatTableViewController.h"
+#import "ChatMsgTableViewController.h"
 
-@interface ChatTableViewController ()
+@interface ChatMsgTableViewController ()
 
 @end
 
-@implementation ChatTableViewController
+@implementation ChatMsgTableViewController
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
