@@ -10,4 +10,17 @@
 
 @implementation GroupMessageProxy
 
+static GroupMessageProxy *sharedGroupMessageProxy = nil;
+
++ (GroupMessageProxy*)sharedProxy
+{
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        sharedGroupMessageProxy = [[self alloc] init];
+    });
+    return sharedGroupMessageProxy;
+}
+
+- (void)getMyJoinGroups:(NSNumber *)start withPageNum:(NSNumber *)pageNum {
+}
 @end

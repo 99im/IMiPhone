@@ -184,8 +184,6 @@
 		58C14DD319C80D67009334E1 /* ContactViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C14DD119C80D67009334E1 /* ContactViewController.m */; };
 		58C14DDA19C81562009334E1 /* RecommendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C14DD919C81562009334E1 /* RecommendViewController.m */; };
 		58C14DDB19C81562009334E1 /* RecommendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C14DD919C81562009334E1 /* RecommendViewController.m */; };
-		58C14DDE19C82594009334E1 /* GroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C14DDD19C82594009334E1 /* GroupViewController.m */; };
-		58C14DDF19C82594009334E1 /* GroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C14DDD19C82594009334E1 /* GroupViewController.m */; };
 		58C14DE619CAB631009334E1 /* AddTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C14DE519CAB631009334E1 /* AddTableViewController.m */; };
 		58C14DE719CAB631009334E1 /* AddTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C14DE519CAB631009334E1 /* AddTableViewController.m */; };
 		58C14DEA19CAD70F009334E1 /* AddByInputTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C14DE919CAD70F009334E1 /* AddByInputTableViewCell.m */; };
@@ -208,7 +206,10 @@
 		58F2AA3919A487E300DC2FFB /* AsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F2AA3819A487E300DC2FFB /* AsyncSocket.m */; };
 		AB20EE8419F4DCCC004627C8 /* GroupDataProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = AB20EE8319F4DCCC004627C8 /* GroupDataProxy.m */; };
 		AB20EE8719F4DD8C004627C8 /* GroupMessageProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = AB20EE8619F4DD8C004627C8 /* GroupMessageProxy.m */; };
+		AB4F947F19F789A500397549 /* DPGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = AB4F947E19F789A500397549 /* DPGroup.m */; };
 		AB72235119ED110700E603E2 /* CategoryListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AB5554E719EBEAFA00B413F3 /* CategoryListTableViewCell.m */; };
+		ABA91EF919F64B970017B045 /* GroupTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ABA91EF819F64B970017B045 /* GroupTableViewCell.m */; };
+		ABA91EFC19F658270017B045 /* GroupTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABA91EFB19F658270017B045 /* GroupTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -395,8 +396,6 @@
 		58C14DD119C80D67009334E1 /* ContactViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactViewController.m; sourceTree = "<group>"; };
 		58C14DD819C81562009334E1 /* RecommendViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecommendViewController.h; sourceTree = "<group>"; };
 		58C14DD919C81562009334E1 /* RecommendViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecommendViewController.m; sourceTree = "<group>"; };
-		58C14DDC19C82594009334E1 /* GroupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupViewController.h; sourceTree = "<group>"; };
-		58C14DDD19C82594009334E1 /* GroupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupViewController.m; sourceTree = "<group>"; };
 		58C14DE419CAB631009334E1 /* AddTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddTableViewController.h; sourceTree = "<group>"; };
 		58C14DE519CAB631009334E1 /* AddTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddTableViewController.m; sourceTree = "<group>"; };
 		58C14DE819CAD70F009334E1 /* AddByInputTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddByInputTableViewCell.h; sourceTree = "<group>"; };
@@ -430,8 +429,14 @@
 		AB20EE8319F4DCCC004627C8 /* GroupDataProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupDataProxy.m; sourceTree = "<group>"; };
 		AB20EE8519F4DD8C004627C8 /* GroupMessageProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupMessageProxy.h; sourceTree = "<group>"; };
 		AB20EE8619F4DD8C004627C8 /* GroupMessageProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupMessageProxy.m; sourceTree = "<group>"; };
+		AB4F947D19F789A500397549 /* DPGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPGroup.h; sourceTree = "<group>"; };
+		AB4F947E19F789A500397549 /* DPGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPGroup.m; sourceTree = "<group>"; };
 		AB5554E619EBEAEF00B413F3 /* CategoryListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryListTableViewCell.h; sourceTree = "<group>"; };
 		AB5554E719EBEAFA00B413F3 /* CategoryListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoryListTableViewCell.m; sourceTree = "<group>"; };
+		ABA91EF719F64B970017B045 /* GroupTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupTableViewCell.h; sourceTree = "<group>"; };
+		ABA91EF819F64B970017B045 /* GroupTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupTableViewCell.m; sourceTree = "<group>"; };
+		ABA91EFA19F658270017B045 /* GroupTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupTableViewController.h; sourceTree = "<group>"; };
+		ABA91EFB19F658270017B045 /* GroupTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -610,6 +615,7 @@
 		585971D71999F0C700258CB1 /* IMiPhone */ = {
 			isa = PBXGroup;
 			children = (
+				AB20EE8919F4F67D004627C8 /* Group */,
 				58438C0A19D412C400B6962B /* Nearby */,
 				58A9133C19D2BC4E008E5A25 /* User */,
 				58C14DCF19C80D40009334E1 /* Contact */,
@@ -721,6 +727,8 @@
 				1171F7CB19E9154F00865A0B /* DPContactPerson.m */,
 				AB20EE8219F4DCCC004627C8 /* GroupDataProxy.h */,
 				AB20EE8319F4DCCC004627C8 /* GroupDataProxy.m */,
+				AB4F947D19F789A500397549 /* DPGroup.h */,
+				AB4F947E19F789A500397549 /* DPGroup.m */,
 			);
 			name = DataProxy;
 			sourceTree = "<group>";
@@ -797,8 +805,6 @@
 				58C14DD119C80D67009334E1 /* ContactViewController.m */,
 				58C14DD819C81562009334E1 /* RecommendViewController.h */,
 				58C14DD919C81562009334E1 /* RecommendViewController.m */,
-				58C14DDC19C82594009334E1 /* GroupViewController.h */,
-				58C14DDD19C82594009334E1 /* GroupViewController.m */,
 				58C14DE419CAB631009334E1 /* AddTableViewController.h */,
 				58C14DE519CAB631009334E1 /* AddTableViewController.m */,
 				58C14DE819CAD70F009334E1 /* AddByInputTableViewCell.h */,
@@ -890,6 +896,17 @@
 				58D026C319D17D4800BE4748 /* NSNumber+IMNWError.m */,
 			);
 			name = Network;
+			sourceTree = "<group>";
+		};
+		AB20EE8919F4F67D004627C8 /* Group */ = {
+			isa = PBXGroup;
+			children = (
+				ABA91EF719F64B970017B045 /* GroupTableViewCell.h */,
+				ABA91EF819F64B970017B045 /* GroupTableViewCell.m */,
+				ABA91EFA19F658270017B045 /* GroupTableViewController.h */,
+				ABA91EFB19F658270017B045 /* GroupTableViewController.m */,
+			);
+			name = Group;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1015,6 +1032,7 @@
 				116AB15219BF19DA00092E2C /* ChatCell.m in Sources */,
 				116B6E9619B058A400DB1B5E /* SqlightDriver.m in Sources */,
 				116B6E9719B058A400DB1B5E /* SqlightResult.m in Sources */,
+				ABA91EFC19F658270017B045 /* GroupTableViewController.m in Sources */,
 				5825D8F119D808CA004FF6FF /* CategoryTableViewController.m in Sources */,
 				58D3F28819E63082006589F9 /* IMNWMessage.m in Sources */,
 				11795E2819D297CD003FD9A7 /* DPFriend.m in Sources */,
@@ -1032,6 +1050,7 @@
 				58B496E219A7186A0082AE30 /* UIAlertView+MKNetworkKitAdditions.m in Sources */,
 				11B1C62819E4E069003D2711 /* ChatMessageProxy.m in Sources */,
 				1171F7CC19E9154F00865A0B /* DPContactPerson.m in Sources */,
+				AB4F947F19F789A500397549 /* DPGroup.m in Sources */,
 				58A331AA19E51A95005BE980 /* CategoryListTableViewController.m in Sources */,
 				58D3F28A19E63082006589F9 /* IMNWSocketConnect.m in Sources */,
 				AB20EE8719F4DD8C004627C8 /* GroupMessageProxy.m in Sources */,
@@ -1075,10 +1094,10 @@
 				116BF87F19C981AD0015561B /* DPUser.m in Sources */,
 				58D026C419D17D4800BE4748 /* NSNumber+IMNWError.m in Sources */,
 				58F2AA3919A487E300DC2FFB /* AsyncSocket.m in Sources */,
+				ABA91EF919F64B970017B045 /* GroupTableViewCell.m in Sources */,
 				58A9134019D2BDBA008E5A25 /* UserShowViewController.m in Sources */,
 				58BC1E3319C0304900722A00 /* RegInfoViewController.m in Sources */,
 				AB20EE8419F4DCCC004627C8 /* GroupDataProxy.m in Sources */,
-				58C14DDE19C82594009334E1 /* GroupViewController.m in Sources */,
 				58C14DDA19C81562009334E1 /* RecommendViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1155,7 +1174,6 @@
 				117AC6B419EEBA0000143973 /* DBUser.m in Sources */,
 				117AC6B019EEB99E00143973 /* IMNWManager.m in Sources */,
 				116BF88219CC01C70015561B /* UserDataProxyTest.m in Sources */,
-				58C14DDF19C82594009334E1 /* GroupViewController.m in Sources */,
 				58BC1E3A19C0304900722A00 /* RegStep2ViewController.m in Sources */,
 				1171F7D119E9269100865A0B /* ContactDAO.m in Sources */,
 				116AB14819B731D600092E2C /* DatabaseConfig.m in Sources */,

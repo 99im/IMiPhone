@@ -9,5 +9,12 @@
 #import <Foundation/Foundation.h>
 
 @interface GroupMessageProxy : NSObject
-
++ (GroupMessageProxy *)sharedProxy;
+/**
+ *  查询我加入的群组数据
+ *
+ *  @param start   起始编号
+ *  @param pageNum 查询条数
+ */
+- (void)getMyJoinGroups:(NSNumber *)start withPageNum:(NSNumber *)pageNum;
 @end

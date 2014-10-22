@@ -26,7 +26,20 @@ static GroupDAO* sharedGroupDAO = nil;
     return sharedGroupDAO;
 }
 
-
+- (NSMutableArray *)select:(NSString *)where
+                   orderBy:(NSString *)orderBy
+                     limit:(NSString *)limit
+                      bind:(NSArray *)bind {
+  NSString *condition = [NSString stringWithFormat:@"%@", where];
+  if (orderBy && 0 < [orderBy length]) {
+    condition = [condition stringByAppendingFormat:@" ORDER BY %@", orderBy];
+  }
+  if (limit && 2 < [limit length]) {
+    condition = [condition stringByAppendingFormat:@" LIMIT %@", limit];
+  }
+  NSMutableArray *result = [self query:condition Bind:bind];
+  return result;
+}
 //NSString *dbName = @"DemoDb";
 //NSString *tbName = @"DemoTb";
 //SqlightAdapter *sqlight = [SqlightAdapter database:dbName AndTable:tbName];

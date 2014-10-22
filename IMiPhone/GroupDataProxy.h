@@ -7,7 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "GroupDAO.h"
+#import "DPGroup.h"
 
 @interface GroupDataProxy : NSObject
-
+- (NSMutableArray *) getMyJoinGroups;
 @end
