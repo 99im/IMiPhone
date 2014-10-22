@@ -75,8 +75,8 @@
     }
   }
 
-  NSLog(@"row %li  \nisFocused:%i : %li  \n%@ uinfo: \n%@\n======\n", row,
-        self.isFocused, isFriend, user, uinfo);
+  NSLog(@"row %li  \nisFocused:%i : %li  \n%@ uinfo: \n%@\n======\n", (long)row,
+        self.isFocused, (long)isFriend, user, uinfo);
   self.lblUserName.text = self.nickName;
   if (self.isFocused == YES) {
     [self.btnFocusOrCancel setTitle:@"取消关注" forState:UIControlStateNormal];

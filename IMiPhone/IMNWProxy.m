@@ -36,8 +36,8 @@ static IMNWProxy *sharedNWProxy = nil;
 
 - (NSError *)processErrorCode:(NSInteger)errorcode fromSource:(NSString *)source
 {
-    NSAssert(YES, @"Network connect response error: %i", errorcode);
-    NSNumber *errorCodeNumber = [NSNumber numberWithInt:errorcode];
+    NSAssert(YES, @"Network connect response error: %li", errorcode);
+    NSNumber *errorCodeNumber = [NSNumber numberWithLong:errorcode];
     NSString *errorMessage = [errorCodeNumber errorMessage];
     NSDictionary *userInfo = [NSDictionary dictionaryWithObject:errorMessage
                                                          forKey:NSLocalizedDescriptionKey];

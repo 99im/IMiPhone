@@ -72,7 +72,7 @@
 
 + (BOOL)checkNick:(NSString *)nick
 {
-    int length = [self countStringLength:nick];
+    NSInteger length = [self countStringLength:nick];
     if (length <= NICK_LENGTH_MAX) {
         return YES;
     }
