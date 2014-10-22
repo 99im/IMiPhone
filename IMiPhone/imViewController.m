@@ -16,6 +16,8 @@
 
 @interface imViewController () <IMNWProxyProtocol>
 
+@property (nonatomic) BOOL hasVerified;
+
 @end
 
 @implementation imViewController
@@ -27,11 +29,11 @@
 	// Do any additional setup after loading the view, typically from a nib.
     [self registerMessageNotification];
     [[IMNWManager sharedNWManager] initHttpConnect];
-    
-//    if (![imUtil checkBlankString:[UserDataProxy sharedProxy].verify] && [UserDataProxy sharedProxy].lastLoginUid != NAN) {
-//        [[IMNWManager sharedNWManager] initSocketConnect];
-//        [[IMNWManager sharedNWManager].socketConnect connect:SOCKET_HOST port:SOCKET_PORT];
-//    }
+    self.hasVerified = ![imUtil checkBlankString:[UserDataProxy sharedProxy].verify] && [UserDataProxy sharedProxy].lastLoginUid != NSNotFound;
+    if (self.hasVerified) {
+        [[IMNWManager sharedNWManager] initSocketConnect];
+        [[IMNWManager sharedNWManager].socketConnect connect:SOCKET_HOST port:SOCKET_PORT];
+    }
 //    else {
 //        [self performSegueWithIdentifier:@"Start2AccountSegue" sender:self];
 //    }
@@ -40,9 +42,7 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    if (![imUtil checkBlankString:[UserDataProxy sharedProxy].verify] && [UserDataProxy sharedProxy].lastLoginUid != NAN) {
-        [[IMNWManager sharedNWManager] initSocketConnect];
-        [[IMNWManager sharedNWManager].socketConnect connect:SOCKET_HOST port:SOCKET_PORT];
+    if (self.hasVerified) {
     }
     else {
         [self performSegueWithIdentifier:@"Start2AccountSegue" sender:self];
