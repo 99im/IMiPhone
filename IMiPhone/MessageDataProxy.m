@@ -80,7 +80,7 @@ static MessageDataProxy *messageDataProxy = nil;
                        ByCondition:[DB_PRIMARY_KEY_SENDER_ID stringByAppendingString:@"=?"]
                               Bind:[NSMutableArray arrayWithObjects:[NSString stringWithFormat:@"%li",(long)tempDBMessage.senderUid],nil]];
     [self.arrMessages replaceObjectAtIndex:index withObject:object];
-    NSLog(@"replace arrMessages at %li,with new sender id:%li",index,(long)((DPMessage *)object).senderUid);
+    NSLog(@"replace arrMessages at %li,with new sender id:%li",(unsigned long)index,(long)((DPMessage *)object).senderUid);
 }
 
 #pragma mark - messageGroups
