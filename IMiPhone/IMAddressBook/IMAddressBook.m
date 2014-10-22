@@ -97,7 +97,7 @@
         //获取email多值
         NSString* emailString = @"";
         ABMultiValueRef email = ABRecordCopyValue(person, kABPersonEmailProperty);
-        int emailcount = ABMultiValueGetCount(email);
+        NSInteger emailcount = ABMultiValueGetCount(email);
         for (int x = 0; x < emailcount; x++)
         {
             //获取email Label

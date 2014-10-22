@@ -78,7 +78,7 @@
 }
 
 
-- (void)openSubTags:(int)tag
+- (void)openSubTags:(NSInteger)tag
 {
     if (tag == -1) {
         tag = 0;

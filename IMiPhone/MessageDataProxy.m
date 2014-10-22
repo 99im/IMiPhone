@@ -64,9 +64,9 @@ static MessageDataProxy *messageDataProxy = nil;
 {
     DPMessage *dpMessage = self.arrMessages[index];
     [[MessageDAO sharedDAO] deleteByCondition:[DB_PRIMARY_KEY_SENDER_ID stringByAppendingString:@"=?"]
-                                         Bind:[NSMutableArray arrayWithObjects:[NSString stringWithFormat:@"%d",dpMessage.senderUid],nil]];
+                                         Bind:[NSMutableArray arrayWithObjects:[NSString stringWithFormat:@"%li",(long)dpMessage.senderUid],nil]];
     [self.arrMessages removeObjectAtIndex:index];
-    NSLog(@"remove arrMessages at index :%d",index);
+    NSLog(@"remove arrMessages at index :%li",(unsigned long)index);
    
 }
 
@@ -78,9 +78,9 @@ static MessageDataProxy *messageDataProxy = nil;
     [[MessageDAO sharedDAO] update:
      tempDBMessage
                        ByCondition:[DB_PRIMARY_KEY_SENDER_ID stringByAppendingString:@"=?"]
-                              Bind:[NSMutableArray arrayWithObjects:[NSString stringWithFormat:@"%d",tempDBMessage.senderUid],nil]];
+                              Bind:[NSMutableArray arrayWithObjects:[NSString stringWithFormat:@"%li",(long)tempDBMessage.senderUid],nil]];
     [self.arrMessages replaceObjectAtIndex:index withObject:object];
-    NSLog(@"replace arrMessages at %d,with new sender id:%@",index,((DPMessage *)object).senderUid);
+    NSLog(@"replace arrMessages at %li,with new sender id:%li",index,(long)((DPMessage *)object).senderUid);
 }
 
 #pragma mark - messageGroups
@@ -112,14 +112,14 @@ static MessageDataProxy *messageDataProxy = nil;
 -(void)removeObjectFromArrMessageGroupsAtIndex:(NSUInteger)index
 {
     [self.arrMessageGroups removeObjectAtIndex:index];
-    NSLog(@"arrMessageGroups remove at%d",index);
+    NSLog(@"arrMessageGroups remove at%li",(unsigned long)index);
     
 }
 
 -(void)replaceObjectInArrMessageGroupsAtIndex:(NSUInteger)index withObject:(id)object
 {
     [self.arrMessageGroups replaceObjectAtIndex:index withObject:object];
-    NSLog(@"arrMessageGroups replace at %d,messageGroupId:%@",index,((DPMessageGroup *)object).messageGroupId);
+    NSLog(@"arrMessageGroups replace at %li,messageGroupId:%@",(unsigned long)index,((DPMessageGroup *)object).messageGroupId);
     
 }
 

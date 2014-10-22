@@ -936,6 +936,7 @@
 				585971CA1999F0C700258CB1 /* Sources */,
 				585971CB1999F0C700258CB1 /* Frameworks */,
 				585971CC1999F0C700258CB1 /* Resources */,
+				5806F66B19F63FD700563F75 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -1016,6 +1017,22 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		5806F66B19F63FD700563F75 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# shell script goes here\n\n# compress application.\nif [ \"${CONFIGURATION}\" = \"ad_hoc\" ]; then #判断发布版本\n\n/bin/mkdir $CONFIGURATION_BUILD_DIR/Payload\n\n/bin/cp -R $CONFIGURATION_BUILD_DIR/InstaSoccer.app $CONFIGURATION_BUILD_DIR/Payload\n\n/bin/cp isoccer/icon/iTunesArtwork $CONFIGURATION_BUILD_DIR/iTunesArtwork\n\ncd $CONFIGURATION_BUILD_DIR\n\n# zip up the Instasoccer directory\n\n/usr/bin/zip -r InstaSoccer.ipa Payload iTunesArtwork\n\n# /usr/bin/scp InstaSoccer.ipa sshuser@192.168.1.188:~/ipa_publish/ #scp到服务器路径，如果用Mac本机开启服务器，可以用cp到webserver路径\nfi\nexit 0";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		585971CA1999F0C700258CB1 /* Sources */ = {

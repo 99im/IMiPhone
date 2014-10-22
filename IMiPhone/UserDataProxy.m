@@ -106,7 +106,7 @@ static UserDataProxy *sharedProxy = nil;
     if (_lastLoginUid == NSNotFound)
     {
         _lastLoginUid = [imRms userDefaultsReadInt:KEY_USER_LAST_LOGIN_UID isBindUid:NO];
-        [DatabaseConfig shareDatabaseConfig].databaseName = [NSString stringWithFormat:@"%d", _lastLoginUid];
+        [DatabaseConfig shareDatabaseConfig].databaseName = [NSString stringWithFormat:@"%ld", (long)_lastLoginUid];
         [imRms setUid:_lastLoginUid];
     }
     return _lastLoginUid;
@@ -114,9 +114,9 @@ static UserDataProxy *sharedProxy = nil;
 - (void)setLastLoginUid:(NSInteger)lastLoginUid
 {
     _lastLoginUid = lastLoginUid;
-    [DatabaseConfig shareDatabaseConfig].databaseName = [NSString stringWithFormat:@"%d", _lastLoginUid];
+    [DatabaseConfig shareDatabaseConfig].databaseName = [NSString stringWithFormat:@"%ld", (long)_lastLoginUid];
     [imRms setUid:_lastLoginUid];
-    [imRms userDefaultsWrite:KEY_USER_LAST_LOGIN_UID withStringValue:[NSString stringWithFormat:@"%d", _lastLoginUid] isBindUid:NO];
+    [imRms userDefaultsWrite:KEY_USER_LAST_LOGIN_UID withStringValue:[NSString stringWithFormat:@"%ld", (long)_lastLoginUid] isBindUid:NO];
 }
 
 - (NSString *)getVerify
@@ -188,7 +188,7 @@ static UserDataProxy *sharedProxy = nil;
     {
         [[UserDAO sharedDAO] insert:tempDBUser];
         [self.arrUsers insertObject:object atIndex:index];
-        NSLog(@"arrUsers insert message id:%d", ((DPUser *)object).uid);
+        NSLog(@"arrUsers insert message id:%ld", (long)((DPUser *)object).uid);
     }
 }
 
@@ -197,9 +197,9 @@ static UserDataProxy *sharedProxy = nil;
 {
     DPUser *dpUser = self.arrUsers[index];
     [[UserDAO sharedDAO] deleteByCondition:[DB_PRIMARY_KEY_USER_UID stringByAppendingString:@"=?"]
-                                         Bind:[NSMutableArray arrayWithObjects:[NSString stringWithFormat:@"%d",dpUser.uid],nil]];
+                                         Bind:[NSMutableArray arrayWithObjects:[NSString stringWithFormat:@"%ld",(long)dpUser.uid],nil]];
     [self.arrUsers removeObjectAtIndex:index];
-    NSLog(@"remove arrUsers at index :%d",index);
+    NSLog(@"remove arrUsers at index :%lu",(unsigned long)index);
     
 }
      

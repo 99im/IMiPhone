@@ -79,7 +79,7 @@ static FriendDataProxy *sharedFriendDataProxy = nil;
     [[ContactDAO sharedDAO] deleteByCondition:[DB_PRIMARY_KEY_CONTACT_PERSON_PHONE stringByAppendingString:@"=?"]
                                          Bind:[NSMutableArray arrayWithObjects:dpPerson.phones,nil]];
     [self.arrContact removeObjectAtIndex:index];
-    NSLog(@"remove arrContact at index :%d",index);
+    NSLog(@"remove arrContact at index :%lu",(unsigned long)index);
     
 }
 
@@ -146,7 +146,7 @@ static FriendDataProxy *sharedFriendDataProxy = nil;
     else {
         [[ContactDAO sharedDAO] insert:tempDBUserFromContact];
         [self.arrUsersFromContact insertObject:object atIndex:index];
-        NSLog(@"arrUsersFromContact insert user uid:%d", ((DPUserFromContact *)object).uid);
+        NSLog(@"arrUsersFromContact insert user uid:%ld", (long)((DPUserFromContact *)object).uid);
     }
 }
 
@@ -154,9 +154,9 @@ static FriendDataProxy *sharedFriendDataProxy = nil;
 {
     DPUserFromContact *dpUserFromContact = self.arrUsersFromContact[index];
     [[UsersFromContactDAO sharedDAO] deleteByCondition:[DB_PRIMARY_KEY_USER_FROM_CONTACT_UID stringByAppendingString:@"=?"]
-                                                  Bind:[NSMutableArray arrayWithObjects:[NSString stringWithFormat:@"%d",dpUserFromContact.uid],nil]];
+                                                  Bind:[NSMutableArray arrayWithObjects:[NSString stringWithFormat:@"%ld",(long)dpUserFromContact.uid],nil]];
     [self.arrUsersFromContact removeObjectAtIndex:index];
-    NSLog(@"remove arrUsersFromContact at index :%d",index);
+    NSLog(@"remove arrUsersFromContact at index :%lu",(unsigned long)index);
     
 }
 
@@ -205,7 +205,7 @@ static FriendDataProxy *sharedFriendDataProxy = nil;
     {
         [[FriendDAO sharedDAO] insert:tempDBFriend];
         [self.arrFriends insertObject:object atIndex:index];
-        NSLog(@"arrFriends insert Friend uid:%d", ((DPFriend *)object).uid);
+        NSLog(@"arrFriends insert Friend uid:%ld", (long)((DPFriend *)object).uid);
     }
 }
 
@@ -213,9 +213,9 @@ static FriendDataProxy *sharedFriendDataProxy = nil;
 {
     DPFriend *dpFriend = self.arrFriends[index];
     [[FriendDAO sharedDAO] deleteByCondition:[DB_PRIMARY_KEY_FRIEND_UID stringByAppendingString:@"=?"]
-                                      Bind:[NSMutableArray arrayWithObjects:[NSString stringWithFormat:@"%d",dpFriend.uid],nil]];
+                                      Bind:[NSMutableArray arrayWithObjects:[NSString stringWithFormat:@"%ld",(long)dpFriend.uid],nil]];
     [self.arrFriends removeObjectAtIndex:index];
-    NSLog(@"remove arrFriends at index :%d",index);
+    NSLog(@"remove arrFriends at index :%lu",(unsigned long)index);
     
 }
 
