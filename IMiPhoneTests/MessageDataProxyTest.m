@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>
-#import "MessageDataProxy.h"
+#import "ChatDataProxy.h"
 
 @interface MessageDataProxyTest : XCTestCase
 
@@ -29,16 +29,16 @@
 }
 
 - (void)testMessageArray {
-    DPMessage * dpMessage = [[DPMessage alloc] init];
+    DPChatMessage * dpMessage = [[DPChatMessage alloc] init];
     dpMessage.senderUid = 18;
     dpMessage.content = @"xxx关注了你";
     dpMessage.sendTime = @"1902-0-1";
-    [[[MessageDataProxy sharedProxy] mutableArrayMessages] addObject:dpMessage];
+    [[[ChatDataProxy sharedProxy] mutableArrayMessages] addObject:dpMessage];
 }
 
 - (void)testSetValueForKey
 {
-    DPMessage * dpMessage = [[DPMessage alloc] init];
+    DPChatMessage * dpMessage = [[DPChatMessage alloc] init];
     [dpMessage setValue:[NSNumber numberWithInt:1111] forKey:@"sendTime"];
 }
 
@@ -46,7 +46,7 @@
 {
     NSString *s = @"222";
     NSNumber *n = (NSNumber *)s;
-    DPMessage * dpMessage = [[DPMessage alloc] init];
+    DPChatMessage * dpMessage = [[DPChatMessage alloc] init];
     [dpMessage setValue:n forKey:@"senderUid"];
     
     s = @"0.122";

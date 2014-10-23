@@ -8,9 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
-@interface DPMessage : NSObject
+@interface DPChatMessage : NSObject
 
+@property (nonatomic) NSInteger mid;
 @property (nonatomic) NSInteger senderUid;
+@property (nonatomic) NSInteger type;
 @property (nonatomic, retain) NSString *content;
 @property (nonatomic, retain) NSString *sendTime;
 

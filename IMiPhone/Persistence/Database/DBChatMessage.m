@@ -6,11 +6,13 @@
 //  Copyright (c) 2014年 尹晓君. All rights reserved.
 //
 
-#import "DBMessage.h"
+#import "DBChatMessage.h"
 
-@implementation DBMessage
+@implementation DBChatMessage
 
+@synthesize mid;
 @synthesize senderUid;
+@synthesize type;
 @synthesize content;
 @synthesize sendTime;
 
