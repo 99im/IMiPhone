@@ -208,6 +208,7 @@
 		AB24A95419F7CE2F00026299 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB24A95219F7CE2F00026299 /* Main.storyboard */; };
 		AB24A95719F89DDA00026299 /* GroupInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB24A95619F89DDA00026299 /* GroupInfoViewController.m */; };
 		AB24A95D19F8DC6500026299 /* GroupCreateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB24A95C19F8DC6500026299 /* GroupCreateViewController.m */; };
+		AB24A96019F8E59D00026299 /* GroupSettingTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB24A95F19F8E59D00026299 /* GroupSettingTableViewController.m */; };
 		AB4F947F19F789A500397549 /* DPGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = AB4F947E19F789A500397549 /* DPGroup.m */; };
 		AB72235119ED110700E603E2 /* CategoryListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AB5554E719EBEAFA00B413F3 /* CategoryListTableViewCell.m */; };
 		ABA91EF919F64B970017B045 /* GroupTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ABA91EF819F64B970017B045 /* GroupTableViewCell.m */; };
@@ -435,6 +436,8 @@
 		AB24A95619F89DDA00026299 /* GroupInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupInfoViewController.m; sourceTree = "<group>"; };
 		AB24A95B19F8DC6500026299 /* GroupCreateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupCreateViewController.h; sourceTree = "<group>"; };
 		AB24A95C19F8DC6500026299 /* GroupCreateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupCreateViewController.m; sourceTree = "<group>"; };
+		AB24A95E19F8E59D00026299 /* GroupSettingTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupSettingTableViewController.h; sourceTree = "<group>"; };
+		AB24A95F19F8E59D00026299 /* GroupSettingTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupSettingTableViewController.m; sourceTree = "<group>"; };
 		AB4F947D19F789A500397549 /* DPGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPGroup.h; sourceTree = "<group>"; };
 		AB4F947E19F789A500397549 /* DPGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPGroup.m; sourceTree = "<group>"; };
 		AB5554E619EBEAEF00B413F3 /* CategoryListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryListTableViewCell.h; sourceTree = "<group>"; };
@@ -915,6 +918,8 @@
 				AB24A95619F89DDA00026299 /* GroupInfoViewController.m */,
 				AB24A95B19F8DC6500026299 /* GroupCreateViewController.h */,
 				AB24A95C19F8DC6500026299 /* GroupCreateViewController.m */,
+				AB24A95E19F8E59D00026299 /* GroupSettingTableViewController.h */,
+				AB24A95F19F8E59D00026299 /* GroupSettingTableViewController.m */,
 			);
 			name = Group;
 			sourceTree = "<group>";
@@ -1077,6 +1082,7 @@
 				AB24A95719F89DDA00026299 /* GroupInfoViewController.m in Sources */,
 				58A5B4FC19ADC3CA0007C2F3 /* ChatTableViewController.m in Sources */,
 				58B496EA19A7186A0082AE30 /* Reachability.m in Sources */,
+				AB24A96019F8E59D00026299 /* GroupSettingTableViewController.m in Sources */,
 				117AC69419EE763E00143973 /* IMAddressBook.m in Sources */,
 				58B496E019A7186A0082AE30 /* NSString+MKNetworkKitAdditions.m in Sources */,
 				58BACF1319B5E89D00A72391 /* VPImageCropperViewController.m in Sources */,
