@@ -15,6 +15,8 @@
 
 @implementation GroupTableViewController
 
+#pragma mark - 界面控制
+
 - (void)viewDidLoad {
   NSLog(@"group viewDidLoad");
   [super viewDidLoad];
@@ -52,27 +54,28 @@
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([segue.identifier isEqualToString:@"FriendTable2UserInfo"]) {
-        GroupInfoController *nextController = segue.destinationViewController;
-        nextController.hidesBottomBarWhenPushed = YES;
+    if ([segue.identifier isEqualToString:@"groupList2viewInfoSegue"]) {
+//        GroupInfoViewController *nextController = segue.destinationViewController;
+//        nextController.hidesBottomBarWhenPushed = YES;
     }
 }
-#pragma mark - Table view data source
+
+
+#pragma mark - 数据加载
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     NSLog(@"group numberOfSectionsInTableView");
-#warning Potentially incomplete method implementation.
+    //#warning Potentially incomplete method implementation.
     // Return the number of sections.
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     NSLog(@"group numberOfRowsInSection");
-#warning Incomplete method implementation.
+    //TODO : 待返回已加入群组的总个数
     // Return the number of rows in the section.
     return 4;
 }
-
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     GroupTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"groupListCell" forIndexPath:indexPath];
@@ -83,7 +86,8 @@
     return cell;
 }
 
-#pragma mark - Notification
+#pragma mark - 消息处理
+
 - (void)registerMessageNotification {
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(showGroupInfo:)

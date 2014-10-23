@@ -205,11 +205,10 @@
 		58F2AA3919A487E300DC2FFB /* AsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F2AA3819A487E300DC2FFB /* AsyncSocket.m */; };
 		AB20EE8419F4DCCC004627C8 /* GroupDataProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = AB20EE8319F4DCCC004627C8 /* GroupDataProxy.m */; };
 		AB20EE8719F4DD8C004627C8 /* GroupMessageProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = AB20EE8619F4DD8C004627C8 /* GroupMessageProxy.m */; };
-		AB24A94E19F7ADD300026299 /* GroupInfoShowController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB24A94D19F7ADD300026299 /* GroupInfoShowController.m */; };
 		AB24A95419F7CE2F00026299 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB24A95219F7CE2F00026299 /* Main.storyboard */; };
+		AB24A95719F89DDA00026299 /* GroupInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB24A95619F89DDA00026299 /* GroupInfoViewController.m */; };
+		AB24A95D19F8DC6500026299 /* GroupCreateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB24A95C19F8DC6500026299 /* GroupCreateViewController.m */; };
 		AB4F947F19F789A500397549 /* DPGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = AB4F947E19F789A500397549 /* DPGroup.m */; };
-		AB4F948219F79AD500397549 /* GroupInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB4F948119F79AD500397549 /* GroupInfoController.m */; };
-		AB4F948519F7A00700397549 /* GroupInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = AB4F948419F7A00700397549 /* GroupInfoView.m */; };
 		AB72235119ED110700E603E2 /* CategoryListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AB5554E719EBEAFA00B413F3 /* CategoryListTableViewCell.m */; };
 		ABA91EF919F64B970017B045 /* GroupTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ABA91EF819F64B970017B045 /* GroupTableViewCell.m */; };
 		ABA91EFC19F658270017B045 /* GroupTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABA91EFB19F658270017B045 /* GroupTableViewController.m */; };
@@ -431,15 +430,13 @@
 		AB20EE8319F4DCCC004627C8 /* GroupDataProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupDataProxy.m; sourceTree = "<group>"; };
 		AB20EE8519F4DD8C004627C8 /* GroupMessageProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupMessageProxy.h; sourceTree = "<group>"; };
 		AB20EE8619F4DD8C004627C8 /* GroupMessageProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupMessageProxy.m; sourceTree = "<group>"; };
-		AB24A94C19F7ADD300026299 /* GroupInfoShowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupInfoShowController.h; sourceTree = "<group>"; };
-		AB24A94D19F7ADD300026299 /* GroupInfoShowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupInfoShowController.m; sourceTree = "<group>"; };
 		AB24A95319F7CE2F00026299 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = "zh-Hans"; path = "zh-Hans.lproj/Main.storyboard"; sourceTree = "<group>"; };
+		AB24A95519F89DDA00026299 /* GroupInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupInfoViewController.h; sourceTree = "<group>"; };
+		AB24A95619F89DDA00026299 /* GroupInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupInfoViewController.m; sourceTree = "<group>"; };
+		AB24A95B19F8DC6500026299 /* GroupCreateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupCreateViewController.h; sourceTree = "<group>"; };
+		AB24A95C19F8DC6500026299 /* GroupCreateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupCreateViewController.m; sourceTree = "<group>"; };
 		AB4F947D19F789A500397549 /* DPGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPGroup.h; sourceTree = "<group>"; };
 		AB4F947E19F789A500397549 /* DPGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPGroup.m; sourceTree = "<group>"; };
-		AB4F948019F79AD500397549 /* GroupInfoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupInfoController.h; sourceTree = "<group>"; };
-		AB4F948119F79AD500397549 /* GroupInfoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupInfoController.m; sourceTree = "<group>"; };
-		AB4F948319F7A00700397549 /* GroupInfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupInfoView.h; sourceTree = "<group>"; };
-		AB4F948419F7A00700397549 /* GroupInfoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupInfoView.m; sourceTree = "<group>"; };
 		AB5554E619EBEAEF00B413F3 /* CategoryListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryListTableViewCell.h; sourceTree = "<group>"; };
 		AB5554E719EBEAFA00B413F3 /* CategoryListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoryListTableViewCell.m; sourceTree = "<group>"; };
 		ABA91EF719F64B970017B045 /* GroupTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupTableViewCell.h; sourceTree = "<group>"; };
@@ -914,12 +911,10 @@
 				ABA91EF819F64B970017B045 /* GroupTableViewCell.m */,
 				ABA91EFA19F658270017B045 /* GroupTableViewController.h */,
 				ABA91EFB19F658270017B045 /* GroupTableViewController.m */,
-				AB4F948019F79AD500397549 /* GroupInfoController.h */,
-				AB4F948119F79AD500397549 /* GroupInfoController.m */,
-				AB4F948319F7A00700397549 /* GroupInfoView.h */,
-				AB4F948419F7A00700397549 /* GroupInfoView.m */,
-				AB24A94C19F7ADD300026299 /* GroupInfoShowController.h */,
-				AB24A94D19F7ADD300026299 /* GroupInfoShowController.m */,
+				AB24A95519F89DDA00026299 /* GroupInfoViewController.h */,
+				AB24A95619F89DDA00026299 /* GroupInfoViewController.m */,
+				AB24A95B19F8DC6500026299 /* GroupCreateViewController.h */,
+				AB24A95C19F8DC6500026299 /* GroupCreateViewController.m */,
 			);
 			name = Group;
 			sourceTree = "<group>";
@@ -1025,7 +1020,6 @@
 				11FC326F19F0A92C000A6733 /* FriendTableViewController.m in Sources */,
 				11FDE12319EFB516002AEDB7 /* FriendDAO.m in Sources */,
 				58BACF0919B5805800A72391 /* crypt.c in Sources */,
-				AB4F948219F79AD500397549 /* GroupInfoController.m in Sources */,
 				117AC69D19EE766200143973 /* DBUserFromContact.m in Sources */,
 				1171F7C819E8DE6300865A0B /* AddressAddTVTableViewCell.m in Sources */,
 				58BACF0819B5804700A72391 /* FriendMessageProxy.m in Sources */,
@@ -1051,7 +1045,6 @@
 				ABA91EFC19F658270017B045 /* GroupTableViewController.m in Sources */,
 				5825D8F119D808CA004FF6FF /* CategoryTableViewController.m in Sources */,
 				58D3F28819E63082006589F9 /* IMNWMessage.m in Sources */,
-				AB24A94E19F7ADD300026299 /* GroupInfoShowController.m in Sources */,
 				11795E2819D297CD003FD9A7 /* DPFriend.m in Sources */,
 				58D3F28919E63082006589F9 /* IMNWProxy.m in Sources */,
 				58438C1119D420C800B6962B /* SystemTableViewController.m in Sources */,
@@ -1081,9 +1074,9 @@
 				585971DE1999F0C700258CB1 /* main.m in Sources */,
 				58B496DC19A7186A0082AE30 /* NSDate+RFC1123.m in Sources */,
 				58A5B4F819ADC05F0007C2F3 /* MainTabBarController.m in Sources */,
+				AB24A95719F89DDA00026299 /* GroupInfoViewController.m in Sources */,
 				58A5B4FC19ADC3CA0007C2F3 /* ChatTableViewController.m in Sources */,
 				58B496EA19A7186A0082AE30 /* Reachability.m in Sources */,
-				AB4F948519F7A00700397549 /* GroupInfoView.m in Sources */,
 				117AC69419EE763E00143973 /* IMAddressBook.m in Sources */,
 				58B496E019A7186A0082AE30 /* NSString+MKNetworkKitAdditions.m in Sources */,
 				58BACF1319B5E89D00A72391 /* VPImageCropperViewController.m in Sources */,
@@ -1108,6 +1101,7 @@
 				11B1C62C19E51AFB003D2711 /* ChatDataProxy.m in Sources */,
 				58C14DE619CAB631009334E1 /* AddTableViewController.m in Sources */,
 				58BC1E3919C0304900722A00 /* RegStep2ViewController.m in Sources */,
+				AB24A95D19F8DC6500026299 /* GroupCreateViewController.m in Sources */,
 				58BC1E3719C0304900722A00 /* RegStep1ViewController.m in Sources */,
 				116BF87F19C981AD0015561B /* DPUser.m in Sources */,
 				58D026C419D17D4800BE4748 /* NSNumber+IMNWError.m in Sources */,

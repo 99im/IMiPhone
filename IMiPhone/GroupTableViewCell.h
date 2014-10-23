@@ -13,10 +13,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *lblIntro;
 @property (weak, nonatomic) IBOutlet UILabel *lblDistance;
 @property (weak, nonatomic) IBOutlet UIImageView *imgAvatar;
-//@property (weak, nonatomic) IBOutlet UILabel *lblGroupName;
-//@property (weak, nonatomic) IBOutlet UILabel *lblDetail;
-//@property (weak, nonatomic) IBOutlet UILabel *lblDistance;
-//@property (weak, nonatomic) IBOutlet UIImageView *imgAvatar;
+
+@property(nonatomic) NSInteger userId;
 
 /**
  *  填充单元格数据

@@ -1,18 +1,18 @@
 //
-//  GroupInfoShowController.m
+//  GroupCreateViewController.m
 //  IMiPhone
 //
-//  Created by 雷运梁 on 14-10-22.
+//  Created by 雷运梁 on 14-10-23.
 //  Copyright (c) 2014年 尹晓君. All rights reserved.
 //
 
-#import "GroupInfoShowController.h"
+#import "GroupCreateViewController.h"
 
-@interface GroupInfoShowController ()
+@interface GroupCreateViewController ()
 
 @end
 
-@implementation GroupInfoShowController
+@implementation GroupCreateViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];

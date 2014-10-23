@@ -10,7 +10,7 @@
 #import "GroupTableViewCell.h"
 #import "GroupDataProxy.h"
 #import "GroupMessageProxy.h"
-#import "GroupInfoController.h"
+#import "GroupInfoViewController.h"
 
 #define NOTI_GROUP_SHOW_MY_LIST @"NOTI_GROUP_SHOW_MY_LIST"
 #define NOTI_GROUP_SHOW_INFO @"NOTI_GROUP_SHOW_INFO"

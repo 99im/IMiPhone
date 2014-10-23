@@ -26,9 +26,10 @@
 
 
 - (void)fillAtIndexPath:(NSIndexPath *)indexPath {
-    //开始读取数据并填充单元格
+    //行号
     NSInteger row = indexPath.row;
 
+    //TODO: 读取并显示群名称等基本信息
     NSLog(@"填充群组信息：%i" , row);
     // Configure the view for the selected state
 }
