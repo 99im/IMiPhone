@@ -7,7 +7,7 @@ mark: chat
 type: chatN
 kind: socket
 describe: 好友聊天通知
-example: {"mark":"chat","type":"chatN","info":{"stage":"p2p","time":1412751697,"content":"hello","targetId":17,"msgType":0,"sid":16}}
+example: {"mark":"chat","type":"chatN","info":{"stage":"p2p","time":1412751697,"content":"hello","targetId":17,"msgType":0,"sendUid":16,"mid"1}}
 */
 #define TYPE_S_CHAT_CHATN @"chatN"
 #define NOTI_S_CHAT_CHATN @"MPchatchatNNotifiction"
@@ -17,6 +17,7 @@ example: {"mark":"chat","type":"chatN","info":{"stage":"p2p","time":1412751697,"
 #define KEYP_S_CHAT_CHATN_CONTENT @"content" //content string 消息内容
 #define KEYP_S_CHAT_CHATN_TIME @"time" //time int unix时间戳
 #define KEYP_S_CHAT_CHATN_SENDUID @"sendUid" //sendUid int 发送用户uid
+#define KEYP_S_CHAT_CHATN_MID @"mid" //mid int 消息id
 
 /*
 mark: chat

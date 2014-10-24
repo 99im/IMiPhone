@@ -11,6 +11,8 @@
 #import "IMNWManager.h"
 #import "NSNumber+IMNWError.h"
 #import "IMNWProxy.h"
+//#import "DPChatMessage.h"
+#import "ChatDataProxy.h"
 
 #define CHAT_STAGE_P2P @"p2p"
 #define CHAT_STAGE_GROUP @"group"
@@ -27,5 +29,7 @@
 
 - (void)sendTypeChat:(NSString *)stage targetId:(NSInteger)targetId msgType:(NSInteger)msgType content:(NSString *)content;
 - (void)parseTypeChat:(id)json;
+
+- (void)parseTypeChatn:(id)json;
 
 @end
