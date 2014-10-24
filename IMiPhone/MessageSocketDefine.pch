@@ -28,7 +28,7 @@ example: {"mark":"chat","type":"chat","info":{"stage":"p2p","content":"hello","m
 */
 #define TYPE_S_CHAT_CHAT @"chat"
 #define NOTI_S_CHAT_CHAT @"MPchatchatNotifiction"
-#define KEYQ_S_CHAT_CHAT_STAGE:P2P(私聊) @"stage:p2p(私聊)" //stage:p2p(私聊) group（群组）
+#define KEYQ_S_CHAT_CHAT_STAGE @"stage" //stage p2p(私聊) group（群组）
 #define KEYQ_S_CHAT_CHAT_TARGETID @"targetId" //targetId int 好友uid 群组id
 #define KEYQ_S_CHAT_CHAT_MSGTYPE @"msgType" //msgType int 消息类型 0 为文本 1 为声音
 #define KEYQ_S_CHAT_CHAT_CONTENT @"content" //content string 消息内容
