@@ -1833,10 +1833,10 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="6IF-l5-3Iq"/>
         <segue reference="AcC-yW-RwT"/>
-        <segue reference="iIs-SU-ZLV"/>
-        <segue reference="can-Bt-rCz"/>
-        <segue reference="B9e-R6-y8A"/>
         <segue reference="EnR-fJ-pM5"/>
+        <segue reference="B9e-R6-y8A"/>
+        <segue reference="can-Bt-rCz"/>
     </inferredMetricsTieBreakers>
 </document>
