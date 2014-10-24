@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "IMNWProxyProtocol.h"
 
-@interface ChatViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@interface ChatViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, IMNWProxyProtocol>
 
 @end

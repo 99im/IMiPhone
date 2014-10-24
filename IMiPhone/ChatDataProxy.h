@@ -29,5 +29,6 @@ typedef enum {
 - (NSMutableArray *)mutableArrayMessages;
 - (NSMutableArray *)mutableArrayMessageGroups;
 
+- (DPChatMessage *)getChatMessageFromMid:(NSInteger)mid;
 
 @end

@@ -126,11 +126,19 @@ static ChatDataProxy *messageDataProxy = nil;
     
 }
 
-//-(void)replaceObjectInArrMessageGroupsAtIndex:(NSUInteger)index withObject:(id)object
-//{
-//    [self.arrMessageGroups replaceObjectAtIndex:index withObject:object];
-//    NSLog(@"arrMessageGroups replace at %li,messageGroupId:%@",(unsigned long)index,((DPMessageGroup *)object).messageGroupId);
-//    
-//}
+- (DPChatMessage *)getChatMessageFromMid:(NSInteger)mid
+{
+    NSArray *chatMessages = [self mutableArrayMessages];
+    NSInteger findindex = [chatMessages indexOfObjectPassingTest:^BOOL(id obj, NSUInteger idx, BOOL *stop) {
+        if (obj && ((DPChatMessage *)obj).mid == mid) {
+            return YES;
+        }
+        return NO;
+    }];
+    if (findindex != NSNotFound) {
+        return [chatMessages objectAtIndex:findindex];
+    }
+    return nil;
+}
 
 @end

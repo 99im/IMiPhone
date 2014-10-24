@@ -57,19 +57,22 @@ type: /group/invite/
 kind: http
 method: http-get
 describe: 邀请加入群组
+
 example: http://local.taiqiu.com:7070/group/invite/?gid=8&targetUids=16,17&msg=comeon&verify=16_1411380260_8e01b76b234112ca88fdb3645eacac44
 {
-"error_code": 0,
-"result": {
-"16": [
-0,
-10023
-],
-"17": [
-1,
-14
-]
-}
+  error_code: 0,
+  result: [
+    [
+      "16",
+      0,
+      10023
+    ],
+    [
+      "17",
+      0,
+      10023
+    ]
+  ]
 }
 */
 #define PATH_H__GROUP_INVITE_ @"/group/invite/"
@@ -79,10 +82,10 @@ example: http://local.taiqiu.com:7070/group/invite/?gid=8&targetUids=16,17&msg=c
 #define KEYQ_H__GROUP_INVITE__TARGETUIDS @"targetUids" //targetUids string 1,2,3
 #define KEYQ_H__GROUP_INVITE__MSG @"msg" //msg string 0-64 len
 #define KEYP_H__GROUP_INVITE__ERROR_CODE @"error_code" //error_code int
-#define KEYP_H__GROUP_INVITE__RESULT @"result" //result
-#define KEYP_H__GROUP_INVITE__RESULT_UID @"uid" // uid
-#define KEYP_H__GROUP_INVITE__RESULT_UID_0,错误码 @"0,错误码" //  0,错误码
-#define KEYP_H__GROUP_INVITE__RESULT_UID_1,邀请顺序号 @"1,邀请顺序号" //  1,邀请顺序号
+#define KEYP_H__GROUP_INVITE__RESULT @"result" //result 邀请结果数组，结构：[ [ uid , errorCode , inviteOid ] , [ uid , errorCode , inviteOid ]]
+#define KEYP_H__GROUP_INVITE__RESULT_0 @"0" // 0 uid
+#define KEYP_H__GROUP_INVITE__RESULT_1 @"1" // 1 errorCode
+#define KEYP_H__GROUP_INVITE__RESULT_2 @"2" // 2 inviteOid
 
 /*
 mark: group
