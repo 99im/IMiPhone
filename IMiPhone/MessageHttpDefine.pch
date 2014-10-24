@@ -1,6 +1,288 @@
 
 
+#define MARK_CHAT @"chat"
+
+/*
+mark: chat
+type: /chat/groupchatlist/
+kind: http
+method: http-get
+describe: 获取群消息记录
+example: http://local.taiqiu.com:7070/chat/groupchatlist/?&gid=8&beforeMid=&start=0&pageNum=20&verify=17_1411380649_8cd8f6306fb1232f98573dae4e137f50
+*/
+#define PATH_H__CHAT_GROUPCHATLIST_ @"/chat/groupchatlist/"
+#define NOTI_H__CHAT_GROUPCHATLIST_ @"MPchatgroupchatlistNotifiction"
+#define METHOD_H__CHAT_GROUPCHATLIST_ @"GET"
+#define KEYQ_H__CHAT_GROUPCHATLIST__GID @"gid" //gid int 群编号
+#define KEYQ_H__CHAT_GROUPCHATLIST__BEFOREMID @"beforeMid" //beforeMid int 获取消息编号之前的消息，mid倒叙排列
+#define KEYQ_H__CHAT_GROUPCHATLIST__AFTERMID @"afterMid" //afterMid int 获取消息编号之后的消息，mid正叙排列 (如何beforeMid和afterMid都为0，则返回最新的)
+#define KEYQ_H__CHAT_GROUPCHATLIST__START @"start" //start int 开始
+#define KEYQ_H__CHAT_GROUPCHATLIST__PAGENUM @"pageNum" //pageNum int 数量（默认为20）
+#define KEYP_H__CHAT_GROUPCHATLIST__ERROR_CODE @"error_code" //error_code
+#define KEYP_H__CHAT_GROUPCHATLIST__LIST @"list" //list
+#define KEYP_H__CHAT_GROUPCHATLIST__LIST_MID @"mid" // mid int 聊天编号
+#define KEYP_H__CHAT_GROUPCHATLIST__LIST_GID @"gid" // gid string 聊天场景唯一标示符 
+#define KEYP_H__CHAT_GROUPCHATLIST__LIST_SUID @"suid" // suid int 发送者uid
+#define KEYP_H__CHAT_GROUPCHATLIST__LIST_MSGTYPE @"msgType" // msgType int 消息类型
+#define KEYP_H__CHAT_GROUPCHATLIST__LIST_CONTENT @"content" // content int 消息内容
+#define KEYP_H__CHAT_GROUPCHATLIST__LIST_CTIME @"ctime" // ctime int 时间
+#define KEYP_H__CHAT_GROUPCHATLIST__LIST_STATUS @"status" // status int 状态
+
+
+#define MARK_GROUP @"group"
+
+/*
+mark: group
+type: /group/invite-response/
+kind: http
+method: http-get
+describe: 对于邀请的响应
+example: http://local.taiqiu.com:7070/group/invite-response/?rid=19&agree=1&verify=17_1411380649_8cd8f6306fb1232f98573dae4e137f50
+{
+"error_code": 0,
+"gid": "8"
+}
+*/
+#define PATH_H__GROUP_INVITE_RESPONSE_ @"/group/invite-response/"
+#define NOTI_H__GROUP_INVITE_RESPONSE_ @"MPgroupinvite-responseNotifiction"
+#define METHOD_H__GROUP_INVITE_RESPONSE_ @"GET"
+#define KEYQ_H__GROUP_INVITE_RESPONSE__RID @"rid" //rid int 邀请顺序号 
+#define KEYQ_H__GROUP_INVITE_RESPONSE__AGREE @"agree" //agree int  0 拒绝 1 同意
+#define KEYP_H__GROUP_INVITE_RESPONSE__ERROR_CODE @"error_code" //error_code int 
+#define KEYP_H__GROUP_INVITE_RESPONSE__GID @"gid" //gid int
+
+/*
+mark: group
+type: /group/invite/
+kind: http
+method: http-get
+describe: 邀请加入群组
+example: http://local.taiqiu.com:7070/group/invite/?gid=8&targetUids=16,17&msg=comeon&verify=16_1411380260_8e01b76b234112ca88fdb3645eacac44
+{
+"error_code": 0,
+"result": {
+"16": [
+0,
+10023
+],
+"17": [
+1,
+14
+]
+}
+}
+*/
+#define PATH_H__GROUP_INVITE_ @"/group/invite/"
+#define NOTI_H__GROUP_INVITE_ @"MPgroupinviteNotifiction"
+#define METHOD_H__GROUP_INVITE_ @"GET"
+#define KEYQ_H__GROUP_INVITE__GID @"gid" //gid int 
+#define KEYQ_H__GROUP_INVITE__TARGETUIDS @"targetUids" //targetUids string 1,2,3
+#define KEYQ_H__GROUP_INVITE__MSG @"msg" //msg string 0-64 len
+#define KEYP_H__GROUP_INVITE__ERROR_CODE @"error_code" //error_code int
+#define KEYP_H__GROUP_INVITE__RESULT @"result" //result
+#define KEYP_H__GROUP_INVITE__RESULT_UID @"uid" // uid
+#define KEYP_H__GROUP_INVITE__RESULT_UID_0,错误码 @"0,错误码" //  0,错误码
+#define KEYP_H__GROUP_INVITE__RESULT_UID_1,邀请顺序号 @"1,邀请顺序号" //  1,邀请顺序号
+
+/*
+mark: group
+type: /group/mylist/
+kind: http
+method: http-get
+describe: 获取我的群列表
+example: http://local.taiqiu.com:7070/group/mylist/?&verify=16_1411380260_8e01b76b234112ca88fdb3645eacac44
+
+{
+"error_code": 0,
+"list": [
+{
+"gid": 8,
+"ctime": "2014-10-23 11:05:37",
+"relation": 0,
+"detail": {
+"gid": 8,
+"name": "testgroup001",
+"intro": "hellogroup",
+"memberNum": 1,
+"creator": {
+"uid": 16,
+"oid": "16",
+"nick": "谁谁谁",
+"city": "",
+"vip": 0
+},
+"ctime": "2014-10-23 11:05:37"
+}
+}
+]
+}
+*/
+#define PATH_H__GROUP_MYLIST_ @"/group/mylist/"
+#define NOTI_H__GROUP_MYLIST_ @"MPgroupmylistNotifiction"
+#define METHOD_H__GROUP_MYLIST_ @"GET"
+#define KEYQ_H__GROUP_MYLIST__START @"start" //start int 0
+#define KEYQ_H__GROUP_MYLIST__PAGENUM @"pageNum" //pageNum int 20
+#define KEYP_H__GROUP_MYLIST__ERROR_CODE @"error_code" //error_code int 0
+#define KEYP_H__GROUP_MYLIST__LIST @"list" //list 
+#define KEYP_H__GROUP_MYLIST__LIST_GID @"gid" // gid
+#define KEYP_H__GROUP_MYLIST__LIST_CTIME @"ctime" // ctime
+#define KEYP_H__GROUP_MYLIST__LIST_RELATION @"relation" // relation
+#define KEYP_H__GROUP_MYLIST__LIST_DETAIL @"detail" // detail
+#define KEYP_H__GROUP_MYLIST__LIST_DETAIL_GID @"gid" //  gid
+#define KEYP_H__GROUP_MYLIST__LIST_DETAIL_NAME @"name" //  name
+#define KEYP_H__GROUP_MYLIST__LIST_DETAIL_INTRO @"intro" //  intro
+#define KEYP_H__GROUP_MYLIST__LIST_DETAIL_MEMBERNUM @"memberNum" //  memberNum
+#define KEYP_H__GROUP_MYLIST__LIST_DETAIL_CREATOR @"creator" //  creator
+#define KEYP_H__GROUP_MYLIST__LIST_DETAIL_CTIME @"ctime" //  ctime
+
+/*
+mark: group
+type: /group/members/
+kind: http
+method: http-get
+describe: 获取群成员列表
+example: http://local.taiqiu.com:7070/group/members/?gid=8&intro=hellogroup&verify=16_1411380260_8e01b76b234112ca88fdb3645eacac44
+
+{
+"error_code": 0,
+"list": [
+{
+"gid": 8,
+"ctime": "2014-10-23 11:05:37",
+"relation": 0,
+"uid": 16,
+"uinfo": {
+"uid": 16,
+"oid": "16",
+"nick": "谁谁谁",
+"city": "",
+"vip": 0
+}
+}
+]
+}
+*/
+#define PATH_H__GROUP_MEMBERS_ @"/group/members/"
+#define NOTI_H__GROUP_MEMBERS_ @"MPgroupmembersNotifiction"
+#define METHOD_H__GROUP_MEMBERS_ @"GET"
+#define KEYQ_H__GROUP_MEMBERS__GID @"gid" //gid int 
+#define KEYQ_H__GROUP_MEMBERS__START @"start" //start int 0
+#define KEYQ_H__GROUP_MEMBERS__PAGENUM @"pageNum" //pageNum int 20
+#define KEYP_H__GROUP_MEMBERS__ERROR_CODE @"error_code" //error_code int 0
+#define KEYP_H__GROUP_MEMBERS__LIST @"list" //list
+#define KEYP_H__GROUP_MEMBERS__LIST_GID @"gid" // gid
+#define KEYP_H__GROUP_MEMBERS__LIST_CTIME @"ctime" // ctime
+#define KEYP_H__GROUP_MEMBERS__LIST_RELATION @"relation" // relation
+#define KEYP_H__GROUP_MEMBERS__LIST_UID @"uid" // uid
+#define KEYP_H__GROUP_MEMBERS__LIST_UINFO @"uinfo" // uinfo 
+#define KEYP_H__GROUP_MEMBERS__LIST_UINFO_UID @"uid" //  uid
+#define KEYP_H__GROUP_MEMBERS__LIST_UINFO_OID @"oid" //  oid
+#define KEYP_H__GROUP_MEMBERS__LIST_UINFO_NICK @"nick" //  nick
+#define KEYP_H__GROUP_MEMBERS__LIST_UINFO_CITY @"city" //  city
+#define KEYP_H__GROUP_MEMBERS__LIST_UINFO_VIP @"vip" //  vip
+
+/*
+mark: group
+type: /group/info/
+kind: http
+method: http-get
+describe: 获取群信息
+example: http://local.taiqiu.com:7070/group/info/?gid=8&verify=16_1411380260_8e01b76b234112ca88fdb3645eacac44
+
+{
+"error_code": 0,
+"info": {
+"gid": 8,
+"name": "testgroup001",
+"intro": "hellogroup",
+"memberNum": 1,
+"creator": {
+"uid": 16,
+"oid": "16",
+"nick": "谁谁谁",
+"city": "",
+"vip": 0
+},
+"ctime": "2014-10-23 11:05:37"
+}
+}
+*/
+#define PATH_H__GROUP_INFO_ @"/group/info/"
+#define NOTI_H__GROUP_INFO_ @"MPgroupinfoNotifiction"
+#define METHOD_H__GROUP_INFO_ @"GET"
+#define KEYQ_H__GROUP_INFO__GID @"gid" //gid int 群id
+#define KEYP_H__GROUP_INFO__ERROR_CODE @"error_code" //error_code int 0
+#define KEYP_H__GROUP_INFO__INFO @"info" //info
+#define KEYP_H__GROUP_INFO__INFO_GID @"gid" // gid int 
+#define KEYP_H__GROUP_INFO__INFO_NAME @"name" // name string
+#define KEYP_H__GROUP_INFO__INFO_INTRO @"intro" // intro string
+#define KEYP_H__GROUP_INFO__INFO_MEMBERNUM @"memberNum" // memberNum int 
+#define KEYP_H__GROUP_INFO__INFO_CREATOR @"creator" // creator
+#define KEYP_H__GROUP_INFO__INFO_CREATOR_UID @"uid" //  uid
+#define KEYP_H__GROUP_INFO__INFO_CREATOR_OID @"oid" //  oid
+#define KEYP_H__GROUP_INFO__INFO_CREATOR_NICK @"nick" //  nick
+#define KEYP_H__GROUP_INFO__INFO_CREATOR_CITY @"city" //  city
+#define KEYP_H__GROUP_INFO__INFO_CREATOR_VIP @"vip" //  vip
+#define KEYP_H__GROUP_INFO__INFO_CTIME @"ctime" // ctime datetime 创建时间
+
+/*
+mark: group
+type: /group/create/
+kind: http
+method: http-post
+describe: 建群操作
+example: http://local.taiqiu.com:7070/group/create/?name=testgroup001&intro=hellogroup&verify=16_1411380260_8e01b76b234112ca88fdb3645eacac44
+
+{
+"error_code": 0,
+"gid": 8
+}
+*/
+#define PATH_H__GROUP_CREATE_ @"/group/create/"
+#define NOTI_H__GROUP_CREATE_ @"MPgroupcreateNotifiction"
+#define METHOD_H__GROUP_CREATE_ @"POST"
+#define KEYQ_H__GROUP_CREATE__NAME @"name" //name string 群名称
+#define KEYQ_H__GROUP_CREATE__INTRO @"intro" //intro string 群介绍
+#define KEYP_H__GROUP_CREATE__ERROR_CODE @"error_code" //error_code int 0
+#define KEYP_H__GROUP_CREATE__GID @"gid" //gid int 群编号
+
+
 #define MARK_FRIEND @"friend"
+
+/*
+mark: friend
+type: /contact/userlist/
+kind: http
+method: http-get
+describe: 获取通讯录好友列表
+example: http://local.taiqiu.com:7070/contact/userlist/?contact=[{%22mobile%22%EF%BC%9A%E2%80%9C12345678908%E2%80%9D}]&verify=16_1411380260_8e01b76b234112ca88fdb3645eacac44
+
+{
+"error_code": 0,
+"list": [
+{
+"uid": 27,
+"oid": "27",
+"nick": "tree",
+"city": "",
+"vip": 0,
+"relation": 3
+}
+]
+}
+*/
+#define PATH_H__CONTACT_USERLIST_ @"/contact/userlist/"
+#define NOTI_H__CONTACT_USERLIST_ @"MPcontactuserlistNotifiction"
+#define METHOD_H__CONTACT_USERLIST_ @"GET"
+#define KEYP_H__CONTACT_USERLIST__ERROR_CODE @"error_code" //error_code int 0
+#define KEYP_H__CONTACT_USERLIST__ERROR_CODE_LIST @"list" // list array
+#define KEYP_H__CONTACT_USERLIST__ERROR_CODE_UINFO @"uinfo" // uinfo
+#define KEYP_H__CONTACT_USERLIST__ERROR_CODE_UINFO_UID @"uid" //  uid
+#define KEYP_H__CONTACT_USERLIST__ERROR_CODE_UINFO_OID @"oid" //  oid
+#define KEYP_H__CONTACT_USERLIST__ERROR_CODE_UINFO_NICK @"nick" //  nick
+#define KEYP_H__CONTACT_USERLIST__ERROR_CODE_UINFO_CITY @"city" //  city
+#define KEYP_H__CONTACT_USERLIST__ERROR_CODE_UINFO_VIP @"vip" //  vip
+#define KEYP_H__CONTACT_USERLIST__ERROR_CODE_UINFO_RELATION @"relation" //  relation 0 无关系 1好友 2  偶像 3 粉丝
 
 /*
 mark: friend
@@ -85,9 +367,6 @@ example: http://local.taiqiu.com:7070/friend/brief/?focusUid=16&verify=17_141138
 #define KEYP_H__FRIEND_BRIEF__FOCUSTOTAL @"focusTotal" //focusTotal
 #define KEYP_H__FRIEND_BRIEF__FANTOTAL @"fanTotal" //fanTotal
 #define KEYP_H__FRIEND_BRIEF__FRIENDTOTAL @"friendTotal" //friendTotal
-
-
-#define MARK_CHAT @"chat"
 
 /*
 mark: chat

@@ -127,7 +127,6 @@
 		585971DC1999F0C700258CB1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 585971DA1999F0C700258CB1 /* InfoPlist.strings */; };
 		585971DE1999F0C700258CB1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 585971DD1999F0C700258CB1 /* main.m */; };
 		585971E21999F0C700258CB1 /* imAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 585971E11999F0C700258CB1 /* imAppDelegate.m */; };
-		585971E51999F0C700258CB1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 585971E31999F0C700258CB1 /* Main.storyboard */; };
 		585971E81999F0C700258CB1 /* imViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 585971E71999F0C700258CB1 /* imViewController.m */; };
 		585971EA1999F0C700258CB1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 585971E91999F0C700258CB1 /* Images.xcassets */; };
 		585971F11999F0C700258CB1 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 585971F01999F0C700258CB1 /* XCTest.framework */; };
@@ -138,7 +137,6 @@
 		58A331AA19E51A95005BE980 /* CategoryListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A331A919E51A95005BE980 /* CategoryListTableViewController.m */; };
 		58A331AD19E52CDE005BE980 /* CategoryContactTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A331AC19E52CDE005BE980 /* CategoryContactTableViewCell.m */; };
 		58A5B4F819ADC05F0007C2F3 /* MainTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A5B4F719ADC05F0007C2F3 /* MainTabBarController.m */; };
-		58A5B4FC19ADC3CA0007C2F3 /* ChatMsgTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A5B4FB19ADC3CA0007C2F3 /* ChatMsgTableViewController.m */; };
 		58A9134019D2BDBA008E5A25 /* UserShowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A9133F19D2BDBA008E5A25 /* UserShowViewController.m */; };
 		58AF048719AF10560077DCBC /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 58AF048A19AF10560077DCBC /* Localizable.strings */; };
 		58B496D819A7186A0082AE30 /* NSAlert+MKNetworkKitAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B496C319A7186A0082AE30 /* NSAlert+MKNetworkKitAdditions.m */; };
@@ -154,6 +152,10 @@
 		58B496ED19A7190B0082AE30 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58B496EC19A7190B0082AE30 /* CFNetwork.framework */; };
 		58B496EF19A719230082AE30 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58B496EE19A719230082AE30 /* SystemConfiguration.framework */; };
 		58B496F119A719350082AE30 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58B496F019A719350082AE30 /* Security.framework */; };
+		58B649E519E62900008906F0 /* AccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B649E419E62900008906F0 /* AccountViewController.m */; };
+		58B9F66419F8D24100567BCC /* EmotionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B9F66319F8D24100567BCC /* EmotionViewController.m */; };
+		58B9F66619F8DEE200567BCC /* emotion.plist in Resources */ = {isa = PBXBuildFile; fileRef = 58B9F66519F8DEE200567BCC /* emotion.plist */; };
+		58B9F66919F8E5C500567BCC /* EmotIconViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B9F66819F8E5C500567BCC /* EmotIconViewController.m */; };
 		58BACF0719B5803F00A72391 /* FriendDataProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 58AF049719B056050077DCBC /* FriendDataProxy.m */; };
 		58BACF0819B5804700A72391 /* FriendMessageProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 58AF049119AF37C70077DCBC /* FriendMessageProxy.m */; };
 		58BACF0919B5805800A72391 /* crypt.c in Sources */ = {isa = PBXBuildFile; fileRef = 58BACEFD19B4410C00A72391 /* crypt.c */; };
@@ -196,8 +198,6 @@
 		58C14DD319C80D67009334E1 /* ContactViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C14DD119C80D67009334E1 /* ContactViewController.m */; };
 		58C14DDA19C81562009334E1 /* RecommendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C14DD919C81562009334E1 /* RecommendViewController.m */; };
 		58C14DDB19C81562009334E1 /* RecommendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C14DD919C81562009334E1 /* RecommendViewController.m */; };
-		58C14DDE19C82594009334E1 /* GroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C14DDD19C82594009334E1 /* GroupViewController.m */; };
-		58C14DDF19C82594009334E1 /* GroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C14DDD19C82594009334E1 /* GroupViewController.m */; };
 		58C14DE619CAB631009334E1 /* AddTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C14DE519CAB631009334E1 /* AddTableViewController.m */; };
 		58C14DE719CAB631009334E1 /* AddTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C14DE519CAB631009334E1 /* AddTableViewController.m */; };
 		58C14DEA19CAD70F009334E1 /* AddByInputTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C14DE919CAD70F009334E1 /* AddByInputTableViewCell.m */; };
@@ -218,7 +218,16 @@
 		58EF8C4619BF04B600C5A7AC /* imNetWorkTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 58EF8C4519BF04B600C5A7AC /* imNetWorkTest.m */; };
 		58F2AA3419A2F85400DC2FFB /* imUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F2AA3319A2F85400DC2FFB /* imUtil.m */; };
 		58F2AA3919A487E300DC2FFB /* AsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F2AA3819A487E300DC2FFB /* AsyncSocket.m */; };
+		AB20EE8419F4DCCC004627C8 /* GroupDataProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = AB20EE8319F4DCCC004627C8 /* GroupDataProxy.m */; };
+		AB20EE8719F4DD8C004627C8 /* GroupMessageProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = AB20EE8619F4DD8C004627C8 /* GroupMessageProxy.m */; };
+		AB24A95419F7CE2F00026299 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB24A95219F7CE2F00026299 /* Main.storyboard */; };
+		AB24A95719F89DDA00026299 /* GroupInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB24A95619F89DDA00026299 /* GroupInfoViewController.m */; };
+		AB24A95D19F8DC6500026299 /* GroupCreateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB24A95C19F8DC6500026299 /* GroupCreateViewController.m */; };
+		AB24A96019F8E59D00026299 /* GroupSettingTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB24A95F19F8E59D00026299 /* GroupSettingTableViewController.m */; };
+		AB4F947F19F789A500397549 /* DPGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = AB4F947E19F789A500397549 /* DPGroup.m */; };
 		AB72235119ED110700E603E2 /* CategoryListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AB5554E719EBEAFA00B413F3 /* CategoryListTableViewCell.m */; };
+		ABA91EF919F64B970017B045 /* GroupTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ABA91EF819F64B970017B045 /* GroupTableViewCell.m */; };
+		ABA91EFC19F658270017B045 /* GroupTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABA91EFB19F658270017B045 /* GroupTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -353,7 +362,6 @@
 		585971FC1999F0C700258CB1 /* IMiPhoneTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IMiPhoneTests.m; sourceTree = "<group>"; };
 		5859720A19A1CD9100258CB1 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		5859720B19A1CD9200258CB1 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
-		5859721119A1D28100258CB1 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = "zh-Hans"; path = "zh-Hans.lproj/Main.storyboard"; sourceTree = "<group>"; };
 		5859721619A1DEE500258CB1 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginViewController.h; path = IMiPhone/LoginViewController.h; sourceTree = "<group>"; };
 		5859721719A1DEE500258CB1 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginViewController.m; path = IMiPhone/LoginViewController.m; sourceTree = "<group>"; };
 		5887FD2719CC00EF001BFAFB /* TPContactsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPContactsTableViewController.h; sourceTree = "<group>"; };
@@ -398,6 +406,13 @@
 		58B496EC19A7190B0082AE30 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		58B496EE19A719230082AE30 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		58B496F019A719350082AE30 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		58B649E319E62900008906F0 /* AccountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountViewController.h; sourceTree = "<group>"; };
+		58B649E419E62900008906F0 /* AccountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountViewController.m; sourceTree = "<group>"; };
+		58B9F66219F8D24100567BCC /* EmotionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmotionViewController.h; sourceTree = "<group>"; };
+		58B9F66319F8D24100567BCC /* EmotionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmotionViewController.m; sourceTree = "<group>"; };
+		58B9F66519F8DEE200567BCC /* emotion.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = emotion.plist; sourceTree = "<group>"; };
+		58B9F66719F8E5C500567BCC /* EmotIconViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmotIconViewController.h; sourceTree = "<group>"; };
+		58B9F66819F8E5C500567BCC /* EmotIconViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmotIconViewController.m; sourceTree = "<group>"; };
 		58BACEFD19B4410C00A72391 /* crypt.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = crypt.c; sourceTree = "<group>"; };
 		58BACEFE19B4410C00A72391 /* crypt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = crypt.h; sourceTree = "<group>"; };
 		58BACF0A19B5C12800A72391 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
@@ -417,8 +432,6 @@
 		58C14DD119C80D67009334E1 /* ContactViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactViewController.m; sourceTree = "<group>"; };
 		58C14DD819C81562009334E1 /* RecommendViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecommendViewController.h; sourceTree = "<group>"; };
 		58C14DD919C81562009334E1 /* RecommendViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecommendViewController.m; sourceTree = "<group>"; };
-		58C14DDC19C82594009334E1 /* GroupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupViewController.h; sourceTree = "<group>"; };
-		58C14DDD19C82594009334E1 /* GroupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupViewController.m; sourceTree = "<group>"; };
 		58C14DE419CAB631009334E1 /* AddTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddTableViewController.h; sourceTree = "<group>"; };
 		58C14DE519CAB631009334E1 /* AddTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddTableViewController.m; sourceTree = "<group>"; };
 		58C14DE819CAD70F009334E1 /* AddByInputTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddByInputTableViewCell.h; sourceTree = "<group>"; };
@@ -448,8 +461,25 @@
 		58F2AA3319A2F85400DC2FFB /* imUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = imUtil.m; sourceTree = "<group>"; };
 		58F2AA3719A487E300DC2FFB /* AsyncSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsyncSocket.h; sourceTree = "<group>"; };
 		58F2AA3819A487E300DC2FFB /* AsyncSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsyncSocket.m; sourceTree = "<group>"; };
+		AB20EE8219F4DCCC004627C8 /* GroupDataProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupDataProxy.h; sourceTree = "<group>"; };
+		AB20EE8319F4DCCC004627C8 /* GroupDataProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupDataProxy.m; sourceTree = "<group>"; };
+		AB20EE8519F4DD8C004627C8 /* GroupMessageProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupMessageProxy.h; sourceTree = "<group>"; };
+		AB20EE8619F4DD8C004627C8 /* GroupMessageProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupMessageProxy.m; sourceTree = "<group>"; };
+		AB24A95319F7CE2F00026299 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = "zh-Hans"; path = "zh-Hans.lproj/Main.storyboard"; sourceTree = "<group>"; };
+		AB24A95519F89DDA00026299 /* GroupInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupInfoViewController.h; sourceTree = "<group>"; };
+		AB24A95619F89DDA00026299 /* GroupInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupInfoViewController.m; sourceTree = "<group>"; };
+		AB24A95B19F8DC6500026299 /* GroupCreateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupCreateViewController.h; sourceTree = "<group>"; };
+		AB24A95C19F8DC6500026299 /* GroupCreateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupCreateViewController.m; sourceTree = "<group>"; };
+		AB24A95E19F8E59D00026299 /* GroupSettingTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupSettingTableViewController.h; sourceTree = "<group>"; };
+		AB24A95F19F8E59D00026299 /* GroupSettingTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupSettingTableViewController.m; sourceTree = "<group>"; };
+		AB4F947D19F789A500397549 /* DPGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPGroup.h; sourceTree = "<group>"; };
+		AB4F947E19F789A500397549 /* DPGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPGroup.m; sourceTree = "<group>"; };
 		AB5554E619EBEAEF00B413F3 /* CategoryListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryListTableViewCell.h; sourceTree = "<group>"; };
 		AB5554E719EBEAFA00B413F3 /* CategoryListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoryListTableViewCell.m; sourceTree = "<group>"; };
+		ABA91EF719F64B970017B045 /* GroupTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupTableViewCell.h; sourceTree = "<group>"; };
+		ABA91EF819F64B970017B045 /* GroupTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupTableViewCell.m; sourceTree = "<group>"; };
+		ABA91EFA19F658270017B045 /* GroupTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupTableViewController.h; sourceTree = "<group>"; };
+		ABA91EFB19F658270017B045 /* GroupTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -499,6 +529,10 @@
 				1194301319F75CED00FD9206 /* ChatInputTextView.m */,
 				1194301619F75D0100FD9206 /* ChatInputSoundView.h */,
 				1194301719F75D0100FD9206 /* ChatInputSoundView.m */,
+				58B9F66219F8D24100567BCC /* EmotionViewController.h */,
+				58B9F66319F8D24100567BCC /* EmotionViewController.m */,
+				58B9F66719F8E5C500567BCC /* EmotIconViewController.h */,
+				58B9F66819F8E5C500567BCC /* EmotIconViewController.m */,
 				1194302219F7B01D00FD9206 /* ChatTableViewCell.h */,
 				1194302319F7B01D00FD9206 /* ChatTableViewCell.m */,
 				1194302A19F8DD8C00FD9206 /* ChatTableViewCellFrame.h */,
@@ -649,6 +683,8 @@
 		585971D71999F0C700258CB1 /* IMiPhone */ = {
 			isa = PBXGroup;
 			children = (
+				AB24A95219F7CE2F00026299 /* Main.storyboard */,
+				AB20EE8919F4F67D004627C8 /* Group */,
 				11E1581019F4FF58008544D1 /* msg */,
 				58438C0A19D412C400B6962B /* Nearby */,
 				58A9133C19D2BC4E008E5A25 /* User */,
@@ -657,7 +693,6 @@
 				116AB14F19BF194E00092E2C /* Chat */,
 				58438C0E19D41DDD00B6962B /* System */,
 				116B6E7319AEF83500DB1B5E /* Persistence */,
-				585971E31999F0C700258CB1 /* Main.storyboard */,
 				585971E01999F0C700258CB1 /* imAppDelegate.h */,
 				585971E11999F0C700258CB1 /* imAppDelegate.m */,
 				585971E61999F0C700258CB1 /* imViewController.h */,
@@ -686,6 +721,7 @@
 				585971DF1999F0C700258CB1 /* IMiPhone-Prefix.pch */,
 				58AF048A19AF10560077DCBC /* Localizable.strings */,
 				58C14DEC19CAE196009334E1 /* contact.plist */,
+				58B9F66519F8DEE200567BCC /* emotion.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -759,6 +795,10 @@
 				58AF049719B056050077DCBC /* FriendDataProxy.m */,
 				1171F7CA19E9154F00865A0B /* DPContactPerson.h */,
 				1171F7CB19E9154F00865A0B /* DPContactPerson.m */,
+				AB20EE8219F4DCCC004627C8 /* GroupDataProxy.h */,
+				AB20EE8319F4DCCC004627C8 /* GroupDataProxy.m */,
+				AB4F947D19F789A500397549 /* DPGroup.h */,
+				AB4F947E19F789A500397549 /* DPGroup.m */,
 			);
 			name = DataProxy;
 			sourceTree = "<group>";
@@ -833,8 +873,6 @@
 				58C14DD119C80D67009334E1 /* ContactViewController.m */,
 				58C14DD819C81562009334E1 /* RecommendViewController.h */,
 				58C14DD919C81562009334E1 /* RecommendViewController.m */,
-				58C14DDC19C82594009334E1 /* GroupViewController.h */,
-				58C14DDD19C82594009334E1 /* GroupViewController.m */,
 				58C14DE419CAB631009334E1 /* AddTableViewController.h */,
 				58C14DE519CAB631009334E1 /* AddTableViewController.m */,
 				58C14DE819CAD70F009334E1 /* AddByInputTableViewCell.h */,
@@ -883,6 +921,8 @@
 				58AF049119AF37C70077DCBC /* FriendMessageProxy.m */,
 				58EF8C3D19BEEE1600C5A7AC /* AccountMessageProxy.h */,
 				58EF8C3E19BEEE1600C5A7AC /* AccountMessageProxy.m */,
+				AB20EE8519F4DD8C004627C8 /* GroupMessageProxy.h */,
+				AB20EE8619F4DD8C004627C8 /* GroupMessageProxy.m */,
 			);
 			name = MessageProxy;
 			sourceTree = "<group>";
@@ -924,6 +964,23 @@
 				58D026C319D17D4800BE4748 /* NSNumber+IMNWError.m */,
 			);
 			name = Network;
+			sourceTree = "<group>";
+		};
+		AB20EE8919F4F67D004627C8 /* Group */ = {
+			isa = PBXGroup;
+			children = (
+				ABA91EF719F64B970017B045 /* GroupTableViewCell.h */,
+				ABA91EF819F64B970017B045 /* GroupTableViewCell.m */,
+				ABA91EFA19F658270017B045 /* GroupTableViewController.h */,
+				ABA91EFB19F658270017B045 /* GroupTableViewController.m */,
+				AB24A95519F89DDA00026299 /* GroupInfoViewController.h */,
+				AB24A95619F89DDA00026299 /* GroupInfoViewController.m */,
+				AB24A95B19F8DC6500026299 /* GroupCreateViewController.h */,
+				AB24A95C19F8DC6500026299 /* GroupCreateViewController.m */,
+				AB24A95E19F8E59D00026299 /* GroupSettingTableViewController.h */,
+				AB24A95F19F8E59D00026299 /* GroupSettingTableViewController.m */,
+			);
+			name = Group;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -973,6 +1030,11 @@
 				CLASSPREFIX = IM;
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "尹晓君";
+				TargetAttributes = {
+					585971CD1999F0C700258CB1 = {
+						DevelopmentTeam = KMPNM792KA;
+					};
+				};
 			};
 			buildConfigurationList = 585971C91999F0C700258CB1 /* Build configuration list for PBXProject "IMiPhone" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -1002,8 +1064,10 @@
 				11DF9F8319A2276C00AE5D89 /* splash.jpg in Resources */,
 				58C14DED19CAE196009334E1 /* contact.plist in Resources */,
 				58AF048719AF10560077DCBC /* Localizable.strings in Resources */,
+				AB24A95419F7CE2F00026299 /* Main.storyboard in Resources */,
 				585971EA1999F0C700258CB1 /* Images.xcassets in Resources */,
 				585971DC1999F0C700258CB1 /* InfoPlist.strings in Resources */,
+				58B9F66619F8DEE200567BCC /* emotion.plist in Resources */,
 				585971E51999F0C700258CB1 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1053,6 +1117,7 @@
 				110F561619D56E07003B9EB4 /* DPMessageGroups.m in Sources */,
 				58C14DD219C80D67009334E1 /* ContactViewController.m in Sources */,
 				58C14DEA19CAD70F009334E1 /* AddByInputTableViewCell.m in Sources */,
+				58B9F66919F8E5C500567BCC /* EmotIconViewController.m in Sources */,
 				11E1581319F4FFE1008544D1 /* MsgTableViewController.m in Sources */,
 				116B6E8919B0534000DB1B5E /* DBGroup.m in Sources */,
 				117AC6A119EE7BCF00143973 /* UserDAO.m in Sources */,
@@ -1060,6 +1125,7 @@
 				110487A219D79DFB0002AB36 /* ChatMessageDAO.m in Sources */,
 				58F2AA3419A2F85400DC2FFB /* imUtil.m in Sources */,
 				58D95F5119A5ECA4007139AB /* UserMessageProxy.m in Sources */,
+				58B9F66419F8D24100567BCC /* EmotionViewController.m in Sources */,
 				116B6E9519B058A400DB1B5E /* SqlightAdapter.m in Sources */,
 				58B496E819A7186A0082AE30 /* MKNetworkOperation.m in Sources */,
 				58BC1E3519C0304900722A00 /* RegisterViewController.m in Sources */,
@@ -1067,6 +1133,7 @@
 				116B6E9619B058A400DB1B5E /* SqlightDriver.m in Sources */,
 				11335B6919F53D6200FA32FA /* ChatMsgTableViewCellP2G.m in Sources */,
 				116B6E9719B058A400DB1B5E /* SqlightResult.m in Sources */,
+				ABA91EFC19F658270017B045 /* GroupTableViewController.m in Sources */,
 				5825D8F119D808CA004FF6FF /* CategoryTableViewController.m in Sources */,
 				58D3F28819E63082006589F9 /* IMNWMessage.m in Sources */,
 				11795E2819D297CD003FD9A7 /* DPFriend.m in Sources */,
@@ -1083,8 +1150,10 @@
 				11335B6D19F5407400FA32FA /* ChatViewController.m in Sources */,
 				11B1C62819E4E069003D2711 /* ChatMessageProxy.m in Sources */,
 				1171F7CC19E9154F00865A0B /* DPContactPerson.m in Sources */,
+				AB4F947F19F789A500397549 /* DPGroup.m in Sources */,
 				58A331AA19E51A95005BE980 /* CategoryListTableViewController.m in Sources */,
 				58D3F28A19E63082006589F9 /* IMNWSocketConnect.m in Sources */,
+				AB20EE8719F4DD8C004627C8 /* GroupMessageProxy.m in Sources */,
 				116B6E8C19B0538300DB1B5E /* GroupDAO.m in Sources */,
 				116B6E7D19AEF83500DB1B5E /* imRms.m in Sources */,
 				58B496DA19A7186A0082AE30 /* NSData+MKBase64.m in Sources */,
@@ -1095,9 +1164,10 @@
 				585971DE1999F0C700258CB1 /* main.m in Sources */,
 				58B496DC19A7186A0082AE30 /* NSDate+RFC1123.m in Sources */,
 				58A5B4F819ADC05F0007C2F3 /* MainTabBarController.m in Sources */,
+				AB24A95719F89DDA00026299 /* GroupInfoViewController.m in Sources */,
 				1194301019F74EC200FD9206 /* ChatShareMenuViewController.m in Sources */,
-				58A5B4FC19ADC3CA0007C2F3 /* ChatMsgTableViewController.m in Sources */,
 				58B496EA19A7186A0082AE30 /* Reachability.m in Sources */,
+				AB24A96019F8E59D00026299 /* GroupSettingTableViewController.m in Sources */,
 				117AC69419EE763E00143973 /* IMAddressBook.m in Sources */,
 				58B496E019A7186A0082AE30 /* NSString+MKNetworkKitAdditions.m in Sources */,
 				58BACF1319B5E89D00A72391 /* VPImageCropperViewController.m in Sources */,
@@ -1126,13 +1196,15 @@
 				11B1C62C19E51AFB003D2711 /* MsgDataProxy.m in Sources */,
 				58C14DE619CAB631009334E1 /* AddTableViewController.m in Sources */,
 				58BC1E3919C0304900722A00 /* RegStep2ViewController.m in Sources */,
+				AB24A95D19F8DC6500026299 /* GroupCreateViewController.m in Sources */,
 				58BC1E3719C0304900722A00 /* RegStep1ViewController.m in Sources */,
 				116BF87F19C981AD0015561B /* DPUser.m in Sources */,
 				58D026C419D17D4800BE4748 /* NSNumber+IMNWError.m in Sources */,
 				58F2AA3919A487E300DC2FFB /* AsyncSocket.m in Sources */,
+				ABA91EF919F64B970017B045 /* GroupTableViewCell.m in Sources */,
 				58A9134019D2BDBA008E5A25 /* UserShowViewController.m in Sources */,
 				58BC1E3319C0304900722A00 /* RegInfoViewController.m in Sources */,
-				58C14DDE19C82594009334E1 /* GroupViewController.m in Sources */,
+				AB20EE8419F4DCCC004627C8 /* GroupDataProxy.m in Sources */,
 				58C14DDA19C81562009334E1 /* RecommendViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1214,7 +1286,6 @@
 				117AC6B419EEBA0000143973 /* DBUser.m in Sources */,
 				117AC6B019EEB99E00143973 /* IMNWManager.m in Sources */,
 				116BF88219CC01C70015561B /* UserDataProxyTest.m in Sources */,
-				58C14DDF19C82594009334E1 /* GroupViewController.m in Sources */,
 				58BC1E3A19C0304900722A00 /* RegStep2ViewController.m in Sources */,
 				1171F7D119E9269100865A0B /* ContactDAO.m in Sources */,
 				116AB14819B731D600092E2C /* DatabaseConfig.m in Sources */,
@@ -1261,14 +1332,6 @@
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
-		585971E31999F0C700258CB1 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				5859721119A1D28100258CB1 /* zh-Hans */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		585971F91999F0C700258CB1 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -1283,6 +1346,14 @@
 				58AF048919AF10560077DCBC /* zh-Hans */,
 			);
 			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		AB24A95219F7CE2F00026299 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AB24A95319F7CE2F00026299 /* zh-Hans */,
+			);
+			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -1363,11 +1434,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "IMiPhone/IMiPhone-Prefix.pch";
 				"GCC_WARN_64_TO_32_BIT_CONVERSION[arch=*]" = YES;
 				INFOPLIST_FILE = "IMiPhone/IMiPhone-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1377,11 +1453,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "IMiPhone/IMiPhone-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = "";
 				INFOPLIST_FILE = "IMiPhone/IMiPhone-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

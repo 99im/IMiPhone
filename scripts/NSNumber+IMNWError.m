@@ -15,6 +15,30 @@
     NSString *sError = @"";
 
     switch (self.integerValue) {
+        case 10024:
+            sError = @"加群请求已经过期";
+            break;
+        case 10023:
+            sError = @"已经是群组成员";
+            break;
+        case 10022:
+            sError = @"用户没有权限对群进行操作";
+            break;
+        case 10021:
+            sError = @"群不存在";
+            break;
+        case 10020:
+            sError = @"群名称不符合要求";
+            break;
+        case 10019:
+            sError = @"用户没有权限创建群";
+            break;
+        case 10018:
+            sError = @"加入群达到上限";
+            break;
+        case 10017:
+            sError = @"创建群达到上限";
+            break;
         case 10016:
             sError = @"verfiy值错误";
             break;
