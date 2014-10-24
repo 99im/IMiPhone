@@ -40,11 +40,19 @@
     self.viewChatInputSound.hidden = YES;
     
     self.arrAllCellFrames = [NSMutableArray array];
+    
+    if ([ChatDataProxy sharedProxy].chatViewType == ChatViewTypeP2P) {
+        DPUser *dpUser = [[UserDataProxy sharedProxy] getUserInfoFromUid:[ChatDataProxy sharedProxy].chatToUid];
+        self.title = dpUser.nick;
+    }
+    
+    [self registerMessageNotification];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+    [self removeMessageNotification];
 }
 
 /*
@@ -93,31 +101,8 @@ NSInteger midcounter;
 - (IBAction)tfInputTextDidEndOnExit:(id)sender {
     if ([ChatDataProxy sharedProxy].chatViewType == ChatViewTypeP2P) {
     
-        
-        //        [[ChatMessageProxy sharedProxy] sendTypeP2PChat:[ChatDataProxy sharedProxy].chatToUid type:CHAT_MASSAGE_TYPE_TEXT content:((UITextField *)sender).text];
-        //测试
-        DPChatMessage *dpChatMsg = [[DPChatMessage alloc] init];
-        dpChatMsg.mid = midcounter;
-        midcounter ++;
-        if (midcounter % 2 == 0) {
-            dpChatMsg.senderUid = [UserDataProxy sharedProxy].lastLoginUid;
-        }
-        else {
-            dpChatMsg.senderUid = 16;
-        }
-        dpChatMsg.content = ((UITextField *)sender).text;
-        [[[ChatDataProxy sharedProxy] mutableArrayMessages] addObject:dpChatMsg];
-        ChatTableViewCellFrame *chatTableCellFrame = [[ChatTableViewCellFrame alloc] init];
-        ChatMessageType msgType;
-        if (dpChatMsg.senderUid == [UserDataProxy sharedProxy].lastLoginUid) {
-            msgType = ChatMessageTypeMe;
-        }
-        else {
-            msgType = ChatMessageTypeOther;
-        }
-        [chatTableCellFrame setMsgType:msgType withMsg:dpChatMsg];
-        [self.arrAllCellFrames addObject:chatTableCellFrame];
-        [self.tableViewChat reloadData];
+        [[ChatMessageProxy sharedProxy] sendTypeChat:CHAT_STAGE_P2P targetId:[ChatDataProxy sharedProxy].chatToUid msgType:CHAT_MASSAGE_TYPE_TEXT content:((UITextField *)sender).text];
+    
         ((UITextField *)sender).text = @"";
     }
 
@@ -158,6 +143,36 @@ NSInteger midcounter;
     self.viewChatInputText.hidden = false;
 }
 
+#pragma mark - register and remove notification listener
+
+- (void)registerMessageNotification
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dealChatN:) name:NOTI_S_CHAT_CHATN object:nil];
+    
+}
+
+- (void)removeMessageNotification
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)dealChatN:(NSNotification *)notification
+{
+    
+    DPChatMessage *dpChatMsg = notification.object;
+    
+    ChatTableViewCellFrame *chatTableCellFrame = [[ChatTableViewCellFrame alloc] init];
+    ChatMessageType msgType;
+    if (dpChatMsg.senderUid == [UserDataProxy sharedProxy].lastLoginUid) {
+        msgType = ChatMessageTypeMe;
+    }
+    else {
+        msgType = ChatMessageTypeOther;
+    }
+    [chatTableCellFrame setMsgType:msgType withMsg:dpChatMsg];
+    [self.arrAllCellFrames addObject:chatTableCellFrame];
+    [self.tableViewChat reloadData];
+}
 
 
 @end

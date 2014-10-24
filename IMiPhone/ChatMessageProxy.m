@@ -38,7 +38,7 @@ static ChatMessageProxy *messageProxy = nil;
     [params setObject:[NSNumber numberWithInteger:targetId] forKey:KEYQ_S_CHAT_CHAT_TARGETID];
     [params setObject:[NSNumber numberWithInteger:msgType] forKey:KEYQ_S_CHAT_CHAT_MSGTYPE];
     [params setObject:content forKey:KEYQ_S_CHAT_CHAT_CONTENT];
-    IMNWMessage *message = [IMNWMessage createForSocket:MARK_CHAT withType:TYPE_S_ACCOUNT_LOGIN];
+    IMNWMessage *message = [IMNWMessage createForSocket:MARK_CHAT withType:TYPE_S_CHAT_CHAT];
     [message send:params];
 }
 
@@ -53,7 +53,21 @@ static ChatMessageProxy *messageProxy = nil;
         NSError *error = [self processErrorCode:res fromSource:[NSString stringWithFormat:@"%@_%@", MARK_CHAT, TYPE_S_CHAT_CHAT]];
         [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_S_CHAT_CHAT object:error];
     }
+}
 
+- (void)parseTypeChatn:(id)json
+{
+    NSMutableDictionary *info = [json objectForKey:SOCKET_INFO];
+    DPChatMessage *dpChatMessage = [[DPChatMessage alloc] init];
+    dpChatMessage.senderUid = [[info objectForKey:KEYP_S_CHAT_CHATN_SENDUID] integerValue];
+    dpChatMessage.type = [[info objectForKey:KEYP_S_CHAT_CHATN_MSGTYPE] integerValue];
+    dpChatMessage.content = [info objectForKey:KEYP_S_CHAT_CHATN_CONTENT];
+    dpChatMessage.sendTime = [info objectForKey:KEYP_S_CHAT_CHATN_TIME];
+    dpChatMessage.mid = [[info objectForKey:KEYP_S_CHAT_CHATN_MID] integerValue];
+    dpChatMessage.senderUid = [[info objectForKey:KEYP_S_CHAT_CHATN_SENDUID] integerValue];
+    dpChatMessage.targetId = [[info objectForKey:KEYP_S_CHAT_CHATN_TARGETID] integerValue];
+    [[[ChatDataProxy sharedProxy] mutableArrayMessages] addObject:dpChatMessage];
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_S_CHAT_CHATN object:dpChatMessage];
 }
 
 @end
