@@ -595,7 +595,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fwi-ZD-fNA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2905" y="-281"/>
+            <point key="canvasLocation" x="2905" y="-225"/>
         </scene>
         <!--发现-->
         <scene sceneID="lrC-fX-R1n">
@@ -878,6 +878,86 @@
             </objects>
             <point key="canvasLocation" x="5434" y="1171"/>
         </scene>
+        <!--Emot Icon View Controller-->
+        <scene sceneID="V6I-B0-Qg4">
+            <objects>
+                <viewController id="uNR-dE-wa7" customClass="EmotIconViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="voj-ch-TgW"/>
+                        <viewControllerLayoutGuide type="bottom" id="SxO-lW-PQV"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="W8F-O9-ewy">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="210"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DvT-kL-dvO">
+                                <rect key="frame" x="244" y="166" width="60" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="发送">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="btnSendTouchUpInside:" destination="uNR-dE-wa7" eventType="touchUpInside" id="2pw-jD-teW"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SMo-4q-MYh">
+                                <rect key="frame" x="176" y="166" width="60" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="删除">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="btnDelTouchUpInside:" destination="uNR-dE-wa7" eventType="touchUpInside" id="WJ4-GY-Uj5"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="320" height="210"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hQs-yr-Mmb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4551" y="-321"/>
+        </scene>
+        <!--Emotion View Controller-->
+        <scene sceneID="AIC-Rh-ECp">
+            <objects>
+                <viewController id="zjL-dW-lmW" customClass="EmotionViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="HMo-V4-SXS"/>
+                        <viewControllerLayoutGuide type="bottom" id="h1c-5p-ovj"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ThT-Fz-q1k">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="240"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mCV-RT-ru2">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="210"/>
+                            </scrollView>
+                            <pageControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="2" translatesAutoresizingMaskIntoConstraints="NO" id="dE3-8D-6Tn">
+                                <rect key="frame" x="110" y="208" width="100" height="37"/>
+                            </pageControl>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="320" height="240"/>
+                    <connections>
+                        <outlet property="pageControl" destination="dE3-8D-6Tn" id="zfS-DT-MZi"/>
+                        <outlet property="scrollView" destination="mCV-RT-ru2" id="xk2-MG-oSf"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WPZ-E2-Xvs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4551" y="-39"/>
+        </scene>
         <!--Chat View Controller-->
         <scene sceneID="z2h-Sm-aq1">
             <objects>
@@ -891,7 +971,6 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="329-xQ-y4w">
-                                <rect key="frame" x="0.0" y="64" width="320" height="436"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
                             <view contentMode="scaleToFill" fixedFrame="YES" restorationIdentifier="ChatInputTextView" translatesAutoresizingMaskIntoConstraints="NO" id="aNi-Nk-VGM" userLabel="Chat Input Text View" customClass="ChatInputTextView">
@@ -935,15 +1014,15 @@
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rda-WO-Z4a">
-                                        <rect key="frame" x="76" y="16" width="144" height="30"/>
-                                        <state key="normal" title="长按录音">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="80k-KQ-pOC">
                                         <rect key="frame" x="253" y="16" width="46" height="30"/>
                                         <state key="normal" title="文字">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rda-WO-Z4a">
+                                        <rect key="frame" x="76" y="16" width="144" height="30"/>
+                                        <state key="normal" title="长按录音">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                     </button>
@@ -1185,7 +1264,7 @@
                                             <color key="textColor" red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="57B71EF5-CF13-4D61-A8CC-55137223CC2A" id="Ls1-tt-jOe">
+                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="8E6B6329-EB2B-41D5-AEB3-4C0990E343EB" id="Ls1-tt-jOe">
                                             <autoresizingMask key="autoresizingMask"/>
                                         </imageView>
                                     </subviews>
@@ -1460,9 +1539,32 @@
             </objects>
             <point key="canvasLocation" x="2905" y="1171"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="nvL-sj-Aia">
+            <objects>
+                <viewController id="MbR-8C-jdm" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="pKe-Ok-Lta"/>
+                        <viewControllerLayoutGuide type="bottom" id="sM6-9H-F4j"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="gZa-1J-ryz">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="210"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="320" height="210"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5a9-PT-7LQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4551" y="-583"/>
+        </scene>
     </scenes>
     <resources>
-        <image name="57B71EF5-CF13-4D61-A8CC-55137223CC2A" width="27" height="27">
+        <image name="8E6B6329-EB2B-41D5-AEB3-4C0990E343EB" width="27" height="27">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPj9YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQsLzI4O1UkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw
@@ -1571,9 +1673,9 @@ ZBVnFWwVdBV3FYkVjBWRAAAAAAAAAgEAAAAAAAAAQgAAAAAAAAAAAAAAAAAAFZM
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="iIs-SU-ZLV"/>
         <segue reference="AcC-yW-RwT"/>
+        <segue reference="iIs-SU-ZLV"/>
         <segue reference="can-Bt-rCz"/>
-        <segue reference="D64-tG-s28"/>
+        <segue reference="EnR-fJ-pM5"/>
     </inferredMetricsTieBreakers>
 </document>

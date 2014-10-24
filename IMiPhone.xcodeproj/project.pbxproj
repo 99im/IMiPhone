@@ -154,6 +154,9 @@
 		58B496EF19A719230082AE30 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58B496EE19A719230082AE30 /* SystemConfiguration.framework */; };
 		58B496F119A719350082AE30 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58B496F019A719350082AE30 /* Security.framework */; };
 		58B649E519E62900008906F0 /* AccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B649E419E62900008906F0 /* AccountViewController.m */; };
+		58B9F66419F8D24100567BCC /* EmotionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B9F66319F8D24100567BCC /* EmotionViewController.m */; };
+		58B9F66619F8DEE200567BCC /* emotion.plist in Resources */ = {isa = PBXBuildFile; fileRef = 58B9F66519F8DEE200567BCC /* emotion.plist */; };
+		58B9F66919F8E5C500567BCC /* EmotIconViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B9F66819F8E5C500567BCC /* EmotIconViewController.m */; };
 		58BACF0719B5803F00A72391 /* FriendDataProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 58AF049719B056050077DCBC /* FriendDataProxy.m */; };
 		58BACF0819B5804700A72391 /* FriendMessageProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 58AF049119AF37C70077DCBC /* FriendMessageProxy.m */; };
 		58BACF0919B5805800A72391 /* crypt.c in Sources */ = {isa = PBXBuildFile; fileRef = 58BACEFD19B4410C00A72391 /* crypt.c */; };
@@ -398,6 +401,11 @@
 		58B496F019A719350082AE30 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		58B649E319E62900008906F0 /* AccountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountViewController.h; sourceTree = "<group>"; };
 		58B649E419E62900008906F0 /* AccountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountViewController.m; sourceTree = "<group>"; };
+		58B9F66219F8D24100567BCC /* EmotionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmotionViewController.h; sourceTree = "<group>"; };
+		58B9F66319F8D24100567BCC /* EmotionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmotionViewController.m; sourceTree = "<group>"; };
+		58B9F66519F8DEE200567BCC /* emotion.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = emotion.plist; sourceTree = "<group>"; };
+		58B9F66719F8E5C500567BCC /* EmotIconViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmotIconViewController.h; sourceTree = "<group>"; };
+		58B9F66819F8E5C500567BCC /* EmotIconViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmotIconViewController.m; sourceTree = "<group>"; };
 		58BACEFD19B4410C00A72391 /* crypt.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = crypt.c; sourceTree = "<group>"; };
 		58BACEFE19B4410C00A72391 /* crypt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = crypt.h; sourceTree = "<group>"; };
 		58BACF0A19B5C12800A72391 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
@@ -501,6 +509,10 @@
 				1194301319F75CED00FD9206 /* ChatInputTextView.m */,
 				1194301619F75D0100FD9206 /* ChatInputSoundView.h */,
 				1194301719F75D0100FD9206 /* ChatInputSoundView.m */,
+				58B9F66219F8D24100567BCC /* EmotionViewController.h */,
+				58B9F66319F8D24100567BCC /* EmotionViewController.m */,
+				58B9F66719F8E5C500567BCC /* EmotIconViewController.h */,
+				58B9F66819F8E5C500567BCC /* EmotIconViewController.m */,
 			);
 			name = Chat;
 			sourceTree = "<group>";
@@ -684,6 +696,7 @@
 				585971DF1999F0C700258CB1 /* IMiPhone-Prefix.pch */,
 				58AF048A19AF10560077DCBC /* Localizable.strings */,
 				58C14DEC19CAE196009334E1 /* contact.plist */,
+				58B9F66519F8DEE200567BCC /* emotion.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -1009,6 +1022,7 @@
 				58AF048719AF10560077DCBC /* Localizable.strings in Resources */,
 				585971EA1999F0C700258CB1 /* Images.xcassets in Resources */,
 				585971DC1999F0C700258CB1 /* InfoPlist.strings in Resources */,
+				58B9F66619F8DEE200567BCC /* emotion.plist in Resources */,
 				585971E51999F0C700258CB1 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1058,6 +1072,7 @@
 				110F561619D56E07003B9EB4 /* DPMessageGroups.m in Sources */,
 				58C14DD219C80D67009334E1 /* ContactViewController.m in Sources */,
 				58C14DEA19CAD70F009334E1 /* AddByInputTableViewCell.m in Sources */,
+				58B9F66919F8E5C500567BCC /* EmotIconViewController.m in Sources */,
 				11E1581319F4FFE1008544D1 /* MsgTableViewController.m in Sources */,
 				116B6E8919B0534000DB1B5E /* DBGroup.m in Sources */,
 				117AC6A119EE7BCF00143973 /* UserDAO.m in Sources */,
@@ -1065,6 +1080,7 @@
 				110487A219D79DFB0002AB36 /* MessageDAO.m in Sources */,
 				58F2AA3419A2F85400DC2FFB /* imUtil.m in Sources */,
 				58D95F5119A5ECA4007139AB /* UserMessageProxy.m in Sources */,
+				58B9F66419F8D24100567BCC /* EmotionViewController.m in Sources */,
 				116B6E9519B058A400DB1B5E /* SqlightAdapter.m in Sources */,
 				58B496E819A7186A0082AE30 /* MKNetworkOperation.m in Sources */,
 				58BC1E3519C0304900722A00 /* RegisterViewController.m in Sources */,
