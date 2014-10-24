@@ -30,18 +30,8 @@
 	</array>
 	<key>GroupMenus4Add</key>
 	<array>
-		<dict>
-			<key>action</key>
-			<string>create_group_0</string>
-			<key>title</key>
-			<string>创建群组</string>
-		</dict>
-		<dict>
-			<key>action</key>
-			<string>create_group_1</string>
-			<key>title</key>
-			<string>创建多人会话组</string>
-		</dict>
+		<string>创建群组</string>
+		<string>创建多人会话</string>
 	</array>
 </dict>
 </plist>

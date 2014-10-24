@@ -15,6 +15,7 @@
 @interface AddTableViewController ()
 
 @property (nonatomic, retain) NSArray *arrTPs;
+@property (nonatomic, retain) NSArray *arrGroupMenus4Add;
 @property (nonatomic, retain) AddByInputTableViewCell *userIdCell;
 @property (nonatomic, retain) AddByInputTableViewCell *groupIdCell;
 
@@ -24,7 +25,8 @@
 
 const int sectionInput = 0;
 const int sectionTP = 1;
-const int sectionNum = 2;
+const int sectionGroup = 2;
+const int sectionNum = 3;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -47,7 +49,8 @@ const int sectionNum = 2;
     NSBundle *bundle = [NSBundle mainBundle];
     NSString *plistPath = [bundle pathForResource:@"contact" ofType:@"plist"];
     self.arrTPs = [[[NSDictionary alloc] initWithContentsOfFile:plistPath] objectForKey:@"AddTP"];
-    
+    self.arrGroupMenus4Add = [[[NSDictionary alloc] initWithContentsOfFile:plistPath] objectForKey:@"GroupMenus4Add"];
+
     [self registerMessageNotification];
 }
 
@@ -84,6 +87,8 @@ const int sectionNum = 2;
             return 2;
         case sectionTP:
             return self.arrTPs.count;
+        case sectionGroup:
+            return self.arrGroupMenus4Add.count;
     }
     return 0;
 }
@@ -109,6 +114,12 @@ const int sectionNum = 2;
         {
             UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"addByTPCell" forIndexPath:indexPath];
             cell.textLabel.text = [self.arrTPs objectAtIndex:indexPath.row];
+            return cell;
+        }
+        case sectionGroup:
+        {
+            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"addForGroup" forIndexPath:indexPath];
+            cell.textLabel.text = [self.arrGroupMenus4Add objectAtIndex:indexPath.row];
             return cell;
         }
         default:
