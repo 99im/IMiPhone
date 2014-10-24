@@ -31,22 +31,29 @@ static ChatMessageProxy *messageProxy = nil;
     
 }
 
-- (void)sendTypeP2PChat:(NSInteger)targetUid type:(NSInteger)msgType content:(NSString *)content
+- (void)sendTypeChat:(NSString *)stage targetId:(NSInteger)targetId msgType:(NSInteger)msgType content:(NSString *)content
 {
-    //使用socket
     NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
-    
-    [params setObject:[NSNumber numberWithInteger:targetUid] forKey:KEYQ_H__CHAT_P2PCHAT__TARGETUID];
-    [params setObject:[NSNumber numberWithInteger:msgType] forKey:KEYQ_H__CHAT_P2PCHAT__MSGTYPE];
-    [params setObject:content forKey:KEYQ_H__CHAT_P2PCHAT__CONTENT];
-    
-    IMNWMessage *message = [IMNWMessage createForSocket:MARK_CHAT withType:PATH_H__CHAT_P2PCHAT_];
+    [params setObject:stage forKey:KEYQ_S_CHAT_CHAT_STAGE];
+    [params setObject:[NSNumber numberWithInteger:targetId] forKey:KEYQ_S_CHAT_CHAT_TARGETID];
+    [params setObject:[NSNumber numberWithInteger:msgType] forKey:KEYQ_S_CHAT_CHAT_MSGTYPE];
+    [params setObject:content forKey:KEYQ_S_CHAT_CHAT_CONTENT];
+    IMNWMessage *message = [IMNWMessage createForSocket:MARK_C withType:TYPE_S_ACCOUNT_LOGIN];
     [message send:params];
 }
 
-- (void)parseTypeP2PChat:(id)json;
+- (void)parseTypeChat:(id)json;
 {
-    NSLog(@"%@",json);
+    NSMutableDictionary *info = [json objectForKey:SOCKET_INFO];
+    int res = [[info objectForKey:KEYP_S_CHAT_CHAT_RES] intValue];
+    if (res == RES_OK) {
+        NSLog(@"%@",json);
+    }
+    else {
+        NSError *error = [self processErrorCode:res fromSource:[NSString stringWithFormat:@"%@_%@", MARK_CHAT, TYPE_S_CHAT_CHAT]];
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_S_CHAT_CHAT object:error];
+    }
+
 }
 
 @end

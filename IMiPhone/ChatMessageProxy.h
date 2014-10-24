@@ -11,6 +11,9 @@
 #import "IMNWManager.h"
 #import "NSNumber+IMNWError.h"
 
+#define CHAT_STAGE_P2P @"p2p"
+#define CHAT_STAGE_GROUP @"group"
+
 #define CHAT_MASSAGE_TYPE_TEXT 0
 #define CHAT_MASSAGE_TYPE_AUDIO 1
 
@@ -21,7 +24,7 @@
 - (void)sendTypeP2PChatList:(NSInteger)targetUid before:(NSInteger)beforeMid after:(NSInteger)afterMid startAt:(NSInteger)startIndex getNum:(NSInteger)pageNum;
 - (void)parseTypeP2PChatList:(id)json;
 
-- (void)sendTypeP2PChat:(NSInteger)targetUid type:(NSInteger)msgType content:(NSString *)content;
-- (void)parseTypeP2PChat:(id)json;
+- (void)sendTypeChat:(NSString *)stage targetId:(NSInteger)targetId msgType:(NSInteger)msgType content:(NSString *)content;
+- (void)parseTypeChat:(id)json;
 
 @end

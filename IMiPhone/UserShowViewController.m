@@ -11,6 +11,7 @@
 #import "FriendDataProxy.h"
 #import "FriendMessageProxy.h"
 #import "UserMessageProxy.h"
+#import "ChatDataProxy.h"
 
 @interface UserShowViewController ()
 
@@ -81,6 +82,8 @@
 
 - (IBAction)btnChatTouchUpInside:(id)sender {
     
+    [ChatDataProxy sharedProxy].chatViewType = ChatViewTypeP2P;
+    [ChatDataProxy sharedProxy].chatToUid = [UserDataProxy sharedProxy].showUserInfoUid;
     [self performSegueWithIdentifier:@"Result2ChatSegue" sender:self];
 }
 
