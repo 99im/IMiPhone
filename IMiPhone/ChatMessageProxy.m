@@ -16,7 +16,7 @@ static ChatMessageProxy *messageProxy = nil;
 {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        messageProxy = [[ChatMessageProxy alloc] init];
+        messageProxy = [[self alloc] init];
     });
     return messageProxy;
 }
@@ -38,7 +38,7 @@ static ChatMessageProxy *messageProxy = nil;
     [params setObject:[NSNumber numberWithInteger:targetId] forKey:KEYQ_S_CHAT_CHAT_TARGETID];
     [params setObject:[NSNumber numberWithInteger:msgType] forKey:KEYQ_S_CHAT_CHAT_MSGTYPE];
     [params setObject:content forKey:KEYQ_S_CHAT_CHAT_CONTENT];
-    IMNWMessage *message = [IMNWMessage createForSocket:MARK_C withType:TYPE_S_ACCOUNT_LOGIN];
+    IMNWMessage *message = [IMNWMessage createForSocket:MARK_CHAT withType:TYPE_S_ACCOUNT_LOGIN];
     [message send:params];
 }
 

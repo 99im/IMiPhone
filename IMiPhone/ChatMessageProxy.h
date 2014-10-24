@@ -10,6 +10,7 @@
 #import "IMNWMessage.h"
 #import "IMNWManager.h"
 #import "NSNumber+IMNWError.h"
+#import "IMNWProxy.h"
 
 #define CHAT_STAGE_P2P @"p2p"
 #define CHAT_STAGE_GROUP @"group"
@@ -17,7 +18,7 @@
 #define CHAT_MASSAGE_TYPE_TEXT 0
 #define CHAT_MASSAGE_TYPE_AUDIO 1
 
-@interface ChatMessageProxy : NSObject
+@interface ChatMessageProxy : IMNWProxy
 
 + (ChatMessageProxy *)sharedProxy;
 
