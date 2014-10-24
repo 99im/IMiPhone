@@ -1,19 +1,18 @@
 //
-//  SystemTableViewController.m
+//  GroupSettingTableViewController.m
 //  IMiPhone
 //
-//  Created by 尹晓君 on 14-9-25.
+//  Created by 雷运梁 on 14-10-23.
 //  Copyright (c) 2014年 尹晓君. All rights reserved.
 //
 
-#import "SystemTableViewController.h"
-#import "UserDataProxy.h"
+#import "GroupSettingTableViewController.h"
 
-@interface SystemTableViewController ()
+@interface GroupSettingTableViewController ()
 
 @end
 
-@implementation SystemTableViewController
+@implementation GroupSettingTableViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -23,8 +22,6 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    self.cellMyInfo.textLabel.text = [UserDataProxy sharedProxy].user.nick;
-    self.cellMyInfo.detailTextLabel.text = [UserDataProxy sharedProxy].user.oid;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -32,32 +29,20 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - Table view delegate
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    if ([cell.reuseIdentifier isEqualToString:@"systemLogoutTVCell"]) {
-        [UserDataProxy sharedProxy].lastLoginUid = NAN;
-        [UserDataProxy sharedProxy].verify = nil;
-        [self performSegueWithIdentifier:@"logoutDoneSegue" sender:nil];
-    }
-}
-
 #pragma mark - Table view data source
-/*
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
-    return 0;
-}
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    return 0;
-}
-*/
+//- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+//#warning Potentially incomplete method implementation.
+//    // Return the number of sections.
+//    return 1;
+//}
+//
+//- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+//#warning Incomplete method implementation.
+//    // Return the number of rows in the section.
+//    return 5;
+//}
+
 /*
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
@@ -112,4 +97,8 @@
 }
 */
 
+
+- (IBAction)touchupGroupQuit:(id)sender {
+    NSLog(@"点击了按钮：退出该群");
+}
 @end

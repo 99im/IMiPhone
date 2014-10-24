@@ -1,18 +1,18 @@
 //
-//  AccountViewController.m
+//  GroupCreateViewController.m
 //  IMiPhone
 //
-//  Created by 尹晓君 on 14-10-9.
+//  Created by 雷运梁 on 14-10-23.
 //  Copyright (c) 2014年 尹晓君. All rights reserved.
 //
 
-#import "AccountViewController.h"
+#import "GroupCreateViewController.h"
 
-@interface AccountViewController ()
+@interface GroupCreateViewController ()
 
 @end
 
-@implementation AccountViewController
+@implementation GroupCreateViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];

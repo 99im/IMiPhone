@@ -80,6 +80,8 @@
 }
 
 - (IBAction)btnChatTouchUpInside:(id)sender {
+    
+    [self performSegueWithIdentifier:@"Result2ChatSegue" sender:self];
 }
 
 - (IBAction)btnMoreTouchUpInside:(id)sender {

@@ -8,11 +8,13 @@
 
 #import <Foundation/Foundation.h>
 
-#define DB_PRIMARY_KEY_SENDER_ID @"senderUid"
+#define DB_PRIMARY_KEY_CHAT_MESSAGE_MID @"mid"
 
-@interface DBMessage : NSObject
+@interface DBChatMessage : NSObject
 
+@property (nonatomic) NSInteger mid;
 @property (nonatomic) NSInteger senderUid;
+@property (nonatomic) NSInteger type;
 @property (nonatomic, retain) NSString *content;
 @property (nonatomic, retain) NSString *sendTime;
 
