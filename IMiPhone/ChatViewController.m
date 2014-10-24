@@ -92,10 +92,7 @@ NSInteger midcounter;
 
 - (IBAction)tfInputTextDidEndOnExit:(id)sender {
     if ([ChatDataProxy sharedProxy].chatViewType == ChatViewTypeP2P) {
-        
-        if ([ChatDataProxy sharedProxy].chatViewType == ChatViewTypeP2P) {
-            <#statements#>
-        }
+    
         
         //        [[ChatMessageProxy sharedProxy] sendTypeP2PChat:[ChatDataProxy sharedProxy].chatToUid type:CHAT_MASSAGE_TYPE_TEXT content:((UITextField *)sender).text];
         //测试
