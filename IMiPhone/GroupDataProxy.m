@@ -9,16 +9,16 @@
 #import "GroupDataProxy.h"
 
 @interface GroupDataProxy()
-@property (nonatomic, retain) NSMutableArray *arrMyJoinGroups;
+@property (nonatomic, retain) NSMutableArray *arrGroupMyList;
 
 @end
 
 @implementation GroupDataProxy
 
-@synthesize arrMyJoinGroups = _arrMyJoinGroups;
+@synthesize arrGroupMyList = _arrGroupMyList;
 
-- (NSMutableArray *)getMyJoinGroups {
-  if (_arrMyJoinGroups == nil) {
+- (NSMutableArray *)sendGroupMyList {
+  if (_arrGroupMyList == nil) {
     //查询数据库
     NSString *where =
         [NSString stringWithFormat:@"%@ > 0", DB_PRIMARY_KEY_GROUP_ID];
@@ -32,17 +32,17 @@
                                 bind:[NSMutableArray arrayWithObjects:nil]];
 
     //处理结果
-    _arrMyJoinGroups = [NSMutableArray array];
+    _arrGroupMyList = [NSMutableArray array];
     if (result) {
       DPGroup *tempGroup;
       for (NSInteger i = 0; i < result.count; i++) {
         tempGroup = [[DPGroup alloc] init];
         [ImDataUtil copyFrom:result[i] To:tempGroup];
-        [_arrMyJoinGroups addObject:tempGroup];
+        [_arrGroupMyList addObject:tempGroup];
       }
     }
   }
-  return [self mutableArrayValueForKey:@"arrMyJoinGroups"];
+  return [self mutableArrayValueForKey:@"arrGroupMyList"];
 }
 
 @end

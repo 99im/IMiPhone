@@ -11,5 +11,5 @@
 #import "DPGroup.h"
 
 @interface GroupDataProxy : NSObject
-- (NSMutableArray *) getMyJoinGroups;
+- (NSMutableArray *) sendGroupMyList;
 @end
