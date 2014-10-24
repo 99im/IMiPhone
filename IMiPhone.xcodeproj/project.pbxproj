@@ -137,7 +137,6 @@
 		58A331AA19E51A95005BE980 /* CategoryListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A331A919E51A95005BE980 /* CategoryListTableViewController.m */; };
 		58A331AD19E52CDE005BE980 /* CategoryContactTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A331AC19E52CDE005BE980 /* CategoryContactTableViewCell.m */; };
 		58A5B4F819ADC05F0007C2F3 /* MainTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A5B4F719ADC05F0007C2F3 /* MainTabBarController.m */; };
-		58A5B4FC19ADC3CA0007C2F3 /* ChatMsgTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A5B4FB19ADC3CA0007C2F3 /* ChatMsgTableViewController.m */; };
 		58A9134019D2BDBA008E5A25 /* UserShowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A9133F19D2BDBA008E5A25 /* UserShowViewController.m */; };
 		58AF048719AF10560077DCBC /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 58AF048A19AF10560077DCBC /* Localizable.strings */; };
 		58B496D819A7186A0082AE30 /* NSAlert+MKNetworkKitAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B496C319A7186A0082AE30 /* NSAlert+MKNetworkKitAdditions.m */; };
@@ -671,6 +670,7 @@
 			children = (
 				AB24A95219F7CE2F00026299 /* Main.storyboard */,
 				AB20EE8919F4F67D004627C8 /* Group */,
+				11E1581019F4FF58008544D1 /* msg */,
 				58438C0A19D412C400B6962B /* Nearby */,
 				58A9133C19D2BC4E008E5A25 /* User */,
 				58C14DCF19C80D40009334E1 /* Contact */,
@@ -1140,7 +1140,7 @@
 				58B496DC19A7186A0082AE30 /* NSDate+RFC1123.m in Sources */,
 				58A5B4F819ADC05F0007C2F3 /* MainTabBarController.m in Sources */,
 				AB24A95719F89DDA00026299 /* GroupInfoViewController.m in Sources */,
-				58A5B4FC19ADC3CA0007C2F3 /* ChatTableViewController.m in Sources */,
+				1194301019F74EC200FD9206 /* ChatShareMenuViewController.m in Sources */,
 				58B496EA19A7186A0082AE30 /* Reachability.m in Sources */,
 				AB24A96019F8E59D00026299 /* GroupSettingTableViewController.m in Sources */,
 				117AC69419EE763E00143973 /* IMAddressBook.m in Sources */,

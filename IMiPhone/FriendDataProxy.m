@@ -79,7 +79,7 @@ static FriendDataProxy *sharedFriendDataProxy = nil;
     [[ContactDAO sharedDAO] deleteByCondition:[DB_PRIMARY_KEY_CONTACT_PERSON_PHONE stringByAppendingString:@"=?"]
                                          Bind:[NSMutableArray arrayWithObjects:dpPerson.phones,nil]];
     [self.arrContact removeObjectAtIndex:index];
-    NSLog(@"remove arrContact at index :%li",index);
+    NSLog(@"remove arrContact at index :%lu",(unsigned long)index);
     
 }
 
@@ -146,7 +146,7 @@ static FriendDataProxy *sharedFriendDataProxy = nil;
     else {
         [[ContactDAO sharedDAO] insert:tempDBUserFromContact];
         [self.arrUsersFromContact insertObject:object atIndex:index];
-        NSLog(@"arrUsersFromContact insert user uid:%li", ((DPUserFromContact *)object).uid);
+        NSLog(@"arrUsersFromContact insert user uid:%ld", (long)((DPUserFromContact *)object).uid);
     }
 }
 

@@ -120,8 +120,8 @@
         self.navigationItem.title = subviewTitle;
         
         if ([subviewId isEqualToString:@"CategoryTableViewController"]) {
-            [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sendTypeFocusListResult:) name:NOTI__FRIEND_FOCUS_LIST_ object:nil];
-            [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sendTypeFanListResult:) name:NOTI__FRIEND_FAN_LIST_ object:nil];
+            [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sendTypeFocusListResult:) name:NOTI_H__FRIEND_FOCUS_LIST_ object:nil];
+            [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sendTypeFanListResult:) name:NOTI_H__FRIEND_FAN_LIST_ object:nil];
         } else if([subviewId isEqualToString:@"storyGroupMyJoin"]){
             [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_GROUP_SHOW_MY_LIST
                                                                 object:nil];

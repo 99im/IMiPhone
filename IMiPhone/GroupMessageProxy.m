@@ -28,9 +28,9 @@ static GroupMessageProxy *sharedGroupMessageProxy = nil;
   [params setObject:start forKey:GOL_KEY_PAGE_START];
   [params setObject:pageNum forKey:GOL_KEY_PAGE_NUM];
 
-  IMNWMessage *message = [IMNWMessage createForHttp:PATH__FRIEND_FRIEND_LIST_
+  IMNWMessage *message = [IMNWMessage createForHttp:PATH_H__FRIEND_FRIEND_LIST_
                                          withParams:params
-                                         withMethod:METHOD__FRIEND_FRIEND_LIST_
+                                         withMethod:METHOD_H__FRIEND_FRIEND_LIST_
                                                 ssl:NO];
   [[IMNWManager sharedNWManager]
        sendMessage:message
@@ -44,7 +44,7 @@ static GroupMessageProxy *sharedGroupMessageProxy = nil;
             NSAssert1(YES, @"JSON create error: %@", err);
           } else {
             int errorcode = [
-                [json objectForKey:KEYP__ACCOUNT_MOBCODE__ERROR_CODE] intValue];
+                [json objectForKey:KEYP_H__ACCOUNT_MOBCODE__ERROR_CODE] intValue];
             if (errorcode == 0) {
                 NSLog(@"group response ok");
 //              [[NSNotificationCenter defaultCenter]
