@@ -6,11 +6,13 @@
 //  Copyright (c) 2014年 尹晓君. All rights reserved.
 //
 
-#import "DPMessage.h"
+#import "DPChatMessage.h"
 
-@implementation DPMessage
+@implementation DPChatMessage
 
+@synthesize mid;
 @synthesize senderUid;
+@synthesize type;
 @synthesize content;
 @synthesize sendTime;
 

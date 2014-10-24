@@ -1,18 +1,18 @@
 //
-//  AccountViewController.m
+//  ChatShareMenuViewController.m
 //  IMiPhone
 //
-//  Created by 尹晓君 on 14-10-9.
+//  Created by 王 国良 on 14/10/22.
 //  Copyright (c) 2014年 尹晓君. All rights reserved.
 //
 
-#import "AccountViewController.h"
+#import "ChatShareMenuViewController.h"
 
-@interface AccountViewController ()
+@interface ChatShareMenuViewController ()
 
 @end
 
-@implementation AccountViewController
+@implementation ChatShareMenuViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];

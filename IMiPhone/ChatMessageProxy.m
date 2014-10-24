@@ -36,11 +36,11 @@ static ChatMessageProxy *messageProxy = nil;
     //使用socket
     NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
     
-    [params setObject:[NSNumber numberWithInteger:targetUid] forKey:KEYQ__CHAT_P2PCHAT__TARGETUID];
-    [params setObject:[NSNumber numberWithInteger:msgType] forKey:KEYQ__CHAT_P2PCHAT__MSGTYPE];
-    [params setObject:content forKey:KEYQ__CHAT_P2PCHAT__CONTENT];
+    [params setObject:[NSNumber numberWithInteger:targetUid] forKey:KEYQ_H__CHAT_P2PCHAT__TARGETUID];
+    [params setObject:[NSNumber numberWithInteger:msgType] forKey:KEYQ_H__CHAT_P2PCHAT__MSGTYPE];
+    [params setObject:content forKey:KEYQ_H__CHAT_P2PCHAT__CONTENT];
     
-    IMNWMessage *message = [IMNWMessage createForSocket:MARK_CHAT withType:PATH__CHAT_P2PCHAT_];
+    IMNWMessage *message = [IMNWMessage createForSocket:MARK_CHAT withType:PATH_H__CHAT_P2PCHAT_];
     [message send:params];
 }
 

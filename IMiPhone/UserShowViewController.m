@@ -80,6 +80,8 @@
 }
 
 - (IBAction)btnChatTouchUpInside:(id)sender {
+    
+    [self performSegueWithIdentifier:@"Result2ChatSegue" sender:self];
 }
 
 - (IBAction)btnMoreTouchUpInside:(id)sender {
@@ -125,8 +127,8 @@
 - (void)registerMessageNotification
 {
     //监听搜索用户结果的监听
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showFocusAddResult:) name:NOTI__FRIEND_FOCUS_ADD_ object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showFocusCancelResult:) name:NOTI__FRIEND_FOCUS_CANCEL_ object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showFocusAddResult:) name:NOTI_H__FRIEND_FOCUS_ADD_ object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showFocusCancelResult:) name:NOTI_H__FRIEND_FOCUS_CANCEL_ object:nil];
 }
 
 - (void)removeMessageNotification

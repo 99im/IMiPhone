@@ -21,7 +21,7 @@ static NSInteger rmsBindUid;
 {
 //    rmsBindUid = @"addd";
     if (bind) {
-        key = [key stringByAppendingFormat:@"%d",rmsBindUid];
+        key = [key stringByAppendingFormat:@"%ld",(long)rmsBindUid];
     }
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
     [ud setObject:value forKey:key];
@@ -30,7 +30,7 @@ static NSInteger rmsBindUid;
 + (NSString *)userDefaultsReadString:(NSString *)key isBindUid:(BOOL)bind
 {
     if (bind) {
-        key = [key stringByAppendingFormat:@"%d",rmsBindUid];
+        key = [key stringByAppendingFormat:@"%ld",(long)rmsBindUid];
     }
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
     return [ud stringForKey:key];
@@ -38,7 +38,7 @@ static NSInteger rmsBindUid;
 + (BOOL)userDefaultsWrite:(NSString *)key withObjectValue:(id)value isBindUid:(BOOL)bind
 {
     if (bind) {
-        key = [key stringByAppendingFormat:@"%d",rmsBindUid];
+        key = [key stringByAppendingFormat:@"%ld",(long)rmsBindUid];
     }
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
     [ud setObject:value forKey:key];
@@ -47,7 +47,7 @@ static NSInteger rmsBindUid;
 + (id)userDefaultsReadObject:(NSString *)key isBindUid:(BOOL)bind
 {
     if (bind) {
-        key = [key stringByAppendingFormat:@"%d",rmsBindUid];
+        key = [key stringByAppendingFormat:@"%ld",(long)rmsBindUid];
     }
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
     return [ud objectForKey:key];
@@ -56,7 +56,7 @@ static NSInteger rmsBindUid;
 + (BOOL)userDefaultsWrite:(NSString *)key withBoolValue:(NSInteger)value isBindUid:(BOOL)bind
 {
     if (bind) {
-        key = [key stringByAppendingFormat:@"%d",rmsBindUid];
+        key = [key stringByAppendingFormat:@"%ld",(long)rmsBindUid];
     }
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
     [ud setBool:value forKey:key];
@@ -66,7 +66,7 @@ static NSInteger rmsBindUid;
 + (BOOL)userDefaultsReadBool:(NSString *)key isBindUid:(BOOL)bind
 {
     if (bind) {
-        key = [key stringByAppendingFormat:@"%d",rmsBindUid];
+        key = [key stringByAppendingFormat:@"%ld",(long)rmsBindUid];
     }
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
     return [ud boolForKey:key];
@@ -75,7 +75,7 @@ static NSInteger rmsBindUid;
 + (BOOL)userDefaultsWrite:(NSString *)key withDoubleValue:(double)value isBindUid:(BOOL)bind
 {
     if (bind) {
-        key = [key stringByAppendingFormat:@"%d",rmsBindUid];
+        key = [key stringByAppendingFormat:@"%ld",(long)rmsBindUid];
     }
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
     [ud setDouble:value forKey:key];
@@ -85,7 +85,7 @@ static NSInteger rmsBindUid;
 + (double)userDefaultsReadDouble:(NSString *)key isBindUid:(BOOL)bind
 {
     if (bind) {
-        key = [key stringByAppendingFormat:@"%d",rmsBindUid];
+        key = [key stringByAppendingFormat:@"%ld",(long)rmsBindUid];
     }
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
     return [ud doubleForKey:key];
@@ -94,7 +94,7 @@ static NSInteger rmsBindUid;
 + (BOOL)userDefaultsWrite:(NSString *)key withIntValue:(NSInteger)value isBindUid:(BOOL)bind
 {
     if (bind) {
-        key = [key stringByAppendingFormat:@"%d",rmsBindUid];
+        key = [key stringByAppendingFormat:@"%ld",(long)rmsBindUid];
     }
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
     [ud setInteger:value forKey:key];
@@ -103,7 +103,7 @@ static NSInteger rmsBindUid;
 + (NSInteger)userDefaultsReadInt:(NSString*)key isBindUid:(BOOL)bind
 {
     if (bind) {
-        key = [key stringByAppendingFormat:@"%d",rmsBindUid];
+        key = [key stringByAppendingFormat:@"%ld",(long)rmsBindUid];
     }
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
     return [ud integerForKey:key];
@@ -112,7 +112,7 @@ static NSInteger rmsBindUid;
 + (BOOL)userDefaultsWrite:(NSString *)key withFloatValue:(float)value isBindUid:(BOOL)bind
 {
     if (bind) {
-        key = [key stringByAppendingFormat:@"%d",rmsBindUid];
+        key = [key stringByAppendingFormat:@"%ld",(long)rmsBindUid];
     }
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
     [ud setFloat:value forKey:key];
@@ -122,7 +122,7 @@ static NSInteger rmsBindUid;
 + (float)userDefaultsReadFloat:(NSString *)key isBindUid:(BOOL)bind
 {
     if (bind) {
-        key = [key stringByAppendingFormat:@"%d",rmsBindUid];
+        key = [key stringByAppendingFormat:@"%ld",(long)rmsBindUid];
     }
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
     return [ud floatForKey:key];

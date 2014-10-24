@@ -63,7 +63,7 @@
 
 - (void)registerMessageNotification
 {
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sendAccountMobcodeResult:) name:NOTI__ACCOUNT_MOBCODE_ object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sendAccountMobcodeResult:) name:NOTI_H__ACCOUNT_MOBCODE_ object:nil];
 }
 
 - (void)removeMessageNotification

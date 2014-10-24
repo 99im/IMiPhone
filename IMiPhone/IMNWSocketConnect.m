@@ -64,7 +64,7 @@ char cryptKey[17];
 {
     NSLog(@"Socket connect succceed: %@ : %hu", host, port);
     if (!CRYPT) {
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sendTypeLogin:) name:NOTI_ACCOUNT_LOGIN object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sendTypeLogin:) name:NOTI_S_ACCOUNT_LOGIN object:nil];
         [[AccountMessageProxy sharedProxy] sendTypeLogin];
     }
 }
@@ -83,7 +83,7 @@ char cryptKey[17];
         keyRevert(originalKey, cryptKey);
         [self.socket readDataToData:term withTimeout:-1 tag:TAG_MSG];
         
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sendTypeLogin:) name:NOTI_ACCOUNT_LOGIN object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sendTypeLogin:) name:NOTI_S_ACCOUNT_LOGIN object:nil];
         [[AccountMessageProxy sharedProxy] sendTypeLogin];
     }
 }
@@ -104,7 +104,7 @@ char cryptKey[17];
         [data getBytes:bytesToDecode range:NSMakeRange(2, data.length - 3)];
         cryptKey[0] = dataBytes[0];
         cryptKey[1] = dataBytes[1];
-        bitDecode(bytesToDecode , data.length - 3, cryptKey, 16);
+        bitDecode(bytesToDecode , (int)data.length - 3, cryptKey, 16);
         dataDecoded = [NSData dataWithBytes:bytesToDecode length:data.length - 3];
     }
     else {
@@ -136,12 +136,12 @@ char cryptKey[17];
     }
     else if (self.socket.isConnected) {
         NSString *content = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-        NSLog(@"Socket Send: %@ , length: %i", content, data.length);
+        NSLog(@"Socket Send: %@ , length: %lu", content, (unsigned long)data.length);
         if (CRYPT) {
             cryptKey[0] = rand() % 127 + 1;
             cryptKey[1] = rand() % 127 + 1;
             char *dataBytes = (char*)[data bytes];
-            bitEncode(dataBytes, data.length, cryptKey, 16);
+            bitEncode(dataBytes, (int)data.length, cryptKey, 16);
             NSMutableData *dataEncoded = [NSMutableData data];
             [dataEncoded appendBytes:cryptKey length:2];
             [dataEncoded appendBytes:dataBytes length:data.length];
@@ -175,7 +175,7 @@ char cryptKey[17];
     }
     
     self.dataToSend = nil;
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTI_ACCOUNT_LOGIN object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTI_S_ACCOUNT_LOGIN object:nil];
 }
 
 @end

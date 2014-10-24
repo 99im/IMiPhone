@@ -82,7 +82,7 @@
         [proxy parseMessage:self];
     }
     else {
-        NSAssert1(YES, @"No such Class: %@", clz);
+        NSAssert(YES, @"No such Class: %@", clz);
     }
 }
 

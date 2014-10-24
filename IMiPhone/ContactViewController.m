@@ -79,7 +79,7 @@
 }
 
 
-- (void)openSubTags:(int)tag
+- (void)openSubTags:(NSInteger)tag
 {
     if (tag == -1) {
         tag = 0;
@@ -105,8 +105,8 @@
         [self.curViewController.view removeFromSuperview];
         [self.curViewController removeFromParentViewController];
         if ([self.curSubViewId isEqualToString:@"CategoryTableViewController"]) {
-            [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTI__FRIEND_FOCUS_LIST_ object:nil];
-            [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTI__FRIEND_FAN_LIST_ object:nil];
+            [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTI_H__FRIEND_FOCUS_LIST_ object:nil];
+            [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTI_H__FRIEND_FAN_LIST_ object:nil];
         }
         
         UIStoryboard* mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];

@@ -87,7 +87,7 @@ static NSDictionary *dicSQLDataType;
         
         SqlightResult *result = [self.sqlight createTable:name Info:[self getInfoFromDataMode:cls withPrimaryKey:pKey]];
         self.sqlight.tableName = name;
-        NSLog(@"Create table Result msg:%@ code:%d data:%@", result.msg, result.code, result.data);
+        NSLog(@"Create table Result msg:%@ code:%ld data:%@", result.msg, (long)result.code, result.data);
         return result.code;
 
     }
@@ -96,20 +96,20 @@ static NSDictionary *dicSQLDataType;
 - (NSInteger)dropTable;
 {
     SqlightResult *result  = [self.sqlight dropTable:self.tableName];
-    NSLog(@"Drop table Result msg:%@ code:%d data:%@", result.msg, result.code, result.data);
+    NSLog(@"Drop table Result msg:%@ code:%ld data:%@", result.msg, (long)result.code, result.data);
     return 0;
 }
 - (NSInteger)insert:(NSObject *)data
 {
     NSDictionary *dataDic = [ImDataUtil getDicFromNormalClass:data];
     SqlightResult *result  = [self.sqlight insertData:dataDic];
-    NSLog(@"insert Result msg:%@ code:%d data:%@", result.msg, result.code, result.data);
+    NSLog(@"insert Result msg:%@ code:%ld data:%@", result.msg, (long)result.code, result.data);
     return result.code;
 }
 - (NSInteger)deleteByCondition:(NSString *)condition Bind:(NSMutableArray *)bind;
 {
     SqlightResult *result  = [self.sqlight deleteByCondition:condition Bind:bind];
-    NSLog(@"delete Result msg:%@ code:%d data:%@", result.msg, result.code, result.data);
+    NSLog(@"delete Result msg:%@ code:%ld data:%@", result.msg, (long)result.code, result.data);
     return result.code;
 }
 - (NSMutableArray *)query:(NSString *)condition Bind:(NSArray *)bind
@@ -122,7 +122,7 @@ static NSDictionary *dicSQLDataType;
     }
     SqlightResult *result = [self.sqlight selectFields:fields
                                            ByCondition:condition Bind:bind];
-    NSLog(@"query Result msg:%@ code:%d data:%@", result.msg, result.code, result.data);
+    NSLog(@"query Result msg:%@ code:%ld data:%@", result.msg, (long)result.code, result.data);
     NSMutableArray *arrResult = [NSMutableArray array];
     if (result.data) {
         NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
@@ -157,7 +157,7 @@ static NSDictionary *dicSQLDataType;
         }
     }
     SqlightResult *result = [self.sqlight updateData:dicData ByCondition:condition Bind:bind];
-    NSLog(@"update Result msg:%@ code:%d data:%@", result.msg, result.code, result.data);
+    NSLog(@"update Result msg:%@ code:%ld data:%@", result.msg, (long)result.code, result.data);
     return result.code;
 }
 

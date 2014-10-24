@@ -64,8 +64,6 @@
             [self.arrFriendsData addObject:user];
         }
     }
-    
-    NSLog(@"y坐标%f",self.tableView.frame.origin.y);
 }
 
 
@@ -177,7 +175,7 @@
 #pragma mark - IMNWProxyProtocol Method
 - (void)registerMessageNotification
 {
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiceFriendListData:) name:NOTI__FRIEND_FRIEND_LIST_ object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiceFriendListData:) name:NOTI_H__FRIEND_FRIEND_LIST_ object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(touchPortrait:) name:NOTIFY_FRIEND_TABLE_VIEW_CELL_USER_TOUCH_PORTRAIT object:nil];
 }
 
