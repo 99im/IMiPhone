@@ -44,6 +44,20 @@
     if ([ChatDataProxy sharedProxy].chatViewType == ChatViewTypeP2P) {
         DPUser *dpUser = [[UserDataProxy sharedProxy] getUserInfoFromUid:[ChatDataProxy sharedProxy].chatToUid];
         self.title = dpUser.nick;
+        NSArray *arrChatMessages = [[ChatDataProxy sharedProxy] mutableArrayMessages];
+        for (NSInteger i = 0; i < arrChatMessages.count; i++) {
+            DPChatMessage *dpChatMsg = [arrChatMessages objectAtIndex:i];
+            ChatTableViewCellFrame *chatTableCellFrame = [[ChatTableViewCellFrame alloc] init];
+            ChatMessageType msgType;
+            if (dpChatMsg.senderUid == [UserDataProxy sharedProxy].lastLoginUid) {
+                msgType = ChatMessageTypeMe;
+            }
+            else {
+                msgType = ChatMessageTypeOther;
+            }
+            [chatTableCellFrame setMsgType:msgType withMsg:dpChatMsg];
+            [self.arrAllCellFrames addObject:chatTableCellFrame];
+        }
     }
     
     [self registerMessageNotification];
