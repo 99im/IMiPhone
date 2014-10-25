@@ -884,7 +884,7 @@
         <!--Emot Icon View Controller-->
         <scene sceneID="QST-SQ-kG8">
             <objects>
-                <viewController id="gGs-Tr-3Yu" customClass="EmotIconViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="EmotIconViewController" id="gGs-Tr-3Yu" customClass="EmotIconViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="tG2-vl-LGR"/>
                         <viewControllerLayoutGuide type="bottom" id="Dce-oU-cH4"/>
@@ -924,10 +924,10 @@
             </objects>
             <point key="canvasLocation" x="4239" y="-322"/>
         </scene>
-        <!--Emot Icon View Controller-->
+        <!--Emotion View Controller-->
         <scene sceneID="Q0T-eA-oa3">
             <objects>
-                <viewController id="NuK-zK-auH" customClass="EmotIconViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="EmotionViewController" id="NuK-zK-auH" customClass="EmotionViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="sT4-rc-TTY"/>
                         <viewControllerLayoutGuide type="bottom" id="a44-1S-beC"/>
@@ -936,8 +936,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="240"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <pageControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="2" translatesAutoresizingMaskIntoConstraints="NO" id="A5f-Wx-jYn">
+                            <pageControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" hidesForSinglePage="YES" numberOfPages="2" translatesAutoresizingMaskIntoConstraints="NO" id="A5f-Wx-jYn">
                                 <rect key="frame" x="109" y="173" width="100" height="37"/>
+                                <color key="pageIndicatorTintColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <color key="currentPageIndicatorTintColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                                <connections>
+                                    <action selector="pageControlValueChanged:" destination="NuK-zK-auH" eventType="valueChanged" id="o6h-Ai-s1x"/>
+                                </connections>
                             </pageControl>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ukm-3K-gyy">
                                 <rect key="frame" x="0.0" y="200" width="46" height="40"/>
@@ -946,7 +951,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="82T-Yf-8XN">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="82T-Yf-8XN">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="180"/>
                             </scrollView>
                         </subviews>
@@ -958,8 +963,8 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="320" height="240"/>
                     <connections>
-                        <outlet property="pageController" destination="A5f-Wx-jYn" id="se7-kf-lhP"/>
-                        <outlet property="scrollView" destination="82T-Yf-8XN" id="UXX-9E-zP7"/>
+                        <outlet property="pageControl" destination="A5f-Wx-jYn" id="Oo7-aV-6Ub"/>
+                        <outlet property="scrollView" destination="82T-Yf-8XN" id="ygC-co-sYk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3dT-pj-Q6F" userLabel="First Responder" sceneMemberID="firstResponder"/>

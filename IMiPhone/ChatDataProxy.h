@@ -22,6 +22,7 @@ typedef enum {
 @property (nonatomic) NSInteger chatViewType;
 @property (nonatomic) NSInteger chatToUid;
 
+@property (nonatomic, retain, getter=getEmotions) NSArray *arrEmotions;
 
 + (ChatDataProxy*)sharedProxy;
 
@@ -30,5 +31,6 @@ typedef enum {
 - (NSMutableArray *)mutableArrayMessageGroups;
 
 - (DPChatMessage *)getChatMessageFromMid:(NSInteger)mid;
+- (NSArray *)getEmotions;
 
 @end

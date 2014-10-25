@@ -19,6 +19,7 @@
 
 @synthesize arrMessageGroups = _arrMessageGroups;
 @synthesize arrMessages = _arrMessages;
+@synthesize arrEmotions = _arrEmotions;
 
 static ChatDataProxy *messageDataProxy = nil;
 
@@ -139,6 +140,16 @@ static ChatDataProxy *messageDataProxy = nil;
         return [chatMessages objectAtIndex:findindex];
     }
     return nil;
+}
+
+- (NSArray *)getEmotions
+{
+    if (_arrEmotions == nil) {
+        NSBundle *bundle = [NSBundle mainBundle];
+        NSString *plistPath = [bundle pathForResource:@"emotion" ofType:@"plist"];
+        _arrEmotions = [[NSArray alloc] initWithContentsOfFile:plistPath];
+    }
+    return _arrEmotions;
 }
 
 @end

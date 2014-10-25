@@ -9,12 +9,18 @@
 #import <UIKit/UIKit.h>
 #import "EmotIconViewController.h"
 
+#define NOTI_EMOTION_SELECTED @"UIEmotionSelectedNotifiction"
+
 @interface EmotionViewController : UIViewController
+
+extern NSInteger const EMOTS_PAGENUM;
+extern float const EMOTS_HEIGHT;
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIPageControl *pageControl;
 
-@property (strong, nonatomic) EmotIconViewController *page1ViewController;
-@property (strong, nonatomic) EmotIconViewController *page2ViewController;
+@property (strong, nonatomic) NSMutableArray *arrPageViewController;
+
+- (IBAction)pageControlValueChanged:(id)sender;
 
 @end

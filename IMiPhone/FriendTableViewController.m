@@ -123,7 +123,7 @@
             ((FriendTableViewCellUser *)cell).data = user;
     }
     else {
-        NSAssert(YES, @"数据源中没有找到用户信息！");
+        NSLog(@"数据源中没有找到用户信息！");
     }
     return cell;
 }

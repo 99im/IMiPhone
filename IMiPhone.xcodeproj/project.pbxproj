@@ -152,7 +152,6 @@
 		58B496ED19A7190B0082AE30 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58B496EC19A7190B0082AE30 /* CFNetwork.framework */; };
 		58B496EF19A719230082AE30 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58B496EE19A719230082AE30 /* SystemConfiguration.framework */; };
 		58B496F119A719350082AE30 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58B496F019A719350082AE30 /* Security.framework */; };
-		58B649E519E62900008906F0 /* AccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B649E419E62900008906F0 /* AccountViewController.m */; };
 		58B9F66419F8D24100567BCC /* EmotionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B9F66319F8D24100567BCC /* EmotionViewController.m */; };
 		58B9F66619F8DEE200567BCC /* emotion.plist in Resources */ = {isa = PBXBuildFile; fileRef = 58B9F66519F8DEE200567BCC /* emotion.plist */; };
 		58B9F66919F8E5C500567BCC /* EmotIconViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B9F66819F8E5C500567BCC /* EmotIconViewController.m */; };
@@ -406,8 +405,6 @@
 		58B496EC19A7190B0082AE30 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		58B496EE19A719230082AE30 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		58B496F019A719350082AE30 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
-		58B649E319E62900008906F0 /* AccountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountViewController.h; sourceTree = "<group>"; };
-		58B649E419E62900008906F0 /* AccountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountViewController.m; sourceTree = "<group>"; };
 		58B9F66219F8D24100567BCC /* EmotionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmotionViewController.h; sourceTree = "<group>"; };
 		58B9F66319F8D24100567BCC /* EmotionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmotionViewController.m; sourceTree = "<group>"; };
 		58B9F66519F8DEE200567BCC /* emotion.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = emotion.plist; sourceTree = "<group>"; };
@@ -616,13 +613,13 @@
 			path = IMAddressBook;
 			sourceTree = "<group>";
 		};
-		11E1581019F4FF58008544D1 /* msg */ = {
+		11E1581019F4FF58008544D1 /* Msg */ = {
 			isa = PBXGroup;
 			children = (
 				11E1581119F4FFE1008544D1 /* MsgTableViewController.h */,
 				11E1581219F4FFE1008544D1 /* MsgTableViewController.m */,
 			);
-			name = msg;
+			name = Msg;
 			sourceTree = "<group>";
 		};
 		58438C0A19D412C400B6962B /* Nearby */ = {
@@ -685,7 +682,7 @@
 			children = (
 				AB24A95219F7CE2F00026299 /* Main.storyboard */,
 				AB20EE8919F4F67D004627C8 /* Group */,
-				11E1581019F4FF58008544D1 /* msg */,
+				11E1581019F4FF58008544D1 /* Msg */,
 				58438C0A19D412C400B6962B /* Nearby */,
 				58A9133C19D2BC4E008E5A25 /* User */,
 				58C14DCF19C80D40009334E1 /* Contact */,
@@ -1068,7 +1065,6 @@
 				585971EA1999F0C700258CB1 /* Images.xcassets in Resources */,
 				585971DC1999F0C700258CB1 /* InfoPlist.strings in Resources */,
 				58B9F66619F8DEE200567BCC /* emotion.plist in Resources */,
-				585971E51999F0C700258CB1 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
