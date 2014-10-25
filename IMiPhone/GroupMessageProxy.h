@@ -20,10 +20,59 @@
 @interface GroupMessageProxy : NSObject
 + (GroupMessageProxy *)sharedProxy;
 /**
- *  查询我加入的群组数据
+ *  HTTP：获取我的群列表
  *
  *  @param start   起始编号
  *  @param pageNum 查询条数
  */
-- (void)getMyJoinGroups:(NSNumber *)start withPageNum:(NSNumber *)pageNum;
+- (void)sendGroupMyList:(NSNumber *)start withPageNum:(NSNumber *)pageNum;
+
+/**
+ *  HTTP：创建群
+ *
+ *  @param name  群名称
+ *  @param intro 群简介
+ */
+- (void)sendGroupCreate:(NSString *)name withIntro:(NSString *)intro;
+
+/**
+ *  HTTP:查看群详细信息
+ *
+ *  @param gid 群号
+ */
+- (void)sendGroupInfo:(NSString *)gid;
+
+/**
+ *  HTTP:获取群成员列表
+ *
+ *  @param gid     群号
+ *  @param start   起始数
+ *  @param pageNum 显示数
+ */
+- (void)sendGroupMembers:(NSString *)gid start:(NSNumber *)start pageNum:(NSNumber *)pageNum;
+
+/**
+ *  HTTP: 申请加入群
+ *
+ *  @param gid 群号
+ *  @param msg 申请留言说明
+ */
+- (void)sendGroupJoin:(NSString *)gid msg:(NSString *)msg;
+/**
+ *  HTTP：邀请加入群组
+ *
+ *  @param gid        群号
+ *  @param targetUids 邀请uids,格式：1,2,3
+ *  @param msg        附加留言内容
+ */
+- (void)sendGroupInvite:(NSString *)gid targetUids:(NSString *)targetUids msg:(NSString *)msg;
+
+/**
+ *  HTTP：邀请加入群的回应
+ *
+ *  @param rid   邀请序号
+ *  @param agree 回应编码： 0 拒绝 1 同意
+ */
+- (void)sendGroupInviteResponse:(NSString *)rid agree:(NSNumber *)agree;
+
 @end

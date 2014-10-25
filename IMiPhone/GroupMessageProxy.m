@@ -22,15 +22,16 @@ static GroupMessageProxy *sharedGroupMessageProxy = nil;
     return sharedGroupMessageProxy;
 }
 
-- (void)getMyJoinGroups:(NSNumber *)start withPageNum:(NSNumber *)pageNum {
+#pragma mark - sendGroupXxx
+- (void)sendGroupMyList:(NSNumber *)start withPageNum:(NSNumber *)pageNum {
   NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
 
-  [params setObject:start forKey:GOL_KEY_PAGE_START];
-  [params setObject:pageNum forKey:GOL_KEY_PAGE_NUM];
+  [params setObject:start forKey:KEYQ_H__GROUP_MYLIST__START];
+  [params setObject:pageNum forKey:KEYQ_H__GROUP_MYLIST__PAGENUM];
 
-  IMNWMessage *message = [IMNWMessage createForHttp:PATH_H__FRIEND_FRIEND_LIST_
+  IMNWMessage *message = [IMNWMessage createForHttp:PATH_H__GROUP_MYLIST_
                                          withParams:params
-                                         withMethod:METHOD_H__FRIEND_FRIEND_LIST_
+                                         withMethod:METHOD_H__GROUP_MYLIST_
                                                 ssl:NO];
   [[IMNWManager sharedNWManager]
        sendMessage:message
@@ -41,31 +42,206 @@ static GroupMessageProxy *sharedGroupMessageProxy = nil;
                          options:NSJSONReadingAllowFragments
                            error:&err];
           if (err) {
-            NSAssert1(YES, @"JSON create error: %@", err);
+            NSAssert(YES, @"json error[sendGroupMyList]: \n%@", err);
           } else {
             int errorcode = [
-                [json objectForKey:KEYP_H__ACCOUNT_MOBCODE__ERROR_CODE] intValue];
+                [json objectForKey:KEYP_H__GROUP_MYLIST__ERROR_CODE] intValue];
             if (errorcode == 0) {
-                NSLog(@"group response ok");
+                NSLog(@"sendGroupMyList response ok:\n%@", json);
 //              [[NSNotificationCenter defaultCenter]
 //                  postNotificationName:NOTI__ACCOUNT_MOBCODE_
 //                                object:nil];
             } else {
-              NSLog(@"group response error: %i", errorcode);
-//              NSNumber *errorCodeNumber = [NSNumber numberWithInt:errorcode];
-//              NSString *errorMessage = [errorCodeNumber errorMessage];
-//              NSDictionary *userInfo =
-//                  [NSDictionary dictionaryWithObject:errorMessage
-//                                              forKey:NSLocalizedDescriptionKey];
-//              NSError *error = [NSError errorWithDomain:PATH__ACCOUNT_MOBCODE_
-//                                                   code:errorcode
-//                                               userInfo:userInfo];
-//              [[NSNotificationCenter defaultCenter]
-//                  postNotificationName:NOTI__ACCOUNT_MOBCODE_
-//                                object:error];
+              NSAssert(YES, @"sendGroupMyList response error: %i", errorcode);
             }
           }
 
       }];
+}
+
+- (void)sendGroupCreate:(NSString *)name withIntro:(NSString *)intro{
+    NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
+
+    [params setObject:name forKey:KEYQ_H__GROUP_CREATE__NAME];
+    [params setObject:intro forKey:KEYQ_H__GROUP_CREATE__INTRO];
+
+    IMNWMessage *message = [IMNWMessage createForHttp:PATH_H__GROUP_CREATE_
+                                           withParams:params
+                                           withMethod:METHOD_H__GROUP_CREATE_
+                                                  ssl:NO];
+    [[IMNWManager sharedNWManager]
+     sendMessage:message
+     withResponse:^(NSString *responseString, NSData *responseData) {
+         NSError *err = nil;
+         NSMutableDictionary *json = [NSJSONSerialization
+                                      JSONObjectWithData:responseData
+                                      options:NSJSONReadingAllowFragments
+                                      error:&err];
+         if (err) {
+             NSAssert(YES, @"json error[sendGroupCreate]: \n%@", err);
+         } else {
+             int errorcode = [
+                              [json objectForKey:KEYP_H__GROUP_CREATE__ERROR_CODE] intValue];
+             if (errorcode == 0) {
+                 NSLog(@"sendGroupCreate response ok:\n%@", json);
+                 //              [[NSNotificationCenter defaultCenter]
+                 //                  postNotificationName:NOTI__ACCOUNT_MOBCODE_
+                 //                                object:nil];
+             } else {
+                 NSAssert(YES, @"sendGroupCreate error: %i", errorcode);
+             }
+         }
+         
+     }];
+}
+
+
+- (void)sendGroupInfo:(NSString *)gid{
+    NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
+
+    [params setObject:gid forKey:KEYQ_H__GROUP_INFO__GID];
+
+    IMNWMessage *message = [IMNWMessage createForHttp:PATH_H__GROUP_INFO_
+                                           withParams:params
+                                           withMethod:METHOD_H__GROUP_INFO_
+                                                  ssl:NO];
+    [[IMNWManager sharedNWManager]
+     sendMessage:message
+     withResponse:^(NSString *responseString, NSData *responseData) {
+         NSError *err = nil;
+         NSMutableDictionary *json = [NSJSONSerialization
+                                      JSONObjectWithData:responseData
+                                      options:NSJSONReadingAllowFragments
+                                      error:&err];
+         if (err) {
+             NSAssert(YES, @"json error[sendGroupInfo]: \n%@", err);
+         } else {
+             int errorcode = [
+                              [json objectForKey:KEYP_H__GROUP_INFO__ERROR_CODE] intValue];
+             if (errorcode == 0) {
+                 NSLog(@"sendGroupInfo response ok:\n%@", json);
+                 //              [[NSNotificationCenter defaultCenter]
+                 //                  postNotificationName:NOTI__ACCOUNT_MOBCODE_
+                 //                                object:nil];
+             } else {
+                 NSAssert(YES, @"sendGroupInfo response error: %i", errorcode);
+             }
+         }
+
+     }];
+}
+
+- (void)sendGroupMembers:(NSString *)gid start:(NSNumber *)start pageNum:(NSNumber *)pageNum {
+    NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
+
+    [params setObject:gid forKey:KEYQ_H__GROUP_MEMBERS__GID];
+    [params setObject:start forKey:KEYQ_H__GROUP_MEMBERS__START];
+    [params setObject:pageNum forKey:KEYQ_H__GROUP_MEMBERS__PAGENUM];
+
+    IMNWMessage *message = [IMNWMessage createForHttp:PATH_H__GROUP_MEMBERS_
+                                           withParams:params
+                                           withMethod:METHOD_H__GROUP_MEMBERS_
+                                                  ssl:NO];
+    [[IMNWManager sharedNWManager]
+     sendMessage:message
+     withResponse:^(NSString *responseString, NSData *responseData) {
+         NSError *err = nil;
+         NSMutableDictionary *json = [NSJSONSerialization
+                                      JSONObjectWithData:responseData
+                                      options:NSJSONReadingAllowFragments
+                                      error:&err];
+         if (err) {
+             NSAssert(YES, @"json error[sendGroupMembers]: \n%@", err);
+         } else {
+             int errorcode = [
+                              [json objectForKey:KEYP_H__GROUP_MEMBERS__ERROR_CODE] intValue];
+             if (errorcode == 0) {
+                 NSLog(@"sendGroupMembers response ok:\n%@", json);
+                 //              [[NSNotificationCenter defaultCenter]
+                 //                  postNotificationName:NOTI__ACCOUNT_MOBCODE_
+                 //                                object:nil];
+             } else {
+                 NSAssert(YES, @"sendGroupMembers response error: %i", errorcode);
+             }
+         }
+
+     }];
+}
+
+- (void)sendGroupInvite:(NSString *)gid targetUids:(NSString *)targetUids msg:(NSString *)msg {
+    NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
+
+    [params setObject:gid forKey:KEYQ_H__GROUP_INVITE__GID];
+    [params setObject:targetUids forKey:KEYQ_H__GROUP_INVITE__TARGETUIDS];
+    [params setObject:msg forKey:KEYQ_H__GROUP_INVITE__MSG];
+
+    IMNWMessage *message = [IMNWMessage createForHttp:PATH_H__GROUP_INVITE_
+                                           withParams:params
+                                           withMethod:METHOD_H__GROUP_INVITE_
+                                                  ssl:NO];
+    [[IMNWManager sharedNWManager]
+     sendMessage:message
+     withResponse:^(NSString *responseString, NSData *responseData) {
+         NSError *err = nil;
+         NSMutableDictionary *json = [NSJSONSerialization
+                                      JSONObjectWithData:responseData
+                                      options:NSJSONReadingAllowFragments
+                                      error:&err];
+         if (err) {
+             NSAssert(YES, @"json error[sendGroupInvite]: \n%@", err);
+         } else {
+             int errorcode = [
+                              [json objectForKey:KEYP_H__GROUP_INVITE__ERROR_CODE] intValue];
+             if (errorcode == 0) {
+                 NSLog(@"sendGroupInvite response ok:\n%@", json);
+                 //              [[NSNotificationCenter defaultCenter]
+                 //                  postNotificationName:NOTI__ACCOUNT_MOBCODE_
+                 //                                object:nil];
+             } else {
+                 NSAssert(YES, @"sendGroupInvite response error: %i", errorcode);
+             }
+         }
+
+     }];
+}
+
+- (void)sendGroupInviteResponse:(NSString *)rid agree:(NSNumber *)agree {
+    NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
+
+    [params setObject:rid forKey:KEYQ_H__GROUP_INVITE_RESPONSE__RID];
+    [params setObject:agree forKey:KEYQ_H__GROUP_INVITE_RESPONSE__AGREE];
+
+    IMNWMessage *message = [IMNWMessage createForHttp:PATH_H__GROUP_INVITE_RESPONSE_
+                                           withParams:params
+                                           withMethod:METHOD_H__GROUP_INVITE_RESPONSE_
+                                                  ssl:NO];
+    [[IMNWManager sharedNWManager]
+     sendMessage:message
+     withResponse:^(NSString *responseString, NSData *responseData) {
+         NSError *err = nil;
+         NSMutableDictionary *json = [NSJSONSerialization
+                                      JSONObjectWithData:responseData
+                                      options:NSJSONReadingAllowFragments
+                                      error:&err];
+         if (err) {
+             NSAssert(YES, @"json error[sendGroupInviteResponse]: \n%@", err);
+         } else {
+             int errorcode = [
+                              [json objectForKey:KEYP_H__GROUP_INVITE_RESPONSE__ERROR_CODE] intValue];
+             if (errorcode == 0) {
+                 NSLog(@"sendGroupInviteResponse response ok:\n%@", json);
+                 //              [[NSNotificationCenter defaultCenter]
+                 //                  postNotificationName:NOTI__ACCOUNT_MOBCODE_
+                 //                                object:nil];
+             } else {
+                 NSAssert(YES, @"sendGroupInviteResponse response error: %i", errorcode);
+             }
+         }
+
+     }];
+}
+
+- (void)sendGroupJoin:(NSString *)gid msg:(NSString *)msg {
+    //TODO: 服务器端接口添加确定
 }
 @end

@@ -7,6 +7,8 @@
 //
 
 #import "AddByInputTableViewCell.h"
+#import "UserMessageProxy.h"
+#import "GroupMessageProxy.h"
 
 @implementation AddByInputTableViewCell
 
@@ -31,4 +33,16 @@
     // Configure the view for the selected state
 }
 
+- (IBAction)touchUpSearch:(id)sender {
+    switch (self.actionType) {
+        case SEARCH_BY_USER_ID:
+            [[UserMessageProxy sharedProxy] sendTypeSearch:self.tfAddTarget.text];
+            break;
+        case SEARCH_BY_GROUP_ID:
+            NSLog(@"%@",self.tfAddTarget.text);
+            //NSNumber *gid = [NSNumber numberWithInteger:[self.tfAddTarget.text integerValue]];
+            [[GroupMessageProxy sharedProxy] sendGroupInfo:self.tfAddTarget.text];
+            break;
+    }
+}
 @end
