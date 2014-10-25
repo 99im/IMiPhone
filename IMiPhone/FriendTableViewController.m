@@ -46,14 +46,9 @@
 
     [self registerMessageNotification];
     [[FriendMessageProxy sharedProxy] sendTypeFriendList:[NSNumber numberWithInteger:0] withPageNum:[NSNumber numberWithInteger:50]];
-    //添加footview 按钮
-    UITableViewHeaderFooterView *view = [self.tableView footerViewForSection:0];
-    UIView* footerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 360, 57.0)];
-    btnViewContact = [[UIButton alloc] initWithFrame:footerView.frame];
-    btnViewContact.titleLabel.text = NSLocalizedString(@"View.Contact.Friends", null);
-    [footerView addSubview:btnViewContact];
-//    [view addSubview:btnViewContact];
-//    [self.tableView addSubview:btnViewContact];
+    
+    self.searchDisplayController.searchResultsTableView.rowHeight = self.tableView.rowHeight;
+    
     
     //组装table数据
     self.arrFriendsData = [NSMutableArray array];
@@ -64,8 +59,19 @@
             [self.arrFriendsData addObject:user];
         }
     }
-}
+    //footerview
+    btnViewContact = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [btnViewContact.layer setCornerRadius:5.0];
+    btnViewContact.frame = CGRectMake(20, 0, self.tableView.frame.size.width - 40, 40);
+    [btnViewContact setTitle:NSLocalizedString(@"View.Contact.Friends", null) forState:UIControlStateNormal];
+    btnViewContact.backgroundColor = [UIColor lightGrayColor];
+    btnViewContact.showsTouchWhenHighlighted=YES;
+    UIView *footerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, 0) ];
+    [footerView addSubview:btnViewContact];//必须把按钮添加到一个view上 否则按钮会被拉长
+    
+    self.tableView.tableFooterView = footerView;
 
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
