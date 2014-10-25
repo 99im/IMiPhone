@@ -1566,7 +1566,7 @@
         <!--Group-已加入群列表-->
         <scene sceneID="OH2-Fr-kDb">
             <objects>
-                <tableViewController storyboardIdentifier="storyGroupMyJoin" id="8NY-Sg-b0A" userLabel="Group-已加入群列表" customClass="GroupTableViewController" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="storyGroupMyList" id="8NY-Sg-b0A" userLabel="Group-已加入群列表" customClass="GroupTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="22" sectionFooterHeight="22" id="Lv3-YA-N3B">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2041,8 +2041,8 @@
         <segue reference="6IF-l5-3Iq"/>
         <segue reference="fNZ-Tb-k0o"/>
         <segue reference="EnR-fJ-pM5"/>
-        <segue reference="j7u-OT-bsU"/>
         <segue reference="B9e-R6-y8A"/>
+        <segue reference="Dql-ZX-dEr"/>
         <segue reference="JfN-oz-5Dg"/>
     </inferredMetricsTieBreakers>
 </document>

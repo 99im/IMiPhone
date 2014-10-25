@@ -10,9 +10,9 @@
 
 @implementation DPGroup
 
-@synthesize groupId;
-@synthesize groupName;
-@synthesize members;
+@synthesize gid;
+@synthesize name;
+@synthesize memberNum;
 @synthesize portraitUrl;
 
 @end

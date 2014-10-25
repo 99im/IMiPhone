@@ -21,7 +21,8 @@
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 
-    NSLog(@"groupInfo : %i", self.groupId);
+    //NSLog(@"groupInfo : %i", self.groupId);
+    [GroupDataProxy sharedProxy].currentGroupId = self.groupId;
 }
 
 

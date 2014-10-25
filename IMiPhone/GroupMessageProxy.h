@@ -57,7 +57,7 @@
  *  @param gid 群号
  *  @param msg 申请留言说明
  */
-- (void)sendGroupJoin:(NSString *)gid msg:(NSString *)msg;
+- (void)sendGroupApply:(NSString *)gid msg:(NSString *)msg;
 /**
  *  HTTP：邀请加入群组
  *

@@ -10,12 +10,22 @@
 
 @interface GroupDataProxy()
 @property (nonatomic, retain) NSMutableArray *arrGroupMyList;
-
 @end
 
 @implementation GroupDataProxy
 
+@synthesize currentGroupId = _currGroupId;
 @synthesize arrGroupMyList = _arrGroupMyList;
+
+
+static GroupDataProxy *sharedGroupDataProxy = nil;
++ (GroupDataProxy *)sharedProxy {
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        sharedGroupDataProxy = [[self alloc] init];
+    });
+    return sharedGroupDataProxy;
+}
 
 - (NSMutableArray *)getGroupMyList {
   if (_arrGroupMyList == nil) {
@@ -47,12 +57,32 @@
   return [self mutableArrayValueForKey:@"arrGroupMyList"];
 }
 
-- (NSInteger) saveGroupMyList : (NSMutableArray *) list {
+- (int) updateGroupInfo : (NSDictionary *) info {
+    NSLog(@"开始入库保存:群信息\n%@", info);
+    return 0;
+}
+- (int) updateGroupMyList : (NSMutableArray *) list {
     NSLog(@"开始入库保存:我的群组");
     return 0;
 }
 
-- (BOOL) isGroupJoined : (NSInteger *) gid {
+- (BOOL) isMyGroup : (NSInteger) gid {
     return NO;
+}
+
+- (BOOL) isGroupOwner : (NSInteger) creatorUid {
+    if ( [UserDataProxy sharedProxy].lastLoginUid == creatorUid ) {
+        return YES;
+    }
+    return NO;
+}
+
+- (DPGroup *) getGroupInfoCurrent {
+    if (self.currentGroupId > 0) {
+        NSLog(@"开始更新群信息：%li" , self.currentGroupId);
+        NSString *gid = [NSString stringWithFormat:@"%li" , self.currentGroupId ];
+        [[GroupMessageProxy sharedProxy] sendGroupInfo: gid];
+    }
+    return nil;
 }
 @end

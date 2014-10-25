@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GroupDataProxy.h"
 
 @interface GroupTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *lblGroupName;
