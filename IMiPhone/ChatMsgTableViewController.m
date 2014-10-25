@@ -58,7 +58,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"chatTableCell" forIndexPath:indexPath];
-    
+
     // Configure the cell...
 //    UIImageView *imagePortrait = (UIImageView *)[cell viewWithTag:0];
 //    imagePortrait.image = [UIImage imageNamed:@"chatDefault.png"];

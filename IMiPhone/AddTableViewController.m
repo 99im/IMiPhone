@@ -23,10 +23,10 @@
 
 @implementation AddTableViewController
 
-const int sectionInput = 0;
-const int sectionTP = 1;
-const int sectionGroup = 2;
-const int sectionNum = 3;
+NSInteger const sectionInput = 0;
+NSInteger const sectionTP = 1;
+NSInteger const sectionGroup = 2;
+NSInteger const sectionNum = 3;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
