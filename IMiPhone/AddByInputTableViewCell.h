@@ -7,10 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#define SEARCH_BY_USER_ID 1
+#define SEARCH_BY_GROUP_ID  2
 
 @interface AddByInputTableViewCell : UITableViewCell
-
+@property (nonatomic) NSInteger actionType;
 @property (weak, nonatomic) IBOutlet UITextField *tfAddTarget;
 @property (weak, nonatomic) IBOutlet UIButton *btnAdd;
+- (IBAction)touchUpSearch:(id)sender;
 
 @end

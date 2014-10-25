@@ -96,7 +96,7 @@ static GroupMessageProxy *sharedGroupMessageProxy = nil;
 }
 
 
-- (void)sendGroupInfo:(NSNumber *)gid{
+- (void)sendGroupInfo:(NSString *)gid{
     NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
 
     [params setObject:gid forKey:KEYQ_H__GROUP_INFO__GID];
@@ -131,7 +131,7 @@ static GroupMessageProxy *sharedGroupMessageProxy = nil;
      }];
 }
 
-- (void)sendGroupMembers:(NSNumber *)gid start:(NSNumber *)start pageNum:(NSNumber *)pageNum {
+- (void)sendGroupMembers:(NSString *)gid start:(NSNumber *)start pageNum:(NSNumber *)pageNum {
     NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
 
     [params setObject:gid forKey:KEYQ_H__GROUP_MEMBERS__GID];
@@ -168,7 +168,7 @@ static GroupMessageProxy *sharedGroupMessageProxy = nil;
      }];
 }
 
-- (void)sendGroupInvite:(NSNumber *)gid targetUids:(NSString *)targetUids msg:(NSNumber *)msg {
+- (void)sendGroupInvite:(NSString *)gid targetUids:(NSString *)targetUids msg:(NSString *)msg {
     NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
 
     [params setObject:gid forKey:KEYQ_H__GROUP_INVITE__GID];
@@ -205,7 +205,7 @@ static GroupMessageProxy *sharedGroupMessageProxy = nil;
      }];
 }
 
-- (void)sendGroupInviteResponse:(NSNumber *)rid agree:(NSNumber *)agree {
+- (void)sendGroupInviteResponse:(NSString *)rid agree:(NSNumber *)agree {
     NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
 
     [params setObject:rid forKey:KEYQ_H__GROUP_INVITE_RESPONSE__RID];
@@ -239,5 +239,9 @@ static GroupMessageProxy *sharedGroupMessageProxy = nil;
          }
 
      }];
+}
+
+- (void)sendGroupJoin:(NSString *)gid msg:(NSString *)msg {
+    //TODO: 服务器端接口添加确定
 }
 @end

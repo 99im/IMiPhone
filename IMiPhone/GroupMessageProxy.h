@@ -40,7 +40,7 @@
  *
  *  @param gid 群号
  */
-- (void)sendGroupInfo:(NSNumber *)gid;
+- (void)sendGroupInfo:(NSString *)gid;
 
 /**
  *  HTTP:获取群成员列表
@@ -49,8 +49,15 @@
  *  @param start   起始数
  *  @param pageNum 显示数
  */
-- (void)sendGroupMembers:(NSNumber *)gid start:(NSNumber *)start pageNum:(NSNumber *)pageNum;
+- (void)sendGroupMembers:(NSString *)gid start:(NSNumber *)start pageNum:(NSNumber *)pageNum;
 
+/**
+ *  HTTP: 申请加入群
+ *
+ *  @param gid 群号
+ *  @param msg 申请留言说明
+ */
+- (void)sendGroupJoin:(NSString *)gid msg:(NSString *)msg;
 /**
  *  HTTP：邀请加入群组
  *
@@ -58,7 +65,7 @@
  *  @param targetUids 邀请uids,格式：1,2,3
  *  @param msg        附加留言内容
  */
-- (void)sendGroupInvite:(NSNumber *)gid targetUids:(NSString *)targetUids msg:(NSNumber *)msg;
+- (void)sendGroupInvite:(NSString *)gid targetUids:(NSString *)targetUids msg:(NSString *)msg;
 
 /**
  *  HTTP：邀请加入群的回应
@@ -66,6 +73,6 @@
  *  @param rid   邀请序号
  *  @param agree 回应编码： 0 拒绝 1 同意
  */
-- (void)sendGroupInviteResponse:(NSNumber *)rid agree:(NSNumber *)agree;
+- (void)sendGroupInviteResponse:(NSString *)rid agree:(NSNumber *)agree;
 
 @end

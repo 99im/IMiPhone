@@ -743,6 +743,7 @@
                                             </state>
                                             <connections>
                                                 <action selector="searchTouchUpInside:" destination="WOu-4k-SM9" eventType="touchUpInside" id="erl-hZ-VsS"/>
+                                                <action selector="touchUpSearch:" destination="AfD-4g-VoP" eventType="touchUpInside" id="EcY-iP-apS"/>
                                             </connections>
                                         </button>
                                     </subviews>
@@ -772,7 +773,7 @@
                                     <segue destination="2lb-9l-wVJ" kind="push" id="LXb-fG-iXE"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="addForGroup" textLabel="ZKZ-Nl-rIE" style="IBUITableViewCellStyleDefault" id="JOA-GC-c0x">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="addForGroup" textLabel="ZKZ-Nl-rIE" style="IBUITableViewCellStyleDefault" id="JOA-GC-c0x">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="JOA-GC-c0x" id="naK-qn-t4N">
@@ -796,7 +797,7 @@
                     <navigationItem key="navigationItem" title="添加" id="0Cg-xz-UaQ"/>
                     <connections>
                         <segue destination="Ixd-6h-fyu" kind="push" identifier="Add2ResultSegue" id="EnR-fJ-pM5"/>
-                        <segue destination="xc6-7k-stq" kind="push" id="stQ-du-P0J"/>
+                        <segue destination="xc6-7k-stq" kind="push" identifier="contactAdd2groupCreate" id="stQ-du-P0J"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SSm-e9-x7L" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1477,14 +1478,23 @@
                                     </textView>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BmJ-ql-D7D">
                                         <rect key="frame" x="153" y="462" width="167" height="48"/>
-                                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                         <state key="normal" title="设置管理">
-                                            <color key="titleColor" red="1" green="1" blue="1" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <segue destination="f2G-Kw-Ad0" kind="push" id="bkb-F7-rQS"/>
+                                            <segue destination="f2G-Kw-Ad0" kind="push" identifier="groupInfo2groupSetting" id="R7g-Do-l4l"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="abL-fc-KFT">
+                                        <rect key="frame" x="8" y="462" width="145" height="51"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                        <state key="normal" title="进入聊天">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="yEJ-R3-2p3" kind="push" identifier="groupInfo2GroupChat" id="NpR-cO-pjh"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -1503,7 +1513,6 @@
                         <outlet property="lblGroupName" destination="dlg-nV-kFa" id="yD6-Eq-gg4"/>
                         <outlet property="txtDetail" destination="Skp-jk-w4A" id="U4r-5o-KQd"/>
                         <segue destination="Tez-zb-r5A" kind="push" id="3hi-GN-j2D"/>
-                        <segue destination="yEJ-R3-2p3" kind="push" id="aS7-as-Rtm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0bI-9q-o0A" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2031,9 +2040,9 @@
         <segue reference="jj6-rV-QBG"/>
         <segue reference="6IF-l5-3Iq"/>
         <segue reference="fNZ-Tb-k0o"/>
+        <segue reference="EnR-fJ-pM5"/>
+        <segue reference="j7u-OT-bsU"/>
         <segue reference="B9e-R6-y8A"/>
         <segue reference="JfN-oz-5Dg"/>
-        <segue reference="Dql-ZX-dEr"/>
-        <segue reference="D64-tG-s28"/>
     </inferredMetricsTieBreakers>
 </document>

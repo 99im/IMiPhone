@@ -16,8 +16,8 @@
 
 @property (nonatomic, retain) NSArray *arrTPs;
 @property (nonatomic, retain) NSArray *arrGroupMenus4Add;
-@property (nonatomic, retain) AddByInputTableViewCell *userIdCell;
-@property (nonatomic, retain) AddByInputTableViewCell *groupIdCell;
+//@property (nonatomic, retain) AddByInputTableViewCell *userIdCell;
+//@property (nonatomic, retain) AddByInputTableViewCell *groupIdCell;
 
 @end
 
@@ -64,11 +64,15 @@ const int sectionNum = 3;
 - (IBAction)searchTouchUpInside:(id)sender {
     
 //    NSLog(@"Table selected section: %i, row: %i", self.tableView.indexPathForSelectedRow.section, self.tableView.indexPathForSelectedRow.row);
-    if (sender == self.userIdCell.btnAdd) {
-        [[UserMessageProxy sharedProxy] sendTypeSearch:self.userIdCell.tfAddTarget.text];
-    }
-    else if (sender == self.groupIdCell.btnAdd) {
-    }
+//    if (sender == self.userIdCell.btnAdd) {
+//        [[UserMessageProxy sharedProxy] sendTypeSearch:self.userIdCell.tfAddTarget.text];
+//    }
+//    else if (sender == self.groupIdCell.btnAdd) {
+//        //NSNumber *gid = (NSNumber *)self.userIdCell.tfAddTarget.text;
+//        NSLog(@"%@",self.groupIdCell.tfAddTarget.text);
+//        NSNumber *gid = [NSNumber numberWithInteger:[self.groupIdCell.tfAddTarget.text integerValue]];
+//        [[GroupMessageProxy sharedProxy] sendGroupInfo:gid];
+//    }
 }
 
 #pragma mark - Table view data source
@@ -101,12 +105,14 @@ const int sectionNum = 3;
             AddByInputTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"addByInputCell" forIndexPath:indexPath];
             if (indexPath.row == 0) {
                 cell.tfAddTarget.placeholder = NSLocalizedString(@"Contact.Add.UserID", nil);
-                self.userIdCell = cell;
+                cell.actionType = SEARCH_BY_USER_ID;
+                //self.userIdCell = cell;
             }
             else if (indexPath.row == 1)
             {
                 cell.tfAddTarget.placeholder = NSLocalizedString(@"Contact.Add.GroupID", nil);
-                self.groupIdCell = cell;
+                cell.actionType = SEARCH_BY_GROUP_ID;
+                //self.groupIdCell = cell;
             }
             return cell;
         }

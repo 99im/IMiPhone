@@ -14,6 +14,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *lblDistance;
 @property (weak, nonatomic) IBOutlet UIImageView *imgAvatar;
 
+@property (nonatomic) NSInteger groupId;
+
 @property(nonatomic) NSInteger userId;
 
 /**

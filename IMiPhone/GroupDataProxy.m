@@ -17,7 +17,7 @@
 
 @synthesize arrGroupMyList = _arrGroupMyList;
 
-- (NSMutableArray *)sendGroupMyList {
+- (NSMutableArray *)getGroupMyList {
   if (_arrGroupMyList == nil) {
     //查询数据库
     NSString *where =
@@ -41,8 +41,18 @@
         [_arrGroupMyList addObject:tempGroup];
       }
     }
+
+      //TODO: 距离上次请求时间过长则从服务器拉取
   }
   return [self mutableArrayValueForKey:@"arrGroupMyList"];
 }
 
+- (NSInteger) saveGroupMyList : (NSMutableArray *) list {
+    NSLog(@"开始入库保存:我的群组");
+    return 0;
+}
+
+- (BOOL) isGroupJoined : (NSInteger *) gid {
+    return NO;
+}
 @end
