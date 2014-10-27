@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GroupDataProxy.h"
+#import "GroupMessageProxy.h"
 
 @interface GroupInfoViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UILabel *lblGroupName;

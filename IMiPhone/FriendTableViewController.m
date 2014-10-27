@@ -70,7 +70,13 @@
     [footerView addSubview:btnViewContact];//必须把按钮添加到一个view上 否则按钮会被拉长
     
     self.tableView.tableFooterView = footerView;
-
+    
+    
+//    NSLog(@"tableView.frame.origin.y%f",self.tableView.frame.origin.y);
+//     NSLog(@"self.view.frame.origin.y%f",self.view.frame.origin.y);
+//
+//    NSLog(@"self.view.superview:%@",self.view.superview);
+    
 }
 
 - (void)didReceiveMemoryWarning {

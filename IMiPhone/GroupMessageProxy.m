@@ -119,7 +119,14 @@ static GroupMessageProxy *sharedGroupMessageProxy = nil;
              int errorcode = [
                               [json objectForKey:KEYP_H__GROUP_INFO__ERROR_CODE] intValue];
              if (errorcode == 0) {
-                 NSLog(@"sendGroupInfo response ok:\n%@", json);
+                 errorcode = [[GroupDataProxy sharedProxy] updateGroupInfo:json];
+
+                 if (errorcode == 0) {
+                     NSLog(@"群信息本地更新成功：%@", gid);
+                 } else {
+                     NSLog(@"群信息本地更新失败：%@", gid);
+                 }
+                 //NSLog(@"sendGroupInfo response ok:\n%@", json);
                  //              [[NSNotificationCenter defaultCenter]
                  //                  postNotificationName:NOTI__ACCOUNT_MOBCODE_
                  //                                object:nil];
@@ -241,7 +248,7 @@ static GroupMessageProxy *sharedGroupMessageProxy = nil;
      }];
 }
 
-- (void)sendGroupJoin:(NSString *)gid msg:(NSString *)msg {
+- (void)sendGroupApply:(NSString *)gid msg:(NSString *)msg:(NSString *)gid msg:(NSString *)msg {
     //TODO: 服务器端接口添加确定
 }
 @end
