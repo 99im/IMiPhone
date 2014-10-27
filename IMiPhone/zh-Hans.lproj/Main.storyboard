@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="sWe-ai-dJr">
     <dependencies>
-        <deployment defaultVersion="1536" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
     </dependencies>
     <scenes>
         <!--Welcome-欢迎页-->
@@ -1792,7 +1792,7 @@
         <!--Chat-群聊-->
         <scene sceneID="zxE-yQ-ZxD">
             <objects>
-                <viewController id="yEJ-R3-2p3" userLabel="Chat-群聊" sceneMemberID="viewController">
+                <viewController id="yEJ-R3-2p3" userLabel="Chat-群聊" customClass="GroupChatViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="oHJ-SA-SmO"/>
                         <viewControllerLayoutGuide type="bottom" id="63R-SG-PsH"/>
@@ -1837,6 +1837,7 @@
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                                 <connections>
+                                                    <action selector="btnEmotiontouchUpInside:" destination="yEJ-R3-2p3" eventType="touchUpInside" id="uAt-5I-Aaj"/>
                                                     <action selector="touchUpInsideBtnExpression:" destination="U0M-ht-yaq" eventType="touchUpInside" id="Euq-M8-W5B"/>
                                                 </connections>
                                             </button>
