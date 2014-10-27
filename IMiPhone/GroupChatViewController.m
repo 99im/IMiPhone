@@ -9,6 +9,7 @@
 #import "GroupChatViewController.h"
 #import "EmotionViewController.h"
 #import "IMNWProxyProtocol.h"
+#import "GroupDataProxy.h"
 
 @interface GroupChatViewController () <IMNWProxyProtocol>
 

@@ -9,13 +9,17 @@
 #import "GroupDataProxy.h"
 
 @interface GroupDataProxy()
+
 @property (nonatomic, retain) NSMutableArray *arrGroupMyList;
+@property (nonatomic, retain) NSMutableDictionary *dicMessages;
+
 @end
 
 @implementation GroupDataProxy
 
 @synthesize currentGroupId = _currGroupId;
 @synthesize arrGroupMyList = _arrGroupMyList;
+@synthesize dicMessages = _dicMessages;
 
 
 static GroupDataProxy *sharedGroupDataProxy = nil;
@@ -25,6 +29,15 @@ static GroupDataProxy *sharedGroupDataProxy = nil;
         sharedGroupDataProxy = [[self alloc] init];
     });
     return sharedGroupDataProxy;
+}
+
+- (id)init
+{
+    if((self = [super init]))
+    {
+        _dicMessages = [NSMutableDictionary dictionary];
+    }
+    return self;
 }
 
 - (NSMutableArray *)getGroupMyList {
@@ -85,4 +98,14 @@ static GroupDataProxy *sharedGroupDataProxy = nil;
     }
     return nil;
 }
+
+- (NSMutableArray *)getGroupMessages:(NSInteger)gid
+{
+    NSNumber *numGid = [NSNumber numberWithInteger:gid];
+    if (![_dicMessages objectForKey:numGid]) {
+        [_dicMessages setObject:[NSMutableArray array] forKey:numGid];
+    }
+    return [_dicMessages objectForKey:numGid];
+}
+
 @end

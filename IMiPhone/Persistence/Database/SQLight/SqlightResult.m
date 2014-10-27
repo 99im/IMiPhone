@@ -22,7 +22,7 @@
 {
     self = [super init];
     if (self) {
-        self.data=[[NSMutableArray alloc] init];
+        self.data=[NSMutableArray array];
     }
     
     return self;

@@ -72,7 +72,7 @@
 		}
 	}
 	while ((res.code = sqlite3_step(compiledStatement)) && SQLITE_DONE != res.code && SQLITE_ROW == res.code) {
-		NSMutableArray *rowData = [[NSMutableArray alloc] init];
+		NSMutableArray *rowData = [NSMutableArray array];
 
 		int columnNum = sqlite3_column_count(compiledStatement);
 		for (int i = 0; i < columnNum; i ++) {
@@ -104,7 +104,7 @@
 	}	
 
 	while ((res.code = sqlite3_step(compiledStatement)) && SQLITE_DONE != res.code && SQLITE_ROW == res.code) {
-		NSMutableArray *rowData = [[NSMutableArray alloc] init];
+		NSMutableArray *rowData = [NSMutableArray array];
 		
 		int columnNum = sqlite3_column_count(compiledStatement);
 		for (int i = 0; i < columnNum; i ++) {

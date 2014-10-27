@@ -91,4 +91,7 @@
  */
 - (BOOL) isGroupOwner : (NSInteger) creatorUid;
 
+///获得某个群组的聊天消息
+- (NSMutableArray *)getGroupMessages:(NSInteger)gid;
+
 @end

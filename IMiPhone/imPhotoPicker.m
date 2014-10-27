@@ -53,7 +53,7 @@ static imPhotoPicker *sharedPhotoPicker = nil;
             if ([self isFrontCameraAvailable]) {
                 controller.cameraDevice = UIImagePickerControllerCameraDeviceFront;
             }
-            NSMutableArray *mediaTypes = [[NSMutableArray alloc] init];
+            NSMutableArray *mediaTypes = [NSMutableArray array];
             [mediaTypes addObject:(__bridge NSString *)kUTTypeImage];
             controller.mediaTypes = mediaTypes;
             controller.delegate = self;
@@ -69,7 +69,7 @@ static imPhotoPicker *sharedPhotoPicker = nil;
         if ([self isPhotoLibraryAvailable]) {
             UIImagePickerController *controller = [[UIImagePickerController alloc] init];
             controller.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-            NSMutableArray *mediaTypes = [[NSMutableArray alloc] init];
+            NSMutableArray *mediaTypes = [NSMutableArray array];
             [mediaTypes addObject:(__bridge NSString *)kUTTypeImage];
             controller.mediaTypes = mediaTypes;
             controller.delegate = self;

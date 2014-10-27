@@ -89,7 +89,7 @@
 - (void)send:(NSMutableDictionary *)info
 {
     if (self.connect == CONNECT_SOCKET) {
-        NSMutableDictionary *json = [[NSMutableDictionary alloc] init];
+        NSMutableDictionary *json = [NSMutableDictionary dictionary];
         [json setObject:mark forKey:SOCKET_MARK];
         [json setObject:type forKey:SOCKET_TYPE];
         if (info) {
