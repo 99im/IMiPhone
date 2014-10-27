@@ -28,5 +28,10 @@
 		<string>添加QQ好友</string>
 		<string>添加微博好友</string>
 	</array>
+	<key>GroupMenus4Add</key>
+	<array>
+		<string>创建群组</string>
+		<string>创建多人会话</string>
+	</array>
 </dict>
 </plist>

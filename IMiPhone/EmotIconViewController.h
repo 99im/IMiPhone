@@ -11,7 +11,11 @@
 
 @interface EmotIconViewController : UIViewController
 
+@property (nonatomic) NSInteger page;
+
 - (IBAction)btnDelTouchUpInside:(id)sender;
 - (IBAction)btnSendTouchUpInside:(id)sender;
+
+- (void)initEmotIcons:(NSArray *)emots fromIndex:(NSInteger)start toIndex:(NSInteger)end;
 
 @end

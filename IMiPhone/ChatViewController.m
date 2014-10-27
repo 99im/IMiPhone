@@ -15,6 +15,8 @@
 #import "UserDataProxy.h"
 #import "ChatMessageProxy.h"
 #import "ChatTableViewCellFrame.h"
+#import "EmotionViewController.h"
+#import "ChatDataProxy.h"
 
 @interface ChatViewController ()
 
@@ -25,6 +27,9 @@
 
 //
 @property (nonatomic,retain) NSMutableArray *arrAllCellFrames;
+
+//表情弹框
+@property (strong, nonatomic) EmotionViewController *emotionViewController;
 
 @end
 
@@ -59,6 +64,12 @@
             [self.arrAllCellFrames addObject:chatTableCellFrame];
         }
     }
+    
+    UIStoryboard* mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    self.emotionViewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"EmotionViewController"];
+    self.emotionViewController.view.frame = CGRectMake(0.0f, self.view.frame.size.height, self.view.frame.size.width, EMOTS_HEIGHT);
+    [self.view addSubview:self.emotionViewController.view];
+    [self addChildViewController:self.emotionViewController];
     
     [self registerMessageNotification];
 }
@@ -104,7 +115,7 @@
          return cellFrame.cellHeight;
     }
     else {
-        NSAssert(YES, @"cannot find ChatTableViewCell at:%@",indexPath);
+        NSLog(@"cannot find ChatTableViewCell at:%@",indexPath);
         return 0;
     }
 }
@@ -130,6 +141,9 @@ NSInteger midcounter;
 
 - (IBAction)touchUpInsideBtnExpression:(id)sender {
     //TODO:显示表情选择界面
+    [UIView animateWithDuration:0.3f animations:^{
+        self.emotionViewController.view.frame = CGRectMake(0.0f, self.view.frame.size.height - EMOTS_HEIGHT, self.view.frame.size.width, EMOTS_HEIGHT);
+    }];
 }
 
 - (IBAction)touchInsideBtnSound:(id)sender {
@@ -162,12 +176,20 @@ NSInteger midcounter;
 - (void)registerMessageNotification
 {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dealChatN:) name:NOTI_S_CHAT_CHATN object:nil];
-    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onEmotionSelected:) name:NOTI_EMOTION_SELECTED object:nil];
 }
 
 - (void)removeMessageNotification
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)onEmotionSelected:(NSNotification *)notification
+{
+    NSIndexPath *indexPath = (NSIndexPath *)notification.object;
+    NSInteger emotIndex = indexPath.section * EMOTS_PAGENUM + indexPath.row;
+    NSString *emotId = [[[ChatDataProxy sharedProxy].arrEmotions objectAtIndex:emotIndex] objectForKey:@"id"];
+    NSLog(@"%@ selected!", emotId);
 }
 
 - (void)dealChatN:(NSNotification *)notification

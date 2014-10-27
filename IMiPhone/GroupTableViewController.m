@@ -43,7 +43,7 @@
     [super viewDidAppear:animated];
 
     //TODO : 群组刷新时长判断-超过30分钟触发刷新
-    [[GroupMessageProxy sharedProxy] getMyJoinGroups:[NSNumber numberWithInteger:0]
+    [[GroupMessageProxy sharedProxy] sendGroupMyList:[NSNumber numberWithInteger:0]
                                          withPageNum:[NSNumber numberWithInteger:50]];
     //self.scrollView.contentSize = CGSizeMake(320, 751);
     //self.scrollView.frame = CGRectMake(0, 64, 320, 504);

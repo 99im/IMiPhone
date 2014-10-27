@@ -45,7 +45,7 @@ static FriendMessageProxy *sharedFriendMessageProxy = nil;
                          options:NSJSONReadingAllowFragments
                            error:&err];
           if (err) {
-            NSAssert(YES, @"JSON create error: %@", err);
+            NSLog(@"JSON create error: %@", err);
           } else {
           }
           if (json) {
@@ -90,7 +90,7 @@ static FriendMessageProxy *sharedFriendMessageProxy = nil;
                          options:NSJSONReadingAllowFragments
                            error:&err];
           if (err) {
-            NSAssert(YES, @"JSON create error: %@", err);
+            NSLog(@"JSON create error: %@", err);
           } else {
             int errorcode = [[json
                 objectForKey:KEYP_H__FRIEND_FOCUS_LIST__ERROR_CODE] intValue];
@@ -110,7 +110,7 @@ static FriendMessageProxy *sharedFriendMessageProxy = nil;
                   postNotificationName:NOTI_H__FRIEND_FOCUS_LIST_
                                 object:nil];
             } else {
-              NSAssert(YES, @"Http connect response error: %i", errorcode);
+              NSLog(@"Http connect response error: %i", errorcode);
               NSNumber *errorCodeNumber = [NSNumber numberWithInt:errorcode];
               NSString *errorMessage = [errorCodeNumber errorMessage];
               NSDictionary *userInfo =
@@ -187,7 +187,7 @@ static FriendMessageProxy *sharedFriendMessageProxy = nil;
                          options:NSJSONReadingAllowFragments
                            error:&err];
           if (err) {
-            NSAssert(YES, @"JSON create error: %@", err);
+            NSLog(@"JSON create error: %@", err);
           } else {
             int errorcode = [
                 [json objectForKey:KEYP_H__FRIEND_FAN_LIST__ERROR_CODE] intValue];
@@ -205,7 +205,7 @@ static FriendMessageProxy *sharedFriendMessageProxy = nil;
                   postNotificationName:NOTI_H__FRIEND_FAN_LIST_
                                 object:nil];
             } else {
-              NSAssert(YES, @"Http connect response error: %i", errorcode);
+              NSLog(@"Http connect response error: %i", errorcode);
               NSNumber *errorCodeNumber = [NSNumber numberWithInt:errorcode];
               NSString *errorMessage = [errorCodeNumber errorMessage];
               NSDictionary *userInfo =
@@ -241,7 +241,7 @@ static FriendMessageProxy *sharedFriendMessageProxy = nil;
                                       options:NSJSONReadingAllowFragments
                                       error:&err];
          if (err) {
-             NSAssert(YES, @"JSON create error: %@", err);
+             NSLog(@"JSON create error: %@", err);
          } else {
              NSInteger errorcode = [[json objectForKey:KEYP_H__FRIEND_FRIEND_LIST__ERROR_CODE] integerValue];
              if (errorcode == 0) {
@@ -289,7 +289,7 @@ static FriendMessageProxy *sharedFriendMessageProxy = nil;
                   object:nil];
              }
              else {
-                 NSAssert(YES, @"Http connect response error: %i", errorcode);
+                 NSLog(@"Http connect response error: %i", errorcode);
                  //                 NSError *error = [imUtil wrapServerError:errorcode withDomain:PATH__FRIEND_FRIEND_LIST_];
              }
          }

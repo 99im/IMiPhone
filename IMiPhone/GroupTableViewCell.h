@@ -7,12 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GroupDataProxy.h"
 
 @interface GroupTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *lblGroupName;
 @property (weak, nonatomic) IBOutlet UILabel *lblIntro;
 @property (weak, nonatomic) IBOutlet UILabel *lblDistance;
 @property (weak, nonatomic) IBOutlet UIImageView *imgAvatar;
+
+@property (nonatomic) NSInteger groupId;
 
 @property(nonatomic) NSInteger userId;
 

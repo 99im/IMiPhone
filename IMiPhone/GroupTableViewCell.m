@@ -21,7 +21,8 @@
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 
-    // Configure the view for the selected state
+    //NSLog(@"groupInfo : %i", self.groupId);
+    [GroupDataProxy sharedProxy].currentGroupId = self.groupId;
 }
 
 
@@ -32,6 +33,9 @@
     //TODO: 读取并显示群名称等基本信息
     NSLog(@"填充群组信息：%i" , row);
     // Configure the view for the selected state
+
+    self.groupId = 8;
+
 }
 
 

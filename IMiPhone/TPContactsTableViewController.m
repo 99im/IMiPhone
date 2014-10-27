@@ -67,7 +67,7 @@ enum
             [self.arrUsers addObject:dpUser];
         }
         else {
-            NSAssert(YES, @"Can not find  contact user from userDataProxy!!!!!");
+            NSLog(@"Can not find  contact user from userDataProxy!!!!!");
         }
         
     }
