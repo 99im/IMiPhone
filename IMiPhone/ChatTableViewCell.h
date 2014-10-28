@@ -12,7 +12,7 @@
 
 @interface ChatTableViewCell : UITableViewCell
 
-@property (nonatomic, retain) ChatTableViewCellFrame *cellFrame;
+@property (nonatomic, retain, setter=setCellFrame:) ChatTableViewCellFrame *cellFrame;
 
 
 @end

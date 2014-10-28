@@ -14,7 +14,7 @@
 
 - (void)sendHttpSysmsgUnreadClear:(NSString *)smids;
 
-- (void)sendHttpSysmsgList:(NSString *)modids;
+- (void)sendHttpSysmsgList:(NSString *)modids before:(long)beforeSmid after:(long)afterSmid start:(long)start pageNum:(NSInteger)pageNum;
 
 - (void)sendHttpSysmsgUnreadNum:(NSString *)modids;
 

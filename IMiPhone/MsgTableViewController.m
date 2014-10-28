@@ -7,8 +7,11 @@
 //
 
 #import "MsgTableViewController.h"
-#include "MsgMessageProxy.h"
-#include "MsgDataProxy.h"
+#import "MsgMessageProxy.h"
+#import "MsgDataProxy.h"
+#import "ChatMsgTableViewCellP2G.h"
+#import "ChatDataProxy.h"
+#import "UserDataProxy.h"
 
 @interface MsgTableViewController ()
 
@@ -30,7 +33,7 @@
     
     [self registerMessageNotification];
     
-    [[MsgMessageProxy sharedProxy] sendHttpSysmsgList:@"1,2,3,4"];
+    [[MsgMessageProxy sharedProxy] sendHttpSysmsgList:@"1,2,3,4" before:0 after:0 start:0 pageNum:50];
     
 }
 
@@ -43,26 +46,34 @@
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    return 0;
+    
+    NSArray *uiMsgList = [[MsgDataProxy sharedProxy] getUiMsgList];
+    return uiMsgList.count;
 }
 
-/*
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
-    
-    // Configure the cell...
-    
+    static NSString *cellIdentifier;
+    ChatMsgTableViewCellP2G *cell;
+    NSArray *uiMsgList = [[MsgDataProxy sharedProxy] getUiMsgList];
+    DPUiMessage *dpUiMsg = [uiMsgList objectAtIndex:indexPath.row];
+    if (dpUiMsg.type == UI_MESSAGE_TYPE_CHAT) {
+        cellIdentifier = @"ChatMsgTableViewCellP2G";
+        cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
+        DPChatMessage *dpChatMsg = [[ChatDataProxy sharedProxy] getChatMessageFromMid:dpUiMsg.mid];
+        DPUser *dpUser = [[UserDataProxy sharedProxy] getUserByUid:dpChatMsg.senderUid];
+        cell.lblGroupName.text = dpUser.nick;
+    }
+    else {
+        NSLog(@"初始化系统消息cell！！");
+    }
     return cell;
 }
-*/
+
 
 /*
 // Override to support conditional editing of the table view.
@@ -113,6 +124,7 @@
 - (void)registerMessageNotification
 {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dealMsgList:) name:NOTI_H__MSG_SYSMSG_LIST_ object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dealChatn:) name:NOTI_S_CHAT_CHATN object:nil];
 }
 
 - (void)removeMessageNotification
@@ -121,6 +133,10 @@
 }
 
 - (void)dealMsgList:(NSNotification *)notification
+{
+    [self.tableView reloadData];
+}
+- (void)dealChatn:(NSNotification *)notification
 {
     [self.tableView reloadData];
 }
