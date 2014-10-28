@@ -264,10 +264,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" keyboardDismissMode="interactive" translatesAutoresizingMaskIntoConstraints="NO" id="cer-KH-ivo">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" keyboardDismissMode="interactive" translatesAutoresizingMaskIntoConstraints="NO" id="cer-KH-ivo">
                                 <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SZm-I1-Ve7">
+                                    <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SZm-I1-Ve7">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="619"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="HeadBg" translatesAutoresizingMaskIntoConstraints="NO" id="3of-L6-5dr">
@@ -385,8 +385,14 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                     </view>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstItem="SZm-I1-Ve7" firstAttribute="top" secondItem="cer-KH-ivo" secondAttribute="top" id="T4z-KE-1Wr"/>
+                                    <constraint firstItem="SZm-I1-Ve7" firstAttribute="leading" secondItem="cer-KH-ivo" secondAttribute="leading" id="efK-Og-FpY"/>
+                                    <constraint firstAttribute="bottom" secondItem="SZm-I1-Ve7" secondAttribute="bottom" id="fI0-us-kIk"/>
+                                    <constraint firstAttribute="trailing" secondItem="SZm-I1-Ve7" secondAttribute="trailing" id="hqL-0v-SSW"/>
+                                </constraints>
                             </scrollView>
-                            <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" useCurrentDate="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HTa-gL-rdw">
+                            <datePicker contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" useCurrentDate="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HTa-gL-rdw">
                                 <rect key="frame" x="0.0" y="406" width="320" height="162"/>
                                 <date key="date" timeIntervalSinceReferenceDate="-330141172.43070197">
                                     <!--1990-07-16 22:07:07 +0000-->
@@ -406,6 +412,13 @@
                             </navigationBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="cer-KH-ivo" firstAttribute="top" secondItem="e4w-ti-2hr" secondAttribute="top" constant="64" id="7K1-yh-KO7"/>
+                            <constraint firstAttribute="bottom" secondItem="HTa-gL-rdw" secondAttribute="bottom" id="Mnl-KX-YC6"/>
+                            <constraint firstItem="cer-KH-ivo" firstAttribute="leading" secondItem="e4w-ti-2hr" secondAttribute="leading" id="O3Q-jl-asZ"/>
+                            <constraint firstAttribute="bottom" secondItem="cer-KH-ivo" secondAttribute="bottom" id="eXk-LZ-C7B"/>
+                            <constraint firstAttribute="trailing" secondItem="cer-KH-ivo" secondAttribute="trailing" id="h5q-j5-HzC"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="btnBirthday" destination="lQS-Aa-0BZ" id="APJ-Fr-29g"/>
@@ -1142,7 +1155,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bFz-SV-ZjS">
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bFz-SV-ZjS">
                                 <rect key="frame" x="110" y="525" width="101" height="30"/>
                                 <state key="normal" title="添加关注">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -1151,7 +1164,7 @@
                                     <action selector="focusTouchUpInside:" destination="Ixd-6h-fyu" eventType="touchUpInside" id="0id-zE-VCb"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Ar-5g-u0F">
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Ar-5g-u0F">
                                 <rect key="frame" x="219" y="525" width="101" height="30"/>
                                 <state key="normal" title="拉黑举报">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -1160,7 +1173,7 @@
                                     <action selector="btnBlackListTouchUpInside:" destination="Ixd-6h-fyu" eventType="touchUpInside" id="oBP-eB-pHq"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Omi-G2-oWd">
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Omi-G2-oWd">
                                 <rect key="frame" x="0.0" y="525" width="102" height="30"/>
                                 <state key="normal" title="发送消息">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -1169,7 +1182,7 @@
                                     <action selector="btnMessageTouchUpInside:" destination="Ixd-6h-fyu" eventType="touchUpInside" id="wOU-nA-3cO"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y8v-na-mKc">
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y8v-na-mKc">
                                 <rect key="frame" x="0.0" y="525" width="320" height="30"/>
                                 <state key="normal" title="对话">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -1178,7 +1191,7 @@
                                     <action selector="btnChatTouchUpInside:" destination="Ixd-6h-fyu" eventType="touchUpInside" id="D0P-Vv-0Yk"/>
                                 </connections>
                             </button>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tbe-oe-gHj">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tbe-oe-gHj">
                                 <rect key="frame" x="-4" y="64" width="320" height="466"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yh4-C3-Ghc">
@@ -1215,6 +1228,14 @@
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="Omi-G2-oWd" secondAttribute="bottom" id="NfQ-Zt-axo"/>
+                            <constraint firstAttribute="bottom" secondItem="bFz-SV-ZjS" secondAttribute="bottom" id="YxF-pZ-lKQ"/>
+                            <constraint firstAttribute="bottom" secondItem="Y8v-na-mKc" secondAttribute="bottom" id="le4-JH-92I"/>
+                            <constraint firstAttribute="bottom" secondItem="tbe-oe-gHj" secondAttribute="bottom" constant="38" id="pv2-4V-ZJV"/>
+                            <constraint firstItem="tbe-oe-gHj" firstAttribute="top" secondItem="SlK-oq-AUt" secondAttribute="top" constant="64" id="t4i-8B-OSn"/>
+                            <constraint firstAttribute="bottom" secondItem="5Ar-5g-u0F" secondAttribute="bottom" id="tYf-Ih-9YY"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="昵称" id="fKD-ZS-EPg">
                         <barButtonItem key="rightBarButtonItem" style="plain" id="bej-yp-FRX">

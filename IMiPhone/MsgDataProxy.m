@@ -109,7 +109,10 @@ static MsgDataProxy *chatDataProxy = nil;
             return;
         }
         else {
-            [[UiMessageDAO sharedDAO] update:dbUiMessage ByCondition:[DB_PRIMARY_KEY_UI_MESSAGE_ORDER_ID stringByAppendingString:@"=?"] Bind:[NSArray arrayWithObject:[NSNumber numberWithInteger:dpUiMessage.orderid]]];
+            DPUiMessage *srcDpUimessage = [self.arrUiMsgs objectAtIndex:findIndex];
+            dbUiMessage.orderid  = dpUiMessage.orderid = srcDpUimessage.orderid;
+            
+            [[UiMessageDAO sharedDAO] update:dbUiMessage ByCondition:[DB_PRIMARY_KEY_UI_MESSAGE_ORDER_ID stringByAppendingString:@"=?"] Bind:[NSArray arrayWithObject:[NSString stringWithFormat:@"%i",dpUiMessage.orderid]]];
             [self.arrUiMsgs replaceObjectAtIndex:findIndex withObject:dpUiMessage];
         }
     }
