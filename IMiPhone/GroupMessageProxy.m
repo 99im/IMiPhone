@@ -22,6 +22,7 @@ static GroupMessageProxy *sharedGroupMessageProxy = nil;
     return sharedGroupMessageProxy;
 }
 
+
 #pragma mark - sendGroupXxx
 - (void)sendGroupMyList:(NSNumber *)start withPageNum:(NSNumber *)pageNum {
   NSMutableDictionary *params = [[NSMutableDictionary alloc] init];

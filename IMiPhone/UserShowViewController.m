@@ -25,7 +25,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    DPUser *userInfo = [[UserDataProxy sharedProxy] getUserInfoFromUid:[UserDataProxy sharedProxy].showUserInfoUid];
+    DPUser *userInfo = [[UserDataProxy sharedProxy] getUserByUid:[UserDataProxy sharedProxy].showUserInfoUid];
     [self.lblNickname setText:userInfo.nick];
     [self.lblOid setText:userInfo.oid];
     
@@ -94,7 +94,7 @@
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-     DPUser *userInfo = [[UserDataProxy sharedProxy] getUserInfoFromUid:[UserDataProxy sharedProxy].showUserInfoUid];
+     DPUser *userInfo = [[UserDataProxy sharedProxy] getUserByUid:[UserDataProxy sharedProxy].showUserInfoUid];
     if (alertView == self.alertViewFocus) {
         if (buttonIndex == 0) {
             NSLog(@"cancel");
@@ -110,7 +110,7 @@
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    DPUser *userInfo = [[UserDataProxy sharedProxy] getUserInfoFromUid:[UserDataProxy sharedProxy].showUserInfoUid];
+    DPUser *userInfo = [[UserDataProxy sharedProxy] getUserByUid:[UserDataProxy sharedProxy].showUserInfoUid];
     if (buttonIndex == 0) {
          NSLog(@"remark");
     }

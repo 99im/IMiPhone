@@ -32,6 +32,9 @@
 
 - (NSMutableArray *)mutableArrayUsers;
 
-- (DPUser *)getUserInfoFromUid:(NSInteger) uid;
+//所有用户数据的相关操作
+- (void)updateUser:(DPUser *)user;
+- (DPUser *)getUserByUid:(NSInteger) uid;
+//- (void)delUserByUid:(NSInteger) uid;
 
 @end

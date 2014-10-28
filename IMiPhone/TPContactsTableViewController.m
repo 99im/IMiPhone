@@ -62,7 +62,7 @@ enum
     NSArray *usersFromContact = [[FriendDataProxy sharedProxy] mutableArrayUsersFromContact];
     for (NSInteger i = 0; i < usersFromContact.count; i++) {
         DPUserFromContact *userFromContact = [usersFromContact objectAtIndex:i];
-        DPUser *dpUser = [[UserDataProxy sharedProxy] getUserInfoFromUid:userFromContact.uid];
+        DPUser *dpUser = [[UserDataProxy sharedProxy] getUserByUid:userFromContact.uid];
         if (dpUser) {
             [self.arrUsers addObject:dpUser];
         }

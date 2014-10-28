@@ -158,6 +158,12 @@ static UserDataProxy *sharedProxy = nil;
 
 #pragma mark - users
 
+- (void)updateUser:(DPUser *)user
+{
+    
+}
+
+
 - (NSMutableArray *)mutableArrayUsers
 {
     if (_arrUsers == nil) {
@@ -174,6 +180,7 @@ static UserDataProxy *sharedProxy = nil;
         }
     }
     return [self mutableArrayValueForKey:@"arrUsers"];
+    
 }
 
 - (void)insertObject:(id)object inArrUsersAtIndex:(NSUInteger)index
@@ -218,7 +225,7 @@ static UserDataProxy *sharedProxy = nil;
 
 #pragma mark - others
 
-- (DPUser *)getUserInfoFromUid:(NSInteger) uid
+- (DPUser *)getUserByUid:(NSInteger) uid
 {
     NSArray *users = [self mutableArrayUsers];
     NSInteger findindex = [users indexOfObjectPassingTest:^BOOL(id obj, NSUInteger idx, BOOL *stop) {

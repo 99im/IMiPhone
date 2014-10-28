@@ -28,7 +28,7 @@ typedef enum {
 
 //此方法用key value方式访问数组。[注]修改数组中元素内容，需用数组replace操作，以触发observer的相关逻辑
 - (NSMutableArray *)mutableArrayMessages;
-- (NSMutableArray *)mutableArrayMessageGroups;
+//- (NSMutableArray *)mutableArrayMessageGroups;
 
 - (DPChatMessage *)getChatMessageFromMid:(NSInteger)mid;
 - (NSArray *)getEmotions;

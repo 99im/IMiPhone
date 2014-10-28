@@ -7,8 +7,13 @@
 //
 
 #import "MsgTableViewController.h"
+#include "MsgMessageProxy.h"
+#include "MsgDataProxy.h"
 
 @interface MsgTableViewController ()
+
+//@property (nonatomic, retain) NSMutableArray *arrAllMsgs;//本地有消息mid的一个纪录,根据收到消息的先后存储到本地数据库
+//@property (nonatomic,
 
 @end
 
@@ -22,11 +27,17 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    [self registerMessageNotification];
+    
+    [[MsgMessageProxy sharedProxy] sendHttpSysmsgList:@"1,2,3,4"];
+    
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+    [self removeMessageNotification];
 }
 
 #pragma mark - Table view data source
@@ -96,5 +107,22 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+#pragma mark - notification
+
+- (void)registerMessageNotification
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dealMsgList:) name:NOTI_H__MSG_SYSMSG_LIST_ object:nil];
+}
+
+- (void)removeMessageNotification
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)dealMsgList:(NSNotification *)notification
+{
+    [self.tableView reloadData];
+}
 
 @end

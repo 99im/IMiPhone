@@ -54,7 +54,7 @@
     self.arrFriendsData = [NSMutableArray array];
     for (NSInteger i = 0; i < [[FriendDataProxy sharedProxy] mutableArrayFriends].count; i++) {
         DPFriend *friend = [[[FriendDataProxy sharedProxy] mutableArrayFriends] objectAtIndex:i];
-        DPUser *user = [[UserDataProxy sharedProxy] getUserInfoFromUid:friend.uid];
+        DPUser *user = [[UserDataProxy sharedProxy] getUserByUid:friend.uid];
         if (user) {
             [self.arrFriendsData addObject:user];
         }

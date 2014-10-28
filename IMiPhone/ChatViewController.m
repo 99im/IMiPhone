@@ -47,7 +47,7 @@
     self.arrAllCellFrames = [NSMutableArray array];
     
     if ([ChatDataProxy sharedProxy].chatViewType == ChatViewTypeP2P) {
-        DPUser *dpUser = [[UserDataProxy sharedProxy] getUserInfoFromUid:[ChatDataProxy sharedProxy].chatToUid];
+        DPUser *dpUser = [[UserDataProxy sharedProxy] getUserByUid:[ChatDataProxy sharedProxy].chatToUid];
         self.title = dpUser.nick;
         NSArray *arrChatMessages = [[ChatDataProxy sharedProxy] mutableArrayMessages];
         for (NSInteger i = 0; i < arrChatMessages.count; i++) {
