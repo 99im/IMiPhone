@@ -217,6 +217,9 @@
 		58C14DEB19CAD70F009334E1 /* AddByInputTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C14DE919CAD70F009334E1 /* AddByInputTableViewCell.m */; };
 		58C14DED19CAE196009334E1 /* contact.plist in Resources */ = {isa = PBXBuildFile; fileRef = 58C14DEC19CAE196009334E1 /* contact.plist */; };
 		58C14DEE19CAE196009334E1 /* contact.plist in Resources */ = {isa = PBXBuildFile; fileRef = 58C14DEC19CAE196009334E1 /* contact.plist */; };
+		58CDC03919FE175500173FD7 /* GroupChatTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 58CDC03819FE175500173FD7 /* GroupChatTableViewCell.m */; };
+		58CDC03C19FE2EF600173FD7 /* GroupChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58CDC03B19FE2EF600173FD7 /* GroupChatViewController.m */; };
+		58CDC04419FE355C00173FD7 /* SystemTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58CDC04319FE355C00173FD7 /* SystemTableViewController.m */; };
 		58D026C419D17D4800BE4748 /* NSNumber+IMNWError.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D026C319D17D4800BE4748 /* NSNumber+IMNWError.m */; };
 		58D026C519D17D4800BE4748 /* NSNumber+IMNWError.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D026C319D17D4800BE4748 /* NSNumber+IMNWError.m */; };
 		58D3F28719E63082006589F9 /* IMNWManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D3F28019E63082006589F9 /* IMNWManager.m */; };
@@ -366,8 +369,6 @@
 		5825D8F019D808CA004FF6FF /* CategoryTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoryTableViewController.m; sourceTree = "<group>"; };
 		58438C0B19D412E400B6962B /* NearbyTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NearbyTableViewController.h; sourceTree = "<group>"; };
 		58438C0C19D412E400B6962B /* NearbyTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NearbyTableViewController.m; sourceTree = "<group>"; };
-		58438C0F19D420C800B6962B /* SystemTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SystemTableViewController.h; sourceTree = "<group>"; };
-		58438C1019D420C800B6962B /* SystemTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SystemTableViewController.m; sourceTree = "<group>"; };
 		585971CE1999F0C700258CB1 /* IMiPhone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IMiPhone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		585971D11999F0C700258CB1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		585971D31999F0C700258CB1 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -458,6 +459,12 @@
 		58C14DE819CAD70F009334E1 /* AddByInputTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddByInputTableViewCell.h; sourceTree = "<group>"; };
 		58C14DE919CAD70F009334E1 /* AddByInputTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddByInputTableViewCell.m; sourceTree = "<group>"; };
 		58C14DEC19CAE196009334E1 /* contact.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = contact.plist; sourceTree = "<group>"; };
+		58CDC03719FE175500173FD7 /* GroupChatTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupChatTableViewCell.h; sourceTree = "<group>"; };
+		58CDC03819FE175500173FD7 /* GroupChatTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupChatTableViewCell.m; sourceTree = "<group>"; };
+		58CDC03A19FE2EF600173FD7 /* GroupChatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupChatViewController.h; sourceTree = "<group>"; };
+		58CDC03B19FE2EF600173FD7 /* GroupChatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupChatViewController.m; sourceTree = "<group>"; };
+		58CDC04219FE355C00173FD7 /* SystemTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SystemTableViewController.h; path = IMiPhone/SystemTableViewController.h; sourceTree = "<group>"; };
+		58CDC04319FE355C00173FD7 /* SystemTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SystemTableViewController.m; path = IMiPhone/SystemTableViewController.m; sourceTree = "<group>"; };
 		58D026BD19D15F7D00BE4748 /* IMNWProxyProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMNWProxyProtocol.h; sourceTree = "<group>"; };
 		58D026C219D17D4800BE4748 /* NSNumber+IMNWError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNumber+IMNWError.h"; sourceTree = "<group>"; };
 		58D026C319D17D4800BE4748 /* NSNumber+IMNWError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSNumber+IMNWError.m"; sourceTree = "<group>"; };
@@ -662,8 +669,8 @@
 		58438C0E19D41DDD00B6962B /* System */ = {
 			isa = PBXGroup;
 			children = (
-				58438C0F19D420C800B6962B /* SystemTableViewController.h */,
-				58438C1019D420C800B6962B /* SystemTableViewController.m */,
+				58CDC04219FE355C00173FD7 /* SystemTableViewController.h */,
+				58CDC04319FE355C00173FD7 /* SystemTableViewController.m */,
 			);
 			name = System;
 			path = ..;
@@ -1010,6 +1017,10 @@
 				AB24A95C19F8DC6500026299 /* GroupCreateViewController.m */,
 				AB24A95E19F8E59D00026299 /* GroupSettingTableViewController.h */,
 				AB24A95F19F8E59D00026299 /* GroupSettingTableViewController.m */,
+				58CDC03719FE175500173FD7 /* GroupChatTableViewCell.h */,
+				58CDC03819FE175500173FD7 /* GroupChatTableViewCell.m */,
+				58CDC03A19FE2EF600173FD7 /* GroupChatViewController.h */,
+				58CDC03B19FE2EF600173FD7 /* GroupChatViewController.m */,
 			);
 			name = Group;
 			sourceTree = "<group>";
@@ -1139,11 +1150,13 @@
 				11FDE12319EFB516002AEDB7 /* FriendDAO.m in Sources */,
 				58BACF0919B5805800A72391 /* crypt.c in Sources */,
 				117AC69D19EE766200143973 /* DBUserFromContact.m in Sources */,
+				58CDC03C19FE2EF600173FD7 /* GroupChatViewController.m in Sources */,
 				1171F7C819E8DE6300865A0B /* AddressAddTVTableViewCell.m in Sources */,
 				58BACF0819B5804700A72391 /* FriendMessageProxy.m in Sources */,
 				110F560E19D56A9E003B9EB4 /* ChatDataProxy.m in Sources */,
 				58BACF0719B5803F00A72391 /* FriendDataProxy.m in Sources */,
 				110F560A19D55792003B9EB4 /* DBMessageGroup.m in Sources */,
+				58CDC03919FE175500173FD7 /* GroupChatTableViewCell.m in Sources */,
 				110F561619D56E07003B9EB4 /* DPMessageGroups.m in Sources */,
 				58C14DD219C80D67009334E1 /* ContactViewController.m in Sources */,
 				58C14DEA19CAD70F009334E1 /* AddByInputTableViewCell.m in Sources */,
@@ -1153,6 +1166,7 @@
 				117AC6A119EE7BCF00143973 /* UserDAO.m in Sources */,
 				585971E21999F0C700258CB1 /* imAppDelegate.m in Sources */,
 				110487A219D79DFB0002AB36 /* ChatMessageDAO.m in Sources */,
+				58CDC04419FE355C00173FD7 /* SystemTableViewController.m in Sources */,
 				58F2AA3419A2F85400DC2FFB /* imUtil.m in Sources */,
 				58D95F5119A5ECA4007139AB /* UserMessageProxy.m in Sources */,
 				58B9F66419F8D24100567BCC /* EmotionViewController.m in Sources */,

@@ -24,6 +24,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableViewChat;
 @property (weak, nonatomic) IBOutlet ChatInputTextView *viewChatInputText;
 @property (weak, nonatomic) IBOutlet ChatInputSoundView *viewChatInputSound;
+@property (weak, nonatomic) IBOutlet UITextField *tfInputText;
 
 //
 @property (nonatomic,retain) NSMutableArray *arrAllCellFrames;
@@ -177,6 +178,8 @@ NSInteger midcounter;
 {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dealChatN:) name:NOTI_S_CHAT_CHATN object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onEmotionSelected:) name:NOTI_EMOTION_SELECTED object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onEmotionSend:) name:NOTI_EMOTION_SEND object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onEmotionDelete:) name:NOTI_EMOTION_DELETE object:nil];
 }
 
 - (void)removeMessageNotification
@@ -189,7 +192,18 @@ NSInteger midcounter;
     NSIndexPath *indexPath = (NSIndexPath *)notification.object;
     NSInteger emotIndex = indexPath.section * EMOTS_PAGENUM + indexPath.row;
     NSString *emotId = [[[ChatDataProxy sharedProxy].arrEmotions objectAtIndex:emotIndex] objectForKey:@"id"];
-    NSLog(@"%@ selected!", emotId);
+    NSLog(@"Emotion %@ selected!", emotId);
+    NSMutableString *inputText = [[NSMutableString alloc] initWithString:self.tfInputText.text];
+    [inputText appendString:emotId];
+    self.tfInputText.text = inputText;
+}
+
+- (void)onEmotionSend:(NSNotification *)notification
+{
+}
+
+- (void)onEmotionDelete:(NSNotification *)notification
+{
 }
 
 - (void)dealChatN:(NSNotification *)notification

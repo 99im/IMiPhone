@@ -25,7 +25,7 @@ static GroupMessageProxy *sharedGroupMessageProxy = nil;
 
 #pragma mark - sendGroupXxx
 - (void)sendGroupMyList:(NSNumber *)start withPageNum:(NSNumber *)pageNum {
-  NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
+  NSMutableDictionary *params = [NSMutableDictionary dictionary];
 
   [params setObject:start forKey:KEYQ_H__GROUP_MYLIST__START];
   [params setObject:pageNum forKey:KEYQ_H__GROUP_MYLIST__PAGENUM];
@@ -61,7 +61,7 @@ static GroupMessageProxy *sharedGroupMessageProxy = nil;
 }
 
 - (void)sendGroupCreate:(NSString *)name withIntro:(NSString *)intro{
-    NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
 
     [params setObject:name forKey:KEYQ_H__GROUP_CREATE__NAME];
     [params setObject:intro forKey:KEYQ_H__GROUP_CREATE__INTRO];
@@ -98,7 +98,7 @@ static GroupMessageProxy *sharedGroupMessageProxy = nil;
 
 
 - (void)sendGroupInfo:(NSString *)gid{
-    NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
 
     [params setObject:gid forKey:KEYQ_H__GROUP_INFO__GID];
 
@@ -140,7 +140,7 @@ static GroupMessageProxy *sharedGroupMessageProxy = nil;
 }
 
 - (void)sendGroupMembers:(NSString *)gid start:(NSNumber *)start pageNum:(NSNumber *)pageNum {
-    NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
 
     [params setObject:gid forKey:KEYQ_H__GROUP_MEMBERS__GID];
     [params setObject:start forKey:KEYQ_H__GROUP_MEMBERS__START];
@@ -177,7 +177,7 @@ static GroupMessageProxy *sharedGroupMessageProxy = nil;
 }
 
 - (void)sendGroupInvite:(NSString *)gid targetUids:(NSString *)targetUids msg:(NSString *)msg {
-    NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
 
     [params setObject:gid forKey:KEYQ_H__GROUP_INVITE__GID];
     [params setObject:targetUids forKey:KEYQ_H__GROUP_INVITE__TARGETUIDS];
@@ -214,7 +214,7 @@ static GroupMessageProxy *sharedGroupMessageProxy = nil;
 }
 
 - (void)sendGroupInviteResponse:(NSString *)rid agree:(NSNumber *)agree {
-    NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
 
     [params setObject:rid forKey:KEYQ_H__GROUP_INVITE_RESPONSE__RID];
     [params setObject:agree forKey:KEYQ_H__GROUP_INVITE_RESPONSE__AGREE];

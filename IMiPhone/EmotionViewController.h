@@ -10,6 +10,8 @@
 #import "EmotIconViewController.h"
 
 #define NOTI_EMOTION_SELECTED @"UIEmotionSelectedNotifiction"
+#define NOTI_EMOTION_SEND @"UIEmotionSendNotifiction"
+#define NOTI_EMOTION_DELETE @"UIEmotionDeleteNotifiction"
 
 @interface EmotionViewController : UIViewController
 

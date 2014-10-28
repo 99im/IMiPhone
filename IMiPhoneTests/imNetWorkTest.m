@@ -43,10 +43,10 @@
 //    message.connect = CONNECT_SOCKET;
 //    message.mark = @"account";
 //    message.type = @"login";
-//    NSMutableDictionary *json = [[NSMutableDictionary alloc] init];
+//    NSMutableDictionary *json = [NSMutableDictionary dictionary];
 //    [json setObject:message.mark forKey:@"mark"];
 //    [json setObject:message.type forKey:@"type"];
-//    NSMutableDictionary *info = [[NSMutableDictionary alloc] init];
+//    NSMutableDictionary *info = [NSMutableDictionary dictionary];
 //    [info setObject:@"test" forKey:@"token"];
 //    [info setObject:@"1_ty0717" forKey:@"verify"];
 //    [json setObject:info forKey:@"info"];

@@ -58,7 +58,7 @@ NSInteger const COLUMN = 6;
 - (void)emotIconTouchUpInside:(id)sender
 {
     NSInteger index = [self.arrEmotButtons indexOfObject:sender];
-    NSLog(@"%li touched!", (long)index);
+    NSLog(@"Emotion Icon touched! index: %li", (long)index);
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_EMOTION_SELECTED object:[NSIndexPath indexPathForRow:index inSection:self.page]];
 }
 
@@ -73,8 +73,10 @@ NSInteger const COLUMN = 6;
 */
 
 - (IBAction)btnDelTouchUpInside:(id)sender {
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_EMOTION_DELETE object:nil];
 }
 
 - (IBAction)btnSendTouchUpInside:(id)sender {
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_EMOTION_SEND object:nil];
 }
 @end

@@ -199,7 +199,7 @@ static UserDataProxy *sharedProxy = nil;
     }
 }
 
--(void)removeObjectFromArrUsersAtIndex:(NSUInteger)index
+- (void)removeObjectFromArrUsersAtIndex:(NSUInteger)index
 
 {
     DPUser *dpUser = self.arrUsers[index];

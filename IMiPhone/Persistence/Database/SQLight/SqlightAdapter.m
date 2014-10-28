@@ -49,7 +49,7 @@
 
 - (SqlightResult*)insertData:(NSDictionary *)data {
 	NSArray *keys = [data allKeys];
-	NSMutableArray *bind = [[NSMutableArray alloc] init];
+	NSMutableArray *bind = [NSMutableArray array];
 	
 	NSString *fields = @"";
 	NSString *values = @"";
@@ -71,7 +71,7 @@
 
 - (SqlightResult*)updateData:(NSDictionary *)data ByCondition:(NSString *)condition Bind:(NSArray *)bind {
 	NSArray *keys = [data allKeys];
-	NSMutableArray *newBind = [[NSMutableArray alloc] init];
+	NSMutableArray *newBind = [NSMutableArray array];
 	NSString *fields = @"";
 	
 	for (NSString *key in keys) {
@@ -146,7 +146,7 @@
     static dispatch_once_t once_token;
     static NSMutableDictionary *handlePool;
     dispatch_once(&once_token, ^{
-        handlePool = [[NSMutableDictionary alloc] init];
+        handlePool = [NSMutableDictionary dictionary];
     });
     
     if ([[handlePool allKeys] containsObject:database] && [handlePool objectForKey:database]) {
@@ -163,7 +163,7 @@
     static dispatch_once_t once_token;
     static NSMutableDictionary *handlePool;
     dispatch_once(&once_token, ^{
-        handlePool = [[NSMutableDictionary alloc] init];
+        handlePool = [NSMutableDictionary dictionary];
     });
     
     NSString *token = [database stringByAppendingPathExtension:table];

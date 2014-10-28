@@ -31,7 +31,7 @@ static AccountMessageProxy *sharedAccountMessageProxy = nil;
     [UserDataProxy sharedProxy].mobile = phone;
     [UserDataProxy sharedProxy].mobCountry = country;
     
-    NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
     [params setObject:country forKey:KEYQ_H__ACCOUNT_MOBCODE__MOBCOUNTRY];
     [params setObject:phone forKey:KEYQ_H__ACCOUNT_MOBCODE__MOBILE];
     IMNWMessage *message = [IMNWMessage createForHttp:PATH_H__ACCOUNT_MOBCODE_ withParams:params withMethod:METHOD_H__ACCOUNT_MOBCODE_ ssl:NO];
@@ -64,7 +64,7 @@ static AccountMessageProxy *sharedAccountMessageProxy = nil;
     //使用http
     [UserDataProxy sharedProxy].password = password;
     
-    NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
     [params setObject:[UserDataProxy sharedProxy].mobcode forKey:KEYQ_H__ACCOUNT_REGISTER__MOBCODE];
     [params setObject:password forKey:KEYQ_H__ACCOUNT_REGISTER__PASSWORD];
     [params setObject:[UserDataProxy sharedProxy].mobile forKey:KEYQ_H__ACCOUNT_REGISTER__MOBILE];
@@ -97,7 +97,7 @@ static AccountMessageProxy *sharedAccountMessageProxy = nil;
     [UserDataProxy sharedProxy].lastLoginCountry = mobCountry;
     [UserDataProxy sharedProxy].lastLoginMobile = mobile;
     
-    NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
     [params setObject:mobile forKey:KEYQ_H__ACCOUNT_LOGIN__MOBILE];
     [params setObject:mobCountry forKey:KEYQ_H__ACCOUNT_LOGIN__MOBCOUNTRY];
     [params setObject:password forKey:KEYQ_H__ACCOUNT_LOGIN__PASSWORD];
@@ -175,7 +175,7 @@ static AccountMessageProxy *sharedAccountMessageProxy = nil;
 - (void)sendTypeUpdateinfo:(NSInteger)gender birthday:(NSString *)birth nickname:(NSString *)nick
 {
     //使用http
-    NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
     [params setObject:[NSNumber numberWithInteger:gender] forKey:KEYQ_H__ACCOUNT_UPDATEINFO__GENDER];
     [params setObject:birth forKey:KEYQ_H__ACCOUNT_UPDATEINFO__BIRTHDAY];
     [params setObject:nick forKey:KEYQ_H__ACCOUNT_UPDATEINFO__NICK];
@@ -201,7 +201,7 @@ static AccountMessageProxy *sharedAccountMessageProxy = nil;
 
 - (void)sendTypeLogin
 {
-    NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
     [params setObject:[UserDataProxy sharedProxy].verify forKey:KEYQ_S_ACCOUNT_LOGIN_VERIFY];
     IMNWMessage *message = [IMNWMessage createForSocket:MARK_ACCOUNT withType:TYPE_S_ACCOUNT_LOGIN];
     [message send:params];
