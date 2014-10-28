@@ -7,11 +7,12 @@
 //
 
 #import "MsgDataProxy.h"
-
+#import "ImDataUtil.h"
 
 @interface MsgDataProxy()
 
 @property (nonatomic, retain) NSMutableArray *arrSysMsgs;
+@property (nonatomic, retain) NSMutableArray *arrUiMsgs;
 
 @end
 
@@ -39,9 +40,11 @@ static MsgDataProxy *chatDataProxy = nil;
 //    return self;
 //}
 
+#pragma mark - sysMsgList
+
 - (void)updateSysMsgList:(NSArray *)dpMsgList
 {
-    self.arrSysMsgs = [NSMutableArray array];
+    self.arrSysMsgs = self.arrSysMsgs;
     [[SysMessageDAO sharedDAO] deleteByCondition:@"" Bind:[NSMutableArray arrayWithObjects:nil]];
     for (NSInteger i = 0; i < dpMsgList.count; i++)
     {
@@ -52,6 +55,7 @@ static MsgDataProxy *chatDataProxy = nil;
             DBSysMessage *dbSysMessage = [[DBSysMessage alloc] init];
             [ImDataUtil copyFrom:dpSysMsg To:dbSysMessage];
             [[SysMessageDAO sharedDAO] insert:dbSysMessage];
+        [self.arrSysMsgs addObject:dpSysMsg];
 //        }
     }
 }
@@ -87,6 +91,48 @@ static MsgDataProxy *chatDataProxy = nil;
 //    }
 //    return arrResult;
 //}
+
+#pragma mark - uiMsgList
+
+- (void)updateUiMsgList:(DPUiMessage *)dpUiMessage
+{
+    DBUiMessage *dbUiMessage = [[DBUiMessage alloc] init];
+    [ImDataUtil copyFrom:dpUiMessage To:dbUiMessage];
+
+    NSArray *uiMsgList = [self getUiMsgList];
+    
+    if (dpUiMessage.type == UI_MESSAGE_TYPE_CHAT) {
+        NSInteger findIndex = [ImDataUtil getIndexOf:uiMsgList byItemKey:@"relationId" withValue:[NSNumber numberWithLong:dpUiMessage.relationId]];
+        if (findIndex != NSNotFound) {
+            [[UiMessageDAO sharedDAO] insert:dbUiMessage];
+            return;
+        }
+    }
+    
+    NSInteger resultCode = [[UiMessageDAO sharedDAO] update:dbUiMessage ByCondition:[DB_PRIMARY_KEY_UI_MESSAGE_ORDER_ID stringByAppendingString:@"=?"] Bind:[NSArray arrayWithObject:[NSNumber numberWithInteger:dpUiMessage.orderid]]];
+    if (resultCode != SQLITE_OK) {
+        [[UiMessageDAO sharedDAO] insert:dbUiMessage];
+    }
+}
+
+- (NSArray *)getUiMsgList
+{
+    if (self.arrUiMsgs == nil)
+    {
+        NSMutableArray *arrDbUiMsgs = [[UiMessageDAO sharedDAO] query:@"" Bind:[NSMutableArray arrayWithObjects:nil]];
+        self.arrUiMsgs = [NSMutableArray array];
+        DPUiMessage *tempUiMessage;
+        if (arrDbUiMsgs) {
+            for (NSInteger i = 0; i < arrDbUiMsgs.count; i++) {
+                tempUiMessage = [[DPUiMessage alloc] init];
+                [ImDataUtil copyFrom:arrDbUiMsgs[i] To:tempUiMessage];
+                [self.arrUiMsgs addObject:tempUiMessage];
+            }
+        }
+    }
+    return self.arrUiMsgs;
+}
+
 
 
 @end

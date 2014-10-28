@@ -9,20 +9,20 @@
 /* Begin PBXBuildFile section */
 		110487A219D79DFB0002AB36 /* ChatMessageDAO.m in Sources */ = {isa = PBXBuildFile; fileRef = 110487A119D79DFB0002AB36 /* ChatMessageDAO.m */; };
 		110487A319D79DFB0002AB36 /* ChatMessageDAO.m in Sources */ = {isa = PBXBuildFile; fileRef = 110487A119D79DFB0002AB36 /* ChatMessageDAO.m */; };
-		110487A619D7A35C0002AB36 /* MessageGroupDAO.m in Sources */ = {isa = PBXBuildFile; fileRef = 110487A519D7A35C0002AB36 /* MessageGroupDAO.m */; };
-		110487A719D7A35C0002AB36 /* MessageGroupDAO.m in Sources */ = {isa = PBXBuildFile; fileRef = 110487A519D7A35C0002AB36 /* MessageGroupDAO.m */; };
+		110487A619D7A35C0002AB36 /* UiMessageDAO.m in Sources */ = {isa = PBXBuildFile; fileRef = 110487A519D7A35C0002AB36 /* UiMessageDAO.m */; };
+		110487A719D7A35C0002AB36 /* UiMessageDAO.m in Sources */ = {isa = PBXBuildFile; fileRef = 110487A519D7A35C0002AB36 /* UiMessageDAO.m */; };
 		110487A919D7DA560002AB36 /* OSTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 110487A819D7DA560002AB36 /* OSTest.m */; };
 		110487AB19D90BFE0002AB36 /* MessageDataProxyTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 110487AA19D90BFE0002AB36 /* MessageDataProxyTest.m */; };
-		110F560A19D55792003B9EB4 /* DBMessageGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 110F560919D55792003B9EB4 /* DBMessageGroup.m */; };
-		110F560B19D55792003B9EB4 /* DBMessageGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 110F560919D55792003B9EB4 /* DBMessageGroup.m */; };
+		110F560A19D55792003B9EB4 /* DBUiMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 110F560919D55792003B9EB4 /* DBUiMessage.m */; };
+		110F560B19D55792003B9EB4 /* DBUiMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 110F560919D55792003B9EB4 /* DBUiMessage.m */; };
 		110F560E19D56A9E003B9EB4 /* ChatDataProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 110F560D19D56A9E003B9EB4 /* ChatDataProxy.m */; };
 		110F560F19D56A9E003B9EB4 /* ChatDataProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 110F560D19D56A9E003B9EB4 /* ChatDataProxy.m */; };
 		110F561219D56CF8003B9EB4 /* DPChatMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 110F561119D56CF8003B9EB4 /* DPChatMessage.m */; };
 		110F561319D56CF8003B9EB4 /* DPChatMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 110F561119D56CF8003B9EB4 /* DPChatMessage.m */; };
 		110F561619D56E07003B9EB4 /* DPMessageGroups.m in Sources */ = {isa = PBXBuildFile; fileRef = 110F561519D56E07003B9EB4 /* DPMessageGroups.m */; };
 		110F561719D56E07003B9EB4 /* DPMessageGroups.m in Sources */ = {isa = PBXBuildFile; fileRef = 110F561519D56E07003B9EB4 /* DPMessageGroups.m */; };
-		110F561A19D57013003B9EB4 /* DPMessageGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 110F561919D57013003B9EB4 /* DPMessageGroup.m */; };
-		110F561B19D57013003B9EB4 /* DPMessageGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 110F561919D57013003B9EB4 /* DPMessageGroup.m */; };
+		110F561A19D57013003B9EB4 /* DPUiMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 110F561919D57013003B9EB4 /* DPUiMessage.m */; };
+		110F561B19D57013003B9EB4 /* DPUiMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 110F561919D57013003B9EB4 /* DPUiMessage.m */; };
 		110FCCA119ADF83C0087CBCB /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 110FCCA019ADF83A0087CBCB /* libsqlite3.dylib */; };
 		1120945A19B601EF0012D607 /* IMiPhoneTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 585971FC1999F0C700258CB1 /* IMiPhoneTests.m */; };
 		11335B6919F53D6200FA32FA /* ChatMsgTableViewCellP2G.m in Sources */ = {isa = PBXBuildFile; fileRef = 11335B6819F53D6200FA32FA /* ChatMsgTableViewCellP2G.m */; };
@@ -249,20 +249,20 @@
 /* Begin PBXFileReference section */
 		110487A019D79DFB0002AB36 /* ChatMessageDAO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatMessageDAO.h; sourceTree = "<group>"; };
 		110487A119D79DFB0002AB36 /* ChatMessageDAO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatMessageDAO.m; sourceTree = "<group>"; };
-		110487A419D7A35C0002AB36 /* MessageGroupDAO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageGroupDAO.h; sourceTree = "<group>"; };
-		110487A519D7A35C0002AB36 /* MessageGroupDAO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageGroupDAO.m; sourceTree = "<group>"; };
+		110487A419D7A35C0002AB36 /* UiMessageDAO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UiMessageDAO.h; sourceTree = "<group>"; };
+		110487A519D7A35C0002AB36 /* UiMessageDAO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UiMessageDAO.m; sourceTree = "<group>"; };
 		110487A819D7DA560002AB36 /* OSTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSTest.m; sourceTree = "<group>"; };
 		110487AA19D90BFE0002AB36 /* MessageDataProxyTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageDataProxyTest.m; sourceTree = "<group>"; };
-		110F560819D55792003B9EB4 /* DBMessageGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBMessageGroup.h; sourceTree = "<group>"; };
-		110F560919D55792003B9EB4 /* DBMessageGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBMessageGroup.m; sourceTree = "<group>"; };
+		110F560819D55792003B9EB4 /* DBUiMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBUiMessage.h; sourceTree = "<group>"; };
+		110F560919D55792003B9EB4 /* DBUiMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBUiMessage.m; sourceTree = "<group>"; };
 		110F560C19D56A9E003B9EB4 /* ChatDataProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatDataProxy.h; sourceTree = "<group>"; };
 		110F560D19D56A9E003B9EB4 /* ChatDataProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatDataProxy.m; sourceTree = "<group>"; };
 		110F561019D56CF8003B9EB4 /* DPChatMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPChatMessage.h; sourceTree = "<group>"; };
 		110F561119D56CF8003B9EB4 /* DPChatMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPChatMessage.m; sourceTree = "<group>"; };
 		110F561419D56E07003B9EB4 /* DPMessageGroups.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPMessageGroups.h; sourceTree = "<group>"; };
 		110F561519D56E07003B9EB4 /* DPMessageGroups.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPMessageGroups.m; sourceTree = "<group>"; };
-		110F561819D57013003B9EB4 /* DPMessageGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPMessageGroup.h; sourceTree = "<group>"; };
-		110F561919D57013003B9EB4 /* DPMessageGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPMessageGroup.m; sourceTree = "<group>"; };
+		110F561819D57013003B9EB4 /* DPUiMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPUiMessage.h; sourceTree = "<group>"; };
+		110F561919D57013003B9EB4 /* DPUiMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPUiMessage.m; sourceTree = "<group>"; };
 		110FCCA019ADF83A0087CBCB /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		11335B6719F53D6200FA32FA /* ChatMsgTableViewCellP2G.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatMsgTableViewCellP2G.h; sourceTree = "<group>"; };
 		11335B6819F53D6200FA32FA /* ChatMsgTableViewCellP2G.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatMsgTableViewCellP2G.m; sourceTree = "<group>"; };
@@ -599,10 +599,10 @@
 				116B6E7619AEF83500DB1B5E /* DBChatMessage.m */,
 				110487A019D79DFB0002AB36 /* ChatMessageDAO.h */,
 				110487A119D79DFB0002AB36 /* ChatMessageDAO.m */,
-				110F560919D55792003B9EB4 /* DBMessageGroup.m */,
-				110F560819D55792003B9EB4 /* DBMessageGroup.h */,
-				110487A419D7A35C0002AB36 /* MessageGroupDAO.h */,
-				110487A519D7A35C0002AB36 /* MessageGroupDAO.m */,
+				110F560919D55792003B9EB4 /* DBUiMessage.m */,
+				110F560819D55792003B9EB4 /* DBUiMessage.h */,
+				110487A419D7A35C0002AB36 /* UiMessageDAO.h */,
+				110487A519D7A35C0002AB36 /* UiMessageDAO.m */,
 				116B6E8719B0534000DB1B5E /* DBGroup.h */,
 				116B6E8819B0534000DB1B5E /* DBGroup.m */,
 				116B6E8A19B0538300DB1B5E /* GroupDAO.h */,
@@ -811,8 +811,8 @@
 				11B1C62B19E51AFB003D2711 /* MsgDataProxy.m */,
 				110F561419D56E07003B9EB4 /* DPMessageGroups.h */,
 				110F561519D56E07003B9EB4 /* DPMessageGroups.m */,
-				110F561819D57013003B9EB4 /* DPMessageGroup.h */,
-				110F561919D57013003B9EB4 /* DPMessageGroup.m */,
+				110F561819D57013003B9EB4 /* DPUiMessage.h */,
+				110F561919D57013003B9EB4 /* DPUiMessage.m */,
 				110F561019D56CF8003B9EB4 /* DPChatMessage.h */,
 				110F561119D56CF8003B9EB4 /* DPChatMessage.m */,
 				110F560C19D56A9E003B9EB4 /* ChatDataProxy.h */,
@@ -1155,7 +1155,7 @@
 				58BACF0819B5804700A72391 /* FriendMessageProxy.m in Sources */,
 				110F560E19D56A9E003B9EB4 /* ChatDataProxy.m in Sources */,
 				58BACF0719B5803F00A72391 /* FriendDataProxy.m in Sources */,
-				110F560A19D55792003B9EB4 /* DBMessageGroup.m in Sources */,
+				110F560A19D55792003B9EB4 /* DBUiMessage.m in Sources */,
 				58CDC03919FE175500173FD7 /* GroupChatTableViewCell.m in Sources */,
 				110F561619D56E07003B9EB4 /* DPMessageGroups.m in Sources */,
 				58C14DD219C80D67009334E1 /* ContactViewController.m in Sources */,
@@ -1231,10 +1231,10 @@
 				11FAA8C419EF558E002048FA /* FriendTableViewCellUser.m in Sources */,
 				1194302419F7B01D00FD9206 /* ChatTableViewCell.m in Sources */,
 				118310C219FE61B700C1968D /* DPSysMessage.m in Sources */,
-				110487A619D7A35C0002AB36 /* MessageGroupDAO.m in Sources */,
+				110487A619D7A35C0002AB36 /* UiMessageDAO.m in Sources */,
 				117AC69C19EE766200143973 /* DBUser.m in Sources */,
 				116B6E8019AF0F8C00DB1B5E /* DatabaseConfig.m in Sources */,
-				110F561A19D57013003B9EB4 /* DPMessageGroup.m in Sources */,
+				110F561A19D57013003B9EB4 /* DPUiMessage.m in Sources */,
 				1194301419F75CED00FD9206 /* ChatInputTextView.m in Sources */,
 				58438C0D19D412E400B6962B /* NearbyTableViewController.m in Sources */,
 				117AC69519EE763E00143973 /* IMAddressPerson.m in Sources */,
@@ -1289,7 +1289,7 @@
 				58BC1E4319C06B9000722A00 /* imViewController.m in Sources */,
 				118310BB19FE447200C1968D /* MsgMessageProxy.m in Sources */,
 				58BC1E4419C06B9000722A00 /* MainTabBarController.m in Sources */,
-				110F561B19D57013003B9EB4 /* DPMessageGroup.m in Sources */,
+				110F561B19D57013003B9EB4 /* DPUiMessage.m in Sources */,
 				116BF88619CC29360015561B /* ImDataUtil.m in Sources */,
 				58C14DD319C80D67009334E1 /* ContactViewController.m in Sources */,
 				1194301119F74EC200FD9206 /* ChatShareMenuViewController.m in Sources */,
@@ -1297,7 +1297,7 @@
 				58BC1E4A19C06B9000722A00 /* FriendMessageProxy.m in Sources */,
 				11795E2919D297CD003FD9A7 /* DPFriend.m in Sources */,
 				58BC1E4B19C06B9000722A00 /* MKNetworkEngine.m in Sources */,
-				110487A719D7A35C0002AB36 /* MessageGroupDAO.m in Sources */,
+				110487A719D7A35C0002AB36 /* UiMessageDAO.m in Sources */,
 				58BC1E4C19C06B9000722A00 /* MKNetworkOperation.m in Sources */,
 				58BC1E4D19C06B9000722A00 /* Reachability.m in Sources */,
 				11335B6A19F53D6200FA32FA /* ChatMsgTableViewCellP2G.m in Sources */,
@@ -1311,7 +1311,7 @@
 				1192B5D519FE1F030013119E /* GroupMessageProxy.m in Sources */,
 				117AC6AD19EEB95500143973 /* UserDAO.m in Sources */,
 				117AC6A719EEB8A100143973 /* ContactTest.m in Sources */,
-				110F560B19D55792003B9EB4 /* DBMessageGroup.m in Sources */,
+				110F560B19D55792003B9EB4 /* DBUiMessage.m in Sources */,
 				110487A319D79DFB0002AB36 /* ChatMessageDAO.m in Sources */,
 				58BC1E5419C06B9000722A00 /* VPImageCropperViewController.m in Sources */,
 				58BC1E5519C06B9000722A00 /* imUtil.m in Sources */,

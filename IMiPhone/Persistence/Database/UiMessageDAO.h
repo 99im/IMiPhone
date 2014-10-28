@@ -8,10 +8,10 @@
 
 #import <Foundation/Foundation.h>
 #import "BaseDAO.h"
-#import "DBMessageGroup.h"
+#import "DBUiMessage.h"
 
-@interface MessageGroupDAO : BaseDAO
+@interface UiMessageDAO : BaseDAO
 
-+ (MessageGroupDAO*)sharedDAO;
++ (UiMessageDAO*)sharedDAO;
 
 @end

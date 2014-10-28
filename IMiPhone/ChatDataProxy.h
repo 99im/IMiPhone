@@ -7,9 +7,8 @@
 //
 
 #import "ChatMessageDAO.h"
-#import "MessageGroupDAO.h"
+#import "UiMessageDAO.h"
 #import "DPChatMessage.h"
-#import "DPMessageGroup.h"
 #import "ImDataUtil.h"
 
 typedef enum {

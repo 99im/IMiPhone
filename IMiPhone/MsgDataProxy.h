@@ -10,6 +10,8 @@
 #import "DPSysMessage.h"
 #import "ImDataUtil.h"
 #import "SysMessageDAO.h"
+#import "DPUiMessage.h"
+#import "UiMessageDAO.h"
 
 @interface MsgDataProxy : NSObject
 
@@ -19,7 +21,7 @@
 - (NSArray *)getSysMsgList;
 //- (NSArray *)getMsgListIsNext:(BOOL)isNext beginMid:(long)begin andCount:(NSInteger)count;
 
-//- (void)updateUiMsgList:(DPUiMessage *)dpUiMessage;
+- (void)updateUiMsgList:(DPUiMessage *)dpUiMessage;
 - (NSArray *)getUiMsgList;
 
 

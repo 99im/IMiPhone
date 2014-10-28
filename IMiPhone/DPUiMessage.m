@@ -6,12 +6,9 @@
 //  Copyright (c) 2014年 尹晓君. All rights reserved.
 //
 
-#import "DPMessageGroup.h"
+#import "DPUiMessage.h"
 
-@implementation DPMessageGroup
+@implementation DPUiMessage
 
-@synthesize messageGroupId;
-@synthesize ownerId;
-@synthesize type;
 
 @end
