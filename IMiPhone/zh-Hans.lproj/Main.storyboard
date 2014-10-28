@@ -1432,13 +1432,13 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="创建时间：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RkW-Xd-HEb">
-                                        <rect key="frame" x="14" y="291" width="87" height="23"/>
+                                        <rect key="frame" x="12" y="241" width="87" height="23"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="2014-05-10" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NIq-K2-5KG">
-                                        <rect key="frame" x="95" y="291" width="186" height="21"/>
+                                        <rect key="frame" x="93" y="241" width="186" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
@@ -1482,7 +1482,7 @@
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BmJ-ql-D7D">
-                                        <rect key="frame" x="153" y="462" width="167" height="48"/>
+                                        <rect key="frame" x="149" y="359" width="167" height="48"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                         <state key="normal" title="设置管理">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -1493,13 +1493,28 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="abL-fc-KFT">
-                                        <rect key="frame" x="8" y="462" width="145" height="51"/>
+                                        <rect key="frame" x="4" y="359" width="145" height="51"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                         <state key="normal" title="进入聊天">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
                                             <segue destination="yEJ-R3-2p3" kind="push" identifier="groupInfo2GroupChat" id="NpR-cO-pjh"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qC8-MD-ylo">
+                                        <rect key="frame" x="84" y="190" width="211" height="19"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DnI-3q-dXv">
+                                        <rect key="frame" x="81" y="321" width="123" height="30"/>
+                                        <state key="normal" title="申请加入">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="zdu-lY-f24" kind="push" id="PkN-wa-pWs"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -1512,11 +1527,16 @@
                     <navigationItem key="navigationItem" id="HL7-CH-2Tf"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="btnApply" destination="DnI-3q-dXv" id="fgE-BS-pPM"/>
                         <outlet property="btnBottom" destination="aGA-1D-sav" id="PNL-hn-2C3"/>
                         <outlet property="imgAvatar" destination="ZjC-fs-DKb" id="JAi-av-oZ5"/>
+                        <outlet property="lblCTime" destination="NIq-K2-5KG" id="5Im-Zt-au4"/>
+                        <outlet property="lblCity" destination="oJb-ek-GzQ" id="wuG-Sg-oef"/>
+                        <outlet property="lblCreatorName" destination="rXS-Vm-kE7" id="YGf-sY-bo0"/>
                         <outlet property="lblGroupId" destination="h2Y-Zr-rK7" id="nAZ-FS-uCv"/>
                         <outlet property="lblGroupName" destination="dlg-nV-kFa" id="yD6-Eq-gg4"/>
-                        <outlet property="txtDetail" destination="Skp-jk-w4A" id="U4r-5o-KQd"/>
+                        <outlet property="lblMemberNum" destination="qC8-MD-ylo" id="SxB-ME-pB0"/>
+                        <outlet property="txtvIntro" destination="Skp-jk-w4A" id="gmI-mC-UbP"/>
                         <segue destination="Tez-zb-r5A" kind="push" id="3hi-GN-j2D"/>
                     </connections>
                 </viewController>
@@ -1788,6 +1808,40 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HnK-vI-JGP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3996" y="6201"/>
+        </scene>
+        <!--Group-申请加入群-->
+        <scene sceneID="hIz-F5-FbG">
+            <objects>
+                <viewController id="zdu-lY-f24" userLabel="Group-申请加入群" customClass="GroupApplyViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="MNg-4c-6uh"/>
+                        <viewControllerLayoutGuide type="bottom" id="PFQ-by-q8u"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="UdB-8E-pvC">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qe9-iX-jqx">
+                                <rect key="frame" x="83" y="232" width="161" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="提交申请">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="请输入申请理由。。。" translatesAutoresizingMaskIntoConstraints="NO" id="C7s-Zn-B4E">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="111"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="zFc-V9-YQr"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="k8u-pJ-2kB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4645" y="6201"/>
         </scene>
         <!--Chat-群聊-->
         <scene sceneID="zxE-yQ-ZxD">

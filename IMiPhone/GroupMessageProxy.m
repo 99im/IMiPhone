@@ -47,7 +47,14 @@ static GroupMessageProxy *sharedGroupMessageProxy = nil;
             int errorcode = [
                 [json objectForKey:KEYP_H__GROUP_MYLIST__ERROR_CODE] intValue];
             if (errorcode == 0) {
-                NSLog(@"sendGroupMyList response ok:\n%@", json);
+                errorcode = [[GroupDataProxy sharedProxy] updateGroupInfo:json];
+
+                if (errorcode == 0) {
+                    NSLog(@"sendGroupMyList 本地更新成功：%@", json);
+                } else {
+                    NSLog(@"sendGroupMyList 本地更新失败：%@", json);
+                }
+                //NSLog(@"sendGroupMyList response ok:\n%@", json);
 //              [[NSNotificationCenter defaultCenter]
 //                  postNotificationName:NOTI__ACCOUNT_MOBCODE_
 //                                object:nil];
@@ -96,46 +103,49 @@ static GroupMessageProxy *sharedGroupMessageProxy = nil;
 }
 
 
-- (void)sendGroupInfo:(NSString *)gid{
-    NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
+- (void)sendGroupInfo:(NSString *)gid {
+  NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
 
-    [params setObject:gid forKey:KEYQ_H__GROUP_INFO__GID];
+  [params setObject:gid forKey:KEYQ_H__GROUP_INFO__GID];
 
-    IMNWMessage *message = [IMNWMessage createForHttp:PATH_H__GROUP_INFO_
-                                           withParams:params
-                                           withMethod:METHOD_H__GROUP_INFO_
-                                                  ssl:NO];
-    [[IMNWManager sharedNWManager]
-     sendMessage:message
-     withResponse:^(NSString *responseString, NSData *responseData) {
-         NSError *err = nil;
-         NSMutableDictionary *json = [NSJSONSerialization
-                                      JSONObjectWithData:responseData
-                                      options:NSJSONReadingAllowFragments
-                                      error:&err];
-         if (err) {
-             NSAssert(YES, @"json error[sendGroupInfo]: \n%@", err);
-         } else {
-             int errorcode = [
-                              [json objectForKey:KEYP_H__GROUP_INFO__ERROR_CODE] intValue];
-             if (errorcode == 0) {
-                 errorcode = [[GroupDataProxy sharedProxy] updateGroupInfo:json];
+  IMNWMessage *message = [IMNWMessage createForHttp:PATH_H__GROUP_INFO_
+                                         withParams:params
+                                         withMethod:METHOD_H__GROUP_INFO_
+                                                ssl:NO];
+  [[IMNWManager sharedNWManager]
+       sendMessage:message
+      withResponse:^(NSString *responseString, NSData *responseData) {
+          NSError *err = nil;
+          NSMutableDictionary *json = [NSJSONSerialization
+              JSONObjectWithData:responseData
+                         options:NSJSONReadingAllowFragments
+                           error:&err];
+          if (err) {
+            NSAssert(YES, @"json error[sendGroupInfo]: \n%@", err);
+          } else {
+            int errorcode =
+                [[json objectForKey:KEYP_H__GROUP_INFO__ERROR_CODE] intValue];
+            if (errorcode == 0) {
+              errorcode = [[GroupDataProxy sharedProxy] updateGroupInfo:json];
 
-                 if (errorcode == 0) {
-                     NSLog(@"群信息本地更新成功：%@", gid);
-                 } else {
-                     NSLog(@"群信息本地更新失败：%@", gid);
-                 }
-                 //NSLog(@"sendGroupInfo response ok:\n%@", json);
-                 //              [[NSNotificationCenter defaultCenter]
-                 //                  postNotificationName:NOTI__ACCOUNT_MOBCODE_
-                 //                                object:nil];
-             } else {
-                 NSAssert(YES, @"sendGroupInfo response error: %i", errorcode);
-             }
-         }
+              if (errorcode == 0) {
+                [[NSNotificationCenter defaultCenter]
+                    postNotificationName:NOTI_H__GROUP_INFO_
+                                  object:nil];
+                // NSLog(@"群信息本地更新成功：%@", gid);
+              } else {
+                NSLog(@"群信息本地更新失败：%@", gid);
+              }
+              // NSLog(@"sendGroupInfo response ok:\n%@", json);
+              //              [[NSNotificationCenter defaultCenter]
+              //                  postNotificationName:NOTI__ACCOUNT_MOBCODE_
+              //                                object:nil];
+            } else {
+              NSAssert(YES, @"sendGroupInfo response error: %i", errorcode);
+            }
+          }
 
-     }];
+      }];
 }
 
 - (void)sendGroupMembers:(NSString *)gid start:(NSNumber *)start pageNum:(NSNumber *)pageNum {

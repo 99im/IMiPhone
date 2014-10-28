@@ -224,6 +224,7 @@
 		AB24A95D19F8DC6500026299 /* GroupCreateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB24A95C19F8DC6500026299 /* GroupCreateViewController.m */; };
 		AB24A96019F8E59D00026299 /* GroupSettingTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB24A95F19F8E59D00026299 /* GroupSettingTableViewController.m */; };
 		AB4F947F19F789A500397549 /* DPGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = AB4F947E19F789A500397549 /* DPGroup.m */; };
+		AB62170819FF3F65003C2FBB /* GroupApplyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB62170719FF3F65003C2FBB /* GroupApplyViewController.m */; };
 		AB72235119ED110700E603E2 /* CategoryListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AB5554E719EBEAFA00B413F3 /* CategoryListTableViewCell.m */; };
 		ABA91EF919F64B970017B045 /* GroupTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ABA91EF819F64B970017B045 /* GroupTableViewCell.m */; };
 		ABA91EFC19F658270017B045 /* GroupTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABA91EFB19F658270017B045 /* GroupTableViewController.m */; };
@@ -473,6 +474,8 @@
 		AB4F947E19F789A500397549 /* DPGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPGroup.m; sourceTree = "<group>"; };
 		AB5554E619EBEAEF00B413F3 /* CategoryListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryListTableViewCell.h; sourceTree = "<group>"; };
 		AB5554E719EBEAFA00B413F3 /* CategoryListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoryListTableViewCell.m; sourceTree = "<group>"; };
+		AB62170619FF3F65003C2FBB /* GroupApplyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupApplyViewController.h; sourceTree = "<group>"; };
+		AB62170719FF3F65003C2FBB /* GroupApplyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupApplyViewController.m; sourceTree = "<group>"; };
 		ABA91EF719F64B970017B045 /* GroupTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupTableViewCell.h; sourceTree = "<group>"; };
 		ABA91EF819F64B970017B045 /* GroupTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupTableViewCell.m; sourceTree = "<group>"; };
 		ABA91EFA19F658270017B045 /* GroupTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupTableViewController.h; sourceTree = "<group>"; };
@@ -976,6 +979,8 @@
 				AB24A95C19F8DC6500026299 /* GroupCreateViewController.m */,
 				AB24A95E19F8E59D00026299 /* GroupSettingTableViewController.h */,
 				AB24A95F19F8E59D00026299 /* GroupSettingTableViewController.m */,
+				AB62170619FF3F65003C2FBB /* GroupApplyViewController.h */,
+				AB62170719FF3F65003C2FBB /* GroupApplyViewController.m */,
 			);
 			name = Group;
 			sourceTree = "<group>";
@@ -1194,6 +1199,7 @@
 				58BC1E3919C0304900722A00 /* RegStep2ViewController.m in Sources */,
 				AB24A95D19F8DC6500026299 /* GroupCreateViewController.m in Sources */,
 				58BC1E3719C0304900722A00 /* RegStep1ViewController.m in Sources */,
+				AB62170819FF3F65003C2FBB /* GroupApplyViewController.m in Sources */,
 				116BF87F19C981AD0015561B /* DPUser.m in Sources */,
 				58D026C419D17D4800BE4748 /* NSNumber+IMNWError.m in Sources */,
 				58F2AA3919A487E300DC2FFB /* AsyncSocket.m in Sources */,

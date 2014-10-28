@@ -63,16 +63,6 @@ NSInteger const sectionNum = 3;
 
 - (IBAction)searchTouchUpInside:(id)sender {
     
-//    NSLog(@"Table selected section: %i, row: %i", self.tableView.indexPathForSelectedRow.section, self.tableView.indexPathForSelectedRow.row);
-//    if (sender == self.userIdCell.btnAdd) {
-//        [[UserMessageProxy sharedProxy] sendTypeSearch:self.userIdCell.tfAddTarget.text];
-//    }
-//    else if (sender == self.groupIdCell.btnAdd) {
-//        //NSNumber *gid = (NSNumber *)self.userIdCell.tfAddTarget.text;
-//        NSLog(@"%@",self.groupIdCell.tfAddTarget.text);
-//        NSNumber *gid = [NSNumber numberWithInteger:[self.groupIdCell.tfAddTarget.text integerValue]];
-//        [[GroupMessageProxy sharedProxy] sendGroupInfo:gid];
-//    }
 }
 
 #pragma mark - Table view data source

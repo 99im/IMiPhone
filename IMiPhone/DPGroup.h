@@ -7,12 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "DBGroup.h"
 
-@interface DPGroup : NSObject
-
-@property (nonatomic) NSInteger  gid;
-@property (nonatomic, retain) NSString *name;
-@property (nonatomic) NSInteger memberNum;
-@property (nonatomic, retain) NSString *portraitUrl;//头像地址
+@interface DPGroup : DBGroup
 
 @end

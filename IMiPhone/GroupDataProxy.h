@@ -15,9 +15,12 @@
 @interface GroupDataProxy : NSObject
 
 @property(nonatomic) long currentGroupId;
+@property(nonatomic, retain) DPGroup *currentGroup;
+
 
 + (GroupDataProxy *)sharedProxy;
-
++ (long long)nowTime;
++ (long long)longLongNowTime : (NSString *)dateFormat;
 /**
  *  本地入库：群信息
  *
@@ -25,7 +28,7 @@
  *
  *  @return 错误码：0 无错误   1：错误码，待定
  */
-- (int) updateGroupInfo : (NSDictionary *) info;
+- (int) updateGroupInfo : (NSMutableDictionary *) json;
 #pragma mark - 入库保存
 /**
  *  本地入库：保存我的群组信息
@@ -34,7 +37,7 @@
  *
  *  @return 群组列表
  */
-- (int) updateGroupMyList : (NSMutableArray *) list;
+- (int) updateGroupMyList : (NSMutableDictionary *) json;
 - (BOOL) delGroupByPrimaryKey : (long) gid;
 
 #pragma mark - 读取查询
