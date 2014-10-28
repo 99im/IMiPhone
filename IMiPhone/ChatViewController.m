@@ -25,6 +25,7 @@
 @property (weak, nonatomic) IBOutlet ChatInputTextView *viewChatInputText;
 @property (weak, nonatomic) IBOutlet ChatInputSoundView *viewChatInputSound;
 @property (weak, nonatomic) IBOutlet UITextField *tfInputText;
+@property (weak, nonatomic) IBOutlet UIView *viewChatContainer;
 
 //
 @property (nonatomic,retain) NSMutableArray *arrAllCellFrames;
@@ -145,6 +146,7 @@ NSInteger midcounter;
     [UIView animateWithDuration:0.3f animations:^{
         self.emotionViewController.view.frame = CGRectMake(0.0f, self.view.frame.size.height - EMOTS_HEIGHT, self.view.frame.size.width, EMOTS_HEIGHT);
     }];
+    self.viewChatContainer.frame = CGRectMake(0.0f, 0.0f, self.view.frame.size.width, self.view.frame.size.height - EMOTS_HEIGHT);
 }
 
 - (IBAction)touchInsideBtnSound:(id)sender {

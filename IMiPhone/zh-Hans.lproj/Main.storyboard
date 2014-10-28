@@ -1000,14 +1000,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sS0-Ne-O7G">
+                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sS0-Ne-O7G">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <subviews>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="50" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="329-xQ-y4w">
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="50" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="329-xQ-y4w">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="520"/>
                                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                         <prototypes>
-                                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="6ZA-Da-DgV">
+                                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ChatTableViewCell" id="6ZA-Da-DgV" customClass="ChatTableViewCell">
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6ZA-Da-DgV" id="f0R-TW-29a">
                                                     <autoresizingMask key="autoresizingMask"/>
@@ -1016,7 +1016,7 @@
                                         </prototypes>
                                         <sections/>
                                     </tableView>
-                                    <view contentMode="scaleToFill" fixedFrame="YES" restorationIdentifier="ChatInputTextView" translatesAutoresizingMaskIntoConstraints="NO" id="aNi-Nk-VGM" userLabel="Chat Input Text View" customClass="ChatInputTextView">
+                                    <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" restorationIdentifier="ChatInputTextView" translatesAutoresizingMaskIntoConstraints="NO" id="aNi-Nk-VGM" userLabel="Chat Input Text View" customClass="ChatInputTextView">
                                         <rect key="frame" x="0.0" y="520" width="320" height="50"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xg4-QP-bWw">
@@ -1059,7 +1059,7 @@
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </view>
-                                    <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" restorationIdentifier="ChatInputSoundView" translatesAutoresizingMaskIntoConstraints="NO" id="l2f-od-NdP" userLabel="Chat Input Sound View" customClass="ChatInputSoundView">
+                                    <view hidden="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" restorationIdentifier="ChatInputSoundView" translatesAutoresizingMaskIntoConstraints="NO" id="l2f-od-NdP" userLabel="Chat Input Sound View" customClass="ChatInputSoundView">
                                         <rect key="frame" x="0.0" y="520" width="320" height="50"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="22i-6T-mw0">
@@ -1097,15 +1097,26 @@
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="aNi-Nk-VGM" secondAttribute="bottom" constant="-2" id="01a-q8-SWw"/>
+                                    <constraint firstAttribute="bottom" secondItem="l2f-od-NdP" secondAttribute="bottom" constant="-2" id="FrD-ow-OD7"/>
+                                    <constraint firstItem="329-xQ-y4w" firstAttribute="top" secondItem="sS0-Ne-O7G" secondAttribute="top" id="L0c-b2-yRF"/>
+                                    <constraint firstAttribute="bottom" secondItem="329-xQ-y4w" secondAttribute="bottom" constant="48" id="m36-6C-Nct"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="sS0-Ne-O7G" firstAttribute="top" secondItem="vdW-Q2-z1e" secondAttribute="top" id="X8i-kl-Ydo"/>
+                            <constraint firstAttribute="bottom" secondItem="sS0-Ne-O7G" secondAttribute="bottom" id="mB3-f2-L1B"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="聊天标题" id="e9w-hA-9aF"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="tableViewChat" destination="329-xQ-y4w" id="Ya7-85-vfu"/>
                         <outlet property="tfInputText" destination="SOo-Re-DHd" id="MC0-hY-XHb"/>
+                        <outlet property="viewChatContainer" destination="sS0-Ne-O7G" id="apk-fD-fKL"/>
                         <outlet property="viewChatInputSound" destination="l2f-od-NdP" id="Z5N-7y-4Pk"/>
                         <outlet property="viewChatInputText" destination="aNi-Nk-VGM" id="8WM-5d-V47"/>
                     </connections>
