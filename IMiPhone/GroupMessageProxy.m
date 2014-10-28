@@ -86,20 +86,23 @@ static GroupMessageProxy *sharedGroupMessageProxy = nil;
           if (err) {
             NSAssert(YES, @"json error[sendGroupMyList]: \n%@", err);
           } else {
-            int errorcode = [
-                [json objectForKey:KEYP_H__GROUP_MYLIST__ERROR_CODE] intValue];
+            int errorcode =
+                [[json objectForKey:KEYP_H__GROUP_MYLIST__ERROR_CODE] intValue];
             if (errorcode == 0) {
-                errorcode = [[GroupDataProxy sharedProxy] updateGroupInfo:json];
-
-                if (errorcode == 0) {
-                    NSLog(@"sendGroupMyList 本地更新成功：%@", json);
-                } else {
-                    NSLog(@"sendGroupMyList 本地更新失败：%@", json);
-                }
-                //NSLog(@"sendGroupMyList response ok:\n%@", json);
-//              [[NSNotificationCenter defaultCenter]
-//                  postNotificationName:NOTI__ACCOUNT_MOBCODE_
-//                                object:nil];
+              NSLog(@"sendGroupMyList 开始本地更新：%@", json);
+              errorcode = [[GroupDataProxy sharedProxy] updateGroupMyList:json];
+              if (errorcode == 0) {
+                // NSLog(@"sendGroupMyList 本地更新成功：%@", json);
+                [[NSNotificationCenter defaultCenter]
+                    postNotificationName:NOTI_H__GROUP_MYLIST_
+                                  object:nil];
+              } else {
+                NSLog(@"sendGroupMyList 本地更新失败：%@", json);
+              }
+              // NSLog(@"sendGroupMyList response ok:\n%@", json);
+              //              [[NSNotificationCenter defaultCenter]
+              //                  postNotificationName:NOTI__ACCOUNT_MOBCODE_
+              //                                object:nil];
             } else {
               NSAssert(YES, @"sendGroupMyList response error: %i", errorcode);
             }

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="sWe-ai-dJr">
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
     </dependencies>
     <scenes>
@@ -1587,10 +1588,10 @@
             </objects>
             <point key="canvasLocation" x="2916" y="6231"/>
         </scene>
-        <!--Group-已加入群列表-->
+        <!--Group-我加入的群-->
         <scene sceneID="OH2-Fr-kDb">
             <objects>
-                <tableViewController storyboardIdentifier="storyGroupMyList" id="8NY-Sg-b0A" userLabel="Group-已加入群列表" customClass="GroupTableViewController" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="storyGroupMyList" id="8NY-Sg-b0A" userLabel="Group-我加入的群" customClass="GroupTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="22" sectionFooterHeight="22" id="Lv3-YA-N3B">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1601,7 +1602,7 @@
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aob-gj-Xhz" id="tDZ-UF-OZj">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Jif-IK-TEo">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ChatDefault" translatesAutoresizingMaskIntoConstraints="NO" id="Jif-IK-TEo">
                                             <rect key="frame" x="5" y="5" width="48" height="48"/>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="GroupName" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xTc-Fb-b5C">
@@ -1610,12 +1611,6 @@
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="1" green="0.4072162137" blue="0.15419225859999999" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="highlightedColor" red="1" green="0.4072162137" blue="0.15419225859999999" alpha="1" colorSpace="calibratedRGB"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="12.5Km" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vw6-1I-T8m">
-                                            <rect key="frame" x="210" y="8" width="77" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                            <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Group Intro" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wmR-yv-xG7">
                                             <rect key="frame" x="77" y="31" width="150" height="21"/>
@@ -1627,8 +1622,8 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="imgAvatar" destination="Jif-IK-TEo" id="Rue-6y-2dg"/>
-                                    <outlet property="lblDistance" destination="Vw6-1I-T8m" id="SH8-H4-M69"/>
                                     <outlet property="lblIntro" destination="wmR-yv-xG7" id="KW2-oR-uQh"/>
+                                    <outlet property="lblName" destination="xTc-Fb-b5C" id="2cw-TC-5Mc"/>
                                     <segue destination="nqj-0p-hk3" kind="push" identifier="groupList2viewInfoSegue" id="Dql-ZX-dEr"/>
                                 </connections>
                             </tableViewCell>

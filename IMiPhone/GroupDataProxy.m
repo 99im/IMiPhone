@@ -10,6 +10,7 @@
 
 @interface GroupDataProxy()
 @property (nonatomic, retain) NSMutableArray *arrGroupMyList;
+@property (nonatomic) long long updateTimeGroupMyList;
 @end
 
 @implementation GroupDataProxy
@@ -18,6 +19,7 @@ long long const TIMEOUT_GROUP_INFO = 60; //群信息页超时刷新
 long long const TIMEOUT_GROUP_MY_LIST = 60; //
 
 @synthesize currentGroupId = _currGroupId;
+@synthesize updateTimeGroupMyList = _updateTimeGroupMyList;
 @synthesize arrGroupMyList = _arrGroupMyList;
 @synthesize currentGroup = _currentGroup;
 
@@ -53,38 +55,94 @@ static GroupDataProxy *sharedGroupDataProxy = nil;
 
 #pragma mark - 列表：我加入的群
 - (NSMutableArray *)getGroupMyList {
-    if (_arrGroupMyList == nil) {
-        //查询数据库
-        NSString *where =
-        [NSString stringWithFormat:@"%@ > 0", DB_PRIMARY_KEY_GROUP_ID];
-        NSString *orderBy =
-        [NSString stringWithFormat:@"%@", DB_PRIMARY_KEY_GROUP_ID];
-        NSString *limit = [NSString stringWithFormat:@"%i,%i", 0, 10];
-        NSMutableArray *result =
-        [[GroupDAO sharedDAO] select:where
-                             orderBy:orderBy
-                               limit:limit
-                                bind:[NSMutableArray arrayWithObjects:nil]];
+  if (_arrGroupMyList == nil) {
+    //        //查询数据库
+    //        NSString *where =
+    //        [NSString stringWithFormat:@"%@ > 0", DB_PRIMARY_KEY_GROUP_ID];
+    //        NSString *orderBy =
+    //        [NSString stringWithFormat:@"%@", DB_PRIMARY_KEY_GROUP_ID];
+    //        NSString *limit = [NSString stringWithFormat:@"%i,%i", 0, 10];
+    //        NSMutableArray *result =
+    //        [[GroupDAO sharedDAO] select:where
+    //                             orderBy:orderBy
+    //                               limit:limit
+    //                                bind:[NSMutableArray
+    //                                arrayWithObjects:nil]];
+    //        if (result) {
+    //            DPGroup *tempGroup;
+    //            for (NSInteger i = 0; i < result.count; i++) {
+    //                tempGroup = [[DPGroup alloc] init];
+    //                [ImDataUtil copyFrom:result[i] To:tempGroup];
+    //                [_arrGroupMyList addObject:tempGroup];
+    //            }
+    //        }
+    //        [self setArrGroupMyList:_arrGroupMyList];
 
-        //处理结果
-        _arrGroupMyList = [NSMutableArray array];
-        if (result) {
-            DPGroup *tempGroup;
-            for (NSInteger i = 0; i < result.count; i++) {
-                tempGroup = [[DPGroup alloc] init];
-                [ImDataUtil copyFrom:result[i] To:tempGroup];
-                [_arrGroupMyList addObject:tempGroup];
-            }
-        }
-        [self setArrGroupMyList:_arrGroupMyList];
-
-        //TODO: 距离上次请求时间过长则从服务器拉取
+    //处理结果
+    _arrGroupMyList = [NSMutableArray array];
+    for (NSInteger i = 0; i < [_arrGroupMyList count]; i++) {
+      DPGroup *dpGroup = _arrGroupMyList[i];
+      if (dpGroup.localUpdateTime > _updateTimeGroupMyList) {
+        _updateTimeGroupMyList = dpGroup.localUpdateTime;
+      }
     }
-    return [self mutableArrayValueForKey:@"arrGroupMyList"];
+    long long nowTime = [GroupDataProxy nowTime];
+    if ((_updateTimeGroupMyList + TIMEOUT_GROUP_MY_LIST) <
+        nowTime) { //已过期，待更新
+      [[GroupMessageProxy sharedProxy]
+          sendGroupMyList:[NSNumber numberWithInt:0]
+              withPageNum:[NSNumber numberWithInt:50]];
+    }
+  }
+  return [self mutableArrayValueForKey:@"arrGroupMyList"];
+}
+
+- (NSInteger) countGroupMyList{
+    if (_arrGroupMyList) {
+        return [_arrGroupMyList count];
+    }
+    return 0;
 }
 
 - (int) updateGroupMyList : (NSMutableDictionary *) json {
     NSLog(@"updateGroupMyList\n%@",json);
+    NSArray *list = [json objectForKey:KEYP_H__GROUP_MYLIST__LIST];
+
+    //if (_arrGroupMyList == nil) {
+        _arrGroupMyList = [NSMutableArray array];
+    //}
+    
+    long long nowTime = [GroupDataProxy nowTime];
+    for (NSInteger i = 0; i < [list count]; i++) {
+        DPGroup *dpGroup = [[DPGroup alloc] init];
+        NSDictionary *group = [list objectAtIndex:i];
+
+        //基本信息
+        long gid = [[group objectForKey:KEYP_H__GROUP_MYLIST__LIST_GID] longValue];
+        NSDictionary *detail = [group objectForKey:KEYP_H__GROUP_MYLIST__LIST_DETAIL];
+        NSDictionary *creator = [detail objectForKey:KEYP_H__GROUP_MYLIST__LIST_DETAIL_CREATOR];
+        dpGroup.gid = gid;
+        dpGroup.name = [detail objectForKey:KEYP_H__GROUP_MYLIST__LIST_DETAIL_NAME];
+        dpGroup.intro = [detail objectForKey:KEYP_H__GROUP_MYLIST__LIST_DETAIL_INTRO];
+        dpGroup.memberNum = [[detail objectForKey:KEYP_H__GROUP_MYLIST__LIST_DETAIL_MEMBERNUM] longValue];
+
+        //群主信息
+        dpGroup.creator_uid =
+        [[creator objectForKey:KEYP_H__GROUP_INFO__INFO_CREATOR_UID] intValue];
+        dpGroup.creator_nick =
+        [creator objectForKey:KEYP_H__GROUP_INFO__INFO_CREATOR_NICK];
+        dpGroup.creator_oid =
+        [[creator objectForKey:KEYP_H__GROUP_INFO__INFO_CREATOR_OID] intValue];
+        dpGroup.creator_vip =
+        [[creator objectForKey:KEYP_H__GROUP_INFO__INFO_CREATOR_VIP] intValue];
+        dpGroup.creator_city =
+        [creator objectForKey:KEYP_H__GROUP_INFO__INFO_CREATOR_CITY];
+        [_arrGroupMyList addObject:dpGroup];
+
+        //更新时间
+        dpGroup.localUpdateTime = nowTime;
+    }
+
     return 0;
 }
 
@@ -121,9 +179,14 @@ static GroupDataProxy *sharedGroupDataProxy = nil;
 }
 
 - (DPGroup *) getGroupInfoCurrent {
-    [self getGroupInfo: self.currentGroupId withHttp:NO];
-    //NSLog(@"当前群：%qi,%@",_currentGroup.localUpdateTime ,_currentGroup.name);
-    return _currentGroup;
+    return [self getGroupInfo: self.currentGroupId withHttp:NO];
+}
+
+- (DPGroup *)getGroupInfoAtRow:(NSInteger)row{
+    if (_arrGroupMyList && row < _arrGroupMyList.count) {
+        return _arrGroupMyList[row];
+    }
+    return nil;
 }
 
 - (int)updateGroupInfo:(NSMutableDictionary *)json {
@@ -135,40 +198,40 @@ static GroupDataProxy *sharedGroupDataProxy = nil;
     }
 
   // NSTimeInterval timeInterval= [GroupDataProxy nowTime];
-  DPGroup *dpGoup = _currentGroup;
-  if (!dpGoup || dpGoup.gid != gid) {
-    dpGoup = [[DPGroup alloc] init];
+  DPGroup *dpGroup = _currentGroup;
+  if (!dpGroup || dpGroup.gid != gid) {
+    dpGroup = [[DPGroup alloc] init];
   }
 
   //本地更新时间
   long long nowTime = [GroupDataProxy nowTime];
-  dpGoup.localUpdateTime = nowTime;
+  dpGroup.localUpdateTime = nowTime;
 
   //群基本信息
-  dpGoup.gid = gid;
-  dpGoup.name = [info objectForKey:KEYP_H__GROUP_INFO__INFO_NAME];
-  dpGoup.intro = [info objectForKey:KEYP_H__GROUP_INFO__INFO_INTRO];
-  dpGoup.ctime = [info objectForKey:KEYP_H__GROUP_INFO__INFO_CTIME];
-  dpGoup.memberNum =
+  dpGroup.gid = gid;
+  dpGroup.name = [info objectForKey:KEYP_H__GROUP_INFO__INFO_NAME];
+  dpGroup.intro = [info objectForKey:KEYP_H__GROUP_INFO__INFO_INTRO];
+  dpGroup.ctime = [info objectForKey:KEYP_H__GROUP_INFO__INFO_CTIME];
+  dpGroup.memberNum =
       [[json objectForKey:KEYP_H__GROUP_INFO__INFO_MEMBERNUM] intValue];
 
   //群主信息
   NSDictionary *creator = [info objectForKey:KEYP_H__GROUP_INFO__INFO_CREATOR];
-  dpGoup.creator_uid =
+  dpGroup.creator_uid =
       [[creator objectForKey:KEYP_H__GROUP_INFO__INFO_CREATOR_UID] intValue];
-  dpGoup.creator_nick =
+  dpGroup.creator_nick =
       [creator objectForKey:KEYP_H__GROUP_INFO__INFO_CREATOR_NICK];
-  dpGoup.creator_oid =
+  dpGroup.creator_oid =
       [[creator objectForKey:KEYP_H__GROUP_INFO__INFO_CREATOR_OID] intValue];
-  dpGoup.creator_vip =
+  dpGroup.creator_vip =
       [[creator objectForKey:KEYP_H__GROUP_INFO__INFO_CREATOR_VIP] intValue];
-  dpGoup.creator_city =
+  dpGroup.creator_city =
       [creator objectForKey:KEYP_H__GROUP_INFO__INFO_CREATOR_CITY];
 
 
   //TODO: 入库保存群信息
     if (!_currentGroup) {
-        _currentGroup = dpGoup;
+        _currentGroup = dpGroup;
         //[self setCurrentGroup:dpGoup];
     }
 
