@@ -17,7 +17,7 @@ static UiMessageDAO *uiMessageDAO = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         uiMessageDAO = [[UiMessageDAO alloc] init];
-        NSString *tableName = @"tb_message_group";
+        NSString *tableName = @"tb_ui_message";
         NSString *primaryKey = DB_PRIMARY_KEY_UI_MESSAGE_ORDER_ID;
         [uiMessageDAO createTableIfNotExist:tableName withDataMode:[DBUiMessage class] withPrimaryKey:primaryKey];
     });
