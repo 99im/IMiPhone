@@ -144,10 +144,15 @@ NSInteger midcounter;
 
 - (IBAction)touchUpInsideBtnExpression:(id)sender {
     //TODO:显示表情选择界面
-    [UIView animateWithDuration:0.3f animations:^{
+    [UIView animateWithDuration:0.25f animations:^{
         self.emotionViewController.view.frame = CGRectMake(0.0f, self.view.frame.size.height - EMOTS_HEIGHT, self.view.frame.size.width, EMOTS_HEIGHT);
     }];
-    self.viewChatContainer.frame = CGRectMake(0.0f, 0.0f, self.view.frame.size.width, self.view.frame.size.height - EMOTS_HEIGHT);
+    CGRect bounds = self.view.bounds;
+    bounds.origin.y = EMOTS_HEIGHT;
+    [UIView animateWithDuration:0.25f animations:^{
+        self.view.bounds = bounds;
+//        [self.view layoutIfNeeded];
+    }];
 }
 
 - (IBAction)touchInsideBtnSound:(id)sender {
