@@ -264,7 +264,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" keyboardDismissMode="interactive" translatesAutoresizingMaskIntoConstraints="NO" id="cer-KH-ivo">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" keyboardDismissMode="interactive" translatesAutoresizingMaskIntoConstraints="NO" id="cer-KH-ivo">
                                 <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SZm-I1-Ve7">
@@ -392,7 +392,7 @@
                                     <constraint firstAttribute="trailing" secondItem="SZm-I1-Ve7" secondAttribute="trailing" id="hqL-0v-SSW"/>
                                 </constraints>
                             </scrollView>
-                            <datePicker contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" useCurrentDate="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HTa-gL-rdw">
+                            <datePicker contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" useCurrentDate="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HTa-gL-rdw">
                                 <rect key="frame" x="0.0" y="406" width="320" height="162"/>
                                 <date key="date" timeIntervalSinceReferenceDate="-330141172.43070197">
                                     <!--1990-07-16 22:07:07 +0000-->
@@ -1017,7 +1017,7 @@
                                         <sections/>
                                     </tableView>
                                     <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" restorationIdentifier="ChatInputTextView" translatesAutoresizingMaskIntoConstraints="NO" id="aNi-Nk-VGM" userLabel="Chat Input Text View" customClass="ChatInputTextView">
-                                        <rect key="frame" x="-24" y="520" width="320" height="50"/>
+                                        <rect key="frame" x="0.0" y="520" width="320" height="50"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xg4-QP-bWw">
                                                 <rect key="frame" x="10" y="8" width="25" height="25"/>

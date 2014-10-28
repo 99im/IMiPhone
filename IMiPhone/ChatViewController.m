@@ -150,7 +150,7 @@ NSInteger midcounter;
     CGRect bounds = self.view.bounds;
     bounds.origin.y = EMOTS_HEIGHT;
     [UIView animateWithDuration:0.25f animations:^{
-        self.view.bounds = bounds;
+        self.viewChatContainer.bounds = bounds;
 //        [self.view layoutIfNeeded];
     }];
 }
