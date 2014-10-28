@@ -13,6 +13,7 @@
 #import "IMNWProxy.h"
 //#import "DPChatMessage.h"
 #import "ChatDataProxy.h"
+#import "MsgDataProxy.h"
 
 #define CHAT_STAGE_P2P @"p2p"
 #define CHAT_STAGE_GROUP @"group"

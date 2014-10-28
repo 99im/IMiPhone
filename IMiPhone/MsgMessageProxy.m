@@ -24,10 +24,13 @@ static MsgMessageProxy  *messageProxy = nil;
 }
 
 //modids 1 2 3 4
-- (void)sendHttpSysmsgList:(NSString *)modids
+- (void)sendHttpSysmsgList:(NSString *)modids before:(long)beforeSmid after:(long)afterSmid start:(long)start pageNum:(NSInteger)pageNum;
 {
     NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
-    //    [params setObject: forKey:KEYQ__];
+    [params setObject:modids forKey:KEYQ_H__MSG_SYSMSG_LIST__MODIDS];
+    [params setObject:[NSNumber numberWithLong:beforeSmid] forKey:KEYQ_H__MSG_SYSMSG_LIST__MODIDS];
+    [params setObject:[NSNumber numberWithLong:afterSmid] forKey:KEYQ_H__MSG_SYSMSG_LIST__START];
+    [params setObject:[NSNumber numberWithInteger:pageNum] forKey:KEYQ_H__MSG_SYSMSG_LIST__PAGENUM];
     IMNWMessage *message = [IMNWMessage
                             createForHttp:PATH_H__MSG_SYSMSG_LIST_
                             withParams:params

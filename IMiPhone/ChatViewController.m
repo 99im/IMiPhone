@@ -104,7 +104,8 @@
     static NSString *cellIdentifier = @"ChatTableViewCell";
     ChatTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
     
-    cell.cellFrame = [self.arrAllCellFrames objectAtIndex:indexPath.row];
+    cell.cellFrame = 
+    [self.arrAllCellFrames objectAtIndex:indexPath.row];
     
     return cell;
     

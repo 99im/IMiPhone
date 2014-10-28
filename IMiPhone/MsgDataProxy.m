@@ -103,15 +103,15 @@ static MsgDataProxy *chatDataProxy = nil;
     
     if (dpUiMessage.type == UI_MESSAGE_TYPE_CHAT) {
         NSInteger findIndex = [ImDataUtil getIndexOf:uiMsgList byItemKey:@"relationId" withValue:[NSNumber numberWithLong:dpUiMessage.relationId]];
-        if (findIndex != NSNotFound) {
+        if (findIndex == NSNotFound) {
             [[UiMessageDAO sharedDAO] insert:dbUiMessage];
+            [self.arrUiMsgs addObject:dpUiMessage];
             return;
         }
-    }
-    
-    NSInteger resultCode = [[UiMessageDAO sharedDAO] update:dbUiMessage ByCondition:[DB_PRIMARY_KEY_UI_MESSAGE_ORDER_ID stringByAppendingString:@"=?"] Bind:[NSArray arrayWithObject:[NSNumber numberWithInteger:dpUiMessage.orderid]]];
-    if (resultCode != SQLITE_OK) {
-        [[UiMessageDAO sharedDAO] insert:dbUiMessage];
+        else {
+            [[UiMessageDAO sharedDAO] update:dbUiMessage ByCondition:[DB_PRIMARY_KEY_UI_MESSAGE_ORDER_ID stringByAppendingString:@"=?"] Bind:[NSArray arrayWithObject:[NSNumber numberWithInteger:dpUiMessage.orderid]]];
+            [self.arrUiMsgs replaceObjectAtIndex:findIndex withObject:dpUiMessage];
+        }
     }
 }
 
@@ -133,6 +133,10 @@ static MsgDataProxy *chatDataProxy = nil;
     return self.arrUiMsgs;
 }
 
+- (NSInteger)getUiMsgListNextOrderId
+{
+    return [self getUiMsgList].count;
+}
 
 
 @end

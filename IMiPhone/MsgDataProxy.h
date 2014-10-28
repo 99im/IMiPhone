@@ -24,5 +24,6 @@
 - (void)updateUiMsgList:(DPUiMessage *)dpUiMessage;
 - (NSArray *)getUiMsgList;
 
+- (NSInteger)getUiMsgListNextOrderId;
 
 @end

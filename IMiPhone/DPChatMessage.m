@@ -10,11 +10,5 @@
 
 @implementation DPChatMessage
 
-@synthesize mid;
-@synthesize senderUid;
-@synthesize targetId;
-@synthesize type;
-@synthesize content;
-@synthesize sendTime;
 
 @end

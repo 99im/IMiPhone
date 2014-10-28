@@ -547,8 +547,6 @@
 				116BF87019C81E030015561B /* AudioRecordManager.m */,
 				58A5B4FB19ADC3CA0007C2F3 /* ChatMsgTableViewController.m */,
 				58A5B4FA19ADC3CA0007C2F3 /* ChatMsgTableViewController.h */,
-				11335B6719F53D6200FA32FA /* ChatMsgTableViewCellP2G.h */,
-				11335B6819F53D6200FA32FA /* ChatMsgTableViewCellP2G.m */,
 				11335B6B19F5407400FA32FA /* ChatViewController.h */,
 				11335B6C19F5407400FA32FA /* ChatViewController.m */,
 				1194300E19F74EC200FD9206 /* ChatShareMenuViewController.h */,
@@ -651,6 +649,8 @@
 		11E1581019F4FF58008544D1 /* Msg */ = {
 			isa = PBXGroup;
 			children = (
+				11335B6719F53D6200FA32FA /* ChatMsgTableViewCellP2G.h */,
+				11335B6819F53D6200FA32FA /* ChatMsgTableViewCellP2G.m */,
 				11E1581119F4FFE1008544D1 /* MsgTableViewController.h */,
 				11E1581219F4FFE1008544D1 /* MsgTableViewController.m */,
 			);
