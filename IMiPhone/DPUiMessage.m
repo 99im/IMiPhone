@@ -10,5 +10,9 @@
 
 @implementation DPUiMessage
 
+@synthesize orderid;
+@synthesize mid;
+@synthesize relationId;
+@synthesize type;
 
 @end

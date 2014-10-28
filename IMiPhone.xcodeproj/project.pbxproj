@@ -19,8 +19,6 @@
 		110F560F19D56A9E003B9EB4 /* ChatDataProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 110F560D19D56A9E003B9EB4 /* ChatDataProxy.m */; };
 		110F561219D56CF8003B9EB4 /* DPChatMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 110F561119D56CF8003B9EB4 /* DPChatMessage.m */; };
 		110F561319D56CF8003B9EB4 /* DPChatMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 110F561119D56CF8003B9EB4 /* DPChatMessage.m */; };
-		110F561619D56E07003B9EB4 /* DPMessageGroups.m in Sources */ = {isa = PBXBuildFile; fileRef = 110F561519D56E07003B9EB4 /* DPMessageGroups.m */; };
-		110F561719D56E07003B9EB4 /* DPMessageGroups.m in Sources */ = {isa = PBXBuildFile; fileRef = 110F561519D56E07003B9EB4 /* DPMessageGroups.m */; };
 		110F561A19D57013003B9EB4 /* DPUiMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 110F561919D57013003B9EB4 /* DPUiMessage.m */; };
 		110F561B19D57013003B9EB4 /* DPUiMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 110F561919D57013003B9EB4 /* DPUiMessage.m */; };
 		110FCCA119ADF83C0087CBCB /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 110FCCA019ADF83A0087CBCB /* libsqlite3.dylib */; };
@@ -259,8 +257,6 @@
 		110F560D19D56A9E003B9EB4 /* ChatDataProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatDataProxy.m; sourceTree = "<group>"; };
 		110F561019D56CF8003B9EB4 /* DPChatMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPChatMessage.h; sourceTree = "<group>"; };
 		110F561119D56CF8003B9EB4 /* DPChatMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPChatMessage.m; sourceTree = "<group>"; };
-		110F561419D56E07003B9EB4 /* DPMessageGroups.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPMessageGroups.h; sourceTree = "<group>"; };
-		110F561519D56E07003B9EB4 /* DPMessageGroups.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPMessageGroups.m; sourceTree = "<group>"; };
 		110F561819D57013003B9EB4 /* DPUiMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPUiMessage.h; sourceTree = "<group>"; };
 		110F561919D57013003B9EB4 /* DPUiMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPUiMessage.m; sourceTree = "<group>"; };
 		110FCCA019ADF83A0087CBCB /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
@@ -809,8 +805,6 @@
 				117AC6A319EE7C2F00143973 /* DPUserFromContact.m */,
 				11B1C62A19E51AFB003D2711 /* MsgDataProxy.h */,
 				11B1C62B19E51AFB003D2711 /* MsgDataProxy.m */,
-				110F561419D56E07003B9EB4 /* DPMessageGroups.h */,
-				110F561519D56E07003B9EB4 /* DPMessageGroups.m */,
 				110F561819D57013003B9EB4 /* DPUiMessage.h */,
 				110F561919D57013003B9EB4 /* DPUiMessage.m */,
 				110F561019D56CF8003B9EB4 /* DPChatMessage.h */,
@@ -1157,7 +1151,6 @@
 				58BACF0719B5803F00A72391 /* FriendDataProxy.m in Sources */,
 				110F560A19D55792003B9EB4 /* DBUiMessage.m in Sources */,
 				58CDC03919FE175500173FD7 /* GroupChatTableViewCell.m in Sources */,
-				110F561619D56E07003B9EB4 /* DPMessageGroups.m in Sources */,
 				58C14DD219C80D67009334E1 /* ContactViewController.m in Sources */,
 				58C14DEA19CAD70F009334E1 /* AddByInputTableViewCell.m in Sources */,
 				58B9F66919F8E5C500567BCC /* EmotIconViewController.m in Sources */,
@@ -1280,7 +1273,6 @@
 				58BC1E3E19C06B9000722A00 /* ChatMsgTableViewController.m in Sources */,
 				11FAA8C519EF558E002048FA /* FriendTableViewCellUser.m in Sources */,
 				58BC1E4019C06B9000722A00 /* LoginViewController.m in Sources */,
-				110F561719D56E07003B9EB4 /* DPMessageGroups.m in Sources */,
 				58D026C519D17D4800BE4748 /* NSNumber+IMNWError.m in Sources */,
 				1194301919F75D0100FD9206 /* ChatInputSoundView.m in Sources */,
 				58BC1E4119C06B9000722A00 /* imAppDelegate.m in Sources */,

@@ -10,5 +10,12 @@
 
 @implementation DPChatMessage
 
+@synthesize stage;
+@synthesize mid;
+@synthesize senderUid;
+@synthesize targetId;
+@synthesize msgType;
+@synthesize content;
+@synthesize sendTime;
 
 @end

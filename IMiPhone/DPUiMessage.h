@@ -12,7 +12,11 @@
 #define UI_MESSAGE_TYPE_CHAT 0
 #define UI_MESSAGE_TYPE_SYS 1
 
-@interface DPUiMessage : DBUiMessage
+@interface DPUiMessage : NSObject
 
+@property (nonatomic) NSInteger orderid;
+@property (nonatomic) long mid;
+@property (nonatomic) long relationId;//对方id 或者是群id
+@property (nonatomic) NSInteger type;//私聊，群聊,系统消息...
 
 @end

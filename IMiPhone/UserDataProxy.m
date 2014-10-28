@@ -227,6 +227,9 @@ static UserDataProxy *sharedProxy = nil;
 
 - (DPUser *)getUserByUid:(NSInteger) uid
 {
+    if (uid == self.lastLoginUid) {
+        return self.user;
+    }
     NSArray *users = [self mutableArrayUsers];
     NSInteger findindex = [users indexOfObjectPassingTest:^BOOL(id obj, NSUInteger idx, BOOL *stop) {
         if (obj && ((DPUser *)obj).uid == uid) {
