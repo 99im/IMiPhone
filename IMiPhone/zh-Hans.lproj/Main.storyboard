@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="sWe-ai-dJr">
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
     </dependencies>
     <scenes>
@@ -1514,7 +1513,7 @@
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <segue destination="zdu-lY-f24" kind="push" id="PkN-wa-pWs"/>
+                                            <segue destination="zdu-lY-f24" kind="modal" id="dLH-M0-4FS"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -1821,27 +1820,48 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qe9-iX-jqx">
-                                <rect key="frame" x="83" y="232" width="161" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title="提交申请">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="请输入申请理由。。。" translatesAutoresizingMaskIntoConstraints="NO" id="C7s-Zn-B4E">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="111"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="C7s-Zn-B4E">
+                                <rect key="frame" x="9" y="51" width="300" height="60"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wDh-yd-36W">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                <items>
+                                    <navigationItem title="申请加入群" id="XrU-Xz-GHv">
+                                        <barButtonItem key="leftBarButtonItem" title="取消" id="Ye3-za-t2Y">
+                                            <connections>
+                                                <action selector="cancelGroupApply:" destination="zdu-lY-f24" id="CrB-oI-CZA"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" title="提交" id="6YD-x6-MYv">
+                                            <connections>
+                                                <action selector="checkGroupApply:" destination="zdu-lY-f24" id="7Uk-6W-frD"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="你当前可以加入6个群，已加入3个群" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SH1-6c-oAI">
+                                <rect key="frame" x="9" y="125" width="295" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="zFc-V9-YQr"/>
+                    <navigationItem key="navigationItem" id="wsM-PO-zFH"/>
+                    <connections>
+                        <outlet property="btnCancel" destination="Ye3-za-t2Y" id="n2D-Ph-YXQ"/>
+                        <outlet property="btnSubmit" destination="6YD-x6-MYv" id="1JP-Ay-Kv6"/>
+                        <outlet property="tvMsg" destination="C7s-Zn-B4E" id="gDt-uJ-uO2"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k8u-pJ-2kB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4645" y="6201"/>
+            <point key="canvasLocation" x="4630" y="6217"/>
         </scene>
         <!--Chat-群聊-->
         <scene sceneID="zxE-yQ-ZxD">

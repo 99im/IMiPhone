@@ -15,6 +15,12 @@
     NSString *sError = @"";
 
     switch (self.integerValue) {
+        case 10026:
+            sError = @"批准加入群，别的管理员已经拒绝";
+            break;
+        case 10025:
+            sError = @"批准加入群，别的管理员已经同意";
+            break;
         case 10024:
             sError = @"加群请求已经过期";
             break;
