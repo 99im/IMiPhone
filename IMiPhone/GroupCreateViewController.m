@@ -34,4 +34,12 @@
 }
 */
 
+- (IBAction)cancelGroupCreater:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:^{
+        NSLog(@"取消建群");
+    }];
+}
+
+- (IBAction)checkGroupCreate:(id)sender {
+}
 @end

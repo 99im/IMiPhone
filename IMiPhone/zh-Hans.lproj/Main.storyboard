@@ -753,6 +753,24 @@
                                     <outlet property="tfAddTarget" destination="XZN-5m-urV" id="t9u-eZ-o6w"/>
                                 </connections>
                             </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="addForGroup" textLabel="ZKZ-Nl-rIE" style="IBUITableViewCellStyleDefault" id="JOA-GC-c0x" customClass="AddItemTableViewCell">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="JOA-GC-c0x" id="naK-qn-t4N">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ZKZ-Nl-rIE">
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="lblTitle" destination="ZKZ-Nl-rIE" id="yf3-F0-Kb4"/>
+                                </connections>
+                            </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="addByTPCell" textLabel="uww-bT-YaF" style="IBUITableViewCellStyleDefault" id="KdT-Tf-3w0">
                                 <rect key="frame" x="0.0" y="163" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -769,24 +787,6 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
-                                <connections>
-                                    <segue destination="2lb-9l-wVJ" kind="push" id="LXb-fG-iXE"/>
-                                </connections>
-                            </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="addForGroup" textLabel="ZKZ-Nl-rIE" style="IBUITableViewCellStyleDefault" id="JOA-GC-c0x">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="JOA-GC-c0x" id="naK-qn-t4N">
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ZKZ-Nl-rIE">
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -797,7 +797,7 @@
                     <navigationItem key="navigationItem" title="添加" id="0Cg-xz-UaQ"/>
                     <connections>
                         <segue destination="Ixd-6h-fyu" kind="push" identifier="Add2ResultSegue" id="EnR-fJ-pM5"/>
-                        <segue destination="xc6-7k-stq" kind="push" identifier="contactAdd2groupCreate" id="stQ-du-P0J"/>
+                        <segue destination="xc6-7k-stq" kind="modal" identifier="contactAdd2groupCreate" id="YF8-tq-9ko"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SSm-e9-x7L" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1650,24 +1650,59 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="输入群组名称" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xoK-wb-cf9">
-                                <rect key="frame" x="16" y="44" width="213" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xoK-wb-cf9">
+                                <rect key="frame" x="63" y="66" width="190" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="输入群组地点" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PhO-ju-4lS">
-                                <rect key="frame" x="16" y="88" width="213" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PhO-ju-4lS">
+                                <rect key="frame" x="63" y="110" width="190" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Sx-9P-ewN">
-                                <rect key="frame" x="237" y="88" width="67" height="30"/>
-                                <state key="normal" title="选择地点">
+                                <rect key="frame" x="246" y="110" width="67" height="30"/>
+                                <state key="normal" title="选择">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="请输入群简介，80字以内。。。" translatesAutoresizingMaskIntoConstraints="NO" id="OVv-fu-vJj">
-                                <rect key="frame" x="16" y="133" width="222" height="66"/>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3Ax-Dp-8AP">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                <items>
+                                    <navigationItem title="创建群组" id="9SU-fO-04f">
+                                        <barButtonItem key="leftBarButtonItem" title="取消" id="Uzl-e6-y6C">
+                                            <connections>
+                                                <action selector="cancelGroupCreater:" destination="xc6-7k-stq" id="KVb-yY-sOP"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" title="创建" id="jia-FJ-VVv">
+                                            <connections>
+                                                <action selector="checkGroupCreate:" destination="xc6-7k-stq" id="rbW-jx-tcX"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="群名" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hef-uk-CLb">
+                                <rect key="frame" x="16" y="70" width="68" height="20"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="城市" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zVF-52-iyd">
+                                <rect key="frame" x="16" y="111" width="51" height="25"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="简介" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YvR-1n-cgI">
+                                <rect key="frame" x="16" y="148" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OVv-fu-vJj">
+                                <rect key="frame" x="63" y="148" width="222" height="60"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -1675,8 +1710,9 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="yVq-xa-gOd"/>
                     <connections>
+                        <outlet property="tfCity" destination="PhO-ju-4lS" id="bSu-ZD-4BA"/>
+                        <outlet property="tfName" destination="xoK-wb-cf9" id="fmL-cH-giI"/>
                         <segue destination="nqj-0p-hk3" kind="push" id="j7u-OT-bsU"/>
                     </connections>
                 </viewController>
@@ -2111,12 +2147,12 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="jj6-rV-QBG"/>
-        <segue reference="6IF-l5-3Iq"/>
-        <segue reference="fNZ-Tb-k0o"/>
-        <segue reference="EnR-fJ-pM5"/>
-        <segue reference="B9e-R6-y8A"/>
-        <segue reference="Dql-ZX-dEr"/>
         <segue reference="JfN-oz-5Dg"/>
+        <segue reference="6IF-l5-3Iq"/>
+        <segue reference="jj6-rV-QBG"/>
+        <segue reference="B9e-R6-y8A"/>
+        <segue reference="EnR-fJ-pM5"/>
+        <segue reference="j7u-OT-bsU"/>
+        <segue reference="fNZ-Tb-k0o"/>
     </inferredMetricsTieBreakers>
 </document>
