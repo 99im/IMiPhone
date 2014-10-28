@@ -19,7 +19,7 @@
 - (NSArray *)getSysMsgList;
 //- (NSArray *)getMsgListIsNext:(BOOL)isNext beginMid:(long)begin andCount:(NSInteger)count;
 
-- (void)updateUiMsgList:(DPUiMessage *)dpUiMessage;
+//- (void)updateUiMsgList:(DPUiMessage *)dpUiMessage;
 - (NSArray *)getUiMsgList;
 
 
