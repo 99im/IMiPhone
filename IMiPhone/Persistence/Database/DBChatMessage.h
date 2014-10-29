@@ -16,7 +16,7 @@
 @property (nonatomic) NSInteger targetId;
 @property (nonatomic) NSInteger msgType;
 @property (nonatomic, retain) NSString *content;
-@property (nonatomic) NSInteger mid;
+@property (nonatomic) long mid;
 @property (nonatomic) NSInteger senderUid;
 @property (nonatomic, retain) NSString *sendTime;
 

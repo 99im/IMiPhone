@@ -53,7 +53,7 @@
         if (dpUser) {
              self.title = dpUser.nick;
         }
-        NSArray *arrChatMessages = [[ChatDataProxy sharedProxy] mutableArrayMessages];
+        NSArray *arrChatMessages = [[ChatDataProxy sharedProxy] getP2PChatMessagesByTargetUid:[ChatDataProxy sharedProxy].chatToUid];
         for (NSInteger i = 0; i < arrChatMessages.count; i++) {
             DPChatMessage *dpChatMsg = [arrChatMessages objectAtIndex:i];
             ChatTableViewCellFrame *chatTableCellFrame = [[ChatTableViewCellFrame alloc] init];
@@ -84,6 +84,11 @@
     [self removeMessageNotification];
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [self scrollToLastCell:NO];
+}
+
 /*
 #pragma mark - Navigation
 
@@ -98,7 +103,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    NSArray *arrChatMsgs = [[ChatDataProxy sharedProxy] mutableArrayMessages];
+    NSArray *arrChatMsgs = [[ChatDataProxy sharedProxy] getP2PChatMessagesByTargetUid:[ChatDataProxy sharedProxy].chatToUid];
     return arrChatMsgs.count;
 }
 
@@ -113,6 +118,7 @@
     return cell;
     
 }
+
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     ChatTableViewCellFrame *cellFrame = [self.arrAllCellFrames objectAtIndex:indexPath.row];
@@ -126,7 +132,6 @@
 }
 
 #pragma mark - chat text input logic
-NSInteger midcounter;
 
 - (IBAction)tfInputTextDidEndOnExit:(id)sender {
     if ([ChatDataProxy sharedProxy].chatViewType == ChatViewTypeP2P) {
@@ -137,6 +142,17 @@ NSInteger midcounter;
     }
 
 }
+
+- (void)scrollToLastCell:(BOOL)animated
+{
+    NSInteger maxRow = [self.tableViewChat numberOfRowsInSection:0] - 1;
+    if (maxRow < 0) {
+       return;
+    }
+    NSIndexPath *indexPathMax = [NSIndexPath indexPathForRow:maxRow inSection:0];
+    [self.tableViewChat scrollToRowAtIndexPath:indexPathMax atScrollPosition:UITableViewScrollPositionBottom animated:animated];
+}
+
 
 #pragma mark - view input text buttons logic
 
@@ -232,7 +248,9 @@ NSInteger midcounter;
     [chatTableCellFrame setMsgType:msgType withMsg:dpChatMsg];
     [self.arrAllCellFrames addObject:chatTableCellFrame];
     [self.tableViewChat reloadData];
+    [self scrollToLastCell:YES];
 }
+
 
 
 @end

@@ -7,18 +7,16 @@
 //
 
 #import "ChatDataProxy.h"
+#import "UserDataProxy.h"
 
 @interface ChatDataProxy()
 
-@property (nonatomic, retain) NSMutableArray *arrMessages;
-@property (nonatomic, retain) NSMutableArray *arrMessageGroups;
+@property (nonatomic, retain) NSDictionary *dicMessages;
 
 @end
 
 @implementation ChatDataProxy
 
-@synthesize arrMessageGroups = _arrMessageGroups;
-@synthesize arrMessages = _arrMessages;
 @synthesize arrEmotions = _arrEmotions;
 
 static ChatDataProxy *messageDataProxy = nil;
@@ -33,103 +31,57 @@ static ChatDataProxy *messageDataProxy = nil;
 }
 #pragma mark - messages
 
-- (NSMutableArray *)mutableArrayMessages
+- (NSMutableArray *)getP2PChatMessagesByTargetUid:(long)targetUid
 {
-    if (_arrMessages == nil) {
-        //数据量大的话，可以考虑异步加载
-        NSMutableArray *arrDBMessages = [[ChatMessageDAO sharedDAO] query:@"" Bind:[NSMutableArray arrayWithObjects:nil]];
-        _arrMessages = [NSMutableArray array];
+    if (self.dicMessages == nil) {
+        self.dicMessages = [NSMutableDictionary dictionary];
+    }
+    NSMutableArray *arrMessagesWithHer = [self.dicMessages objectForKey:[NSNumber numberWithLong:targetUid]];
+    if (arrMessagesWithHer == nil) {
+        NSMutableArray *arrDBMessages = [[ChatMessageDAO sharedDAO] query:@"senderUid=? OR targetId=?" Bind:[NSMutableArray arrayWithObjects:[NSString stringWithFormat:@"%ld",targetUid],[NSString stringWithFormat:@"%ld",targetUid],nil]];
+        arrMessagesWithHer = [NSMutableArray array];
         DPChatMessage *tempMessage;
         if (arrDBMessages) {
             for (NSInteger i = 0; i < arrDBMessages.count; i++) {
                 tempMessage = [[DPChatMessage alloc] init];
                 [ImDataUtil copyFrom:arrDBMessages[i] To:tempMessage];
-                [_arrMessages addObject:tempMessage];
+                [arrMessagesWithHer addObject:tempMessage];
             }
         }
+        [self.dicMessages setValue:arrMessagesWithHer forKey:[NSString stringWithFormat:@"%ld",targetUid]];
     }
-    return [self mutableArrayValueForKey:@"arrMessages"];
+    return arrMessagesWithHer;
 }
 
-- (void)insertObject:(id)object inArrMessagesAtIndex:(NSUInteger)index
+- (void)updateP2PChatMessage:(DPChatMessage *)dpChatMessage
 {
-    
     DBChatMessage *tempDBMessage = [[DBChatMessage alloc] init];
-    [ImDataUtil copyFrom:object To:tempDBMessage];
-    
-    NSInteger findIndex = [ImDataUtil getIndexOf:self.arrMessages byItemKey:DB_PRIMARY_KEY_CHAT_MESSAGE_MID withValue:[NSNumber numberWithInteger:tempDBMessage.mid]];
+    [ImDataUtil copyFrom:dpChatMessage To:tempDBMessage];
+    long herUid;
+    if (dpChatMessage.senderUid == [UserDataProxy sharedProxy].lastLoginUid) {
+        herUid = dpChatMessage.targetId;
+    }
+    else {
+        herUid = dpChatMessage.senderUid;
+    }
+    NSMutableArray *arrMessagesWithHer = [self getP2PChatMessagesByTargetUid:herUid];
+
+    NSInteger findIndex = [ImDataUtil getIndexOf:arrMessagesWithHer byItemKey:DB_PRIMARY_KEY_CHAT_MESSAGE_MID withValue:[NSNumber numberWithInteger:tempDBMessage.mid]];
     if (findIndex != NSNotFound) {
-        [[self mutableArrayMessages] replaceObjectAtIndex:findIndex withObject:object];
+        [arrMessagesWithHer replaceObjectAtIndex:findIndex withObject:dpChatMessage];
+        [[ChatMessageDAO sharedDAO] update:tempDBMessage ByCondition:[DB_PRIMARY_KEY_CHAT_MESSAGE_MID stringByAppendingString:@"=?"] Bind:[NSArray arrayWithObject:[NSString stringWithFormat:@"%ld",dpChatMessage.mid]]];
     }
     else
     {
-        
         [[ChatMessageDAO sharedDAO] insert: tempDBMessage];
-        [self.arrMessages insertObject:object atIndex:index];
-        NSLog(@"arrMessages insert message id:%ld", (long)((DPChatMessage *)object).senderUid);
+        [arrMessagesWithHer addObject:dpChatMessage];
+        NSLog(@"arrMessages insert message id:%ld", (long)((DPChatMessage *)dpChatMessage).senderUid);
     }
 }
 
--(void)removeObjectFromArrMessagesAtIndex:(NSUInteger)index
-
+- (DPChatMessage *)getP2PChatMessageByTargetUid:(long)targetUid withMid:(long)mid;
 {
-    DPChatMessage *dpMessage = self.arrMessages[index];
-    [[ChatMessageDAO sharedDAO] deleteByCondition:[DB_PRIMARY_KEY_CHAT_MESSAGE_MID stringByAppendingString:@"=?"]
-                                         Bind:[NSMutableArray arrayWithObjects:[NSString stringWithFormat:@"%li",(long)dpMessage.mid],nil]];
-    [self.arrMessages removeObjectAtIndex:index];
-    NSLog(@"remove arrMessages at index :%li",(unsigned long)index);
-   
-}
-
-//- (void)replaceObjectInArrMessagesAtIndex:(NSUInteger)index withObject:(id)object
-//{
-//    DBChatMessage *tempDBMessage = [[DBChatMessage alloc] init];
-//    [ImDataUtil copyFrom:object To:tempDBMessage];
-//
-//    [[ChatMessageDAO sharedDAO] update:
-//     tempDBMessage
-//                       ByCondition:[DB_PRIMARY_KEY_SENDER_ID stringByAppendingString:@"=?"]
-//                              Bind:[NSMutableArray arrayWithObjects:[NSString stringWithFormat:@"%li",(long)tempDBMessage.senderUid],nil]];
-//    [self.arrMessages replaceObjectAtIndex:index withObject:object];
-//    NSLog(@"replace arrMessages at %li,with new sender id:%li",index,(long)((DPChatMessage *)object).senderUid);
-//}
-
-//#pragma mark - messageGroups
-//
-//- (NSMutableArray *)mutableArrayMessageGroups
-//{
-//    if (_arrMessageGroups == nil) {
-//        //数据量大的话，可以考虑异步加载
-//        NSMutableArray *arrDBMessageGroups = [[MessageGroupDAO sharedDAO] query:@"" Bind:[NSMutableArray arrayWithObjects:nil]];
-//        _arrMessageGroups = [NSMutableArray array];
-//        DPMessageGroup *tempMessageGroup;
-//        if (arrDBMessageGroups) {
-//            for (NSInteger i = 0; i < arrDBMessageGroups.count; i++) {
-//                tempMessageGroup = [[DPMessageGroup alloc] init];
-//                [ImDataUtil copyFrom:arrDBMessageGroups[i] To:tempMessageGroup];
-//                 [_arrMessageGroups addObject:tempMessageGroup];
-//            }
-//        }
-//    }
-//    return _arrMessages;
-//}
-//
-//- (void)insertObject:(id)object inArrMessageGroupAtIndex:(NSUInteger)index
-//{
-//    [self.arrMessageGroups insertObject:object atIndex:index];
-//    NSLog(@"arrMessageGroups insert messageGroupId:%@",((DPMessageGroup *)object).messageGroupId);
-//}
-//
-//-(void)removeObjectFromArrMessageGroupsAtIndex:(NSUInteger)index
-//{
-//    [self.arrMessageGroups removeObjectAtIndex:index];
-//    NSLog(@"arrMessageGroups remove at%li",(unsigned long)index);
-//    
-//}
-
-- (DPChatMessage *)getChatMessageFromMid:(long)mid
-{
-    NSArray *chatMessages = [self mutableArrayMessages];
+    NSArray *chatMessages = [self getP2PChatMessagesByTargetUid:targetUid];
     NSInteger findindex = [chatMessages indexOfObjectPassingTest:^BOOL(id obj, NSUInteger idx, BOOL *stop) {
         if (obj && ((DPChatMessage *)obj).mid == mid) {
             return YES;

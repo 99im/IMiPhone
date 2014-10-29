@@ -71,7 +71,7 @@
     if (dpUiMsg.type == UI_MESSAGE_TYPE_CHAT) {
         cellIdentifier = @"ChatMsgTableViewCellP2G";
         cell = [self.tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
-        DPChatMessage *dpChatMsg = [[ChatDataProxy sharedProxy] getChatMessageFromMid:dpUiMsg.mid];
+        DPChatMessage *dpChatMsg = [[ChatDataProxy sharedProxy] getP2PChatMessageByTargetUid:[ChatDataProxy sharedProxy].chatToUid withMid:dpUiMsg.mid];
         DPUser *dpUser = [[UserDataProxy sharedProxy] getUserByUid:dpChatMsg.senderUid];
         cell.lblGroupName.text = dpUser.nick;
 //        NSLog(@"%@,%@",dpChatMsg.content,dpChatMsg.sendTime);
@@ -95,7 +95,7 @@
     NSArray *uiMsgList = [[MsgDataProxy sharedProxy] getUiMsgList];
     DPUiMessage *dpUiMsg = [uiMsgList objectAtIndex:indexPath.row];
     if (dpUiMsg.type == UI_MESSAGE_TYPE_CHAT) {
-        DPChatMessage *dpChatMsg = [[ChatDataProxy sharedProxy] getChatMessageFromMid:dpUiMsg.mid];
+        DPChatMessage *dpChatMsg = [[ChatDataProxy sharedProxy] getP2PChatMessageByTargetUid:[ChatDataProxy sharedProxy].chatToUid withMid:dpUiMsg.mid];
         if ([dpChatMsg.stage isEqualToString:CHAT_STAGE_P2P]) {
 //            DPUser *dpUser = [[UserDataProxy sharedProxy] getUserByUid: dpUiMsg.relationId];
 //            if (dpUser == nil) {
