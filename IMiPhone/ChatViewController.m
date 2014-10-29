@@ -18,7 +18,7 @@
 #import "EmotionViewController.h"
 #import "ChatDataProxy.h"
 
-@interface ChatViewController ()
+@interface ChatViewController () <UITextFieldDelegate, UIGestureRecognizerDelegate>
 
 //rootview 上的组件
 @property (weak, nonatomic) IBOutlet UITableView *tableViewChat;
@@ -26,6 +26,8 @@
 @property (weak, nonatomic) IBOutlet ChatInputSoundView *viewChatInputSound;
 @property (weak, nonatomic) IBOutlet UITextField *tfInputText;
 @property (weak, nonatomic) IBOutlet UIView *viewChatContainer;
+
+@property (nonatomic, retain) UITapGestureRecognizer *tap;
 
 //
 @property (nonatomic,retain) NSMutableArray *arrAllCellFrames;
@@ -73,6 +75,11 @@
     [self.view addSubview:self.emotionViewController.view];
     [self addChildViewController:self.emotionViewController];
     
+    self.tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapHandler:)];
+    [self.view addGestureRecognizer:self.tap];
+    self.tap.delegate = self;
+    self.tap.cancelsTouchesInView = NO;
+    
     [self registerMessageNotification];
 }
 
@@ -81,6 +88,63 @@
     // Dispose of any resources that can be recreated.
     [self removeMessageNotification];
 }
+
+-(void)viewDidAppear:(BOOL)animated
+{
+    //注册键盘出现通知
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector (keyboardDidShow:)
+                                                 name: UIKeyboardDidShowNotification object:nil];
+    //注册键盘隐藏通知
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector (keyboardDidHide:)
+                                                 name: UIKeyboardDidHideNotification object:nil];
+    [super viewDidAppear:YES];
+
+}
+
+-(void) viewWillDisappear:(BOOL)animated {
+    //解除键盘出现通知
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name: UIKeyboardDidShowNotification object:nil];
+    //解除键盘隐藏通知
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name: UIKeyboardDidHideNotification object:nil];
+    
+    [super viewWillDisappear:animated];
+}
+
+- (IBAction)tapHandler:(UITapGestureRecognizer *)sender
+{
+    CGPoint point = [sender locationInView:self.view];
+    //NSLog(@"RegInfoViewController tapHandler: x: %f, y: %f", point.x, point.y);
+    if(CGRectContainsPoint(self.viewChatContainer.frame, point))
+    {
+        [self.tfInputText resignFirstResponder];
+    }
+}
+
+
+- (void)keyboardDidShow:(NSNotification *)notification
+{
+    NSDictionary* info = [notification userInfo];
+    CGRect kbRect = [[info objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
+    kbRect = [self.view convertRect:kbRect fromView:nil];
+    
+    CGRect bounds = self.view.bounds;
+    bounds.origin.y = kbRect.size.height;
+    //[UIView animateWithDuration:0.25f animations:^{
+        self.viewChatContainer.bounds = bounds;
+    //        [self.view layoutIfNeeded];
+    //}];
+}
+
+- (void)keyboardDidHide:(NSNotification *)notification
+{
+    //[UIView animateWithDuration:0.25f animations:^{
+        self.viewChatContainer.bounds = self.view.bounds;
+    //        [self.view layoutIfNeeded];
+    //}];
+}
+
 
 /*
 #pragma mark - Navigation
@@ -91,6 +155,24 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+#pragma mark - UITextFieldDelegate method
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField
+{
+    
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [self.tfInputText resignFirstResponder];
+    return YES;
+}
 
 #pragma mark - chat table view logic
 
@@ -151,7 +233,6 @@ NSInteger midcounter;
     bounds.origin.y = EMOTS_HEIGHT;
     [UIView animateWithDuration:0.25f animations:^{
         self.viewChatContainer.bounds = bounds;
-//        [self.view layoutIfNeeded];
     }];
 }
 

@@ -1042,7 +1042,7 @@
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="请输入内容" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SOo-Re-DHd">
                                                 <rect key="frame" x="75" y="9" width="190" height="30"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" keyboardType="alphabet" returnKeyType="send" enablesReturnKeyAutomatically="YES"/>
+                                                <textInputTraits key="textInputTraits" returnKeyType="send" enablesReturnKeyAutomatically="YES"/>
                                                 <connections>
                                                     <action selector="tfInputTextDidEndOnExit:" destination="U0M-ht-yaq" eventType="editingDidEndOnExit" id="YnN-3t-2sl"/>
                                                 </connections>
