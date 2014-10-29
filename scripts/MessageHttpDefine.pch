@@ -1,5 +1,99 @@
 
 
+#define MARK_CHAT @"chat"
+
+/*
+mark: chat
+type: /chat/unreadlist/
+kind: http
+method: http-post
+describe: 获取未读消息列表，客户端在连上socket后，向服务器端发送此请求，readInfo为一个场景id对应的当前最新消息的id
+example: http://local.taiqiu.com:7070/chat/unreadlist/?readInfo={%22p_16_17%22:66,%22g_8%22:71}&verify=17_1411380649_8cd8f6306fb1232f98573dae4e137f50
+
+{
+"error_code": 0,
+"unread": {
+"p_16_17": {
+"total": 2,
+"list": [
+{
+"mid": 76,
+"gid": "p_16_17",
+"suid": 17,
+"msgType": 0,
+"content": "helloSSSSSSS",
+"ctime": "2014-10-23 18:28:11",
+"status": 0
+},
+{
+"mid": 73,
+"gid": "p_16_17",
+"suid": 17,
+"msgType": 0,
+"content": "helloSSSSSSS",
+"ctime": "2014-10-23 18:27:16",
+"status": 0
+}
+]
+},
+"p_17_27": {
+"total": 0,
+"list": []
+},
+"g_8": {
+"total": 4,
+"list": [
+{
+"mid": 77,
+"gid": "g_8",
+"suid": 8,
+"msgType": 0,
+"content": "hellossee555555",
+"ctime": "2014-10-23 18:28:22",
+"status": 0
+},
+{
+"mid": 75,
+"gid": "g_8",
+"suid": 8,
+"msgType": 0,
+"content": "hellossee555555",
+"ctime": "2014-10-23 18:27:45",
+"status": 0
+},
+{
+"mid": 74,
+"gid": "g_8",
+"suid": 8,
+"msgType": 0,
+"content": "hellossee",
+"ctime": "2014-10-23 18:27:26",
+"status": 0
+},
+{
+"mid": 72,
+"gid": "g_8",
+"suid": 8,
+"msgType": 0,
+"content": "hellossee",
+"ctime": "2014-10-23 17:28:37",
+"status": 0
+}
+]
+}
+}
+}
+*/
+#define PATH_H__CHAT_UNREADLIST_ @"/chat/unreadlist/"
+#define NOTI_H__CHAT_UNREADLIST_ @"MPchatunreadlistNotifiction"
+#define METHOD_H__CHAT_UNREADLIST_ @"POST"
+#define KEYQ_H__CHAT_UNREADLIST__READINFO @"readInfo" //readInfo string post 已读消息json串  {"p_16_17":66,"g_8":71} key为场景id 具体如下：如果是好友聊天则为p_uid1_uid2 uid1，uid2为自己uid和好友id，升序排律 如果是群聊天则为g_groupId
+#define KEYP_H__CHAT_UNREADLIST__ERROR_CODE @"error_code" //error_code int 0
+#define KEYP_H__CHAT_UNREADLIST__UNREAD @"unread" //unread object 可以为场景id类似 p_1_2 g_3
+#define KEYP_H__CHAT_UNREADLIST__UNREAD_TOTAL @"total" // total 未读消息总数
+#define KEYP_H__CHAT_UNREADLIST__UNREAD_LIST @"list" // list 消息列表 默认取最新20条
+
+
 #define MARK_GROUP @"group"
 
 /*
@@ -87,9 +181,6 @@ example: http://local.taiqiu.com:7070/group/apply/?gid=8&msg=please&verify=34_14
 #define KEYQ_H__GROUP_APPLY__MSG @"msg" //msg string
 #define KEYP_H__GROUP_APPLY__ERROR_CODE @"error_code" //error_code int 0
 #define KEYP_H__GROUP_APPLY__RID @"rid" //rid int 申请序列号
-
-
-#define MARK_CHAT @"chat"
 
 /*
 mark: chat
@@ -620,6 +711,8 @@ method: http-get
 describe: 获取系统消息列表
 
 todo 渲染
+
+系统消息 分模块 模块内分类型 所以各个类型具有不同的字段，需具体消息具体渲染
 example: http://local.taiqiu.com:7070/msg/sysmsg-list/?&modids=1,2,3&verify=17_1411380649_8cd8f6306fb1232f98573dae4e137f50
 
 {
@@ -700,7 +793,8 @@ example: http://local.taiqiu.com:7070/msg/sysmsg-list/?&modids=1,2,3&verify=17_1
 #define KEYP_H__MSG_SYSMSG_LIST__LIST_CONTENT @"content" // content
 #define KEYP_H__MSG_SYSMSG_LIST__LIST_RESULTSTATUS @"resultStatus" // resultStatus
 #define KEYP_H__MSG_SYSMSG_LIST__LIST_EXTRASTATUS @"extraStatus" // extraStatus
-#define KEYP_H__MSG_SYSMSG_LIST__LIST_UNREAD @"unread" // unread
+#define KEYP_H__MSG_SYSMSG_LIST__LIST_UNREAD @"unread" // unread 
+#define KEYP_H__MSG_SYSMSG_LIST__LIST_TITLE @"title" // title
 
 /*
 mark: msg

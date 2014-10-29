@@ -11,11 +11,11 @@
 @interface DPChatMessage : NSObject 
 
 @property (nonatomic, retain) NSString *stage;
-@property (nonatomic) NSInteger targetId;
+@property (nonatomic) long targetId;
 @property (nonatomic) NSInteger msgType;
 @property (nonatomic, retain) NSString *content;
-@property (nonatomic) NSInteger mid;
-@property (nonatomic) NSInteger senderUid;
+@property (nonatomic) long mid;
+@property (nonatomic) long senderUid;
 @property (nonatomic, retain) NSString *sendTime;
 
 

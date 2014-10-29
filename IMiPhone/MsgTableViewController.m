@@ -12,6 +12,9 @@
 #import "ChatMsgTableViewCellP2G.h"
 #import "ChatDataProxy.h"
 #import "UserDataProxy.h"
+#import "MsgDataProxy.h"
+#import "ChatMessageProxy.h"
+#import "UserMessageProxy.h"
 
 @interface MsgTableViewController ()
 
@@ -68,20 +71,53 @@
     if (dpUiMsg.type == UI_MESSAGE_TYPE_CHAT) {
         cellIdentifier = @"ChatMsgTableViewCellP2G";
         cell = [self.tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
-        DPChatMessage *dpChatMsg = [[ChatDataProxy sharedProxy] getChatMessageFromMid:dpUiMsg.mid];
+        DPChatMessage *dpChatMsg = [[ChatDataProxy sharedProxy] getP2PChatMessageByTargetUid:[ChatDataProxy sharedProxy].chatToUid withMid:dpUiMsg.mid];
         DPUser *dpUser = [[UserDataProxy sharedProxy] getUserByUid:dpChatMsg.senderUid];
         cell.lblGroupName.text = dpUser.nick;
-        NSLog(@"%@,%@",dpChatMsg.content,dpChatMsg.sendTime);
-
+//        NSLog(@"%@,%@",dpChatMsg.content,dpChatMsg.sendTime);
         cell.lblLastMsg.text = dpChatMsg.content;
 //        cell.lblTime.text = dpChatMsg.sendTime;
     }
-    else {
-        NSLog(@"初始化系统消息cell！！");
+    else if (dpUiMsg.type == UI_MESSAGE_TYPE_SYS) {
+        cellIdentifier = @"ChatMsgTableViewCellP2G";
+        cell = [self.tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
+        DPSysMessage *dpSysMsg = [[MsgDataProxy sharedProxy] getSysMsgByMid:dpUiMsg.mid];
+        
+        cell.lblGroupName.text = dpSysMsg.title;
+        cell.lblLastMsg.text = dpSysMsg.content;
+        //        cell.lblTime.text = dpChatMsg.sendTime;
     }
     return cell;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSArray *uiMsgList = [[MsgDataProxy sharedProxy] getUiMsgList];
+    DPUiMessage *dpUiMsg = [uiMsgList objectAtIndex:indexPath.row];
+    if (dpUiMsg.type == UI_MESSAGE_TYPE_CHAT) {
+        DPChatMessage *dpChatMsg = [[ChatDataProxy sharedProxy] getP2PChatMessageByTargetUid:[ChatDataProxy sharedProxy].chatToUid withMid:dpUiMsg.mid];
+        if ([dpChatMsg.stage isEqualToString:CHAT_STAGE_P2P]) {
+//            DPUser *dpUser = [[UserDataProxy sharedProxy] getUserByUid: dpUiMsg.relationId];
+//            if (dpUser == nil) {
+//                [UserMessageProxy sharedProxy] sendTyp
+//            }
+            [ChatDataProxy sharedProxy].chatToUid = dpUiMsg.relationId;
+            [ChatDataProxy sharedProxy].chatViewType = ChatViewTypeP2P;
+            [self performSegueWithIdentifier:@"ChatMsgList2ChatSegue" sender:self];
+        }
+    }
+    else if (dpUiMsg.type == UI_MESSAGE_TYPE_SYS) {
+        DPSysMessage *dpSysMsg = [[MsgDataProxy sharedProxy] getSysMsgByMid:dpUiMsg.mid];
+
+        if (dpSysMsg.targetId != 0) {
+            [ChatDataProxy sharedProxy].chatToUid = dpSysMsg.targetId;
+            [ChatDataProxy sharedProxy].chatViewType = ChatViewTypeP2P;
+            [self performSegueWithIdentifier:@"ChatMsgList2ChatSegue" sender:self];
+
+        }
+    }
+
+}
 
 /*
 // Override to support conditional editing of the table view.

@@ -23,6 +23,8 @@
 
   [self registerMessageNotification];
 
+  [[GroupDataProxy sharedProxy] getGroupMyList];
+
   // Uncomment the following line to preserve selection between presentations.ß
   // self.clearsSelectionOnViewWillAppear = NO;
 
@@ -43,12 +45,8 @@
     [super viewDidAppear:animated];
 
     //TODO : 群组刷新时长判断-超过30分钟触发刷新
-    [[GroupMessageProxy sharedProxy] sendGroupMyList:[NSNumber numberWithInteger:0]
-                                         withPageNum:[NSNumber numberWithInteger:50]];
-    //self.scrollView.contentSize = CGSizeMake(320, 751);
-    //self.scrollView.frame = CGRectMake(0, 64, 320, 504);
-    //NSLog(@" self.scrollView.contentSize %f,%f", self.scrollView.contentSize.height, self.scrollView.contentSize.width);
-    //NSLog(@" self.scrollView.frame %f,%f", self.scrollView.frame.size.height, self.scrollView.frame.size.width);
+//    [[GroupMessageProxy sharedProxy] sendGroupMyList:[NSNumber numberWithInteger:0]
+//                                         withPageNum:[NSNumber numberWithInteger:50]];
 
 }
 
@@ -61,20 +59,19 @@
 }
 
 
+
 #pragma mark - 数据加载
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    NSLog(@"group numberOfSectionsInTableView");
-    //#warning Potentially incomplete method implementation.
-    // Return the number of sections.
+    //NSLog(@"group numberOfSectionsInTableView");
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    NSLog(@"group numberOfRowsInSection");
-    //TODO : 待返回已加入群组的总个数
-    // Return the number of rows in the section.
-    return 4;
+    //NSLog(@"group numberOfRowsInSection");
+    return [[GroupDataProxy sharedProxy] countGroupMyList];
+//    NSMutableArray *list = [[GroupDataProxy sharedProxy] getGroupMyList];
+//    return [list count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -90,8 +87,8 @@
 
 - (void)registerMessageNotification {
     [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(showGroupInfo:)
-                                                 name:NOTI_GROUP_SHOW_INFO
+                                             selector:@selector(didShowGroupMyList:)
+                                                 name:NOTI_H__GROUP_MYLIST_
                                                object:nil];
 }
 
@@ -99,11 +96,9 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
-- (void)showGroupInfo:(NSNotification *)notification {
-    //[GroupDataProxy sharedProxy].showUserInfoRleation = RELATION_FRIEND;
-    //[GroupDataProxy sharedProxy].showUserInfoUid = ((DPUser *)notification.object).uid ;
-    //[self performSegueWithIdentifier:@"groupTable2GroupDetail" sender:self];
-
+- (void)didShowGroupMyList:(NSNotification *)notification {
+    //NSLog(@"准备重新显示数据：共%i条",[[GroupDataProxy sharedProxy] countGroupMyList]);
+    [self.tableView reloadData];
 }
 
 

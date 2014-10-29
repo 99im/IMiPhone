@@ -10,4 +10,17 @@
 
 @implementation DPSysMessage
 
+@synthesize uid;
+@synthesize  smid;
+@synthesize  modid;
+@synthesize  type;
+@synthesize  ctime;
+@synthesize  targetId;
+@synthesize  extraId;
+@synthesize  content;
+@synthesize  resultStatus;
+@synthesize  extraStatus;
+@synthesize  unread;
+@synthesize title;
+
 @end

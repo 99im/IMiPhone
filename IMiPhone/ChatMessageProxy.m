@@ -68,7 +68,7 @@ static ChatMessageProxy *messageProxy = nil;
     dpChatMessage.senderUid = [[info objectForKey:KEYP_S_CHAT_CHATN_SENDUID] integerValue];
     dpChatMessage.targetId = [[info objectForKey:KEYP_S_CHAT_CHATN_TARGETID] integerValue];
     dpChatMessage.stage = [info objectForKey:KEYP_S_CHAT_CHATN_STAGE];
-    [[[ChatDataProxy sharedProxy] mutableArrayMessages] addObject:dpChatMessage];
+    [[ChatDataProxy sharedProxy] updateP2PChatMessage:dpChatMessage];
     DPUiMessage *dpUiMessage = [[DPUiMessage alloc] init];
     dpUiMessage.orderid = [[MsgDataProxy sharedProxy] getUiMsgListNextOrderId];
     dpUiMessage.type = UI_MESSAGE_TYPE_CHAT;

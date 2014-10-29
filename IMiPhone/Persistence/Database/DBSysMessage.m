@@ -21,5 +21,6 @@
 @synthesize  resultStatus;
 @synthesize  extraStatus;
 @synthesize  unread;
+@synthesize title;
 
 @end

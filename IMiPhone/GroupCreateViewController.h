@@ -7,7 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GroupDataProxy.h"
+#import "GroupMessageProxy.h"
 
 @interface GroupCreateViewController : UIViewController
+@property (weak, nonatomic) IBOutlet UITextField *tfName;
+@property (weak, nonatomic) IBOutlet UITextField *tfCity;
+@property (weak, nonatomic) IBOutlet UITextView *tvIntro;
+
+- (IBAction)cancelGroupCreater:(id)sender;
+- (IBAction)checkGroupCreate:(id)sender;
 
 @end
