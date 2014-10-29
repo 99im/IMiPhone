@@ -1912,7 +1912,7 @@
             </objects>
             <point key="canvasLocation" x="4630" y="6217"/>
         </scene>
-        <!--Chat-群聊-->
+        <!--Group-群聊-->
         <scene sceneID="zxE-yQ-ZxD">
             <objects>
                 <viewController id="yEJ-R3-2p3" userLabel="Group-群聊" customClass="GroupChatViewController" sceneMemberID="viewController">
@@ -2257,12 +2257,8 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="JfN-oz-5Dg"/>
-        <segue reference="6IF-l5-3Iq"/>
         <segue reference="jj6-rV-QBG"/>
-        <segue reference="B9e-R6-y8A"/>
-        <segue reference="EnR-fJ-pM5"/>
-        <segue reference="j7u-OT-bsU"/>
+        <segue reference="6IF-l5-3Iq"/>
         <segue reference="fNZ-Tb-k0o"/>
         <segue reference="EnR-fJ-pM5"/>
         <segue reference="8gL-WP-3D1"/>
