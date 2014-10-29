@@ -26,6 +26,8 @@
 
 @implementation ChatTableViewCell
 
+@synthesize cellFrame = _cellFrame;
+
 - (void)setCellFrame:(ChatTableViewCellFrame *)cellFrame
 {
     _cellFrame = cellFrame;

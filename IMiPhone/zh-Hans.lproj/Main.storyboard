@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="sWe-ai-dJr">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="sWe-ai-dJr">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
@@ -10,8 +10,8 @@
             <objects>
                 <viewController storyboardIdentifier="imViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="vXZ-lx-hvc" userLabel="Welcome-欢迎页" customClass="AccountViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="ncr-s0-Hgg"/>
-                        <viewControllerLayoutGuide type="bottom" id="LLr-Ba-HUU"/>
+                        <viewControllerLayoutGuide type="top" id="hP2-Iy-YXc"/>
+                        <viewControllerLayoutGuide type="bottom" id="lmd-hK-qRe"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -57,8 +57,8 @@
             <objects>
                 <viewController storyboardIdentifier="LoginViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Ogp-wt-lK2" userLabel="Login-登录页" customClass="LoginViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="ZoA-mt-RgO"/>
-                        <viewControllerLayoutGuide type="bottom" id="kP5-pR-TMp"/>
+                        <viewControllerLayoutGuide type="top" id="o4A-Ac-UUK"/>
+                        <viewControllerLayoutGuide type="bottom" id="eS4-Z8-EWJ"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="0dl-mD-GMj">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -117,8 +117,8 @@
             <objects>
                 <viewController storyboardIdentifier="RegisterViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="WVo-lK-JtN" userLabel="RegStep-填写手机号" customClass="RegisterViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Fhq-yw-X1A"/>
-                        <viewControllerLayoutGuide type="bottom" id="Lth-xq-ijb"/>
+                        <viewControllerLayoutGuide type="top" id="5k4-tt-IbI"/>
+                        <viewControllerLayoutGuide type="bottom" id="DJW-OV-btU"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8Dx-uU-kbW">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -165,8 +165,8 @@
             <objects>
                 <viewController id="KMP-8q-3L8" userLabel="RegStep-填写验证码" customClass="RegStep1ViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="OQy-gY-RgZ"/>
-                        <viewControllerLayoutGuide type="bottom" id="KHM-2D-VYg"/>
+                        <viewControllerLayoutGuide type="top" id="DGJ-XB-7eb"/>
+                        <viewControllerLayoutGuide type="bottom" id="mV5-85-lys"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="puO-i4-409">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -218,8 +218,8 @@
             <objects>
                 <viewController id="R74-bw-QsJ" userLabel="RegStep-设置密码" customClass="RegStep2ViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="RqX-5S-3L8"/>
-                        <viewControllerLayoutGuide type="bottom" id="0yC-Vk-Lzx"/>
+                        <viewControllerLayoutGuide type="top" id="fyx-OP-Sru"/>
+                        <viewControllerLayoutGuide type="bottom" id="YWB-mk-OZz"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="omk-R5-KSy">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -257,8 +257,8 @@
             <objects>
                 <viewController id="tkh-RH-kvT" userLabel="RegStep-完善资料" customClass="RegInfoViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="uux-v4-LM9"/>
-                        <viewControllerLayoutGuide type="bottom" id="Gp5-ht-31e"/>
+                        <viewControllerLayoutGuide type="top" id="XBp-8K-Doc"/>
+                        <viewControllerLayoutGuide type="bottom" id="hJD-BD-c6U"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="e4w-ti-2hr">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -898,13 +898,13 @@
             </objects>
             <point key="canvasLocation" x="2225" y="5165"/>
         </scene>
-        <!--Emot Icon View Controller-->
+        <!--Chat-聊天文字表情分页-->
         <scene sceneID="QST-SQ-kG8">
             <objects>
-                <viewController storyboardIdentifier="EmotIconViewController" id="gGs-Tr-3Yu" customClass="EmotIconViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="EmotIconViewController" id="gGs-Tr-3Yu" userLabel="Chat-聊天文字表情分页" customClass="EmotIconViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="tG2-vl-LGR"/>
-                        <viewControllerLayoutGuide type="bottom" id="Dce-oU-cH4"/>
+                        <viewControllerLayoutGuide type="top" id="bxd-zc-B88"/>
+                        <viewControllerLayoutGuide type="bottom" id="NSZ-xZ-pRk"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="M3i-28-leS">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="180"/>
@@ -941,13 +941,13 @@
             </objects>
             <point key="canvasLocation" x="-1032" y="8378"/>
         </scene>
-        <!--Emotion View Controller-->
+        <!--Chat-表情页-->
         <scene sceneID="Q0T-eA-oa3">
             <objects>
-                <viewController storyboardIdentifier="EmotionViewController" id="NuK-zK-auH" customClass="EmotionViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="EmotionViewController" id="NuK-zK-auH" userLabel="Chat-表情页" customClass="EmotionViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="sT4-rc-TTY"/>
-                        <viewControllerLayoutGuide type="bottom" id="a44-1S-beC"/>
+                        <viewControllerLayoutGuide type="top" id="yJ0-L5-hkP"/>
+                        <viewControllerLayoutGuide type="bottom" id="X3K-Xs-87d"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="0Jn-ml-8gc">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="240"/>
@@ -988,118 +988,135 @@
             </objects>
             <point key="canvasLocation" x="-1020" y="8037"/>
         </scene>
-        <!--Chat View Controller-->
+        <!--Chat-私聊-->
         <scene sceneID="z2h-Sm-aq1">
             <objects>
-                <viewController storyboardIdentifier="ChatViewController" hidesBottomBarWhenPushed="YES" id="U0M-ht-yaq" userLabel="Chat View Controller" customClass="ChatViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ChatViewController" hidesBottomBarWhenPushed="YES" id="U0M-ht-yaq" userLabel="Chat-私聊" customClass="ChatViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="hyu-Lq-rGk"/>
-                        <viewControllerLayoutGuide type="bottom" id="3Nm-NV-Gz0"/>
+                        <viewControllerLayoutGuide type="top" id="bkb-Cb-G8A"/>
+                        <viewControllerLayoutGuide type="bottom" id="jdk-ke-gUq"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="vdW-Q2-z1e">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="50" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="329-xQ-y4w">
-                                <rect key="frame" x="0.0" y="10" width="320" height="510"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                                <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ChatTableViewCell" id="vat-ij-0zU" customClass="ChatTableViewCell">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vat-ij-0zU" id="55P-tL-ago">
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                    </tableViewCell>
-                                </prototypes>
-                            </tableView>
-                            <view contentMode="scaleToFill" fixedFrame="YES" restorationIdentifier="ChatInputTextView" translatesAutoresizingMaskIntoConstraints="NO" id="aNi-Nk-VGM" userLabel="Chat Input Text View" customClass="ChatInputTextView">
-                                <rect key="frame" x="0.0" y="520" width="320" height="112"/>
+                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sS0-Ne-O7G">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xg4-QP-bWw">
-                                        <rect key="frame" x="10" y="8" width="25" height="25"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                        <state key="normal" title="+">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="touchUpInsideBtnShare:" destination="U0M-ht-yaq" eventType="touchUpInside" id="QpO-3i-2Ma"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iD5-we-tEM">
-                                        <rect key="frame" x="42" y="8" width="25" height="30"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                        <state key="normal" title="😄">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="touchUpInsideBtnExpression:" destination="U0M-ht-yaq" eventType="touchUpInside" id="VZ4-rl-Knz"/>
-                                        </connections>
-                                    </button>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="请输入内容" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SOo-Re-DHd">
-                                        <rect key="frame" x="75" y="9" width="190" height="30"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" keyboardType="alphabet" returnKeyType="send" enablesReturnKeyAutomatically="YES"/>
-                                        <connections>
-                                            <action selector="tfInputTextDidEndOnExit:" destination="U0M-ht-yaq" eventType="editingDidEndOnExit" id="YnN-3t-2sl"/>
-                                        </connections>
-                                    </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V1g-ZM-sto">
-                                        <rect key="frame" x="274" y="9" width="40" height="30"/>
-                                        <state key="normal" title="录音">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="touchInsideBtnSound:" destination="U0M-ht-yaq" eventType="touchUpInside" id="h8W-kW-gfj"/>
-                                        </connections>
-                                    </button>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="50" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="329-xQ-y4w">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="520"/>
+                                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                        <prototypes>
+                                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ChatTableViewCell" id="6ZA-Da-DgV" customClass="ChatTableViewCell">
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6ZA-Da-DgV" id="f0R-TW-29a">
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                </tableViewCellContentView>
+                                            </tableViewCell>
+                                        </prototypes>
+                                        <sections/>
+                                    </tableView>
+                                    <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" restorationIdentifier="ChatInputTextView" translatesAutoresizingMaskIntoConstraints="NO" id="aNi-Nk-VGM" userLabel="Chat Input Text View" customClass="ChatInputTextView">
+                                        <rect key="frame" x="0.0" y="520" width="320" height="50"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xg4-QP-bWw">
+                                                <rect key="frame" x="10" y="8" width="25" height="25"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                                <state key="normal" title="+">
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="touchUpInsideBtnShare:" destination="U0M-ht-yaq" eventType="touchUpInside" id="QpO-3i-2Ma"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iD5-we-tEM">
+                                                <rect key="frame" x="42" y="8" width="25" height="30"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                <state key="normal" title="😄">
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="touchUpInsideBtnExpression:" destination="U0M-ht-yaq" eventType="touchUpInside" id="VZ4-rl-Knz"/>
+                                                </connections>
+                                            </button>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="请输入内容" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SOo-Re-DHd">
+                                                <rect key="frame" x="75" y="9" width="190" height="30"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="alphabet" returnKeyType="send" enablesReturnKeyAutomatically="YES"/>
+                                                <connections>
+                                                    <action selector="tfInputTextDidEndOnExit:" destination="U0M-ht-yaq" eventType="editingDidEndOnExit" id="YnN-3t-2sl"/>
+                                                </connections>
+                                            </textField>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V1g-ZM-sto">
+                                                <rect key="frame" x="274" y="9" width="40" height="30"/>
+                                                <state key="normal" title="录音">
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="touchInsideBtnSound:" destination="U0M-ht-yaq" eventType="touchUpInside" id="h8W-kW-gfj"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
+                                    <view hidden="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" restorationIdentifier="ChatInputSoundView" translatesAutoresizingMaskIntoConstraints="NO" id="l2f-od-NdP" userLabel="Chat Input Sound View" customClass="ChatInputSoundView">
+                                        <rect key="frame" x="0.0" y="520" width="320" height="50"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="22i-6T-mw0">
+                                                <rect key="frame" x="10" y="8" width="25" height="25"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                                <state key="normal" title="+">
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="touchUpInsideInputSoudBtnShare:" destination="U0M-ht-yaq" eventType="touchUpInside" id="eXT-qp-b38"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rda-WO-Z4a">
+                                                <rect key="frame" x="76" y="6" width="144" height="30"/>
+                                                <state key="normal" title="长按录音">
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="touchCancelRecord:" destination="U0M-ht-yaq" eventType="touchCancel" id="Lgb-g8-LgV"/>
+                                                    <action selector="touchDownBtnRecord:" destination="U0M-ht-yaq" eventType="touchDown" id="yHm-aj-aIR"/>
+                                                    <action selector="touchUpInsideRecord:" destination="U0M-ht-yaq" eventType="touchUpInside" id="Ad4-OS-RYb"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="80k-KQ-pOC">
+                                                <rect key="frame" x="253" y="6" width="46" height="30"/>
+                                                <state key="normal" title="文字">
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="touchUpInsideBtnText:" destination="U0M-ht-yaq" eventType="touchUpInside" id="7CA-mK-qb6"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
-                            <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" restorationIdentifier="ChatInputSoundView" translatesAutoresizingMaskIntoConstraints="NO" id="l2f-od-NdP" userLabel="Chat Input Sound View" customClass="ChatInputSoundView">
-                                <rect key="frame" x="0.0" y="520" width="320" height="112"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="22i-6T-mw0">
-                                        <rect key="frame" x="10" y="8" width="25" height="25"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                        <state key="normal" title="+">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="touchUpInsideInputSoudBtnShare:" destination="U0M-ht-yaq" eventType="touchUpInside" id="eXT-qp-b38"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rda-WO-Z4a">
-                                        <rect key="frame" x="76" y="6" width="144" height="30"/>
-                                        <state key="normal" title="长按录音">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="touchCancelRecord:" destination="U0M-ht-yaq" eventType="touchCancel" id="Lgb-g8-LgV"/>
-                                            <action selector="touchDownBtnRecord:" destination="U0M-ht-yaq" eventType="touchDown" id="yHm-aj-aIR"/>
-                                            <action selector="touchUpInsideRecord:" destination="U0M-ht-yaq" eventType="touchUpInside" id="Ad4-OS-RYb"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="80k-KQ-pOC">
-                                        <rect key="frame" x="253" y="6" width="46" height="30"/>
-                                        <state key="normal" title="文字">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="touchUpInsideBtnText:" destination="U0M-ht-yaq" eventType="touchUpInside" id="7CA-mK-qb6"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="aNi-Nk-VGM" secondAttribute="bottom" constant="-2" id="01a-q8-SWw"/>
+                                    <constraint firstAttribute="bottom" secondItem="l2f-od-NdP" secondAttribute="bottom" constant="-2" id="FrD-ow-OD7"/>
+                                    <constraint firstItem="329-xQ-y4w" firstAttribute="top" secondItem="sS0-Ne-O7G" secondAttribute="top" id="L0c-b2-yRF"/>
+                                    <constraint firstAttribute="bottom" secondItem="329-xQ-y4w" secondAttribute="bottom" constant="48" id="m36-6C-Nct"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="sS0-Ne-O7G" firstAttribute="top" secondItem="vdW-Q2-z1e" secondAttribute="top" id="X8i-kl-Ydo"/>
+                            <constraint firstAttribute="bottom" secondItem="sS0-Ne-O7G" secondAttribute="bottom" id="mB3-f2-L1B"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="聊天标题" id="e9w-hA-9aF"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="tableViewChat" destination="329-xQ-y4w" id="Ya7-85-vfu"/>
+                        <outlet property="tfInputText" destination="SOo-Re-DHd" id="MC0-hY-XHb"/>
+                        <outlet property="viewChatContainer" destination="sS0-Ne-O7G" id="apk-fD-fKL"/>
                         <outlet property="viewChatInputSound" destination="l2f-od-NdP" id="Z5N-7y-4Pk"/>
                         <outlet property="viewChatInputText" destination="aNi-Nk-VGM" id="8WM-5d-V47"/>
                     </connections>
@@ -1113,8 +1130,8 @@
             <objects>
                 <viewController storyboardIdentifier="ChatShareMenuViewController" id="858-A8-8KR" userLabel="Chat Share Menu View" customClass="ChatShareMenuViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="2dr-UJ-C4g"/>
-                        <viewControllerLayoutGuide type="bottom" id="Th2-y1-6Xx"/>
+                        <viewControllerLayoutGuide type="top" id="ptr-pC-Wb5"/>
+                        <viewControllerLayoutGuide type="bottom" id="M3S-Xq-dyb"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="iVT-oh-DTd">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -1131,15 +1148,15 @@
             <objects>
                 <viewController id="Ixd-6h-fyu" userLabel="User-个人信息页" customClass="UserShowViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="DTi-g7-PZw"/>
-                        <viewControllerLayoutGuide type="bottom" id="nAa-b6-Tvj"/>
+                        <viewControllerLayoutGuide type="top" id="Iey-5W-vgx"/>
+                        <viewControllerLayoutGuide type="bottom" id="hXK-eM-Cea"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="SlK-oq-AUt">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bFz-SV-ZjS">
-                                <rect key="frame" x="110" y="538" width="101" height="30"/>
+                                <rect key="frame" x="110" y="525" width="101" height="30"/>
                                 <state key="normal" title="添加关注">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -1148,7 +1165,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Ar-5g-u0F">
-                                <rect key="frame" x="219" y="538" width="101" height="30"/>
+                                <rect key="frame" x="219" y="525" width="101" height="30"/>
                                 <state key="normal" title="拉黑举报">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -1157,7 +1174,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Omi-G2-oWd">
-                                <rect key="frame" x="0.0" y="538" width="102" height="30"/>
+                                <rect key="frame" x="0.0" y="525" width="102" height="30"/>
                                 <state key="normal" title="发送消息">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -1166,7 +1183,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y8v-na-mKc">
-                                <rect key="frame" x="0.0" y="538" width="320" height="30"/>
+                                <rect key="frame" x="0.0" y="525" width="320" height="30"/>
                                 <state key="normal" title="对话">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -1175,7 +1192,7 @@
                                 </connections>
                             </button>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tbe-oe-gHj">
-                                <rect key="frame" x="0.0" y="64" width="320" height="466"/>
+                                <rect key="frame" x="-4" y="64" width="320" height="466"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yh4-C3-Ghc">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="466"/>
@@ -1255,8 +1272,8 @@
             <objects>
                 <viewController storyboardIdentifier="recommendViewController" id="9Vj-Vp-uQj" userLabel="Chat-表情图标" customClass="RecommendViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="knc-4D-T3S"/>
-                        <viewControllerLayoutGuide type="bottom" id="Dbf-ce-O38"/>
+                        <viewControllerLayoutGuide type="top" id="xsn-jy-SIe"/>
+                        <viewControllerLayoutGuide type="bottom" id="2dW-8n-tDO"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Y2p-te-wET">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -1382,8 +1399,8 @@
             <objects>
                 <viewController storyboardIdentifier="storyGroupInfo" hidesBottomBarWhenPushed="YES" id="nqj-0p-hk3" userLabel="Group-群详细信息" customClass="GroupInfoViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="hGc-qS-31E"/>
-                        <viewControllerLayoutGuide type="bottom" id="6jf-O1-Qja"/>
+                        <viewControllerLayoutGuide type="top" id="jA1-ab-Zzz"/>
+                        <viewControllerLayoutGuide type="bottom" id="FYC-zJ-UcU"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="ED3-dV-pXs" customClass="UIScrollView">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -1643,8 +1660,8 @@
             <objects>
                 <viewController storyboardIdentifier="storyGroupCreate" hidesBottomBarWhenPushed="YES" id="xc6-7k-stq" userLabel="Group-创建群" customClass="GroupCreateViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="SUp-71-aG8"/>
-                        <viewControllerLayoutGuide type="bottom" id="mAV-wG-V2b"/>
+                        <viewControllerLayoutGuide type="top" id="L4W-E2-Kfw"/>
+                        <viewControllerLayoutGuide type="bottom" id="J4T-gF-n7j"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="1ax-Qq-dvD">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -1898,21 +1915,113 @@
         <!--Chat-群聊-->
         <scene sceneID="zxE-yQ-ZxD">
             <objects>
-                <viewController id="yEJ-R3-2p3" userLabel="Chat-群聊" sceneMemberID="viewController">
+                <viewController id="yEJ-R3-2p3" userLabel="Group-群聊" customClass="GroupChatViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="oHJ-SA-SmO"/>
-                        <viewControllerLayoutGuide type="bottom" id="63R-SG-PsH"/>
+                        <viewControllerLayoutGuide type="top" id="M58-RD-fh3"/>
+                        <viewControllerLayoutGuide type="bottom" id="1DE-Tv-kht"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="9Vj-Im-Qql">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="群聊对话页，待实现" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lMY-QT-a2q">
-                                <rect key="frame" x="74" y="172" width="180" height="42"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yHX-Y0-GbZ">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <subviews>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="KqY-XJ-01n">
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <prototypes>
+                                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="VmY-1L-lPn" customClass="GroupChatTableViewCell">
+                                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="VmY-1L-lPn" id="z6D-DW-z8w">
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                </tableViewCellContentView>
+                                            </tableViewCell>
+                                        </prototypes>
+                                    </tableView>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" restorationIdentifier="ChatInputTextView" translatesAutoresizingMaskIntoConstraints="NO" id="jPq-oe-xPE" userLabel="Chat Input Text View" customClass="ChatInputTextView">
+                                        <rect key="frame" x="0.0" y="520" width="320" height="112"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6i6-OX-Sf8">
+                                                <rect key="frame" x="10" y="8" width="25" height="25"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                                <state key="normal" title="+">
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="touchUpInsideBtnShare:" destination="U0M-ht-yaq" eventType="touchUpInside" id="vJ6-Ml-5zR"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tQS-fK-6r7">
+                                                <rect key="frame" x="42" y="8" width="25" height="30"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                <state key="normal" title="😄">
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="btnEmotiontouchUpInside:" destination="yEJ-R3-2p3" eventType="touchUpInside" id="uAt-5I-Aaj"/>
+                                                    <action selector="touchUpInsideBtnExpression:" destination="U0M-ht-yaq" eventType="touchUpInside" id="Euq-M8-W5B"/>
+                                                </connections>
+                                            </button>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="请输入内容" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="t24-px-E8v">
+                                                <rect key="frame" x="75" y="9" width="190" height="30"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="alphabet" returnKeyType="send" enablesReturnKeyAutomatically="YES"/>
+                                                <connections>
+                                                    <action selector="tfInputTextDidEndOnExit:" destination="U0M-ht-yaq" eventType="editingDidEndOnExit" id="tek-QK-RGR"/>
+                                                </connections>
+                                            </textField>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x6r-JM-h9C">
+                                                <rect key="frame" x="274" y="9" width="40" height="30"/>
+                                                <state key="normal" title="录音">
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="touchInsideBtnSound:" destination="U0M-ht-yaq" eventType="touchUpInside" id="czI-X3-yoa"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
+                                    <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" restorationIdentifier="ChatInputSoundView" translatesAutoresizingMaskIntoConstraints="NO" id="x2C-GP-KUE" userLabel="Chat Input Sound View" customClass="ChatInputSoundView">
+                                        <rect key="frame" x="0.0" y="520" width="320" height="112"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kAR-PI-iJF">
+                                                <rect key="frame" x="10" y="8" width="25" height="25"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                                <state key="normal" title="+">
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="touchUpInsideInputSoudBtnShare:" destination="U0M-ht-yaq" eventType="touchUpInside" id="MRV-8N-n5l"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dS7-j0-NVE">
+                                                <rect key="frame" x="76" y="6" width="144" height="30"/>
+                                                <state key="normal" title="长按录音">
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="touchCancelRecord:" destination="U0M-ht-yaq" eventType="touchCancel" id="OcG-8T-4S6"/>
+                                                    <action selector="touchDownBtnRecord:" destination="U0M-ht-yaq" eventType="touchDown" id="4vK-zm-Gy9"/>
+                                                    <action selector="touchUpInsideRecord:" destination="U0M-ht-yaq" eventType="touchUpInside" id="AV0-qs-aoV"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mq3-UJ-nUc">
+                                                <rect key="frame" x="253" y="6" width="46" height="30"/>
+                                                <state key="normal" title="文字">
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="touchUpInsideBtnText:" destination="U0M-ht-yaq" eventType="touchUpInside" id="8nU-Ue-ydt"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -1927,8 +2036,8 @@
             <objects>
                 <viewController id="BLe-RL-pb4" userLabel="Concat-联系人TAB页" customClass="ContactViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="07Q-r5-TbJ"/>
-                        <viewControllerLayoutGuide type="bottom" id="2g3-gH-Ori"/>
+                        <viewControllerLayoutGuide type="top" id="MMC-8b-sxn"/>
+                        <viewControllerLayoutGuide type="bottom" id="5mI-Wi-Zgu"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Jey-Uo-Lbe">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -1975,8 +2084,8 @@
             <objects>
                 <viewController id="sWe-ai-dJr" userLabel="Splash" customClass="imViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="NsM-YA-nV8"/>
-                        <viewControllerLayoutGuide type="bottom" id="d37-Ff-mky"/>
+                        <viewControllerLayoutGuide type="top" id="Lun-4x-NkC"/>
+                        <viewControllerLayoutGuide type="bottom" id="cER-oI-loR"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="3cG-wG-1LE">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -2020,7 +2129,7 @@
             <objects>
                 <tableViewController id="t1S-so-e9o" userLabel="User-个人页" customClass="SystemTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="yTt-eL-LgF">
-                        <rect key="frame" x="0.0" y="64" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <sections>

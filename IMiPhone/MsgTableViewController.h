@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "IMNWProxyProtocol.h"
 
-@interface MsgTableViewController : UITableViewController
+@interface MsgTableViewController : UITableViewController <IMNWProxyProtocol>
 
 @end

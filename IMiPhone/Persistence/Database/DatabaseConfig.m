@@ -16,7 +16,7 @@
     dispatch_once(&once,
                   ^{
                       _instance = [[self alloc] init];
-                      _instance.dicSQLDataType = [NSDictionary dictionaryWithObjectsAndKeys:@"INTEGER",@"i",@"INTEGER",@"q",@"REAL",@"f",@"REAL",@"d",@"TEXT",@"@",nil];
+                      _instance.dicSQLDataType = [NSDictionary dictionaryWithObjectsAndKeys:@"INTEGER",@"i",@"INTEGER",@"q",@"REAL",@"f",@"REAL",@"l",@"REAL",@"d",@"TEXT",@"@",nil];
                   }
                   );
     return _instance;

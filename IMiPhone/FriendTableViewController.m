@@ -54,7 +54,7 @@
     self.arrFriendsData = [NSMutableArray array];
     for (NSInteger i = 0; i < [[FriendDataProxy sharedProxy] mutableArrayFriends].count; i++) {
         DPFriend *friend = [[[FriendDataProxy sharedProxy] mutableArrayFriends] objectAtIndex:i];
-        DPUser *user = [[UserDataProxy sharedProxy] getUserInfoFromUid:friend.uid];
+        DPUser *user = [[UserDataProxy sharedProxy] getUserByUid:friend.uid];
         if (user) {
             [self.arrFriendsData addObject:user];
         }
@@ -70,7 +70,13 @@
     [footerView addSubview:btnViewContact];//必须把按钮添加到一个view上 否则按钮会被拉长
     
     self.tableView.tableFooterView = footerView;
-
+    
+    
+//    NSLog(@"tableView.frame.origin.y%f",self.tableView.frame.origin.y);
+//     NSLog(@"self.view.frame.origin.y%f",self.view.frame.origin.y);
+//
+//    NSLog(@"self.view.superview:%@",self.view.superview);
+    
 }
 
 - (void)didReceiveMemoryWarning {

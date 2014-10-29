@@ -30,7 +30,7 @@ static FriendMessageProxy *sharedFriendMessageProxy = nil;
 
 - (void)sendTypeFocusAdd:(NSNumber *)uid {
   //使用http
-  NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
+  NSMutableDictionary *params = [NSMutableDictionary dictionary];
   [params setObject:uid forKey:KEYQ_H__FRIEND_FOCUS_ADD__FOCUSUID];
   IMNWMessage *message = [IMNWMessage createForHttp:PATH_H__FRIEND_FOCUS_ADD_
                                          withParams:params
@@ -74,7 +74,7 @@ static FriendMessageProxy *sharedFriendMessageProxy = nil;
 }
 
 - (void)sendTypeFocusList:(NSNumber *)start withPageNum:(NSNumber *)pageNum {
-  NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
+  NSMutableDictionary *params = [NSMutableDictionary dictionary];
   [params setObject:start forKey:KEYQ_H__FRIEND_FOCUS_LIST__START];
   [params setObject:pageNum forKey:KEYQ_H__FRIEND_FOCUS_LIST__PAGENUM];
   IMNWMessage *message = [IMNWMessage createForHttp:PATH_H__FRIEND_FOCUS_LIST_
@@ -128,7 +128,7 @@ static FriendMessageProxy *sharedFriendMessageProxy = nil;
 }
 
 - (void)sendTypeFocusCancel:(NSNumber *)uid {
-  NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
+  NSMutableDictionary *params = [NSMutableDictionary dictionary];
   [params setObject:uid forKey:KEYQ_H__FRIEND_FOCUS_CANCEL__FOCUSUID];
   IMNWMessage *message = [IMNWMessage createForHttp:PATH_H__FRIEND_FOCUS_CANCEL_
                                          withParams:params
@@ -171,7 +171,7 @@ static FriendMessageProxy *sharedFriendMessageProxy = nil;
 }
 
 - (void)sendTypeFanList:(NSNumber *)start withPageNum:(NSNumber *)pageNum {
-  NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
+  NSMutableDictionary *params = [NSMutableDictionary dictionary];
   [params setObject:start forKey:KEYQ_H__FRIEND_FAN_LIST__START];
   [params setObject:pageNum forKey:KEYQ_H__FRIEND_FAN_LIST__PAGENUM];
   IMNWMessage *message = [IMNWMessage createForHttp:PATH_H__FRIEND_FAN_LIST_
@@ -224,7 +224,7 @@ static FriendMessageProxy *sharedFriendMessageProxy = nil;
 
 - (void)sendTypeFriendList:(NSNumber *)start withPageNum:(NSNumber *)pageNum
 {
-    NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
     [params setObject:start forKey:KEYQ_H__FRIEND_FRIEND_LIST__START];
     [params setObject:pageNum forKey:KEYQ_H__FRIEND_FRIEND_LIST__PAGENUM];
     IMNWMessage *message = [IMNWMessage

@@ -28,7 +28,7 @@
 }
 
 - (void)testGetItemIndexByCondition {
-    NSMutableArray *arr = [[NSMutableArray alloc] init];
+    NSMutableArray *arr = [NSMutableArray array];
     DPUser *user;
     user = [[DPUser alloc] init];
     user.uid = 1;

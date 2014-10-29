@@ -27,7 +27,7 @@ static ChatDataProxy *messageDataProxy = nil;
 {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        messageDataProxy = [[ChatDataProxy alloc] init];
+        messageDataProxy = [[self alloc] init];
     });
     return messageDataProxy;
 }
@@ -94,40 +94,40 @@ static ChatDataProxy *messageDataProxy = nil;
 //    NSLog(@"replace arrMessages at %li,with new sender id:%li",index,(long)((DPChatMessage *)object).senderUid);
 //}
 
-#pragma mark - messageGroups
+//#pragma mark - messageGroups
+//
+//- (NSMutableArray *)mutableArrayMessageGroups
+//{
+//    if (_arrMessageGroups == nil) {
+//        //数据量大的话，可以考虑异步加载
+//        NSMutableArray *arrDBMessageGroups = [[MessageGroupDAO sharedDAO] query:@"" Bind:[NSMutableArray arrayWithObjects:nil]];
+//        _arrMessageGroups = [NSMutableArray array];
+//        DPMessageGroup *tempMessageGroup;
+//        if (arrDBMessageGroups) {
+//            for (NSInteger i = 0; i < arrDBMessageGroups.count; i++) {
+//                tempMessageGroup = [[DPMessageGroup alloc] init];
+//                [ImDataUtil copyFrom:arrDBMessageGroups[i] To:tempMessageGroup];
+//                 [_arrMessageGroups addObject:tempMessageGroup];
+//            }
+//        }
+//    }
+//    return _arrMessages;
+//}
+//
+//- (void)insertObject:(id)object inArrMessageGroupAtIndex:(NSUInteger)index
+//{
+//    [self.arrMessageGroups insertObject:object atIndex:index];
+//    NSLog(@"arrMessageGroups insert messageGroupId:%@",((DPMessageGroup *)object).messageGroupId);
+//}
+//
+//-(void)removeObjectFromArrMessageGroupsAtIndex:(NSUInteger)index
+//{
+//    [self.arrMessageGroups removeObjectAtIndex:index];
+//    NSLog(@"arrMessageGroups remove at%li",(unsigned long)index);
+//    
+//}
 
-- (NSMutableArray *)mutableArrayMessageGroups
-{
-    if (_arrMessageGroups == nil) {
-        //数据量大的话，可以考虑异步加载
-        NSMutableArray *arrDBMessageGroups = [[MessageGroupDAO sharedDAO] query:@"" Bind:[NSMutableArray arrayWithObjects:nil]];
-        _arrMessageGroups = [NSMutableArray array];
-        DPMessageGroup *tempMessageGroup;
-        if (arrDBMessageGroups) {
-            for (NSInteger i = 0; i < arrDBMessageGroups.count; i++) {
-                tempMessageGroup = [[DPMessageGroup alloc] init];
-                [ImDataUtil copyFrom:arrDBMessageGroups[i] To:tempMessageGroup];
-                 [_arrMessageGroups addObject:tempMessageGroup];
-            }
-        }
-    }
-    return _arrMessages;
-}
-
-- (void)insertObject:(id)object inArrMessageGroupAtIndex:(NSUInteger)index
-{
-    [self.arrMessageGroups insertObject:object atIndex:index];
-    NSLog(@"arrMessageGroups insert messageGroupId:%@",((DPMessageGroup *)object).messageGroupId);
-}
-
--(void)removeObjectFromArrMessageGroupsAtIndex:(NSUInteger)index
-{
-    [self.arrMessageGroups removeObjectAtIndex:index];
-    NSLog(@"arrMessageGroups remove at%li",(unsigned long)index);
-    
-}
-
-- (DPChatMessage *)getChatMessageFromMid:(NSInteger)mid
+- (DPChatMessage *)getChatMessageFromMid:(long)mid
 {
     NSArray *chatMessages = [self mutableArrayMessages];
     NSInteger findindex = [chatMessages indexOfObjectPassingTest:^BOOL(id obj, NSUInteger idx, BOOL *stop) {

@@ -19,9 +19,9 @@
 #define MARK_USER @"user"
 
 #define RELATION_STRANGER 0
-#define RELATION_FOCUS 1
-#define RELATION_FAN 2
-#define RELATION_FRIEND 3
+#define RELATION_FOCUS 2
+#define RELATION_FAN 3
+#define RELATION_FRIEND 1
 
 @interface UserMessageProxy : IMNWProxy
 

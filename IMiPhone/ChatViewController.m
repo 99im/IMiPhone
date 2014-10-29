@@ -24,6 +24,8 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableViewChat;
 @property (weak, nonatomic) IBOutlet ChatInputTextView *viewChatInputText;
 @property (weak, nonatomic) IBOutlet ChatInputSoundView *viewChatInputSound;
+@property (weak, nonatomic) IBOutlet UITextField *tfInputText;
+@property (weak, nonatomic) IBOutlet UIView *viewChatContainer;
 
 //
 @property (nonatomic,retain) NSMutableArray *arrAllCellFrames;
@@ -47,8 +49,10 @@
     self.arrAllCellFrames = [NSMutableArray array];
     
     if ([ChatDataProxy sharedProxy].chatViewType == ChatViewTypeP2P) {
-        DPUser *dpUser = [[UserDataProxy sharedProxy] getUserInfoFromUid:[ChatDataProxy sharedProxy].chatToUid];
-        self.title = dpUser.nick;
+        DPUser *dpUser = [[UserDataProxy sharedProxy] getUserByUid:[ChatDataProxy sharedProxy].chatToUid];
+        if (dpUser) {
+             self.title = dpUser.nick;
+        }
         NSArray *arrChatMessages = [[ChatDataProxy sharedProxy] mutableArrayMessages];
         for (NSInteger i = 0; i < arrChatMessages.count; i++) {
             DPChatMessage *dpChatMsg = [arrChatMessages objectAtIndex:i];
@@ -103,7 +107,8 @@
     static NSString *cellIdentifier = @"ChatTableViewCell";
     ChatTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
     
-    cell.cellFrame = [self.arrAllCellFrames objectAtIndex:indexPath.row];
+    cell.cellFrame = 
+    [self.arrAllCellFrames objectAtIndex:indexPath.row];
     
     return cell;
     
@@ -141,8 +146,14 @@ NSInteger midcounter;
 
 - (IBAction)touchUpInsideBtnExpression:(id)sender {
     //TODO:显示表情选择界面
-    [UIView animateWithDuration:0.3f animations:^{
+    [UIView animateWithDuration:0.25f animations:^{
         self.emotionViewController.view.frame = CGRectMake(0.0f, self.view.frame.size.height - EMOTS_HEIGHT, self.view.frame.size.width, EMOTS_HEIGHT);
+    }];
+    CGRect bounds = self.view.bounds;
+    bounds.origin.y = EMOTS_HEIGHT;
+    [UIView animateWithDuration:0.25f animations:^{
+        self.viewChatContainer.bounds = bounds;
+//        [self.view layoutIfNeeded];
     }];
 }
 
@@ -177,6 +188,8 @@ NSInteger midcounter;
 {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dealChatN:) name:NOTI_S_CHAT_CHATN object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onEmotionSelected:) name:NOTI_EMOTION_SELECTED object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onEmotionSend:) name:NOTI_EMOTION_SEND object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onEmotionDelete:) name:NOTI_EMOTION_DELETE object:nil];
 }
 
 - (void)removeMessageNotification
@@ -189,7 +202,18 @@ NSInteger midcounter;
     NSIndexPath *indexPath = (NSIndexPath *)notification.object;
     NSInteger emotIndex = indexPath.section * EMOTS_PAGENUM + indexPath.row;
     NSString *emotId = [[[ChatDataProxy sharedProxy].arrEmotions objectAtIndex:emotIndex] objectForKey:@"id"];
-    NSLog(@"%@ selected!", emotId);
+    NSLog(@"Emotion %@ selected!", emotId);
+    NSMutableString *inputText = [[NSMutableString alloc] initWithString:self.tfInputText.text];
+    [inputText appendString:emotId];
+    self.tfInputText.text = inputText;
+}
+
+- (void)onEmotionSend:(NSNotification *)notification
+{
+}
+
+- (void)onEmotionDelete:(NSNotification *)notification
+{
 }
 
 - (void)dealChatN:(NSNotification *)notification

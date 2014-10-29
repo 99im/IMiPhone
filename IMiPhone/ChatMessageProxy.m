@@ -7,6 +7,7 @@
 //
 
 #import "ChatMessageProxy.h"
+#import "UserDataProxy.h"
 
 @implementation ChatMessageProxy
 
@@ -33,7 +34,7 @@ static ChatMessageProxy *messageProxy = nil;
 
 - (void)sendTypeChat:(NSString *)stage targetId:(NSInteger)targetId msgType:(NSInteger)msgType content:(NSString *)content
 {
-    NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
     [params setObject:stage forKey:KEYQ_S_CHAT_CHAT_STAGE];
     [params setObject:[NSNumber numberWithInteger:targetId] forKey:KEYQ_S_CHAT_CHAT_TARGETID];
     [params setObject:[NSNumber numberWithInteger:msgType] forKey:KEYQ_S_CHAT_CHAT_MSGTYPE];
@@ -60,13 +61,25 @@ static ChatMessageProxy *messageProxy = nil;
     NSMutableDictionary *info = [json objectForKey:SOCKET_INFO];
     DPChatMessage *dpChatMessage = [[DPChatMessage alloc] init];
     dpChatMessage.senderUid = [[info objectForKey:KEYP_S_CHAT_CHATN_SENDUID] integerValue];
-    dpChatMessage.type = [[info objectForKey:KEYP_S_CHAT_CHATN_MSGTYPE] integerValue];
+    dpChatMessage.msgType = [[info objectForKey:KEYP_S_CHAT_CHATN_MSGTYPE] integerValue];
     dpChatMessage.content = [info objectForKey:KEYP_S_CHAT_CHATN_CONTENT];
     dpChatMessage.sendTime = [info objectForKey:KEYP_S_CHAT_CHATN_TIME];
     dpChatMessage.mid = [[info objectForKey:KEYP_S_CHAT_CHATN_MID] integerValue];
     dpChatMessage.senderUid = [[info objectForKey:KEYP_S_CHAT_CHATN_SENDUID] integerValue];
     dpChatMessage.targetId = [[info objectForKey:KEYP_S_CHAT_CHATN_TARGETID] integerValue];
+    dpChatMessage.stage = [info objectForKey:KEYP_S_CHAT_CHATN_STAGE];
     [[[ChatDataProxy sharedProxy] mutableArrayMessages] addObject:dpChatMessage];
+    DPUiMessage *dpUiMessage = [[DPUiMessage alloc] init];
+    dpUiMessage.orderid = [[MsgDataProxy sharedProxy] getUiMsgListNextOrderId];
+    dpUiMessage.type = UI_MESSAGE_TYPE_CHAT;
+    dpUiMessage.mid = dpChatMessage.mid;
+    if (dpChatMessage.senderUid == [UserDataProxy sharedProxy].lastLoginUid ) {
+        dpUiMessage.relationId = dpChatMessage.targetId;
+    }
+    else {
+        dpUiMessage.relationId = dpChatMessage.senderUid;
+    }
+    [[MsgDataProxy sharedProxy] updateUiMsgList:dpUiMessage];
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_S_CHAT_CHATN object:dpChatMessage];
 }
 

@@ -12,11 +12,12 @@
 
 @interface DBChatMessage : NSObject
 
+@property (nonatomic, retain) NSString *stage;
+@property (nonatomic) NSInteger targetId;
+@property (nonatomic) NSInteger msgType;
+@property (nonatomic, retain) NSString *content;
 @property (nonatomic) NSInteger mid;
 @property (nonatomic) NSInteger senderUid;
-@property (nonatomic) NSInteger targetId;
-@property (nonatomic) NSInteger type;
-@property (nonatomic, retain) NSString *content;
 @property (nonatomic, retain) NSString *sendTime;
 
 @end

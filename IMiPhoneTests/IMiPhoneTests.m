@@ -8,6 +8,8 @@
 
 #import <XCTest/XCTest.h>
 //#import "GroupDAO.h"
+#import "DPUtil.h"
+
 @interface IMiPhoneTests : XCTestCase
 
 @end
@@ -85,6 +87,32 @@
               NSLog(@"default%c",a);
             break;
     }
+}
+
+- (void)testIsEqualg
+{
+    NSNumber *n = [NSNumber numberWithFloat:0.90];
+    NSNumber *nr = [NSNumber numberWithFloat:0.9];
+    NSNumber *nr1 = [NSNumber numberWithInteger:1];
+    if ([n isEqual:nr]) {
+        NSLog(@"n isEqual:nr");
+    }
+    if ([n isEqual:nr1]) {
+        NSLog(@"n isEqual:nr1");
+    }
+    
+    NSNumber *bg = [NSNumber numberWithFloat:0.2];
+    NSNumber *en = [NSNumber numberWithFloat:0.2];
+    if ([bg isEqual:bg]) {
+         NSLog(@"bg isEqual:en equal!!!!!!!!!!!!!!");
+    };
+    
+//    DPConditon *dpCondition = [DPConditon conditionKey:@"hi" withBeginValue:bg withEndValue:en];
+//    if ([dpCondition.begin isEqualToString:dpCondition.end]) {
+//        
+//        NSLog(@"equal!!!!!!!!!!!!!!");
+//    }
+
 }
 
 @end

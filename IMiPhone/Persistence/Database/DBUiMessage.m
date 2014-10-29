@@ -6,12 +6,13 @@
 //  Copyright (c) 2014年 尹晓君. All rights reserved.
 //
 
-#import "DBMessageGroup.h"
+#import "DBUiMessage.h"
 
-@implementation DBMessageGroup
+@implementation DBUiMessage
 
-@synthesize messageGroupId;
-@synthesize ownerId;
+@synthesize orderid;
+@synthesize mid;
+@synthesize relationId;
 @synthesize type;
 
 -(void)setValue:(id)value forUndefinedKey:(NSString *)key

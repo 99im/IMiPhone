@@ -30,7 +30,7 @@ static UserMessageProxy *sharedUserMessageProxy = nil;
 - (void)sendTypeSearch:(NSString *)oid
 {
     //使用http
-    NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
     [params setObject:oid forKey:KEYQ_H__USER_SEARCH__OID];
    
     IMNWMessage *message = [IMNWMessage createForHttp:PATH_H__USER_SEARCH_ withParams:params withMethod:METHOD_H__USER_SEARCH_ ssl:NO];

@@ -24,8 +24,8 @@
 - (void)awakeFromNib {
     // Initialization code
     tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapHandler:)];
-    [self.imgViewPortrait  addGestureRecognizer:tap];
-    self.imgViewPortrait.userInteractionEnabled = YES;
+    [self addGestureRecognizer:tap];
+//    self.imgViewPortrait.userInteractionEnabled = YES;
     tap.delegate = self;
     tap.cancelsTouchesInView = NO;
 }
