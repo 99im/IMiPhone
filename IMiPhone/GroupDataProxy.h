@@ -12,6 +12,10 @@
 #import "UserDataProxy.h"
 #import "GroupMessageProxy.h"
 
+#define SEND_HTTP_NO 0      //禁止发送HTTP
+#define SEND_HTTP_YES 1     //强制发送HTTP
+#define SEND_HTTP_AUTO 2    //自动分析是否要发送HTTP（本地已有缓存数据且未超时时，不发送；反之发送）
+
 @interface GroupDataProxy : NSObject
 
 @property(nonatomic) long currentGroupId;
@@ -28,15 +32,15 @@
 - (BOOL)delGroupByPrimaryKey:(long)gid;
 
 #pragma mark - 读取查询
-- (DPGroup *)getGroupInfo:(long)gid withHttp:(BOOL)withHttp;
+- (DPGroup *)getGroupInfo:(long)gid byHttpMode:(int)httpMode;
 - (DPGroup *)getGroupInfoCurrent;
 - (DPGroup *)getGroupInfoAtRow:(NSInteger)row;
-- (NSMutableArray *)getGroupMyList;
+- (NSMutableArray *)getGroupMyList:(int)httpMode;
 - (NSInteger)countGroupMyList;
 
 #pragma mark - 其它
-- (BOOL)isMyGroup:(NSInteger)gid;
-- (BOOL)isGroupOwner:(NSInteger)creatorUid;
+- (BOOL)isInMyGroups:(long)gid;
+- (BOOL)isGroupOwner:(long)creatorUid;
 
 ///获得某个群组的聊天消息
 - (NSMutableArray *)getGroupMessages:(NSInteger)gid;

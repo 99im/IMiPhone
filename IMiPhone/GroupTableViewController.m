@@ -23,7 +23,7 @@
 
   [self registerMessageNotification];
 
-  [[GroupDataProxy sharedProxy] getGroupMyList];
+    [[GroupDataProxy sharedProxy] getGroupMyList:SEND_HTTP_AUTO];
 
   // Uncomment the following line to preserve selection between presentations.ß
   // self.clearsSelectionOnViewWillAppear = NO;
