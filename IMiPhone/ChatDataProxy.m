@@ -127,7 +127,7 @@ static ChatDataProxy *messageDataProxy = nil;
 //    
 //}
 
-- (DPChatMessage *)getChatMessageFromMid:(NSInteger)mid
+- (DPChatMessage *)getChatMessageFromMid:(long)mid
 {
     NSArray *chatMessages = [self mutableArrayMessages];
     NSInteger findindex = [chatMessages indexOfObjectPassingTest:^BOOL(id obj, NSUInteger idx, BOOL *stop) {

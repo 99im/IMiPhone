@@ -28,8 +28,9 @@ static MsgMessageProxy  *messageProxy = nil;
 {
     NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
     [params setObject:modids forKey:KEYQ_H__MSG_SYSMSG_LIST__MODIDS];
-    [params setObject:[NSNumber numberWithLong:beforeSmid] forKey:KEYQ_H__MSG_SYSMSG_LIST__MODIDS];
-    [params setObject:[NSNumber numberWithLong:afterSmid] forKey:KEYQ_H__MSG_SYSMSG_LIST__START];
+    [params setObject:[NSNumber numberWithLong:beforeSmid] forKey:KEYQ_H__MSG_SYSMSG_LIST__BEFORESMID];
+    [params setObject:[NSNumber numberWithLong:afterSmid] forKey:KEYQ_H__MSG_SYSMSG_LIST__AFTERSMID];
+    [params setObject:[NSNumber numberWithLong:start] forKey:KEYQ_H__MSG_SYSMSG_LIST__START];
     [params setObject:[NSNumber numberWithInteger:pageNum] forKey:KEYQ_H__MSG_SYSMSG_LIST__PAGENUM];
     IMNWMessage *message = [IMNWMessage
                             createForHttp:PATH_H__MSG_SYSMSG_LIST_
@@ -56,16 +57,24 @@ static MsgMessageProxy  *messageProxy = nil;
                      DPSysMessage *dpSysMsg = [[DPSysMessage alloc] init];
                      dpSysMsg.uid = [[msgObj objectForKey:KEYP_H__MSG_SYSMSG_LIST__LIST_UID] longValue];
                      dpSysMsg.smid = [[msgObj objectForKey:KEYP_H__MSG_SYSMSG_LIST__LIST_SMID] longValue];
-                     dpSysMsg.modid = [msgObj objectForKey:KEYP_H__MSG_SYSMSG_LIST__LIST_MODID];
+                     dpSysMsg.modid = [[msgObj objectForKey:KEYP_H__MSG_SYSMSG_LIST__LIST_MODID] integerValue];
                      dpSysMsg.type = [[msgObj objectForKey:KEYP_H__MSG_SYSMSG_LIST__LIST_TYPE] integerValue];
                      dpSysMsg.ctime = [msgObj objectForKey:KEYP_H__MSG_SYSMSG_LIST__LIST_CTIME];
                      dpSysMsg.targetId = [[msgObj objectForKey:KEYP_H__MSG_SYSMSG_LIST__LIST_TARGETID] longValue];
                      dpSysMsg.extraId = [[msgObj objectForKey:KEYP_H__MSG_SYSMSG_LIST__LIST_EXTRAID] longValue];
-                     dpSysMsg.content = [msgObj objectForKey:KEYP_H__MSG_SYSMSG_LIST__LIST_UID];
+                     dpSysMsg.content = [msgObj objectForKey:KEYP_H__MSG_SYSMSG_LIST__LIST_CONTENT];
                      dpSysMsg.resultStatus = [[msgObj objectForKey:KEYP_H__MSG_SYSMSG_LIST__LIST_RESULTSTATUS] integerValue];
                      dpSysMsg.extraStatus = [[msgObj objectForKey:KEYP_H__MSG_SYSMSG_LIST__LIST_EXTRASTATUS] integerValue];
                      dpSysMsg.unread = [[msgObj objectForKey:KEYP_H__MSG_SYSMSG_LIST__LIST_UID] integerValue];
+                     dpSysMsg.title = [msgObj objectForKey:KEYP_H__MSG_SYSMSG_LIST__LIST_TITLE];
                      [arrDpMsgs addObject:dpSysMsg];
+                     
+                     DPUiMessage *dpUiMessage = [[DPUiMessage alloc] init];
+                     dpUiMessage.orderid = [[MsgDataProxy sharedProxy] getUiMsgListNextOrderId];
+                     dpUiMessage.type = UI_MESSAGE_TYPE_SYS;
+                     dpUiMessage.mid = dpSysMsg.smid;
+                     [[MsgDataProxy sharedProxy] updateUiMsgList:dpUiMessage];
+                     
                  }
                  [[MsgDataProxy sharedProxy] updateSysMsgList:arrDpMsgs];
 
@@ -73,8 +82,6 @@ static MsgMessageProxy  *messageProxy = nil;
              }
              else {
                  NSError *error = [self processErrorCode:errorcode fromSource:PATH_H__MSG_SYSMSG_LIST_];
-                 
-
              }
          }
         }

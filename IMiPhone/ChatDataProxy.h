@@ -29,7 +29,7 @@ typedef enum {
 - (NSMutableArray *)mutableArrayMessages;
 //- (NSMutableArray *)mutableArrayMessageGroups;
 
-- (DPChatMessage *)getChatMessageFromMid:(NSInteger)mid;
+- (DPChatMessage *)getChatMessageFromMid:(long)mid;
 - (NSArray *)getEmotions;
 
 @end

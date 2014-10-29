@@ -14,7 +14,7 @@
 
 @property (nonatomic) long uid;
 @property (nonatomic) long smid;
-@property (nonatomic, retain) NSString *modid;
+@property (nonatomic) NSInteger modid;
 @property (nonatomic) NSInteger type;
 @property (nonatomic, retain) NSString *ctime;
 @property (nonatomic) long targetId;
@@ -23,6 +23,7 @@
 @property (nonatomic) NSInteger resultStatus;
 @property (nonatomic) NSInteger extraStatus;
 @property (nonatomic) NSInteger unread;
+@property (nonatomic, retain) NSString *title;
 
 
 @end

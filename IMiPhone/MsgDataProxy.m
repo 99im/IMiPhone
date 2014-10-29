@@ -92,6 +92,16 @@ static MsgDataProxy *chatDataProxy = nil;
 //    return arrResult;
 //}
 
+- (DPSysMessage *)getSysMsgByMid:(long)mid
+{
+    NSArray *sysMsgList = [self getSysMsgList];
+    NSInteger findIndex = [ImDataUtil getIndexOf:sysMsgList byItemKey:@"smid" withValue:[NSNumber numberWithLong:mid]];
+    if (findIndex != NSNotFound) {
+        return [sysMsgList objectAtIndex:findIndex];
+    }
+    return nil;
+}
+
 #pragma mark - uiMsgList
 
 - (void)updateUiMsgList:(DPUiMessage *)dpUiMessage
@@ -115,6 +125,18 @@ static MsgDataProxy *chatDataProxy = nil;
             [[UiMessageDAO sharedDAO] update:dbUiMessage ByCondition:[DB_PRIMARY_KEY_UI_MESSAGE_ORDER_ID stringByAppendingString:@"=?"] Bind:[NSArray arrayWithObject:[NSString stringWithFormat:@"%i",dpUiMessage.orderid]]];
             [self.arrUiMsgs replaceObjectAtIndex:findIndex withObject:dpUiMessage];
         }
+    }
+    else if (dpUiMessage.type == UI_MESSAGE_TYPE_SYS) {
+        for (NSInteger i = 0; i < uiMsgList.count; i++) {
+            DPUiMessage *tempDpUiMessage = [uiMsgList objectAtIndex:i];
+            NSLog(@"dpUiMessage.mid:%ld",dpUiMessage.mid);
+            if (dpUiMessage.mid == tempDpUiMessage.mid) {
+                NSLog(@"系统消息已经存在！");
+                return;
+            }
+        }
+        [[UiMessageDAO sharedDAO] insert:dbUiMessage];
+        [self.arrUiMsgs addObject:dpUiMessage];
     }
 }
 
