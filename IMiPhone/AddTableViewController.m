@@ -8,6 +8,7 @@
 
 #import "AddTableViewController.h"
 #import "AddByInputTableViewCell.h"
+#import "AddItemTableViewCell.h"
 #import "FriendMessageProxy.h"
 #import "UserMessageProxy.h"
 #import "UserDataProxy.h"
@@ -27,6 +28,9 @@ NSInteger const sectionInput = 0;
 NSInteger const sectionTP = 1;
 NSInteger const sectionGroup = 2;
 NSInteger const sectionNum = 3;
+
+NSInteger const ROW_CREATE_QUN = 0;
+NSInteger const ROW_CREATE_ZU = 1;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -61,18 +65,13 @@ NSInteger const sectionNum = 3;
     [self removeMessageNotification];
 }
 
+- (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender {
+    //[super shouldPerformSegueWithIdentifier:identifier sender:sender];
+    return YES;
+}
+
 - (IBAction)searchTouchUpInside:(id)sender {
     
-//    NSLog(@"Table selected section: %i, row: %i", self.tableView.indexPathForSelectedRow.section, self.tableView.indexPathForSelectedRow.row);
-//    if (sender == self.userIdCell.btnAdd) {
-//        [[UserMessageProxy sharedProxy] sendTypeSearch:self.userIdCell.tfAddTarget.text];
-//    }
-//    else if (sender == self.groupIdCell.btnAdd) {
-//        //NSNumber *gid = (NSNumber *)self.userIdCell.tfAddTarget.text;
-//        NSLog(@"%@",self.groupIdCell.tfAddTarget.text);
-//        NSNumber *gid = [NSNumber numberWithInteger:[self.groupIdCell.tfAddTarget.text integerValue]];
-//        [[GroupMessageProxy sharedProxy] sendGroupInfo:gid];
-//    }
 }
 
 #pragma mark - Table view data source
@@ -118,14 +117,21 @@ NSInteger const sectionNum = 3;
         }
         case sectionTP:
         {
-            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"addByTPCell" forIndexPath:indexPath];
+            AddItemTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"addByTPCell" forIndexPath:indexPath];
+            //cell.actionType = FRIEND_ADD_BY_CONTACT;
             cell.textLabel.text = [self.arrTPs objectAtIndex:indexPath.row];
             return cell;
         }
         case sectionGroup:
         {
-            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"addForGroup" forIndexPath:indexPath];
-            cell.textLabel.text = [self.arrGroupMenus4Add objectAtIndex:indexPath.row];
+            AddItemTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"addForGroup" forIndexPath:indexPath];
+            if (indexPath.row == ROW_CREATE_QUN) {
+                //cell.actionType = GROUP_CREATE_QUN;
+                cell.lblTitle.text = [self.arrGroupMenus4Add objectAtIndex:indexPath.row];
+            } else if (indexPath.row == ROW_CREATE_ZU) {
+                //cell.actionType = GROUP_CREATE_ZU;
+                cell.lblTitle.text = [self.arrGroupMenus4Add objectAtIndex:indexPath.row];
+            }
             return cell;
         }
         default:
@@ -137,7 +143,21 @@ NSInteger const sectionNum = 3;
     
     return nil;
 }
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
+    switch (indexPath.section) {
+        case sectionGroup: {
+            //AddItemTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"addForGroup" forIndexPath:indexPath];
+            if (indexPath.row == ROW_CREATE_QUN) {
+//                [[NSNotificationCenter defaultCenter] postNotificationName:@"skipToGroupCreate"
+//                                                                    object:nil];
+                [self performSegueWithIdentifier:@"contactAdd2groupCreate" sender:self];
+            //} else if (indexPath.row == ROW_CREATE_ZU) {
+            }
+            break;
+        }
+    }
+}
 /*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
@@ -194,17 +214,25 @@ NSInteger const sectionNum = 3;
     [self performSegueWithIdentifier:@"Add2ResultSegue" sender:self];
 }
 
+//- (void)skipToGroupCreate:(NSNotification *)notification {
+//    [self performSegueWithIdentifier:@"contactAdd2groupCreate" sender:self];
+//    
+//}
+
 #pragma mark - IMNWProxyProtocol Method
 - (void)registerMessageNotification
 {
     //监听搜索用户结果的监听
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(skipToSearchResult:) name:NOTI_H__USER_SEARCH_ object:nil];
+
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(skipToGroupCreate:) name:@"skipToGroupCreate" object:nil];
 }
 
 - (void)removeMessageNotification
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
+
 
 
 @end

@@ -30,11 +30,12 @@
     //行号
     NSInteger row = indexPath.row;
 
-    //TODO: 读取并显示群名称等基本信息
-    NSLog(@"填充群组信息：%i" , row);
-    // Configure the view for the selected state
-
-    self.groupId = 8;
+    DPGroup *dpGroup = [[GroupDataProxy sharedProxy] getGroupInfoAtRow:row];
+    if (dpGroup) {
+        self.groupId = dpGroup.gid;
+        self.lblName.text = dpGroup.name;
+        self.lblIntro.text =dpGroup.intro;
+    }
 
 }
 

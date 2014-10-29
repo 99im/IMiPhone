@@ -18,61 +18,27 @@
 #define GOL_KEY_GROUP_NAME @"groupName"
 
 @interface GroupMessageProxy : NSObject
+#pragma mark - 静态方法
 + (GroupMessageProxy *)sharedProxy;
-/**
- *  HTTP：获取我的群列表
- *
- *  @param start   起始编号
- *  @param pageNum 查询条数
- */
-- (void)sendGroupMyList:(NSNumber *)start withPageNum:(NSNumber *)pageNum;
 
-/**
- *  HTTP：创建群
- *
- *  @param name  群名称
- *  @param intro 群简介
- */
-- (void)sendGroupCreate:(NSString *)name withIntro:(NSString *)intro;
-
-/**
- *  HTTP:查看群详细信息
- *
- *  @param gid 群号
- */
+#pragma mark - 信息读取
+///HTTP:查看群详细信息
 - (void)sendGroupInfo:(NSString *)gid;
-
-/**
- *  HTTP:获取群成员列表
- *
- *  @param gid     群号
- *  @param start   起始数
- *  @param pageNum 显示数
- */
+///HTTP：获取我的群列表
+- (void)sendGroupMyList:(NSNumber *)start withPageNum:(NSNumber *)pageNum;
+///HTTP:获取群成员列表
 - (void)sendGroupMembers:(NSString *)gid start:(NSNumber *)start pageNum:(NSNumber *)pageNum;
 
-/**
- *  HTTP: 申请加入群
- *
- *  @param gid 群号
- *  @param msg 申请留言说明
- */
+#pragma mark - 加入群
+///HTTP: 申请加入群
 - (void)sendGroupApply:(NSString *)gid msg:(NSString *)msg;
-/**
- *  HTTP：邀请加入群组
- *
- *  @param gid        群号
- *  @param targetUids 邀请uids,格式：1,2,3
- *  @param msg        附加留言内容
- */
+///HTTP：邀请加入群组
 - (void)sendGroupInvite:(NSString *)gid targetUids:(NSString *)targetUids msg:(NSString *)msg;
-
-/**
- *  HTTP：邀请加入群的回应
- *
- *  @param rid   邀请序号
- *  @param agree 回应编码： 0 拒绝 1 同意
- */
+///HTTP：邀请加入群的回应
 - (void)sendGroupInviteResponse:(NSString *)rid agree:(NSNumber *)agree;
+
+#pragma mark - 群管理
+///HTTP：创建群
+- (void)sendGroupCreate:(NSString *)name withIntro:(NSString *)intro;
 
 @end

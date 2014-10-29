@@ -769,11 +769,8 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
-                                <connections>
-                                    <segue destination="2lb-9l-wVJ" kind="push" id="LXb-fG-iXE"/>
-                                </connections>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="addForGroup" textLabel="ZKZ-Nl-rIE" style="IBUITableViewCellStyleDefault" id="JOA-GC-c0x">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="addForGroup" textLabel="ZKZ-Nl-rIE" style="IBUITableViewCellStyleDefault" id="JOA-GC-c0x" customClass="AddItemTableViewCell">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="JOA-GC-c0x" id="naK-qn-t4N">
@@ -787,6 +784,9 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="lblTitle" destination="ZKZ-Nl-rIE" id="yf3-F0-Kb4"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -797,7 +797,7 @@
                     <navigationItem key="navigationItem" title="添加" id="0Cg-xz-UaQ"/>
                     <connections>
                         <segue destination="Ixd-6h-fyu" kind="push" identifier="Add2ResultSegue" id="EnR-fJ-pM5"/>
-                        <segue destination="xc6-7k-stq" kind="push" identifier="contactAdd2groupCreate" id="stQ-du-P0J"/>
+                        <segue destination="xc6-7k-stq" kind="modal" identifier="contactAdd2groupCreate" id="YF8-tq-9ko"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SSm-e9-x7L" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1449,13 +1449,13 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="创建时间：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RkW-Xd-HEb">
-                                        <rect key="frame" x="14" y="291" width="87" height="23"/>
+                                        <rect key="frame" x="12" y="241" width="87" height="23"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="2014-05-10" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NIq-K2-5KG">
-                                        <rect key="frame" x="95" y="291" width="186" height="21"/>
+                                        <rect key="frame" x="93" y="241" width="186" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
@@ -1499,7 +1499,7 @@
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BmJ-ql-D7D">
-                                        <rect key="frame" x="153" y="462" width="167" height="48"/>
+                                        <rect key="frame" x="149" y="359" width="167" height="48"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                         <state key="normal" title="设置管理">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -1510,13 +1510,28 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="abL-fc-KFT">
-                                        <rect key="frame" x="8" y="462" width="145" height="51"/>
+                                        <rect key="frame" x="4" y="359" width="145" height="51"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                         <state key="normal" title="进入聊天">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
                                             <segue destination="yEJ-R3-2p3" kind="push" identifier="groupInfo2GroupChat" id="NpR-cO-pjh"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qC8-MD-ylo">
+                                        <rect key="frame" x="84" y="190" width="211" height="19"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DnI-3q-dXv">
+                                        <rect key="frame" x="81" y="321" width="123" height="30"/>
+                                        <state key="normal" title="申请加入">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="zdu-lY-f24" kind="modal" id="dLH-M0-4FS"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -1529,11 +1544,16 @@
                     <navigationItem key="navigationItem" id="HL7-CH-2Tf"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="btnApply" destination="DnI-3q-dXv" id="fgE-BS-pPM"/>
                         <outlet property="btnBottom" destination="aGA-1D-sav" id="PNL-hn-2C3"/>
                         <outlet property="imgAvatar" destination="ZjC-fs-DKb" id="JAi-av-oZ5"/>
+                        <outlet property="lblCTime" destination="NIq-K2-5KG" id="5Im-Zt-au4"/>
+                        <outlet property="lblCity" destination="oJb-ek-GzQ" id="wuG-Sg-oef"/>
+                        <outlet property="lblCreatorName" destination="rXS-Vm-kE7" id="YGf-sY-bo0"/>
                         <outlet property="lblGroupId" destination="h2Y-Zr-rK7" id="nAZ-FS-uCv"/>
                         <outlet property="lblGroupName" destination="dlg-nV-kFa" id="yD6-Eq-gg4"/>
-                        <outlet property="txtDetail" destination="Skp-jk-w4A" id="U4r-5o-KQd"/>
+                        <outlet property="lblMemberNum" destination="qC8-MD-ylo" id="SxB-ME-pB0"/>
+                        <outlet property="txtvIntro" destination="Skp-jk-w4A" id="gmI-mC-UbP"/>
                         <segue destination="Tez-zb-r5A" kind="push" id="3hi-GN-j2D"/>
                     </connections>
                 </viewController>
@@ -1585,10 +1605,10 @@
             </objects>
             <point key="canvasLocation" x="2916" y="6231"/>
         </scene>
-        <!--Group-已加入群列表-->
+        <!--Group-我加入的群-->
         <scene sceneID="OH2-Fr-kDb">
             <objects>
-                <tableViewController storyboardIdentifier="storyGroupMyList" id="8NY-Sg-b0A" userLabel="Group-已加入群列表" customClass="GroupTableViewController" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="storyGroupMyList" id="8NY-Sg-b0A" userLabel="Group-我加入的群" customClass="GroupTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="22" sectionFooterHeight="22" id="Lv3-YA-N3B">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1599,7 +1619,7 @@
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aob-gj-Xhz" id="tDZ-UF-OZj">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Jif-IK-TEo">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ChatDefault" translatesAutoresizingMaskIntoConstraints="NO" id="Jif-IK-TEo">
                                             <rect key="frame" x="5" y="5" width="48" height="48"/>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="GroupName" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xTc-Fb-b5C">
@@ -1608,12 +1628,6 @@
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="1" green="0.4072162137" blue="0.15419225859999999" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="highlightedColor" red="1" green="0.4072162137" blue="0.15419225859999999" alpha="1" colorSpace="calibratedRGB"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="12.5Km" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vw6-1I-T8m">
-                                            <rect key="frame" x="210" y="8" width="77" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                            <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Group Intro" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wmR-yv-xG7">
                                             <rect key="frame" x="77" y="31" width="150" height="21"/>
@@ -1625,8 +1639,8 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="imgAvatar" destination="Jif-IK-TEo" id="Rue-6y-2dg"/>
-                                    <outlet property="lblDistance" destination="Vw6-1I-T8m" id="SH8-H4-M69"/>
                                     <outlet property="lblIntro" destination="wmR-yv-xG7" id="KW2-oR-uQh"/>
+                                    <outlet property="lblName" destination="xTc-Fb-b5C" id="2cw-TC-5Mc"/>
                                     <segue destination="nqj-0p-hk3" kind="push" identifier="groupList2viewInfoSegue" id="Dql-ZX-dEr"/>
                                 </connections>
                             </tableViewCell>
@@ -1653,33 +1667,70 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="输入群组名称" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xoK-wb-cf9">
-                                <rect key="frame" x="16" y="44" width="213" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xoK-wb-cf9">
+                                <rect key="frame" x="63" y="66" width="190" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="输入群组地点" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PhO-ju-4lS">
-                                <rect key="frame" x="16" y="88" width="213" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Sx-9P-ewN">
-                                <rect key="frame" x="237" y="88" width="67" height="30"/>
-                                <state key="normal" title="选择地点">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="请输入群简介，80字以内。。。" translatesAutoresizingMaskIntoConstraints="NO" id="OVv-fu-vJj">
-                                <rect key="frame" x="16" y="133" width="222" height="66"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OVv-fu-vJj">
+                                <rect key="frame" x="63" y="112" width="222" height="60"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3Ax-Dp-8AP">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                <items>
+                                    <navigationItem title="创建群组" id="9SU-fO-04f">
+                                        <barButtonItem key="leftBarButtonItem" title="取消" id="Uzl-e6-y6C">
+                                            <connections>
+                                                <action selector="cancelGroupCreater:" destination="xc6-7k-stq" id="KVb-yY-sOP"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" title="创建" id="jia-FJ-VVv">
+                                            <connections>
+                                                <action selector="checkGroupCreate:" destination="xc6-7k-stq" id="rbW-jx-tcX"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="群名" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hef-uk-CLb">
+                                <rect key="frame" x="16" y="70" width="68" height="20"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="简介" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YvR-1n-cgI">
+                                <rect key="frame" x="16" y="112" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PhO-ju-4lS">
+                                <rect key="frame" x="63" y="184" width="190" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Sx-9P-ewN">
+                                <rect key="frame" x="246" y="184" width="67" height="30"/>
+                                <state key="normal" title="选择">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="城市" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zVF-52-iyd">
+                                <rect key="frame" x="16" y="185" width="51" height="25"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="yVq-xa-gOd"/>
                     <connections>
+                        <outlet property="tfCity" destination="PhO-ju-4lS" id="bSu-ZD-4BA"/>
+                        <outlet property="tfName" destination="xoK-wb-cf9" id="fmL-cH-giI"/>
+                        <outlet property="tvIntro" destination="OVv-fu-vJj" id="FsK-NT-wdY"/>
                         <segue destination="nqj-0p-hk3" kind="push" id="j7u-OT-bsU"/>
                     </connections>
                 </viewController>
@@ -1806,7 +1857,62 @@
             </objects>
             <point key="canvasLocation" x="3996" y="6201"/>
         </scene>
-        <!--Group-群聊-->
+        <!--Group-申请加入群-->
+        <scene sceneID="hIz-F5-FbG">
+            <objects>
+                <viewController id="zdu-lY-f24" userLabel="Group-申请加入群" customClass="GroupApplyViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="MNg-4c-6uh"/>
+                        <viewControllerLayoutGuide type="bottom" id="PFQ-by-q8u"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="UdB-8E-pvC">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="C7s-Zn-B4E">
+                                <rect key="frame" x="9" y="51" width="300" height="60"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wDh-yd-36W">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                <items>
+                                    <navigationItem title="申请加入群" id="XrU-Xz-GHv">
+                                        <barButtonItem key="leftBarButtonItem" title="取消" id="Ye3-za-t2Y">
+                                            <connections>
+                                                <action selector="cancelGroupApply:" destination="zdu-lY-f24" id="CrB-oI-CZA"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" title="提交" id="6YD-x6-MYv">
+                                            <connections>
+                                                <action selector="checkGroupApply:" destination="zdu-lY-f24" id="7Uk-6W-frD"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="你当前可以加入6个群，已加入3个群" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SH1-6c-oAI">
+                                <rect key="frame" x="9" y="125" width="295" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="wsM-PO-zFH"/>
+                    <connections>
+                        <outlet property="btnCancel" destination="Ye3-za-t2Y" id="n2D-Ph-YXQ"/>
+                        <outlet property="btnSubmit" destination="6YD-x6-MYv" id="1JP-Ay-Kv6"/>
+                        <outlet property="tvMsg" destination="C7s-Zn-B4E" id="gDt-uJ-uO2"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="k8u-pJ-2kB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4630" y="6217"/>
+        </scene>
+        <!--Chat-群聊-->
         <scene sceneID="zxE-yQ-ZxD">
             <objects>
                 <viewController id="yEJ-R3-2p3" userLabel="Group-群聊" customClass="GroupChatViewController" sceneMemberID="viewController">
@@ -2151,8 +2257,12 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="jj6-rV-QBG"/>
+        <segue reference="JfN-oz-5Dg"/>
         <segue reference="6IF-l5-3Iq"/>
+        <segue reference="jj6-rV-QBG"/>
+        <segue reference="B9e-R6-y8A"/>
+        <segue reference="EnR-fJ-pM5"/>
+        <segue reference="j7u-OT-bsU"/>
         <segue reference="fNZ-Tb-k0o"/>
         <segue reference="EnR-fJ-pM5"/>
         <segue reference="8gL-WP-3D1"/>

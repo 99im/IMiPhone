@@ -16,17 +16,17 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self registerMessageNotification];
     // Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
+    [self removeMessageNotification];
     // Dispose of any resources that can be recreated.
 }
 
 /*
-#pragma mark - Navigation
-
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
@@ -34,4 +34,41 @@
 }
 */
 
+#pragma mark - Notification
+- (void)registerMessageNotification {
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(didOnGroupCreate:)
+                                                 name:NOTI_H__GROUP_CREATE_
+                                               object:nil];
+}
+
+- (void)removeMessageNotification {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)didOnGroupCreate:(NSNotification *)notification {
+    [self dismissViewControllerAnimated:YES completion:^{
+        NSLog(@"群创建成功！");
+        //更新群列表
+        [[GroupMessageProxy sharedProxy] sendGroupMyList:[NSNumber numberWithInteger:0] withPageNum:[NSNumber numberWithInteger:50]];
+    }];
+}
+
+
+#pragma mark - 交互动作
+
+- (IBAction)cancelGroupCreater:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:^{
+        NSLog(@"取消建群");
+    }];
+}
+
+- (IBAction)checkGroupCreate:(id)sender {
+    NSString *name = self.tfName.text;
+    NSString *intro = self.tvIntro.text;
+    //TODO : 输入数据机校验
+    if (name.length > 0) {
+        [[GroupMessageProxy sharedProxy] sendGroupCreate:name withIntro:intro];
+    }
+}
 @end

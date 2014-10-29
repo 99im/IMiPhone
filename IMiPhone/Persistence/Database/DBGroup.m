@@ -10,14 +10,19 @@
 
 @implementation DBGroup
 
-@synthesize groupId;
-@synthesize groupName;
-@synthesize members;
+@synthesize gid;
+@synthesize name;
+@synthesize memberNum;
+@synthesize ctime;
+@synthesize intro;
 @synthesize portraitUrl;
 
--(void)setValue:(id)value forUndefinedKey:(NSString *)key
-{
-    NSLog(@"undefine key ---%@",key);
-}
+@synthesize creator_uid;
+@synthesize creator_nick;
+@synthesize creator_oid;
+@synthesize creator_vip;
+@synthesize creator_city;
+
+@synthesize localUpdateTime;
 
 @end
