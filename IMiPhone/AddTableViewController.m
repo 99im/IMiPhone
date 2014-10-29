@@ -30,7 +30,7 @@ NSInteger const sectionGroup = 2;
 NSInteger const sectionNum = 3;
 
 NSInteger const ROW_CREATE_QUN = 0;
-NSInteger const ROW_CREATE_ZU = 0;
+NSInteger const ROW_CREATE_ZU = 1;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -149,8 +149,9 @@ NSInteger const ROW_CREATE_ZU = 0;
         case sectionGroup: {
             //AddItemTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"addForGroup" forIndexPath:indexPath];
             if (indexPath.row == ROW_CREATE_QUN) {
-                [[NSNotificationCenter defaultCenter] postNotificationName:@"skipToGroupCreate"
-                                                                    object:nil];
+//                [[NSNotificationCenter defaultCenter] postNotificationName:@"skipToGroupCreate"
+//                                                                    object:nil];
+                [self performSegueWithIdentifier:@"contactAdd2groupCreate" sender:self];
             //} else if (indexPath.row == ROW_CREATE_ZU) {
             }
             break;
@@ -213,10 +214,10 @@ NSInteger const ROW_CREATE_ZU = 0;
     [self performSegueWithIdentifier:@"Add2ResultSegue" sender:self];
 }
 
-- (void)skipToGroupCreate:(NSNotification *)notification {
-    [self performSegueWithIdentifier:@"contactAdd2groupCreate" sender:self];
-    
-}
+//- (void)skipToGroupCreate:(NSNotification *)notification {
+//    [self performSegueWithIdentifier:@"contactAdd2groupCreate" sender:self];
+//    
+//}
 
 #pragma mark - IMNWProxyProtocol Method
 - (void)registerMessageNotification
@@ -224,7 +225,7 @@ NSInteger const ROW_CREATE_ZU = 0;
     //监听搜索用户结果的监听
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(skipToSearchResult:) name:NOTI_H__USER_SEARCH_ object:nil];
 
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(skipToGroupCreate:) name:@"skipToGroupCreate" object:nil];
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(skipToGroupCreate:) name:@"skipToGroupCreate" object:nil];
 }
 
 - (void)removeMessageNotification

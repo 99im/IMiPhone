@@ -420,7 +420,7 @@ example: http://local.taiqiu.com:7070/group/create/?name=testgroup001&intro=hell
 */
 #define PATH_H__GROUP_CREATE_ @"/group/create/"
 #define NOTI_H__GROUP_CREATE_ @"MPgroupcreateNotifiction"
-#define METHOD_H__GROUP_CREATE_ @"POST"
+#define METHOD_H__GROUP_CREATE_ @"GET"
 #define KEYQ_H__GROUP_CREATE__NAME @"name" //name string 群名称
 #define KEYQ_H__GROUP_CREATE__INTRO @"intro" //intro string 群介绍
 #define KEYP_H__GROUP_CREATE__ERROR_CODE @"error_code" //error_code int 0

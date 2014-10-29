@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GroupDataProxy.h"
+#import "GroupMessageProxy.h"
 
 @interface GroupCreateViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UITextField *tfName;

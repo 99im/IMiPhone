@@ -285,12 +285,15 @@ static GroupMessageProxy *sharedGroupMessageProxy = nil;
             int errorcode =
                 [[json objectForKey:KEYP_H__GROUP_CREATE__ERROR_CODE] intValue];
             if (errorcode == 0) {
-              NSLog(@"sendGroupCreate response ok:\n%@", json);
+              // NSLog(@"sendGroupCreate response ok:\n%@", json);
+              [[NSNotificationCenter defaultCenter]
+                  postNotificationName:NOTI_H__GROUP_CREATE_
+                                object:nil];
+
             } else {
               NSAssert(YES, @"sendGroupCreate error: %i", errorcode);
             }
           }
-
       }];
 }
 @end

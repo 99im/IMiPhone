@@ -51,6 +51,7 @@
 
 - (void)didReceiveGroupInfo:(NSNotification *)notification {
     NSLog(@"didReceiveGroupInfo");
+    //[super viewDidLoad];
     DPGroup *currGroup = [GroupDataProxy sharedProxy].currentGroup;
     [self drawContent: currGroup];
 }
