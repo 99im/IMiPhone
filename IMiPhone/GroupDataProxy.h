@@ -35,7 +35,7 @@
 - (DPGroup *)getGroupInfo:(long)gid byHttpMode:(int)httpMode;
 - (DPGroup *)getGroupInfoCurrent;
 - (DPGroup *)getGroupInfoAtRow:(NSInteger)row;
-- (NSMutableArray *)getGroupMyList;
+- (NSMutableArray *)getGroupMyList:(int)httpMode;
 - (NSInteger)countGroupMyList;
 
 #pragma mark - 其它
