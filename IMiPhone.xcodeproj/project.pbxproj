@@ -1021,6 +1021,10 @@
 				AB24A95F19F8E59D00026299 /* GroupSettingTableViewController.m */,
 				AB62170619FF3F65003C2FBB /* GroupApplyViewController.h */,
 				AB62170719FF3F65003C2FBB /* GroupApplyViewController.m */,
+				58CDC03719FE175500173FD7 /* GroupChatTableViewCell.h */,
+				58CDC03819FE175500173FD7 /* GroupChatTableViewCell.m */,
+				58CDC03A19FE2EF600173FD7 /* GroupChatViewController.h */,
+				58CDC03B19FE2EF600173FD7 /* GroupChatViewController.m */,
 			);
 			name = Group;
 			sourceTree = "<group>";

@@ -793,7 +793,8 @@ example: http://local.taiqiu.com:7070/msg/sysmsg-list/?&modids=1,2,3&verify=17_1
 #define KEYP_H__MSG_SYSMSG_LIST__LIST_CONTENT @"content" // content
 #define KEYP_H__MSG_SYSMSG_LIST__LIST_RESULTSTATUS @"resultStatus" // resultStatus
 #define KEYP_H__MSG_SYSMSG_LIST__LIST_EXTRASTATUS @"extraStatus" // extraStatus
-#define KEYP_H__MSG_SYSMSG_LIST__LIST_UNREAD @"unread" // unread
+#define KEYP_H__MSG_SYSMSG_LIST__LIST_UNREAD @"unread" // unread 
+#define KEYP_H__MSG_SYSMSG_LIST__LIST_TITLE @"title" // title
 
 /*
 mark: msg
