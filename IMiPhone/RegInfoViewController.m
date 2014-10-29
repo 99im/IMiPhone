@@ -57,7 +57,7 @@
     [self removeMessageNotification];
 }
 
--(void)viewDidAppear:(BOOL)animated
+- (void)viewDidAppear:(BOOL)animated
 {
     self.scrollView.contentSize = CGSizeMake(320, 751);
     //self.scrollView.frame = CGRectMake(0, 64, 320, 504);
@@ -73,7 +73,7 @@
     [super viewDidAppear:YES];
 }
 
--(void) viewWillDisappear:(BOOL)animated {
+- (void)viewWillDisappear:(BOOL)animated {
     //解除键盘出现通知
     [[NSNotificationCenter defaultCenter] removeObserver:self
                                                     name: UIKeyboardDidShowNotification object:nil];

@@ -119,11 +119,9 @@
 
     static NSString *cellIdentifier = @"FriendTableViewCellUser";
     UITableViewCell *cell = nil;
-    NSLog(@"refresh:%@..self:%@,",tableView,self.tableView);
     cell = [self.tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
     DPUser *user;
     
-    NSLog(@"self.searchDisplayController%@",self.searchDisplayController);
     if ([tableView isEqual:self.searchDisplayController.searchResultsTableView]) {
          user = [self.searchResults objectAtIndex:indexPath.row];
     }

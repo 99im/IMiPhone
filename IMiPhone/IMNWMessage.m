@@ -39,7 +39,8 @@
     if (params == nil) {
         params = [NSMutableDictionary dictionary];
     }
-    if ([UserDataProxy sharedProxy].verify) {
+    //POST类型verify挪到底层，直接加在path上
+    if ([method isEqualToString:METHOD_GET] && [UserDataProxy sharedProxy].verify) {
         [params setObject:[UserDataProxy sharedProxy].verify forKey:HTTP_KEY_VERIFY];
     }
     message.data = params;
