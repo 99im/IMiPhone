@@ -39,21 +39,10 @@
 
 #pragma mark - Notification
 - (void)registerMessageNotification {
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(didReceiveGroupInfo:)
-                                                 name:NOTI_H__GROUP_INFO_
-                                               object:nil];
 }
 
 - (void)removeMessageNotification {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
-
-- (void)didReceiveGroupInfo:(NSNotification *)notification {
-    NSLog(@"didReceiveGroupInfo");
-    //[super viewDidLoad];
-    DPGroup *currGroup = [GroupDataProxy sharedProxy].currentGroup;
-    [self drawContent: currGroup];
 }
 
 //绘制内容

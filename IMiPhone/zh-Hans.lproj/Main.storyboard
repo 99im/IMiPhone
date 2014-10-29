@@ -796,8 +796,9 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="添加" id="0Cg-xz-UaQ"/>
                     <connections>
-                        <segue destination="Ixd-6h-fyu" kind="push" identifier="Add2ResultSegue" id="EnR-fJ-pM5"/>
+                        <segue destination="Ixd-6h-fyu" kind="push" identifier="Add2UserResultSegue" id="EnR-fJ-pM5"/>
                         <segue destination="xc6-7k-stq" kind="modal" identifier="contactAdd2groupCreate" id="YF8-tq-9ko"/>
+                        <segue destination="nqj-0p-hk3" kind="push" identifier="Add2GroupResultSegue" id="yXo-ak-l89"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SSm-e9-x7L" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2261,8 +2262,8 @@
         <segue reference="6IF-l5-3Iq"/>
         <segue reference="fNZ-Tb-k0o"/>
         <segue reference="EnR-fJ-pM5"/>
+        <segue reference="yXo-ak-l89"/>
         <segue reference="8gL-WP-3D1"/>
-        <segue reference="Dql-ZX-dEr"/>
         <segue reference="JfN-oz-5Dg"/>
     </inferredMetricsTieBreakers>
 </document>

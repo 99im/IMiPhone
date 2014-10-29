@@ -208,10 +208,15 @@ NSInteger const ROW_CREATE_ZU = 1;
 */
 
 #pragma mark - serchResult
-- (void)skipToSearchResult:(NSNotification *)notification
+
+- (void)skipToSearchUserResult:(NSNotification *)notification
 {
-//        self.hidesBottomBarWhenPushed = YES;
-    [self performSegueWithIdentifier:@"Add2ResultSegue" sender:self];
+    [self performSegueWithIdentifier:@"Add2UserResultSegue" sender:self];
+}
+
+- (void)skipToSearchGroupResult:(NSNotification *)notification
+{
+    [self performSegueWithIdentifier:@"Add2GroupResultSegue" sender:self];
 }
 
 //- (void)skipToGroupCreate:(NSNotification *)notification {
@@ -223,7 +228,9 @@ NSInteger const ROW_CREATE_ZU = 1;
 - (void)registerMessageNotification
 {
     //监听搜索用户结果的监听
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(skipToSearchResult:) name:NOTI_H__USER_SEARCH_ object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(skipToSearchUserResult:) name:NOTI_H__USER_SEARCH_ object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(skipToSearchGroupResult:) name:NOTI_H__GROUP_INFO_ object:nil];
+    
 
 //    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(skipToGroupCreate:) name:@"skipToGroupCreate" object:nil];
 }
