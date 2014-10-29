@@ -10,12 +10,18 @@
 #import "MKNetworkEngine.h"
 #import "IMNWMessage.h"
 #import "IMNWManager.h"
+#import "UserDataProxy.h"
+#import "NSString+MKNetworkKitAdditions.h"
 
 @implementation IMNWHttpConnect
 
 - (void)sendHttpRequest:(IMNWMessage *)message withResponse:(imNWResponseBlock)response
 {
     NSMutableDictionary *params = [message getHttpParams];
+    
+    if ([message.method isEqualToString:METHOD_POST]) {
+        message.path = [NSString stringWithFormat:@"%@?%@=%@", message.path, [HTTP_KEY_VERIFY mk_urlEncodedString], [[UserDataProxy sharedProxy].verify mk_urlEncodedString]];
+    }
     
     MKNetworkOperation *op = [self operationWithPath:message.path params:params httpMethod:message.method ssl:message.useSSL];
     
