@@ -142,45 +142,57 @@ static GroupDataProxy *sharedGroupDataProxy = nil;
 
         //更新时间
         dpGroup.localUpdateTime = nowTime;
+        dpGroup.isInMyGroups = YES;
     }
 
     return 0;
 }
 
 #pragma mark - 单例：群信息
-- (DPGroup *) getGroupInfo : (long) gid withHttp:(BOOL) withHttp {
-    DPGroup *dpGroup;
-    if (gid > 0) {
-        DPGroup *tmpGroup = _currentGroup;
+- (DPGroup *)getGroupInfo:(long)gid byHttpMode:(int)httpMode {
+  DPGroup *dpGroup;
+  if (gid > 0) {
+    DPGroup *tmpGroup = _currentGroup;
 
-        if (tmpGroup && tmpGroup.gid == gid) {
-            dpGroup = tmpGroup;
-        } else if(_arrGroupMyList) {//从本地缓存数组查找
-            //NSMutableArray *myGroups = self.arrGroupMyList;
-            for (NSInteger i =0; i < [_arrGroupMyList count]; i++) {
-                tmpGroup = _arrGroupMyList[i];
-                if (tmpGroup.gid == gid) {
-                    dpGroup = tmpGroup;
-                    break;
-                }
-            }
+    if (tmpGroup && tmpGroup.gid == gid) {
+      dpGroup = tmpGroup;
+    } else if (_arrGroupMyList) { //从本地缓存数组查找
+      // NSMutableArray *myGroups = self.arrGroupMyList;
+      for (NSInteger i = 0; i < [_arrGroupMyList count]; i++) {
+        tmpGroup = _arrGroupMyList[i];
+        if (tmpGroup.gid == gid) {
+          dpGroup = tmpGroup;
+          break;
         }
-        NSString *strGid = [NSString stringWithFormat:@"%li" , gid];
-        if (withHttp || !dpGroup) {
-            [[GroupMessageProxy sharedProxy] sendGroupInfo: strGid];
-        } else {
-            long long endTime = [GroupDataProxy nowTime] - TIMEOUT_GROUP_INFO;
-            if (dpGroup.localUpdateTime < endTime) {
-                //NSLog(@"超时（%qi,%qi），准备刷新：" , dpGroup.localUpdateTime , nowTime);
-                [[GroupMessageProxy sharedProxy] sendGroupInfo: strGid];
-            }
-        }
+      }
     }
-    return dpGroup;
+
+    BOOL needHttp = YES;
+    if (httpMode == SEND_HTTP_YES) {
+      needHttp = YES;
+    } else if (httpMode == SEND_HTTP_NO) {
+      needHttp = NO;
+    } else {
+      if (dpGroup) { //分析本地缓存数据是否超时
+        long long endTime = [GroupDataProxy nowTime] - TIMEOUT_GROUP_INFO;
+        if (dpGroup.localUpdateTime > endTime) {
+          needHttp = NO;
+        }
+      }
+    }
+
+    if (needHttp == YES) {
+      NSString *strGid = [NSString stringWithFormat:@"%li", gid];
+      [[GroupMessageProxy sharedProxy] sendGroupInfo:strGid];
+      // NSLog(@"超时（%qi,%qi），准备刷新：" , dpGroup.localUpdateTime ,
+      // nowTime);
+    }
+  }
+  return dpGroup;
 }
 
 - (DPGroup *) getGroupInfoCurrent {
-    return [self getGroupInfo: self.currentGroupId withHttp:NO];
+    return [self getGroupInfo: self.currentGroupId byHttpMode:SEND_HTTP_AUTO];
 }
 
 - (DPGroup *)getGroupInfoAtRow:(NSInteger)row{
@@ -191,54 +203,55 @@ static GroupDataProxy *sharedGroupDataProxy = nil;
 }
 
 - (int)updateGroupInfo:(NSMutableDictionary *)json {
-    NSDictionary *info = [json objectForKey:KEYP_H__GROUP_INFO__INFO];
+  NSDictionary *info = [json objectForKey:KEYP_H__GROUP_INFO__INFO];
 
-    long gid = [[info objectForKey:KEYP_H__GROUP_INFO__INFO_GID] longValue];
-    if (gid < 1) {
-        return 1001;    //客户端错误码，待统一整理
-    }
+  long gid = [[info objectForKey:KEYP_H__GROUP_INFO__INFO_GID] longValue];
+  if (gid < 1) {
+    return 1001; //客户端错误码，待统一整理
+  }
 
-    // NSTimeInterval timeInterval= [GroupDataProxy nowTime];
-    DPGroup *dpGroup = _currentGroup;
-    if (!dpGroup || dpGroup.gid != gid) {
-        dpGroup = [[DPGroup alloc] init];
-    }
+  // NSTimeInterval timeInterval= [GroupDataProxy nowTime];
+  DPGroup *dpGroup = _currentGroup;
+  if (!dpGroup || dpGroup.gid != gid) {
+    dpGroup = [[DPGroup alloc] init];
+  }
 
-    //本地更新时间
-    long long nowTime = [GroupDataProxy nowTime];
-    dpGroup.localUpdateTime = nowTime;
+  //本地更新时间
+  long long nowTime = [GroupDataProxy nowTime];
+  dpGroup.localUpdateTime = nowTime;
+  dpGroup.isInMyGroups = [self isInMyGroups:gid];
 
-    //群基本信息
-    dpGroup.gid = gid;
-    dpGroup.name = [info objectForKey:KEYP_H__GROUP_INFO__INFO_NAME];
-    dpGroup.intro = [info objectForKey:KEYP_H__GROUP_INFO__INFO_INTRO];
-    dpGroup.ctime = [info objectForKey:KEYP_H__GROUP_INFO__INFO_CTIME];
-    dpGroup.memberNum =
-    [[json objectForKey:KEYP_H__GROUP_INFO__INFO_MEMBERNUM] intValue];
+  //群基本信息
+  dpGroup.gid = gid;
+  dpGroup.name = [info objectForKey:KEYP_H__GROUP_INFO__INFO_NAME];
+  dpGroup.intro = [info objectForKey:KEYP_H__GROUP_INFO__INFO_INTRO];
+  dpGroup.ctime = [info objectForKey:KEYP_H__GROUP_INFO__INFO_CTIME];
+  dpGroup.memberNum =
+      [[json objectForKey:KEYP_H__GROUP_INFO__INFO_MEMBERNUM] intValue];
 
-    //群主信息
-    NSDictionary *creator = [info objectForKey:KEYP_H__GROUP_INFO__INFO_CREATOR];
-    dpGroup.creator_uid =
-    [[creator objectForKey:KEYP_H__GROUP_INFO__INFO_CREATOR_UID] intValue];
-    dpGroup.creator_nick =
-    [creator objectForKey:KEYP_H__GROUP_INFO__INFO_CREATOR_NICK];
-    dpGroup.creator_oid =
-    [[creator objectForKey:KEYP_H__GROUP_INFO__INFO_CREATOR_OID] intValue];
-    dpGroup.creator_vip =
-    [[creator objectForKey:KEYP_H__GROUP_INFO__INFO_CREATOR_VIP] intValue];
-    dpGroup.creator_city =
-    [creator objectForKey:KEYP_H__GROUP_INFO__INFO_CREATOR_CITY];
+  //群主信息
+  NSDictionary *creator = [info objectForKey:KEYP_H__GROUP_INFO__INFO_CREATOR];
+  dpGroup.creator_uid =
+      [[creator objectForKey:KEYP_H__GROUP_INFO__INFO_CREATOR_UID] intValue];
+  dpGroup.creator_nick =
+      [creator objectForKey:KEYP_H__GROUP_INFO__INFO_CREATOR_NICK];
+  dpGroup.creator_oid =
+      [[creator objectForKey:KEYP_H__GROUP_INFO__INFO_CREATOR_OID] intValue];
+  dpGroup.creator_vip =
+      [[creator objectForKey:KEYP_H__GROUP_INFO__INFO_CREATOR_VIP] intValue];
+  dpGroup.creator_city =
+      [creator objectForKey:KEYP_H__GROUP_INFO__INFO_CREATOR_CITY];
 
+  // TODO: 入库保存群信息
+  if (!_currentGroup) {
+    _currentGroup = dpGroup;
+    //[self setCurrentGroup:dpGoup];
+  }
 
-    //TODO: 入库保存群信息
-    if (!_currentGroup) {
-        _currentGroup = dpGroup;
-        //[self setCurrentGroup:dpGoup];
-    }
-
-    // log
-    //NSLog(@"更新群：%li ,%@,%@,%@", dpGoup.gid, dpGoup.name , _currentGroup.name , json);
-    return 0;
+  // log
+  // NSLog(@"更新群：%li ,%@,%@,%@", dpGoup.gid, dpGoup.name ,
+  // _currentGroup.name , json);
+  return 0;
 }
 
 #pragma mark - 群消息
@@ -253,15 +266,25 @@ static GroupDataProxy *sharedGroupDataProxy = nil;
 }
 
 #pragma mark - 其它
-- (BOOL) isMyGroup : (NSInteger) gid {
-    return NO;
+- (BOOL)isInMyGroups:(long)gid {
+  if (_arrGroupMyList) { //从本地缓存数组查找
+    // NSMutableArray *myGroups = self.arrGroupMyList;
+    DPGroup *tmpGroup;
+    for (NSInteger i = 0; i < [_arrGroupMyList count]; i++) {
+      tmpGroup = _arrGroupMyList[i];
+      if (tmpGroup.gid == gid) {
+        return YES;
+      }
+    }
+  }
+  return NO;
 }
 
-- (BOOL) isGroupOwner : (NSInteger) creatorUid {
-    if ( [UserDataProxy sharedProxy].lastLoginUid == creatorUid ) {
-        return YES;
-    }
-    return NO;
+- (BOOL)isGroupOwner:(long)creatorUid {
+  if ([UserDataProxy sharedProxy].lastLoginUid == creatorUid) {
+    return YES;
+  }
+  return NO;
 }
 
 @end
