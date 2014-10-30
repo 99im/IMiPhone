@@ -52,6 +52,7 @@
         self.lblGroupName.text = dpGroup.name;
         self.lblCreatorName.text = [NSString stringWithFormat:@"群主：%@", dpGroup.creator_nick];
         self.lblCTime.text = dpGroup.ctime;
+        NSLog(@"群创建时间：%@", dpGroup.ctime);
         self.lblMemberNum.text = [NSString stringWithFormat:@"%i",dpGroup.memberNum];
         self.txtvIntro.text = [NSString stringWithFormat:@"%@\n(本地更新时间：%qi)",dpGroup.intro , dpGroup.localUpdateTime];
         self.lblCity.text = dpGroup.creator_city;
