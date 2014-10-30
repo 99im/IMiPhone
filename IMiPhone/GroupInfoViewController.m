@@ -37,7 +37,7 @@
     //body
 }
 
-#pragma mark - Notification
+#pragma mark - 消息监听
 - (void)registerMessageNotification {
 }
 
@@ -52,10 +52,18 @@
         self.lblGroupName.text = dpGroup.name;
         self.lblCreatorName.text = [NSString stringWithFormat:@"群主：%@", dpGroup.creator_nick];
         self.lblCTime.text = dpGroup.ctime;
-        NSLog(@"群创建时间：%@", dpGroup.ctime);
         self.lblMemberNum.text = [NSString stringWithFormat:@"%i",dpGroup.memberNum];
-        self.txtvIntro.text = [NSString stringWithFormat:@"%@\n(本地更新时间：%qi)",dpGroup.intro , dpGroup.localUpdateTime];
+        self.tvIntro.text = [NSString stringWithFormat:@"%@\n(本地更新时间：%qi)",dpGroup.intro , dpGroup.localUpdateTime];
         self.lblCity.text = dpGroup.creator_city;
+        if (dpGroup.isInMyGroups == YES) {
+            self.btnApply.hidden = YES;
+            self.btnGroupChat.hidden = NO;
+            self.btnGroupSetting.hidden = NO;
+        } else {
+            self.btnApply.hidden = NO;
+            self.btnGroupChat.hidden = YES;
+            self.btnGroupSetting.hidden = YES;
+        }
     }
 }
 /*
@@ -67,12 +75,7 @@
     // Pass the selected object to the new view controller.
 }
 */
-#pragma mark - 消息监听
 
 #pragma mark - 交互动作
 
-- (IBAction)touchUpBtnBottom:(id)sender {
-    //TODO: 点击按钮：进入群聊、加入群
-    NSLog(@"点击按钮：进入群聊、加入群");
-}
 @end

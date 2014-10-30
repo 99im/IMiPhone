@@ -16,11 +16,14 @@
 @property (weak, nonatomic) IBOutlet UIImageView *imgAvatar;
 @property (weak, nonatomic) IBOutlet UILabel *lblCity;
 @property (weak, nonatomic) IBOutlet UILabel *lblCTime;
-@property (weak, nonatomic) IBOutlet UIButton *btnApply;
 @property (weak, nonatomic) IBOutlet UILabel *lblMemberNum;
 @property (weak, nonatomic) IBOutlet UILabel *lblCreatorName;
-@property (weak, nonatomic) IBOutlet UITextView *txtvIntro;
-@property (weak, nonatomic) IBOutlet UIButton *btnBottom;
-- (IBAction)touchUpBtnBottom:(id)sender;
+@property (weak, nonatomic) IBOutlet UITextView *tvIntro;
+
+@property (weak, nonatomic) IBOutlet UIButton *btnApply;
+@property (weak, nonatomic) IBOutlet UIButton *btnGroupChat;
+@property (weak, nonatomic) IBOutlet UIButton *btnGroupSetting;
+
+
 
 @end
