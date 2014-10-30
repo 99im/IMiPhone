@@ -12,7 +12,8 @@
 @property (nonatomic, retain) NSMutableArray *arrGroupMyList;
 @property (nonatomic, retain) NSMutableDictionary *dicMessages;
 @property (nonatomic) long long groupIdCurrent;
-@property (nonatomic) int countSendGroupInfo;
+@property (nonatomic) long long groupIdSendLast;
+//@property (nonatomic) int countSendGroupInfo;
 //@property (nonatomic) long long updateTimeGroupMyList;
 @end
 
@@ -161,7 +162,10 @@ static GroupDataProxy *sharedGroupDataProxy = nil;
     if (httpMode == SEND_HTTP_YES) {
       needSendHttp = YES;
     } else if (httpMode == SEND_HTTP_AUTO) {
-      if (dpGroup) { //分析本地缓存数据是否超时
+      if (_groupIdSendLast != gid) {//避免频繁发HTTP请求
+            needSendHttp = YES;
+            _groupIdSendLast = gid;
+      } else if (dpGroup) { //分析本地缓存数据是否超时
         long long nowTime = [GroupDataProxy nowTime];
         if (dpGroup.localExpireTime < nowTime) {
           needSendHttp = YES;
@@ -213,7 +217,7 @@ static GroupDataProxy *sharedGroupDataProxy = nil;
   dpGroup.name = [info objectForKey:KEYP_H__GROUP_INFO__INFO_NAME];
   dpGroup.intro = [info objectForKey:KEYP_H__GROUP_INFO__INFO_INTRO];
   dpGroup.ctime = [info objectForKey:KEYP_H__GROUP_INFO__INFO_CTIME];
-  //NSLog(@"更新群创建时间：%@", dpGroup.ctime);
+  // NSLog(@"更新群创建时间：%@", dpGroup.ctime);
   dpGroup.memberNum =
       [[json objectForKey:KEYP_H__GROUP_INFO__INFO_MEMBERNUM] intValue];
 
@@ -278,33 +282,32 @@ static GroupDataProxy *sharedGroupDataProxy = nil;
 
 -(void)setGroupIdCurrent:(long long)gid{
     if (gid >0) {
-        if (gid != _groupIdCurrent) {
-            _countSendGroupInfo = 0;
+        //if (gid != _groupIdCurrent) {
+        //    _countSendGroupInfo = 0;
             _groupIdCurrent = gid;
-        }
+        //}
     } else {
         _groupIdCurrent = 0;
     }
 }
 
 - (DPGroup *) getGroupInfoCurrent {
-    if (_countSendGroupInfo < 2) {
-        _countSendGroupInfo = _countSendGroupInfo + 1;
+//    if (_countSendGroupInfo < 2) {
+//        _countSendGroupInfo = _countSendGroupInfo + 1;
         return [self getGroupInfo: _groupIdCurrent byHttpMode:SEND_HTTP_AUTO];
-    } else {
-        return [self getGroupInfo: _groupIdCurrent byHttpMode:SEND_HTTP_NO];
-    }
+//    } else {
+//        return [self getGroupInfo: _groupIdCurrent byHttpMode:SEND_HTTP_NO];
+//    }
 }
 
 #pragma mark - 群消息
 
-- (NSMutableArray *)getGroupMessages:(NSInteger)gid
-{
-    NSNumber *numGid = [NSNumber numberWithInteger:gid];
-    if (![_dicMessages objectForKey:numGid]) {
-        [_dicMessages setObject:[NSMutableArray array] forKey:numGid];
-    }
-    return [_dicMessages objectForKey:numGid];
+- (NSMutableArray *)getGroupMessages:(NSInteger)gid {
+  NSNumber *numGid = [NSNumber numberWithInteger:gid];
+  if (![_dicMessages objectForKey:numGid]) {
+    [_dicMessages setObject:[NSMutableArray array] forKey:numGid];
+  }
+  return [_dicMessages objectForKey:numGid];
 }
 
 @end
