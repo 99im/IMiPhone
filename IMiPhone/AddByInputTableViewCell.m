@@ -38,9 +38,16 @@
         case SEARCH_BY_USER_ID:
             [[UserMessageProxy sharedProxy] sendTypeSearch:self.tfAddTarget.text];
             break;
-        case SEARCH_BY_GROUP_ID:
-            [[GroupMessageProxy sharedProxy] sendGroupInfo:self.tfAddTarget.text];
-            break;
+        case SEARCH_BY_GROUP_ID:{
+            long long gid = [self.tfAddTarget.text longLongValue];
+            if (gid > 0) {
+                [[GroupDataProxy sharedProxy] setGroupIdCurrent:gid];
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"skipToSearchGroupResult"
+                                                                    object:nil];
+
+            }
+           break;
+        }
     }
 }
 @end

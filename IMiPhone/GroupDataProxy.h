@@ -18,8 +18,6 @@
 
 @interface GroupDataProxy : NSObject
 
-@property(nonatomic) long currentGroupId;
-@property(nonatomic, retain) DPGroup *currentGroup;
 @property (nonatomic, retain) NSArray *arrGroupsSearch;
 
 #pragma mark - 静态方法
@@ -27,22 +25,28 @@
 + (long long)nowTime;
 + (long long)longLongNowTime:(NSString *)dateFormat;
 
-#pragma mark - 入库保存
-- (int)updateGroupMyList:(NSMutableDictionary *)json;
-- (int)updateGroupInfo:(NSMutableDictionary *)json;
-- (BOOL)delGroupByPrimaryKey:(long)gid;
-
-#pragma mark - 读取查询
-- (DPGroup *)getGroupInfo:(long)gid byHttpMode:(int)httpMode;
-- (DPGroup *)getGroupInfoCurrent;
-- (DPGroup *)getGroupInfoAtRow:(NSInteger)row;
+#pragma mark - 群列表相关
 - (NSMutableArray *)getGroupMyList:(int)httpMode;
+- (int)updateGroupMyList:(NSMutableDictionary *)json;
 - (NSInteger)countGroupMyList;
 
-#pragma mark - 其它
+#pragma mark - 单个群相关
+- (DPGroup *)getGroupInfo:(long long)gid byHttpMode:(int)httpMode;
+- (DPGroup *)getGroupInfoAtRow:(NSInteger)row;
+
+- (int)updateGroupInfo:(NSMutableDictionary *)json;
+- (int)delGroupByPrimaryKey:(long long)gid;
+
 - (BOOL)isInMyGroups:(long)gid;
 - (BOOL)isGroupOwner:(long)creatorUid;
 
+#pragma mark - 当前群
+-(long long)getGroupIdCurrent;
+-(void)setGroupIdCurrent:(long long)gid;
+- (DPGroup *)getGroupInfoCurrent;
+
+
+#pragma mark - 群聊天
 ///获得某个群组的聊天消息
 - (NSMutableArray *)getGroupMessages:(NSInteger)gid;
 
