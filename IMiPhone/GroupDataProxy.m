@@ -56,7 +56,7 @@ static GroupDataProxy *sharedGroupDataProxy = nil;
     return [GroupDataProxy longLongNowTime:@"yyyyMMddHHmmss"];
 }
 
-#pragma mark - 列表：我加入的群
+#pragma mark - 群列表相关
 - (NSMutableArray *)getGroupMyList:(int)httpMode {
   BOOL needSendHttp = NO;
   if (httpMode == SEND_HTTP_YES) {
@@ -138,7 +138,7 @@ static GroupDataProxy *sharedGroupDataProxy = nil;
     return 0;
 }
 
-#pragma mark - 单例：群信息
+#pragma mark - 单个群相关
 - (DPGroup *)getGroupInfo:(long long)gid byHttpMode:(int)httpMode {
   DPGroup *dpGroup;
   if (gid > 0) {
@@ -172,7 +172,7 @@ static GroupDataProxy *sharedGroupDataProxy = nil;
     }
 
     if (needSendHttp == YES) {
-      NSString *strGid = [NSString stringWithFormat:@"%li", gid];
+      NSString *strGid = [NSString stringWithFormat:@"%qi", gid];
       [[GroupMessageProxy sharedProxy] sendGroupInfo:strGid];
       // NSLog(@"超时（%qi,%qi），准备刷新：" , dpGroup.localExpireTime ,
       // nowTime);
@@ -242,6 +242,34 @@ static GroupDataProxy *sharedGroupDataProxy = nil;
   return 0;
 }
 
+- (int)delGroupByPrimaryKey:(long long)gid {
+    //TODO: 删除指定的群
+    return 0;
+}
+
+
+- (BOOL)isInMyGroups:(long)gid {
+    if (_arrGroupMyList) { //从本地缓存数组查找
+        // NSMutableArray *myGroups = self.arrGroupMyList;
+        DPGroup *tmpGroup;
+        for (NSInteger i = 0; i < [_arrGroupMyList count]; i++) {
+            tmpGroup = _arrGroupMyList[i];
+            if (tmpGroup.gid == gid) {
+                return YES;
+            }
+        }
+    }
+    return NO;
+}
+
+- (BOOL)isGroupOwner:(long)creatorUid {
+    if ([UserDataProxy sharedProxy].lastLoginUid == creatorUid) {
+        return YES;
+    }
+    return NO;
+}
+
+
 #pragma mark - 当前群
 
 -(long long)getGroupIdCurrent{
@@ -277,28 +305,6 @@ static GroupDataProxy *sharedGroupDataProxy = nil;
         [_dicMessages setObject:[NSMutableArray array] forKey:numGid];
     }
     return [_dicMessages objectForKey:numGid];
-}
-
-#pragma mark - 其它
-- (BOOL)isInMyGroups:(long)gid {
-  if (_arrGroupMyList) { //从本地缓存数组查找
-    // NSMutableArray *myGroups = self.arrGroupMyList;
-    DPGroup *tmpGroup;
-    for (NSInteger i = 0; i < [_arrGroupMyList count]; i++) {
-      tmpGroup = _arrGroupMyList[i];
-      if (tmpGroup.gid == gid) {
-        return YES;
-      }
-    }
-  }
-  return NO;
-}
-
-- (BOOL)isGroupOwner:(long)creatorUid {
-  if ([UserDataProxy sharedProxy].lastLoginUid == creatorUid) {
-    return YES;
-  }
-  return NO;
 }
 
 @end
