@@ -39,8 +39,6 @@
             [[UserMessageProxy sharedProxy] sendTypeSearch:self.tfAddTarget.text];
             break;
         case SEARCH_BY_GROUP_ID:
-            NSLog(@"%@",self.tfAddTarget.text);
-            //NSNumber *gid = [NSNumber numberWithInteger:[self.tfAddTarget.text integerValue]];
             [[GroupMessageProxy sharedProxy] sendGroupInfo:self.tfAddTarget.text];
             break;
     }

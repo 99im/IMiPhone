@@ -59,10 +59,10 @@
 		116BF88519CC29360015561B /* ImDataUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 116BF88419CC29360015561B /* ImDataUtil.m */; };
 		116BF88619CC29360015561B /* ImDataUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 116BF88419CC29360015561B /* ImDataUtil.m */; };
 		1171F7C119E8DAE300865A0B /* TPContactsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5887FD2819CC00EF001BFAFB /* TPContactsTableViewController.m */; };
-		1171F7C419E8DE4000865A0B /* AddressInviteTVTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1171F7C319E8DE4000865A0B /* AddressInviteTVTableViewCell.m */; };
-		1171F7C519E8DE4000865A0B /* AddressInviteTVTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1171F7C319E8DE4000865A0B /* AddressInviteTVTableViewCell.m */; };
-		1171F7C819E8DE6300865A0B /* AddressAddTVTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1171F7C719E8DE6300865A0B /* AddressAddTVTableViewCell.m */; };
-		1171F7C919E8DE6300865A0B /* AddressAddTVTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1171F7C719E8DE6300865A0B /* AddressAddTVTableViewCell.m */; };
+		1171F7C419E8DE4000865A0B /* AddressInviteTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1171F7C319E8DE4000865A0B /* AddressInviteTableViewCell.m */; };
+		1171F7C519E8DE4000865A0B /* AddressInviteTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1171F7C319E8DE4000865A0B /* AddressInviteTableViewCell.m */; };
+		1171F7C819E8DE6300865A0B /* AddressAddTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1171F7C719E8DE6300865A0B /* AddressAddTableViewCell.m */; };
+		1171F7C919E8DE6300865A0B /* AddressAddTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1171F7C719E8DE6300865A0B /* AddressAddTableViewCell.m */; };
 		1171F7CC19E9154F00865A0B /* DPContactPerson.m in Sources */ = {isa = PBXBuildFile; fileRef = 1171F7CB19E9154F00865A0B /* DPContactPerson.m */; };
 		1171F7CD19E9154F00865A0B /* DPContactPerson.m in Sources */ = {isa = PBXBuildFile; fileRef = 1171F7CB19E9154F00865A0B /* DPContactPerson.m */; };
 		1171F7D019E9269100865A0B /* ContactDAO.m in Sources */ = {isa = PBXBuildFile; fileRef = 1171F7CF19E9269100865A0B /* ContactDAO.m */; };
@@ -146,6 +146,7 @@
 		585971F31999F0C700258CB1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 585971D51999F0C700258CB1 /* UIKit.framework */; };
 		5859721819A1DEE500258CB1 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5859721719A1DEE500258CB1 /* LoginViewController.m */; };
 		5887FD2A19CC00EF001BFAFB /* TPContactsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5887FD2819CC00EF001BFAFB /* TPContactsTableViewController.m */; };
+		58A000761A0212F200DF1E68 /* MsgGroupApplyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A000751A0212F200DF1E68 /* MsgGroupApplyTableViewCell.m */; };
 		58A331AA19E51A95005BE980 /* CategoryListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A331A919E51A95005BE980 /* CategoryListTableViewController.m */; };
 		58A331AD19E52CDE005BE980 /* CategoryContactTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A331AC19E52CDE005BE980 /* CategoryContactTableViewCell.m */; };
 		58A5B4F819ADC05F0007C2F3 /* MainTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A5B4F719ADC05F0007C2F3 /* MainTabBarController.m */; };
@@ -299,10 +300,10 @@
 		116BF88119CC01C70015561B /* UserDataProxyTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserDataProxyTest.m; sourceTree = "<group>"; };
 		116BF88319CC29360015561B /* ImDataUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImDataUtil.h; sourceTree = "<group>"; };
 		116BF88419CC29360015561B /* ImDataUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImDataUtil.m; sourceTree = "<group>"; };
-		1171F7C219E8DE4000865A0B /* AddressInviteTVTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressInviteTVTableViewCell.h; sourceTree = "<group>"; };
-		1171F7C319E8DE4000865A0B /* AddressInviteTVTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressInviteTVTableViewCell.m; sourceTree = "<group>"; };
-		1171F7C619E8DE6300865A0B /* AddressAddTVTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressAddTVTableViewCell.h; sourceTree = "<group>"; };
-		1171F7C719E8DE6300865A0B /* AddressAddTVTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressAddTVTableViewCell.m; sourceTree = "<group>"; };
+		1171F7C219E8DE4000865A0B /* AddressInviteTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressInviteTableViewCell.h; sourceTree = "<group>"; };
+		1171F7C319E8DE4000865A0B /* AddressInviteTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressInviteTableViewCell.m; sourceTree = "<group>"; };
+		1171F7C619E8DE6300865A0B /* AddressAddTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressAddTableViewCell.h; sourceTree = "<group>"; };
+		1171F7C719E8DE6300865A0B /* AddressAddTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressAddTableViewCell.m; sourceTree = "<group>"; };
 		1171F7CA19E9154F00865A0B /* DPContactPerson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPContactPerson.h; sourceTree = "<group>"; };
 		1171F7CB19E9154F00865A0B /* DPContactPerson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPContactPerson.m; sourceTree = "<group>"; };
 		1171F7CE19E9269100865A0B /* ContactDAO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactDAO.h; sourceTree = "<group>"; };
@@ -388,6 +389,8 @@
 		5859721719A1DEE500258CB1 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginViewController.m; path = IMiPhone/LoginViewController.m; sourceTree = "<group>"; };
 		5887FD2719CC00EF001BFAFB /* TPContactsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPContactsTableViewController.h; sourceTree = "<group>"; };
 		5887FD2819CC00EF001BFAFB /* TPContactsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPContactsTableViewController.m; sourceTree = "<group>"; };
+		58A000741A0212F200DF1E68 /* MsgGroupApplyTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MsgGroupApplyTableViewCell.h; sourceTree = "<group>"; };
+		58A000751A0212F200DF1E68 /* MsgGroupApplyTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MsgGroupApplyTableViewCell.m; sourceTree = "<group>"; };
 		58A331A819E51A95005BE980 /* CategoryListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryListTableViewController.h; sourceTree = "<group>"; };
 		58A331A919E51A95005BE980 /* CategoryListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoryListTableViewController.m; sourceTree = "<group>"; };
 		58A331AB19E52CDE005BE980 /* CategoryContactTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryContactTableViewCell.h; sourceTree = "<group>"; };
@@ -655,6 +658,8 @@
 				11335B6819F53D6200FA32FA /* ChatMsgTableViewCellP2G.m */,
 				11E1581119F4FFE1008544D1 /* MsgTableViewController.h */,
 				11E1581219F4FFE1008544D1 /* MsgTableViewController.m */,
+				58A000741A0212F200DF1E68 /* MsgGroupApplyTableViewCell.h */,
+				58A000751A0212F200DF1E68 /* MsgGroupApplyTableViewCell.m */,
 			);
 			name = Msg;
 			sourceTree = "<group>";
@@ -925,10 +930,10 @@
 				AB5554E719EBEAFA00B413F3 /* CategoryListTableViewCell.m */,
 				58A331AB19E52CDE005BE980 /* CategoryContactTableViewCell.h */,
 				58A331AC19E52CDE005BE980 /* CategoryContactTableViewCell.m */,
-				1171F7C219E8DE4000865A0B /* AddressInviteTVTableViewCell.h */,
-				1171F7C319E8DE4000865A0B /* AddressInviteTVTableViewCell.m */,
-				1171F7C619E8DE6300865A0B /* AddressAddTVTableViewCell.h */,
-				1171F7C719E8DE6300865A0B /* AddressAddTVTableViewCell.m */,
+				1171F7C219E8DE4000865A0B /* AddressInviteTableViewCell.h */,
+				1171F7C319E8DE4000865A0B /* AddressInviteTableViewCell.m */,
+				1171F7C619E8DE6300865A0B /* AddressAddTableViewCell.h */,
+				1171F7C719E8DE6300865A0B /* AddressAddTableViewCell.m */,
 				11FC326D19F0A92C000A6733 /* FriendTableViewController.h */,
 				11FC326E19F0A92C000A6733 /* FriendTableViewController.m */,
 				11FAA8C219EF558E002048FA /* FriendTableViewCellUser.h */,
@@ -1155,7 +1160,7 @@
 				58BACF0919B5805800A72391 /* crypt.c in Sources */,
 				117AC69D19EE766200143973 /* DBUserFromContact.m in Sources */,
 				58CDC03C19FE2EF600173FD7 /* GroupChatViewController.m in Sources */,
-				1171F7C819E8DE6300865A0B /* AddressAddTVTableViewCell.m in Sources */,
+				1171F7C819E8DE6300865A0B /* AddressAddTableViewCell.m in Sources */,
 				58BACF0819B5804700A72391 /* FriendMessageProxy.m in Sources */,
 				110F560E19D56A9E003B9EB4 /* ChatDataProxy.m in Sources */,
 				58BACF0719B5803F00A72391 /* FriendDataProxy.m in Sources */,
@@ -1190,6 +1195,7 @@
 				116BF87719C96F8F0015561B /* UserDataProxy.m in Sources */,
 				58EF8C3F19BEEE1600C5A7AC /* AccountMessageProxy.m in Sources */,
 				116B6E7B19AEF83500DB1B5E /* DBChatMessage.m in Sources */,
+				58A000761A0212F200DF1E68 /* MsgGroupApplyTableViewCell.m in Sources */,
 				11FDE12619EFB52F002AEDB7 /* DBFriend.m in Sources */,
 				58B496E419A7186A0082AE30 /* UIImageView+MKNetworkKitAdditions.m in Sources */,
 				58B496D819A7186A0082AE30 /* NSAlert+MKNetworkKitAdditions.m in Sources */,
@@ -1206,7 +1212,7 @@
 				116B6E7D19AEF83500DB1B5E /* imRms.m in Sources */,
 				58B496DA19A7186A0082AE30 /* NSData+MKBase64.m in Sources */,
 				116BF87119C81E030015561B /* AudioRecordManager.m in Sources */,
-				1171F7C419E8DE4000865A0B /* AddressInviteTVTableViewCell.m in Sources */,
+				1171F7C419E8DE4000865A0B /* AddressInviteTableViewCell.m in Sources */,
 				585971E81999F0C700258CB1 /* imViewController.m in Sources */,
 				116BF88519CC29360015561B /* ImDataUtil.m in Sources */,
 				585971DE1999F0C700258CB1 /* main.m in Sources */,
@@ -1270,7 +1276,7 @@
 				58BC1E5F19C06BD700722A00 /* imRms.m in Sources */,
 				58BC1E5719C06BAE00722A00 /* NSAlert+MKNetworkKitAdditions.m in Sources */,
 				110487AB19D90BFE0002AB36 /* MessageDataProxyTest.m in Sources */,
-				1171F7C919E8DE6300865A0B /* AddressAddTVTableViewCell.m in Sources */,
+				1171F7C919E8DE6300865A0B /* AddressAddTableViewCell.m in Sources */,
 				58BC1E5819C06BAE00722A00 /* NSData+MKBase64.m in Sources */,
 				11E1581419F4FFE1008544D1 /* MsgTableViewController.m in Sources */,
 				58BC1E5919C06BAE00722A00 /* NSDate+RFC1123.m in Sources */,
@@ -1306,7 +1312,7 @@
 				58BC1E4D19C06B9000722A00 /* Reachability.m in Sources */,
 				11335B6A19F53D6200FA32FA /* ChatMsgTableViewCellP2G.m in Sources */,
 				58BC1E4E19C06B9000722A00 /* GCDAsyncSocket.m in Sources */,
-				1171F7C519E8DE4000865A0B /* AddressInviteTVTableViewCell.m in Sources */,
+				1171F7C519E8DE4000865A0B /* AddressInviteTableViewCell.m in Sources */,
 				58BC1E4F19C06B9000722A00 /* AsyncSocket.m in Sources */,
 				1194302D19F8DD8C00FD9206 /* ChatTableViewCellFrame.m in Sources */,
 				116BF87319C81E3F0015561B /* AudioRecordTest.m in Sources */,

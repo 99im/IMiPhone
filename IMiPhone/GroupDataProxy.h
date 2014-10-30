@@ -20,6 +20,7 @@
 
 @property(nonatomic) long currentGroupId;
 @property(nonatomic, retain) DPGroup *currentGroup;
+@property (nonatomic, retain) NSArray *arrGroupsSearch;
 
 #pragma mark - 静态方法
 + (GroupDataProxy *)sharedProxy;

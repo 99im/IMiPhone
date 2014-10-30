@@ -440,10 +440,10 @@
             </objects>
             <point key="canvasLocation" x="3042" y="-1216"/>
         </scene>
-        <!--Chat-消息列表-->
+        <!--MainTab-消息列表-->
         <scene sceneID="xgz-CE-c6s">
             <objects>
-                <tableViewController storyboardIdentifier="MsgTableViewController" id="YUK-gQ-SGN" userLabel="Chat-消息列表" customClass="MsgTableViewController" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="MsgTableViewController" id="YUK-gQ-SGN" userLabel="MainTab-消息列表" customClass="MsgTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="70" sectionHeaderHeight="22" sectionFooterHeight="22" id="bUd-R2-pEP">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -520,6 +520,47 @@
                                     <outlet property="lblTime" destination="0dP-R9-d8t" id="25S-iJ-aRf"/>
                                 </connections>
                             </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MsgGroupApplyTableViewCell" id="GE2-2N-R1g" customClass="MsgGroupApplyTableViewCell">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="GE2-2N-R1g" id="ZkS-mx-Hmq">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xFC-LX-mTg"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zFr-EK-hVM">
+                                            <rect key="frame" x="85" y="8" width="150" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A3U-K3-qfY">
+                                            <rect key="frame" x="60" y="43" width="180" height="18"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dcn-ac-hPr">
+                                            <rect key="frame" x="266" y="37" width="46" height="30"/>
+                                            <state key="normal" title="同意">
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                        </button>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sr4-9c-Wgg">
+                                            <rect key="frame" x="60" y="24" width="80" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="btnAgree" destination="dcn-ac-hPr" id="NFU-IX-PMR"/>
+                                    <outlet property="imgHead" destination="ZkS-mx-Hmq" id="kBf-Fo-BHK"/>
+                                    <outlet property="lblGroupName" destination="zFr-EK-hVM" id="GHM-ap-kWa"/>
+                                    <outlet property="lblReason" destination="A3U-K3-qfY" id="rH9-eS-V0p"/>
+                                    <outlet property="lblUserNick" destination="Sr4-9c-Wgg" id="ZPI-cW-rCp"/>
+                                </connections>
+                            </tableViewCell>
                         </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="YUK-gQ-SGN" id="4a1-zx-hEN"/>
@@ -533,12 +574,12 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cL5-ZQ-nIb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-475" y="4053"/>
+            <point key="canvasLocation" x="-475" y="4048"/>
         </scene>
-        <!--MainTab-消息-->
+        <!--MainTab-消息NavigationController-->
         <scene sceneID="Dsx-qw-qAw">
             <objects>
-                <navigationController definesPresentationContext="YES" id="vfo-zI-J32" userLabel="MainTab-消息" sceneMemberID="viewController">
+                <navigationController definesPresentationContext="YES" id="vfo-zI-J32" userLabel="MainTab-消息NavigationController" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="消息" image="message2" selectedImage="message1" id="YxR-lP-vZR"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="IKa-7X-56I">
                         <autoresizingMask key="autoresizingMask"/>
@@ -814,7 +855,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AddressAddTVTableViewCell" id="LvF-pn-0fv" customClass="AddressAddTVTableViewCell">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AddressAddTVTableViewCell" id="LvF-pn-0fv" customClass="AddressAddTableViewCell">
                                 <rect key="frame" x="0.0" y="119" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="LvF-pn-0fv" id="9Qu-cN-8Yu">
@@ -859,7 +900,7 @@
                                     <outlet property="lblNick" destination="VC2-Iy-SnQ" id="Cud-IO-grJ"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="AddressInviteTVTableViewCell" id="Wbq-Ww-JGF" customClass="AddressInviteTVTableViewCell">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="AddressInviteTVTableViewCell" id="Wbq-Ww-JGF" customClass="AddressInviteTableViewCell">
                                 <rect key="frame" x="0.0" y="163" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Wbq-Ww-JGF" id="hez-os-PGD">
@@ -2261,9 +2302,9 @@
         <segue reference="jj6-rV-QBG"/>
         <segue reference="6IF-l5-3Iq"/>
         <segue reference="fNZ-Tb-k0o"/>
-        <segue reference="EnR-fJ-pM5"/>
         <segue reference="yXo-ak-l89"/>
-        <segue reference="8gL-WP-3D1"/>
+        <segue reference="EnR-fJ-pM5"/>
+        <segue reference="B9e-R6-y8A"/>
         <segue reference="JfN-oz-5Dg"/>
     </inferredMetricsTieBreakers>
 </document>

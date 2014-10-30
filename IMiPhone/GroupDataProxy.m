@@ -9,9 +9,11 @@
 #import "GroupDataProxy.h"
 
 @interface GroupDataProxy()
+
 @property (nonatomic, retain) NSMutableArray *arrGroupMyList;
 @property (nonatomic, retain) NSMutableDictionary *dicMessages;
 //@property (nonatomic) long long updateTimeGroupMyList;
+
 @end
 
 @implementation GroupDataProxy
@@ -23,6 +25,7 @@ long long const TIMEOUT_GROUP_MY_LIST = 60; //
 //@synthesize updateTimeGroupMyList = _updateTimeGroupMyList;
 @synthesize arrGroupMyList = _arrGroupMyList;
 @synthesize currentGroup = _currentGroup;
+@synthesize arrGroupsSearch = _arrGroupsSearch;
 
 #pragma mark - 静态工具函数
 static GroupDataProxy *sharedGroupDataProxy = nil;
