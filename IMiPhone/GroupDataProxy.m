@@ -61,7 +61,7 @@ static GroupDataProxy *sharedGroupDataProxy = nil;
 }
 
 #pragma mark - 群列表相关
-- (NSMutableArray *)getGroupMyList:(int)httpMode {
+- (NSMutableArray *)getGroupMyList:(NSInteger)httpMode {
   BOOL needSendHttp = NO;
   if (httpMode == SEND_HTTP_YES) {
     needSendHttp = YES;
@@ -98,7 +98,7 @@ static GroupDataProxy *sharedGroupDataProxy = nil;
     return 0;
 }
 
-- (int) updateGroupMyList : (NSMutableDictionary *) json {
+- (NSInteger) updateGroupMyList : (NSMutableDictionary *) json {
     NSLog(@"updateGroupMyList\n%@",json);
     NSArray *list = [json objectForKey:KEYP_H__GROUP_MYLIST__LIST];
 
@@ -143,7 +143,7 @@ static GroupDataProxy *sharedGroupDataProxy = nil;
 }
 
 #pragma mark - 单个群相关
-- (DPGroup *)getGroupInfo:(long long)gid byHttpMode:(int)httpMode {
+- (DPGroup *)getGroupInfo:(long long)gid byHttpMode:(NSInteger)httpMode {
   DPGroup *dpGroup;
   if (gid > 0) {
     DPGroup *tmpGroup = _groupInfoCurrent;
@@ -196,7 +196,7 @@ static GroupDataProxy *sharedGroupDataProxy = nil;
     return nil;
 }
 
-- (int)updateGroupInfo:(NSMutableDictionary *)json {
+- (NSInteger)updateGroupInfo:(NSMutableDictionary *)json {
   NSDictionary *info = [json objectForKey:KEYP_H__GROUP_INFO__INFO];
 
   long gid = [[info objectForKey:KEYP_H__GROUP_INFO__INFO_GID] longValue];
@@ -247,13 +247,13 @@ static GroupDataProxy *sharedGroupDataProxy = nil;
   return 0;
 }
 
-- (int)delGroupByPrimaryKey:(long long)gid {
+- (NSInteger)deleteGroupByGID:(long long)gid {
     //TODO: 删除指定的群
     return 0;
 }
 
 
-- (BOOL)isInMyGroups:(long)gid {
+- (BOOL)isInMyGroups:(long long)gid {
     if (_arrGroupMyList) { //从本地缓存数组查找
         // NSMutableArray *myGroups = self.arrGroupMyList;
         DPGroup *tmpGroup;
@@ -267,7 +267,7 @@ static GroupDataProxy *sharedGroupDataProxy = nil;
     return NO;
 }
 
-- (BOOL)isGroupOwner:(long)creatorUid {
+- (BOOL)isGroupOwner:(long long)creatorUid {
     if ([UserDataProxy sharedProxy].lastLoginUid == creatorUid) {
         return YES;
     }
