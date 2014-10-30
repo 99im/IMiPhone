@@ -116,6 +116,7 @@ static GroupDataProxy *sharedGroupDataProxy = nil;
         dpGroup.name = [detail objectForKey:KEYP_H__GROUP_MYLIST__LIST_DETAIL_NAME];
         dpGroup.intro = [detail objectForKey:KEYP_H__GROUP_MYLIST__LIST_DETAIL_INTRO];
         dpGroup.memberNum = [[detail objectForKey:KEYP_H__GROUP_MYLIST__LIST_DETAIL_MEMBERNUM] longValue];
+        dpGroup.ctime = [detail objectForKey:KEYP_H__GROUP_MYLIST__LIST_CTIME];
 
         //群主信息
         dpGroup.creator_uid =
@@ -216,6 +217,7 @@ static GroupDataProxy *sharedGroupDataProxy = nil;
   dpGroup.name = [info objectForKey:KEYP_H__GROUP_INFO__INFO_NAME];
   dpGroup.intro = [info objectForKey:KEYP_H__GROUP_INFO__INFO_INTRO];
   dpGroup.ctime = [info objectForKey:KEYP_H__GROUP_INFO__INFO_CTIME];
+  //NSLog(@"更新群创建时间：%@", dpGroup.ctime);
   dpGroup.memberNum =
       [[json objectForKey:KEYP_H__GROUP_INFO__INFO_MEMBERNUM] intValue];
 

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="sWe-ai-dJr">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="sWe-ai-dJr">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
@@ -1456,9 +1456,6 @@
                                     <color key="titleColor" red="0.76164454940000004" green="1" blue="0.93348209140000005" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <connections>
-                                    <action selector="touchUpBtnBottom:" destination="nqj-0p-hk3" eventType="touchUpInside" id="2xU-5K-bbO"/>
-                                </connections>
                             </button>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Rdk-oI-GGl">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="800"/>
@@ -1540,17 +1537,6 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BmJ-ql-D7D">
-                                        <rect key="frame" x="149" y="359" width="167" height="48"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                        <state key="normal" title="设置管理">
-                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <segue destination="f2G-Kw-Ad0" kind="push" identifier="groupInfo2groupSetting" id="R7g-Do-l4l"/>
-                                        </connections>
-                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="abL-fc-KFT">
                                         <rect key="frame" x="4" y="359" width="145" height="51"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
@@ -1568,12 +1554,24 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DnI-3q-dXv">
-                                        <rect key="frame" x="81" y="321" width="123" height="30"/>
+                                        <rect key="frame" x="99" y="368" width="123" height="30"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                         <state key="normal" title="申请加入">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
                                             <segue destination="zdu-lY-f24" kind="modal" id="dLH-M0-4FS"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BmJ-ql-D7D">
+                                        <rect key="frame" x="149" y="359" width="167" height="48"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                        <state key="normal" title="设置管理">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="f2G-Kw-Ad0" kind="push" identifier="groupInfo2groupSetting" id="R7g-Do-l4l"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -1587,7 +1585,8 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="btnApply" destination="DnI-3q-dXv" id="fgE-BS-pPM"/>
-                        <outlet property="btnBottom" destination="aGA-1D-sav" id="PNL-hn-2C3"/>
+                        <outlet property="btnGroupChat" destination="abL-fc-KFT" id="xod-qn-sho"/>
+                        <outlet property="btnGroupSetting" destination="BmJ-ql-D7D" id="UUg-Ng-7SF"/>
                         <outlet property="imgAvatar" destination="ZjC-fs-DKb" id="JAi-av-oZ5"/>
                         <outlet property="lblCTime" destination="NIq-K2-5KG" id="5Im-Zt-au4"/>
                         <outlet property="lblCity" destination="oJb-ek-GzQ" id="wuG-Sg-oef"/>
@@ -1595,7 +1594,7 @@
                         <outlet property="lblGroupId" destination="h2Y-Zr-rK7" id="nAZ-FS-uCv"/>
                         <outlet property="lblGroupName" destination="dlg-nV-kFa" id="yD6-Eq-gg4"/>
                         <outlet property="lblMemberNum" destination="qC8-MD-ylo" id="SxB-ME-pB0"/>
-                        <outlet property="txtvIntro" destination="Skp-jk-w4A" id="gmI-mC-UbP"/>
+                        <outlet property="tvIntro" destination="Skp-jk-w4A" id="E8t-9b-BFY"/>
                         <segue destination="Tez-zb-r5A" kind="push" id="3hi-GN-j2D"/>
                     </connections>
                 </viewController>
