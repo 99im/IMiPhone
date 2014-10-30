@@ -12,8 +12,10 @@
 #import "FriendMessageProxy.h"
 #import "UserMessageProxy.h"
 #import "UserDataProxy.h"
+#import "GroupDataProxy.h"
+#import "IMNWProxyProtocol.h"
 
-@interface AddTableViewController ()
+@interface AddTableViewController () <IMNWProxyProtocol>
 
 @property (nonatomic, retain) NSArray *arrTPs;
 @property (nonatomic, retain) NSArray *arrGroupMenus4Add;
@@ -143,6 +145,7 @@ NSInteger const ROW_CREATE_ZU = 1;
     
     return nil;
 }
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
     switch (indexPath.section) {
@@ -216,7 +219,9 @@ NSInteger const ROW_CREATE_ZU = 1;
 
 - (void)skipToSearchGroupResult:(NSNotification *)notification
 {
-    [self performSegueWithIdentifier:@"Add2GroupResultSegue" sender:self];
+    if (!notification.object) {
+        [self performSegueWithIdentifier:@"Add2GroupResultSegue" sender:self];
+    }
 }
 
 //- (void)skipToGroupCreate:(NSNotification *)notification {
@@ -239,7 +244,5 @@ NSInteger const ROW_CREATE_ZU = 1;
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
-
-
 
 @end

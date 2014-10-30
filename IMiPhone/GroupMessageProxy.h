@@ -10,6 +10,7 @@
 #import "IMNWMessage.h"
 #import "IMNWManager.h"
 #import "GroupDataProxy.h"
+#import "IMNWProxy.h"
 
 //全局能用型KEY
 #define GOL_KEY_PAGE_START @"start"
@@ -17,7 +18,7 @@
 #define GOL_KEY_GROUP_ID @"groupId"
 #define GOL_KEY_GROUP_NAME @"groupName"
 
-@interface GroupMessageProxy : NSObject
+@interface GroupMessageProxy : IMNWProxy
 #pragma mark - 静态方法
 + (GroupMessageProxy *)sharedProxy;
 
@@ -40,5 +41,8 @@
 #pragma mark - 群管理
 ///HTTP：创建群
 - (void)sendGroupCreate:(NSString *)name withIntro:(NSString *)intro;
+
+///HTTP：搜索群
+- (void)sendGroupSearch:(NSString *)keyword;
 
 @end

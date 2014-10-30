@@ -6,9 +6,9 @@
 //  Copyright (c) 2014年 尹晓君. All rights reserved.
 //
 
-#import "AddressInviteTVTableViewCell.h"
+#import "AddressInviteTableViewCell.h"
 
-@implementation AddressInviteTVTableViewCell
+@implementation AddressInviteTableViewCell
 
 - (void)awakeFromNib {
     // Initialization code

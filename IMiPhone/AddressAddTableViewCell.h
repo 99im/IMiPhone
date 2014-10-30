@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AddressAddTVTableViewCell : UITableViewCell
+@interface AddressAddTableViewCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UIImageView *imgPortrait;
 @property (weak, nonatomic) IBOutlet UILabel *lblNick;

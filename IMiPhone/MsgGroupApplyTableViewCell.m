@@ -1,14 +1,14 @@
 //
-//  AddressAddTVTableViewCell.m
+//  MsgGroupApplyTableViewCell.m
 //  IMiPhone
 //
-//  Created by 王 国良 on 14-10-11.
+//  Created by 尹晓君 on 14/10/30.
 //  Copyright (c) 2014年 尹晓君. All rights reserved.
 //
 
-#import "AddressAddTVTableViewCell.h"
+#import "MsgGroupApplyTableViewCell.h"
 
-@implementation AddressAddTVTableViewCell
+@implementation MsgGroupApplyTableViewCell
 
 - (void)awakeFromNib {
     // Initialization code
@@ -18,8 +18,6 @@
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
-}
-- (IBAction)btnAddTouchUpInside:(id)sender {
 }
 
 @end

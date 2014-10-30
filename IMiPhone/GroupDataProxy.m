@@ -9,12 +9,14 @@
 #import "GroupDataProxy.h"
 
 @interface GroupDataProxy()
+
 @property (nonatomic, retain) NSMutableArray *arrGroupMyList;
 @property (nonatomic, retain) NSMutableDictionary *dicMessages;
 @property (nonatomic) long long groupIdCurrent;
 @property (nonatomic) long long groupIdSendLast;
 //@property (nonatomic) int countSendGroupInfo;
 //@property (nonatomic) long long updateTimeGroupMyList;
+
 @end
 
 @implementation GroupDataProxy
@@ -26,6 +28,7 @@ long long const TIMEOUT_GROUP_INFO = 60; //群信息页超时刷新
 //@synthesize updateTimeGroupMyList = _updateTimeGroupMyList;
 @synthesize arrGroupMyList = _arrGroupMyList;
 @synthesize currentGroup = _currentGroup;
+@synthesize arrGroupsSearch = _arrGroupsSearch;
 
 #pragma mark - 静态工具函数
 static GroupDataProxy *sharedGroupDataProxy = nil;
