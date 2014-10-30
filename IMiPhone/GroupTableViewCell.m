@@ -22,7 +22,6 @@
     [super setSelected:selected animated:animated];
 
     //NSLog(@"groupInfo : %i", self.groupId);
-    //[GroupDataProxy sharedProxy].currentGroupId = self.groupId;
     [[GroupDataProxy sharedProxy] setGroupIdCurrent:self.groupId];
 }
 

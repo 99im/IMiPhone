@@ -8,12 +8,13 @@
 
 #import "GroupDataProxy.h"
 
-@interface GroupDataProxy()
+@interface GroupDataProxy ()
 
-@property (nonatomic, retain) NSMutableArray *arrGroupMyList;
-@property (nonatomic, retain) NSMutableDictionary *dicMessages;
-@property (nonatomic) long long groupIdCurrent;
-@property (nonatomic) long long groupIdSendLast;
+@property(nonatomic, retain) NSMutableArray *arrGroupMyList;
+@property(nonatomic, retain) NSMutableDictionary *dicMessages;
+@property(nonatomic) long long groupIdCurrent;
+@property(nonatomic) long long groupIdSendLast;
+@property(nonatomic, retain) DPGroup *groupInfoCurrent;
 //@property (nonatomic) int countSendGroupInfo;
 //@property (nonatomic) long long updateTimeGroupMyList;
 
@@ -24,10 +25,9 @@
 long long const TIMEOUT_GROUP_INFO = 60; //群信息页超时刷新
 //long long const TIMEOUT_GROUP_MY_LIST = 60; //
 
-//@synthesize currentGroupId = _currGroupId;
 //@synthesize updateTimeGroupMyList = _updateTimeGroupMyList;
 @synthesize arrGroupMyList = _arrGroupMyList;
-@synthesize currentGroup = _currentGroup;
+//@synthesize groupInfoCurrent = _groupInfoCurrent;
 @synthesize arrGroupsSearch = _arrGroupsSearch;
 
 #pragma mark - 静态工具函数
@@ -146,7 +146,7 @@ static GroupDataProxy *sharedGroupDataProxy = nil;
 - (DPGroup *)getGroupInfo:(long long)gid byHttpMode:(int)httpMode {
   DPGroup *dpGroup;
   if (gid > 0) {
-    DPGroup *tmpGroup = _currentGroup;
+    DPGroup *tmpGroup = _groupInfoCurrent;
 
     if (tmpGroup && tmpGroup.gid == gid) {
       dpGroup = tmpGroup;
@@ -205,7 +205,7 @@ static GroupDataProxy *sharedGroupDataProxy = nil;
   }
 
   // NSTimeInterval timeInterval= [GroupDataProxy nowTime];
-  DPGroup *dpGroup = _currentGroup;
+  DPGroup *dpGroup = _groupInfoCurrent;
   if (!dpGroup || dpGroup.gid != gid) {
     dpGroup = [[DPGroup alloc] init];
   }
@@ -238,14 +238,12 @@ static GroupDataProxy *sharedGroupDataProxy = nil;
       [creator objectForKey:KEYP_H__GROUP_INFO__INFO_CREATOR_CITY];
 
   // TODO: 入库保存群信息
-  if (!_currentGroup) {
-    _currentGroup = dpGroup;
-    //[self setCurrentGroup:dpGoup];
+  if (!_groupInfoCurrent) {
+    _groupInfoCurrent = dpGroup;
   }
 
   // log
   // NSLog(@"更新群：%li ,%@,%@,%@", dpGoup.gid, dpGoup.name ,
-  // _currentGroup.name , json);
   return 0;
 }
 
