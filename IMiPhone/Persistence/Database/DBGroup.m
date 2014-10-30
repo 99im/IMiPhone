@@ -23,6 +23,6 @@
 @synthesize creator_vip;
 @synthesize creator_city;
 
-@synthesize localUpdateTime;
+@synthesize localExpireTime;
 
 @end

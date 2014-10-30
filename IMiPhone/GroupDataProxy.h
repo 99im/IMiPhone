@@ -18,7 +18,7 @@
 
 @interface GroupDataProxy : NSObject
 
-@property(nonatomic) long currentGroupId;
+//@property(nonatomic) long long currentGroupId;
 @property(nonatomic, retain) DPGroup *currentGroup;
 
 #pragma mark - 静态方法
@@ -29,14 +29,18 @@
 #pragma mark - 入库保存
 - (int)updateGroupMyList:(NSMutableDictionary *)json;
 - (int)updateGroupInfo:(NSMutableDictionary *)json;
-- (BOOL)delGroupByPrimaryKey:(long)gid;
+- (BOOL)delGroupByPrimaryKey:(long long)gid;
 
 #pragma mark - 读取查询
-- (DPGroup *)getGroupInfo:(long)gid byHttpMode:(int)httpMode;
-- (DPGroup *)getGroupInfoCurrent;
+- (DPGroup *)getGroupInfo:(long long)gid byHttpMode:(int)httpMode;
 - (DPGroup *)getGroupInfoAtRow:(NSInteger)row;
 - (NSMutableArray *)getGroupMyList:(int)httpMode;
 - (NSInteger)countGroupMyList;
+
+#pragma mark - 当前群
+-(long long)getGroupIdCurrent;
+-(void)setGroupIdCurrent:(long long)gid;
+- (DPGroup *)getGroupInfoCurrent;
 
 #pragma mark - 其它
 - (BOOL)isInMyGroups:(long)gid;

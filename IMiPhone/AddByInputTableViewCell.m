@@ -40,9 +40,14 @@
             break;
         case SEARCH_BY_GROUP_ID:
             NSLog(@"%@",self.tfAddTarget.text);
-            //NSNumber *gid = [NSNumber numberWithInteger:[self.tfAddTarget.text integerValue]];
-            [[GroupMessageProxy sharedProxy] sendGroupInfo:self.tfAddTarget.text];
-            break;
+            long long gid = [self.tfAddTarget.text longLongValue];
+            if (gid > 0) {
+                [[GroupDataProxy sharedProxy] setGroupIdCurrent:gid];
+                //[GroupDataProxy sharedProxy].currentGroupId = gid;
+                [[GroupMessageProxy sharedProxy] sendGroupInfo:self.tfAddTarget.text];
+
+            }
+           break;
     }
 }
 @end

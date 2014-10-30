@@ -11,15 +11,17 @@
 @interface GroupDataProxy()
 @property (nonatomic, retain) NSMutableArray *arrGroupMyList;
 @property (nonatomic, retain) NSMutableDictionary *dicMessages;
+@property (nonatomic) long long groupIdCurrent;
+@property (nonatomic) int countSendGroupInfo;
 //@property (nonatomic) long long updateTimeGroupMyList;
 @end
 
 @implementation GroupDataProxy
 
 long long const TIMEOUT_GROUP_INFO = 60; //群信息页超时刷新
-long long const TIMEOUT_GROUP_MY_LIST = 60; //
+//long long const TIMEOUT_GROUP_MY_LIST = 60; //
 
-@synthesize currentGroupId = _currGroupId;
+//@synthesize currentGroupId = _currGroupId;
 //@synthesize updateTimeGroupMyList = _updateTimeGroupMyList;
 @synthesize arrGroupMyList = _arrGroupMyList;
 @synthesize currentGroup = _currentGroup;
@@ -42,7 +44,7 @@ static GroupDataProxy *sharedGroupDataProxy = nil;
     if (dateFormat && [dateFormat length] > 0) {
         [dateformatter setDateFormat:dateFormat];
     } else {
-        [dateformatter setDateFormat:@"yyyyMMddhhmmss"];
+        [dateformatter setDateFormat:@"yyyyMMddHHmmss"];
     }
 
     NSString *locationString = [dateformatter stringFromDate:senddate];
@@ -51,7 +53,7 @@ static GroupDataProxy *sharedGroupDataProxy = nil;
 }
 
 + (long long)nowTime {
-    return [GroupDataProxy longLongNowTime:@"yyyyMMddhhmmss"];
+    return [GroupDataProxy longLongNowTime:@"yyyyMMddHHmmss"];
 }
 
 #pragma mark - 列表：我加入的群
@@ -66,10 +68,10 @@ static GroupDataProxy *sharedGroupDataProxy = nil;
 
   //开始分析是否过期
   if (needSendHttp != YES && httpMode == SEND_HTTP_AUTO) {
-    long long expireTime = [GroupDataProxy nowTime] - TIMEOUT_GROUP_MY_LIST;
+    long long nowTime = [GroupDataProxy nowTime];
     for (NSInteger i = 0; i < [_arrGroupMyList count]; i++) {
       DPGroup *dpGroup = _arrGroupMyList[i];
-      if (dpGroup.localUpdateTime < expireTime) {
+      if (dpGroup.localExpireTime < nowTime) {
         needSendHttp = YES;
         break;
       }
@@ -100,7 +102,7 @@ static GroupDataProxy *sharedGroupDataProxy = nil;
     _arrGroupMyList = [NSMutableArray array];
     //}
 
-    long long nowTime = [GroupDataProxy nowTime];
+    long long localExpireTime = [GroupDataProxy nowTime] + TIMEOUT_GROUP_INFO;
     for (NSInteger i = 0; i < [list count]; i++) {
         DPGroup *dpGroup = [[DPGroup alloc] init];
         NSDictionary *group = [list objectAtIndex:i];
@@ -129,7 +131,7 @@ static GroupDataProxy *sharedGroupDataProxy = nil;
         [_arrGroupMyList addObject:dpGroup];
 
         //更新时间
-        dpGroup.localUpdateTime = nowTime;
+        dpGroup.localExpireTime = localExpireTime;
         dpGroup.isInMyGroups = YES;
     }
 
@@ -137,7 +139,7 @@ static GroupDataProxy *sharedGroupDataProxy = nil;
 }
 
 #pragma mark - 单例：群信息
-- (DPGroup *)getGroupInfo:(long)gid byHttpMode:(int)httpMode {
+- (DPGroup *)getGroupInfo:(long long)gid byHttpMode:(int)httpMode {
   DPGroup *dpGroup;
   if (gid > 0) {
     DPGroup *tmpGroup = _currentGroup;
@@ -160,8 +162,8 @@ static GroupDataProxy *sharedGroupDataProxy = nil;
       needSendHttp = YES;
     } else if (httpMode == SEND_HTTP_AUTO) {
       if (dpGroup) { //分析本地缓存数据是否超时
-        long long expireTime = [GroupDataProxy nowTime] - TIMEOUT_GROUP_INFO;
-        if (dpGroup.localUpdateTime < expireTime) {
+        long long nowTime = [GroupDataProxy nowTime];
+        if (dpGroup.localExpireTime < nowTime) {
           needSendHttp = YES;
         }
       } else {
@@ -172,16 +174,13 @@ static GroupDataProxy *sharedGroupDataProxy = nil;
     if (needSendHttp == YES) {
       NSString *strGid = [NSString stringWithFormat:@"%li", gid];
       [[GroupMessageProxy sharedProxy] sendGroupInfo:strGid];
-      // NSLog(@"超时（%qi,%qi），准备刷新：" , dpGroup.localUpdateTime ,
+      // NSLog(@"超时（%qi,%qi），准备刷新：" , dpGroup.localExpireTime ,
       // nowTime);
     }
   }
   return dpGroup;
 }
 
-- (DPGroup *) getGroupInfoCurrent {
-    return [self getGroupInfo: self.currentGroupId byHttpMode:SEND_HTTP_AUTO];
-}
 
 - (DPGroup *)getGroupInfoAtRow:(NSInteger)row{
     if (_arrGroupMyList && row < _arrGroupMyList.count) {
@@ -204,9 +203,9 @@ static GroupDataProxy *sharedGroupDataProxy = nil;
     dpGroup = [[DPGroup alloc] init];
   }
 
-  //本地更新时间
-  long long nowTime = [GroupDataProxy nowTime];
-  dpGroup.localUpdateTime = nowTime;
+  //客户端存储
+  long long localExpireTime = [GroupDataProxy nowTime] + TIMEOUT_GROUP_INFO;
+  dpGroup.localExpireTime = localExpireTime;
   dpGroup.isInMyGroups = [self isInMyGroups:gid];
 
   //群基本信息
@@ -241,6 +240,32 @@ static GroupDataProxy *sharedGroupDataProxy = nil;
   // NSLog(@"更新群：%li ,%@,%@,%@", dpGoup.gid, dpGoup.name ,
   // _currentGroup.name , json);
   return 0;
+}
+
+#pragma mark - 当前群
+
+-(long long)getGroupIdCurrent{
+    return _groupIdCurrent;
+}
+
+-(void)setGroupIdCurrent:(long long)gid{
+    if (gid >0) {
+        if (gid != _groupIdCurrent) {
+            _countSendGroupInfo = 0;
+            _groupIdCurrent = gid;
+        }
+    } else {
+        _groupIdCurrent = 0;
+    }
+}
+
+- (DPGroup *) getGroupInfoCurrent {
+    if (_countSendGroupInfo < 2) {
+        _countSendGroupInfo = _countSendGroupInfo + 1;
+        return [self getGroupInfo: _groupIdCurrent byHttpMode:SEND_HTTP_AUTO];
+    } else {
+        return [self getGroupInfo: _groupIdCurrent byHttpMode:SEND_HTTP_NO];
+    }
 }
 
 #pragma mark - 群消息
