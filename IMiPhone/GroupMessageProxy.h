@@ -33,10 +33,12 @@
 #pragma mark - 加入群
 ///HTTP: 申请加入群
 - (void)sendGroupApply:(NSString *)gid msg:(NSString *)msg;
+///HTTP: 群管理员对申请的回应
+- (void)sendGroupApplyResponse:(long long)rid agree:(NSInteger)agree;
 ///HTTP：邀请加入群组
 - (void)sendGroupInvite:(NSString *)gid targetUids:(NSString *)targetUids msg:(NSString *)msg;
 ///HTTP：邀请加入群的回应
-- (void)sendGroupInviteResponse:(NSString *)rid agree:(NSNumber *)agree;
+- (void)sendGroupInviteResponse:(long long)rid agree:(NSInteger)agree;
 
 #pragma mark - 群管理
 ///HTTP：创建群

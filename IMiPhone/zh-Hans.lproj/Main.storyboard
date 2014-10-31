@@ -527,30 +527,27 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xFC-LX-mTg"/>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zFr-EK-hVM">
-                                            <rect key="frame" x="85" y="8" width="150" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zFr-EK-hVM">
+                                            <rect key="frame" x="18" y="8" width="216" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A3U-K3-qfY">
-                                            <rect key="frame" x="60" y="43" width="180" height="18"/>
+                                            <rect key="frame" x="18" y="28" width="294" height="25"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dcn-ac-hPr">
-                                            <rect key="frame" x="266" y="37" width="46" height="30"/>
+                                            <rect key="frame" x="253" y="4" width="59" height="30"/>
                                             <state key="normal" title="同意">
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
+                                            <connections>
+                                                <action selector="btnAgreeTouchUp:" destination="GE2-2N-R1g" eventType="touchUpInside" id="kTk-1f-hJM"/>
+                                            </connections>
                                         </button>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sr4-9c-Wgg">
-                                            <rect key="frame" x="60" y="24" width="80" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
@@ -558,7 +555,6 @@
                                     <outlet property="imgHead" destination="ZkS-mx-Hmq" id="kBf-Fo-BHK"/>
                                     <outlet property="lblGroupName" destination="zFr-EK-hVM" id="GHM-ap-kWa"/>
                                     <outlet property="lblReason" destination="A3U-K3-qfY" id="rH9-eS-V0p"/>
-                                    <outlet property="lblUserNick" destination="Sr4-9c-Wgg" id="ZPI-cW-rCp"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -574,7 +570,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cL5-ZQ-nIb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-475" y="4048"/>
+            <point key="canvasLocation" x="-475" y="4042"/>
         </scene>
         <!--MainTab-消息NavigationController-->
         <scene sceneID="Dsx-qw-qAw">
