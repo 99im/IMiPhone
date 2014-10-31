@@ -26,19 +26,19 @@
 + (long long)longLongNowTime:(NSString *)dateFormat;
 
 #pragma mark - 群列表相关
-- (NSMutableArray *)getGroupMyList:(int)httpMode;
-- (int)updateGroupMyList:(NSMutableDictionary *)json;
+- (NSMutableArray *)getGroupMyList:(NSInteger)httpMode;
+- (NSInteger)updateGroupMyList:(NSMutableDictionary *)json;
 - (NSInteger)countGroupMyList;
 
 #pragma mark - 单个群相关
-- (DPGroup *)getGroupInfo:(long long)gid byHttpMode:(int)httpMode;
+- (DPGroup *)getGroupInfo:(long long)gid byHttpMode:(NSInteger)httpMode;
 - (DPGroup *)getGroupInfoAtRow:(NSInteger)row;
 
-- (int)updateGroupInfo:(NSMutableDictionary *)json;
-- (int)delGroupByPrimaryKey:(long long)gid;
+- (NSInteger)updateGroupInfo:(NSMutableDictionary *)json;
+- (NSInteger)deleteGroupByGID:(long long)gid;
 
-- (BOOL)isInMyGroups:(long)gid;
-- (BOOL)isGroupOwner:(long)creatorUid;
+- (BOOL)isInMyGroups:(long long)gid;
+- (BOOL)isGroupOwner:(long long)creatorUid;
 
 #pragma mark - 当前群
 -(long long)getGroupIdCurrent;
