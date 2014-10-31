@@ -13,14 +13,100 @@
 
 #pragma mark - 静态方法
 static GroupMessageProxy *sharedGroupMessageProxy = nil;
+long long const TIMEOUT_GROUP_INFO = 60; //群信息页超时刷新
+//long long const TIMEOUT_GROUP_MY_LIST = 60; //
 
-+ (GroupMessageProxy*)sharedProxy
-{
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        sharedGroupMessageProxy = [[self alloc] init];
-    });
-    return sharedGroupMessageProxy;
++ (GroupMessageProxy *)sharedProxy {
+  static dispatch_once_t onceToken;
+  dispatch_once(&onceToken,^{
+      sharedGroupMessageProxy = [[self alloc] init];
+  });
+  return sharedGroupMessageProxy;
+}
+
++ (DPGroup *)groupInfoWithJSON:(NSMutableDictionary *) json{
+    NSDictionary *info = [json objectForKey:KEYP_H__GROUP_INFO__INFO];
+
+    long gid = [[info objectForKey:KEYP_H__GROUP_INFO__INFO_GID] longValue];
+    if (gid < 1) {
+        return nil; //客户端错误码，待统一整理
+    }
+
+    // NSTimeInterval timeInterval= [GroupDataProxy nowTime];
+    DPGroup *dpGroup = [[DPGroup alloc] init];
+
+    //客户端存储
+    //long long localExpireTime = [GroupDataProxy nowTime] + TIMEOUT_GROUP_INFO;
+    //dpGroup.localExpireTime = localExpireTime;
+    //dpGroup.isInMyGroups = [self isInMyGroups:gid];
+
+    //群基本信息
+    dpGroup.gid = gid;
+    dpGroup.name = [info objectForKey:KEYP_H__GROUP_INFO__INFO_NAME];
+    dpGroup.intro = [info objectForKey:KEYP_H__GROUP_INFO__INFO_INTRO];
+    dpGroup.ctime = [info objectForKey:KEYP_H__GROUP_INFO__INFO_CTIME];
+    // NSLog(@"更新群创建时间：%@", dpGroup.ctime);
+    dpGroup.memberNum =
+    [[json objectForKey:KEYP_H__GROUP_INFO__INFO_MEMBERNUM] integerValue];
+
+    //群主信息
+    NSDictionary *creator = [info objectForKey:KEYP_H__GROUP_INFO__INFO_CREATOR];
+    dpGroup.creator_uid =
+    [[creator objectForKey:KEYP_H__GROUP_INFO__INFO_CREATOR_UID] longLongValue];
+    dpGroup.creator_nick =
+    [creator objectForKey:KEYP_H__GROUP_INFO__INFO_CREATOR_NICK];
+    dpGroup.creator_oid =
+    [[creator objectForKey:KEYP_H__GROUP_INFO__INFO_CREATOR_OID] longLongValue];
+    dpGroup.creator_vip =
+    [[creator objectForKey:KEYP_H__GROUP_INFO__INFO_CREATOR_VIP] integerValue];
+    dpGroup.creator_city =
+    [creator objectForKey:KEYP_H__GROUP_INFO__INFO_CREATOR_CITY];
+
+    return dpGroup;
+}
+
++ (NSMutableArray *)groupListWithJSON:(NSMutableDictionary *) json{
+    NSArray *list = [json objectForKey:KEYP_H__GROUP_MYLIST__LIST];
+
+    //if (_arrGroupMyList == nil) {
+    NSMutableArray *result = [NSMutableArray array];
+    //}
+
+    //long long localExpireTime = [GroupDataProxy nowTime] + TIMEOUT_GROUP_INFO;
+    for (NSInteger i = 0; i < [list count]; i++) {
+        DPGroup *dpGroup = [[DPGroup alloc] init];
+        NSDictionary *group = [list objectAtIndex:i];
+
+        //基本信息
+        long gid = [[group objectForKey:KEYP_H__GROUP_MYLIST__LIST_GID] longValue];
+        NSDictionary *detail = [group objectForKey:KEYP_H__GROUP_MYLIST__LIST_DETAIL];
+        NSDictionary *creator = [detail objectForKey:KEYP_H__GROUP_MYLIST__LIST_DETAIL_CREATOR];
+        dpGroup.gid = gid;
+        dpGroup.name = [detail objectForKey:KEYP_H__GROUP_MYLIST__LIST_DETAIL_NAME];
+        dpGroup.intro = [detail objectForKey:KEYP_H__GROUP_MYLIST__LIST_DETAIL_INTRO];
+        dpGroup.memberNum = [[detail objectForKey:KEYP_H__GROUP_MYLIST__LIST_DETAIL_MEMBERNUM] integerValue];
+        dpGroup.ctime = [detail objectForKey:KEYP_H__GROUP_MYLIST__LIST_CTIME];
+
+        //群主信息
+        dpGroup.creator_uid =
+        [[creator objectForKey:KEYP_H__GROUP_INFO__INFO_CREATOR_UID] longLongValue];
+        dpGroup.creator_nick =
+        [creator objectForKey:KEYP_H__GROUP_INFO__INFO_CREATOR_NICK];
+        dpGroup.creator_oid =
+        [[creator objectForKey:KEYP_H__GROUP_INFO__INFO_CREATOR_OID] longLongValue];
+        dpGroup.creator_vip =
+        [[creator objectForKey:KEYP_H__GROUP_INFO__INFO_CREATOR_VIP] integerValue];
+        dpGroup.creator_city =
+        [creator objectForKey:KEYP_H__GROUP_INFO__INFO_CREATOR_CITY];
+
+        //更新时间
+        //dpGroup.localExpireTime = localExpireTime;
+        //dpGroup.isInMyGroups = YES;
+
+        [result addObject:dpGroup];
+    }
+
+    return result;
 }
 
 #pragma mark - 信息读取
