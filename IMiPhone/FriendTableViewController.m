@@ -76,6 +76,7 @@
 //     NSLog(@"self.view.frame.origin.y%f",self.view.frame.origin.y);
 //
 //    NSLog(@"self.view.superview:%@",self.view.superview);
+
     
 }
 

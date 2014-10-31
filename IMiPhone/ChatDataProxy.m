@@ -13,11 +13,15 @@
 
 @property (nonatomic, retain) NSDictionary *dicMessages;
 
+@property (nonatomic, retain) NSDictionary *dicEmotion;
+
 @end
 
 @implementation ChatDataProxy
 
 @synthesize arrEmotions = _arrEmotions;
+
+@synthesize dicEmotion = _dicEmotion;
 
 static ChatDataProxy *messageDataProxy = nil;
 
@@ -104,4 +108,19 @@ static ChatDataProxy *messageDataProxy = nil;
     return _arrEmotions;
 }
 
+- (NSDictionary *)getEmotionDic
+{
+    if (_dicEmotion == nil) {
+        _dicEmotion = [NSMutableDictionary dictionary];
+        NSArray *arrEmots = [self getEmotions];
+        for (NSInteger i = 0; i < [arrEmots count]; i++) {
+            NSDictionary *dicEmot = [arrEmots objectAtIndex:i];
+            NSString *emotid = [dicEmot objectForKey:@"id"];
+//            [emotid st]
+            NSString *emotImage = [dicEmot objectForKey:@"image"];
+            [_dicEmotion setValue:emotImage forKey:emotid];
+        }
+    }
+    return _dicEmotion;
+}
 @end

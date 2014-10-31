@@ -10,4 +10,6 @@
 
 @interface GroupChatViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
+- (IBAction)tfInputTextDidEndOnExit:(id)sender;
+
 @end

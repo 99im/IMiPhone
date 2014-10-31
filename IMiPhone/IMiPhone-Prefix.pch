@@ -19,10 +19,10 @@
 #endif
 
 #define CRYPT YES
-#define SOCKET_HOST @"local.taiqiu.com"
-#define SOCKET_PORT 7000
-#define HTTP_HOST @"local.taiqiu.com"
-#define HTTP_PORT 7070
+#define SOCKET_HOST @"local.taiqiu.com"//@"tianqiu.tv"//
+#define SOCKET_PORT 7000//8000//
+#define HTTP_HOST @"local.taiqiu.com"//@"taiqiu.tv"//
+#define HTTP_PORT 7070//80//
 #define ERRORCODE_OK 0
 #define RES_OK 1
 #define METHOD_POST @"POST"

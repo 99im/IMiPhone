@@ -75,50 +75,50 @@
 
 - (void)testKeyValue
 {
-    DBGroup *g = [[DBGroup alloc] init];
-    g.groupName = @"桌球小组";
-    NSLog(@"group_id:%@",[g valueForKey:@"group_id"]);
-    //      [g setValue:@"undi" forKey:@"un" ];
-    //    NSLog(@"undefine_id:%@",[g valueForKey:@"un"]);
-    NSString *un;
-    NSError *error = nil;
-    //    BOOL b = [g validateValue:&un forKey:@"un" error:&error];
-    NSLog(@"undefine_id is valid?:%@",[g validateValue:&un forKey:@"un" error:&error] ? @"YES":@"NO");
+//    DBGroup *g = [[DBGroup alloc] init];
+//    g.groupName = @"桌球小组";
+//    NSLog(@"group_id:%@",[g valueForKey:@"group_id"]);
+//    //      [g setValue:@"undi" forKey:@"un" ];
+//    //    NSLog(@"undefine_id:%@",[g valueForKey:@"un"]);
+//    NSString *un;
+//    NSError *error = nil;
+//    //    BOOL b = [g validateValue:&un forKey:@"un" error:&error];
+//    NSLog(@"undefine_id is valid?:%@",[g validateValue:&un forKey:@"un" error:&error] ? @"YES":@"NO");
 }
 - (void)testGroupDAO
 {
     BaseDAO *dao = [GroupDAO sharedDAO];
     
-    DBGroup *g = [[DBGroup alloc]init];
-    g.groupId = 10;
-    g.groupName = @"桌球小组";
-    g.members = @"tree";
-    [dao insert:g];
-    
-    g.groupId = 5;
-    g.groupName = @"小组2";
-    g.members = @"tree,river";
-    int result = [dao insert:g];
+//    DBGroup *g = [[DBGroup alloc]init];
+//    g.groupId = 10;
+//    g.groupName = @"桌球小组";
+//    g.members = @"tree";
+//    [dao insert:g];
+//    
+//    g.groupId = 5;
+//    g.groupName = @"小组2";
+//    g.members = @"tree,river";
+//    int result = [dao insert:g];
 
 //    XCTAssertTrue(result == SQLITE_DONE, @"数据库插入错误！");
 //
     //    [dao deleteByCondition:@"group_name=?" Bind:[NSArray arrayWithObjects:@"桌球小组", nil] ];
-    g.groupName = @"小组桌球";
-    g.members = @"tree4,tree5,tree6,ee,e,e,e,e";
-    
-    [dao update:g
-    ByCondition:@"groupId=?"
-           Bind:[NSArray arrayWithObjects:@"10",nil]];
-    
-    //    NSArray *arrResult = [dao query:@"group_id=?" Bind:[NSArray arrayWithObjects:@"1",nil]];
-    NSArray *arrResult = [dao query:@"" Bind:[NSArray arrayWithObjects:nil]];
-    
-    if (arrResult && arrResult.count > 0) {
-        for (int i = 0; i < arrResult.count; i++) {
-            DBGroup *tempG = arrResult[i];
-            NSLog(@"query group_id:%d,group_name:%@,members:%@",tempG.groupId,tempG.groupName,tempG.members);
-        }
-    }
+//    g.groupName = @"小组桌球";
+//    g.members = @"tree4,tree5,tree6,ee,e,e,e,e";
+//    
+//    [dao update:g
+//    ByCondition:@"groupId=?"
+//           Bind:[NSArray arrayWithObjects:@"10",nil]];
+//    
+//    //    NSArray *arrResult = [dao query:@"group_id=?" Bind:[NSArray arrayWithObjects:@"1",nil]];
+//    NSArray *arrResult = [dao query:@"" Bind:[NSArray arrayWithObjects:nil]];
+//    
+//    if (arrResult && arrResult.count > 0) {
+//        for (int i = 0; i < arrResult.count; i++) {
+//            DBGroup *tempG = arrResult[i];
+//            NSLog(@"query group_id:%d,group_name:%@,members:%@",tempG.groupId,tempG.groupName,tempG.members);
+//        }
+//    }
 }
 -(void)testDescribeDictionary:(NSDictionary *)dict
 {

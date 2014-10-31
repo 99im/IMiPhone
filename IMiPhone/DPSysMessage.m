@@ -10,17 +10,15 @@
 
 @implementation DPSysMessage
 
-@synthesize uid;
 @synthesize  smid;
 @synthesize  modid;
 @synthesize  type;
 @synthesize  ctime;
-@synthesize  targetId;
-@synthesize  extraId;
-@synthesize  content;
-@synthesize  resultStatus;
-@synthesize  extraStatus;
-@synthesize  unread;
-@synthesize title;
+
+- (NSDictionary *)getParamsDictionary
+{
+    NSLog(@"需要子类重写");
+    return nil;
+}
 
 @end

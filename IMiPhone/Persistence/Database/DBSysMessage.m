@@ -10,17 +10,33 @@
 
 @implementation DBSysMessage
 
-@synthesize uid;
+//@synthesize uid;
 @synthesize  smid;
 @synthesize  modid;
 @synthesize  type;
 @synthesize  ctime;
-@synthesize  targetId;
-@synthesize  extraId;
-@synthesize  content;
-@synthesize  resultStatus;
-@synthesize  extraStatus;
-@synthesize  unread;
-@synthesize title;
+@synthesize params;
+
+- (void)setParamsByDictionary:(NSDictionary *)dic
+{
+    self.params = [NSString stringWithFormat:@"%@",dic];
+}
+
+- (NSDictionary *)getDictionaryByParams:(NSString *)pParams
+{
+    if (pParams == nil) {
+        return nil;
+    }
+    NSData *data = [pParams dataUsingEncoding:NSUTF8StringEncoding];
+    
+    NSError *error;
+    
+    id dic = [NSJSONSerialization JSONObjectWithData:data
+                 
+                                             options:NSJSONReadingAllowFragments
+                 
+                                               error:&error];
+    return dic;
+}
 
 @end
