@@ -82,11 +82,16 @@
     }
     else if (dpUiMsg.type == UI_MESSAGE_TYPE_SYS) {
         DPSysMessage *dpSysMsg = [[MsgDataProxy sharedProxy] getSysMsgByMid:dpUiMsg.mid];
-        
-        
-//        cell.lblGroupName.text = dpSysMsg.title;
-//        cell.lblLastMsg.text = dpSysMsg.content;
-        //        cell.lblTime.text = dpChatMsg.sendTime;
+
+//        if (dpSysMsg.modid == 4) {//群
+//            if (dpSysMsg.type == 1) {//申请加群
+                cellIdentifier = @"MsgGroupApplyTableViewCell";
+                MsgGroupApplyTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
+                [cell drawCellBody:dpSysMsg];
+                return  cell;
+//            }
+//        }
+
     }
     return cell;
 }
