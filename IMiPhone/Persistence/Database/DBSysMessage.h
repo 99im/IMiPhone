@@ -12,18 +12,13 @@
 
 @interface DBSysMessage : NSObject
 
-@property (nonatomic) long uid;
-@property (nonatomic) long smid;
+@property (nonatomic) long long smid;
 @property (nonatomic) NSInteger modid;
 @property (nonatomic) NSInteger type;
 @property (nonatomic, retain) NSString *ctime;
-@property (nonatomic) long targetId;
-@property (nonatomic) long extraId;
-@property (nonatomic, retain) NSString *content;
-@property (nonatomic) NSInteger resultStatus;
-@property (nonatomic) NSInteger extraStatus;
-@property (nonatomic) NSInteger unread;
-@property (nonatomic, retain) NSString *title;
+@property (nonatomic, retain) NSString *params;
 
+- (void)setParamsByDictionary:(NSDictionary *)dic;
+- (NSDictionary *)getDictionaryByParams:(NSString *)params;
 
 @end

@@ -120,6 +120,8 @@
 		11B1C62919E4E069003D2711 /* ChatMessageProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B1C62719E4E069003D2711 /* ChatMessageProxy.m */; };
 		11B1C62C19E51AFB003D2711 /* MsgDataProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B1C62B19E51AFB003D2711 /* MsgDataProxy.m */; };
 		11B1C62D19E51AFB003D2711 /* MsgDataProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B1C62B19E51AFB003D2711 /* MsgDataProxy.m */; };
+		11C936021A03709100D26CFF /* DPSysMessageFriend.m in Sources */ = {isa = PBXBuildFile; fileRef = 11C936011A03709100D26CFF /* DPSysMessageFriend.m */; };
+		11C936031A03709100D26CFF /* DPSysMessageFriend.m in Sources */ = {isa = PBXBuildFile; fileRef = 11C936011A03709100D26CFF /* DPSysMessageFriend.m */; };
 		11DF9F8319A2276C00AE5D89 /* splash.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 11DF9F8519A2276C00AE5D89 /* splash.jpg */; };
 		11E1581319F4FFE1008544D1 /* MsgTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11E1581219F4FFE1008544D1 /* MsgTableViewController.m */; };
 		11E1581419F4FFE1008544D1 /* MsgTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11E1581219F4FFE1008544D1 /* MsgTableViewController.m */; };
@@ -352,6 +354,8 @@
 		11B1C62719E4E069003D2711 /* ChatMessageProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatMessageProxy.m; sourceTree = "<group>"; };
 		11B1C62A19E51AFB003D2711 /* MsgDataProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MsgDataProxy.h; sourceTree = "<group>"; };
 		11B1C62B19E51AFB003D2711 /* MsgDataProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MsgDataProxy.m; sourceTree = "<group>"; };
+		11C936001A03709100D26CFF /* DPSysMessageFriend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPSysMessageFriend.h; sourceTree = "<group>"; };
+		11C936011A03709100D26CFF /* DPSysMessageFriend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPSysMessageFriend.m; sourceTree = "<group>"; };
 		11DF9F8419A2276C00AE5D89 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "zh-Hans"; path = "zh-Hans.lproj/splash.jpg"; sourceTree = "<group>"; };
 		11E1581119F4FFE1008544D1 /* MsgTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MsgTableViewController.h; sourceTree = "<group>"; };
 		11E1581219F4FFE1008544D1 /* MsgTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MsgTableViewController.m; sourceTree = "<group>"; };
@@ -838,6 +842,8 @@
 				AB4F947E19F789A500397549 /* DPGroup.m */,
 				117B198819FDEAE00056546C /* DPUtil.h */,
 				117B198919FDEAE00056546C /* DPUtil.m */,
+				11C936001A03709100D26CFF /* DPSysMessageFriend.h */,
+				11C936011A03709100D26CFF /* DPSysMessageFriend.m */,
 				118310C019FE61B700C1968D /* DPSysMessage.h */,
 				118310C119FE61B700C1968D /* DPSysMessage.m */,
 			);
@@ -1190,6 +1196,7 @@
 				5825D8F119D808CA004FF6FF /* CategoryTableViewController.m in Sources */,
 				58D3F28819E63082006589F9 /* IMNWMessage.m in Sources */,
 				11795E2819D297CD003FD9A7 /* DPFriend.m in Sources */,
+				11C936021A03709100D26CFF /* DPSysMessageFriend.m in Sources */,
 				58D3F28919E63082006589F9 /* IMNWProxy.m in Sources */,
 				117AC69E19EE766200143973 /* UsersFromContactDAO.m in Sources */,
 				116BF87719C96F8F0015561B /* UserDataProxy.m in Sources */,
@@ -1316,6 +1323,7 @@
 				58BC1E4F19C06B9000722A00 /* AsyncSocket.m in Sources */,
 				1194302D19F8DD8C00FD9206 /* ChatTableViewCellFrame.m in Sources */,
 				116BF87319C81E3F0015561B /* AudioRecordTest.m in Sources */,
+				11C936031A03709100D26CFF /* DPSysMessageFriend.m in Sources */,
 				110F561319D56CF8003B9EB4 /* DPChatMessage.m in Sources */,
 				58C14DE719CAB631009334E1 /* AddTableViewController.m in Sources */,
 				1192B5D519FE1F030013119E /* GroupMessageProxy.m in Sources */,
