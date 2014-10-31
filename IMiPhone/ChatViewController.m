@@ -91,9 +91,13 @@
     [self removeMessageNotification];
 }
 
-- (void)viewDidAppear:(BOOL)animated
+- (void)viewWillAppear:(BOOL)animated
 {
     [self scrollToLastCell:NO];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
     //注册键盘出现通知
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector (keyboardDidShow:)
                                                  name: UIKeyboardDidShowNotification object:nil];
