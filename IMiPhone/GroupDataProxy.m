@@ -247,7 +247,7 @@ static GroupDataProxy *sharedGroupDataProxy = nil;
   return 0;
 }
 
-- (NSInteger)deleteGroupByGID:(long long)gid {
+- (NSInteger)deleteGroupByGid:(long long)gid {
     //TODO: 删除指定的群
     return 0;
 }
