@@ -35,7 +35,7 @@
 - (DPGroup *)getGroupInfoAtRow:(NSInteger)row;
 
 - (NSInteger)updateGroupInfo:(NSMutableDictionary *)json;
-- (NSInteger)deleteGroupByGID:(long long)gid;
+- (NSInteger)deleteGroupByGid:(long long)gid;
 
 - (BOOL)isInMyGroups:(long long)gid;
 - (BOOL)isGroupOwner:(long long)creatorUid;

@@ -10,6 +10,7 @@
 #import "MsgMessageProxy.h"
 #import "MsgDataProxy.h"
 #import "ChatMsgTableViewCellP2G.h"
+#import "MsgGroupApplyTableViewCell.h"
 #import "ChatDataProxy.h"
 #import "UserDataProxy.h"
 #import "MsgDataProxy.h"
@@ -80,8 +81,6 @@
 //        cell.lblTime.text = dpChatMsg.sendTime;
     }
     else if (dpUiMsg.type == UI_MESSAGE_TYPE_SYS) {
-        cellIdentifier = @"ChatMsgTableViewCellP2G";
-        cell = [self.tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
         DPSysMessage *dpSysMsg = [[MsgDataProxy sharedProxy] getSysMsgByMid:dpUiMsg.mid];
         
         
@@ -167,10 +166,19 @@
 
 #pragma mark - notification
 
-- (void)registerMessageNotification
-{
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dealMsgList:) name:NOTI_H__MSG_SYSMSG_LIST_ object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dealChatn:) name:NOTI_S_CHAT_CHATN object:nil];
+- (void)registerMessageNotification {
+  [[NSNotificationCenter defaultCenter] addObserver:self
+                                           selector:@selector(dealMsgList:)
+                                               name:NOTI_H__MSG_SYSMSG_LIST_
+                                             object:nil];
+  [[NSNotificationCenter defaultCenter] addObserver:self
+                                           selector:@selector(dealChatn:)
+                                               name:NOTI_S_CHAT_CHATN
+                                             object:nil];
+  [[NSNotificationCenter defaultCenter] addObserver:self
+                                           selector:@selector(dealChatn:)
+                                               name:NOTI_H__GROUP_APPLY_RESPONSE_
+                                             object:nil];
 }
 
 - (void)removeMessageNotification
@@ -185,6 +193,18 @@
 - (void)dealChatn:(NSNotification *)notification
 {
     [self.tableView reloadData];
+}
+- (void)dealGroupApplyResponse:(NSNotification *)notification
+{
+    NSDictionary *json = notification.object;
+    NSInteger agree = [[json objectForKey:@"agree"] integerValue];
+    if (agree == 1) {
+        NSLog(@"通过了申请");
+    } else {
+        NSLog(@"拒绝了申请");
+    }
+    [self.tableView reloadData];
+
 }
 
 @end

@@ -191,6 +191,48 @@ static GroupMessageProxy *sharedGroupMessageProxy = nil;
       }];
 }
 
+- (void)sendGroupApplyResponse:(long long)rid agree:(NSInteger)agree {
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    NSNumber *ridNum = [NSNumber numberWithLongLong:rid];
+    NSNumber *agreeNum = [NSNumber numberWithInteger:agree];
+
+    [params setObject:ridNum forKey:KEYQ_H__GROUP_APPLY_RESPONSE__RID];
+    [params setObject:agreeNum forKey:KEYQ_H__GROUP_APPLY_RESPONSE__AGREE];
+
+    IMNWMessage *message =
+    [IMNWMessage createForHttp:PATH_H__GROUP_APPLY_RESPONSE_
+                    withParams:params
+                    withMethod:METHOD_H__GROUP_APPLY_RESPONSE_
+                           ssl:NO];
+    [[IMNWManager sharedNWManager]
+     sendMessage:message
+     withResponse:^(NSString *responseString, NSData *responseData) {
+         NSError *err = nil;
+         NSMutableDictionary *json = [NSJSONSerialization
+                                      JSONObjectWithData:responseData
+                                      options:NSJSONReadingAllowFragments
+                                      error:&err];
+         if (err) {
+             NSAssert(YES, @"json error[sendGroupInviteResponse]: \n%@", err);
+         } else {
+             int errorcode =
+             [[json objectForKey:
+               KEYP_H__GROUP_APPLY_RESPONSE__ERROR_CODE] intValue];
+             if (errorcode == 0) {
+                 // NSLog(@"sendGroupInviteResponse response ok:\n%@", json);
+                 [json setObject:agreeNum forKey:@"agree"];
+                 [[NSNotificationCenter defaultCenter]
+                  postNotificationName:NOTI_H__GROUP_APPLY_RESPONSE_
+                  object:json];
+             } else {
+                 NSAssert(YES, @"sendGroupInviteResponse response error: %i",
+                          errorcode);
+             }
+         }
+         
+     }];
+}
+
 - (void)sendGroupInvite:(NSString *)gid targetUids:(NSString *)targetUids msg:(NSString *)msg {
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
 
@@ -228,38 +270,43 @@ static GroupMessageProxy *sharedGroupMessageProxy = nil;
      }];
 }
 
-- (void)sendGroupInviteResponse:(NSString *)rid agree:(NSNumber *)agree {
-    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+- (void)sendGroupInviteResponse:(long long)rid agree:(NSInteger)agree {
+  NSMutableDictionary *params = [NSMutableDictionary dictionary];
+  NSNumber *ridNum = [NSNumber numberWithLongLong:rid];
+  NSNumber *agreeNum = [NSNumber numberWithInteger:agree];
 
-    [params setObject:rid forKey:KEYQ_H__GROUP_INVITE_RESPONSE__RID];
-    [params setObject:agree forKey:KEYQ_H__GROUP_INVITE_RESPONSE__AGREE];
+  [params setObject:ridNum forKey:KEYQ_H__GROUP_INVITE_RESPONSE__RID];
+  [params setObject:agreeNum forKey:KEYQ_H__GROUP_INVITE_RESPONSE__AGREE];
 
-    IMNWMessage *message = [IMNWMessage createForHttp:PATH_H__GROUP_INVITE_RESPONSE_
-                                           withParams:params
-                                           withMethod:METHOD_H__GROUP_INVITE_RESPONSE_
-                                                  ssl:NO];
-    [[IMNWManager sharedNWManager]
-     sendMessage:message
-     withResponse:^(NSString *responseString, NSData *responseData) {
-         NSError *err = nil;
-         NSMutableDictionary *json = [NSJSONSerialization
-                                      JSONObjectWithData:responseData
-                                      options:NSJSONReadingAllowFragments
-                                      error:&err];
-         if (err) {
-             NSAssert(YES, @"json error[sendGroupInviteResponse]: \n%@", err);
-         } else {
-             int errorcode = [[json objectForKey:KEYP_H__GROUP_INVITE_RESPONSE__ERROR_CODE] intValue];
-             if (errorcode == 0) {
-                 NSLog(@"sendGroupInviteResponse response ok:\n%@", json);
-             } else {
-                 NSAssert(YES, @"sendGroupInviteResponse response error: %i", errorcode);
-             }
-         }
+  IMNWMessage *message = [IMNWMessage createForHttp:PATH_H__GROUP_INVITE_RESPONSE_
+                                         withParams:params
+                                         withMethod:METHOD_H__GROUP_INVITE_RESPONSE_
+                                                ssl:NO];
+  [[IMNWManager sharedNWManager] sendMessage:message
+                                withResponse:^(NSString *responseString, NSData *responseData) {
+          NSError *err = nil;
+          NSMutableDictionary *json = [NSJSONSerialization
+              JSONObjectWithData:responseData
+                         options:NSJSONReadingAllowFragments
+                           error:&err];
+          if (err) {
+            NSAssert(YES, @"json error[sendGroupInviteResponse]: \n%@", err);
+          } else {
+            int errorcode = [[json objectForKey: KEYP_H__GROUP_INVITE_RESPONSE__ERROR_CODE] intValue];
+            if (errorcode == 0) {
+              // NSLog(@"sendGroupInviteResponse response ok:\n%@", json);
+              [json setObject:agreeNum forKey:@"agree"];
+              [[NSNotificationCenter defaultCenter]
+                  postNotificationName:NOTI_H__GROUP_APPLY_RESPONSE_
+                                object:json];
+            } else {
+              NSAssert(YES, @"sendGroupInviteResponse response error: %i",
+                       errorcode);
+            }
+          }
 
-     }];
+      }];
 }
-
 
 #pragma mark - 群管理
 

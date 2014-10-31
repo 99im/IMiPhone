@@ -7,13 +7,20 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MsgDataProxy.h"
 
 @interface MsgGroupApplyTableViewCell : UITableViewCell
 
-@property (weak, nonatomic) IBOutlet UIView *imgHead;
-@property (weak, nonatomic) IBOutlet UILabel *lblGroupName;
-@property (weak, nonatomic) IBOutlet UILabel *lblUserNick;
-@property (weak, nonatomic) IBOutlet UILabel *lblReason;
-@property (weak, nonatomic) IBOutlet UIButton *btnAgree;
+@property(weak, nonatomic) IBOutlet UIView *imgHead;
+@property(weak, nonatomic) IBOutlet UILabel *lblGroupName;
+@property(weak, nonatomic) IBOutlet UILabel *lblUserNick;
+@property(weak, nonatomic) IBOutlet UILabel *lblReason;
+@property(weak, nonatomic) IBOutlet UIButton *btnAgree;
+
+@property(nonatomic) long long rid;
+
+- (IBAction)btnAgreeTouchUp:(id)sender;
+
+- (void)drawCellBody:(DPSysMessage *)dpSysMsg;
 
 @end

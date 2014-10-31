@@ -20,10 +20,10 @@
 @property (nonatomic, retain) NSString *portraitUrl;//头像地址
 
 #pragma mark - 群主信息
-@property (nonatomic) long creator_uid;
+@property (nonatomic) long long creator_uid;
 @property (nonatomic, retain) NSString *creator_nick;
-@property (nonatomic) long creator_oid;
-@property (nonatomic) long creator_vip;
+@property (nonatomic) long long creator_oid;
+@property (nonatomic) NSInteger creator_vip;
 @property (nonatomic, retain) NSString *creator_city;
 
 #pragma mark - 客户端附加信息

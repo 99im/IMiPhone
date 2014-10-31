@@ -118,18 +118,18 @@ static GroupDataProxy *sharedGroupDataProxy = nil;
         dpGroup.gid = gid;
         dpGroup.name = [detail objectForKey:KEYP_H__GROUP_MYLIST__LIST_DETAIL_NAME];
         dpGroup.intro = [detail objectForKey:KEYP_H__GROUP_MYLIST__LIST_DETAIL_INTRO];
-        dpGroup.memberNum = [[detail objectForKey:KEYP_H__GROUP_MYLIST__LIST_DETAIL_MEMBERNUM] longValue];
+        dpGroup.memberNum = [[detail objectForKey:KEYP_H__GROUP_MYLIST__LIST_DETAIL_MEMBERNUM] integerValue];
         dpGroup.ctime = [detail objectForKey:KEYP_H__GROUP_MYLIST__LIST_CTIME];
 
         //群主信息
         dpGroup.creator_uid =
-        [[creator objectForKey:KEYP_H__GROUP_INFO__INFO_CREATOR_UID] intValue];
+        [[creator objectForKey:KEYP_H__GROUP_INFO__INFO_CREATOR_UID] longLongValue];
         dpGroup.creator_nick =
         [creator objectForKey:KEYP_H__GROUP_INFO__INFO_CREATOR_NICK];
         dpGroup.creator_oid =
-        [[creator objectForKey:KEYP_H__GROUP_INFO__INFO_CREATOR_OID] intValue];
+        [[creator objectForKey:KEYP_H__GROUP_INFO__INFO_CREATOR_OID] longLongValue];
         dpGroup.creator_vip =
-        [[creator objectForKey:KEYP_H__GROUP_INFO__INFO_CREATOR_VIP] intValue];
+        [[creator objectForKey:KEYP_H__GROUP_INFO__INFO_CREATOR_VIP] integerValue];
         dpGroup.creator_city =
         [creator objectForKey:KEYP_H__GROUP_INFO__INFO_CREATOR_CITY];
         [_arrGroupMyList addObject:dpGroup];
@@ -222,18 +222,18 @@ static GroupDataProxy *sharedGroupDataProxy = nil;
   dpGroup.ctime = [info objectForKey:KEYP_H__GROUP_INFO__INFO_CTIME];
   // NSLog(@"更新群创建时间：%@", dpGroup.ctime);
   dpGroup.memberNum =
-      [[json objectForKey:KEYP_H__GROUP_INFO__INFO_MEMBERNUM] intValue];
+      [[json objectForKey:KEYP_H__GROUP_INFO__INFO_MEMBERNUM] integerValue];
 
   //群主信息
   NSDictionary *creator = [info objectForKey:KEYP_H__GROUP_INFO__INFO_CREATOR];
   dpGroup.creator_uid =
-      [[creator objectForKey:KEYP_H__GROUP_INFO__INFO_CREATOR_UID] intValue];
+      [[creator objectForKey:KEYP_H__GROUP_INFO__INFO_CREATOR_UID] longLongValue];
   dpGroup.creator_nick =
       [creator objectForKey:KEYP_H__GROUP_INFO__INFO_CREATOR_NICK];
   dpGroup.creator_oid =
-      [[creator objectForKey:KEYP_H__GROUP_INFO__INFO_CREATOR_OID] intValue];
+      [[creator objectForKey:KEYP_H__GROUP_INFO__INFO_CREATOR_OID] longLongValue];
   dpGroup.creator_vip =
-      [[creator objectForKey:KEYP_H__GROUP_INFO__INFO_CREATOR_VIP] intValue];
+      [[creator objectForKey:KEYP_H__GROUP_INFO__INFO_CREATOR_VIP] integerValue];
   dpGroup.creator_city =
       [creator objectForKey:KEYP_H__GROUP_INFO__INFO_CREATOR_CITY];
 
@@ -247,7 +247,7 @@ static GroupDataProxy *sharedGroupDataProxy = nil;
   return 0;
 }
 
-- (NSInteger)deleteGroupByGID:(long long)gid {
+- (NSInteger)deleteGroupByGid:(long long)gid {
     //TODO: 删除指定的群
     return 0;
 }
