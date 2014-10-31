@@ -14,13 +14,8 @@
 //自定义组件
 @property (retain, nonatomic) UIImageView *imgViewBg;
 @property (retain, nonatomic) UIImageView *imgViewPortrait;
-//@property (retain, nonatomic) UILabel *lblContent;
 @property (retain, nonatomic) UILabel *lblState;
 @property (retain, nonatomic) UIView *viewContent;
-
-//头像区域
-@property (nonatomic) CGRect iconRect;
-@property (nonatomic) CGRect chartViewRect;
 
 @end
 
@@ -33,7 +28,6 @@
     _cellFrame = cellFrame;
     
     self.imgViewBg.frame = cellFrame.rectContentBg;
-//    self.imgViewBg.frame = CGRectMake(cellFrame.rectChatView.origin.x - 10, cellFrame.rectChatView.origin.y, cellFrame.rectChatView.size.width + 20, cellFrame.rectChatView.size.height);
     
     UIImage *imgBg;
     if (cellFrame.messageType == ChatMessageTypeMe) {
@@ -50,29 +44,12 @@
 //    DPChatMessage *chatMessage = cellFrame.chatMessage;
     
     self.imgViewPortrait.frame = cellFrame.rectIcon;
-//    self.icon.image=[UIImage imageNamed:chartMessage.icon];
-    
-//    self.chartView.chartMessage=chartMessage;
-//    self.chartView.frame=cellFrame.chartViewRect;
-//    [self setBackGroundImageViewImage:self.chartView from:@"chatfrom_bg_normal.png" to:@"chatto_bg_normal.png"];
-//    self.chartView.contentLabel.text=chartMessage.content;
     
     if (self.viewContent) {
         [self.viewContent removeFromSuperview];
     }
     [self.contentView addSubview:cellFrame.viewContent];
     self.viewContent = cellFrame.viewContent;
-
-//    NSString *path = [[NSBundle mainBundle] bundlePath];
-//    NSURL *baseURL = [NSURL fileURLWithPath:path];
-    
-//    [self.webViewContent loadHTMLString:[chatMessage.content stringByAppendingString:@"<img src='Images.xcassets/emotion/E056.imageset/E056.png'/>"] baseURL:baseURL];
-//    self.webViewContent.frame = cellFrame.rectChatView;
-//    self.lblContent.text = chatMessage.content;
-//
-//    self.lblContent.frame = cellFrame.rectChatView;
-
-//    cellFrame.rectChatView;
    
     self.lblState.text = @"";
 }
@@ -90,15 +67,8 @@
     self.imgViewPortrait.image = [UIImage imageNamed:@"ChatDefault"];
     [self.contentView addSubview:self.imgViewPortrait];
 
-//    self.lblContent = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
-//    self.lblContent.numberOfLines = 0;
-//    self.lblContent.font=[UIFont fontWithName:@"HelveticaNeue" size:CHAT_CELL_CONTENT_FONT_SIZE];
-//    self.lblContent.textAlignment=NSTextAlignmentLeft;
-//    [self.contentView addSubview:self.lblContent];
 
     self.userInteractionEnabled = false;
-
-//    [self.contentView addSubview:self.webViewContent];
     
     self.lblState = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
     [self.contentView addSubview:self.lblState];
