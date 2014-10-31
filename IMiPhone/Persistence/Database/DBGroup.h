@@ -27,6 +27,6 @@
 @property (nonatomic, retain) NSString *creator_city;
 
 #pragma mark - 客户端附加信息
-@property (nonatomic) long long localUpdateTime;  //本地存储更新时间，格式：2014110241259
+@property (nonatomic) long long localExpireTime;  //本地过期时间，格式(yyyyMMddHHmmss)：201411024125959
 
 @end

@@ -10,6 +10,7 @@
 #import "NSNumber+IMNWError.h"
 
 @implementation GroupMessageProxy
+
 #pragma mark - 静态方法
 static GroupMessageProxy *sharedGroupMessageProxy = nil;
 
@@ -58,7 +59,8 @@ static GroupMessageProxy *sharedGroupMessageProxy = nil;
               }
 
             } else {
-              NSAssert(YES, @"sendGroupInfo response error: %i", errorcode);
+                NSError *error = [self processErrorCode:errorcode fromSource:PATH_H__GROUP_INFO_];
+                [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_H__GROUP_INFO_ object:error];
             }
           }
 
@@ -296,4 +298,31 @@ static GroupMessageProxy *sharedGroupMessageProxy = nil;
           }
       }];
 }
+
+- (void)sendGroupSearch:(NSString *)keyname
+{
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    [params setObject:keyname forKey:KEYQ_H__GROUP_SEARCH__KEYNAME];
+    IMNWMessage *message = [IMNWMessage createForHttp:PATH_H__GROUP_SEARCH_ withParams:params withMethod:METHOD_H__GROUP_SEARCH_ ssl:NO];
+    [[IMNWManager sharedNWManager] sendMessage:message withResponse:^(NSString *responseString, NSData *responseData) {
+        NSError *err = nil;
+        NSMutableDictionary *json = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingAllowFragments error:&err];
+        if (err) {
+            NSLog(@"JSON create error: %@", err);
+        }
+        else {
+            int errorcode = [[json objectForKey:KEYP_H__GROUP_SEARCH__ERROR_CODE] intValue];
+            if (errorcode == 0) {
+                NSArray *arrGroups = (NSArray *)[json objectForKey:KEYP_H__GROUP_SEARCH__LIST];
+                [GroupDataProxy sharedProxy].arrGroupsSearch = arrGroups;
+                [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_H__GROUP_SEARCH_ object:nil];
+            }
+            else {
+                NSError *error = [self processErrorCode:errorcode fromSource:PATH_H__GROUP_SEARCH_];
+                [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_H__GROUP_SEARCH_ object:error];
+            }
+        }
+    }];
+}
+
 @end

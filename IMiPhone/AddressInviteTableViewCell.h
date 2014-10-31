@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AddressInviteTVTableViewCell : UITableViewCell
+@interface AddressInviteTableViewCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UILabel *lblName;
 @property (weak, nonatomic) IBOutlet UIButton *btnInvite;

@@ -10,8 +10,8 @@
 #import "IMAddressBook.h"
 #import "FriendMessageProxy.h"
 #import "UserDataProxy.h"
-#import "AddressAddTVTableViewCell.h"
-#import "AddressInviteTVTableViewCell.h"
+#import "AddressAddTableViewCell.h"
+#import "AddressInviteTableViewCell.h"
 
 @interface TPContactsTableViewController ()
 
@@ -123,12 +123,12 @@ enum
     if (indexPath.section == Section_users) {
         cell = [self.tableView dequeueReusableCellWithIdentifier:@"AddressAddTVTableViewCell" forIndexPath:indexPath];
         DPUser *user = [self.arrUsers objectAtIndex:indexPath.row];
-        ((AddressAddTVTableViewCell *)cell).lblNick.text = user.nick;
+        ((AddressAddTableViewCell *)cell).lblNick.text = user.nick;
     }
     else if (indexPath.section == Section_contact) {
          cell = [self.tableView dequeueReusableCellWithIdentifier:@"AddressInviteTVTableViewCell" forIndexPath:indexPath];
-        ((AddressInviteTVTableViewCell *)cell).lblName.text = [self.arrAddressBookNames objectAtIndex:indexPath.row];
-        ((AddressInviteTVTableViewCell *)cell).lblName.text = [self.arrAddressBookNames objectAtIndex:indexPath.row];
+        ((AddressInviteTableViewCell *)cell).lblName.text = [self.arrAddressBookNames objectAtIndex:indexPath.row];
+        ((AddressInviteTableViewCell *)cell).lblName.text = [self.arrAddressBookNames objectAtIndex:indexPath.row];
     }
     return cell;
 }
