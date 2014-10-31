@@ -22,12 +22,12 @@
     self.params = [NSString stringWithFormat:@"%@",dic];
 }
 
-- (NSDictionary *)getDictionaryByParams:(NSString *)pParams
+- (NSDictionary *)getDictionaryByParams
 {
-    if (pParams == nil) {
-        return nil;
+    if (self.params == nil) {
+        return [NSDictionary dictionary];
     }
-    NSData *data = [pParams dataUsingEncoding:NSUTF8StringEncoding];
+    NSData *data = [self.params dataUsingEncoding:NSUTF8StringEncoding];
     
     NSError *error;
     

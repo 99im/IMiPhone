@@ -19,7 +19,7 @@ typedef enum {
 @interface ChatDataProxy : NSObject
 
 @property (nonatomic) NSInteger chatViewType;
-@property (nonatomic) NSInteger chatToUid;
+@property (nonatomic) long long chatToUid;
 
 @property (nonatomic, retain, getter=getEmotions) NSArray *arrEmotions;
 

@@ -7,6 +7,8 @@
 //
 
 #import "DBSysMessage.h"
+#import "ImDataUtil.h"
+#import "MsgMessageProxy.h"
 
 @interface DPSysMessage : NSObject
 
@@ -15,6 +17,9 @@
 @property (nonatomic) NSInteger type;
 @property (nonatomic, retain) NSString *ctime;
 
++ (DPSysMessage *)sysMessageByMid:(long long)mid withMode:(NSInteger)modeid withType:(NSInteger)type withTime:(NSString *)time;
+
 - (NSDictionary *)getParamsDictionary;
+- (void)setParamsPropertyByDic:(NSDictionary *)dic;
 
 @end

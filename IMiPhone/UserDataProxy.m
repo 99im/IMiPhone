@@ -140,7 +140,7 @@ static UserDataProxy *sharedProxy = nil;
         if (userInfoDic == nil)
         {
             _user.uid = _lastLoginUid;
-            [imRms userDefaultsWrite:KEY_USER_INFO_PRE withObjectValue:[ImDataUtil getDicFromNormalClass:_user] isBindUid:YES];
+            [imRms userDefaultsWrite:KEY_USER_INFO_PRE withObjectValue:[ImDataUtil getDicFromNormalClass:_user containSuper:YES] isBindUid:YES];
         }
         else
         {
@@ -152,7 +152,7 @@ static UserDataProxy *sharedProxy = nil;
 - (void)setUser:(DPUser *)userInfo
 {
     _user = userInfo;
-    NSDictionary *userInfoDic = [ImDataUtil getDicFromNormalClass:_user];
+    NSDictionary *userInfoDic = [ImDataUtil getDicFromNormalClass:_user containSuper:YES];
     [imRms userDefaultsWrite:KEY_USER_INFO_PRE withObjectValue:userInfoDic isBindUid:YES];
 }
 

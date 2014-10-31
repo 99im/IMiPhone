@@ -8,6 +8,11 @@
 
 #import "IMNWProxy.h"
 
+#define SYS_MSG_MODE_ACCOUNT 1
+#define SYS_MSG_MODE_FRIEND 2
+#define SYS_MSG_MODE_CHAT 3
+#define SYS_MSG_MODE_GROUP 4
+
 @interface MsgMessageProxy : IMNWProxy
 
 + (MsgMessageProxy  *)sharedProxy;

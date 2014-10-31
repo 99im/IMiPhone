@@ -10,10 +10,17 @@
 
 @implementation DPSysMessageFriend
 
+@synthesize uid;
+
 - (NSDictionary *)getParamsDictionary
 {
-    NSDictionary *dic = [NSMutableDictionary dictionary];
+    NSDictionary *dic = [ImDataUtil getDicFromNormalClass:self containSuper:NO];
     return dic;
+}
+
+- (void)setParamsPropertyByDic:(NSDictionary *)dic
+{
+    self.uid = [[[dic objectForKey:KEYP_H__MSG_SYSMSG_LIST__LIST_PARAMS] objectForKey:@"uid"] longLongValue];
 }
 
 @end

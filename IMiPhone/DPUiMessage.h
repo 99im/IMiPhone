@@ -15,8 +15,8 @@
 @interface DPUiMessage : NSObject
 
 @property (nonatomic) NSInteger orderid;
-@property (nonatomic) long mid;
-@property (nonatomic) long relationId;//对方id 或者是群id
+@property (nonatomic) long long mid;
+@property (nonatomic) long long relationId;//对方id 或者是群id
 @property (nonatomic) NSInteger type;//私聊，群聊,系统消息...
 
 @end
