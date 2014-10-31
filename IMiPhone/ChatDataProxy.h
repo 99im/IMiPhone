@@ -32,4 +32,6 @@ typedef enum {
 
 - (NSArray *)getEmotions;
 
+- (NSDictionary *)getEmotionDic;
+
 @end

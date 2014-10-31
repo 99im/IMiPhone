@@ -17,8 +17,6 @@
 //@property (retain, nonatomic) UILabel *lblContent;
 @property (retain, nonatomic) UILabel *lblState;
 @property (retain, nonatomic) UIView *viewContent;
-//消息类型
-@property (nonatomic) ChatMessageType messageType;
 
 //头像区域
 @property (nonatomic) CGRect iconRect;
@@ -34,7 +32,7 @@
 {
     _cellFrame = cellFrame;
     
-    self.imgViewBg.frame = cellFrame.viewContent.frame;
+    self.imgViewBg.frame = cellFrame.rectContentBg;
 //    self.imgViewBg.frame = CGRectMake(cellFrame.rectChatView.origin.x - 10, cellFrame.rectChatView.origin.y, cellFrame.rectChatView.size.width + 20, cellFrame.rectChatView.size.height);
     
     UIImage *imgBg;

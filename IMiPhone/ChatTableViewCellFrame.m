@@ -7,15 +7,14 @@
 //
 
 #import "ChatTableViewCellFrame.h"
-
-
+#import "ChatDataProxy.h"
 
 @implementation ChatTableViewCellFrame
 
 @synthesize chatMessage = _chatMessage;
 @synthesize messageType = _messageType;
 @synthesize rectIcon = _rectIcon;
-@synthesize rectChatView = _rectChatView;
+@synthesize rectContentBg = _rectContentBg;
 @synthesize cellHeight = _cellHeight;
 @synthesize viewContent = _viewContent;
 
@@ -26,7 +25,7 @@
 
     CGSize winSize = [UIScreen mainScreen].bounds.size;
     CGFloat iconX = CHAT_PORTRAIT_MARGIN_X;
-    CGFloat iconY = CHAT_PORTRAIT_MARGIN_Y;
+    CGFloat iconY = CHAT_PORTRAIT_TOP_MARGIN_Y;
     CGFloat iconWidth = CHAT_PORTRAIT_WIDTH;
     CGFloat iconHeight = CHAT_PORTRAIT_HEIGHT;
    
@@ -37,21 +36,23 @@
     }
     _rectIcon = CGRectMake(iconX, iconY, iconWidth, iconHeight);
     
-    CGFloat contentX = CGRectGetMaxX(self.rectIcon) + CHAT_PORTRAIT_MARGIN_X;
-    CGFloat contentY = iconY;
-    NSDictionary *attributes = @{NSFontAttributeName: [UIFont fontWithName:@"HelveticaNeue" size:CHAT_CELL_CONTENT_FONT_SIZE]};
-    CGSize contentSize=[self.chatMessage.content boundingRectWithSize:CGSizeMake(CHAT_CELL_CONTENT_WIDTH_MAX, MAXFLOAT) options: NSStringDrawingTruncatesLastVisibleLine | NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading attributes:attributes context:nil].size;
+    _viewContent = [self assembleMessage:chatMessage.content];
+    
+    CGFloat contentBgX;
+    CGFloat contentBgY = iconY;
     
     if (self.messageType == ChatMessageTypeMe) {
-        contentX = iconX - CHAT_PORTRAIT_MARGIN_X - contentSize.width -iconWidth;
+        contentBgX = iconX - CHAT_PORTRAIT_MARGIN_X - _viewContent.frame.size.width -iconWidth;
     }
-    _rectChatView = CGRectMake(contentX, contentY, contentSize.width+CHAT_CELL_CONTENT_OFF_WIDTH, contentSize.height+CHAT_CELL_CONTENT_OFF_HEIGHT);
-    
-    _viewContent = [self assembleMessage:chatMessage.content];
+    else {
+        contentBgX = CGRectGetMaxX(self.rectIcon) + CHAT_PORTRAIT_MARGIN_X;
+    }
 
-    _cellHeight = MAX(CGRectGetMaxY(self.rectIcon), CGRectGetMaxY(_viewContent.frame)) + CHAT_PORTRAIT_MARGIN_Y;
-    
-    
+    _rectContentBg = CGRectMake(contentBgX, contentBgY, _viewContent.frame.size.width + CHAT_CELL_CONTENT_BG_OFF_WIDTH, _viewContent.frame.size.height + CHAT_CELL_CONTENT_BG_OFF_HEIGHT);
+    _viewContent.frame =     CGRectMake(contentBgX + CHAT_CELL_CONTENT_OFF_X - 5, contentBgY + CHAT_CELL_CONTENT_BG_OFF_HEIGHT/2, _viewContent.frame.size.width, _viewContent.frame.size.height);
+
+    _cellHeight = MAX(CGRectGetMaxY(self.rectIcon), CGRectGetMaxY(_rectContentBg)) + CHAT_CONTENT_BOTTOM_MARGIN_Y;
+
 }
 
 //图文混排
@@ -101,7 +102,9 @@
             if ([str hasPrefix: BEGIN_FLAG] && [str hasSuffix: END_FLAG])
             {
 //                NSLog(@"str(image)---->%@",str);
-                NSString *imageName=[str substringWithRange:NSMakeRange(BEGIN_FLAG.length, str.length - (BEGIN_FLAG.length + END_FLAG.length))];
+                NSString *imageId= str;
+//                [str substringWithRange:NSMakeRange(BEGIN_FLAG.length, str.length - (BEGIN_FLAG.length + END_FLAG.length))];
+                NSString *imageName = [[[ChatDataProxy sharedProxy] getEmotionDic] objectForKey:imageId];
                 UIImageView *img=[[UIImageView alloc]initWithImage:[UIImage imageNamed:imageName]];
                 img.frame = CGRectMake(upX, upY, KFacialSizeWidth, KFacialSizeHeight);
                 [returnView addSubview:img];
@@ -150,7 +153,7 @@
     Y += KFacialSizeHeight;
     returnView.frame = CGRectMake(0, 0, X, Y);
 //    returnView.backgroundColor = [UIColor brownColor];
-    NSLog(@"内容宽：%.1f and 内容高： %.1f", X, Y);
+//    NSLog(@"内容宽：%.1f and 内容高： %.1f", X, Y);
     return returnView;
 }
 
