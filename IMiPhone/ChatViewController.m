@@ -319,6 +319,7 @@
 
 - (void)onEmotionSend:(NSNotification *)notification
 {
+    [self tfInputTextDidEndOnExit:self.tfInputText];
 }
 
 - (void)onEmotionDelete:(NSNotification *)notification

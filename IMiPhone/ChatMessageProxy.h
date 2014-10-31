@@ -28,7 +28,7 @@
 - (void)sendTypeP2PChatList:(NSInteger)targetUid before:(NSInteger)beforeMid after:(NSInteger)afterMid startAt:(NSInteger)startIndex getNum:(NSInteger)pageNum;
 - (void)parseTypeP2PChatList:(id)json;
 
-- (void)sendTypeChat:(NSString *)stage targetId:(NSInteger)targetId msgType:(NSInteger)msgType content:(NSString *)content;
+- (void)sendTypeChat:(NSString *)stage targetId:(long long)targetId msgType:(NSInteger)msgType content:(NSString *)content;
 - (void)parseTypeChat:(id)json;
 
 - (void)parseTypeChatn:(id)json;

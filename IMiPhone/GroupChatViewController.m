@@ -161,6 +161,7 @@
 
 - (void)onEmotionSend:(NSNotification *)notification
 {
+    [self tfInputTextDidEndOnExit:self.tfInputText];
 }
 
 - (void)onEmotionDelete:(NSNotification *)notification
@@ -213,7 +214,7 @@
 - (IBAction)tfInputTextDidEndOnExit:(id)sender {
     if ([ChatDataProxy sharedProxy].chatViewType == ChatViewTypeP2P) {
         
-        //[[ChatMessageProxy sharedProxy] sendTypeChat:CHAT_STAGE_GROUP targetId:[GroupDataProxy sharedProxy].currentGroup msgType:CHAT_MASSAGE_TYPE_TEXT content:((UITextField *)sender).text];
+        [[ChatMessageProxy sharedProxy] sendTypeChat:CHAT_STAGE_GROUP targetId:[GroupDataProxy sharedProxy].getGroupIdCurrent msgType:CHAT_MASSAGE_TYPE_TEXT content:((UITextField *)sender).text];
         
         ((UITextField *)sender).text = @"";
     }
@@ -247,6 +248,4 @@
     }
 }
 
-- (IBAction)tfInputTextDidEndOnExit:(id)sender {
-}
 @end
