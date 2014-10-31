@@ -20,6 +20,13 @@
 #define CHAT_PORTRAIT_WIDTH 40
 #define CHAT_PORTRAIT_HEIGHT 40
 
+#define BEGIN_FLAG @"["
+#define END_FLAG @"]"
+
+#define KFacialSizeWidth  25
+#define KFacialSizeHeight 25
+
+
 typedef enum {
     
     ChatMessageTypeOther=0,
@@ -34,6 +41,7 @@ typedef enum {
 @property (nonatomic, readonly) CGRect rectChatView;
 @property (nonatomic, retain, readonly) DPChatMessage *chatMessage;
 @property (nonatomic, readonly) CGFloat cellHeight; //
+@property (nonatomic, readonly) UIView *viewContent;
 
 - (void)setMsgType:(ChatMessageType)type withMsg:(DPChatMessage *)chatMessage;
 

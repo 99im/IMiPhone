@@ -209,6 +209,7 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+//    NSLog(@"height for %@",indexPath);
     ChatTableViewCellFrame *cellFrame = [self.arrAllCellFrames objectAtIndex:indexPath.row];
     if (cellFrame) {
          return cellFrame.cellHeight;
@@ -218,6 +219,11 @@
         return 0;
     }
 }
+
+//- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    NSLog(@"will display %@",indexPath);
+//}
 
 #pragma mark - chat text input logic
 

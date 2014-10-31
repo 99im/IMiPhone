@@ -14,8 +14,9 @@
 //自定义组件
 @property (retain, nonatomic) UIImageView *imgViewBg;
 @property (retain, nonatomic) UIImageView *imgViewPortrait;
-@property (retain, nonatomic) UILabel *lblContent;
+//@property (retain, nonatomic) UILabel *lblContent;
 @property (retain, nonatomic) UILabel *lblState;
+@property (retain, nonatomic) UIView *viewContent;
 //消息类型
 @property (nonatomic) ChatMessageType messageType;
 
@@ -33,7 +34,8 @@
 {
     _cellFrame = cellFrame;
     
-    self.imgViewBg.frame = CGRectMake(cellFrame.rectChatView.origin.x - 10, cellFrame.rectChatView.origin.y, cellFrame.rectChatView.size.width + 20, cellFrame.rectChatView.size.height);
+    self.imgViewBg.frame = cellFrame.viewContent.frame;
+//    self.imgViewBg.frame = CGRectMake(cellFrame.rectChatView.origin.x - 10, cellFrame.rectChatView.origin.y, cellFrame.rectChatView.size.width + 20, cellFrame.rectChatView.size.height);
     
     UIImage *imgBg;
     if (cellFrame.messageType == ChatMessageTypeMe) {
@@ -47,7 +49,7 @@
     self.imgViewBg.image = imgBg;
     
         
-    DPChatMessage *chatMessage = cellFrame.chatMessage;
+//    DPChatMessage *chatMessage = cellFrame.chatMessage;
     
     self.imgViewPortrait.frame = cellFrame.rectIcon;
 //    self.icon.image=[UIImage imageNamed:chartMessage.icon];
@@ -57,11 +59,20 @@
 //    [self setBackGroundImageViewImage:self.chartView from:@"chatfrom_bg_normal.png" to:@"chatto_bg_normal.png"];
 //    self.chartView.contentLabel.text=chartMessage.content;
     
-    
-    
-    self.lblContent.text = chatMessage.content;
+    if (self.viewContent) {
+        [self.viewContent removeFromSuperview];
+    }
+    [self.contentView addSubview:cellFrame.viewContent];
+    self.viewContent = cellFrame.viewContent;
 
-    self.lblContent.frame = cellFrame.rectChatView;
+//    NSString *path = [[NSBundle mainBundle] bundlePath];
+//    NSURL *baseURL = [NSURL fileURLWithPath:path];
+    
+//    [self.webViewContent loadHTMLString:[chatMessage.content stringByAppendingString:@"<img src='Images.xcassets/emotion/E056.imageset/E056.png'/>"] baseURL:baseURL];
+//    self.webViewContent.frame = cellFrame.rectChatView;
+//    self.lblContent.text = chatMessage.content;
+//
+//    self.lblContent.frame = cellFrame.rectChatView;
 
 //    cellFrame.rectChatView;
    
@@ -81,15 +92,18 @@
     self.imgViewPortrait.image = [UIImage imageNamed:@"ChatDefault"];
     [self.contentView addSubview:self.imgViewPortrait];
 
-    self.lblContent = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
-    self.lblContent.numberOfLines = 0;
-    self.lblContent.font=[UIFont fontWithName:@"HelveticaNeue" size:CHAT_CELL_CONTENT_FONT_SIZE];
-    self.lblContent.textAlignment=NSTextAlignmentLeft;
-    [self.contentView addSubview:self.lblContent];
+//    self.lblContent = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
+//    self.lblContent.numberOfLines = 0;
+//    self.lblContent.font=[UIFont fontWithName:@"HelveticaNeue" size:CHAT_CELL_CONTENT_FONT_SIZE];
+//    self.lblContent.textAlignment=NSTextAlignmentLeft;
+//    [self.contentView addSubview:self.lblContent];
 
+    self.userInteractionEnabled = false;
+
+//    [self.contentView addSubview:self.webViewContent];
+    
     self.lblState = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
     [self.contentView addSubview:self.lblState];
-    
 }
 
 
