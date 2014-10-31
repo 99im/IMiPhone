@@ -10,4 +10,6 @@
 
 @interface DPSysMessageFriend : DPSysMessage
 
+@property (nonatomic) long long uid;
+
 @end

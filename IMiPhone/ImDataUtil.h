@@ -11,7 +11,7 @@
 
 @interface ImDataUtil : NSObject
 
-+ (NSMutableDictionary *) getDicFromNormalClass:(id) classInstance;
++ (NSMutableDictionary *)getDicFromNormalClass:(id)classInstance containSuper:(BOOL)isContain;
 
 //返回arrR[0][0]属性名，arrR[0][1]属性类型
 + (NSArray *)getArrPropsFromDataModeClass:(Class) cls;

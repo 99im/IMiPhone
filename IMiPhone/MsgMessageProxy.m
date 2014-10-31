@@ -54,19 +54,8 @@ static MsgMessageProxy  *messageProxy = nil;
                  NSArray *arrMsglist = [json objectForKey:KEYP_H__MSG_SYSMSG_LIST__LIST];
                  for (NSInteger i = 0; i < arrMsglist.count; i++) {
                      NSDictionary *msgObj = [arrMsglist objectAtIndex:i];
-                     DPSysMessage *dpSysMsg = [[DPSysMessage alloc] init];
-                     dpSysMsg.uid = [[msgObj objectForKey:KEYP_H__MSG_SYSMSG_LIST__LIST_UID] longValue];
-                     dpSysMsg.smid = [[msgObj objectForKey:KEYP_H__MSG_SYSMSG_LIST__LIST_SMID] longValue];
-                     dpSysMsg.modid = [[msgObj objectForKey:KEYP_H__MSG_SYSMSG_LIST__LIST_MODID] integerValue];
-                     dpSysMsg.type = [[msgObj objectForKey:KEYP_H__MSG_SYSMSG_LIST__LIST_TYPE] integerValue];
-                     dpSysMsg.ctime = [msgObj objectForKey:KEYP_H__MSG_SYSMSG_LIST__LIST_CTIME];
-                     dpSysMsg.targetId = [[msgObj objectForKey:KEYP_H__MSG_SYSMSG_LIST__LIST_TARGETID] longValue];
-                     dpSysMsg.extraId = [[msgObj objectForKey:KEYP_H__MSG_SYSMSG_LIST__LIST_EXTRAID] longValue];
-                     dpSysMsg.content = [msgObj objectForKey:KEYP_H__MSG_SYSMSG_LIST__LIST_CONTENT];
-                     dpSysMsg.resultStatus = [[msgObj objectForKey:KEYP_H__MSG_SYSMSG_LIST__LIST_RESULTSTATUS] integerValue];
-                     dpSysMsg.extraStatus = [[msgObj objectForKey:KEYP_H__MSG_SYSMSG_LIST__LIST_EXTRASTATUS] integerValue];
-                     dpSysMsg.unread = [[msgObj objectForKey:KEYP_H__MSG_SYSMSG_LIST__LIST_UID] integerValue];
-                     dpSysMsg.title = [msgObj objectForKey:KEYP_H__MSG_SYSMSG_LIST__LIST_TITLE];
+                     DPSysMessage *dpSysMsg = [DPSysMessage sysMessageByMid:[[msgObj objectForKey:KEYP_H__MSG_SYSMSG_LIST__LIST_SMID] longLongValue] withMode:[[msgObj objectForKey:KEYP_H__MSG_SYSMSG_LIST__LIST_MODID] integerValue] withType:[[msgObj objectForKey:KEYP_H__MSG_SYSMSG_LIST__LIST_TYPE] integerValue] withTime:[msgObj objectForKey:KEYP_H__MSG_SYSMSG_LIST__LIST_CTIME] ];
+                     [dpSysMsg setParamsPropertyByDic:msgObj];
                      [arrDpMsgs addObject:dpSysMsg];
                      
                      DPUiMessage *dpUiMessage = [[DPUiMessage alloc] init];

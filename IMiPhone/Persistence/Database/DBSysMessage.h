@@ -19,6 +19,6 @@
 @property (nonatomic, retain) NSString *params;
 
 - (void)setParamsByDictionary:(NSDictionary *)dic;
-- (NSDictionary *)getDictionaryByParams:(NSString *)params;
+- (NSDictionary *)getDictionaryByParams;
 
 @end

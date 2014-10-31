@@ -53,7 +53,15 @@ static MsgDataProxy *chatDataProxy = nil;
 //        if (findIndex != NSNotFound) {
 //            [self.arrSysMsgs addObject:dpSysMsg];
             DBSysMessage *dbSysMessage = [[DBSysMessage alloc] init];
-            [ImDataUtil copyFrom:dpSysMsg To:dbSysMessage];
+        dpSysMsg.smid = dbSysMessage.smid;
+        dpSysMsg.modid = dbSysMessage.modid;
+        dpSysMsg.type = dbSysMessage.type;
+        dpSysMsg.ctime = dbSysMessage.ctime;
+        
+//            [ImDataUtil copyFrom:dpSysMsg To:dbSysMessage];
+        
+        [dbSysMessage setParamsByDictionary:[dpSysMsg getParamsDictionary]];
+        
             [[SysMessageDAO sharedDAO] insert:dbSysMessage];
         [self.arrSysMsgs addObject:dpSysMsg];
 //        }
@@ -69,8 +77,15 @@ static MsgDataProxy *chatDataProxy = nil;
         DPSysMessage *tempSysMessage;
         if (arrSysMsgs) {
             for (NSInteger i = 0; i < arrSysMsgs.count; i++) {
+                DBSysMessage *tempDBSysMessage = [arrSysMsgs objectAtIndex:i];
                 tempSysMessage = [[DPSysMessage alloc] init];
-                [ImDataUtil copyFrom:arrSysMsgs[i] To:tempSysMessage];
+               
+                tempSysMessage.smid = tempDBSysMessage.smid;
+                tempSysMessage.modid = tempDBSysMessage.modid;
+                tempSysMessage.type = tempDBSysMessage.type;
+                tempSysMessage.ctime = tempDBSysMessage.ctime;
+//                [ImDataUtil copyFrom:tempDBSysMessage To:tempSysMessage];
+                [tempSysMessage setParamsPropertyByDic:[tempDBSysMessage getDictionaryByParams]];
                 [self.arrSysMsgs addObject:tempSysMessage];
             }
         }
@@ -92,7 +107,7 @@ static MsgDataProxy *chatDataProxy = nil;
 //    return arrResult;
 //}
 
-- (DPSysMessage *)getSysMsgByMid:(long)mid
+- (DPSysMessage *)getSysMsgByMid:(long long)mid
 {
     NSArray *sysMsgList = [self getSysMsgList];
     NSInteger findIndex = [ImDataUtil getIndexOf:sysMsgList byItemKey:@"smid" withValue:[NSNumber numberWithLong:mid]];

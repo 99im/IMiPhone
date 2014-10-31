@@ -15,6 +15,7 @@
 #import "MsgDataProxy.h"
 #import "ChatMessageProxy.h"
 #import "UserMessageProxy.h"
+#import "DPSysMessageFriend.h"
 
 @interface MsgTableViewController ()
 
@@ -83,8 +84,9 @@
         cell = [self.tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
         DPSysMessage *dpSysMsg = [[MsgDataProxy sharedProxy] getSysMsgByMid:dpUiMsg.mid];
         
-        cell.lblGroupName.text = dpSysMsg.title;
-        cell.lblLastMsg.text = dpSysMsg.content;
+        
+//        cell.lblGroupName.text = dpSysMsg.title;
+//        cell.lblLastMsg.text = dpSysMsg.content;
         //        cell.lblTime.text = dpChatMsg.sendTime;
     }
     return cell;
@@ -109,8 +111,8 @@
     else if (dpUiMsg.type == UI_MESSAGE_TYPE_SYS) {
         DPSysMessage *dpSysMsg = [[MsgDataProxy sharedProxy] getSysMsgByMid:dpUiMsg.mid];
 
-        if (dpSysMsg.targetId != 0) {
-            [ChatDataProxy sharedProxy].chatToUid = dpSysMsg.targetId;
+        if (dpSysMsg.modid == SYS_MSG_MODE_FRIEND) {
+            [ChatDataProxy sharedProxy].chatToUid = ((DPSysMessageFriend *)dpSysMsg).uid;
             [ChatDataProxy sharedProxy].chatViewType = ChatViewTypeP2P;
             [self performSegueWithIdentifier:@"ChatMsgList2ChatSegue" sender:self];
 

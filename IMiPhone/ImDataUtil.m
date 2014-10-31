@@ -10,7 +10,7 @@
 
 @implementation ImDataUtil
 
-+ (NSMutableDictionary *)getDicFromNormalClass:(id)classInstance
++ (NSMutableDictionary *)getDicFromNormalClass:(id)classInstance containSuper:(BOOL)isContain
 {
     //创建可变字典
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
@@ -58,6 +58,7 @@
     }
     return mutArray;
 }
+
 + (void)updateObject:(id)obj by:(NSDictionary *)dataDic
 {
     [obj setValuesForKeysWithDictionary:dataDic];

@@ -101,7 +101,7 @@ static NSDictionary *dicSQLDataType;
 }
 - (NSInteger)insert:(NSObject *)data
 {
-    NSDictionary *dataDic = [ImDataUtil getDicFromNormalClass:data];
+    NSDictionary *dataDic = [ImDataUtil getDicFromNormalClass:data containSuper:YES];
     SqlightResult *result  = [self.sqlight insertData:dataDic];
     NSLog(@"insert Result msg:%@ code:%ld data:%@", result.msg, (long)result.code, result.data);
     return result.code;
@@ -146,7 +146,7 @@ static NSDictionary *dicSQLDataType;
 }
 - (NSInteger)update:(NSObject *)data ByCondition:(NSString *)condition Bind:(NSArray *)bind
 {
-    NSMutableDictionary *dicData = [ImDataUtil getDicFromNormalClass:data];
+    NSMutableDictionary *dicData = [ImDataUtil getDicFromNormalClass:data containSuper:YES];
     //更新的表字段字典中，移除筛选条件字段
     NSArray *arrConditonKey = [condition componentsSeparatedByString:@"=?"];
     NSInteger count = arrConditonKey.count - 1;//排除数组掉最后一个元素（空字符串）
