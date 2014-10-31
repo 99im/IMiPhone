@@ -118,8 +118,8 @@
 - (IBAction)tapHandler:(UITapGestureRecognizer *)sender
 {
     CGPoint point = [sender locationInView:self.view];
-    //NSLog(@"RegInfoViewController tapHandler: x: %f, y: %f", point.x, point.y);
-    if(CGRectContainsPoint(self.viewChatContainer.frame, point))
+//    if (CGRectContainsPoint(self.viewChatContainer.frame, point))
+    if (point.y < self.view.frame.size.height - self.viewChatContainer.bounds.origin.y - self.viewChatInputText.frame.size.height)
     {
         if ([self.tfInputText isFirstResponder]) {
             [self.tfInputText resignFirstResponder];
@@ -153,7 +153,9 @@
 - (void)keyboardDidHide:(NSNotification *)notification
 {
     //[UIView animateWithDuration:0.25f animations:^{
+    if (self.emotionViewController.view.frame.origin.y >= self.view.frame.size.height) {
         self.viewChatContainer.bounds = self.view.bounds;
+    }
     //        [self.view layoutIfNeeded];
     //}];
 }
@@ -263,6 +265,9 @@
     [UIView animateWithDuration:0.25f animations:^{
         self.viewChatContainer.bounds = bounds;
     }];
+    if ([self.tfInputText isFirstResponder]) {
+        [self.tfInputText resignFirstResponder];
+    }
 }
 
 - (IBAction)touchInsideBtnSound:(id)sender {
@@ -320,6 +325,7 @@
 
 - (void)onEmotionSend:(NSNotification *)notification
 {
+    [self tfInputTextDidEndOnExit:self.tfInputText];
 }
 
 - (void)onEmotionDelete:(NSNotification *)notification
@@ -344,7 +350,5 @@
     [self.tableViewChat reloadData];
     [self scrollToLastCell:YES];
 }
-
-
 
 @end

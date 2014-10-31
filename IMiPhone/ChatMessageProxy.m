@@ -32,11 +32,11 @@ static ChatMessageProxy *messageProxy = nil;
     
 }
 
-- (void)sendTypeChat:(NSString *)stage targetId:(NSInteger)targetId msgType:(NSInteger)msgType content:(NSString *)content
+- (void)sendTypeChat:(NSString *)stage targetId:(long long)targetId msgType:(NSInteger)msgType content:(NSString *)content
 {
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     [params setObject:stage forKey:KEYQ_S_CHAT_CHAT_STAGE];
-    [params setObject:[NSNumber numberWithInteger:targetId] forKey:KEYQ_S_CHAT_CHAT_TARGETID];
+    [params setObject:[NSNumber numberWithLongLong:targetId] forKey:KEYQ_S_CHAT_CHAT_TARGETID];
     [params setObject:[NSNumber numberWithInteger:msgType] forKey:KEYQ_S_CHAT_CHAT_MSGTYPE];
     [params setObject:content forKey:KEYQ_S_CHAT_CHAT_CONTENT];
     IMNWMessage *message = [IMNWMessage createForSocket:MARK_CHAT withType:TYPE_S_CHAT_CHAT];
