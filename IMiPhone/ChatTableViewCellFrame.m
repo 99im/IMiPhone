@@ -49,7 +49,14 @@
     }
 
     _rectContentBg = CGRectMake(contentBgX, contentBgY, _viewContent.frame.size.width + CHAT_CELL_CONTENT_BG_OFF_WIDTH, _viewContent.frame.size.height + CHAT_CELL_CONTENT_BG_OFF_HEIGHT);
-    _viewContent.frame =     CGRectMake(contentBgX + CHAT_CELL_CONTENT_OFF_X - 5, contentBgY + CHAT_CELL_CONTENT_BG_OFF_HEIGHT/2, _viewContent.frame.size.width, _viewContent.frame.size.height);
+    NSInteger contentOffX;
+    if (self.messageType == ChatMessageTypeMe) {
+        contentOffX = CHAT_CELL_CONTENT_MINE_OFF_X;
+    }
+    else {
+        contentOffX = CHAT_CELL_CONTENT_HER_OFF_X;
+    }
+    _viewContent.frame =     CGRectMake(contentBgX + contentOffX, contentBgY + CHAT_CELL_CONTENT_BG_OFF_HEIGHT/2, _viewContent.frame.size.width, _viewContent.frame.size.height);
 
     _cellHeight = MAX(CGRectGetMaxY(self.rectIcon), CGRectGetMaxY(_rectContentBg)) + CHAT_CONTENT_BOTTOM_MARGIN_Y;
 
