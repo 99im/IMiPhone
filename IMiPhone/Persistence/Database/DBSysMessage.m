@@ -16,6 +16,8 @@
 @synthesize  type;
 @synthesize  ctime;
 @synthesize params;
+@synthesize title;
+@synthesize content;
 
 - (void)setParamsByDictionary:(NSDictionary *)dic
 {

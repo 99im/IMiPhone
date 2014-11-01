@@ -44,6 +44,8 @@
     
     self.viewChatInputSound.hidden = YES;
     
+    self.arrAllCellFrames = [NSMutableArray array];
+    
     UIStoryboard* mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     self.emotionViewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"EmotionViewController"];
     self.emotionViewController.view.frame = CGRectMake(0.0f, self.view.frame.size.height, self.view.frame.size.width, EMOTS_HEIGHT);
@@ -56,6 +58,22 @@
     self.tap.cancelsTouchesInView = NO;
     
     [self registerMessageNotification];
+    //
+//    NSArray *arrChatMessages = [[ChatDataProxy sharedProxy] getP2PChatMessagesByTargetUid:[ChatDataProxy sharedProxy].chatToUid];
+//    for (NSInteger i = 0; i < arrChatMessages.count; i++) {
+//        DPChatMessage *dpChatMsg = [arrChatMessages objectAtIndex:i];
+//        ChatTableViewCellFrame *chatTableCellFrame = [[ChatTableViewCellFrame alloc] init];
+//        ChatMessageType msgType;
+//        if (dpChatMsg.senderUid == [UserDataProxy sharedProxy].lastLoginUid) {
+//            msgType = ChatMessageTypeMe;
+//        }
+//        else {
+//            msgType = ChatMessageTypeOther;
+//        }
+//        [chatTableCellFrame setMsgType:msgType withMsg:dpChatMsg];
+//        [self.arrAllCellFrames addObject:chatTableCellFrame];
+//    }
+
 }
 
 - (void)didReceiveMemoryWarning {

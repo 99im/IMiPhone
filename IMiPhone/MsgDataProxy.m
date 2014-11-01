@@ -46,17 +46,20 @@ static MsgDataProxy *chatDataProxy = nil;
 {
     self.arrSysMsgs = self.arrSysMsgs;
     [[SysMessageDAO sharedDAO] deleteByCondition:@"" Bind:[NSMutableArray arrayWithObjects:nil]];
+    DBSysMessage *dbSysMessage;
     for (NSInteger i = 0; i < dpMsgList.count; i++)
     {
         DPSysMessage *dpSysMsg = [dpMsgList objectAtIndex:i];
 //        NSInteger findIndex = [ImDataUtil getIndexOf:self.arrSysMsgs byItemKey:DB_PRIMARY_KEY_SYS_MSG_SMID withValue:[NSNumber numberWithLong:dpSysMsg.smid]];
 //        if (findIndex != NSNotFound) {
 //            [self.arrSysMsgs addObject:dpSysMsg];
-        DBSysMessage *dbSysMessage = [[DBSysMessage alloc] init];
+        dbSysMessage = [[DBSysMessage alloc] init];
         dbSysMessage.smid = dpSysMsg.smid;
         dbSysMessage.modid = dpSysMsg.modid;
         dbSysMessage.type = dpSysMsg.type;
         dbSysMessage.ctime = dpSysMsg.ctime;
+        dbSysMessage.title = dpSysMsg.title;
+        dbSysMessage.content = dpSysMsg.content;
         
 //            [ImDataUtil copyFrom:dpSysMsg To:dbSysMessage];
         
@@ -75,6 +78,7 @@ static MsgDataProxy *chatDataProxy = nil;
         NSMutableArray *arrSysMsgs = [[SysMessageDAO sharedDAO] query:@"" Bind:[NSMutableArray arrayWithObjects:nil]];
         self.arrSysMsgs = [NSMutableArray array];
         DPSysMessage *tempSysMessage;
+        DBSysMessage *tempDBSysMessage;
         if (arrSysMsgs) {
             for (NSInteger i = 0; i < arrSysMsgs.count; i++) {
                 DBSysMessage *tempDBSysMessage = [arrSysMsgs objectAtIndex:i];

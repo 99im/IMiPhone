@@ -16,8 +16,11 @@
 @property (nonatomic) NSInteger modid;
 @property (nonatomic) NSInteger type;
 @property (nonatomic, retain) NSString *ctime;
+@property (nonatomic, retain) NSString *title;
+@property (nonatomic, retain) NSString *content;
 
-+ (DPSysMessage *)sysMessageByMid:(long long)mid withMode:(NSInteger)modeid withType:(NSInteger)type withTime:(NSString *)time;
+
++ (DPSysMessage *)sysMessageByMid:(long long)mid withMode:(NSInteger)modeid withType:(NSInteger)type withTime:(NSString *)time withTitle:(NSString *)title withConten:(NSString *)content;
 
 - (NSDictionary *)getParamsDictionary;
 - (void)setParamsPropertyByDic:(NSDictionary *)dic;

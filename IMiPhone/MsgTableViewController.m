@@ -75,7 +75,7 @@
         cellIdentifier = @"ChatMsgTableViewCellP2G";
         cell = [self.tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
 
-        DPChatMessage *dpChatMsg = [[ChatDataProxy sharedProxy] getP2PChatMessageByTargetUid:[ChatDataProxy sharedProxy].chatToUid withMid:dpUiMsg.mid];
+        DPChatMessage *dpChatMsg = [[ChatDataProxy sharedProxy] getP2PChatMessageByTargetUid:dpUiMsg.relationId withMid:dpUiMsg.mid];
         [((ChatMsgTableViewCellP2G *)cell) drawCellBody:dpChatMsg];
     
     }

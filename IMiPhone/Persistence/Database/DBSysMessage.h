@@ -17,6 +17,8 @@
 @property (nonatomic) NSInteger type;
 @property (nonatomic, retain) NSString *ctime;
 @property (nonatomic, retain) NSString *params;
+@property (nonatomic, retain) NSString *title;
+@property (nonatomic, retain) NSString *content;
 
 - (void)setParamsByDictionary:(NSDictionary *)dic;
 - (NSDictionary *)getDictionaryByParams;
