@@ -338,7 +338,6 @@
 
 - (void)dealChatN:(NSNotification *)notification
 {
-    
     DPChatMessage *dpChatMsg = notification.object;
     
     ChatTableViewCellFrame *chatTableCellFrame = [[ChatTableViewCellFrame alloc] init];

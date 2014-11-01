@@ -17,7 +17,7 @@
 @property (nonatomic, retain, getter=getLastLoginCountry, setter=setLastLoginCountry:) NSString *lastLoginCountry;
 @property (nonatomic, retain, getter=getLastLoginMobile, setter=setLastLoginMobile:) NSString *lastLoginMobile;
 @property (nonatomic, retain, getter=getLastLoginOid, setter=setLastLoginOid:) NSString *lastLoginOid;
-@property (nonatomic, getter=getLastLoginUid, setter=setLastLoginUid:) NSInteger lastLoginUid;
+@property (nonatomic, getter=getLastLoginUid, setter=setLastLoginUid:) long long lastLoginUid;
 @property (nonatomic, retain, getter=getVerify, setter=setVerify:) NSString *verify;
 @property (nonatomic, retain, getter=getUser, setter=setUser:) DPUser *user;
 @property (nonatomic, retain) NSString *mobcode;
@@ -34,7 +34,7 @@
 
 //所有用户数据的相关操作
 - (void)updateUser:(DPUser *)user;
-- (DPUser *)getUserByUid:(NSInteger) uid;
+- (DPUser *)getUserByUid:(long long) uid;
 //- (void)delUserByUid:(NSInteger) uid;
 
 @end
