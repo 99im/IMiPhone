@@ -47,12 +47,7 @@ static AccountMessageProxy *sharedAccountMessageProxy = nil;
                 [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_H__ACCOUNT_MOBCODE_ object:nil];
             }
             else {
-                NSLog(@"Http connect response error: %i", errorcode);
-                NSNumber *errorCodeNumber = [NSNumber numberWithInt:errorcode];
-                NSString *errorMessage = [errorCodeNumber errorMessage];
-                NSDictionary *userInfo = [NSDictionary dictionaryWithObject:errorMessage
-                                                                     forKey:NSLocalizedDescriptionKey];
-                NSError *error = [NSError errorWithDomain:PATH_H__ACCOUNT_MOBCODE_ code:errorcode userInfo:userInfo];
+                NSError *error = [self processErrorCode:errorcode fromSource:PATH_H__ACCOUNT_MOBCODE_];
                 [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_H__ACCOUNT_MOBCODE_ object:error];
             }
         }
@@ -85,7 +80,8 @@ static AccountMessageProxy *sharedAccountMessageProxy = nil;
                 [UserDataProxy sharedProxy].lastLoginUid = uid;
             }
             else {
-                NSLog(@"Http connect response error: %i", errorcode);
+                NSError *error = [self processErrorCode:errorcode fromSource:PATH_H__ACCOUNT_REGISTER_];
+                [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_H__ACCOUNT_REGISTER_ object:error];
             }
         }
     }];
@@ -159,12 +155,7 @@ static AccountMessageProxy *sharedAccountMessageProxy = nil;
                 [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_H__ACCOUNT_MYINFO_ object:nil];
             }
             else {
-                NSLog(@"Http connect response error: %i", errorcode);
-                NSNumber *errorCodeNumber = [NSNumber numberWithInt:errorcode];
-                NSString *errorMessage = [errorCodeNumber errorMessage];
-                NSDictionary *userInfo = [NSDictionary dictionaryWithObject:errorMessage
-                                                                     forKey:NSLocalizedDescriptionKey];
-                NSError *error = [NSError errorWithDomain:PATH_H__ACCOUNT_MYINFO_ code:errorcode userInfo:userInfo];
+                NSError *error = [self processErrorCode:errorcode fromSource:PATH_H__ACCOUNT_MYINFO_];
                 [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_H__ACCOUNT_MYINFO_ object:error];
             }
 
