@@ -14,7 +14,7 @@
 + (NSMutableDictionary *)getDicFromNormalClass:(id)classInstance containSuper:(BOOL)isContain;
 
 //返回arrR[0][0]属性名，arrR[0][1]属性类型
-+ (NSArray *)getArrPropsFromDataModeClass:(Class) cls;
++ (NSArray *)getArrPropsFromDataModeClass:(Class) cls containSuper:(BOOL)isContain;
 
 + (void)updateObject:(NSObject *)obj by:(NSDictionary *)dataDic;
 

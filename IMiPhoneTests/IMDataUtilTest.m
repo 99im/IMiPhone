@@ -10,6 +10,7 @@
 #import <XCTest/XCTest.h>
 #import "ImDataUtil.h"
 #import "DPUser.h"
+#import "DPSysMessageFriend.h"
 
 @interface IMDataUtilTest : XCTestCase
 
@@ -48,6 +49,18 @@
     [self measureBlock:^{
         // Put the code you want to measure the time of here.
     }];
+}
+
+- (void)testGetDicFromNormalClass
+{
+    DPSysMessageFriend *friend = [[DPSysMessageFriend alloc] init];
+    friend.modid = 1;
+    friend.smid = 2;
+    friend.uid = 100;
+
+    NSDictionary *dic = [ImDataUtil getDicFromNormalClass:friend containSuper:YES];
+    friend.uid = 100;
+
 }
 
 @end

@@ -71,6 +71,7 @@ static MsgMessageProxy  *messageProxy = nil;
              }
              else {
                  NSError *error = [self processErrorCode:errorcode fromSource:PATH_H__MSG_SYSMSG_LIST_];
+                 [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_H__MSG_SYSMSG_LIST_ object:error];
              }
          }
         }

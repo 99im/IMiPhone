@@ -17,14 +17,14 @@
 
 + (MsgMessageProxy  *)sharedProxy;
 
-- (void)sendHttpSysmsgUnreadClear:(NSString *)smids;
+//- (void)sendHttpSysmsgUnreadClear:(NSString *)smids;
 
 - (void)sendHttpSysmsgList:(NSString *)modids before:(long)beforeSmid after:(long)afterSmid start:(long)start pageNum:(NSInteger)pageNum;
 
-- (void)sendHttpSysmsgUnreadNum:(NSString *)modids;
-
-- (void)sendHttpUnreadClear:(NSString *)modids;
-
-- (void)sendHttpUnread:(NSString *)modids;
+//- (void)sendHttpSysmsgUnreadNum:(NSString *)modids;
+//
+//- (void)sendHttpUnreadClear:(NSString *)modids;
+//
+//- (void)sendHttpUnread:(NSString *)modids;
 
 @end

@@ -25,10 +25,10 @@ typedef enum {
 
 + (ChatDataProxy*)sharedProxy;
 
-- (NSMutableArray *)getP2PChatMessagesByTargetUid:(long)targetUid;
+- (NSMutableArray *)getP2PChatMessagesByTargetUid:(long long)targetUid;
 - (void)updateP2PChatMessage:(DPChatMessage *)dpChatMessage;
 
-- (DPChatMessage *)getP2PChatMessageByTargetUid:(long)targetUid withMid:(long)mid;
+- (DPChatMessage *)getP2PChatMessageByTargetUid:(long long)targetUid withMid:(long long)mid;
 
 - (NSArray *)getEmotions;
 

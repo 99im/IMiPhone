@@ -10,51 +10,72 @@
 
 @implementation ImDataUtil
 
+//从一个类实例对象，获得字典结构。参数isContain，表示是否包含父类属性。
 + (NSMutableDictionary *)getDicFromNormalClass:(id)classInstance containSuper:(BOOL)isContain
 {
     //创建可变字典
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-    unsigned int outCount;
-    objc_property_t *props = class_copyPropertyList([classInstance class], &outCount);
     
-    for(int i=0;i<outCount;i++){
-        objc_property_t prop = props[i];
-        NSString *propName = [[NSString alloc] initWithCString:property_getName(prop) encoding:NSUTF8StringEncoding];
-        id propValue = [classInstance valueForKey:propName];
+    Class cls = [classInstance class];
+    while (cls != [NSObject class]) {
         
-        if(propValue) {
-            [dict setObject:propValue forKey:propName];
+        unsigned int outCount;
+        objc_property_t *props = class_copyPropertyList(cls, &outCount);
+        
+        for (int i = 0; i < outCount; i++){
+            objc_property_t prop = props[i];
+            NSString *propName = [[NSString alloc] initWithCString:property_getName(prop) encoding:NSUTF8StringEncoding];
+            id propValue = [classInstance valueForKey:propName];
+            
+            if(propValue) {
+                [dict setObject:propValue forKey:propName];
+            }
         }
         
+        free(props);
+        if (isContain) {
+             cls = [cls superclass];
+        }
+        else {
+            break;
+        }
+       
     }
-    
-    free(props);
     return dict;
 }
 
-+ (NSArray *)getArrPropsFromDataModeClass:(Class) cls
++ (NSArray *)getArrPropsFromDataModeClass:(Class) cls containSuper:(BOOL)isContain
+
 {
     NSMutableArray *mutArray=[NSMutableArray array];
-    
-    unsigned int ivarsCnt = 0;
-    //　获取类成员变量列表，ivarsCnt为类成员数量
-    Ivar *ivars = class_copyIvarList(cls, &ivarsCnt);
-    //　遍历成员变量列表，其中每个变量都是Ivar类型的结构体
-    for (const Ivar *p = ivars; p < ivars + ivarsCnt; ++p)
-    {
-        Ivar const ivar = *p;
-        //　获取变量名
-        NSString *key = [NSString stringWithUTF8String:ivar_getName(ivar)];
-        //获取变量类型
-        const char *type = ivar_getTypeEncoding(ivar);
-
-        if (key)
+    while (cls != [NSObject class]) {
+        unsigned int ivarsCnt = 0;
+        //　获取类成员变量列表，ivarsCnt为类成员数量
+        Ivar *ivars = class_copyIvarList(cls, &ivarsCnt);
+        //　遍历成员变量列表，其中每个变量都是Ivar类型的结构体
+        for (const Ivar *p = ivars; p < ivars + ivarsCnt; ++p)
         {
-            NSString *typeStr;
-            typeStr = [NSString stringWithFormat:@"%c",type[0]];
-            NSMutableArray *arrKeyAndType = [NSMutableArray arrayWithObjects:key,typeStr, nil];
-            [mutArray addObject:arrKeyAndType];
+            Ivar const ivar = *p;
+            //　获取变量名
+            NSString *key = [NSString stringWithUTF8String:ivar_getName(ivar)];
+            //获取变量类型
+            const char *type = ivar_getTypeEncoding(ivar);
+            
+            if (key)
+            {
+                NSString *typeStr;
+                typeStr = [NSString stringWithFormat:@"%c",type[0]];
+                NSMutableArray *arrKeyAndType = [NSMutableArray arrayWithObjects:key,typeStr, nil];
+                [mutArray addObject:arrKeyAndType];
+            }
         }
+        if (isContain) {
+            cls = [cls superclass];
+        }
+        else {
+            break;
+        }
+        
     }
     return mutArray;
 }
@@ -80,7 +101,7 @@
         NSLog(@"copyTo dest == nil");
         return;
     }
-    NSArray *arrDestProps = [ImDataUtil getArrPropsFromDataModeClass:[dest class]];
+    NSArray *arrDestProps = [ImDataUtil getArrPropsFromDataModeClass:[dest class] containSuper:YES];
     if (arrDestProps) {
         for (NSInteger i = 0; i < arrDestProps.count; i++) {
             NSString *key = arrDestProps[i][0];
