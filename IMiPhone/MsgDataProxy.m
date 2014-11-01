@@ -71,19 +71,18 @@ static MsgDataProxy *chatDataProxy = nil;
     }
 }
 
-- (NSArray *)getSysMsgList
+- (NSArray*)getSysMsgList
 {
-    if (self.arrSysMsgs == nil)
-    {
-        NSMutableArray *arrSysMsgs = [[SysMessageDAO sharedDAO] query:@"" Bind:[NSMutableArray arrayWithObjects:nil]];
+    if (self.arrSysMsgs == nil) {
+        NSMutableArray* arrSysMsgs = [[SysMessageDAO sharedDAO] query:@"" Bind:[NSMutableArray arrayWithObjects:nil]];
         self.arrSysMsgs = [NSMutableArray array];
-        DPSysMessage *tempSysMessage;
-        DBSysMessage *tempDBSysMessage;
+        DPSysMessage* tempSysMessage;
+        DBSysMessage* tempDBSysMessage;
         if (arrSysMsgs) {
             for (NSInteger i = 0; i < arrSysMsgs.count; i++) {
-                DBSysMessage *tempDBSysMessage = [arrSysMsgs objectAtIndex:i];
-                tempSysMessage = [DPSysMessage sysMessageByMid:tempDBSysMessage.smid withMode:tempDBSysMessage.modid withType:tempDBSysMessage.type withTime:tempDBSysMessage.ctime];
-               
+                tempDBSysMessage = [arrSysMsgs objectAtIndex:i];
+                tempSysMessage = [DPSysMessage sysMessageByMid:tempDBSysMessage.smid withMode:tempDBSysMessage.modid withType:tempDBSysMessage.type withTime:tempDBSysMessage.ctime withTitle:tempDBSysMessage.title withConten:tempDBSysMessage.content];
+
                 //[ImDataUtil copyFrom:tempDBSsMessage To:tempSysMessage];
                 [tempSysMessage setParamsPropertyByDic:[tempDBSysMessage getDictionaryByParams]];
                 [self.arrSysMsgs addObject:tempSysMessage];
