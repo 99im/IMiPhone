@@ -162,7 +162,6 @@
 		58A5B4F819ADC05F0007C2F3 /* MainTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A5B4F719ADC05F0007C2F3 /* MainTabBarController.m */; };
 		58A9134019D2BDBA008E5A25 /* UserShowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A9133F19D2BDBA008E5A25 /* UserShowViewController.m */; };
 		58AF048719AF10560077DCBC /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 58AF048A19AF10560077DCBC /* Localizable.strings */; };
-		58B496D819A7186A0082AE30 /* NSAlert+MKNetworkKitAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B496C319A7186A0082AE30 /* NSAlert+MKNetworkKitAdditions.m */; };
 		58B496DA19A7186A0082AE30 /* NSData+MKBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B496C519A7186A0082AE30 /* NSData+MKBase64.m */; };
 		58B496DC19A7186A0082AE30 /* NSDate+RFC1123.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B496C719A7186A0082AE30 /* NSDate+RFC1123.m */; };
 		58B496DE19A7186A0082AE30 /* NSDictionary+RequestEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B496C919A7186A0082AE30 /* NSDictionary+RequestEncoding.m */; };
@@ -206,7 +205,6 @@
 		58BC1E5419C06B9000722A00 /* VPImageCropperViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58BACF1219B5E89D00A72391 /* VPImageCropperViewController.m */; };
 		58BC1E5519C06B9000722A00 /* imUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F2AA3319A2F85400DC2FFB /* imUtil.m */; };
 		58BC1E5619C06B9000722A00 /* imPhotoPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 58BACF0E19B5DAB900A72391 /* imPhotoPicker.m */; };
-		58BC1E5719C06BAE00722A00 /* NSAlert+MKNetworkKitAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B496C319A7186A0082AE30 /* NSAlert+MKNetworkKitAdditions.m */; };
 		58BC1E5819C06BAE00722A00 /* NSData+MKBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B496C519A7186A0082AE30 /* NSData+MKBase64.m */; };
 		58BC1E5919C06BAE00722A00 /* NSDate+RFC1123.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B496C719A7186A0082AE30 /* NSDate+RFC1123.m */; };
 		58BC1E5A19C06BAE00722A00 /* NSDictionary+RequestEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B496C919A7186A0082AE30 /* NSDictionary+RequestEncoding.m */; };
@@ -425,8 +423,6 @@
 		58AF049119AF37C70077DCBC /* FriendMessageProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendMessageProxy.m; sourceTree = "<group>"; };
 		58AF049619B056050077DCBC /* FriendDataProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendDataProxy.h; sourceTree = "<group>"; };
 		58AF049719B056050077DCBC /* FriendDataProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendDataProxy.m; sourceTree = "<group>"; };
-		58B496C219A7186A0082AE30 /* NSAlert+MKNetworkKitAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSAlert+MKNetworkKitAdditions.h"; sourceTree = "<group>"; };
-		58B496C319A7186A0082AE30 /* NSAlert+MKNetworkKitAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSAlert+MKNetworkKitAdditions.m"; sourceTree = "<group>"; };
 		58B496C419A7186A0082AE30 /* NSData+MKBase64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+MKBase64.h"; sourceTree = "<group>"; };
 		58B496C519A7186A0082AE30 /* NSData+MKBase64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+MKBase64.m"; sourceTree = "<group>"; };
 		58B496C619A7186A0082AE30 /* NSDate+RFC1123.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+RFC1123.h"; sourceTree = "<group>"; };
@@ -889,8 +885,6 @@
 		58B496C119A7186A0082AE30 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
-				58B496C219A7186A0082AE30 /* NSAlert+MKNetworkKitAdditions.h */,
-				58B496C319A7186A0082AE30 /* NSAlert+MKNetworkKitAdditions.m */,
 				58B496C419A7186A0082AE30 /* NSData+MKBase64.h */,
 				58B496C519A7186A0082AE30 /* NSData+MKBase64.m */,
 				58B496C619A7186A0082AE30 /* NSDate+RFC1123.h */,
@@ -1231,7 +1225,6 @@
 				11FDE12619EFB52F002AEDB7 /* DBFriend.m in Sources */,
 				11DF6A8E1A047B7700A4B1D3 /* SysMsgTableViewDefaultCell.m in Sources */,
 				58B496E419A7186A0082AE30 /* UIImageView+MKNetworkKitAdditions.m in Sources */,
-				58B496D819A7186A0082AE30 /* NSAlert+MKNetworkKitAdditions.m in Sources */,
 				58A331AD19E52CDE005BE980 /* CategoryContactTableViewCell.m in Sources */,
 				58B496E219A7186A0082AE30 /* UIAlertView+MKNetworkKitAdditions.m in Sources */,
 				11335B6D19F5407400FA32FA /* ChatViewController.m in Sources */,
@@ -1310,7 +1303,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				58BC1E5F19C06BD700722A00 /* imRms.m in Sources */,
-				58BC1E5719C06BAE00722A00 /* NSAlert+MKNetworkKitAdditions.m in Sources */,
 				110487AB19D90BFE0002AB36 /* MessageDataProxyTest.m in Sources */,
 				1171F7C919E8DE6300865A0B /* AddressAddTableViewCell.m in Sources */,
 				58BC1E5819C06BAE00722A00 /* NSData+MKBase64.m in Sources */,
