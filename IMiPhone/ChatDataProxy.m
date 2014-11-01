@@ -8,6 +8,8 @@
 
 #import "ChatDataProxy.h"
 #import "UserDataProxy.h"
+#import "ChatMessageProxy.h"
+#import "ImDataUtil.h"
 
 @interface ChatDataProxy()
 
@@ -15,9 +17,16 @@
 
 @property (nonatomic, retain) NSDictionary *dicEmotion;
 
+@property (nonatomic, retain) NSDictionary *dicGroupMessages;
+
+
 @end
 
 @implementation ChatDataProxy
+
+@synthesize chatViewType;
+@synthesize chatToUid;
+@synthesize chatToGroupid;
 
 @synthesize arrEmotions = _arrEmotions;
 
@@ -40,9 +49,9 @@ static ChatDataProxy *messageDataProxy = nil;
     if (self.dicMessages == nil) {
         self.dicMessages = [NSMutableDictionary dictionary];
     }
-    NSMutableArray *arrMessagesWithHer = [self.dicMessages objectForKey:[NSNumber numberWithLong:targetUid]];
+    NSMutableArray *arrMessagesWithHer = [self.dicMessages objectForKey:[NSNumber numberWithLongLong:targetUid]];
     if (arrMessagesWithHer == nil) {
-        NSMutableArray *arrDBMessages = [[ChatMessageDAO sharedDAO] query:@"senderUid=? OR targetId=?" Bind:[NSMutableArray arrayWithObjects:[NSString stringWithFormat:@"%ld",targetUid],[NSString stringWithFormat:@"%ld",targetUid],nil]];
+        NSMutableArray *arrDBMessages = [[ChatMessageDAO sharedDAO] query:@"stage=? AND senderUid=? OR targetId=?" Bind:[NSMutableArray arrayWithObjects:CHAT_STAGE_P2P,[NSString stringWithFormat:@"%lli",targetUid],[NSString stringWithFormat:@"%lli",targetUid],nil]];
         arrMessagesWithHer = [NSMutableArray array];
         DPChatMessage *tempMessage;
         if (arrDBMessages) {
@@ -52,7 +61,7 @@ static ChatDataProxy *messageDataProxy = nil;
                 [arrMessagesWithHer addObject:tempMessage];
             }
         }
-        [self.dicMessages setValue:arrMessagesWithHer forKey:[NSString stringWithFormat:@"%ld",targetUid]];
+        [self.dicMessages setValue:arrMessagesWithHer forKey:[NSString stringWithFormat:@"%lli",targetUid]];
     }
     return arrMessagesWithHer;
 }
@@ -61,7 +70,7 @@ static ChatDataProxy *messageDataProxy = nil;
 {
     DBChatMessage *tempDBMessage = [[DBChatMessage alloc] init];
     [ImDataUtil copyFrom:dpChatMessage To:tempDBMessage];
-    long herUid;
+    long long herUid;
     if (dpChatMessage.senderUid == [UserDataProxy sharedProxy].lastLoginUid) {
         herUid = dpChatMessage.targetId;
     }
@@ -70,10 +79,10 @@ static ChatDataProxy *messageDataProxy = nil;
     }
     NSMutableArray *arrMessagesWithHer = [self getP2PChatMessagesByTargetUid:herUid];
 
-    NSInteger findIndex = [ImDataUtil getIndexOf:arrMessagesWithHer byItemKey:DB_PRIMARY_KEY_CHAT_MESSAGE_MID withValue:[NSNumber numberWithInteger:tempDBMessage.mid]];
+    NSInteger findIndex = [ImDataUtil getIndexOf:arrMessagesWithHer byItemKey:DB_PRIMARY_KEY_CHAT_MESSAGE_MID withValue:[NSNumber numberWithLongLong:tempDBMessage.mid]];
     if (findIndex != NSNotFound) {
         [arrMessagesWithHer replaceObjectAtIndex:findIndex withObject:dpChatMessage];
-        [[ChatMessageDAO sharedDAO] update:tempDBMessage ByCondition:[DB_PRIMARY_KEY_CHAT_MESSAGE_MID stringByAppendingString:@"=?"] Bind:[NSArray arrayWithObject:[NSString stringWithFormat:@"%ld",dpChatMessage.mid]]];
+        [[ChatMessageDAO sharedDAO] update:tempDBMessage ByCondition:[DB_PRIMARY_KEY_CHAT_MESSAGE_MID stringByAppendingString:@"=?"] Bind:[NSArray arrayWithObject:[NSString stringWithFormat:@"%lli",dpChatMessage.mid]]];
     }
     else
     {
@@ -97,6 +106,65 @@ static ChatDataProxy *messageDataProxy = nil;
     }
     return nil;
 }
+
+#pragma mark - group messages
+
+- (NSMutableArray *)getGroupChatMessagesByGroupid:(long long)groupid
+{
+    if (self.dicGroupMessages == nil) {
+        self.dicGroupMessages = [NSMutableDictionary dictionary];
+    }
+    NSMutableArray *arrGroupMessages = [self.dicGroupMessages objectForKey:[NSNumber numberWithLongLong:groupid]];
+    if (arrGroupMessages == nil) {
+        NSMutableArray *arrDBMessages = [[ChatMessageDAO sharedDAO] query:@"stage=? AND targetId=?" Bind:[NSMutableArray arrayWithObjects:CHAT_STAGE_GROUP, [NSString stringWithFormat:@"%lli",groupid],nil]];
+        arrGroupMessages = [NSMutableArray array];
+        DPGroupChatMessage *tempMessage;
+        if (arrDBMessages) {
+            for (NSInteger i = 0; i < arrDBMessages.count; i++) {
+                tempMessage = [[DPGroupChatMessage alloc] init];
+                [ImDataUtil copyFrom:arrDBMessages[i] To:tempMessage];
+                [arrGroupMessages addObject:tempMessage];
+            }
+        }
+        [self.dicGroupMessages setValue:arrGroupMessages forKey:[NSString stringWithFormat:@"%lli",groupid]];
+    }
+    return arrGroupMessages;
+}
+
+- (void)updateGroupChatMessage:(DPGroupChatMessage *)dpChatMessage
+{
+    DBChatMessage *tempDBMessage = [[DBChatMessage alloc] init];
+    [ImDataUtil copyFrom:dpChatMessage To:tempDBMessage];
+    long long groupid = dpChatMessage.targetId;
+    NSMutableArray *arrMessagesWithHer = [self getP2PChatMessagesByTargetUid:groupid];
+    
+    NSInteger findIndex = [ImDataUtil getIndexOf:arrMessagesWithHer byItemKey:DB_PRIMARY_KEY_CHAT_MESSAGE_MID withValue:[NSNumber numberWithLongLong:tempDBMessage.mid]];
+    if (findIndex != NSNotFound) {
+        [arrMessagesWithHer replaceObjectAtIndex:findIndex withObject:dpChatMessage];
+        [[ChatMessageDAO sharedDAO] update:tempDBMessage ByCondition:[DB_PRIMARY_KEY_CHAT_MESSAGE_MID stringByAppendingString:@"=?"] Bind:[NSArray arrayWithObject:[NSString stringWithFormat:@"%lli",dpChatMessage.mid]]];
+    }
+    else
+    {
+        [[ChatMessageDAO sharedDAO] insert: tempDBMessage];
+        [arrMessagesWithHer addObject:dpChatMessage];
+        NSLog(@"arrGroupMessages insert message id:%lli", (long long)((DPChatMessage *)dpChatMessage).senderUid);
+    }
+}
+
+- (DPChatMessage *)getGroupChatMessageByGroupid:(long long)targetUid withMid:(long long)mid
+{
+    NSArray *groupChatMessages = [self getGroupChatMessagesByGroupid:targetUid];
+    NSInteger findindex = [ImDataUtil getIndexOf:groupChatMessages byItemKey:@"mid" withValue:[NSNumber numberWithLongLong:mid]];
+    
+    if (findindex != NSNotFound) {
+        return [groupChatMessages objectAtIndex:findindex];
+    }
+    
+    return nil;
+}
+
+#pragma mark - others
+
 
 - (NSArray *)getEmotions
 {

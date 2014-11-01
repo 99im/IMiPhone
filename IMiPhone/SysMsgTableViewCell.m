@@ -12,7 +12,7 @@
 
 + (NSString *)getCellIdentifierBySysMsg:(DPSysMessage *)dpSysMsg
 {
-    static NSString *cellIdentifier = @"ChatMsgTableViewCellDefault";
+    NSString *cellIdentifier = @"ChatMsgTableViewCellDefault";
   
     if (dpSysMsg.modid == SYS_MSG_MODE_FRIEND) {
 //        cellIdentifier = @"ChatMsgTableViewCellP2G";

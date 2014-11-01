@@ -59,28 +59,59 @@ static ChatMessageProxy *messageProxy = nil;
 - (void)parseTypeChatn:(id)json
 {
     NSMutableDictionary *info = [json objectForKey:SOCKET_INFO];
-    DPChatMessage *dpChatMessage = [[DPChatMessage alloc] init];
-    dpChatMessage.senderUid = [[info objectForKey:KEYP_S_CHAT_CHATN_SENDUID] integerValue];
-    dpChatMessage.msgType = [[info objectForKey:KEYP_S_CHAT_CHATN_MSGTYPE] integerValue];
-    dpChatMessage.content = [info objectForKey:KEYP_S_CHAT_CHATN_CONTENT];
-    dpChatMessage.sendTime = [info objectForKey:KEYP_S_CHAT_CHATN_TIME];
-    dpChatMessage.mid = [[info objectForKey:KEYP_S_CHAT_CHATN_MID] integerValue];
-    dpChatMessage.senderUid = [[info objectForKey:KEYP_S_CHAT_CHATN_SENDUID] integerValue];
-    dpChatMessage.targetId = [[info objectForKey:KEYP_S_CHAT_CHATN_TARGETID] integerValue];
-    dpChatMessage.stage = [info objectForKey:KEYP_S_CHAT_CHATN_STAGE];
-    [[ChatDataProxy sharedProxy] updateP2PChatMessage:dpChatMessage];
+    NSString *stage = [info objectForKey:KEYP_S_CHAT_CHATN_STAGE];
     DPUiMessage *dpUiMessage = [[DPUiMessage alloc] init];
     dpUiMessage.orderid = [[MsgDataProxy sharedProxy] getUiMsgListNextOrderId];
-    dpUiMessage.type = UI_MESSAGE_TYPE_CHAT;
-    dpUiMessage.mid = dpChatMessage.mid;
-    if (dpChatMessage.senderUid == [UserDataProxy sharedProxy].lastLoginUid ) {
-        dpUiMessage.relationId = dpChatMessage.targetId;
+    if ([stage isEqualToString:CHAT_STAGE_P2P]) {
+        
+        DPChatMessage *dpChatMessage = [[DPChatMessage alloc] init];
+        dpChatMessage.senderUid = [[info objectForKey:KEYP_S_CHAT_CHATN_SENDUID] integerValue];
+        dpChatMessage.msgType = [[info objectForKey:KEYP_S_CHAT_CHATN_MSGTYPE] integerValue];
+        dpChatMessage.content = [info objectForKey:KEYP_S_CHAT_CHATN_CONTENT];
+        dpChatMessage.sendTime = [info objectForKey:KEYP_S_CHAT_CHATN_TIME];
+        dpChatMessage.mid = [[info objectForKey:KEYP_S_CHAT_CHATN_MID] integerValue];
+        dpChatMessage.senderUid = [[info objectForKey:KEYP_S_CHAT_CHATN_SENDUID] integerValue];
+        dpChatMessage.targetId = [[info objectForKey:KEYP_S_CHAT_CHATN_TARGETID] integerValue];
+        dpChatMessage.stage = [info objectForKey:KEYP_S_CHAT_CHATN_STAGE];
+        [[ChatDataProxy sharedProxy] updateP2PChatMessage:dpChatMessage];
+      
+        dpUiMessage.type = UI_MESSAGE_TYPE_CHAT;
+        dpUiMessage.mid = dpChatMessage.mid;
+        if (dpChatMessage.senderUid == [UserDataProxy sharedProxy].lastLoginUid ) {
+            dpUiMessage.relationId = dpChatMessage.targetId;
+        }
+        else {
+            dpUiMessage.relationId = dpChatMessage.senderUid;
+        }
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_S_CHAT_CHATN object:dpChatMessage];
     }
-    else {
-        dpUiMessage.relationId = dpChatMessage.senderUid;
+    else if ([stage isEqualToString:CHAT_STAGE_GROUP]) {
+       
+        DPGroupChatMessage *dpGroupChatMsg = [[DPGroupChatMessage alloc] init];
+        dpGroupChatMsg.senderUid = [[info objectForKey:KEYP_S_CHAT_CHATN_SENDUID] integerValue];
+        dpGroupChatMsg.msgType = [[info objectForKey:KEYP_S_CHAT_CHATN_MSGTYPE] integerValue];
+        dpGroupChatMsg.content = [info objectForKey:KEYP_S_CHAT_CHATN_CONTENT];
+        dpGroupChatMsg.sendTime = [info objectForKey:KEYP_S_CHAT_CHATN_TIME];
+        dpGroupChatMsg.mid = [[info objectForKey:KEYP_S_CHAT_CHATN_MID] integerValue];
+        dpGroupChatMsg.senderUid = [[info objectForKey:KEYP_S_CHAT_CHATN_SENDUID] integerValue];
+        dpGroupChatMsg.targetId = [[info objectForKey:KEYP_S_CHAT_CHATN_TARGETID] integerValue];
+        dpGroupChatMsg.stage = [info objectForKey:KEYP_S_CHAT_CHATN_STAGE];
+        [[ChatDataProxy sharedProxy] updateGroupChatMessage:dpGroupChatMsg];
+        dpUiMessage.type = UI_MESSAGE_TYPE_GROUP_CHAT;
+        dpUiMessage.mid = dpGroupChatMsg.mid;
+        dpUiMessage.relationId = dpGroupChatMsg.targetId ;
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_S_CHAT_CHATN object:dpGroupChatMsg];
     }
-    [[MsgDataProxy sharedProxy] updateUiMsgList:dpUiMessage];
-    [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_S_CHAT_CHATN object:dpChatMessage];
+    else
+    {
+        NSLog(@"parseTypeChatn error stage:%@",stage);
+    }
+   
+   
+    if (dpUiMessage) {
+        [[MsgDataProxy sharedProxy] updateUiMsgList:dpUiMessage];
+    }
+   
 }
 
 @end

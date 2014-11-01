@@ -10,6 +10,7 @@
 #import "UiMessageDAO.h"
 #import "DPChatMessage.h"
 #import "ImDataUtil.h"
+#import "DPGroupChatMessage.h"
 
 typedef enum {
     ChatViewTypeP2P = 0,
@@ -20,6 +21,7 @@ typedef enum {
 
 @property (nonatomic) NSInteger chatViewType;
 @property (nonatomic) long long chatToUid;
+@property (nonatomic) long long chatToGroupid;
 
 @property (nonatomic, retain, getter=getEmotions) NSArray *arrEmotions;
 
@@ -33,5 +35,12 @@ typedef enum {
 - (NSArray *)getEmotions;
 
 - (NSDictionary *)getEmotionDic;
+
+- (NSMutableArray *)getGroupChatMessagesByGroupid:(long long)groupid;
+
+- (void)updateGroupChatMessage:(DPGroupChatMessage *)dpChatMessage;
+
+- (DPGroupChatMessage *)getGroupChatMessageByGroupid:(long long)targetUid withMid:(long long)mid;
+
 
 @end

@@ -1,16 +1,14 @@
 //
-//  GroupMessage.h
+//  DPGroupChatMessage.h
 //  IMiPhone
 //
-//  Created by 王 国良 on 14-8-28.
+//  Created by 王 国良 on 14/11/1.
 //  Copyright (c) 2014年 尹晓君. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 
-#define DB_PRIMARY_KEY_CHAT_MESSAGE_MID @"mid"
-
-@interface DBChatMessage : NSObject
+@interface DPGroupChatMessage : NSObject
 
 @property (nonatomic, retain) NSString *stage;
 @property (nonatomic) long long targetId;
