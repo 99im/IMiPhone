@@ -28,8 +28,7 @@
   return dic;
 }
 
-- (void)setParamsPropertyByDic:(NSDictionary *)dic {
-  NSDictionary *params = [dic objectForKey:KEYP_H__MSG_SYSMSG_LIST__LIST_PARAMS];
+- (void)setParamsProperty:(NSDictionary *)params {
   NSInteger type = self.type;
     if (type == GROUP_MSG_INVITE) {
 
@@ -38,15 +37,16 @@
         //self.userName = [params objectForKey:@"userName"];
         //self.userName = [params objectForKey:@"groupName"];
     } else if (type == GROUP_MSG_APPLY) {
+        NSLog(@"分析系统消息：申请加入群%@",params);
 
         //self.uid = [[params objectForKey:@"uid"] longLongValue];
         self.rid = [[params objectForKey:@"rid"] longLongValue];
 
-        NSDictionary *info = [dic objectForKey:@"groupInfo"];
+        NSDictionary *info = [params objectForKey:@"groupInfo"];
         self.groupId = [[info objectForKey:@"gid"] longLongValue];
         self.groupName = [info objectForKey:@"name"];
 
-        info = [dic objectForKey:@"uinfo"];
+        info = [params objectForKey:@"uinfo"];
         self.userId = [[info objectForKey:@"uid"] longLongValue];
         self.userNick = [info objectForKey:@"nick"];
     }

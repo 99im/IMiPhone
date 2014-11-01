@@ -27,17 +27,18 @@
 - (void)drawCellBody:(DPSysMessageGroup *)dpSysMsg {
     //self.lblTitle.text = dpSysMsg.title;
     //self.lblContent.text = dpSysMsg.content;
-    NSLog(@"加群消息：\nmodid:%i\ntype:%i\ntargetId:%qi" , dpSysMsg.modid , dpSysMsg.type , dpSysMsg.rid);
+    //NSLog(@"加群消息：\nmodid:%i\ntype:%i\ntargetId:%qi\ngroupName:%@" , dpSysMsg.modid , dpSysMsg.type , dpSysMsg.rid , dpSysMsg.groupName);
 
     //临时处理
+    //NSLog(@"加群消息：type:%i" , MSG_GROUP_APPLY);
 
     if (dpSysMsg.type == MSG_GROUP_APPLY) {//申请入群
         self.rid = dpSysMsg.rid;
-        self.btnAgree.hidden = YES;
         self.lblTitle.text = [NSString stringWithFormat:@"申请加入群:%@" , dpSysMsg.groupName];
         self.lblContent.text = [NSString stringWithFormat:@"%@ 申请加入群:%@" , dpSysMsg.userNick , dpSysMsg.groupName];
-    } else {
         self.btnAgree.hidden = NO;
+    } else {
+        self.btnAgree.hidden = YES;
     }
 }
 

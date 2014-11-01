@@ -55,7 +55,7 @@ static MsgMessageProxy  *messageProxy = nil;
                  for (NSInteger i = 0; i < arrMsglist.count; i++) {
                      NSDictionary *msgObj = [arrMsglist objectAtIndex:i];
                      DPSysMessage *dpSysMsg = [DPSysMessage sysMessageByMid:[[msgObj objectForKey:KEYP_H__MSG_SYSMSG_LIST__LIST_SMID] longLongValue] withMode:[[msgObj objectForKey:KEYP_H__MSG_SYSMSG_LIST__LIST_MODID] integerValue] withType:[[msgObj objectForKey:KEYP_H__MSG_SYSMSG_LIST__LIST_TYPE] integerValue] withTime:[msgObj objectForKey:KEYP_H__MSG_SYSMSG_LIST__LIST_CTIME] withTitle:[msgObj objectForKey:KEYP_H__MSG_SYSMSG_LIST__LIST_TITLE] withConten:KEYP_H__MSG_SYSMSG_LIST__LIST_CONTENT];
-                     [dpSysMsg setParamsPropertyByDic:msgObj];
+                     [dpSysMsg setParamsProperty:[msgObj objectForKey:KEYP_H__MSG_SYSMSG_LIST__LIST_PARAMS]];
                      [arrDpMsgs addObject:dpSysMsg];
                      
                      DPUiMessage *dpUiMessage = [[DPUiMessage alloc] init];

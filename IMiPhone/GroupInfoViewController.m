@@ -19,7 +19,7 @@
     //准备注释监听
     [self registerMessageNotification];
 
-    DPGroup *currGroup = [[GroupDataProxy sharedProxy] getGroupInfoCurrent];
+    DPGroup *currGroup = [[GroupDataProxy sharedProxy] getGroupInfoCurrent:SEND_HTTP_AUTO];
     [self drawContent: currGroup];
     // Do any additional setup after loading the view.
     //body
@@ -39,10 +39,28 @@
 
 #pragma mark - 消息监听
 - (void)registerMessageNotification {
+   [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(didReceiveGroupInfo:)
+                                                 name:NOTI_H__GROUP_INFO_
+                                               object:nil];
 }
 
 - (void)removeMessageNotification {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)didReceiveGroupInfo:(NSNotification *)notification {
+    NSLog(@"didReceiveGroupInfo");
+    if (notification.object) {
+        self.lblGroupName.text = [((NSError *)notification.object).userInfo objectForKey:NSLocalizedDescriptionKey];
+        self.btnApply.hidden = YES;
+        self.btnGroupChat.hidden = YES;
+        self.btnGroupSetting.hidden = YES;
+    } else {
+        DPGroup *currGroup = [[GroupDataProxy sharedProxy] getGroupInfoCurrent:SEND_HTTP_NO];
+        [self drawContent: currGroup];
+    }
+
 }
 
 //绘制内容
@@ -50,12 +68,12 @@
     if (dpGroup) {
         self.lblGroupId.text = [NSString stringWithFormat:@"群号：%li" , dpGroup.gid];
         self.lblGroupName.text = dpGroup.name;
-        self.lblCreatorName.text = [NSString stringWithFormat:@"群主：%@", dpGroup.creator_nick];
+        self.lblCreatorName.text = [NSString stringWithFormat:@"群主：%@ ", dpGroup.creator_nick];
         self.lblCTime.text = dpGroup.ctime;
         self.lblMemberNum.text = [NSString stringWithFormat:@"%i",dpGroup.memberNum];
         self.tvIntro.text = [NSString stringWithFormat:@"%@\n(本地过期时间：%qi)",dpGroup.intro , dpGroup.localExpireTime];
         self.lblCity.text = dpGroup.creator_city;
-        if (dpGroup.isInMyGroups == YES) {
+        if ([GroupDataProxy isInMyGroups:dpGroup] == YES) {
             self.btnApply.hidden = YES;
             self.btnGroupChat.hidden = NO;
             self.btnGroupSetting.hidden = NO;

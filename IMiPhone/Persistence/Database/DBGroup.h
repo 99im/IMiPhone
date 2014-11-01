@@ -15,6 +15,7 @@
 @property (nonatomic) long  gid;
 @property (nonatomic, retain) NSString *name;
 @property (nonatomic) NSInteger memberNum;  //成员数
+@property (nonatomic) NSInteger myRelation;
 @property (nonatomic, retain) NSString *ctime;
 @property (nonatomic, retain) NSString *intro;
 @property (nonatomic, retain) NSString *portraitUrl;//头像地址
