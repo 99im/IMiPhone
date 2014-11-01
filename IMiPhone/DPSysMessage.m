@@ -16,8 +16,10 @@
 @synthesize  modid;
 @synthesize  type;
 @synthesize  ctime;
+@synthesize title;
+@synthesize content;
 
-+ (DPSysMessage *)sysMessageByMid:(long long)mid withMode:(NSInteger)modeid withType:(NSInteger)type withTime:(NSString *)time
++ (DPSysMessage *)sysMessageByMid:(long long)mid withMode:(NSInteger)modeid withType:(NSInteger)type withTime:(NSString *)time withTitle:(NSString *)title withConten:(NSString *)content
 {
     DPSysMessage *dpSysMessage;
     if (modeid == SYS_MSG_MODE_FRIEND) {
@@ -29,6 +31,8 @@
         dpSysMessage.modid = modeid;
         dpSysMessage.type = type;
         dpSysMessage.ctime = time;
+        dpSysMessage.title = title;
+        dpSysMessage.content = content;
         return dpSysMessage;
     }
     NSLog(@"没有找到对应modeid:%i和type:%i的DP数据模型",modeid,type);
