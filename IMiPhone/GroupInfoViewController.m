@@ -51,8 +51,16 @@
 
 - (void)didReceiveGroupInfo:(NSNotification *)notification {
     NSLog(@"didReceiveGroupInfo");
-    DPGroup *currGroup = [[GroupDataProxy sharedProxy] getGroupInfoCurrent:SEND_HTTP_NO];
-   [self drawContent: currGroup];
+    if (notification.object) {
+        self.lblGroupName.text = [((NSError *)notification.object).userInfo objectForKey:NSLocalizedDescriptionKey];
+        self.btnApply.hidden = YES;
+        self.btnGroupChat.hidden = YES;
+        self.btnGroupSetting.hidden = YES;
+    } else {
+        DPGroup *currGroup = [[GroupDataProxy sharedProxy] getGroupInfoCurrent:SEND_HTTP_NO];
+        [self drawContent: currGroup];
+    }
+
 }
 
 //绘制内容

@@ -141,7 +141,8 @@ static GroupMessageProxy *sharedGroupMessageProxy = nil;
                     postNotificationName:NOTI_H__GROUP_INFO_
                                   object:nil];
               } else {
-                NSLog(@"群信息本地更新失败：%@", gid);
+                  NSError *error = [self processErrorCode:errorcode fromSource:PATH_H__GROUP_INFO_];
+                  [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_H__GROUP_INFO_ object:err];
               }
 
             } else {
