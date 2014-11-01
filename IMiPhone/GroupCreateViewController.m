@@ -46,12 +46,25 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
-- (void)didOnGroupCreate:(NSNotification *)notification {
-    [self dismissViewControllerAnimated:YES completion:^{
-        NSLog(@"群创建成功！");
-        //更新群列表
-        [[GroupMessageProxy sharedProxy] sendGroupMyList:[NSNumber numberWithInteger:0] withPageNum:[NSNumber numberWithInteger:50]];
-    }];
+- (void)didOnGroupCreate:(NSNotification*)notification
+{
+    if (notification.object) {
+        NSString* msg = [((NSError*)notification.object).userInfo objectForKey:NSLocalizedDescriptionKey];
+        UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Alert", nil)
+                                                            message:msg
+                                                           delegate:nil
+                                                  cancelButtonTitle:NSLocalizedString(@"OK", nil)
+                                                  otherButtonTitles:nil];
+        [alertView show];
+    }
+    else {
+        [self dismissViewControllerAnimated:YES completion:^{
+            NSLog(@"群创建成功！");
+            //更新群列表
+            //[[GroupDataProxy sharedProxy] getGroupMyList:SEND_HTTP_YES];
+            [[GroupMessageProxy sharedProxy] sendGroupMyList:0 withPageNum:50];
+        }];
+    }
 }
 
 

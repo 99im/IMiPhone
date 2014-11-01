@@ -84,7 +84,7 @@ static MsgDataProxy *chatDataProxy = nil;
                 tempSysMessage = [DPSysMessage sysMessageByMid:tempDBSysMessage.smid withMode:tempDBSysMessage.modid withType:tempDBSysMessage.type withTime:tempDBSysMessage.ctime withTitle:tempDBSysMessage.title withConten:tempDBSysMessage.content];
 
                 //[ImDataUtil copyFrom:tempDBSsMessage To:tempSysMessage];
-                [tempSysMessage setParamsPropertyByDic:[tempDBSysMessage getDictionaryByParams]];
+                [tempSysMessage setParamsProperty:[tempDBSysMessage getDictionaryByParams]];
                 [self.arrSysMsgs addObject:tempSysMessage];
             }
         }

@@ -11,6 +11,7 @@
 
 #define UI_MESSAGE_TYPE_CHAT 0
 #define UI_MESSAGE_TYPE_SYS 1
+#define UI_MESSAGE_TYPE_GROUP_CHAT 2
 
 @interface DPUiMessage : NSObject
 

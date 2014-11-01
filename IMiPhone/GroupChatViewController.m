@@ -14,6 +14,8 @@
 #import "ChatInputSoundView.h"
 #import "ChatDataProxy.h"
 #import "ChatMessageProxy.h"
+#import "GroupChatTableViewCell.h"
+#import "GroupChatTableViewCellFrame.h"
 
 @interface GroupChatViewController () <IMNWProxyProtocol, UITextFieldDelegate, UIGestureRecognizerDelegate>
 
@@ -59,20 +61,21 @@
     
     [self registerMessageNotification];
     //
-//    NSArray *arrChatMessages = [[ChatDataProxy sharedProxy] getP2PChatMessagesByTargetUid:[ChatDataProxy sharedProxy].chatToUid];
-//    for (NSInteger i = 0; i < arrChatMessages.count; i++) {
-//        DPChatMessage *dpChatMsg = [arrChatMessages objectAtIndex:i];
-//        ChatTableViewCellFrame *chatTableCellFrame = [[ChatTableViewCellFrame alloc] init];
-//        ChatMessageType msgType;
-//        if (dpChatMsg.senderUid == [UserDataProxy sharedProxy].lastLoginUid) {
-//            msgType = ChatMessageTypeMe;
-//        }
-//        else {
-//            msgType = ChatMessageTypeOther;
-//        }
-//        [chatTableCellFrame setMsgType:msgType withMsg:dpChatMsg];
-//        [self.arrAllCellFrames addObject:chatTableCellFrame];
-//    }
+    long long groupid = [GroupDataProxy sharedProxy].getGroupIdCurrent;
+    NSArray *arrChatMessages = [[ChatDataProxy sharedProxy] getGroupChatMessagesByGroupid:groupid];
+    for (NSInteger i = 0; i < arrChatMessages.count; i++) {
+        DPGroupChatMessage *dpChatMsg = [arrChatMessages objectAtIndex:i];
+        GroupChatTableViewCellFrame *chatTableCellFrame = [[GroupChatTableViewCellFrame alloc] init];
+        ChatMessageType msgType;
+        if (dpChatMsg.senderUid == [UserDataProxy sharedProxy].lastLoginUid) {
+            msgType = ChatMessageTypeMe;
+        }
+        else {
+            msgType = ChatMessageTypeOther;
+        }
+        [chatTableCellFrame setMsgType:msgType withMsg:dpChatMsg];
+        [self.arrAllCellFrames addObject:chatTableCellFrame];
+    }
 
 }
 
@@ -84,7 +87,6 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
-    //[self scrollToLastCell:NO];
     //注册键盘出现通知
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector (keyboardDidShow:)
                                                  name: UIKeyboardDidShowNotification object:nil];
@@ -93,6 +95,11 @@
                                                  name: UIKeyboardDidHideNotification object:nil];
     [super viewDidAppear:YES];
     
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [self scrollToLastCell:NO];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -156,9 +163,11 @@
 
 - (void)registerMessageNotification
 {
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dealGroupChatN:) name:NOTI_S_CHAT_CHATN object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onEmotionSelected:) name:NOTI_EMOTION_SELECTED object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onEmotionSend:) name:NOTI_EMOTION_SEND object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onEmotionDelete:) name:NOTI_EMOTION_DELETE object:nil];
+
 }
 
 - (void)removeMessageNotification
@@ -186,6 +195,24 @@
 {
 }
 
+- (void)dealGroupChatN:(NSNotification *)notification
+{
+    
+    DPGroupChatMessage *dpChatMsg = notification.object;
+    
+    GroupChatTableViewCellFrame *chatTableCellFrame = [[GroupChatTableViewCellFrame alloc] init];
+    ChatMessageType msgType;
+    if (dpChatMsg.senderUid == [UserDataProxy sharedProxy].lastLoginUid) {
+        msgType = ChatMessageTypeMe;
+    }
+    else {
+        msgType = ChatMessageTypeOther;
+    }
+    [chatTableCellFrame setMsgType:msgType withMsg:dpChatMsg];
+    [self.arrAllCellFrames addObject:chatTableCellFrame];
+    [self.tableViewChat reloadData];
+    [self scrollToLastCell:YES];
+}
 
 /*
 #pragma mark - Navigation
@@ -219,24 +246,32 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 0;
+    long long groupid = [GroupDataProxy sharedProxy].getGroupIdCurrent;
+    NSArray *arrGroupChatMsgs = [[ChatDataProxy sharedProxy] getGroupChatMessagesByGroupid:groupid];
+    return arrGroupChatMsgs.count;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return nil;
+    static NSString *cellIdentifier = @"GroupChatTableViewCell";
+    GroupChatTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
+    
+    cell.cellFrame =
+    [self.arrAllCellFrames objectAtIndex:indexPath.row];
+    return cell;
 }
 
-#pragma mark - chat text input logic
-
-- (IBAction)tfInputTextDidEndOnExit:(id)sender {
-    if ([ChatDataProxy sharedProxy].chatViewType == ChatViewTypeP2P) {
-        
-        [[ChatMessageProxy sharedProxy] sendTypeChat:CHAT_STAGE_GROUP targetId:[GroupDataProxy sharedProxy].getGroupIdCurrent msgType:CHAT_MASSAGE_TYPE_TEXT content:((UITextField *)sender).text];
-        
-        ((UITextField *)sender).text = @"";
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    //    NSLog(@"height for %@",indexPath);
+    ChatTableViewCellFrame *cellFrame = [self.arrAllCellFrames objectAtIndex:indexPath.row];
+    if (cellFrame) {
+        return cellFrame.cellHeight;
     }
-    
+    else {
+        NSLog(@"cannot find ChatTableViewCell at:%@",indexPath);
+        return 0;
+    }
 }
 
 - (void)scrollToLastCell:(BOOL)animated
@@ -247,6 +282,16 @@
     }
     NSIndexPath *indexPathMax = [NSIndexPath indexPathForRow:maxRow inSection:0];
     [self.tableViewChat scrollToRowAtIndexPath:indexPathMax atScrollPosition:UITableViewScrollPositionBottom animated:animated];
+}
+
+#pragma mark - chat text input logic
+
+- (IBAction)tfInputTextDidEndOnExit:(id)sender {
+        
+    [[ChatMessageProxy sharedProxy] sendTypeChat:CHAT_STAGE_GROUP targetId:[GroupDataProxy sharedProxy].getGroupIdCurrent msgType:CHAT_MASSAGE_TYPE_TEXT content:((UITextField *)sender).text];
+    
+    ((UITextField *)sender).text = @"";
+    
 }
 
 
@@ -265,5 +310,7 @@
         [self.tfInputText resignFirstResponder];
     }
 }
+
+
 
 @end

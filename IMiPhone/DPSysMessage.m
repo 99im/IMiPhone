@@ -48,9 +48,9 @@
     return nil;
 }
 
-- (void)setParamsPropertyByDic:(NSDictionary *)dic
+- (void)setParamsProperty:(NSDictionary *)params
 {
-    NSLog(@"DPSysMessage setParamsPropertyByDic 需要子类重写!!!");
+    NSLog(@"DPSysMessage setParamsProperty 需要子类重写!!!");
 }
 
 @end

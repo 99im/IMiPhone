@@ -36,11 +36,11 @@
 #pragma mark - IBAction
 
 - (IBAction)checkGroupApply:(id)sender {
-    DPGroup *dpGroup = [[GroupDataProxy sharedProxy] getGroupInfoCurrent];
-    if (dpGroup && dpGroup.gid >0 ) {
-        NSString *gid = [NSString stringWithFormat:@"%li",dpGroup.gid];
+    long long gid = [[GroupDataProxy sharedProxy] getGroupIdCurrent];
+    if (gid >0 ) {
+        //NSString *gidN = [NSString stringWithFormat:@"%li",gid];
         NSString *msg = self.tvMsg.text;
-        NSLog(@"开始提交申请:%@ %@", gid , msg);
+        NSLog(@"开始提交申请:%qi %@", gid , msg);
         [[GroupMessageProxy sharedProxy] sendGroupApply:gid msg:msg];
     }
 }

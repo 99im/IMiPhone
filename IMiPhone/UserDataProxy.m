@@ -225,7 +225,7 @@ static UserDataProxy *sharedProxy = nil;
 
 #pragma mark - others
 
-- (DPUser *)getUserByUid:(NSInteger) uid
+- (DPUser *)getUserByUid:(long long) uid
 {
     if (uid == self.lastLoginUid) {
         return self.user;

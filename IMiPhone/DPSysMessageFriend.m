@@ -18,9 +18,9 @@
     return dic;
 }
 
-- (void)setParamsPropertyByDic:(NSDictionary *)dic
+- (void)setParamsProperty:(NSDictionary *)params
 {
-    self.uid = [[[dic objectForKey:KEYP_H__MSG_SYSMSG_LIST__LIST_PARAMS] objectForKey:@"uid"] longLongValue];
+    self.uid = [[params objectForKey:@"uid"] longLongValue];
 }
 
 @end
