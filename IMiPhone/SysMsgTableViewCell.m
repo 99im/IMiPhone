@@ -15,7 +15,7 @@
     static NSString *cellIdentifier = @"ChatMsgTableViewCellDefault";
   
     if (dpSysMsg.modid == SYS_MSG_MODE_FRIEND) {
-        cellIdentifier = @"ChatMsgTableViewCellP2G";
+//        cellIdentifier = @"ChatMsgTableViewCellP2G";
     }
     else if (dpSysMsg.modid == SYS_MSG_MODE_GROUP) {
         cellIdentifier = @"MsgGroupApplyTableViewCell";

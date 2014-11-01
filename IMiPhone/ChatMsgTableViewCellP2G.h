@@ -10,8 +10,10 @@
 #import "DPChatMessage.h"
 #import "DPUser.h"
 #import "UserDataProxy.h"
+#import "SysMsgTableViewCell.h"
 
-@interface ChatMsgTableViewCellP2G : UITableViewCell
+
+@interface ChatMsgTableViewCellP2G : SysMsgTableViewCell
 
 @property (weak, nonatomic) IBOutlet UIImageView *imgViewPortrait;
 @property (weak, nonatomic) IBOutlet UILabel *lblGroupName;
