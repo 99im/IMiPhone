@@ -20,4 +20,16 @@
     // Configure the view for the selected state
 }
 
+- (void)drawCellBody:(DPChatMessage *)dpChatMsg
+{
+    DPUser *dpUser = [[UserDataProxy sharedProxy] getUserByUid:dpChatMsg.senderUid];
+    if (dpUser) {
+        self.lblGroupName.text = dpUser.nick;
+
+    }
+    //        NSLog(@"%@,%@",dpChatMsg.content,dpChatMsg.sendTime);
+    self.lblLastMsg.text = dpChatMsg.content;
+    //        cell.lblTime.text = dpChatMsg.sendTime;
+}
+
 @end

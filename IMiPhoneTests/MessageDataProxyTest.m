@@ -29,11 +29,11 @@
 }
 
 - (void)testMessageArray {
-    DPChatMessage * dpMessage = [[DPChatMessage alloc] init];
-    dpMessage.senderUid = 18;
-    dpMessage.content = @"xxx关注了你";
-    dpMessage.sendTime = @"1902-0-1";
-    [[[ChatDataProxy sharedProxy] mutableArrayMessages] addObject:dpMessage];
+//    DPChatMessage * dpMessage = [[DPChatMessage alloc] init];
+//    dpMessage.senderUid = 18;
+//    dpMessage.content = @"xxx关注了你";
+//    dpMessage.sendTime = @"1902-0-1";
+//    [[[ChatDataProxy sharedProxy] mutableArrayMessages] addObject:dpMessage];
 }
 
 - (void)testSetValueForKey

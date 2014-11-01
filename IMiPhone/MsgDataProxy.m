@@ -52,11 +52,11 @@ static MsgDataProxy *chatDataProxy = nil;
 //        NSInteger findIndex = [ImDataUtil getIndexOf:self.arrSysMsgs byItemKey:DB_PRIMARY_KEY_SYS_MSG_SMID withValue:[NSNumber numberWithLong:dpSysMsg.smid]];
 //        if (findIndex != NSNotFound) {
 //            [self.arrSysMsgs addObject:dpSysMsg];
-            DBSysMessage *dbSysMessage = [[DBSysMessage alloc] init];
-        dpSysMsg.smid = dbSysMessage.smid;
-        dpSysMsg.modid = dbSysMessage.modid;
-        dpSysMsg.type = dbSysMessage.type;
-        dpSysMsg.ctime = dbSysMessage.ctime;
+        DBSysMessage *dbSysMessage = [[DBSysMessage alloc] init];
+        dbSysMessage.smid = dpSysMsg.smid;
+        dbSysMessage.modid = dpSysMsg.modid;
+        dbSysMessage.type = dpSysMsg.type;
+        dbSysMessage.ctime = dpSysMsg.ctime;
         
 //            [ImDataUtil copyFrom:dpSysMsg To:dbSysMessage];
         
@@ -144,7 +144,7 @@ static MsgDataProxy *chatDataProxy = nil;
     else if (dpUiMessage.type == UI_MESSAGE_TYPE_SYS) {
         for (NSInteger i = 0; i < uiMsgList.count; i++) {
             DPUiMessage *tempDpUiMessage = [uiMsgList objectAtIndex:i];
-            NSLog(@"dpUiMessage.mid:%ld",dpUiMessage.mid);
+            NSLog(@"dpUiMessage.mid:%lli",dpUiMessage.mid);
             if (dpUiMessage.mid == tempDpUiMessage.mid) {
                 NSLog(@"系统消息已经存在！");
                 return;

@@ -35,7 +35,7 @@ static ChatDataProxy *messageDataProxy = nil;
 }
 #pragma mark - messages
 
-- (NSMutableArray *)getP2PChatMessagesByTargetUid:(long)targetUid
+- (NSMutableArray *)getP2PChatMessagesByTargetUid:(long long)targetUid
 {
     if (self.dicMessages == nil) {
         self.dicMessages = [NSMutableDictionary dictionary];
@@ -83,7 +83,7 @@ static ChatDataProxy *messageDataProxy = nil;
     }
 }
 
-- (DPChatMessage *)getP2PChatMessageByTargetUid:(long)targetUid withMid:(long)mid;
+- (DPChatMessage *)getP2PChatMessageByTargetUid:(long long)targetUid withMid:(long long)mid;
 {
     NSArray *chatMessages = [self getP2PChatMessagesByTargetUid:targetUid];
     NSInteger findindex = [chatMessages indexOfObjectPassingTest:^BOOL(id obj, NSUInteger idx, BOOL *stop) {

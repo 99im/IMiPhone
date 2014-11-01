@@ -228,6 +228,15 @@
     [[imPhotoPicker sharedPicker] showChoiceSheet:self inView:self.view];
 }
 
+- (void)imageCropper:(VPImageCropperViewController *)cropperViewController didFinished:(UIImage *)editedImage
+{
+    
+}
+- (void)imageCropperDidCancel:(VPImageCropperViewController *)cropperViewController
+{
+    
+}
+
 #pragma mark - IMNWProxyProtocol Method
 
 - (void)registerMessageNotification

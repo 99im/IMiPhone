@@ -24,9 +24,9 @@
 }
 
 - (void)drawCellBody:(DPSysMessage *)dpSysMsg {
-    self.lblGroupName.text = dpSysMsg.title;
-    self.lblReason.text = dpSysMsg.content;
-    NSLog(@"加群：\nmodid:%i\ntype:%i\ntargetId:%li" , dpSysMsg.modid , dpSysMsg.type , dpSysMsg.targetId);
+//    self.lblGroupName.text = dpSysMsg.title;
+//    self.lblReason.text = dpSysMsg.content;
+//    NSLog(@"加群：\nmodid:%i\ntype:%i\ntargetId:%li" , dpSysMsg.modid , dpSysMsg.type , dpSysMsg.targetId);
 
     //临时处理
     self.btnAgree.hidden = YES;

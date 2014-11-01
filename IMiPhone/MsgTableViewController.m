@@ -17,6 +17,7 @@
 #import "ChatMessageProxy.h"
 #import "UserMessageProxy.h"
 #import "DPSysMessageFriend.h"
+#import "SysMsgTableViewCell.h"
 
 @interface MsgTableViewController ()
 
@@ -67,31 +68,22 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     static NSString *cellIdentifier;
-    ChatMsgTableViewCellP2G *cell;
+    UITableViewCell *cell;
     NSArray *uiMsgList = [[MsgDataProxy sharedProxy] getUiMsgList];
     DPUiMessage *dpUiMsg = [uiMsgList objectAtIndex:indexPath.row];
     if (dpUiMsg.type == UI_MESSAGE_TYPE_CHAT) {
         cellIdentifier = @"ChatMsgTableViewCellP2G";
         cell = [self.tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
+
         DPChatMessage *dpChatMsg = [[ChatDataProxy sharedProxy] getP2PChatMessageByTargetUid:[ChatDataProxy sharedProxy].chatToUid withMid:dpUiMsg.mid];
-        DPUser *dpUser = [[UserDataProxy sharedProxy] getUserByUid:dpChatMsg.senderUid];
-        cell.lblGroupName.text = dpUser.nick;
-//        NSLog(@"%@,%@",dpChatMsg.content,dpChatMsg.sendTime);
-        cell.lblLastMsg.text = dpChatMsg.content;
-//        cell.lblTime.text = dpChatMsg.sendTime;
+        [((ChatMsgTableViewCellP2G *)cell) drawCellBody:dpChatMsg];
+    
     }
     else if (dpUiMsg.type == UI_MESSAGE_TYPE_SYS) {
         DPSysMessage *dpSysMsg = [[MsgDataProxy sharedProxy] getSysMsgByMid:dpUiMsg.mid];
-
-//        if (dpSysMsg.modid == 4) {//群
-//            if (dpSysMsg.type == 1) {//申请加群
-                cellIdentifier = @"MsgGroupApplyTableViewCell";
-                MsgGroupApplyTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
-                [cell drawCellBody:dpSysMsg];
-                return  cell;
-//            }
-//        }
-
+        cellIdentifier = [SysMsgTableViewCell getCellIdentifierBySysMsg:dpSysMsg];
+        cell = [self.tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
+        [(SysMsgTableViewCell *)cell drawCellBody:dpSysMsg];
     }
     return cell;
 }
@@ -113,6 +105,7 @@
         }
     }
     else if (dpUiMsg.type == UI_MESSAGE_TYPE_SYS) {
+        
         DPSysMessage *dpSysMsg = [[MsgDataProxy sharedProxy] getSysMsgByMid:dpUiMsg.mid];
 
         if (dpSysMsg.modid == SYS_MSG_MODE_FRIEND) {

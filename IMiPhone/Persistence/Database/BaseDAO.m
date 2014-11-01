@@ -114,7 +114,7 @@ static NSDictionary *dicSQLDataType;
 }
 - (NSMutableArray *)query:(NSString *)condition Bind:(NSArray *)bind
 {
-    NSArray *arrProps = [ImDataUtil getArrPropsFromDataModeClass:self.dataMode];
+    NSArray *arrProps = [ImDataUtil getArrPropsFromDataModeClass:self.dataMode containSuper:YES];
     
     NSMutableArray *fields = [NSMutableArray array];
     for (NSInteger i = 0; i < arrProps.count; i++) {

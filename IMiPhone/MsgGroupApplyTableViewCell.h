@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "MsgDataProxy.h"
+#import "SysMsgTableViewCell.h"
 
-@interface MsgGroupApplyTableViewCell : UITableViewCell
+@interface MsgGroupApplyTableViewCell : SysMsgTableViewCell
 
 @property(weak, nonatomic) IBOutlet UIView *imgHead;
 @property(weak, nonatomic) IBOutlet UILabel *lblGroupName;
