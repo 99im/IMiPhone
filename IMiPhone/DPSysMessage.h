@@ -23,6 +23,6 @@
 + (DPSysMessage *)sysMessageByMid:(long long)mid withMode:(NSInteger)modeid withType:(NSInteger)type withTime:(NSString *)time withTitle:(NSString *)title withConten:(NSString *)content;
 
 - (NSDictionary *)getParamsDictionary;
-- (void)setParamsPropertyByDic:(NSDictionary *)dic;
+- (void)setParamsProperty:(NSDictionary *)params;
 
 @end
