@@ -111,10 +111,10 @@ static GroupMessageProxy *sharedGroupMessageProxy = nil;
 
 #pragma mark - 信息读取
 
-- (void)sendGroupInfo:(NSString *)gid {
+- (void)sendGroupInfo:(long long)gid {
   NSMutableDictionary *params = [NSMutableDictionary dictionary];
 
-  [params setObject:gid forKey:KEYQ_H__GROUP_INFO__GID];
+  [params setObject:[NSNumber numberWithLongLong:gid] forKey:KEYQ_H__GROUP_INFO__GID];
 
   IMNWMessage *message = [IMNWMessage createForHttp:PATH_H__GROUP_INFO_
                                          withParams:params
@@ -153,11 +153,11 @@ static GroupMessageProxy *sharedGroupMessageProxy = nil;
       }];
 }
 
-- (void)sendGroupMyList:(NSNumber *)start withPageNum:(NSNumber *)pageNum {
+- (void)sendGroupMyList:(NSInteger)start withPageNum:(NSInteger)pageNum {
   NSMutableDictionary *params = [NSMutableDictionary dictionary];
 
-  [params setObject:start forKey:KEYQ_H__GROUP_MYLIST__START];
-  [params setObject:pageNum forKey:KEYQ_H__GROUP_MYLIST__PAGENUM];
+  [params setObject:[NSNumber numberWithInteger:start] forKey:KEYQ_H__GROUP_MYLIST__START];
+  [params setObject:[NSNumber numberWithInteger:pageNum] forKey:KEYQ_H__GROUP_MYLIST__PAGENUM];
 
   IMNWMessage *message = [IMNWMessage createForHttp:PATH_H__GROUP_MYLIST_
                                          withParams:params
@@ -200,12 +200,12 @@ static GroupMessageProxy *sharedGroupMessageProxy = nil;
 }
 
 
-- (void)sendGroupMembers:(NSString *)gid
+- (void)sendGroupMembers:(long long)gid
                    start:(NSNumber *)start
                  pageNum:(NSNumber *)pageNum {
   NSMutableDictionary *params = [NSMutableDictionary dictionary];
 
-  [params setObject:gid forKey:KEYQ_H__GROUP_MEMBERS__GID];
+  [params setObject:[NSNumber numberWithLongLong:gid] forKey:KEYQ_H__GROUP_MEMBERS__GID];
   [params setObject:start forKey:KEYQ_H__GROUP_MEMBERS__START];
   [params setObject:pageNum forKey:KEYQ_H__GROUP_MEMBERS__PAGENUM];
 
@@ -241,10 +241,10 @@ static GroupMessageProxy *sharedGroupMessageProxy = nil;
 
 
 #pragma mark - 加入群
-- (void)sendGroupApply:(NSString *)gid msg:(NSString *)msg {
+- (void)sendGroupApply:(long long)gid msg:(NSString *)msg {
   NSMutableDictionary *params = [NSMutableDictionary dictionary];
 
-  [params setObject:gid forKey:KEYQ_H__GROUP_APPLY__GID];
+  [params setObject:[NSNumber numberWithLongLong:gid] forKey:KEYQ_H__GROUP_APPLY__GID];
   [params setObject:msg forKey:KEYQ_H__GROUP_APPLY__MSG];
 
   IMNWMessage *message = [IMNWMessage createForHttp:PATH_H__GROUP_APPLY_
@@ -319,10 +319,10 @@ static GroupMessageProxy *sharedGroupMessageProxy = nil;
      }];
 }
 
-- (void)sendGroupInvite:(NSString *)gid targetUids:(NSString *)targetUids msg:(NSString *)msg {
+- (void)sendGroupInvite:(long long)gid targetUids:(NSString *)targetUids msg:(NSString *)msg {
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
 
-    [params setObject:gid forKey:KEYQ_H__GROUP_INVITE__GID];
+    [params setObject:[NSNumber numberWithLongLong:gid] forKey:KEYQ_H__GROUP_INVITE__GID];
     [params setObject:targetUids forKey:KEYQ_H__GROUP_INVITE__TARGETUIDS];
     [params setObject:msg forKey:KEYQ_H__GROUP_INVITE__MSG];
 

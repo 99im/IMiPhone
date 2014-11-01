@@ -19,7 +19,7 @@
     //准备注释监听
     [self registerMessageNotification];
 
-    DPGroup *currGroup = [[GroupDataProxy sharedProxy] getGroupInfoCurrent];
+    DPGroup *currGroup = [[GroupDataProxy sharedProxy] getGroupInfoCurrent:SEND_HTTP_AUTO];
     [self drawContent: currGroup];
     // Do any additional setup after loading the view.
     //body
@@ -39,10 +39,20 @@
 
 #pragma mark - 消息监听
 - (void)registerMessageNotification {
+   [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(didReceiveGroupInfo:)
+                                                 name:NOTI_H__GROUP_INFO_
+                                               object:nil];
 }
 
 - (void)removeMessageNotification {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)didReceiveGroupInfo:(NSNotification *)notification {
+    NSLog(@"didReceiveGroupInfo");
+    DPGroup *currGroup = [[GroupDataProxy sharedProxy] getGroupInfoCurrent:SEND_HTTP_NO];
+   [self drawContent: currGroup];
 }
 
 //绘制内容

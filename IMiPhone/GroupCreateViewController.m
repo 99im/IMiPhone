@@ -50,7 +50,7 @@
     [self dismissViewControllerAnimated:YES completion:^{
         NSLog(@"群创建成功！");
         //更新群列表
-        [[GroupMessageProxy sharedProxy] sendGroupMyList:[NSNumber numberWithInteger:0] withPageNum:[NSNumber numberWithInteger:50]];
+        [[GroupMessageProxy sharedProxy] sendGroupMyList:0 withPageNum:5];
     }];
 }
 

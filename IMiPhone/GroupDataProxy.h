@@ -43,7 +43,7 @@
 #pragma mark - 当前群
 -(long long)getGroupIdCurrent;
 -(void)setGroupIdCurrent:(long long)gid;
-- (DPGroup *)getGroupInfoCurrent;
+- (DPGroup *)getGroupInfoCurrent:(NSInteger)httpMode;
 
 
 #pragma mark - 群聊天

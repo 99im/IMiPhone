@@ -85,8 +85,8 @@ static GroupDataProxy *sharedGroupDataProxy = nil;
   //发送HTTP请求新列表
   if (needSendHttp == YES) {
     [[GroupMessageProxy sharedProxy]
-        sendGroupMyList:[NSNumber numberWithInt:0]
-            withPageNum:[NSNumber numberWithInt:50]];
+        sendGroupMyList:0
+            withPageNum:50];
   }
   return [self mutableArrayValueForKey:@"arrGroupMyList"];
 }
@@ -146,14 +146,14 @@ static GroupDataProxy *sharedGroupDataProxy = nil;
 - (DPGroup *)getGroupInfo:(long long)gid byHttpMode:(NSInteger)httpMode {
   DPGroup *dpGroup;
   if (gid > 0) {
-    DPGroup *tmpGroup = _groupInfoCurrent;
+    ;
 
-    if (tmpGroup && tmpGroup.gid == gid) {
-      dpGroup = tmpGroup;
-    } else if (_arrGroupMyList) { //从本地缓存数组查找
+    if ( _groupInfoCurrent &&  _groupInfoCurrent.gid == gid) {
+      dpGroup =  _groupInfoCurrent;
+    } else if (_arrGroupMyList && _arrGroupMyList.count > 0) { //从本地缓存数组查找
       // NSMutableArray *myGroups = self.arrGroupMyList;
       for (NSInteger i = 0; i < [_arrGroupMyList count]; i++) {
-        tmpGroup = _arrGroupMyList[i];
+        DPGroup *tmpGroup = _arrGroupMyList[i];
         if (tmpGroup.gid == gid) {
           dpGroup = tmpGroup;
           break;
@@ -179,8 +179,7 @@ static GroupDataProxy *sharedGroupDataProxy = nil;
     }
 
     if (needSendHttp == YES) {
-      NSString *strGid = [NSString stringWithFormat:@"%qi", gid];
-      [[GroupMessageProxy sharedProxy] sendGroupInfo:strGid];
+      [[GroupMessageProxy sharedProxy] sendGroupInfo:gid];
       // NSLog(@"超时（%qi,%qi），准备刷新：" , dpGroup.localExpireTime ,
       // nowTime);
     }
@@ -292,13 +291,13 @@ static GroupDataProxy *sharedGroupDataProxy = nil;
     }
 }
 
-- (DPGroup *) getGroupInfoCurrent {
-//    if (_countSendGroupInfo < 2) {
-//        _countSendGroupInfo = _countSendGroupInfo + 1;
-        return [self getGroupInfo: _groupIdCurrent byHttpMode:SEND_HTTP_AUTO];
-//    } else {
-//        return [self getGroupInfo: _groupIdCurrent byHttpMode:SEND_HTTP_NO];
-//    }
+- (DPGroup *) getGroupInfoCurrent:(NSInteger)httpMode{
+    if (httpMode == SEND_HTTP_YES) {
+        _groupInfoCurrent = [self getGroupInfo: _groupIdCurrent byHttpMode:httpMode];
+    } else if (!_groupInfoCurrent || _groupInfoCurrent.gid || _groupIdCurrent) {
+        _groupInfoCurrent = [self getGroupInfo: _groupIdCurrent byHttpMode:httpMode];
+    }
+    return _groupInfoCurrent;
 }
 
 #pragma mark - 群消息
