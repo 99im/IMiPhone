@@ -244,6 +244,7 @@
 		AB4F947F19F789A500397549 /* DPGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = AB4F947E19F789A500397549 /* DPGroup.m */; };
 		AB62170819FF3F65003C2FBB /* GroupApplyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB62170719FF3F65003C2FBB /* GroupApplyViewController.m */; };
 		AB62170B19FFA01A003C2FBB /* AddItemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AB62170A19FFA01A003C2FBB /* AddItemTableViewCell.m */; };
+		AB6396231A038CA500FF0BC6 /* DPSysMessageGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = AB6396221A038CA500FF0BC6 /* DPSysMessageGroup.m */; };
 		AB72235119ED110700E603E2 /* CategoryListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AB5554E719EBEAFA00B413F3 /* CategoryListTableViewCell.m */; };
 		ABA91EF919F64B970017B045 /* GroupTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ABA91EF819F64B970017B045 /* GroupTableViewCell.m */; };
 		ABA91EFC19F658270017B045 /* GroupTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABA91EFB19F658270017B045 /* GroupTableViewController.m */; };
@@ -513,6 +514,8 @@
 		AB62170719FF3F65003C2FBB /* GroupApplyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupApplyViewController.m; sourceTree = "<group>"; };
 		AB62170919FFA01A003C2FBB /* AddItemTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddItemTableViewCell.h; sourceTree = "<group>"; };
 		AB62170A19FFA01A003C2FBB /* AddItemTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddItemTableViewCell.m; sourceTree = "<group>"; };
+		AB6396211A038CA500FF0BC6 /* DPSysMessageGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPSysMessageGroup.h; sourceTree = "<group>"; };
+		AB6396221A038CA500FF0BC6 /* DPSysMessageGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPSysMessageGroup.m; sourceTree = "<group>"; };
 		ABA91EF719F64B970017B045 /* GroupTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupTableViewCell.h; sourceTree = "<group>"; };
 		ABA91EF819F64B970017B045 /* GroupTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupTableViewCell.m; sourceTree = "<group>"; };
 		ABA91EFA19F658270017B045 /* GroupTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupTableViewController.h; sourceTree = "<group>"; };
@@ -836,6 +839,8 @@
 				58AF049719B056050077DCBC /* FriendDataProxy.m */,
 				1171F7CA19E9154F00865A0B /* DPContactPerson.h */,
 				1171F7CB19E9154F00865A0B /* DPContactPerson.m */,
+				AB6396211A038CA500FF0BC6 /* DPSysMessageGroup.h */,
+				AB6396221A038CA500FF0BC6 /* DPSysMessageGroup.m */,
 				AB20EE8219F4DCCC004627C8 /* GroupDataProxy.h */,
 				AB20EE8319F4DCCC004627C8 /* GroupDataProxy.m */,
 				AB4F947D19F789A500397549 /* DPGroup.h */,
@@ -1217,6 +1222,7 @@
 				AB20EE8719F4DD8C004627C8 /* GroupMessageProxy.m in Sources */,
 				116B6E8C19B0538300DB1B5E /* GroupDAO.m in Sources */,
 				116B6E7D19AEF83500DB1B5E /* imRms.m in Sources */,
+				AB6396231A038CA500FF0BC6 /* DPSysMessageGroup.m in Sources */,
 				58B496DA19A7186A0082AE30 /* NSData+MKBase64.m in Sources */,
 				116BF87119C81E030015561B /* AudioRecordManager.m in Sources */,
 				1171F7C419E8DE4000865A0B /* AddressInviteTableViewCell.m in Sources */,

@@ -9,6 +9,7 @@
 #import "DPSysMessage.h"
 #import "MsgMessageProxy.h"
 #import "DPSysMessageFriend.h"
+#import "DPSysMessageGroup.h"
 
 @implementation DPSysMessage
 
@@ -22,8 +23,10 @@
     DPSysMessage *dpSysMessage;
     if (modeid == SYS_MSG_MODE_FRIEND) {
         dpSysMessage = [[DPSysMessageFriend alloc] init];
-        
+    } else if(modeid == SYS_MSG_MODE_GROUP){
+        dpSysMessage = [[DPSysMessageGroup alloc] init];
     }
+
     if (dpSysMessage) {
         dpSysMessage.smid = mid;
         dpSysMessage.modid = modeid;
