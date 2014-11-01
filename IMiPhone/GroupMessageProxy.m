@@ -431,7 +431,8 @@ static GroupMessageProxy *sharedGroupMessageProxy = nil;
                                 object:nil];
 
             } else {
-              NSAssert(YES, @"sendGroupCreate error: %i", errorcode);
+                NSError *error = [self processErrorCode:errorcode fromSource:PATH_H__GROUP_CREATE_];
+                [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_H__GROUP_CREATE_ object:error];
             }
           }
       }];
