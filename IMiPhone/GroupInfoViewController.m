@@ -68,12 +68,12 @@
     if (dpGroup) {
         self.lblGroupId.text = [NSString stringWithFormat:@"群号：%li" , dpGroup.gid];
         self.lblGroupName.text = dpGroup.name;
-        self.lblCreatorName.text = [NSString stringWithFormat:@"群主：%@", dpGroup.creator_nick];
+        self.lblCreatorName.text = [NSString stringWithFormat:@"群主：%@ ", dpGroup.creator_nick];
         self.lblCTime.text = dpGroup.ctime;
         self.lblMemberNum.text = [NSString stringWithFormat:@"%i",dpGroup.memberNum];
         self.tvIntro.text = [NSString stringWithFormat:@"%@\n(本地过期时间：%qi)",dpGroup.intro , dpGroup.localExpireTime];
         self.lblCity.text = dpGroup.creator_city;
-        if (dpGroup.isInMyGroups == YES) {
+        if ([GroupDataProxy isInMyGroups:dpGroup] == YES) {
             self.btnApply.hidden = YES;
             self.btnGroupChat.hidden = NO;
             self.btnGroupSetting.hidden = NO;

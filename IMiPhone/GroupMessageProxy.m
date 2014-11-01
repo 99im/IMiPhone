@@ -47,7 +47,9 @@ static GroupMessageProxy *sharedGroupMessageProxy = nil;
     dpGroup.ctime = [info objectForKey:KEYP_H__GROUP_INFO__INFO_CTIME];
     // NSLog(@"更新群创建时间：%@", dpGroup.ctime);
     dpGroup.memberNum =
-    [[json objectForKey:KEYP_H__GROUP_INFO__INFO_MEMBERNUM] integerValue];
+    [[info objectForKey:KEYP_H__GROUP_INFO__INFO_MEMBERNUM] integerValue];
+    dpGroup.myRelation =
+    [[info objectForKey:KEYP_H__GROUP_SEARCH__LIST_MYRELATION] integerValue];
 
     //群主信息
     NSDictionary *creator = [info objectForKey:KEYP_H__GROUP_INFO__INFO_CREATOR];
@@ -85,6 +87,8 @@ static GroupMessageProxy *sharedGroupMessageProxy = nil;
         dpGroup.name = [detail objectForKey:KEYP_H__GROUP_MYLIST__LIST_DETAIL_NAME];
         dpGroup.intro = [detail objectForKey:KEYP_H__GROUP_MYLIST__LIST_DETAIL_INTRO];
         dpGroup.memberNum = [[detail objectForKey:KEYP_H__GROUP_MYLIST__LIST_DETAIL_MEMBERNUM] integerValue];
+        dpGroup.myRelation =
+        [[json objectForKey:KEYP_H__GROUP_SEARCH__LIST_MYRELATION] integerValue];
         dpGroup.ctime = [detail objectForKey:KEYP_H__GROUP_MYLIST__LIST_CTIME];
 
         //群主信息

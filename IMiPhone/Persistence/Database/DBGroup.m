@@ -13,6 +13,7 @@
 @synthesize gid;
 @synthesize name;
 @synthesize memberNum;
+@synthesize myRelation;
 @synthesize ctime;
 @synthesize intro;
 @synthesize portraitUrl;

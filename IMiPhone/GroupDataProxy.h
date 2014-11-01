@@ -37,7 +37,7 @@
 - (NSInteger)updateGroupInfo:(NSMutableDictionary *)json;
 - (NSInteger)deleteGroupByGid:(long long)gid;
 
-- (BOOL)isInMyGroups:(long long)gid;
++ (BOOL)isInMyGroups:(DPGroup *)dpGroup;
 - (BOOL)isGroupOwner:(long long)creatorUid;
 
 #pragma mark - 当前群
