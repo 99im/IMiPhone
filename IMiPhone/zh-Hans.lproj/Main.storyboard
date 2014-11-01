@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="sWe-ai-dJr">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="sWe-ai-dJr">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
@@ -449,7 +449,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ChatMsgTableViewCellPrivate" rowHeight="75" id="XxF-OR-0LV" customClass="ChatMsgTableViewCellP2P">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ChatMsgTableViewCellP2P" rowHeight="75" id="XxF-OR-0LV" customClass="ChatMsgTableViewCellP2P">
                                 <rect key="frame" x="0.0" y="86" width="320" height="75"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="XxF-OR-0LV" id="JgJ-yD-QfS">
@@ -478,10 +478,10 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="imgViewPortrait" destination="KU3-eq-i6A" id="VYF-kn-EtC"/>
-                                    <outlet property="lblLastMsg" destination="jHS-yz-gJe" id="sRB-4c-85l"/>
-                                    <outlet property="lblName" destination="Ac4-kh-RPs" id="XWc-fc-Byi"/>
-                                    <outlet property="lblTime" destination="GZM-0E-oPB" id="B4T-rM-oJv"/>
+                                    <outlet property="imageViewPortrait" destination="KU3-eq-i6A" id="PiW-PL-tEm"/>
+                                    <outlet property="lblLastMsg" destination="jHS-yz-gJe" id="tXc-OX-f4f"/>
+                                    <outlet property="lblTime" destination="GZM-0E-oPB" id="f6r-uY-M72"/>
+                                    <outlet property="lblTitle" destination="Ac4-kh-RPs" id="K6r-S8-sBK"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ChatMsgTableViewCellP2G" id="nY5-mD-Vf0" customClass="ChatMsgTableViewCellP2G">
@@ -514,10 +514,10 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="imgViewPortrait" destination="ujW-Ha-y0V" id="hjL-00-1Kt"/>
-                                    <outlet property="lblGroupName" destination="XKo-uX-fvk" id="vdw-KO-aml"/>
-                                    <outlet property="lblLastMsg" destination="YE1-Ph-Y7T" id="6Ca-hZ-0St"/>
-                                    <outlet property="lblTime" destination="0dP-R9-d8t" id="25S-iJ-aRf"/>
+                                    <outlet property="imageViewPortrait" destination="ujW-Ha-y0V" id="DEQ-dS-5iv"/>
+                                    <outlet property="lblLastMsg" destination="YE1-Ph-Y7T" id="Pke-t5-yqj"/>
+                                    <outlet property="lblTime" destination="0dP-R9-d8t" id="LKU-98-JCr"/>
+                                    <outlet property="lblTitle" destination="XKo-uX-fvk" id="P9J-eZ-Z2M"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MsgGroupApplyTableViewCell" id="GE2-2N-R1g" customClass="MsgGroupApplyTableViewCell">
@@ -557,20 +557,30 @@
                                     <outlet property="lblTitle" destination="zFr-EK-hVM" id="UlO-rq-lxR"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ChatMsgTableViewCellDefault" id="dxj-ye-9am" customClass="SysMsgTableViewCell">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SysMsgTableViewDefaultCell" id="dxj-ye-9am" customClass="SysMsgTableViewDefaultCell">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dxj-ye-9am" id="E79-pa-WK3">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="功能未开启，敬请期待" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="efx-2K-SQL">
-                                            <rect key="frame" x="79" y="24" width="184" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="标题" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="efx-2K-SQL">
+                                            <rect key="frame" x="8" y="9" width="238" height="15"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="内容" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kry-WH-IEg">
+                                            <rect key="frame" x="33" y="32" width="279" height="31"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="lblContent" destination="kry-WH-IEg" id="sH0-9N-m0O"/>
+                                    <outlet property="lblTitle" destination="efx-2K-SQL" id="sd8-uM-ldq"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -585,7 +595,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cL5-ZQ-nIb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-475" y="4039"/>
+            <point key="canvasLocation" x="-475" y="4034"/>
         </scene>
         <!--MainTab-消息NavigationController-->
         <scene sceneID="Dsx-qw-qAw">
@@ -1948,7 +1958,7 @@
                             <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yHX-Y0-GbZ">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <subviews>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="KqY-XJ-01n">
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="KqY-XJ-01n">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="520"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <prototypes>

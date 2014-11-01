@@ -9,9 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "DPSysMessage.h"
 
-@interface SysMsgTableViewCell : UITableViewCell
+@interface SysMsgTableViewDefaultCell : UITableViewCell
 
-+ (NSString *)getCellIdentifierBySysMsg:(DPSysMessage *)dpSysMsg;
+@property (weak, nonatomic) IBOutlet UILabel *lblTitle;
+@property (weak, nonatomic) IBOutlet UILabel *lblContent;
+
 - (void)drawCellBody:(DPSysMessage *)dpSysMsg;
 
 @end
