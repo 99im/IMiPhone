@@ -13,7 +13,7 @@
 
 #pragma mark - 静态方法
 static GroupMessageProxy *sharedGroupMessageProxy = nil;
-long long const TIMEOUT_GROUP_INFO = 60; //群信息页超时刷新
+//long long const TIME_GROUP_INFO = 60; //群信息页有效时长（秒）
 //long long const TIMEOUT_GROUP_MY_LIST = 60; //
 
 + (GroupMessageProxy *)sharedProxy {
@@ -36,7 +36,7 @@ long long const TIMEOUT_GROUP_INFO = 60; //群信息页超时刷新
     DPGroup *dpGroup = [[DPGroup alloc] init];
 
     //客户端存储
-    //long long localExpireTime = [GroupDataProxy nowTime] + TIMEOUT_GROUP_INFO;
+    //long long localExpireTime = [GroupDataProxy nowTime] + TIME_GROUP_INFO;
     //dpGroup.localExpireTime = localExpireTime;
     //dpGroup.isInMyGroups = [self isInMyGroups:gid];
 
@@ -72,7 +72,7 @@ long long const TIMEOUT_GROUP_INFO = 60; //群信息页超时刷新
     NSMutableArray *result = [NSMutableArray array];
     //}
 
-    //long long localExpireTime = [GroupDataProxy nowTime] + TIMEOUT_GROUP_INFO;
+    //long long localExpireTime = [GroupDataProxy nowTime] + TIME_GROUP_INFO;
     for (NSInteger i = 0; i < [list count]; i++) {
         DPGroup *dpGroup = [[DPGroup alloc] init];
         NSDictionary *group = [list objectAtIndex:i];

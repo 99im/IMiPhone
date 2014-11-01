@@ -14,9 +14,9 @@
 @implementation DPSysMessageGroup
 
 #pragma mark - 通用属性
-@synthesize uid;
-@synthesize userName;
-@synthesize gid;
+@synthesize userId;
+@synthesize userNick;
+@synthesize groupId;
 @synthesize groupName;
 
 #pragma mark - 特定属性
@@ -32,15 +32,23 @@
   NSDictionary *params = [dic objectForKey:KEYP_H__MSG_SYSMSG_LIST__LIST_PARAMS];
   NSInteger type = self.type;
     if (type == GROUP_MSG_INVITE) {
-        self.uid = [[params objectForKey:@"uid"] longLongValue];
+
+        self.userId = [[params objectForKey:@"uid"] longLongValue];
         //self.rid = [[params objectForKey:@"rid"] longLongValue];
         //self.userName = [params objectForKey:@"userName"];
         //self.userName = [params objectForKey:@"groupName"];
     } else if (type == GROUP_MSG_APPLY) {
+
         //self.uid = [[params objectForKey:@"uid"] longLongValue];
         self.rid = [[params objectForKey:@"rid"] longLongValue];
-        //self.userName = [params objectForKey:@"userName"];
-        //self.userName = [params objectForKey:@"groupName"];
+
+        NSDictionary *info = [dic objectForKey:@"groupInfo"];
+        self.groupId = [[info objectForKey:@"gid"] longLongValue];
+        self.groupName = [info objectForKey:@"name"];
+
+        info = [dic objectForKey:@"uinfo"];
+        self.userId = [[info objectForKey:@"uid"] longLongValue];
+        self.userNick = [info objectForKey:@"nick"];
     }
 }
 @end

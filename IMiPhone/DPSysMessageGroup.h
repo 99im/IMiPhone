@@ -11,9 +11,9 @@
 @interface DPSysMessageGroup : DPSysMessage
 
 #pragma mark - 通用属性
-@property (nonatomic) long long uid;
-@property (nonatomic, retain) NSString *userName;
-@property (nonatomic) long long gid;
+@property (nonatomic) long long userId;
+@property (nonatomic, retain) NSString *userNick;
+@property (nonatomic) long long groupId;
 @property (nonatomic, retain) NSString *groupName;
 
 #pragma mark - 特定属性

@@ -8,6 +8,7 @@
 
 #import "MsgGroupApplyTableViewCell.h"
 #import "GroupMessageProxy.h"
+#import "DPSysMessageGroup.h"
 
 @implementation MsgGroupApplyTableViewCell
 
@@ -23,24 +24,21 @@
   // Configure the view for the selected state
 }
 
-- (void)drawCellBody:(DPSysMessage *)dpSysMsg {
-//    self.lblGroupName.text = dpSysMsg.title;
-//    self.lblReason.text = dpSysMsg.content;
-//    NSLog(@"加群：\nmodid:%i\ntype:%i\ntargetId:%li" , dpSysMsg.modid , dpSysMsg.type , dpSysMsg.targetId);
+- (void)drawCellBody:(DPSysMessageGroup *)dpSysMsg {
+    //self.lblTitle.text = dpSysMsg.title;
+    //self.lblContent.text = dpSysMsg.content;
+    NSLog(@"加群消息：\nmodid:%i\ntype:%i\ntargetId:%qi" , dpSysMsg.modid , dpSysMsg.type , dpSysMsg.rid);
 
     //临时处理
-    self.btnAgree.hidden = YES;
-    if (dpSysMsg.modid == 4) {//群
-        if (dpSysMsg.type == 2) {//申请入群
-            self.btnAgree.hidden = NO;
-        }
+
+    if (dpSysMsg.type == MSG_GROUP_APPLY) {//申请入群
+        self.rid = dpSysMsg.rid;
+        self.btnAgree.hidden = YES;
+        self.lblTitle.text = [NSString stringWithFormat:@"申请加入群:%@" , dpSysMsg.groupName];
+        self.lblContent.text = [NSString stringWithFormat:@"%@ 申请加入群:%@" , dpSysMsg.userNick , dpSysMsg.groupName];
+    } else {
+        self.btnAgree.hidden = NO;
     }
-    //self.lblTime.text = dpChatMsg.sendTime;
-    //TODO:处理params获取各特定模块的参数值
-    //NSDictionary *params = dpSysMsg.params;
-    //long long rid = [params objectForKey:KEYQ_H__GROUP_APPLY_RESPONSE__RID];
-    //self.rid = rid;
-    self.rid = 35;  //临时使用
 }
 
 - (IBAction)btnAgreeTouchUp:(id)sender {
