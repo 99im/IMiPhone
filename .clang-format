@@ -1,7 +1,8 @@
 BasedOnStyle: WebKit
 PointerBindsToType: false
 ObjCSpaceAfterProperty: true
-ColumnLimit: 160
+ColumnLimit: 120
 AlwaysBreakBeforeMultilineStrings: false
 AllowShortFunctionsOnASingleLine: false
 AllowShortBlocksOnASingleLine: false
+#BreakBeforeTernaryOperators: true
