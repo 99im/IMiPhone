@@ -106,7 +106,7 @@ static UserDataProxy *sharedProxy = nil;
     if (_lastLoginUid == NSNotFound)
     {
         _lastLoginUid = [imRms userDefaultsReadInt:KEY_USER_LAST_LOGIN_UID isBindUid:NO];
-        [DatabaseConfig shareDatabaseConfig].databaseName = [NSString stringWithFormat:@"%ld", (long)_lastLoginUid];
+        [DatabaseConfig shareDatabaseConfig].databaseName = [NSString stringWithFormat:@"%lli", _lastLoginUid];
         [imRms setUid:_lastLoginUid];
     }
     return _lastLoginUid;
