@@ -8,10 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "MsgDataProxy.h"
+#import "DPSysMessageGroup.h"
 #import "SysMsgTableViewDefaultCell.h"
 
-#define MSG_GROUP_INVITE 1
-#define MSG_GROUP_APPLY 2
+//#define MSG_GROUP_INVITE 1
+//#define MSG_GROUP_APPLY 2
 
 @interface MsgGroupApplyTableViewCell : UITableViewCell
 

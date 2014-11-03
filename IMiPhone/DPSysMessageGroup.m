@@ -8,9 +8,6 @@
 
 #import "DPSysMessageGroup.h"
 
-#define GROUP_MSG_INVITE 1
-#define GROUP_MSG_APPLY 2
-
 @implementation DPSysMessageGroup
 
 #pragma mark - 通用属性
@@ -24,23 +21,24 @@
 @synthesize rid;
 
 #pragma mark - 基类方法实现
-- (NSDictionary *)getParamsDictionary {
-  NSDictionary *dic = [ImDataUtil getDicFromNormalClass:self containSuper:NO];
-  return dic;
+- (NSDictionary *)getParamsDictionary
+{
+    NSDictionary *dic = [ImDataUtil getDicFromNormalClass:self containSuper:NO];
+    return dic;
 }
 
-- (void)setParamsProperty:(NSDictionary *)params {
-  NSInteger type = self.type;
-    if (type == GROUP_MSG_INVITE) {
+- (void)setParamsProperty:(NSDictionary *)params
+{
+    NSInteger type = self.type;
+    NSLog(@"Group message id:%qi \ntype: %i \nparams: %@", self.smid, self.type , params);
+    if (type == GROUP_MSG_TYPE_INVITE) {
 
         self.userId = [[params objectForKey:@"uid"] longLongValue];
-        //self.rid = [[params objectForKey:@"rid"] longLongValue];
-        //self.userName = [params objectForKey:@"userName"];
-        //self.userName = [params objectForKey:@"groupName"];
-    } else if (type == GROUP_MSG_APPLY) {
-        NSLog(@"分析系统消息：申请加入群%@",params);
-
-        //self.uid = [[params objectForKey:@"uid"] longLongValue];
+        // self.rid = [[params objectForKey:@"rid"] longLongValue];
+        // self.userName = [params objectForKey:@"userName"];
+        // self.userName = [params objectForKey:@"groupName"];
+    }
+    else if (type == GROUP_MSG_TYPE_APPLY) {
         self.rid = [[params objectForKey:@"rid"] longLongValue];
         self.status = [[params objectForKey:@"status"] integerValue];
 
@@ -51,6 +49,14 @@
         info = [params objectForKey:@"uinfo"];
         self.userId = [[info objectForKey:@"uid"] longLongValue];
         self.userNick = [info objectForKey:@"nick"];
+    }
+    else if (type == GROUP_MSG_TYPE_APPLY_PROCESSED) {
+        self.rid = [[params objectForKey:@"rid"] longLongValue];
+        self.status = [[params objectForKey:@"status"] integerValue];
+
+        NSDictionary *info = [params objectForKey:@"groupInfo"];
+        self.groupId = [[info objectForKey:@"gid"] longLongValue];
+        self.groupName = [info objectForKey:@"name"];
     }
 }
 @end
