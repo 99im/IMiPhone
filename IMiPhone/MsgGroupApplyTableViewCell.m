@@ -34,9 +34,14 @@
 
     if (dpSysMsg.type == MSG_GROUP_APPLY) {//申请入群
         self.rid = dpSysMsg.rid;
-        self.lblTitle.text = [NSString stringWithFormat:@"申请加入群:%@" , dpSysMsg.groupName];
+        if (dpSysMsg.status == GROUP_MSG_STATUS_NEW) {
+            self.btnAgree.hidden = NO;
+            self.lblTitle.text = [NSString stringWithFormat:@"加群申请：待处理"];
+        } else {
+            self.btnAgree.hidden = YES;
+            self.lblTitle.text = [NSString stringWithFormat:@"加群申请：已处理"];
+        }
         self.lblContent.text = [NSString stringWithFormat:@"%@ 申请加入群:%@" , dpSysMsg.userNick , dpSysMsg.groupName];
-        self.btnAgree.hidden = NO;
     } else {
         self.btnAgree.hidden = YES;
     }

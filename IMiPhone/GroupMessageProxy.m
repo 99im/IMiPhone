@@ -118,7 +118,7 @@ static GroupMessageProxy *sharedGroupMessageProxy = nil;
             NSMutableDictionary *json =
                 [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingAllowFragments error:&err];
             if (err) {
-                NSAssert(YES, @"json error[sendGroupInfo]: \n%@", err);
+                NSLog(@"json error[sendGroupInfo]: \n%@", err);
             }
             else {
                 int errorcode = [[json objectForKey:KEYP_H__GROUP_INFO__ERROR_CODE] intValue];
@@ -158,7 +158,7 @@ static GroupMessageProxy *sharedGroupMessageProxy = nil;
             NSMutableDictionary *json =
                 [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingAllowFragments error:&err];
             if (err) {
-                NSAssert(YES, @"json error[sendGroupMyList]: \n%@", err);
+                NSLog(@"json error[sendGroupMyList]: \n%@", err);
             }
             else {
                 int errorcode = [[json objectForKey:KEYP_H__GROUP_MYLIST__ERROR_CODE] intValue];
@@ -178,7 +178,7 @@ static GroupMessageProxy *sharedGroupMessageProxy = nil;
                     //                                object:nil];
                 }
                 else {
-                    NSAssert(YES, @"sendGroupMyList response error: %i", errorcode);
+                    NSLog(@"sendGroupMyList response error: %i", errorcode);
                 }
             }
 
@@ -202,7 +202,7 @@ static GroupMessageProxy *sharedGroupMessageProxy = nil;
             NSMutableDictionary *json =
                 [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingAllowFragments error:&err];
             if (err) {
-                NSAssert(YES, @"json error[sendGroupMembers]: \n%@", err);
+                NSLog(@"json error[sendGroupMembers]: \n%@", err);
             }
             else {
                 int errorcode = [[json objectForKey:KEYP_H__GROUP_MEMBERS__ERROR_CODE] intValue];
@@ -213,7 +213,7 @@ static GroupMessageProxy *sharedGroupMessageProxy = nil;
                     //                                object:nil];
                 }
                 else {
-                    NSAssert(YES, @"sendGroupMembers response error: %i", errorcode);
+                    NSLog(@"sendGroupMembers response error: %i", errorcode);
                 }
             }
 
@@ -237,7 +237,7 @@ static GroupMessageProxy *sharedGroupMessageProxy = nil;
             NSMutableDictionary *json =
                 [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingAllowFragments error:&err];
             if (err) {
-                NSAssert(YES, @"json error[sendGroupApply]: \n%@", err);
+                NSLog(@"json error[sendGroupApply]: \n%@", err);
             }
             else {
                 int errorcode = [[json objectForKey:KEYP_H__GROUP_APPLY__ERROR_CODE] intValue];
@@ -246,7 +246,7 @@ static GroupMessageProxy *sharedGroupMessageProxy = nil;
                     [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_H__GROUP_APPLY_ object:nil];
                 }
                 else {
-                    NSAssert(YES, @"sendGroupApply response error: %i", errorcode);
+                    NSLog(@"sendGroupApply response error: %i", errorcode);
                 }
             }
 
@@ -273,18 +273,20 @@ static GroupMessageProxy *sharedGroupMessageProxy = nil;
             NSMutableDictionary *json =
                 [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingAllowFragments error:&err];
             if (err) {
-                NSAssert(YES, @"json error[sendGroupInviteResponse]: \n%@", err);
+                NSLog(@"json error[sendGroupInviteResponse]: \n%@", err);
             }
             else {
                 int errorcode = [[json objectForKey:KEYP_H__GROUP_APPLY_RESPONSE__ERROR_CODE] intValue];
                 if (errorcode == 0) {
                     // NSLog(@"sendGroupInviteResponse response ok:\n%@", json);
-                    [json setObject:agreeNum forKey:@"agree"];
+                    long long gid = [[json objectForKey:KEYP_H__GROUP_APPLY_RESPONSE__GID] longLongValue];
+                    [params setObject:[NSNumber numberWithLongLong:gid] forKey:KEYP_H__GROUP_APPLY_RESPONSE__GID];
+
                     [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_H__GROUP_APPLY_RESPONSE_
-                                                                        object:json];
+                                                                        object:params];
                 }
                 else {
-                    NSAssert(YES, @"sendGroupInviteResponse response error: %i", errorcode);
+                    NSLog(@"sendGroupInviteResponse response error: %i", errorcode);
                 }
             }
 
@@ -308,7 +310,7 @@ static GroupMessageProxy *sharedGroupMessageProxy = nil;
             NSMutableDictionary *json =
                 [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingAllowFragments error:&err];
             if (err) {
-                NSAssert(YES, @"json error[sendGroupInvite]: \n%@", err);
+                NSLog(@"json error[sendGroupInvite]: \n%@", err);
             }
             else {
                 int errorcode = [[json objectForKey:KEYP_H__GROUP_INVITE__ERROR_CODE] intValue];
@@ -319,7 +321,7 @@ static GroupMessageProxy *sharedGroupMessageProxy = nil;
                     //                                object:nil];
                 }
                 else {
-                    NSAssert(YES, @"sendGroupInvite response error: %i", errorcode);
+                    NSLog(@"sendGroupInvite response error: %i", errorcode);
                 }
             }
 
@@ -346,18 +348,18 @@ static GroupMessageProxy *sharedGroupMessageProxy = nil;
             NSMutableDictionary *json =
                 [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingAllowFragments error:&err];
             if (err) {
-                NSAssert(YES, @"json error[sendGroupInviteResponse]: \n%@", err);
+                NSLog(@"json error[sendGroupInviteResponse]: \n%@", err);
             }
             else {
                 int errorcode = [[json objectForKey:KEYP_H__GROUP_INVITE_RESPONSE__ERROR_CODE] intValue];
                 if (errorcode == 0) {
-                    // NSLog(@"sendGroupInviteResponse response ok:\n%@", json);
-                    [json setObject:agreeNum forKey:@"agree"];
-                    [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_H__GROUP_APPLY_RESPONSE_
-                                                                        object:json];
+                    long long gid = [[json objectForKey:KEYP_H__GROUP_INVITE_RESPONSE__GID] longLongValue];
+                    [params setObject:[NSNumber numberWithLongLong:gid] forKey:KEYP_H__GROUP_INVITE_RESPONSE__GID];
+                    [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_H__GROUP_INVITE_RESPONSE_
+                                                                        object:params];
                 }
                 else {
-                    NSAssert(YES, @"sendGroupInviteResponse response error: %i", errorcode);
+                    NSLog(@"sendGroupInviteResponse response error: %i", errorcode);
                 }
             }
 
@@ -382,7 +384,7 @@ static GroupMessageProxy *sharedGroupMessageProxy = nil;
             NSMutableDictionary *json =
                 [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingAllowFragments error:&err];
             if (err) {
-                NSAssert(YES, @"json error[sendGroupCreate]: \n%@", err);
+                NSLog(@"json error[sendGroupCreate]: \n%@", err);
             }
             else {
                 int errorcode = [[json objectForKey:KEYP_H__GROUP_CREATE__ERROR_CODE] intValue];

@@ -174,7 +174,7 @@
                                                name:NOTI_S_CHAT_CHATN
                                              object:nil];
   [[NSNotificationCenter defaultCenter] addObserver:self
-                                           selector:@selector(dealChatn:)
+                                           selector:@selector(dealGroupApplyResponse:)
                                                name:NOTI_H__GROUP_APPLY_RESPONSE_
                                              object:nil];
 }
@@ -194,15 +194,18 @@
 }
 - (void)dealGroupApplyResponse:(NSNotification *)notification
 {
-    NSDictionary *json = notification.object;
-    NSInteger agree = [[json objectForKey:@"agree"] integerValue];
-    if (agree == 1) {
-        NSLog(@"通过了申请");
+    NSMutableDictionary *params = notification.object;
+    if (params) {
+        NSInteger agree = [[params objectForKey:KEYQ_H__GROUP_INVITE_RESPONSE__AGREE] integerValue];
+        if (agree == 1) {
+            NSLog(@"通过了申请：%i" , agree);
+        } else {
+            NSLog(@"拒绝了申请：%i" , agree);
+        }
+        [self.tableView reloadData];
     } else {
-        NSLog(@"拒绝了申请");
+        NSLog(@"加群回应出错！");
     }
-    [self.tableView reloadData];
-
 }
 
 @end
