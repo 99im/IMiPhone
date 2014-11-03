@@ -13,7 +13,15 @@
 
 - (void)drawCellBody:(DPChatMessage *)dpChatMsg;
 {
-    DPUser *dpUser = [[UserDataProxy sharedProxy] getUserByUid:dpChatMsg.senderUid];
+    DPUser *dpUser;
+    long long herUid;
+    if (dpChatMsg.senderUid == [UserDataProxy sharedProxy].lastLoginUid) {
+        herUid = dpChatMsg.targetId;
+    }
+    else {
+        herUid = dpChatMsg.senderUid ;
+    }
+    dpUser = [[UserDataProxy sharedProxy] getUserByUid:herUid];
     if (dpUser) {
         self.lblTitle.text = dpUser.nick;
         
