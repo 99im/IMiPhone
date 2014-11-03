@@ -122,7 +122,7 @@ static NSDictionary *dicSQLDataType;
     }
     SqlightResult *result = [self.sqlight selectFields:fields
                                            ByCondition:condition Bind:bind];
-    NSLog(@"query Result msg:%@ code:%ld data:%@", result.msg, (long)result.code, result.data);
+    //NSLog(@"query Result msg:%@ code:%ld data:%@", result.msg, (long)result.code, result.data);
     NSMutableArray *arrResult = [NSMutableArray array];
     if (result.data) {
         NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
