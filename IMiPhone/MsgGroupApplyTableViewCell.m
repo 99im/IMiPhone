@@ -44,6 +44,8 @@
         self.lblContent.text = [NSString stringWithFormat:@"%@ 申请加入群:%@" , dpSysMsg.userNick , dpSysMsg.groupName];
     } else {
         self.btnAgree.hidden = YES;
+        self.lblTitle.text = dpSysMsg.title;
+        self.lblContent.text = dpSysMsg.content;
     }
 }
 
