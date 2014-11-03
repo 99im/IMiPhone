@@ -62,6 +62,10 @@
     [self registerMessageNotification];
     //
     long long groupid = [GroupDataProxy sharedProxy].getGroupIdCurrent;
+    DPGroup *dpGroup = [[GroupDataProxy sharedProxy] getGroupInfoCurrent:NO];
+    if (dpGroup) {
+        self.title = dpGroup.name;
+    }
     NSArray *arrChatMessages = [[ChatDataProxy sharedProxy] getGroupChatMessagesByGroupid:groupid];
     for (NSInteger i = 0; i < arrChatMessages.count; i++) {
         DPGroupChatMessage *dpChatMsg = [arrChatMessages objectAtIndex:i];

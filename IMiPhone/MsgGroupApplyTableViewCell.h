@@ -8,12 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "MsgDataProxy.h"
-#import "SysMsgTableViewCell.h"
+#import "SysMsgTableViewDefaultCell.h"
 
 #define MSG_GROUP_INVITE 1
 #define MSG_GROUP_APPLY 2
 
-@interface MsgGroupApplyTableViewCell : SysMsgTableViewCell
+@interface MsgGroupApplyTableViewCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UILabel *lblTitle;
 @property (weak, nonatomic) IBOutlet UILabel *lblContent;

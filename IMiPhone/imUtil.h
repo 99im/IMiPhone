@@ -31,6 +31,4 @@
 //显示提示框，指定时间后自动消失
 + (void)alertViewMessage:(NSString *)msg disappearAfter:(NSTimeInterval)ti;
 
-+ (NSError *)wrapServerError:(NSInteger)errorcode withDomain:(NSString *)domain;
-
 @end

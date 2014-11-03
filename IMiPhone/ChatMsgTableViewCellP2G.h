@@ -7,19 +7,19 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "DPChatMessage.h"
+#import "DPGroupChatMessage.h"
 #import "DPUser.h"
 #import "UserDataProxy.h"
-#import "SysMsgTableViewCell.h"
+#import "SysMsgTableViewDefaultCell.h"
+#import "GroupDataProxy.h"
 
+@interface ChatMsgTableViewCellP2G : SysMsgTableViewDefaultCell
 
-@interface ChatMsgTableViewCellP2G : SysMsgTableViewCell
-
-@property (weak, nonatomic) IBOutlet UIImageView *imgViewPortrait;
-@property (weak, nonatomic) IBOutlet UILabel *lblGroupName;
-@property (weak, nonatomic) IBOutlet UILabel *lblLastMsg;
+@property (weak, nonatomic) IBOutlet UIImageView *imageViewPortrait;
+@property (weak, nonatomic) IBOutlet UILabel *lblTitle;
 @property (weak, nonatomic) IBOutlet UILabel *lblTime;
+@property (weak, nonatomic) IBOutlet UILabel *lblLastMsg;
 
-- (void)drawCellBody:(DPChatMessage *)dpChatMsg;
+- (void)drawCellBody:(DPGroupChatMessage *)dpGroupChatMsg;
 
 @end

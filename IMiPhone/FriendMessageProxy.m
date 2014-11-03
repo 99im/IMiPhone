@@ -290,7 +290,6 @@ static FriendMessageProxy *sharedFriendMessageProxy = nil;
              }
              else {
                  NSLog(@"Http connect response error: %i", errorcode);
-                 //                 NSError *error = [imUtil wrapServerError:errorcode withDomain:PATH__FRIEND_FRIEND_LIST_];
              }
          }
      }];

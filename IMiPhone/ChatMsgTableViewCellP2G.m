@@ -20,16 +20,16 @@
     // Configure the view for the selected state
 }
 
-- (void)drawCellBody:(DPChatMessage *)dpChatMsg
+- (void)drawCellBody:(DPGroupChatMessage *)dpGroupChatMsg
 {
-    DPUser *dpUser = [[UserDataProxy sharedProxy] getUserByUid:dpChatMsg.senderUid];
-    if (dpUser) {
-        self.lblGroupName.text = dpUser.nick;
-
+    long long groupid = dpGroupChatMsg.targetId;
+    DPGroup *group = [[GroupDataProxy sharedProxy] getGroupInfo:groupid byHttpMode:NO];
+    if (group) {
+        self.lblTitle.text = group.name;
     }
     //        NSLog(@"%@,%@",dpChatMsg.content,dpChatMsg.sendTime);
-    self.lblLastMsg.text = dpChatMsg.content;
-    //        cell.lblTime.text = dpChatMsg.sendTime;
+    self.lblLastMsg.text = dpGroupChatMsg.content;
+    self.lblTitle.text = dpGroupChatMsg.sendTime;
 }
 
 @end

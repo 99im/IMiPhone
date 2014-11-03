@@ -17,7 +17,8 @@
 #import "ChatMessageProxy.h"
 #import "UserMessageProxy.h"
 #import "DPSysMessageFriend.h"
-#import "SysMsgTableViewCell.h"
+#import "SysMsgTableViewDefaultCell.h"
+#import "ChatMsgTableViewCellP2P.h"
 
 @interface MsgTableViewController ()
 
@@ -72,18 +73,32 @@
     NSArray *uiMsgList = [[MsgDataProxy sharedProxy] getUiMsgList];
     DPUiMessage *dpUiMsg = [uiMsgList objectAtIndex:indexPath.row];
     if (dpUiMsg.type == UI_MESSAGE_TYPE_CHAT) {
-        cellIdentifier = @"ChatMsgTableViewCellP2G";
+        cellIdentifier = @"ChatMsgTableViewCellP2P";
         cell = [self.tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
 
         DPChatMessage *dpChatMsg = [[ChatDataProxy sharedProxy] getP2PChatMessageByTargetUid:dpUiMsg.relationId withMid:dpUiMsg.mid];
-        [((ChatMsgTableViewCellP2G *)cell) drawCellBody:dpChatMsg];
+        [((ChatMsgTableViewCellP2P *)cell) drawCellBody:dpChatMsg];
     
+    }
+    else if (dpUiMsg.type == UI_MESSAGE_TYPE_GROUP_CHAT) {
+        cellIdentifier = @"ChatMsgTableViewCellP2G";
+        cell = [self.tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
+        
+        DPGroupChatMessage *dpGroupChatMsg = [[ChatDataProxy sharedProxy] getGroupChatMessageByGroupid:dpUiMsg.relationId withMid:dpUiMsg.mid];
+        [((ChatMsgTableViewCellP2G *)cell) drawCellBody:dpGroupChatMsg];
     }
     else if (dpUiMsg.type == UI_MESSAGE_TYPE_SYS) {
         DPSysMessage *dpSysMsg = [[MsgDataProxy sharedProxy] getSysMsgByMid:dpUiMsg.mid];
-        cellIdentifier = [SysMsgTableViewCell getCellIdentifierBySysMsg:dpSysMsg];
+        cellIdentifier = [self getCellIdentifierBySysMsg:dpSysMsg];
         cell = [self.tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
-        [(SysMsgTableViewCell *)cell drawCellBody:dpSysMsg];
+        SEL drawCellBody = @selector(drawCellBody:);
+        if ([cell respondsToSelector: drawCellBody] ) {
+            [cell performSelector:drawCellBody withObject:dpSysMsg afterDelay:0];
+        }
+        else {
+            NSLog(@"cell need to implements drawbody");
+        }
+        
     }
     return cell;
 }
@@ -206,6 +221,19 @@
     } else {
         NSLog(@"加群回应出错！");
     }
+}
+
+- (NSString *)getCellIdentifierBySysMsg:(DPSysMessage *)dpSysMsg
+{
+    NSString *cellIdentifier = @"SysMsgTableViewDefaultCell";
+    
+    if (dpSysMsg.modid == SYS_MSG_MODE_FRIEND) {
+//        cellIdentifier = @"";
+    }
+    else if (dpSysMsg.modid == SYS_MSG_MODE_GROUP) {
+        cellIdentifier = @"MsgGroupApplyTableViewCell";
+    }
+    return cellIdentifier;
 }
 
 @end

@@ -125,7 +125,7 @@ static MsgDataProxy *chatDataProxy = nil;
 
     NSArray *uiMsgList = [self getUiMsgList];
     
-    if (dpUiMessage.type == UI_MESSAGE_TYPE_CHAT) {
+    if (dpUiMessage.type == UI_MESSAGE_TYPE_CHAT || dpUiMessage.type == UI_MESSAGE_TYPE_GROUP_CHAT ) {
         NSInteger findIndex = [ImDataUtil getIndexOf:uiMsgList byItemKey:@"relationId" withValue:[NSNumber numberWithLong:dpUiMessage.relationId]];
         if (findIndex == NSNotFound) {
             [[UiMessageDAO sharedDAO] insert:dbUiMessage];
