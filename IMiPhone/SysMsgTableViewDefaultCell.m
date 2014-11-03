@@ -22,7 +22,7 @@
 }
 
 - (void)drawCellBody:(DPSysMessage *)dpSysMsg {
-    
+    NSLog(@"系统消息默认title：%@",dpSysMsg.title);
     self.lblTitle.text = dpSysMsg.title;
     self.lblContent.text = dpSysMsg.content;
 }
