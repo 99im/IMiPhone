@@ -8,6 +8,9 @@
 
 #import "DPSysMessage.h"
 
+#define GROUP_MSG_STATUS_NEW 0
+#define GROUP_MSG_STATUS_PROCESSED 1
+
 @interface DPSysMessageGroup : DPSysMessage
 
 #pragma mark - 通用属性
@@ -15,6 +18,7 @@
 @property (nonatomic, retain) NSString *userNick;
 @property (nonatomic) long long groupId;
 @property (nonatomic, retain) NSString *groupName;
+@property (nonatomic) NSInteger status;
 
 #pragma mark - 特定属性
 @property (nonatomic) long long rid;    //申请加群

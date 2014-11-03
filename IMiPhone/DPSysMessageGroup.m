@@ -18,6 +18,7 @@
 @synthesize userNick;
 @synthesize groupId;
 @synthesize groupName;
+@synthesize status;
 
 #pragma mark - 特定属性
 @synthesize rid;
@@ -41,6 +42,7 @@
 
         //self.uid = [[params objectForKey:@"uid"] longLongValue];
         self.rid = [[params objectForKey:@"rid"] longLongValue];
+        self.status = [[params objectForKey:@"status"] integerValue];
 
         NSDictionary *info = [params objectForKey:@"groupInfo"];
         self.groupId = [[info objectForKey:@"gid"] longLongValue];
