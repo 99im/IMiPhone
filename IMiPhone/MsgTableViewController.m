@@ -19,6 +19,7 @@
 #import "DPSysMessageFriend.h"
 #import "SysMsgTableViewDefaultCell.h"
 #import "ChatMsgTableViewCellP2P.h"
+#import "GroupDataProxy.h"
 
 @interface MsgTableViewController ()
 
@@ -108,8 +109,9 @@
     NSArray *uiMsgList = [[MsgDataProxy sharedProxy] getUiMsgList];
     DPUiMessage *dpUiMsg = [uiMsgList objectAtIndex:indexPath.row];
     if (dpUiMsg.type == UI_MESSAGE_TYPE_CHAT) {
-        DPChatMessage *dpChatMsg = [[ChatDataProxy sharedProxy] getP2PChatMessageByTargetUid:[ChatDataProxy sharedProxy].chatToUid withMid:dpUiMsg.mid];
-        if ([dpChatMsg.stage isEqualToString:CHAT_STAGE_P2P]) {
+        [ChatDataProxy sharedProxy].chatToUid = dpUiMsg.relationId;
+//        DPChatMessage *dpChatMsg = [[ChatDataProxy sharedProxy] getP2PChatMessageByTargetUid:[ChatDataProxy sharedProxy].chatToUid withMid:dpUiMsg.mid];
+//        if ([dpChatMsg.stage isEqualToString:CHAT_STAGE_P2P]) {
 //            DPUser *dpUser = [[UserDataProxy sharedProxy] getUserByUid: dpUiMsg.relationId];
 //            if (dpUser == nil) {
 //                [UserMessageProxy sharedProxy] sendTyp
@@ -117,7 +119,12 @@
             [ChatDataProxy sharedProxy].chatToUid = dpUiMsg.relationId;
             [ChatDataProxy sharedProxy].chatViewType = ChatViewTypeP2P;
             [self performSegueWithIdentifier:@"ChatMsgList2ChatSegue" sender:self];
-        }
+//        }
+    }
+    else if (dpUiMsg.type == UI_MESSAGE_TYPE_GROUP_CHAT) {
+        [[GroupDataProxy sharedProxy] setGroupIdCurrent:dpUiMsg.relationId];
+        [self performSegueWithIdentifier:@"ChatMsgList2GroupChatSegue" sender:self];
+    
     }
     else if (dpUiMsg.type == UI_MESSAGE_TYPE_SYS) {
         

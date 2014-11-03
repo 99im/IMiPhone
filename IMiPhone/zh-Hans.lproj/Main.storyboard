@@ -591,6 +591,7 @@
                     <navigationItem key="navigationItem" title="消息" id="r12-fG-D0S"/>
                     <connections>
                         <segue destination="U0M-ht-yaq" kind="push" identifier="ChatMsgList2ChatSegue" id="B9e-R6-y8A"/>
+                        <segue destination="yEJ-R3-2p3" kind="push" identifier="ChatMsgList2GroupChatSegue" id="2se-m4-WKK"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cL5-ZQ-nIb" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1946,7 +1947,7 @@
         <!--Group-群聊-->
         <scene sceneID="zxE-yQ-ZxD">
             <objects>
-                <viewController id="yEJ-R3-2p3" userLabel="Group-群聊" customClass="GroupChatViewController" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="yEJ-R3-2p3" userLabel="Group-群聊" customClass="GroupChatViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="M58-RD-fh3"/>
                         <viewControllerLayoutGuide type="bottom" id="1DE-Tv-kht"/>
@@ -2307,12 +2308,13 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="6IF-l5-3Iq"/>
+        <segue reference="2se-m4-WKK"/>
         <segue reference="jj6-rV-QBG"/>
+        <segue reference="6IF-l5-3Iq"/>
         <segue reference="fNZ-Tb-k0o"/>
-        <segue reference="B9e-R6-y8A"/>
         <segue reference="F18-ln-36K"/>
         <segue reference="EnR-fJ-pM5"/>
+        <segue reference="B9e-R6-y8A"/>
         <segue reference="Dql-ZX-dEr"/>
     </inferredMetricsTieBreakers>
 </document>
