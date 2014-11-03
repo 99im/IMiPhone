@@ -30,7 +30,7 @@
 - (void)setParamsProperty:(NSDictionary *)params
 {
     NSInteger type = self.type;
-    NSLog(@"Group message id:%qi \ntype: %i \nparams: %@", self.smid, self.type , params);
+    //NSLog(@"Group message id:%qi \ntype: %i \nparams: %@", self.smid, self.type , params);
     if (type == GROUP_MSG_TYPE_INVITE) {
 
         self.userId = [[params objectForKey:@"uid"] longLongValue];
