@@ -107,7 +107,7 @@ static AccountMessageProxy *sharedAccountMessageProxy = nil;
         else {
             int errorcode = [[json objectForKey:KEYP_H__ACCOUNT_LOGIN__ERROR_CODE] intValue];
             if (errorcode == 0) {
-                NSInteger uid = [[json objectForKey:KEYP_H__ACCOUNT_LOGIN__UID] integerValue];
+                long long uid = [[json objectForKey:KEYP_H__ACCOUNT_LOGIN__UID] longLongValue];
                 NSString *verify = [json objectForKey:KEYP_H__ACCOUNT_LOGIN__VERIFY];
                 [UserDataProxy sharedProxy].verify = verify;
                 [UserDataProxy sharedProxy].lastLoginUid = uid;

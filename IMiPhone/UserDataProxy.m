@@ -101,7 +101,7 @@ static UserDataProxy *sharedProxy = nil;
     [imRms userDefaultsWrite:KEY_USER_LAST_LOGIN_OID withStringValue:_lastLoginOid isBindUid:NO];
 }
 
-- (NSInteger)getLastLoginUid
+- (long long)getLastLoginUid
 {
     if (_lastLoginUid == NSNotFound)
     {
@@ -111,12 +111,12 @@ static UserDataProxy *sharedProxy = nil;
     }
     return _lastLoginUid;
 }
-- (void)setLastLoginUid:(NSInteger)lastLoginUid
+- (void)setLastLoginUid:(long long)lastLoginUid
 {
     _lastLoginUid = lastLoginUid;
-    [DatabaseConfig shareDatabaseConfig].databaseName = [NSString stringWithFormat:@"%ld", (long)_lastLoginUid];
+    [DatabaseConfig shareDatabaseConfig].databaseName = [NSString stringWithFormat:@"%lli", _lastLoginUid];
     [imRms setUid:_lastLoginUid];
-    [imRms userDefaultsWrite:KEY_USER_LAST_LOGIN_UID withStringValue:[NSString stringWithFormat:@"%ld", (long)_lastLoginUid] isBindUid:NO];
+    [imRms userDefaultsWrite:KEY_USER_LAST_LOGIN_UID withStringValue:[NSString stringWithFormat:@"%lli", _lastLoginUid] isBindUid:NO];
 }
 
 - (NSString *)getVerify

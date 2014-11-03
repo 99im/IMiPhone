@@ -10,7 +10,7 @@
 
 @interface DPUser : NSObject
 
-@property (nonatomic) NSInteger uid;
+@property (nonatomic) long long uid;
 @property (nonatomic, retain) NSString *oid;
 @property (nonatomic, retain) NSString *nick;
 @property (nonatomic, retain) NSString *mobile;

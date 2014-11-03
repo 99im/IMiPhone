@@ -9,7 +9,7 @@
 
 @interface imRms : NSObject
 
-+ (void)setUid:(NSInteger)uid;
++(void)setUid:(long long)uid;
 
 + (BOOL)userDefaultsWrite:(NSString *)key withBoolValue:(NSInteger)value isBindUid:(BOOL)bind;
 

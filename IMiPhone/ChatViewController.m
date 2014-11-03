@@ -45,7 +45,6 @@
     self.tableViewChat.dataSource = self;
     self.tableViewChat.delegate = self;
     
-    [UserDataProxy sharedProxy].lastLoginUid = 27;
     self.viewChatInputSound.hidden = YES;
     
     self.arrAllCellFrames = [NSMutableArray array];
