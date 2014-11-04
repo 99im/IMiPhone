@@ -236,12 +236,13 @@ static GroupDataProxy *sharedGroupDataProxy = nil;
     return NO;
 }
 
-- (BOOL)isGroupOwner:(long long)creatorUid
+- (BOOL)isGroupOwner:(DPGroup *)dpGroup
 {
-    if ([UserDataProxy sharedProxy].lastLoginUid == creatorUid) {
-        return YES;
-    }
-    return NO;
+    return dpGroup.myRelation == GROUP_RELATION_OWNER;
+//    if ([UserDataProxy sharedProxy].lastLoginUid == dpGroup.creator_uid) {
+//        return YES;
+//    }
+//    return NO;
 }
 
 #pragma mark - 当前群

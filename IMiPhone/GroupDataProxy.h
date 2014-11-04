@@ -41,7 +41,7 @@
 - (NSInteger)deleteGroupByGid:(long long)gid;
 
 + (BOOL)isInMyGroups:(DPGroup *)dpGroup;
-- (BOOL)isGroupOwner:(long long)creatorUid;
+- (BOOL)isGroupOwner:(DPGroup *)dpGroup;
 
 #pragma mark - 当前群
 -(long long)getGroupIdCurrent;
