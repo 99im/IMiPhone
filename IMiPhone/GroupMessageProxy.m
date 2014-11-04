@@ -224,12 +224,12 @@ static GroupMessageProxy *sharedGroupMessageProxy = nil;
                         dpGroup.creator_vip = [[creator objectForKey:KEYP_H__GROUP_INFO__INFO_CREATOR_VIP] integerValue];
                         dpGroup.creator_city = [creator objectForKey:KEYP_H__GROUP_INFO__INFO_CREATOR_CITY];
 
-                        [myList addObject:dpGroup];
-                        
-                        //更新时间
+                        //本地过期时间
                         dpGroup.localExpireTime = localExpireTime;
                         // dpGroup.isInMyGroups = YES;
-                    }
+
+                        [myList addObject:dpGroup];
+                   }
                     
                     errorcode = [[GroupDataProxy sharedProxy] updateGroupMyList:myList];
                     if (errorcode == 0) {
