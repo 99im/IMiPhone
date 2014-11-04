@@ -199,51 +199,14 @@ static GroupDataProxy *sharedGroupDataProxy = nil;
     return nil;
 }
 
-- (NSInteger)updateGroupInfo:(NSMutableDictionary *)json
+- (void)updateGroupInfo:(DPGroup *)group
 {
-    NSDictionary *info = [json objectForKey:KEYP_H__GROUP_INFO__INFO];
-
-    long gid = [[info objectForKey:KEYP_H__GROUP_INFO__INFO_GID] longValue];
-    if (gid < 1) {
-        return 1001; //客户端错误码，待统一整理
-    }
-
-    // NSTimeInterval timeInterval= [GroupDataProxy nowTime];
-    DPGroup *dpGroup = _groupInfoCurrent;
-    if (!dpGroup || dpGroup.gid != gid) {
-        dpGroup = [[DPGroup alloc] init];
-    }
-
     //客户端存储
     long long localExpireTime = [GroupDataProxy nowTime] + TIMEOUT_GROUP_INFO;
-    dpGroup.localExpireTime = localExpireTime;
-    // dpGroup.isInMyGroups = [self isInMyGroups:gid];
-
-    //群基本信息
-    dpGroup.gid = gid;
-    dpGroup.name = [info objectForKey:KEYP_H__GROUP_INFO__INFO_NAME];
-    dpGroup.intro = [info objectForKey:KEYP_H__GROUP_INFO__INFO_INTRO];
-    dpGroup.ctime = [info objectForKey:KEYP_H__GROUP_INFO__INFO_CTIME];
-    // NSLog(@"更新群创建时间：%@", dpGroup.ctime);
-    dpGroup.memberNum = [[info objectForKey:KEYP_H__GROUP_INFO__INFO_MEMBERNUM] integerValue];
-    dpGroup.myRelation = [[info objectForKey:KEYP_H__GROUP_SEARCH__LIST_MYRELATION] integerValue];
-
-    //群主信息
-    NSDictionary *creator = [info objectForKey:KEYP_H__GROUP_INFO__INFO_CREATOR];
-    dpGroup.creator_uid = [[creator objectForKey:KEYP_H__GROUP_INFO__INFO_CREATOR_UID] longLongValue];
-    dpGroup.creator_nick = [creator objectForKey:KEYP_H__GROUP_INFO__INFO_CREATOR_NICK];
-    dpGroup.creator_oid = [[creator objectForKey:KEYP_H__GROUP_INFO__INFO_CREATOR_OID] longLongValue];
-    dpGroup.creator_vip = [[creator objectForKey:KEYP_H__GROUP_INFO__INFO_CREATOR_VIP] integerValue];
-    dpGroup.creator_city = [creator objectForKey:KEYP_H__GROUP_INFO__INFO_CREATOR_CITY];
-
+    group.localExpireTime = localExpireTime;
+    
     // TODO: 入库保存群信息
-    if (!_groupInfoCurrent) {
-        _groupInfoCurrent = dpGroup;
-    }
-
-    // log
-    NSLog(@"更新群：%@", json);
-    return 0;
+    _groupInfoCurrent = group;
 }
 
 - (NSInteger)deleteGroupByGid:(long long)gid

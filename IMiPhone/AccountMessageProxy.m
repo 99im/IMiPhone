@@ -47,8 +47,7 @@ static AccountMessageProxy *sharedAccountMessageProxy = nil;
                 [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_H__ACCOUNT_MOBCODE_ object:nil];
             }
             else {
-                NSError *error = [self processErrorCode:errorcode fromSource:PATH_H__ACCOUNT_MOBCODE_];
-                [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_H__ACCOUNT_MOBCODE_ object:error];
+                [self processErrorCode:errorcode fromSource:PATH_H__ACCOUNT_MOBCODE_ useNotiName:NOTI_H__ACCOUNT_MOBCODE_];
             }
         }
     }];
@@ -80,8 +79,7 @@ static AccountMessageProxy *sharedAccountMessageProxy = nil;
                 [UserDataProxy sharedProxy].lastLoginUid = uid;
             }
             else {
-                NSError *error = [self processErrorCode:errorcode fromSource:PATH_H__ACCOUNT_REGISTER_];
-                [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_H__ACCOUNT_REGISTER_ object:error];
+               [self processErrorCode:errorcode fromSource:PATH_H__ACCOUNT_REGISTER_ useNotiName:NOTI_H__ACCOUNT_REGISTER_];
             }
         }
     }];
@@ -116,8 +114,7 @@ static AccountMessageProxy *sharedAccountMessageProxy = nil;
             else {
                 UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Alert", nil) message:[NSString stringWithFormat:NSLocalizedString(@"Alert.LoginError", nil), errorcode] delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", nil) otherButtonTitles:nil];
                 [alertView show];
-                NSError *error = [self processErrorCode:errorcode fromSource:PATH_H__ACCOUNT_LOGIN_];
-                [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_H__ACCOUNT_LOGIN_ object:error];
+                [self processErrorCode:errorcode fromSource:PATH_H__ACCOUNT_LOGIN_ useNotiName:NOTI_H__ACCOUNT_LOGIN_];
             }
         }
     }];
@@ -155,8 +152,7 @@ static AccountMessageProxy *sharedAccountMessageProxy = nil;
                 [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_H__ACCOUNT_MYINFO_ object:nil];
             }
             else {
-                NSError *error = [self processErrorCode:errorcode fromSource:PATH_H__ACCOUNT_MYINFO_];
-                [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_H__ACCOUNT_MYINFO_ object:error];
+                [self processErrorCode:errorcode fromSource:PATH_H__ACCOUNT_MYINFO_ useNotiName:NOTI_H__ACCOUNT_MYINFO_];
             }
 
         }
@@ -183,8 +179,7 @@ static AccountMessageProxy *sharedAccountMessageProxy = nil;
                 [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_H__ACCOUNT_UPDATEINFO_ object:nil];
             }
             else {
-                NSError *error = [self processErrorCode:errorcode fromSource:PATH_H__ACCOUNT_UPDATEINFO_];
-                [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_H__ACCOUNT_UPDATEINFO_ object:error];
+                [self processErrorCode:errorcode fromSource:PATH_H__ACCOUNT_UPDATEINFO_ useNotiName:NOTI_H__ACCOUNT_UPDATEINFO_];
             }
         }
     }];
@@ -209,8 +204,7 @@ static AccountMessageProxy *sharedAccountMessageProxy = nil;
         [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_S_ACCOUNT_LOGIN object:nil];
     }
     else {
-        NSError *error = [self processErrorCode:res fromSource:[NSString stringWithFormat:@"%@_%@", MARK_ACCOUNT, TYPE_S_ACCOUNT_LOGIN]];
-        [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_S_ACCOUNT_LOGIN object:error];
+        [self processErrorCode:res fromSource:[NSString stringWithFormat:@"%@_%@", MARK_ACCOUNT, TYPE_S_ACCOUNT_LOGIN] useNotiName:NOTI_S_ACCOUNT_LOGIN];
     }
 }
 
