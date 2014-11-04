@@ -158,6 +158,10 @@
 		585971F21999F0C700258CB1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 585971D11999F0C700258CB1 /* Foundation.framework */; };
 		585971F31999F0C700258CB1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 585971D51999F0C700258CB1 /* UIKit.framework */; };
 		5859721819A1DEE500258CB1 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5859721719A1DEE500258CB1 /* LoginViewController.m */; };
+		5881BBFE1A079A7D0046E5E4 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5881BBFD1A079A7D0046E5E4 /* MapKit.framework */; };
+		5881BC001A079A980046E5E4 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5881BBFF1A079A980046E5E4 /* WebKit.framework */; };
+		5881BC021A079ABE0046E5E4 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5881BC011A079ABE0046E5E4 /* StoreKit.framework */; };
+		5881BC041A07A6EC0046E5E4 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5881BC031A07A6EC0046E5E4 /* CoreLocation.framework */; };
 		5887FD2A19CC00EF001BFAFB /* TPContactsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5887FD2819CC00EF001BFAFB /* TPContactsTableViewController.m */; };
 		58A000761A0212F200DF1E68 /* MsgGroupApplyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A000751A0212F200DF1E68 /* MsgGroupApplyTableViewCell.m */; };
 		58A331AA19E51A95005BE980 /* CategoryListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A331A919E51A95005BE980 /* CategoryListTableViewController.m */; };
@@ -410,6 +414,10 @@
 		5859720B19A1CD9200258CB1 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		5859721619A1DEE500258CB1 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginViewController.h; path = IMiPhone/LoginViewController.h; sourceTree = "<group>"; };
 		5859721719A1DEE500258CB1 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginViewController.m; path = IMiPhone/LoginViewController.m; sourceTree = "<group>"; };
+		5881BBFD1A079A7D0046E5E4 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		5881BBFF1A079A980046E5E4 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		5881BC011A079ABE0046E5E4 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		5881BC031A07A6EC0046E5E4 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		5887FD2719CC00EF001BFAFB /* TPContactsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPContactsTableViewController.h; sourceTree = "<group>"; };
 		5887FD2819CC00EF001BFAFB /* TPContactsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPContactsTableViewController.m; sourceTree = "<group>"; };
 		58A000741A0212F200DF1E68 /* MsgGroupApplyTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MsgGroupApplyTableViewCell.h; sourceTree = "<group>"; };
@@ -541,6 +549,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5881BC041A07A6EC0046E5E4 /* CoreLocation.framework in Frameworks */,
+				5881BC021A079ABE0046E5E4 /* StoreKit.framework in Frameworks */,
+				5881BC001A079A980046E5E4 /* WebKit.framework in Frameworks */,
+				5881BBFE1A079A7D0046E5E4 /* MapKit.framework in Frameworks */,
 				58BACF0B19B5C12800A72391 /* MobileCoreServices.framework in Frameworks */,
 				110FCCA119ADF83C0087CBCB /* libsqlite3.dylib in Frameworks */,
 				58B496F119A719350082AE30 /* Security.framework in Frameworks */,
@@ -728,6 +740,10 @@
 		585971D01999F0C700258CB1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5881BC031A07A6EC0046E5E4 /* CoreLocation.framework */,
+				5881BC011A079ABE0046E5E4 /* StoreKit.framework */,
+				5881BBFF1A079A980046E5E4 /* WebKit.framework */,
+				5881BBFD1A079A7D0046E5E4 /* MapKit.framework */,
 				116AB14219B7318C00092E2C /* libsqlite3.0.dylib */,
 				58BACF0A19B5C12800A72391 /* MobileCoreServices.framework */,
 				110FCCA019ADF83A0087CBCB /* libsqlite3.dylib */,

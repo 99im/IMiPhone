@@ -8,12 +8,18 @@
 
 #import "DPSysMessage.h"
 
-#define GROUP_MSG_TYPE_INVITE 1
-#define GROUP_MSG_TYPE_APPLY 2
-#define GROUP_MSG_TYPE_APPLY_PROCESSED 3
+#define GROUP_MSG_TYPE_INVITE 1             //加群:邀请
+#define GROUP_MSG_TYPE_APPLY 2              //加群:申请
+#define GROUP_MSG_TYPE_APPLY_RESPONSE 3     //加群:响应申请
+#define GROUP_MSG_TYPE_INVITE_RESPONSE 4    //加群:响应邀请 ???
 
-#define GROUP_MSG_STATUS_NEW 0
-#define GROUP_MSG_STATUS_PROCESSED 1
+#define GROUP_ST_APPLY_PENDING 0    //加群-申请状态：待处理
+#define GROUP_ST_APPLY_PASSED 1     //加群-申请状态：已通过
+#define GROUP_ST_APPLY_REFUSED 2    //加群-申请状态：已拒绝
+
+#define GROUP_ST_INVITE_PENDING 0    //加群-申请状态：待处理 ???
+#define GROUP_ST_INVITE_PASSED 1     //加群-申请状态：已通过 ???
+#define GROUP_ST_INVITE_REFUSED 2    //加群-申请状态：已拒绝 ???
 
 @interface DPSysMessageGroup : DPSysMessage
 

@@ -28,36 +28,44 @@
 
 - (void)drawCellBody:(DPSysMessageGroup *)dpSysMsg
 {
-    // self.lblTitle.text = dpSysMsg.title;
-    // self.lblContent.text = dpSysMsg.content;
-    // NSLog(@"加群消息：\nmodid:%i\ntype:%i\ntargetId:%qi\ngroupName:%@" , dpSysMsg.modid , dpSysMsg.type ,
-    // dpSysMsg.rid , dpSysMsg.groupName);
-
-    //临时处理
-    // NSLog(@"加群消息：type:%i" , MSG_GROUP_APPLY);
     NSInteger type = dpSysMsg.type;
+    NSString *title = [NSString stringWithFormat:@"[%i]%@", dpSysMsg.type, dpSysMsg.title];
+    NSString *content =dpSysMsg.content;
     self.btnAgree.hidden = YES;
     if (dpSysMsg.type == GROUP_MSG_TYPE_APPLY) { //申请入群
         self.rid = dpSysMsg.rid;
-        self.lblTitle.text = [NSString stringWithFormat:@"%@", dpSysMsg.ctime];
-        if (dpSysMsg.status == GROUP_MSG_STATUS_NEW) {
+        title = [NSString stringWithFormat:@"%@", dpSysMsg.ctime];
+        NSInteger status = dpSysMsg.status;
+        if (status == GROUP_ST_APPLY_PENDING) {
             self.btnAgree.hidden = NO;
-            self.lblContent.text = [NSString
+            content = [NSString
                 stringWithFormat:@"待处理: %@申请加入群【%@】", dpSysMsg.userNick, dpSysMsg.groupName];
         }
-        else {
-            self.lblContent.text = [NSString
-                stringWithFormat:@"已处理: %@申请加入群【%@】", dpSysMsg.userNick, dpSysMsg.groupName];
+        else if (status == GROUP_ST_APPLY_PASSED) {
+            content = [NSString
+                stringWithFormat:@"已通过: %@申请加入群【%@】", dpSysMsg.userNick, dpSysMsg.groupName];
+        }
+        else if(status == GROUP_ST_APPLY_REFUSED){
+            title = [NSString
+                stringWithFormat:@"已拒绝: %@申请加入群【%@】", dpSysMsg.userNick, dpSysMsg.groupName];
         }
     }
-    else if (type == GROUP_MSG_TYPE_APPLY_PROCESSED) {
-        self.lblTitle.text = [NSString stringWithFormat:@"%@", dpSysMsg.ctime];
-        self.lblContent.text = [NSString stringWithFormat:@"你申请加入群【%@】已被批准", dpSysMsg.groupName];
+    else if (type == GROUP_MSG_TYPE_APPLY_RESPONSE) {//加群申请回应
+        title = [NSString stringWithFormat:@"%@", dpSysMsg.ctime];
+        NSInteger status = dpSysMsg.status;
+        if (status == GROUP_ST_APPLY_PASSED) {
+            self.lblContent.text = [NSString stringWithFormat:@"你加群【%@】的申请已被批准", dpSysMsg.groupName];
+        }
+        else if (status == GROUP_ST_APPLY_REFUSED) {
+            self.lblContent.text = [NSString stringWithFormat:@"你加群【%@】的申请已被拒绝", dpSysMsg.groupName];
+        }
+        else if (status == GROUP_ST_APPLY_PENDING) {
+            self.lblContent.text = [NSString stringWithFormat:@"你加群【%@】的申请待处理中", dpSysMsg.groupName];
+        }
     }
-    else {
-        self.lblTitle.text = [NSString stringWithFormat:@"[%i]%@", dpSysMsg.type, dpSysMsg.title];
-        self.lblContent.text = dpSysMsg.content;
-    }
+
+    self.lblTitle.text = title;
+    self.lblContent.text = content;
 }
 
 - (IBAction)btnAgreeTouchUp:(id)sender

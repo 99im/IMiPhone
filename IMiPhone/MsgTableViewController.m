@@ -63,6 +63,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
     NSArray *uiMsgList = [[MsgDataProxy sharedProxy] getUiMsgList];
+    NSLog(@"uiMsgList(%i): %@", uiMsgList.count , uiMsgList);
     return uiMsgList.count;
 }
 

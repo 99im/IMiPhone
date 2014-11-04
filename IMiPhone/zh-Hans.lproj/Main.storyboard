@@ -2308,13 +2308,13 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="2se-m4-WKK"/>
+        <segue reference="Dql-ZX-dEr"/>
+        <segue reference="NpR-cO-pjh"/>
         <segue reference="jj6-rV-QBG"/>
         <segue reference="6IF-l5-3Iq"/>
         <segue reference="fNZ-Tb-k0o"/>
+        <segue reference="B9e-R6-y8A"/>
         <segue reference="F18-ln-36K"/>
         <segue reference="EnR-fJ-pM5"/>
-        <segue reference="B9e-R6-y8A"/>
-        <segue reference="Dql-ZX-dEr"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -123,19 +123,41 @@ static GroupMessageProxy *sharedGroupMessageProxy = nil;
             else {
                 int errorcode = [[json objectForKey:KEYP_H__GROUP_INFO__ERROR_CODE] intValue];
                 if (errorcode == 0) {
-                    errorcode = [[GroupDataProxy sharedProxy] updateGroupInfo:json];
+                    NSDictionary *info = [json objectForKey:KEYP_H__GROUP_INFO__INFO];
+                    
+                    long gid = [[info objectForKey:KEYP_H__GROUP_INFO__INFO_GID] longValue];
+                    
+                    // NSTimeInterval timeInterval= [GroupDataProxy nowTime];
+                    DPGroup *dpGroup = [[GroupDataProxy sharedProxy] getGroupInfoCurrent:SEND_HTTP_NO];
+                    if (!dpGroup || dpGroup.gid != gid) {
+                        dpGroup = [[DPGroup alloc] init];
+                    }
+                    
+                    //客户端存储
+                    // dpGroup.isInMyGroups = [self isInMyGroups:gid];
+                    
+                    //群基本信息
+                    dpGroup.gid = gid;
+                    dpGroup.name = [info objectForKey:KEYP_H__GROUP_INFO__INFO_NAME];
+                    dpGroup.intro = [info objectForKey:KEYP_H__GROUP_INFO__INFO_INTRO];
+                    dpGroup.ctime = [info objectForKey:KEYP_H__GROUP_INFO__INFO_CTIME];
+                    // NSLog(@"更新群创建时间：%@", dpGroup.ctime);
+                    dpGroup.memberNum = [[info objectForKey:KEYP_H__GROUP_INFO__INFO_MEMBERNUM] integerValue];
+                    dpGroup.myRelation = [[info objectForKey:KEYP_H__GROUP_SEARCH__LIST_MYRELATION] integerValue];
+                    
+                    //群主信息
+                    NSDictionary *creator = [info objectForKey:KEYP_H__GROUP_INFO__INFO_CREATOR];
+                    dpGroup.creator_uid = [[creator objectForKey:KEYP_H__GROUP_INFO__INFO_CREATOR_UID] longLongValue];
+                    dpGroup.creator_nick = [creator objectForKey:KEYP_H__GROUP_INFO__INFO_CREATOR_NICK];
+                    dpGroup.creator_oid = [[creator objectForKey:KEYP_H__GROUP_INFO__INFO_CREATOR_OID] longLongValue];
+                    dpGroup.creator_vip = [[creator objectForKey:KEYP_H__GROUP_INFO__INFO_CREATOR_VIP] integerValue];
+                    dpGroup.creator_city = [creator objectForKey:KEYP_H__GROUP_INFO__INFO_CREATOR_CITY];
+                    [[GroupDataProxy sharedProxy] updateGroupInfo:dpGroup];
 
-                    if (errorcode == 0) {
-                        [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_H__GROUP_INFO_ object:nil];
-                    }
-                    else {
-                        NSError *error = [self processErrorCode:errorcode fromSource:PATH_H__GROUP_INFO_];
-                        [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_H__GROUP_INFO_ object:err];
-                    }
+                    [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_H__GROUP_INFO_ object:nil];
                 }
                 else {
-                    NSError *error = [self processErrorCode:errorcode fromSource:PATH_H__GROUP_INFO_];
-                    [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_H__GROUP_INFO_ object:error];
+                    [self processErrorCode:errorcode fromSource:PATH_H__GROUP_INFO_ useNotiName:NOTI_H__GROUP_INFO_];
                 }
             }
 
@@ -393,8 +415,7 @@ static GroupMessageProxy *sharedGroupMessageProxy = nil;
                     [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_H__GROUP_CREATE_ object:nil];
                 }
                 else {
-                    NSError *error = [self processErrorCode:errorcode fromSource:PATH_H__GROUP_CREATE_];
-                    [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_H__GROUP_CREATE_ object:error];
+                    [self processErrorCode:errorcode fromSource:PATH_H__GROUP_CREATE_ useNotiName:NOTI_H__GROUP_CREATE_];
                 }
             }
         }];
@@ -423,8 +444,7 @@ static GroupMessageProxy *sharedGroupMessageProxy = nil;
                     [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_H__GROUP_SEARCH_ object:nil];
                 }
                 else {
-                    NSError *error = [self processErrorCode:errorcode fromSource:PATH_H__GROUP_SEARCH_];
-                    [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_H__GROUP_SEARCH_ object:error];
+                    [self processErrorCode:errorcode fromSource:PATH_H__GROUP_SEARCH_ useNotiName:NOTI_H__GROUP_SEARCH_];
                 }
             }
         }];

@@ -34,7 +34,7 @@ static IMNWProxy *sharedNWProxy = nil;
     }
 }
 
-- (NSError *)processErrorCode:(NSInteger)errorcode fromSource:(NSString *)source
+- (void)processErrorCode:(NSInteger)errorcode fromSource:(NSString *)source useNotiName:(NSString *)notiName
 {
     NSNumber *errorCodeNumber = [NSNumber numberWithLong:errorcode];
     NSString *errorMessage = [errorCodeNumber errorMessage];
@@ -43,7 +43,7 @@ static IMNWProxy *sharedNWProxy = nil;
     NSDictionary *userInfo = [NSDictionary dictionaryWithObject:errorMessage
                                                          forKey:NSLocalizedDescriptionKey];
     NSError *error = [NSError errorWithDomain:source code:errorcode userInfo:userInfo];
-    return error;
+    [[NSNotificationCenter defaultCenter] postNotificationName:notiName object:error];
 }
 
 @end

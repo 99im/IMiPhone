@@ -51,8 +51,7 @@ static ChatMessageProxy *messageProxy = nil;
         NSLog(@"%@",json);
     }
     else {
-        NSError *error = [self processErrorCode:res fromSource:[NSString stringWithFormat:@"%@_%@", MARK_CHAT, TYPE_S_CHAT_CHAT]];
-        [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_S_CHAT_CHAT object:error];
+        [self processErrorCode:res fromSource:[NSString stringWithFormat:@"%@_%@", MARK_CHAT, TYPE_S_CHAT_CHAT] useNotiName:NOTI_S_CHAT_CHAT];
     }
 }
 
