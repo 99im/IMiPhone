@@ -60,7 +60,7 @@ static GroupMessageProxy *sharedGroupMessageProxy = nil;
     return dpGroup;
 }
 
-- (void)processSuccessNotiName:(NSString *)notiName userInfo:(NSDictionary *)userInfo
+- (void)processSuccessNotiName:(NSString *)notiName withUserInfo:(NSDictionary *)userInfo
 {
     [[NSNotificationCenter defaultCenter] postNotificationName:notiName
                                                         object:nil
@@ -198,7 +198,7 @@ static GroupMessageProxy *sharedGroupMessageProxy = nil;
                     if (errorcode == 0) {
                         // NSLog(@"sendGroupMyList 本地更新成功：%@", json);
                         //[[NSNotificationCenter defaultCenter] postNotificationName:NOTI_H__GROUP_MYLIST_ object:nil];
-                        [self processSuccessNotiName:NOTI_H__GROUP_MYLIST_ userInfo:nil];
+                        [self processSuccessNotiName:NOTI_H__GROUP_MYLIST_ withUserInfo:nil];
                     }
                     else {
                         NSLog(@"sendGroupMyList 本地更新失败：%@", json);
@@ -245,7 +245,7 @@ static GroupMessageProxy *sharedGroupMessageProxy = nil;
                     //              [[NSNotificationCenter defaultCenter]
                     //                  postNotificationName:NOTI__ACCOUNT_MOBCODE_
                     //                                object:nil];
-                    [self processSuccessNotiName:NOTI_H__GROUP_MEMBERS_ userInfo:nil];
+                    [self processSuccessNotiName:NOTI_H__GROUP_MEMBERS_ withUserInfo:nil];
                 }
                 else {
                     [self processErrorCode:errorcode
@@ -281,7 +281,7 @@ static GroupMessageProxy *sharedGroupMessageProxy = nil;
                 if (errorcode == 0) {
                     NSLog(@"sendGroupApply response ok:\n%@", json);
                     //[[NSNotificationCenter defaultCenter] postNotificationName:NOTI_H__GROUP_APPLY_ object:nil];
-                    [self processSuccessNotiName:NOTI_H__GROUP_APPLY_ userInfo:nil];
+                    [self processSuccessNotiName:NOTI_H__GROUP_APPLY_ withUserInfo:nil];
                 }
                 else {
                     [self processErrorCode:errorcode
@@ -324,7 +324,7 @@ static GroupMessageProxy *sharedGroupMessageProxy = nil;
 //
 //                    [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_H__GROUP_APPLY_RESPONSE_
 //                                                                        object:params];
-                    [self processSuccessNotiName:NOTI_H__GROUP_APPLY_RESPONSE_ userInfo:params];
+                    [self processSuccessNotiName:NOTI_H__GROUP_APPLY_RESPONSE_ withUserInfo:params];
                 }
                 else {
                     [self processErrorCode:errorcode
@@ -362,7 +362,7 @@ static GroupMessageProxy *sharedGroupMessageProxy = nil;
                     //              [[NSNotificationCenter defaultCenter]
                     //                  postNotificationName:NOTI__ACCOUNT_MOBCODE_
                     //                                object:nil];
-                    [self processSuccessNotiName:NOTI_H__GROUP_INVITE_ userInfo:nil];
+                    [self processSuccessNotiName:NOTI_H__GROUP_INVITE_ withUserInfo:nil];
                 }
                 else {
                     [self processErrorCode:errorcode
@@ -404,7 +404,7 @@ static GroupMessageProxy *sharedGroupMessageProxy = nil;
                     //                    [[NSNotificationCenter defaultCenter]
                     //                    postNotificationName:NOTI_H__GROUP_INVITE_RESPONSE_
                     //                                                                        object:params];
-                    [self processSuccessNotiName:NOTI_H__GROUP_INVITE_RESPONSE_ userInfo:params];
+                    [self processSuccessNotiName:NOTI_H__GROUP_INVITE_RESPONSE_ withUserInfo:params];
                 }
                 else {
                     [self processErrorCode:errorcode
@@ -438,7 +438,7 @@ static GroupMessageProxy *sharedGroupMessageProxy = nil;
              if (errorcode == 0) {
                  NSLog(@"sendGroupExit response ok:\n%@", json);
                  //[[NSNotificationCenter defaultCenter] postNotificationName:NOTI_H__GROUP_EXIT_ object:nil];
-                 [self processSuccessNotiName:NOTI_H__GROUP_EXIT_ userInfo:nil];
+                 [self processSuccessNotiName:NOTI_H__GROUP_EXIT_ withUserInfo:nil];
              }
              else {
                  [self processErrorCode:errorcode fromSource:PATH_H__GROUP_EXIT_ useNotiName:NOTI_H__GROUP_EXIT_];
@@ -475,7 +475,7 @@ static GroupMessageProxy *sharedGroupMessageProxy = nil;
                 if (errorcode == 0) {
                     // NSLog(@"sendGroupCreate response ok:\n%@", json);
                     //[[NSNotificationCenter defaultCenter] postNotificationName:NOTI_H__GROUP_CREATE_ object:nil];
-                    [self processSuccessNotiName:NOTI_H__GROUP_CREATE_ userInfo:nil];
+                    [self processSuccessNotiName:NOTI_H__GROUP_CREATE_ withUserInfo:nil];
                 }
                 else {
                     [self processErrorCode:errorcode fromSource:PATH_H__GROUP_CREATE_ useNotiName:NOTI_H__GROUP_CREATE_];
@@ -505,7 +505,7 @@ static GroupMessageProxy *sharedGroupMessageProxy = nil;
                     NSArray *arrGroups = (NSArray *)[json objectForKey:KEYP_H__GROUP_SEARCH__LIST];
                     [GroupDataProxy sharedProxy].arrGroupsSearch = arrGroups;
                     //[[NSNotificationCenter defaultCenter] postNotificationName:NOTI_H__GROUP_SEARCH_ object:nil];
-                    [self processSuccessNotiName:NOTI_H__GROUP_SEARCH_ userInfo:nil];
+                    [self processSuccessNotiName:NOTI_H__GROUP_SEARCH_ withUserInfo:nil];
                 }
                 else {
                     [self processErrorCode:errorcode fromSource:PATH_H__GROUP_SEARCH_ useNotiName:NOTI_H__GROUP_SEARCH_];

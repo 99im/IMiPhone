@@ -25,7 +25,7 @@
 + (NSMutableArray *)groupListWithJSON:(NSMutableDictionary *) json;
 
 #pragma mark - 消息发送
--(void)processSuccessNotiName:(NSString *)notiName userInfo:(NSDictionary *)userInfo;
+-(void)processSuccessNotiName:(NSString *)notiName withUserInfo:(NSDictionary *)userInfo;
 
 #pragma mark - 信息读取
 ///HTTP:查看群详细信息
