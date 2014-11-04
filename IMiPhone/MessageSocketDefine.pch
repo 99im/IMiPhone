@@ -1,5 +1,24 @@
 
 
+#define MARK_ACCOUNT @"account"
+
+/*
+mark: account
+type: updateN
+kind: socket
+describe: 用户系统消息产生变化，通知在线用户
+example: {"mark":"account","type":"updateN","info":{"list":[{"smid":81,"modid":4,"num":1,"type":2}]}}
+*/
+#define TYPE_S_ACCOUNT_UPDATEN @"updateN"
+#define NOTI_S_ACCOUNT_UPDATEN @"MPaccountupdateNNotifiction"
+#define KEYP_S_ACCOUNT_UPDATEN_LIST @"list" //list
+#define KEYP_S_ACCOUNT_UPDATEN_LIST_OBJECT @"object" // object
+#define KEYP_S_ACCOUNT_UPDATEN_LIST_OBJECT_MODID @"modid" //  modid  模块
+#define KEYP_S_ACCOUNT_UPDATEN_LIST_OBJECT_TYPE @"type" //  type   消息类型
+#define KEYP_S_ACCOUNT_UPDATEN_LIST_OBJECT_NUM @"num" //  num    数量
+#define KEYP_S_ACCOUNT_UPDATEN_LIST_OBJECT_SMID @"smid" //  smid   系统消息编号
+
+
 #define MARK_CHAT @"chat"
 
 /*
@@ -34,9 +53,6 @@ example: {"mark":"chat","type":"chat","info":{"stage":"p2p","content":"hello","m
 #define KEYQ_S_CHAT_CHAT_MSGTYPE @"msgType" //msgType int 消息类型 0 为文本 1 为声音
 #define KEYQ_S_CHAT_CHAT_CONTENT @"content" //content string 消息内容
 #define KEYP_S_CHAT_CHAT_RES @"res" //res
-
-
-#define MARK_ACCOUNT @"account"
 
 /*
 mark: account

@@ -51,6 +51,7 @@
         }
     }
     else if (type == GROUP_MSG_TYPE_APPLY_RESPONSE) {//加群申请回应
+        NSLog(@"加群回应消息：%@" , dpSysMsg.content);
         title = [NSString stringWithFormat:@"%@", dpSysMsg.ctime];
         NSInteger status = dpSysMsg.status;
         if (status == GROUP_ST_APPLY_PASSED) {

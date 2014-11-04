@@ -60,6 +60,21 @@ static GroupMessageProxy *sharedGroupMessageProxy = nil;
     return dpGroup;
 }
 
+#pragma mark - 消息发送
+- (void)postFailNotificationName:(NSString *)notiName errorCode:(NSInteger)errorCode fromSource:(NSString *)sourceName
+{
+    [[NSNotificationCenter defaultCenter] postNotificationName:notiName
+                                                        object:[self processErrorCode:errorCode fromSource:sourceName]];
+}
+
+- (void)postSuccessNotificationName:(NSString *)notiName userInfo:(NSDictionary *)userInfo
+{
+    [[NSNotificationCenter defaultCenter] postNotificationName:notiName
+                                                        object:nil
+                                                        userInfo:userInfo];
+}
+
+
 + (NSMutableArray *)groupListWithJSON:(NSMutableDictionary *)json
 {
     NSArray *list = [json objectForKey:KEYP_H__GROUP_MYLIST__LIST];
@@ -121,21 +136,26 @@ static GroupMessageProxy *sharedGroupMessageProxy = nil;
                 NSLog(@"json error[sendGroupInfo]: \n%@", err);
             }
             else {
-                int errorcode = [[json objectForKey:KEYP_H__GROUP_INFO__ERROR_CODE] intValue];
+                NSInteger errorcode = [[json objectForKey:KEYP_H__GROUP_INFO__ERROR_CODE] integerValue];
                 if (errorcode == 0) {
                     errorcode = [[GroupDataProxy sharedProxy] updateGroupInfo:json];
 
                     if (errorcode == 0) {
-                        [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_H__GROUP_INFO_ object:nil];
+                        //[[NSNotificationCenter defaultCenter] postNotificationName:NOTI_H__GROUP_INFO_ object:nil];
+                        [self postSuccessNotificationName:NOTI_H__GROUP_INFO_ userInfo:nil];
                     }
                     else {
-                        NSError *error = [self processErrorCode:errorcode fromSource:PATH_H__GROUP_INFO_];
-                        [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_H__GROUP_INFO_ object:err];
+                        NSLog(@"更新群信息出错：%i" , errorcode);
                     }
+
                 }
                 else {
-                    NSError *error = [self processErrorCode:errorcode fromSource:PATH_H__GROUP_INFO_];
-                    [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_H__GROUP_INFO_ object:error];
+                    [self postFailNotificationName:NOTI_H__GROUP_INFO_
+                                         errorCode:errorcode
+                                        fromSource:PATH_H__GROUP_INFO_];
+
+//                    NSError *error = [self processErrorCode:errorcode fromSource:PATH_H__GROUP_INFO_];
+//                    [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_H__GROUP_INFO_ object:error];
                 }
             }
 
@@ -161,13 +181,14 @@ static GroupMessageProxy *sharedGroupMessageProxy = nil;
                 NSLog(@"json error[sendGroupMyList]: \n%@", err);
             }
             else {
-                int errorcode = [[json objectForKey:KEYP_H__GROUP_MYLIST__ERROR_CODE] intValue];
+                NSInteger errorcode = [[json objectForKey:KEYP_H__GROUP_MYLIST__ERROR_CODE] integerValue];
                 if (errorcode == 0) {
                     NSLog(@"sendGroupMyList 开始本地更新：%@", json);
                     errorcode = [[GroupDataProxy sharedProxy] updateGroupMyList:json];
                     if (errorcode == 0) {
                         // NSLog(@"sendGroupMyList 本地更新成功：%@", json);
-                        [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_H__GROUP_MYLIST_ object:nil];
+                        //[[NSNotificationCenter defaultCenter] postNotificationName:NOTI_H__GROUP_MYLIST_ object:nil];
+                        [self postSuccessNotificationName:NOTI_H__GROUP_MYLIST_ userInfo:nil];
                     }
                     else {
                         NSLog(@"sendGroupMyList 本地更新失败：%@", json);
@@ -176,9 +197,13 @@ static GroupMessageProxy *sharedGroupMessageProxy = nil;
                     //              [[NSNotificationCenter defaultCenter]
                     //                  postNotificationName:NOTI__ACCOUNT_MOBCODE_
                     //                                object:nil];
+
                 }
                 else {
-                    NSLog(@"sendGroupMyList response error: %i", errorcode);
+                    [self postFailNotificationName:NOTI_H__GROUP_MYLIST_
+                                         errorCode:errorcode
+                                        fromSource:PATH_H__GROUP_MYLIST_];
+                    //NSLog(@"sendGroupMyList response error: %i", errorcode);
                 }
             }
 
@@ -205,22 +230,26 @@ static GroupMessageProxy *sharedGroupMessageProxy = nil;
                 NSLog(@"json error[sendGroupMembers]: \n%@", err);
             }
             else {
-                int errorcode = [[json objectForKey:KEYP_H__GROUP_MEMBERS__ERROR_CODE] intValue];
+                NSInteger errorcode = [[json objectForKey:KEYP_H__GROUP_MEMBERS__ERROR_CODE] integerValue];
                 if (errorcode == 0) {
                     NSLog(@"sendGroupMembers response ok:\n%@", json);
                     //              [[NSNotificationCenter defaultCenter]
                     //                  postNotificationName:NOTI__ACCOUNT_MOBCODE_
                     //                                object:nil];
+                    [self postSuccessNotificationName:NOTI_H__GROUP_MEMBERS_ userInfo:nil];
                 }
                 else {
-                    NSLog(@"sendGroupMembers response error: %i", errorcode);
+                    [self postFailNotificationName:NOTI_H__GROUP_MEMBERS_
+                                         errorCode:errorcode
+                                        fromSource:PATH_H__GROUP_MEMBERS_];
+                    //NSLog(@"sendGroupMembers response error: %i", errorcode);
                 }
             }
 
         }];
 }
 
-#pragma mark - 加入群
+#pragma mark - 进出群
 - (void)sendGroupApply:(long long)gid msg:(NSString *)msg
 {
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
@@ -240,13 +269,17 @@ static GroupMessageProxy *sharedGroupMessageProxy = nil;
                 NSLog(@"json error[sendGroupApply]: \n%@", err);
             }
             else {
-                int errorcode = [[json objectForKey:KEYP_H__GROUP_APPLY__ERROR_CODE] intValue];
+                NSInteger errorcode = [[json objectForKey:KEYP_H__GROUP_APPLY__ERROR_CODE] integerValue];
                 if (errorcode == 0) {
                     NSLog(@"sendGroupApply response ok:\n%@", json);
-                    [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_H__GROUP_APPLY_ object:nil];
+                    //[[NSNotificationCenter defaultCenter] postNotificationName:NOTI_H__GROUP_APPLY_ object:nil];
+                    [self postSuccessNotificationName:NOTI_H__GROUP_APPLY_ userInfo:nil];
                 }
                 else {
-                    NSLog(@"sendGroupApply response error: %i", errorcode);
+                    [self postFailNotificationName:NOTI_H__GROUP_APPLY_
+                                         errorCode:errorcode
+                                        fromSource:PATH_H__GROUP_APPLY_];
+                    //NSLog(@"sendGroupApply response error: %i", errorcode);
                 }
             }
 
@@ -276,17 +309,21 @@ static GroupMessageProxy *sharedGroupMessageProxy = nil;
                 NSLog(@"json error[sendGroupInviteResponse]: \n%@", err);
             }
             else {
-                int errorcode = [[json objectForKey:KEYP_H__GROUP_APPLY_RESPONSE__ERROR_CODE] intValue];
+                NSInteger errorcode = [[json objectForKey:KEYP_H__GROUP_APPLY_RESPONSE__ERROR_CODE] integerValue];
                 if (errorcode == 0) {
                     // NSLog(@"sendGroupInviteResponse response ok:\n%@", json);
                     long long gid = [[json objectForKey:KEYP_H__GROUP_APPLY_RESPONSE__GID] longLongValue];
                     [params setObject:[NSNumber numberWithLongLong:gid] forKey:KEYP_H__GROUP_APPLY_RESPONSE__GID];
-
-                    [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_H__GROUP_APPLY_RESPONSE_
-                                                                        object:params];
+//
+//                    [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_H__GROUP_APPLY_RESPONSE_
+//                                                                        object:params];
+                    [self postSuccessNotificationName:NOTI_H__GROUP_APPLY_RESPONSE_ userInfo:params];
                 }
                 else {
-                    NSLog(@"sendGroupInviteResponse response error: %i", errorcode);
+                    [self postFailNotificationName:NOTI_H__GROUP_APPLY_RESPONSE_
+                                         errorCode:errorcode
+                                        fromSource:PATH_H__GROUP_APPLY_RESPONSE_];
+                    //NSLog(@"sendGroupInviteResponse response error: %i", errorcode);
                 }
             }
 
@@ -313,15 +350,19 @@ static GroupMessageProxy *sharedGroupMessageProxy = nil;
                 NSLog(@"json error[sendGroupInvite]: \n%@", err);
             }
             else {
-                int errorcode = [[json objectForKey:KEYP_H__GROUP_INVITE__ERROR_CODE] intValue];
+                NSInteger errorcode = [[json objectForKey:KEYP_H__GROUP_INVITE__ERROR_CODE] integerValue];
                 if (errorcode == 0) {
                     NSLog(@"sendGroupInvite response ok:\n%@", json);
                     //              [[NSNotificationCenter defaultCenter]
                     //                  postNotificationName:NOTI__ACCOUNT_MOBCODE_
                     //                                object:nil];
+                    [self postSuccessNotificationName:NOTI_H__GROUP_INVITE_ userInfo:nil];
                 }
                 else {
-                    NSLog(@"sendGroupInvite response error: %i", errorcode);
+                    [self postFailNotificationName:NOTI_H__GROUP_INVITE_
+                                         errorCode:errorcode
+                                        fromSource:PATH_H__GROUP_INVITE_];
+                    //NSLog(@"sendGroupInvite response error: %i", errorcode);
                 }
             }
 
@@ -351,19 +392,58 @@ static GroupMessageProxy *sharedGroupMessageProxy = nil;
                 NSLog(@"json error[sendGroupInviteResponse]: \n%@", err);
             }
             else {
-                int errorcode = [[json objectForKey:KEYP_H__GROUP_INVITE_RESPONSE__ERROR_CODE] intValue];
+                NSInteger errorcode = [[json objectForKey:KEYP_H__GROUP_INVITE_RESPONSE__ERROR_CODE] integerValue];
                 if (errorcode == 0) {
                     long long gid = [[json objectForKey:KEYP_H__GROUP_INVITE_RESPONSE__GID] longLongValue];
                     [params setObject:[NSNumber numberWithLongLong:gid] forKey:KEYP_H__GROUP_INVITE_RESPONSE__GID];
-                    [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_H__GROUP_INVITE_RESPONSE_
-                                                                        object:params];
+//                    [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_H__GROUP_INVITE_RESPONSE_
+//                                                                        object:params];
+                    [self postSuccessNotificationName:NOTI_H__GROUP_INVITE_RESPONSE_ userInfo:params];
                 }
                 else {
-                    NSLog(@"sendGroupInviteResponse response error: %i", errorcode);
+                    [self postFailNotificationName:NOTI_H__GROUP_INVITE_RESPONSE_
+                                         errorCode:errorcode
+                                        fromSource:PATH_H__GROUP_INVITE_RESPONSE_];
+                    //NSLog(@"sendGroupInviteResponse response error: %i", errorcode);
                 }
             }
 
         }];
+}
+
+
+- (void)sendGroupExit:(long long)gid{
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+
+    [params setObject:[NSNumber numberWithLongLong:gid] forKey:KEYQ_H__GROUP_EXIT__GID];
+
+    IMNWMessage *message =
+    [IMNWMessage createForHttp:PATH_H__GROUP_EXIT_ withParams:params withMethod:METHOD_H__GROUP_EXIT_ ssl:NO];
+    [[IMNWManager sharedNWManager]
+     sendMessage:message
+     withResponse:^(NSString *responseString, NSData *responseData) {
+         NSError *err = nil;
+         NSMutableDictionary *json =
+         [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingAllowFragments error:&err];
+         if (err) {
+             NSLog(@"json error[sendGroupExit]: \n%@", err);
+         }
+         else {
+             NSInteger errorcode = [[json objectForKey:KEYP_H__GROUP_EXIT__ERROR_CODE] integerValue];
+             if (errorcode == 0) {
+                 NSLog(@"sendGroupExit response ok:\n%@", json);
+                 //[[NSNotificationCenter defaultCenter] postNotificationName:NOTI_H__GROUP_EXIT_ object:nil];
+                 [self postSuccessNotificationName:NOTI_H__GROUP_EXIT_ userInfo:nil];
+             }
+             else {
+                 [self postFailNotificationName:NOTI_H__GROUP_EXIT_
+                                      errorCode:errorcode
+                                     fromSource:PATH_H__GROUP_EXIT_];
+                 //NSLog(@"sendGroupExit response error: %i", errorcode);
+             }
+         }
+
+     }];
 }
 
 #pragma mark - 群管理
@@ -387,14 +467,20 @@ static GroupMessageProxy *sharedGroupMessageProxy = nil;
                 NSLog(@"json error[sendGroupCreate]: \n%@", err);
             }
             else {
-                int errorcode = [[json objectForKey:KEYP_H__GROUP_CREATE__ERROR_CODE] intValue];
+                NSInteger errorcode = [[json objectForKey:KEYP_H__GROUP_CREATE__ERROR_CODE] integerValue];
                 if (errorcode == 0) {
                     // NSLog(@"sendGroupCreate response ok:\n%@", json);
-                    [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_H__GROUP_CREATE_ object:nil];
+                    //[[NSNotificationCenter defaultCenter] postNotificationName:NOTI_H__GROUP_CREATE_ object:nil];
+                    [self postSuccessNotificationName:NOTI_H__GROUP_CREATE_ userInfo:nil];
                 }
                 else {
-                    NSError *error = [self processErrorCode:errorcode fromSource:PATH_H__GROUP_CREATE_];
-                    [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_H__GROUP_CREATE_ object:error];
+                    [self postFailNotificationName:NOTI_H__GROUP_CREATE_
+                                        errorCode:errorcode
+                                       fromSource:PATH_H__GROUP_CREATE_];
+                    //                    NSError *error = [self processErrorCode:errorcode
+                    //                    fromSource:PATH_H__GROUP_CREATE_];
+                    //                    [[NSNotificationCenter defaultCenter]
+                    //                    postNotificationName:NOTI_H__GROUP_CREATE_ object:error];
                 }
             }
         }];
@@ -416,15 +502,21 @@ static GroupMessageProxy *sharedGroupMessageProxy = nil;
                 NSLog(@"JSON create error: %@", err);
             }
             else {
-                int errorcode = [[json objectForKey:KEYP_H__GROUP_SEARCH__ERROR_CODE] intValue];
+                NSInteger errorcode = [[json objectForKey:KEYP_H__GROUP_SEARCH__ERROR_CODE] integerValue];
                 if (errorcode == 0) {
                     NSArray *arrGroups = (NSArray *)[json objectForKey:KEYP_H__GROUP_SEARCH__LIST];
                     [GroupDataProxy sharedProxy].arrGroupsSearch = arrGroups;
-                    [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_H__GROUP_SEARCH_ object:nil];
+                    //[[NSNotificationCenter defaultCenter] postNotificationName:NOTI_H__GROUP_SEARCH_ object:nil];
+                    [self postSuccessNotificationName:NOTI_H__GROUP_SEARCH_ userInfo:nil];
                 }
                 else {
-                    NSError *error = [self processErrorCode:errorcode fromSource:PATH_H__GROUP_SEARCH_];
-                    [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_H__GROUP_SEARCH_ object:error];
+                    [self postFailNotificationName:NOTI_H__GROUP_SEARCH_
+                                        errorCode:errorcode
+                                       fromSource:PATH_H__GROUP_SEARCH_];
+                    //                    NSError *error = [self processErrorCode:errorcode
+                    //                    fromSource:PATH_H__GROUP_SEARCH_];
+                    //                    [[NSNotificationCenter defaultCenter]
+                    //                    postNotificationName:NOTI_H__GROUP_SEARCH_ object:error];
                 }
             }
         }];

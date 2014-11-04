@@ -257,6 +257,7 @@
 		AB72235119ED110700E603E2 /* CategoryListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AB5554E719EBEAFA00B413F3 /* CategoryListTableViewCell.m */; };
 		ABA91EF919F64B970017B045 /* GroupTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ABA91EF819F64B970017B045 /* GroupTableViewCell.m */; };
 		ABA91EFC19F658270017B045 /* GroupTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABA91EFB19F658270017B045 /* GroupTableViewController.m */; };
+		ABBE6DA51A08A7E3005B8F42 /* LBSTest.m in Sources */ = {isa = PBXBuildFile; fileRef = ABBE6DA41A08A7E3005B8F42 /* LBSTest.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -537,6 +538,7 @@
 		ABA91EF819F64B970017B045 /* GroupTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupTableViewCell.m; sourceTree = "<group>"; };
 		ABA91EFA19F658270017B045 /* GroupTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupTableViewController.h; sourceTree = "<group>"; };
 		ABA91EFB19F658270017B045 /* GroupTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupTableViewController.m; sourceTree = "<group>"; };
+		ABBE6DA41A08A7E3005B8F42 /* LBSTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBSTest.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -803,6 +805,7 @@
 			isa = PBXGroup;
 			children = (
 				117AC6A519EEB8A100143973 /* ContactTest.m */,
+				ABBE6DA41A08A7E3005B8F42 /* LBSTest.m */,
 				117AC6A619EEB8A100143973 /* IMDataUtilTest.m */,
 				110487AA19D90BFE0002AB36 /* MessageDataProxyTest.m */,
 				116BF88119CC01C70015561B /* UserDataProxyTest.m */,
@@ -1392,6 +1395,7 @@
 				11B1C62919E4E069003D2711 /* ChatMessageProxy.m in Sources */,
 				1120945A19B601EF0012D607 /* IMiPhoneTests.m in Sources */,
 				117AC6A819EEB8A100143973 /* IMDataUtilTest.m in Sources */,
+				ABBE6DA51A08A7E3005B8F42 /* LBSTest.m in Sources */,
 				117AC6B419EEBA0000143973 /* DBUser.m in Sources */,
 				117AC6B019EEB99E00143973 /* IMNWManager.m in Sources */,
 				116BF88219CC01C70015561B /* UserDataProxyTest.m in Sources */,

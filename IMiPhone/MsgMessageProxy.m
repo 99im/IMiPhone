@@ -54,7 +54,7 @@ static MsgMessageProxy  *messageProxy = nil;
                  NSArray *arrMsglist = [json objectForKey:KEYP_H__MSG_SYSMSG_LIST__LIST];
                  for (NSInteger i = 0; i < arrMsglist.count; i++) {
                      NSDictionary *msgObj = [arrMsglist objectAtIndex:i];
-                     DPSysMessage *dpSysMsg = [DPSysMessage sysMessageByMid:[[msgObj objectForKey:KEYP_H__MSG_SYSMSG_LIST__LIST_SMID] longLongValue] withMode:[[msgObj objectForKey:KEYP_H__MSG_SYSMSG_LIST__LIST_MODID] integerValue] withType:[[msgObj objectForKey:KEYP_H__MSG_SYSMSG_LIST__LIST_TYPE] integerValue] withTime:[msgObj objectForKey:KEYP_H__MSG_SYSMSG_LIST__LIST_CTIME] withTitle:[msgObj objectForKey:KEYP_H__MSG_SYSMSG_LIST__LIST_TITLE] withConten:KEYP_H__MSG_SYSMSG_LIST__LIST_CONTENT];
+                     DPSysMessage *dpSysMsg = [DPSysMessage sysMessageByMid:[[msgObj objectForKey:KEYP_H__MSG_SYSMSG_LIST__LIST_SMID] longLongValue] withMode:[[msgObj objectForKey:KEYP_H__MSG_SYSMSG_LIST__LIST_MODID] integerValue] withType:[[msgObj objectForKey:KEYP_H__MSG_SYSMSG_LIST__LIST_TYPE] integerValue] withTime:[msgObj objectForKey:KEYP_H__MSG_SYSMSG_LIST__LIST_CTIME] withTitle:[msgObj objectForKey:KEYP_H__MSG_SYSMSG_LIST__LIST_TITLE] withContent:[msgObj objectForKey:KEYP_H__MSG_SYSMSG_LIST__LIST_CONTENT]];
                      [dpSysMsg setParamsProperty:[msgObj objectForKey:KEYP_H__MSG_SYSMSG_LIST__LIST_PARAMS]];
                      [arrDpMsgs addObject:dpSysMsg];
                      

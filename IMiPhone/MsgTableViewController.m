@@ -217,7 +217,7 @@
 }
 - (void)dealGroupApplyResponse:(NSNotification *)notification
 {
-    NSMutableDictionary *params = notification.object;
+    NSDictionary *params = notification.userInfo;
     if (params) {
         NSInteger agree = [[params objectForKey:KEYQ_H__GROUP_INVITE_RESPONSE__AGREE] integerValue];
         if (agree == 1) {

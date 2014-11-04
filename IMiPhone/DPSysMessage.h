@@ -20,7 +20,7 @@
 @property (nonatomic, retain) NSString *content;
 
 
-+ (DPSysMessage *)sysMessageByMid:(long long)mid withMode:(NSInteger)modeid withType:(NSInteger)type withTime:(NSString *)time withTitle:(NSString *)title withConten:(NSString *)content;
++ (DPSysMessage *)sysMessageByMid:(long long)mid withMode:(NSInteger)modeid withType:(NSInteger)type withTime:(NSString *)time withTitle:(NSString *)title withContent:(NSString *)content;
 
 - (NSDictionary *)getParamsDictionary;
 - (void)setParamsProperty:(NSDictionary *)params;

@@ -9,8 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface GroupSettingTableViewController : UITableViewController
-@property (weak, nonatomic) IBOutlet UIButton *btnQuit;
-- (IBAction)touchupGroupQuit:(id)sender;
+@property (weak, nonatomic) IBOutlet UIButton *btnExit;
+- (IBAction)groupExitTouchUp:(id)sender;
 
 
 @end
