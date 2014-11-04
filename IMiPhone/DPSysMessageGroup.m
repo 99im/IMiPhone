@@ -50,7 +50,7 @@
         self.userId = [[info objectForKey:@"uid"] longLongValue];
         self.userNick = [info objectForKey:@"nick"];
     }
-    else if (type == GROUP_MSG_TYPE_APPLY_PROCESSED) {
+    else if (type == GROUP_MSG_TYPE_APPLY_RESPONSE) {
         self.rid = [[params objectForKey:@"rid"] longLongValue];
         self.status = [[params objectForKey:@"status"] integerValue];
 
