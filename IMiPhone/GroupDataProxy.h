@@ -34,7 +34,7 @@
 - (DPGroup *)getGroupInfo:(long long)gid byHttpMode:(NSInteger)httpMode;
 - (DPGroup *)getGroupInfoAtRow:(NSInteger)row;
 
-- (NSInteger)updateGroupInfo:(NSMutableDictionary *)json;
+- (void)updateGroupInfo:(DPGroup *)group;
 - (NSInteger)deleteGroupByGid:(long long)gid;
 
 + (BOOL)isInMyGroups:(DPGroup *)dpGroup;

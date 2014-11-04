@@ -8,6 +8,7 @@
 
 #import "SystemTableViewController.h"
 #import "UserDataProxy.h"
+#import "IMNWManager.h"
 
 @interface SystemTableViewController ()
 
@@ -40,6 +41,7 @@
     if ([cell.reuseIdentifier isEqualToString:@"systemLogoutTVCell"]) {
         [UserDataProxy sharedProxy].lastLoginUid = NAN;
         [UserDataProxy sharedProxy].verify = nil;
+        [[IMNWManager sharedNWManager].socketConnect disconnect];
         [self performSegueWithIdentifier:@"logoutDoneSegue" sender:nil];
     }
 }

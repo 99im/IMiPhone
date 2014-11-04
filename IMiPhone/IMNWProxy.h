@@ -21,9 +21,8 @@
  *
  *  @param errorcode 错误码，http消息的errorcode或者socket消息的res
  *  @param source    来源，path或者mark＋type
- *
- *  @return 错误类型实例
+ *  @param notiName  通知系统使用的key
  */
-- (NSError *)processErrorCode:(NSInteger)errorcode fromSource:(NSString *)source;
+- (void)processErrorCode:(NSInteger)errorcode fromSource:(NSString *)source useNotiName:(NSString *)notiName;
 
 @end

@@ -70,8 +70,7 @@ static MsgMessageProxy  *messageProxy = nil;
                  [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_H__MSG_SYSMSG_LIST_ object:nil];
              }
              else {
-                 NSError *error = [self processErrorCode:errorcode fromSource:PATH_H__MSG_SYSMSG_LIST_];
-                 [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_H__MSG_SYSMSG_LIST_ object:error];
+                 [self processErrorCode:errorcode fromSource:PATH_H__MSG_SYSMSG_LIST_ useNotiName:NOTI_H__MSG_SYSMSG_LIST_];
              }
          }
         }
