@@ -40,6 +40,16 @@ char cryptKey[17];
     return self;
 }
 
+- (id)initWithHost:(NSString *)hostIP port:(uint16_t)hostPort
+{
+    self = [self init];
+    if (self) {
+        self.host = hostIP;
+        self.port = hostPort;
+    }
+    return self;
+}
+
 - (void)connect:(NSString *)hostIP port:(uint16_t)hostPort
 {
     self.host = hostIP;
@@ -58,6 +68,11 @@ char cryptKey[17];
     else {
         [self.socket readDataToData:term withTimeout:-1 tag:TAG_MSG];
     }
+}
+
+- (void)disconnect
+{
+    [self.socket disconnect];
 }
 
 - (void)socket:(GCDAsyncSocket *)sender didConnectToHost:(NSString *)host port:(uint16_t)port

@@ -15,7 +15,11 @@
 
 @property (nonatomic, retain) GCDAsyncSocket *socket;
 
+- (id)initWithHost:(NSString *)hostIP port:(uint16_t)hostPort;
+
 - (void)connect:(NSString *)hostIP port:(uint16_t)hostPort;
+
+- (void)disconnect;
 
 - (void)handlerData:(NSData *)data;
 

@@ -30,9 +30,9 @@
 	// Do any additional setup after loading the view, typically from a nib.
     [self registerMessageNotification];
     [[IMNWManager sharedNWManager] initHttpConnect];
+    [[IMNWManager sharedNWManager] initSocketConnect];
     self.hasVerified = ![imUtil checkBlankString:[UserDataProxy sharedProxy].verify] && [UserDataProxy sharedProxy].lastLoginUid != NSNotFound;
     if (self.hasVerified) {
-        [[IMNWManager sharedNWManager] initSocketConnect];
         [[IMNWManager sharedNWManager].socketConnect connect:SOCKET_HOST port:SOCKET_PORT];
     }
 //    else {

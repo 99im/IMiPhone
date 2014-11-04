@@ -28,7 +28,7 @@ static IMNWManager *sharedNWManager = nil;
 {
     //static dispatch_once_t onceToken;
     //dispatch_once(&onceToken, ^{
-        socketConnect = [[IMNWSocketConnect alloc] init];
+        socketConnect = [[IMNWSocketConnect alloc] initWithHost:SOCKET_HOST port:SOCKET_PORT];
     //});
 }
 
