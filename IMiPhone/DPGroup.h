@@ -12,7 +12,7 @@
 
 @interface DPGroup : NSObject
 #pragma mark - 群基信息
-@property (nonatomic) long  gid;
+@property (nonatomic) long long gid;
 @property (nonatomic, retain) NSString *name;
 @property (nonatomic) NSInteger memberNum;  //成员数
 @property (nonatomic) NSInteger myRelation;

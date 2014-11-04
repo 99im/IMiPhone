@@ -21,8 +21,8 @@
 @interface GroupMessageProxy : IMNWProxy
 #pragma mark - 静态方法
 + (GroupMessageProxy *)sharedProxy;
-+ (DPGroup *)groupInfoWithJSON:(NSMutableDictionary *) json;
-+ (NSMutableArray *)groupListWithJSON:(NSMutableDictionary *) json;
+//+ (DPGroup *)groupInfoWithJSON:(NSMutableDictionary *) json;
+//+ (NSMutableArray *)groupListWithJSON:(NSMutableDictionary *) json;
 
 #pragma mark - 消息发送
 -(void)processSuccessNotiName:(NSString *)notiName withUserInfo:(NSDictionary *)userInfo;

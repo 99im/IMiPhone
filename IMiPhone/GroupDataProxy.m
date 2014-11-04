@@ -22,7 +22,7 @@
 
 @implementation GroupDataProxy
 
-long long const TIMEOUT_GROUP_INFO = 60; //群信息页超时刷新
+//long long const TIMEOUT_GROUP_INFO = 60; //群信息页超时刷新
 // long long const TIMEOUT_GROUP_MY_LIST = 60; //
 
 //@synthesize updateTimeGroupMyList = _updateTimeGroupMyList;
@@ -59,6 +59,16 @@ static GroupDataProxy *sharedGroupDataProxy = nil;
 + (long long)nowTime
 {
     return [GroupDataProxy longLongNowTime:@"yyyyMMddHHmmss"];
+}
+
++ (long long)getExpireTime:(NSInteger)minutes{
+    long long expireTime = [GroupDataProxy nowTime];
+    if (minutes > 1) {
+        expireTime = expireTime + minutes * 60;
+    } else {
+        expireTime = expireTime + 60;
+    }
+    return expireTime;
 }
 
 #pragma mark - 群列表相关
@@ -100,45 +110,47 @@ static GroupDataProxy *sharedGroupDataProxy = nil;
     return 0;
 }
 
-- (NSInteger)updateGroupMyList:(NSMutableDictionary *)json
+- (NSInteger)updateGroupMyList:(NSMutableArray *)myList
 {
-    NSLog(@"updateGroupMyList\n%@", json);
-    NSArray *list = [json objectForKey:KEYP_H__GROUP_MYLIST__LIST];
-
-    // if (_arrGroupMyList == nil) {
-    _arrGroupMyList = [NSMutableArray array];
-    //}
-
-    long long localExpireTime = [GroupDataProxy nowTime] + TIMEOUT_GROUP_INFO;
-    for (NSInteger i = 0; i < [list count]; i++) {
-        DPGroup *dpGroup = [[DPGroup alloc] init];
-        NSDictionary *group = [list objectAtIndex:i];
-
-        //基本信息
-        long gid = [[group objectForKey:KEYP_H__GROUP_MYLIST__LIST_GID] longValue];
-        dpGroup.gid = gid;
-        NSDictionary *detail = [group objectForKey:KEYP_H__GROUP_MYLIST__LIST_DETAIL];
-        dpGroup.name = [detail objectForKey:KEYP_H__GROUP_MYLIST__LIST_DETAIL_NAME];
-        dpGroup.intro = [detail objectForKey:KEYP_H__GROUP_MYLIST__LIST_DETAIL_INTRO];
-        dpGroup.memberNum = [[detail objectForKey:KEYP_H__GROUP_MYLIST__LIST_DETAIL_MEMBERNUM] integerValue];
-        dpGroup.myRelation = [[detail objectForKey:KEYP_H__GROUP_SEARCH__LIST_MYRELATION] integerValue];
-        dpGroup.ctime = [detail objectForKey:KEYP_H__GROUP_MYLIST__LIST_CTIME];
-
-        //群主信息
-        NSDictionary *creator = [detail objectForKey:KEYP_H__GROUP_MYLIST__LIST_DETAIL_CREATOR];
-        dpGroup.creator_uid = [[creator objectForKey:KEYP_H__GROUP_INFO__INFO_CREATOR_UID] longLongValue];
-        dpGroup.creator_nick = [creator objectForKey:KEYP_H__GROUP_INFO__INFO_CREATOR_NICK];
-        dpGroup.creator_oid = [[creator objectForKey:KEYP_H__GROUP_INFO__INFO_CREATOR_OID] longLongValue];
-        dpGroup.creator_vip = [[creator objectForKey:KEYP_H__GROUP_INFO__INFO_CREATOR_VIP] integerValue];
-        dpGroup.creator_city = [creator objectForKey:KEYP_H__GROUP_INFO__INFO_CREATOR_CITY];
-        [_arrGroupMyList addObject:dpGroup];
-
-        //更新时间
-        dpGroup.localExpireTime = localExpireTime;
-        // dpGroup.isInMyGroups = YES;
-    }
-
+    _arrGroupMyList = myList;
     return 0;
+//    NSLog(@"updateGroupMyList\n%@", json);
+//    NSArray *list = [json objectForKey:KEYP_H__GROUP_MYLIST__LIST];
+//
+//    // if (_arrGroupMyList == nil) {
+//    _arrGroupMyList = [NSMutableArray array];
+//    //}
+//
+//    long long localExpireTime = [GroupDataProxy getExpireTime:TIMEOUT_GROUP_INFO];
+//    for (NSInteger i = 0; i < [list count]; i++) {
+//        DPGroup *dpGroup = [[DPGroup alloc] init];
+//        NSDictionary *group = [list objectAtIndex:i];
+//
+//        //基本信息
+//        long gid = [[group objectForKey:KEYP_H__GROUP_MYLIST__LIST_GID] longValue];
+//        dpGroup.gid = gid;
+//        NSDictionary *detail = [group objectForKey:KEYP_H__GROUP_MYLIST__LIST_DETAIL];
+//        dpGroup.name = [detail objectForKey:KEYP_H__GROUP_MYLIST__LIST_DETAIL_NAME];
+//        dpGroup.intro = [detail objectForKey:KEYP_H__GROUP_MYLIST__LIST_DETAIL_INTRO];
+//        dpGroup.memberNum = [[detail objectForKey:KEYP_H__GROUP_MYLIST__LIST_DETAIL_MEMBERNUM] integerValue];
+//        dpGroup.myRelation = [[detail objectForKey:KEYP_H__GROUP_SEARCH__LIST_MYRELATION] integerValue];
+//        dpGroup.ctime = [detail objectForKey:KEYP_H__GROUP_MYLIST__LIST_CTIME];
+//
+//        //群主信息
+//        NSDictionary *creator = [detail objectForKey:KEYP_H__GROUP_MYLIST__LIST_DETAIL_CREATOR];
+//        dpGroup.creator_uid = [[creator objectForKey:KEYP_H__GROUP_INFO__INFO_CREATOR_UID] longLongValue];
+//        dpGroup.creator_nick = [creator objectForKey:KEYP_H__GROUP_INFO__INFO_CREATOR_NICK];
+//        dpGroup.creator_oid = [[creator objectForKey:KEYP_H__GROUP_INFO__INFO_CREATOR_OID] longLongValue];
+//        dpGroup.creator_vip = [[creator objectForKey:KEYP_H__GROUP_INFO__INFO_CREATOR_VIP] integerValue];
+//        dpGroup.creator_city = [creator objectForKey:KEYP_H__GROUP_INFO__INFO_CREATOR_CITY];
+//        [_arrGroupMyList addObject:dpGroup];
+//
+//        //更新时间
+//        dpGroup.localExpireTime = localExpireTime;
+//        // dpGroup.isInMyGroups = YES;
+//    }
+//
+//    return 0;
 }
 
 #pragma mark - 单个群相关
@@ -202,8 +214,8 @@ static GroupDataProxy *sharedGroupDataProxy = nil;
 - (void)updateGroupInfo:(DPGroup *)group
 {
     //客户端存储
-    long long localExpireTime = [GroupDataProxy nowTime] + TIMEOUT_GROUP_INFO;
-    group.localExpireTime = localExpireTime;
+    //long long localExpireTime = [GroupDataProxy getExpireTime:TIMEOUT_GROUP_INFO];
+    //group.localExpireTime = localExpireTime;
     
     // TODO: 入库保存群信息
     _groupInfoCurrent = group;

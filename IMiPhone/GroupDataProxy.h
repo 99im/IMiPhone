@@ -16,6 +16,8 @@
 #define SEND_HTTP_YES 1     //强制发送HTTP
 #define SEND_HTTP_AUTO 2    //自动分析是否要发送HTTP（本地已有缓存数据且未超时时，不发送；反之发送）
 
+#define TIMEOUT_GROUP_INFO 10   //过期时间(分钟):群信息
+
 @interface GroupDataProxy : NSObject
 
 @property (nonatomic, retain) NSArray *arrGroupsSearch;
@@ -24,10 +26,11 @@
 + (GroupDataProxy *)sharedProxy;
 + (long long)nowTime;
 + (long long)longLongNowTime:(NSString *)dateFormat;
++ (long long)getExpireTime:(NSInteger)minutes;
 
 #pragma mark - 群列表相关
 - (NSMutableArray *)getGroupMyList:(NSInteger)httpMode;
-- (NSInteger)updateGroupMyList:(NSMutableDictionary *)json;
+- (NSInteger)updateGroupMyList:(NSMutableArray *)myList;
 - (NSInteger)countGroupMyList;
 
 #pragma mark - 单个群相关
