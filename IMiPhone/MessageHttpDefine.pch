@@ -1,5 +1,22 @@
 
 
+#define MARK_GROUP @"group"
+
+/*
+mark: group
+type: /group/exit/
+kind: http
+method: http-get
+describe: 退群，创建者无法退出
+example: http://local.taiqiu.com:7070/group/exit/?gid=8&verify=34_1414218322_d23ddbe13e880dfc2778175d73a8ef8d
+*/
+#define PATH_H__GROUP_EXIT_ @"/group/exit/"
+#define NOTI_H__GROUP_EXIT_ @"MPgroupexitNotifiction"
+#define METHOD_H__GROUP_EXIT_ @"GET"
+#define KEYQ_H__GROUP_EXIT__GID @"gid" //gid int 8
+#define KEYP_H__GROUP_EXIT__ERROR_CODE @"error_code" //error_code int 0
+
+
 #define MARK_CHAT @"chat"
 
 /*
@@ -92,9 +109,6 @@ example: http://local.taiqiu.com:7070/chat/unreadlist/?readInfo={%22p_16_17%22:6
 #define KEYP_H__CHAT_UNREADLIST__UNREAD @"unread" //unread object 可以为场景id类似 p_1_2 g_3
 #define KEYP_H__CHAT_UNREADLIST__UNREAD_TOTAL @"total" // total 未读消息总数
 #define KEYP_H__CHAT_UNREADLIST__UNREAD_LIST @"list" // list 消息列表 默认取最新20条
-
-
-#define MARK_GROUP @"group"
 
 /*
 mark: group
@@ -720,11 +734,27 @@ todo 渲染
  2 frient 
     type对应关系
         1 关注
+           uid 目标用户uid
  3 chat 
  4 group
     type对应关系
         1 邀请
+           rid 邀请编号
+           gid 群编号
+           groupInfo 群信息
+           uinfo     用户信息 谁邀请了 谁请求了
+           status 操作结果 0 无操作 1 同意 2 拒绝
         2 请求
+           rid 邀请编号
+           gid 群编号
+           groupInfo 群信息
+           uinfo     用户信息 谁邀请了 谁请求了
+           status 操作结果 0 无操作 1 同意 2 拒绝
+        3 同意请求
+           rid 邀请编号
+           gid 群编号
+           groupInfo 群信息
+           uinfo     用户信息 谁邀请了 谁请求了
 
 params说明
  群组模块 
@@ -851,7 +881,7 @@ kind: http
 method: http-get
 describe: 清空消息提醒
 
-example: http://local.taiqiu.com:7070/msg/unread-clear/?fields=chat,friend,focus&verify=17_1411380649_8cd8f6306fb1232f98573dae4e137f50
+example: http://local.taiqiu.com:7070/msg/unread-clear/?modids=1,2,4&verify=16_1411380260_8e01b76b234112ca88fdb3645eacac44
 
 {
 "error_code": 0
@@ -860,7 +890,7 @@ example: http://local.taiqiu.com:7070/msg/unread-clear/?fields=chat,friend,focus
 #define PATH_H__MSG_UNREAD_CLEAR_ @"/msg/unread-clear/"
 #define NOTI_H__MSG_UNREAD_CLEAR_ @"MPmsgunread-clearNotifiction"
 #define METHOD_H__MSG_UNREAD_CLEAR_ @"GET"
-#define KEYQ_H__MSG_UNREAD_CLEAR__FIELDS @"fields" //fields string 需要清空的模块
+#define KEYQ_H__MSG_UNREAD_CLEAR__MODIDS @"modids" //modids string 需要清空的模块 逗号隔开
 #define KEYP_H__MSG_UNREAD_CLEAR__ERROR_CODE @"error_code" //error_code
 
 /*
@@ -869,26 +899,27 @@ type: /msg/unread/
 kind: http
 method: http-get
 describe:  获取各个模块未读消息
-example: http://local.taiqiu.com:7070/msg/unread/?focusUid=16&verify=17_1411380649_8cd8f6306fb1232f98573dae4e137f50
+返回的unread是一个数组
+example: http://local.taiqiu.com:7070/msg/unread/?verify=16_1411380260_8e01b76b234112ca88fdb3645eacac44
+
 {
 "error_code": 0,
-"unread": {
-"friend": 0,
-"fan": 1,
-"focus": 1,
-"chat": 0
+"unread": [
+{
+"modid": 4,
+"unread": 1
 }
+]
 }
 */
 #define PATH_H__MSG_UNREAD_ @"/msg/unread/"
 #define NOTI_H__MSG_UNREAD_ @"MPmsgunreadNotifiction"
 #define METHOD_H__MSG_UNREAD_ @"GET"
 #define KEYP_H__MSG_UNREAD__ERROR_CODE @"error_code" //error_code int 0
-#define KEYP_H__MSG_UNREAD__UNREAD @"unread" //unread object
-#define KEYP_H__MSG_UNREAD__UNREAD_FRIEND @"friend" // friend int 好友未读消息数
-#define KEYP_H__MSG_UNREAD__UNREAD_FAN @"fan" // fan int
-#define KEYP_H__MSG_UNREAD__UNREAD_FOCUS @"focus" // focus int 
-#define KEYP_H__MSG_UNREAD__UNREAD_CHAT @"chat" // chat int
+#define KEYP_H__MSG_UNREAD__UNREAD @"unread" //unread list
+#define KEYP_H__MSG_UNREAD__UNREAD_OBJECT @"object" // object
+#define KEYP_H__MSG_UNREAD__UNREAD_OBJECT_MODID @"modid" //  modid 模块id
+#define KEYP_H__MSG_UNREAD__UNREAD_OBJECT_UNREAD @"unread" //  unread 未读数量
 
 /*
 mark: friend

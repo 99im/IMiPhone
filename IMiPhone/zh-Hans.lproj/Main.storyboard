@@ -1787,9 +1787,6 @@
                                 <color key="titleColor" red="1" green="1" blue="1" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
-                            <connections>
-                                <action selector="touchupGroupQuit:" destination="f2G-Kw-Ad0" eventType="touchUpInside" id="IQs-et-ipm"/>
-                            </connections>
                         </button>
                         <sections>
                             <tableViewSection id="Zpe-U3-hgF">
@@ -1881,9 +1878,6 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="2f0-AF-afl"/>
-                    <connections>
-                        <outlet property="btnQuit" destination="tAz-49-9OP" id="kyk-SN-VfL"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HnK-vI-JGP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

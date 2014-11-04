@@ -81,7 +81,7 @@ static MsgDataProxy *chatDataProxy = nil;
         if (arrSysMsgs) {
             for (NSInteger i = 0; i < arrSysMsgs.count; i++) {
                 tempDBSysMessage = [arrSysMsgs objectAtIndex:i];
-                tempSysMessage = [DPSysMessage sysMessageByMid:tempDBSysMessage.smid withMode:tempDBSysMessage.modid withType:tempDBSysMessage.type withTime:tempDBSysMessage.ctime withTitle:tempDBSysMessage.title withConten:tempDBSysMessage.content];
+                tempSysMessage = [DPSysMessage sysMessageByMid:tempDBSysMessage.smid withMode:tempDBSysMessage.modid withType:tempDBSysMessage.type withTime:tempDBSysMessage.ctime withTitle:tempDBSysMessage.title withContent:tempDBSysMessage.content];
 
                 //[ImDataUtil copyFrom:tempDBSsMessage To:tempSysMessage];
                 [tempSysMessage setParamsProperty:[tempDBSysMessage getDictionaryByParams]];

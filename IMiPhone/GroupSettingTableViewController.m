@@ -97,8 +97,29 @@
 }
 */
 
+#pragma mark - 消息监听
+- (void)registerMessageNotification {
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(didGroupExit:)
+                                                 name:NOTI_H__GROUP_EXIT_
+                                               object:nil];
+}
 
-- (IBAction)touchupGroupQuit:(id)sender {
+- (void)removeMessageNotification {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)didGroupExit:(NSNotification *)notification {
+    if (notification) {
+        NSLog(@"退群成功");
+    } else {
+        NSLog(@"退群失败");
+    }
+}
+
+
+#pragma mark - 交互动作
+- (IBAction)groupExitTouchUp:(id)sender {
     NSLog(@"点击了按钮：退出该群");
 }
 @end
