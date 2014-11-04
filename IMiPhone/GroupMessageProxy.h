@@ -25,8 +25,7 @@
 + (NSMutableArray *)groupListWithJSON:(NSMutableDictionary *) json;
 
 #pragma mark - 消息发送
--(void)postFailNotificationName:(NSString *)notiName errorCode:(NSInteger)errorCode fromSource:(NSString *)sourceName;
--(void)postSuccessNotificationName:(NSString *)notiName userInfo:(NSDictionary *)userInfo;
+-(void)processSuccessNotiName:(NSString *)notiName userInfo:(NSDictionary *)userInfo;
 
 #pragma mark - 信息读取
 ///HTTP:查看群详细信息
