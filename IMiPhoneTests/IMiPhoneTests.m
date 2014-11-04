@@ -115,4 +115,22 @@
 
 }
 
+//使用NSStringDrawingUsesLineFragmentOrigin 2014-11-04 15:55:04.410 xctest[6829:2048298] 测试文本计算宽:90.000000,高:322.110046
+
+//不使用NSStringDrawingUsesLineFragmentOrigin 2014-11-04 15:56:04.337 xctest[6850:2052774] 测试文本计算宽:780.000000,高:35.790001
+- (void)testTextDraw
+{
+     UIFont *fon = [UIFont systemFontOfSize:30];
+    NSDictionary *attributes = @{NSFontAttributeName: fon};
+    
+    NSAttributedString *abString =
+    [[NSMutableAttributedString alloc] initWithString:@"测试测试测试测试测试测试测试测试测试测试测试测试！！" attributes:attributes];
+    ;
+    //NSStringDrawingUsesLineFragmentOrigin |
+    CGSize size = [abString boundingRectWithSize:CGSizeMake(100, MAXFLOAT) options: NSStringDrawingUsesFontLeading  context:nil].size;
+    
+    NSLog(@"测试文本计算宽:%f,高:%f",size.width, size.height);
+
+}
+
 @end

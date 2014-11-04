@@ -29,6 +29,9 @@
 		11335B6E19F5407400FA32FA /* ChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11335B6C19F5407400FA32FA /* ChatViewController.m */; };
 		114376151A04E0C00058233D /* ChatMsgTableViewCellP2P.m in Sources */ = {isa = PBXBuildFile; fileRef = 114376141A04E0C00058233D /* ChatMsgTableViewCellP2P.m */; };
 		114376161A04E0C00058233D /* ChatMsgTableViewCellP2P.m in Sources */ = {isa = PBXBuildFile; fileRef = 114376141A04E0C00058233D /* ChatMsgTableViewCellP2P.m */; };
+		1152E3191A078C6B00400D2A /* IMRichText.m in Sources */ = {isa = PBXBuildFile; fileRef = 1152E3181A078C6B00400D2A /* IMRichText.m */; };
+		1152E31A1A078C6B00400D2A /* IMRichText.m in Sources */ = {isa = PBXBuildFile; fileRef = 1152E3181A078C6B00400D2A /* IMRichText.m */; };
+		1152E31B1A08BDB800400D2A /* DPSysMessageGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = AB6396221A038CA500FF0BC6 /* DPSysMessageGroup.m */; };
 		116AB14119B7315000092E2C /* PersistenceTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 116AB13F19B7315000092E2C /* PersistenceTest.m */; };
 		116AB14319B7318C00092E2C /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 116AB14219B7318C00092E2C /* libsqlite3.0.dylib */; };
 		116AB14419B731C700092E2C /* SqlightAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 116B6E8F19B058A400DB1B5E /* SqlightAdapter.m */; };
@@ -277,6 +280,8 @@
 		11335B6C19F5407400FA32FA /* ChatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatViewController.m; sourceTree = "<group>"; };
 		114376131A04E0C00058233D /* ChatMsgTableViewCellP2P.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatMsgTableViewCellP2P.h; sourceTree = "<group>"; };
 		114376141A04E0C00058233D /* ChatMsgTableViewCellP2P.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatMsgTableViewCellP2P.m; sourceTree = "<group>"; };
+		1152E3171A078C6B00400D2A /* IMRichText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMRichText.h; sourceTree = "<group>"; };
+		1152E3181A078C6B00400D2A /* IMRichText.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMRichText.m; sourceTree = "<group>"; };
 		116AB13E19B7315000092E2C /* IMiPhoneTests-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "IMiPhoneTests-Info.plist"; sourceTree = "<group>"; };
 		116AB13F19B7315000092E2C /* PersistenceTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersistenceTest.m; sourceTree = "<group>"; };
 		116AB14219B7318C00092E2C /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
@@ -1007,6 +1012,8 @@
 				58BACF0E19B5DAB900A72391 /* imPhotoPicker.m */,
 				116BF88319CC29360015561B /* ImDataUtil.h */,
 				116BF88419CC29360015561B /* ImDataUtil.m */,
+				1152E3171A078C6B00400D2A /* IMRichText.h */,
+				1152E3181A078C6B00400D2A /* IMRichText.m */,
 			);
 			name = Util;
 			sourceTree = "<group>";
@@ -1226,6 +1233,7 @@
 				11DF6A8E1A047B7700A4B1D3 /* SysMsgTableViewDefaultCell.m in Sources */,
 				58B496E419A7186A0082AE30 /* UIImageView+MKNetworkKitAdditions.m in Sources */,
 				58A331AD19E52CDE005BE980 /* CategoryContactTableViewCell.m in Sources */,
+				1152E3191A078C6B00400D2A /* IMRichText.m in Sources */,
 				58B496E219A7186A0082AE30 /* UIAlertView+MKNetworkKitAdditions.m in Sources */,
 				11335B6D19F5407400FA32FA /* ChatViewController.m in Sources */,
 				11B1C62819E4E069003D2711 /* ChatMessageProxy.m in Sources */,
@@ -1325,6 +1333,7 @@
 				1171F7CD19E9154F00865A0B /* DPContactPerson.m in Sources */,
 				58BC1E4319C06B9000722A00 /* imViewController.m in Sources */,
 				118310BB19FE447200C1968D /* MsgMessageProxy.m in Sources */,
+				1152E31B1A08BDB800400D2A /* DPSysMessageGroup.m in Sources */,
 				58BC1E4419C06B9000722A00 /* MainTabBarController.m in Sources */,
 				110F561B19D57013003B9EB4 /* DPUiMessage.m in Sources */,
 				11DF6A931A04904100A4B1D3 /* GroupChatTableViewCellFrame.m in Sources */,
@@ -1332,6 +1341,7 @@
 				58C14DD319C80D67009334E1 /* ContactViewController.m in Sources */,
 				1194301119F74EC200FD9206 /* ChatShareMenuViewController.m in Sources */,
 				58BC1E4919C06B9000722A00 /* UserMessageProxy.m in Sources */,
+				1152E31A1A078C6B00400D2A /* IMRichText.m in Sources */,
 				58BC1E4A19C06B9000722A00 /* FriendMessageProxy.m in Sources */,
 				11795E2919D297CD003FD9A7 /* DPFriend.m in Sources */,
 				58BC1E4B19C06B9000722A00 /* MKNetworkEngine.m in Sources */,
