@@ -21,7 +21,11 @@
 
 - (void)setParamsByDictionary:(NSDictionary *)dic
 {
-    self.params = [NSString stringWithFormat:@"%@",dic];
+    NSError *error;
+
+    NSData *data = [NSJSONSerialization dataWithJSONObject:dic options:0  error:&error];
+    self.params = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+
 }
 
 - (NSDictionary *)getDictionaryByParams
