@@ -236,7 +236,7 @@ static GroupDataProxy *sharedGroupDataProxy = nil;
     return NO;
 }
 
-- (BOOL)isGroupOwner:(DPGroup *)dpGroup
++ (BOOL)isGroupOwner:(DPGroup *)dpGroup
 {
     return dpGroup.myRelation == GROUP_RELATION_OWNER;
 //    if ([UserDataProxy sharedProxy].lastLoginUid == dpGroup.creator_uid) {

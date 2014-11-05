@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GroupDataProxy.h"
+#import "GroupMessageProxy.h"
 
 @interface GroupSettingTableViewController : UITableViewController
 @property (weak, nonatomic) IBOutlet UIButton *btnExit;

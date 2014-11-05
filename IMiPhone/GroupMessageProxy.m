@@ -475,7 +475,7 @@ static GroupMessageProxy *sharedGroupMessageProxy = nil;
              if (errorcode == 0) {
                  NSLog(@"sendGroupExit response ok:\n%@", json);
                  //[[NSNotificationCenter defaultCenter] postNotificationName:NOTI_H__GROUP_EXIT_ object:nil];
-                 [self processSuccessNotiName:NOTI_H__GROUP_EXIT_ withUserInfo:nil];
+                 [self processSuccessNotiName:NOTI_H__GROUP_EXIT_ withUserInfo:params];
              }
              else {
                  [self processErrorCode:errorcode fromSource:PATH_H__GROUP_EXIT_ useNotiName:NOTI_H__GROUP_EXIT_];

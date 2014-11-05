@@ -30,6 +30,7 @@ static LocationDataProxy *sharedLocationDataProxy = nil;
 -(DPLocation *) getLocationCurrent{
     if (!_locationCurrent) {
         //_locationCurrent = [[DPLocation alloc] init];
+        NSLog(@"开始获取当前位置");
     }
     return _locationCurrent;
 }
