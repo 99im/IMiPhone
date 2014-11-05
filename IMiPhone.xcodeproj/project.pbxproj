@@ -55,7 +55,6 @@
 		114376161A04E0C00058233D /* ChatMsgTableViewCellP2P.m in Sources */ = {isa = PBXBuildFile; fileRef = 114376141A04E0C00058233D /* ChatMsgTableViewCellP2P.m */; };
 		1152E3191A078C6B00400D2A /* IMRichText.m in Sources */ = {isa = PBXBuildFile; fileRef = 1152E3181A078C6B00400D2A /* IMRichText.m */; };
 		1152E31A1A078C6B00400D2A /* IMRichText.m in Sources */ = {isa = PBXBuildFile; fileRef = 1152E3181A078C6B00400D2A /* IMRichText.m */; };
-		1152E31B1A08BDB800400D2A /* DPSysMessageGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = AB6396221A038CA500FF0BC6 /* DPSysMessageGroup.m */; };
 		116AB14119B7315000092E2C /* PersistenceTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 116AB13F19B7315000092E2C /* PersistenceTest.m */; };
 		116AB14319B7318C00092E2C /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 116AB14219B7318C00092E2C /* libsqlite3.0.dylib */; };
 		116AB14419B731C700092E2C /* SqlightAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 116B6E8F19B058A400DB1B5E /* SqlightAdapter.m */; };
@@ -273,6 +272,7 @@
 		58F2AA3919A487E300DC2FFB /* AsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F2AA3819A487E300DC2FFB /* AsyncSocket.m */; };
 		AB199ACA1A0A244E00F6B858 /* DPSysMessageGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = AB6396221A038CA500FF0BC6 /* DPSysMessageGroup.m */; };
 		AB199ACC1A0A24A800F6B858 /* LocationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = AB199ACB1A0A24A800F6B858 /* LocationTest.m */; };
+		AB199AD01A0A4B5C00F6B858 /* LocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB199ACF1A0A4B5C00F6B858 /* LocationViewController.m */; };
 		AB20EE8419F4DCCC004627C8 /* GroupDataProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = AB20EE8319F4DCCC004627C8 /* GroupDataProxy.m */; };
 		AB20EE8719F4DD8C004627C8 /* GroupMessageProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = AB20EE8619F4DD8C004627C8 /* GroupMessageProxy.m */; };
 		AB24A95419F7CE2F00026299 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB24A95219F7CE2F00026299 /* Main.storyboard */; };
@@ -571,6 +571,8 @@
 		58F2AA3719A487E300DC2FFB /* AsyncSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsyncSocket.h; sourceTree = "<group>"; };
 		58F2AA3819A487E300DC2FFB /* AsyncSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsyncSocket.m; sourceTree = "<group>"; };
 		AB199ACB1A0A24A800F6B858 /* LocationTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationTest.m; sourceTree = "<group>"; };
+		AB199ACE1A0A4B5C00F6B858 /* LocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationViewController.h; sourceTree = "<group>"; };
+		AB199ACF1A0A4B5C00F6B858 /* LocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationViewController.m; sourceTree = "<group>"; };
 		AB20EE8219F4DCCC004627C8 /* GroupDataProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupDataProxy.h; sourceTree = "<group>"; };
 		AB20EE8319F4DCCC004627C8 /* GroupDataProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupDataProxy.m; sourceTree = "<group>"; };
 		AB20EE8519F4DD8C004627C8 /* GroupMessageProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupMessageProxy.h; sourceTree = "<group>"; };
@@ -849,6 +851,7 @@
 				AB24A95219F7CE2F00026299 /* Main.storyboard */,
 				111B4E9A1A0A26800043A29F /* Activity */,
 				AB20EE8919F4F67D004627C8 /* Group */,
+				AB199ACD1A0A4A3200F6B858 /* LBS */,
 				11E1581019F4FF58008544D1 /* Msg */,
 				58438C0A19D412C400B6962B /* Nearby */,
 				58A9133C19D2BC4E008E5A25 /* User */,
@@ -1148,6 +1151,15 @@
 			name = Network;
 			sourceTree = "<group>";
 		};
+		AB199ACD1A0A4A3200F6B858 /* LBS */ = {
+			isa = PBXGroup;
+			children = (
+				AB199ACE1A0A4B5C00F6B858 /* LocationViewController.h */,
+				AB199ACF1A0A4B5C00F6B858 /* LocationViewController.m */,
+			);
+			name = LBS;
+			sourceTree = "<group>";
+		};
 		AB20EE8919F4F67D004627C8 /* Group */ = {
 			isa = PBXGroup;
 			children = (
@@ -1388,6 +1400,7 @@
 				AB24A96019F8E59D00026299 /* GroupSettingTableViewController.m in Sources */,
 				AB62170B19FFA01A003C2FBB /* AddItemTableViewCell.m in Sources */,
 				117AC69419EE763E00143973 /* IMAddressBook.m in Sources */,
+				AB199AD01A0A4B5C00F6B858 /* LocationViewController.m in Sources */,
 				118310BE19FE5D1D00C1968D /* DBSysMessage.m in Sources */,
 				58B496E019A7186A0082AE30 /* NSString+MKNetworkKitAdditions.m in Sources */,
 				ABAF97CB1A09F8F700BE29B8 /* DPLocation.m in Sources */,

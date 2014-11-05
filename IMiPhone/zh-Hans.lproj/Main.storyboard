@@ -1591,7 +1591,35 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0bI-9q-o0A" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3456" y="5165"/>
+            <point key="canvasLocation" x="3092" y="5229"/>
+        </scene>
+        <!--Loation-选择群地点-->
+        <scene sceneID="Nkt-KA-a64">
+            <objects>
+                <viewController id="of2-lT-RB4" userLabel="Loation-选择群地点" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="3ty-5J-6Pa"/>
+                        <viewControllerLayoutGuide type="bottom" id="Lrs-dk-j7u"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="mJh-ZL-CFH">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="swk-G0-LCC">
+                                <rect key="frame" x="0.0" y="28" width="320" height="44"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="xaZ-BL-KuI">
+                                <rect key="frame" x="0.0" y="86" width="320" height="482"/>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="bXG-2e-uic"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qAi-XA-I0A" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4376" y="3229"/>
         </scene>
         <!--Group-群成员列表-->
         <scene sceneID="sYu-Tx-UjA">
@@ -1685,7 +1713,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ibF-87-OIE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3456" y="4003"/>
+            <point key="canvasLocation" x="3808" y="4387"/>
         </scene>
         <!--Group-创建群-->
         <scene sceneID="E93-zC-ePk">
@@ -1749,6 +1777,9 @@
                                 <state key="normal" title="选择">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <segue destination="of2-lT-RB4" kind="modal" id="2NF-2k-eFn"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="城市" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zVF-52-iyd">
                                 <rect key="frame" x="16" y="185" width="51" height="25"/>
@@ -1768,7 +1799,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ent-cM-L0I" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2854" y="5165"/>
+            <point key="canvasLocation" x="3808" y="3229"/>
         </scene>
         <!--Group-群设置-->
         <scene sceneID="ZKh-3z-mPJ">
@@ -2699,13 +2730,13 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="AcC-yW-RwT"/>
         <segue reference="iIs-SU-ZLV"/>
-        <segue reference="fNZ-Tb-k0o"/>
-        <segue reference="2se-m4-WKK"/>
-        <segue reference="B9e-R6-y8A"/>
+        <segue reference="AcC-yW-RwT"/>
         <segue reference="F18-ln-36K"/>
         <segue reference="EnR-fJ-pM5"/>
-        <segue reference="Dql-ZX-dEr"/>
+        <segue reference="j7u-OT-bsU"/>
+        <segue reference="NpR-cO-pjh"/>
+        <segue reference="B9e-R6-y8A"/>
+        <segue reference="fNZ-Tb-k0o"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -42,15 +42,6 @@ static LocationDataProxy *sharedLocationDataProxy = nil;
     NSLog(@"get location error:%@", error);
 }
 
-#pragma mark - 私有方法
--(void)startUpdatingLocation {
-
-}
--(void)stopdatingLocation {
-
-}
-
-
 #pragma mark - 接口方法
 -(DPLocation *) getLocationCurrent{
     if (!_locationCurrent) {
@@ -65,6 +56,8 @@ static LocationDataProxy *sharedLocationDataProxy = nil;
             _locationManager.distanceFilter = 100.0f;
         }
         [_locationManager startUpdatingLocation];
+        NSLog(@"开始定位 _locationManager startUpdatingLocation");
+
 
     }
     return _locationCurrent;
