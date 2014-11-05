@@ -27,10 +27,45 @@ static LocationDataProxy *sharedLocationDataProxy = nil;
     return sharedLocationDataProxy;
 }
 
+#pragma mark - 委托方法
+- (void)locationManager:(CLLocationManager *)manager
+     didUpdateLocations:(NSArray *)locations {
+    CLLocation *location = [locations lastObject];
+
+    NSLog(@"get location success:\nlat %f\nlon %f\nalt %f", location.coordinate.latitude , location.coordinate.longitude , location.altitude);
+    [manager stopUpdatingLocation];
+}
+
+- (void)locationManager:(CLLocationManager *)manager
+       didFailWithError:(NSError *)error{
+    //[manager stopUpdatingLocation];
+    NSLog(@"get location error:%@", error);
+}
+
+#pragma mark - 私有方法
+-(void)startUpdatingLocation {
+
+}
+-(void)stopdatingLocation {
+
+}
+
+
+#pragma mark - 接口方法
 -(DPLocation *) getLocationCurrent{
     if (!_locationCurrent) {
         //_locationCurrent = [[DPLocation alloc] init];
-        NSLog(@"开始获取当前位置");
+        NSLog(@"初始化定位管理对象");
+
+        //初始化定位管理对象
+        if (!_locationManager) {
+            _locationManager = [[CLLocationManager alloc] init];
+            _locationManager.delegate = self;
+            _locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters;
+            _locationManager.distanceFilter = 100.0f;
+        }
+        [_locationManager startUpdatingLocation];
+
     }
     return _locationCurrent;
 }

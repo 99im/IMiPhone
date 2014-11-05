@@ -13,12 +13,12 @@
 #import "imUtil.h"
 #import "DPLocation.h"
 
-#define TIMEOUT_LOCATION_CURRENT 10   //过期时间(分钟):当前位置
+#define TIMEOUT_LOCATION_CURRENT 10 //过期时间(分钟):当前位置
 
-@interface LocationDataProxy : NSObject
+@interface LocationDataProxy : NSObject <CLLocationManagerDelegate>
 
 + (LocationDataProxy *)sharedProxy;
 
--(DPLocation *) getLocationCurrent;
+- (DPLocation *)getLocationCurrent;
 
 @end

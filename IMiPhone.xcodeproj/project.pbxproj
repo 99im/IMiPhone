@@ -244,6 +244,8 @@
 		58EF8C4619BF04B600C5A7AC /* imNetWorkTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 58EF8C4519BF04B600C5A7AC /* imNetWorkTest.m */; };
 		58F2AA3419A2F85400DC2FFB /* imUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F2AA3319A2F85400DC2FFB /* imUtil.m */; };
 		58F2AA3919A487E300DC2FFB /* AsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F2AA3819A487E300DC2FFB /* AsyncSocket.m */; };
+		AB199ACA1A0A244E00F6B858 /* DPSysMessageGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = AB6396221A038CA500FF0BC6 /* DPSysMessageGroup.m */; };
+		AB199ACC1A0A24A800F6B858 /* LocationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = AB199ACB1A0A24A800F6B858 /* LocationTest.m */; };
 		AB20EE8419F4DCCC004627C8 /* GroupDataProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = AB20EE8319F4DCCC004627C8 /* GroupDataProxy.m */; };
 		AB20EE8719F4DD8C004627C8 /* GroupMessageProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = AB20EE8619F4DD8C004627C8 /* GroupMessageProxy.m */; };
 		AB24A95419F7CE2F00026299 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB24A95219F7CE2F00026299 /* Main.storyboard */; };
@@ -515,6 +517,7 @@
 		58F2AA3319A2F85400DC2FFB /* imUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = imUtil.m; sourceTree = "<group>"; };
 		58F2AA3719A487E300DC2FFB /* AsyncSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsyncSocket.h; sourceTree = "<group>"; };
 		58F2AA3819A487E300DC2FFB /* AsyncSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsyncSocket.m; sourceTree = "<group>"; };
+		AB199ACB1A0A24A800F6B858 /* LocationTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationTest.m; sourceTree = "<group>"; };
 		AB20EE8219F4DCCC004627C8 /* GroupDataProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupDataProxy.h; sourceTree = "<group>"; };
 		AB20EE8319F4DCCC004627C8 /* GroupDataProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupDataProxy.m; sourceTree = "<group>"; };
 		AB20EE8519F4DD8C004627C8 /* GroupMessageProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupMessageProxy.h; sourceTree = "<group>"; };
@@ -810,6 +813,7 @@
 			isa = PBXGroup;
 			children = (
 				117AC6A519EEB8A100143973 /* ContactTest.m */,
+				AB199ACB1A0A24A800F6B858 /* LocationTest.m */,
 				117AC6A619EEB8A100143973 /* IMDataUtilTest.m */,
 				110487AA19D90BFE0002AB36 /* MessageDataProxyTest.m */,
 				116BF88119CC01C70015561B /* UserDataProxyTest.m */,
@@ -1362,6 +1366,7 @@
 				1171F7CD19E9154F00865A0B /* DPContactPerson.m in Sources */,
 				58BC1E4319C06B9000722A00 /* imViewController.m in Sources */,
 				118310BB19FE447200C1968D /* MsgMessageProxy.m in Sources */,
+				AB199ACA1A0A244E00F6B858 /* DPSysMessageGroup.m in Sources */,
 				58BC1E4419C06B9000722A00 /* MainTabBarController.m in Sources */,
 				110F561B19D57013003B9EB4 /* DPUiMessage.m in Sources */,
 				11DF6A931A04904100A4B1D3 /* GroupChatTableViewCellFrame.m in Sources */,
@@ -1396,6 +1401,7 @@
 				58BC1E5619C06B9000722A00 /* imPhotoPicker.m in Sources */,
 				116AB14E19B733E900092E2C /* FriendDataProxy.m in Sources */,
 				117AC6AB19EEB90600143973 /* IMAddressPerson.m in Sources */,
+				AB199ACC1A0A24A800F6B858 /* LocationTest.m in Sources */,
 				116AB14A19B731DE00092E2C /* DBGroup.m in Sources */,
 				117AC6B219EEB9A500143973 /* IMNWSocketConnect.m in Sources */,
 				117AC6AC19EEB91500143973 /* DPUserFromContact.m in Sources */,
