@@ -18,4 +18,5 @@
 //根据本地图片名，组装用于占位的attributedString
 + (NSAttributedString *)assembleLocalImageAbStringByImgName:(NSString *)imgName;
 
+- (void)add;
 @end

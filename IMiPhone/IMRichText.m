@@ -17,6 +17,10 @@
 
 @implementation IMRichText
 
+- (void)add
+{
+    [self testCoreText];
+}
 //重写drawRect 是因为在drawRect之前，系统会往栈里面压入一个valid的CGContextRef，否则UIGraphicsGetCurrentContext返回nil
 - (void)drawRect:(CGRect)rect
 {
@@ -76,6 +80,12 @@
     //获取当前(View)上下文以便于之后的绘画，这个是一个离屏。
     CGContextRef context = UIGraphicsGetCurrentContext();
     
+//    UIImage *image = [UIImage imageNamed:@"E106"];
+//
+//    
+//        CGContextDrawImage(context, CGRectMake(50, 50, 50, 50), image.CGImage);
+//        return;
+    
 //    //这四行代码只是简单测试drawRect中context的坐标系
 //    CGContextSetRGBFillColor (context, 1, 0, 0, 1);
 //    CGContextFillRect (context, CGRectMake (0, 100, 100, 100 ));
@@ -118,9 +128,6 @@
     [mabstring endEditing];
     
     NSLog(@"value = %@",dc);
-
-
-    
     
     CTFramesetterRef framesetter = CTFramesetterCreateWithAttributedString((CFAttributedStringRef)mabstring);
     
@@ -141,22 +148,26 @@
         NSLog(@"context == nil!!");
     }
     
-    CGContextSetTextMatrix(context , CGAffineTransformIdentity);
+//    CGContextSetTextMatrix(context , CGAffineTransformIdentity);
     
     //压栈，压入图形状态栈中.每个图形上下文维护一个图形状态栈，并不是所有的当前绘画环境的图形状态的元素都被保存。图形状态中不考虑当前路径，所以不保存
     //保存现在得上下文图形状态。不管后续对context上绘制什么都不会影响真正得屏幕。
     CGContextSaveGState(context);
     
     //x，y轴方向移动
-    CGContextTranslateCTM(context , 10 ,200);
+    CGContextTranslateCTM(context , 0 ,200);
     
     //缩放x，y轴方向缩放，－1.0为反向1.0倍,坐标系转换,沿x轴翻转180度
     CGContextScaleCTM(context, 1.0 ,-1.0);
     
+//    CGAffineTransform flipVertical = CGAffineTransformMake(1,0,0,-1,0,self.bounds.size.height);
+//    CGContextConcatCTM(context, flipVertical);//将当前context的坐标系进行flip
     
+    
+    NSLog(@"before context:%f,%f,%f,%f,%f,%f",CGContextGetCTM(context).a,CGContextGetCTM(context).b,CGContextGetCTM(context).c,CGContextGetCTM(context).d,CGContextGetCTM(context).tx,CGContextGetCTM(context).ty);
     
     CTFrameDraw(frame,context);
-    
+    NSLog(@"after context:%f,%f,%f,%f,%f,%f",CGContextGetCTM(context).a,CGContextGetCTM(context).b,CGContextGetCTM(context).c,CGContextGetCTM(context).d,CGContextGetCTM(context).tx,CGContextGetCTM(context).ty);
      [self drawImages:frame withContext:context];
     
     CGPathRelease(Path);
@@ -188,10 +199,14 @@ CGFloat localImgRunDeleGetWidthCallback(void *refCon)
 
 - (void)drawImages:(CTFrameRef)ctFrame withContext:(CGContextRef)context
 {
-    CGContextSetTextMatrix(context , CGAffineTransformIdentity);
-    //x，y轴方向移动
-//    CGContextTranslateCTM(context , 0 ,200);
-//    CGContextScaleCTM(context, 1.0 ,-1.0);
+//     NSLog(@"before context:%f,%f,%f,%f,%f,%f",CGContextGetCTM(context).a,CGContextGetCTM(context).b,CGContextGetCTM(context).c,CGContextGetCTM(context).d,CGContextGetCTM(context).tx,CGContextGetCTM(context).ty);
+//    CGContextRestoreGState(context);
+//     NSLog(@"after context:%f,%f,%f,%f,%f,%f",CGContextGetCTM(context).a,CGContextGetCTM(context).b,CGContextGetCTM(context).c,CGContextGetCTM(context).d,CGContextGetCTM(context).tx,CGContextGetCTM(context).ty);
+//    CGContextScaleCTM(context, 1.0 ,-1.0);//转回去
+//    //x，y轴方向移动
+//    CGContextTranslateCTM(context , 0 ,-200);//
+//    CGContextTranslateCTM(context , 0 ,50);//
+//    CGContextScaleCTM(context, 1.0 ,-1.0);//转回去
     
     CFArrayRef lines = CTFrameGetLines(ctFrame);
     int lineCount = CFArrayGetCount(lines);
@@ -239,6 +254,7 @@ CGFloat localImgRunDeleGetWidthCallback(void *refCon)
                     imageDrawRect.origin.x = runRect.origin.x + lineOrigin.x;
                     imageDrawRect.origin.y = lineOrigin.y;
                     NSLog(@"imageDrawRect.origin:%f,:%f",imageDrawRect.origin.x,imageDrawRect.origin.y);
+                    CGContextTranslateCTM(context , 0 , imageDrawRect.size.height);//
                     CGContextDrawImage(context, imageDrawRect, image.CGImage);
                 }
             }
