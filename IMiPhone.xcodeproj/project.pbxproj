@@ -257,6 +257,8 @@
 		AB72235119ED110700E603E2 /* CategoryListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AB5554E719EBEAFA00B413F3 /* CategoryListTableViewCell.m */; };
 		ABA91EF919F64B970017B045 /* GroupTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ABA91EF819F64B970017B045 /* GroupTableViewCell.m */; };
 		ABA91EFC19F658270017B045 /* GroupTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABA91EFB19F658270017B045 /* GroupTableViewController.m */; };
+		ABAF97C81A09D44800BE29B8 /* LocationDataProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = ABAF97C71A09D44800BE29B8 /* LocationDataProxy.m */; };
+		ABAF97CB1A09F8F700BE29B8 /* DPLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = ABAF97CA1A09F8F700BE29B8 /* DPLocation.m */; };
 		ABBE6DA51A08A7E3005B8F42 /* LBSTest.m in Sources */ = {isa = PBXBuildFile; fileRef = ABBE6DA41A08A7E3005B8F42 /* LBSTest.m */; };
 /* End PBXBuildFile section */
 
@@ -538,6 +540,10 @@
 		ABA91EF819F64B970017B045 /* GroupTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupTableViewCell.m; sourceTree = "<group>"; };
 		ABA91EFA19F658270017B045 /* GroupTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupTableViewController.h; sourceTree = "<group>"; };
 		ABA91EFB19F658270017B045 /* GroupTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupTableViewController.m; sourceTree = "<group>"; };
+		ABAF97C61A09D44800BE29B8 /* LocationDataProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationDataProxy.h; sourceTree = "<group>"; };
+		ABAF97C71A09D44800BE29B8 /* LocationDataProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationDataProxy.m; sourceTree = "<group>"; };
+		ABAF97C91A09F8F700BE29B8 /* DPLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPLocation.h; sourceTree = "<group>"; };
+		ABAF97CA1A09F8F700BE29B8 /* DPLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPLocation.m; sourceTree = "<group>"; };
 		ABBE6DA41A08A7E3005B8F42 /* LBSTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBSTest.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -849,6 +855,7 @@
 		58AF049419B053930077DCBC /* DataProxy */ = {
 			isa = PBXGroup;
 			children = (
+				ABAF97C21A09CDEA00BE29B8 /* LBS */,
 				117AC6A219EE7C2F00143973 /* DPUserFromContact.h */,
 				117AC6A319EE7C2F00143973 /* DPUserFromContact.m */,
 				11B1C62A19E51AFB003D2711 /* MsgDataProxy.h */,
@@ -1077,6 +1084,17 @@
 			name = Group;
 			sourceTree = "<group>";
 		};
+		ABAF97C21A09CDEA00BE29B8 /* LBS */ = {
+			isa = PBXGroup;
+			children = (
+				ABAF97C91A09F8F700BE29B8 /* DPLocation.h */,
+				ABAF97CA1A09F8F700BE29B8 /* DPLocation.m */,
+				ABAF97C61A09D44800BE29B8 /* LocationDataProxy.h */,
+				ABAF97C71A09D44800BE29B8 /* LocationDataProxy.m */,
+			);
+			name = LBS;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1215,6 +1233,7 @@
 				11E1581319F4FFE1008544D1 /* MsgTableViewController.m in Sources */,
 				116B6E8919B0534000DB1B5E /* DBGroup.m in Sources */,
 				117AC6A119EE7BCF00143973 /* UserDAO.m in Sources */,
+				ABAF97C81A09D44800BE29B8 /* LocationDataProxy.m in Sources */,
 				585971E21999F0C700258CB1 /* imAppDelegate.m in Sources */,
 				110487A219D79DFB0002AB36 /* ChatMessageDAO.m in Sources */,
 				58CDC04419FE355C00173FD7 /* SystemTableViewController.m in Sources */,
@@ -1272,6 +1291,7 @@
 				117AC69419EE763E00143973 /* IMAddressBook.m in Sources */,
 				118310BE19FE5D1D00C1968D /* DBSysMessage.m in Sources */,
 				58B496E019A7186A0082AE30 /* NSString+MKNetworkKitAdditions.m in Sources */,
+				ABAF97CB1A09F8F700BE29B8 /* DPLocation.m in Sources */,
 				58BACF1319B5E89D00A72391 /* VPImageCropperViewController.m in Sources */,
 				118310C619FE623300C1968D /* SysMessageDAO.m in Sources */,
 				58D3F28719E63082006589F9 /* IMNWManager.m in Sources */,

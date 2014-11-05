@@ -39,37 +39,37 @@ static GroupDataProxy *sharedGroupDataProxy = nil;
     return sharedGroupDataProxy;
 }
 
-+ (long long)longLongNowTime:(NSString *)dateFormat
-{
-    NSDate *senddate = [NSDate date];
-    [senddate timeIntervalSince1970];
-    NSDateFormatter *dateformatter = [[NSDateFormatter alloc] init];
-    if (dateFormat && [dateFormat length] > 0) {
-        [dateformatter setDateFormat:dateFormat];
-    }
-    else {
-        [dateformatter setDateFormat:@"yyyyMMddHHmmss"];
-    }
-
-    NSString *locationString = [dateformatter stringFromDate:senddate];
-    long long nowTime = [locationString longLongValue];
-    return nowTime;
-}
-
-+ (long long)nowTime
-{
-    return [GroupDataProxy longLongNowTime:@"yyyyMMddHHmmss"];
-}
-
-+ (long long)getExpireTime:(NSInteger)minutes{
-    long long expireTime = [GroupDataProxy nowTime];
-    if (minutes > 1) {
-        expireTime = expireTime + minutes * 60;
-    } else {
-        expireTime = expireTime + 60;
-    }
-    return expireTime;
-}
+//+ (long long)longLongNowTime:(NSString *)dateFormat
+//{
+//    NSDate *senddate = [NSDate date];
+//    [senddate timeIntervalSince1970];
+//    NSDateFormatter *dateformatter = [[NSDateFormatter alloc] init];
+//    if (dateFormat && [dateFormat length] > 0) {
+//        [dateformatter setDateFormat:dateFormat];
+//    }
+//    else {
+//        [dateformatter setDateFormat:@"yyyyMMddHHmmss"];
+//    }
+//
+//    NSString *locationString = [dateformatter stringFromDate:senddate];
+//    long long nowTime = [locationString longLongValue];
+//    return nowTime;
+//}
+//
+//+ (long long)nowTime
+//{
+//    return [GroupDataProxy longLongNowTime:@"yyyyMMddHHmmss"];
+//}
+//
+//+ (long long)getExpireTime:(NSInteger)minutes{
+//    long long expireTime = [GroupDataProxy nowTime];
+//    if (minutes > 1) {
+//        expireTime = expireTime + minutes * 60;
+//    } else {
+//        expireTime = expireTime + 60;
+//    }
+//    return expireTime;
+//}
 
 #pragma mark - 群列表相关
 - (NSMutableArray *)getGroupMyList:(NSInteger)httpMode
@@ -121,7 +121,7 @@ static GroupDataProxy *sharedGroupDataProxy = nil;
 //    _arrGroupMyList = [NSMutableArray array];
 //    //}
 //
-//    long long localExpireTime = [GroupDataProxy getExpireTime:TIMEOUT_GROUP_INFO];
+//    long long localExpireTime = [imUtil getExpireTime:TIMEOUT_GROUP_INFO];
 //    for (NSInteger i = 0; i < [list count]; i++) {
 //        DPGroup *dpGroup = [[DPGroup alloc] init];
 //        NSDictionary *group = [list objectAtIndex:i];
@@ -214,7 +214,7 @@ static GroupDataProxy *sharedGroupDataProxy = nil;
 - (void)updateGroupInfo:(DPGroup *)group
 {
     //客户端存储
-    //long long localExpireTime = [GroupDataProxy getExpireTime:TIMEOUT_GROUP_INFO];
+    //long long localExpireTime = [imUtil getExpireTime:TIMEOUT_GROUP_INFO];
     //group.localExpireTime = localExpireTime;
     
     // TODO: 入库保存群信息

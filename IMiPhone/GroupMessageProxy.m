@@ -142,7 +142,7 @@ static GroupMessageProxy *sharedGroupMessageProxy = nil;
                     }
                     
                     //客户端存储
-                    long long localExpireTime = [GroupDataProxy getExpireTime:TIMEOUT_GROUP_INFO];
+                    long long localExpireTime = [imUtil getExpireTime:TIMEOUT_GROUP_INFO];
                     dpGroup.localExpireTime = localExpireTime;
                     
                     //群基本信息
@@ -200,7 +200,7 @@ static GroupMessageProxy *sharedGroupMessageProxy = nil;
 
                     NSMutableArray *myList = [NSMutableArray array];
 
-                    long long localExpireTime = [GroupDataProxy getExpireTime:TIMEOUT_GROUP_INFO];
+                    long long localExpireTime = [imUtil getExpireTime:TIMEOUT_GROUP_INFO];
 
                     for (NSInteger i = 0; i < [list count]; i++) {
                         DPGroup *dpGroup = [[DPGroup alloc] init];

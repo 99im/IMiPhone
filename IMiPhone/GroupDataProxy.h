@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "imUtil.h"
 #import "GroupDAO.h"
 #import "DPGroup.h"
 #import "UserDataProxy.h"
@@ -24,9 +25,9 @@
 
 #pragma mark - 静态方法
 + (GroupDataProxy *)sharedProxy;
-+ (long long)nowTime;
-+ (long long)longLongNowTime:(NSString *)dateFormat;
-+ (long long)getExpireTime:(NSInteger)minutes;
+//+ (long long)nowTime;
+//+ (long long)longLongNowTime:(NSString *)dateFormat;
+//+ (long long)getExpireTime:(NSInteger)minutes;
 
 #pragma mark - 群列表相关
 - (NSMutableArray *)getGroupMyList:(NSInteger)httpMode;
