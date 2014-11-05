@@ -32,11 +32,11 @@ static GroupMessageProxy *sharedGroupMessageProxy = nil;
 //        return nil; //客户端错误码，待统一整理
 //    }
 //
-//    // NSTimeInterval timeInterval= [GroupDataProxy nowTime];
+//    // NSTimeInterval timeInterval= [imUtil nowTime];
 //    DPGroup *dpGroup = [[DPGroup alloc] init];
 //
 //    //客户端存储
-//    // long long localExpireTime = [GroupDataProxy nowTime] + TIME_GROUP_INFO;
+//    // long long localExpireTime = [imUtil nowTime] + TIME_GROUP_INFO;
 //    // dpGroup.localExpireTime = localExpireTime;
 //    // dpGroup.isInMyGroups = [self isInMyGroups:gid];
 //
@@ -76,7 +76,7 @@ static GroupMessageProxy *sharedGroupMessageProxy = nil;
 //    NSMutableArray *result = [NSMutableArray array];
 //    //}
 //
-//    // long long localExpireTime = [GroupDataProxy nowTime] + TIME_GROUP_INFO;
+//    // long long localExpireTime = [imUtil nowTime] + TIME_GROUP_INFO;
 //    for (NSInteger i = 0; i < [list count]; i++) {
 //        DPGroup *dpGroup = [[DPGroup alloc] init];
 //        NSDictionary *group = [list objectAtIndex:i];
@@ -135,7 +135,7 @@ static GroupMessageProxy *sharedGroupMessageProxy = nil;
                     
                     long long gid = [[info objectForKey:KEYP_H__GROUP_INFO__INFO_GID] longLongValue];
                     
-                    // NSTimeInterval timeInterval= [GroupDataProxy nowTime];
+                    // NSTimeInterval timeInterval= [imUtil nowTime];
                     DPGroup *dpGroup = [[GroupDataProxy sharedProxy] getGroupInfoCurrent:SEND_HTTP_NO];
                     if (!dpGroup || dpGroup.gid != gid) {
                         dpGroup = [[DPGroup alloc] init];

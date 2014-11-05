@@ -62,7 +62,7 @@ static GroupDataProxy *sharedGroupDataProxy = nil;
 //}
 //
 //+ (long long)getExpireTime:(NSInteger)minutes{
-//    long long expireTime = [GroupDataProxy nowTime];
+//    long long expireTime = [imUtil nowTime];
 //    if (minutes > 1) {
 //        expireTime = expireTime + minutes * 60;
 //    } else {
@@ -85,7 +85,7 @@ static GroupDataProxy *sharedGroupDataProxy = nil;
 
     //开始分析是否过期
     if (needSendHttp != YES && httpMode == SEND_HTTP_AUTO) {
-        long long nowTime = [GroupDataProxy nowTime];
+        long long nowTime = [imUtil nowTime];
         for (NSInteger i = 0; i < [_arrGroupMyList count]; i++) {
             DPGroup *dpGroup = _arrGroupMyList[i];
             if (dpGroup.localExpireTime < nowTime) {
@@ -184,7 +184,7 @@ static GroupDataProxy *sharedGroupDataProxy = nil;
                 _groupIdSendLast = gid;
             }
             else if (dpGroup) { //分析本地缓存数据是否超时
-                long long nowTime = [GroupDataProxy nowTime];
+                long long nowTime = [imUtil nowTime];
                 if (dpGroup.localExpireTime < nowTime) {
                     needSendHttp = YES;
                 }
