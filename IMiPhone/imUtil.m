@@ -122,4 +122,37 @@
     }
 }
 
+#pragma mark - 获取时间相关
+
++ (long long)longLongNowTime:(NSString *)dateFormat
+{
+    NSDate *senddate = [NSDate date];
+    [senddate timeIntervalSince1970];
+    NSDateFormatter *dateformatter = [[NSDateFormatter alloc] init];
+    if (dateFormat && [dateFormat length] > 0) {
+        [dateformatter setDateFormat:dateFormat];
+    }
+    else {
+        [dateformatter setDateFormat:@"yyyyMMddHHmmss"];
+    }
+
+    NSString *locationString = [dateformatter stringFromDate:senddate];
+    long long nowTime = [locationString longLongValue];
+    return nowTime;
+}
+
++ (long long)nowTime
+{
+    return [imUtil longLongNowTime:@"yyyyMMddHHmmss"];
+}
+
++ (long long)getExpireTime:(NSInteger)minutes{
+    long long expireTime = [imUtil nowTime];
+    if (minutes > 1) {
+        expireTime = expireTime + minutes * 60;
+    } else {
+        expireTime = expireTime + 60;
+    }
+    return expireTime;
+}
 @end

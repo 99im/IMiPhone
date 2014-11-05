@@ -31,4 +31,9 @@
 //显示提示框，指定时间后自动消失
 + (void)alertViewMessage:(NSString *)msg disappearAfter:(NSTimeInterval)ti;
 
+#pragma mark - 获取时间相关
++ (long long)longLongNowTime:(NSString *)dateFormat;
++ (long long)nowTime;
++ (long long)getExpireTime:(NSInteger)minutes;
+
 @end

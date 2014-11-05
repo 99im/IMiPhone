@@ -16,6 +16,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self registerMessageNotification];
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -26,6 +27,7 @@
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
+    [self removeMessageNotification];
     // Dispose of any resources that can be recreated.
 }
 
@@ -110,16 +112,36 @@
 }
 
 - (void)didGroupExit:(NSNotification *)notification {
-    if (notification) {
-        NSLog(@"退群成功");
-    } else {
+    //NSLog(@"退群：%@" , notification.userInfo);
+    if (notification.object) {
         NSLog(@"退群失败");
+    } else if(notification.userInfo) {
+        DPGroup *dpGroup = [[GroupDataProxy sharedProxy] getGroupInfoCurrent:SEND_HTTP_NO];
+        long long gid = [[notification.userInfo objectForKey:KEYQ_H__GROUP_EXIT__GID] longLongValue];
+        if (dpGroup && dpGroup.gid == gid) {
+            dpGroup.myRelation = GROUP_RELATION_NONE;
+            NSLog(@"退群成功:%qi", gid);
+            //TODO: 开始重定向到群列表页
+        }
+
     }
 }
 
 
 #pragma mark - 交互动作
-- (IBAction)groupExitTouchUp:(id)sender {
-    NSLog(@"点击了按钮：退出该群");
+- (IBAction)groupExitTouchUp:(id)sender
+{
+    DPGroup *dpGroup = [[GroupDataProxy sharedProxy] getGroupInfoCurrent:SEND_HTTP_NO];
+    if (dpGroup) {
+        if ([GroupDataProxy isGroupOwner:dpGroup]) {//解散群
+            // TODO: 解散群
+        }
+        else {//退出群
+            [[GroupMessageProxy sharedProxy] sendGroupExit:dpGroup.gid];
+        }
+    }
+    else {
+        NSLog(@"出现异常：退出该群");
+    }
 }
 @end

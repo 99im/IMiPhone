@@ -8,11 +8,17 @@
 
 #import <Foundation/Foundation.h>
 
-#define DB_PRIMARY_KEY_GROUP_ID @"groupId"
+//#define DB_PRIMARY_KEY_GROUP_ID @"groupId"
+
+//群关系：
+#define GROUP_RELATION_NONE 0       //无关系
+#define GROUP_RELATION_OWNER 1    //创建者
+#define GROUP_RELATION_MANAGER 2    //管理员
+#define GROUP_RELATION_MEMBER  3    //普通成员
 
 @interface DPGroup : NSObject
 #pragma mark - 群基信息
-@property (nonatomic) long  gid;
+@property (nonatomic) long long gid;
 @property (nonatomic, retain) NSString *name;
 @property (nonatomic) NSInteger memberNum;  //成员数
 @property (nonatomic) NSInteger myRelation;
