@@ -101,7 +101,7 @@
         }
         else if(buttonIndex == 1) {
             NSLog(@"OK");
-            [[FriendMessageProxy sharedProxy] sendTypeFocusAdd:[NSNumber numberWithInteger:userInfo.uid]];
+            [[FriendMessageProxy sharedProxy] sendTypeFocusAdd:[NSNumber numberWithLongLong:userInfo.uid]];
         }
         self.alertViewFocus = nil;
     }
@@ -116,7 +116,7 @@
     }
     else if(buttonIndex == 1) {
         NSLog(@"Focus Cancel");
-        [[FriendMessageProxy sharedProxy] sendTypeFocusCancel:[NSNumber numberWithInteger:userInfo.uid]];
+        [[FriendMessageProxy sharedProxy] sendTypeFocusCancel:[NSNumber numberWithLongLong:userInfo.uid]];
     }
     else if (buttonIndex == 2) {
         NSLog(@"Black list and report");

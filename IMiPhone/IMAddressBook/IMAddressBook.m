@@ -23,7 +23,7 @@
         if (error) { NSLog(@"%@", error); }
     }
     if (ab == NULL) {
-        ab = ABAddressBookCreate();
+//        ab = ABAddressBookCreate();//兼顾ios6 之前的系统，暂时注释掉
     }
     if (ab) {
         // ABAddressBookRequestAccessWithCompletion is iOS 6 and up. 适配IOS6以上版本
