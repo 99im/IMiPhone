@@ -10,7 +10,11 @@
 #import "imRms.h"
 #import "DatabaseConfig.h"
 #import "ImDataUtil.h"
-#import "ImDataUtil.h"
+#import "MsgDataProxy.h"
+#import "ChatDataProxy.h"
+#import "FriendDataProxy.h"
+#import "GroupDataProxy.h"
+#import "ActivityDataProxy.h"
 
 #define KEY_USER_LAST_LOGIN_COUNTRY @"key_user_last_login_country"
 #define KEY_USER_LAST_LOGIN_MOBILE @"key_user_last_login_mobile"
@@ -57,9 +61,13 @@ static UserDataProxy *sharedProxy = nil;
 {
     if((self = [super init]))
     {
-        _lastLoginUid = NSNotFound;//不能用NAN，NAN为double类型 赋值给int类型时候就是0 但是（0 ＝＝ NAN）返回NO
+        _lastLoginUid = LONG_LONG_MAX;//不能用NAN，NAN为double类型 赋值给int类型时候就是0 但是（0 ＝＝ NAN）返回NO
     }
     return self;
+}
+- (void)reset
+{
+    self.arrUsers = nil;
 }
 
 - (NSString *)getLastLoginCountry
@@ -103,7 +111,7 @@ static UserDataProxy *sharedProxy = nil;
 
 - (long long)getLastLoginUid
 {
-    if (_lastLoginUid == NSNotFound)
+    if (_lastLoginUid == LONG_LONG_MAX)
     {
         _lastLoginUid = [imRms userDefaultsReadInt:KEY_USER_LAST_LOGIN_UID isBindUid:NO];
         [DatabaseConfig shareDatabaseConfig].databaseName = [NSString stringWithFormat:@"%lli", _lastLoginUid];
@@ -113,6 +121,14 @@ static UserDataProxy *sharedProxy = nil;
 }
 - (void)setLastLoginUid:(long long)lastLoginUid
 {
+    //清理掉之前账号数据
+    [self reset];
+    [[MsgDataProxy sharedProxy] reset];
+    [[ChatDataProxy sharedProxy] reset];
+    [[FriendDataProxy sharedProxy] reset];
+    [[GroupDataProxy sharedProxy] reset];
+    [[ActivityDataProxy sharedProxy] reset];
+    //
     _lastLoginUid = lastLoginUid;
     [DatabaseConfig shareDatabaseConfig].databaseName = [NSString stringWithFormat:@"%lli", _lastLoginUid];
     [imRms setUid:_lastLoginUid];

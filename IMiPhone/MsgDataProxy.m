@@ -31,20 +31,17 @@ static MsgDataProxy *chatDataProxy = nil;
     return chatDataProxy;
 }
 
-//- (id)init
-//{
-//    if((self = [super init]))
-//    {
-//        self.arrSysMsgs = [NSMutableArray array];
-//    }
-//    return self;
-//}
+- (void)reset
+{
+    self.arrSysMsgs = nil;
+    self.arrUiMsgs = nil;
+}
 
 #pragma mark - sysMsgList
 
 - (void)updateSysMsgList:(NSArray *)dpMsgList
 {
-    self.arrSysMsgs = self.arrSysMsgs;
+    self.arrSysMsgs = [NSMutableArray array];
     [[SysMessageDAO sharedDAO] deleteByCondition:@"" Bind:[NSMutableArray arrayWithObjects:nil]];
     DBSysMessage *dbSysMessage;
     for (NSInteger i = 0; i < dpMsgList.count; i++)

@@ -31,7 +31,7 @@
     [self registerMessageNotification];
     [[IMNWManager sharedNWManager] initHttpConnect];
     [[IMNWManager sharedNWManager] initSocketConnect];
-    self.hasVerified = ![imUtil checkBlankString:[UserDataProxy sharedProxy].verify] && [UserDataProxy sharedProxy].lastLoginUid != NSNotFound;
+    self.hasVerified = ![imUtil checkBlankString:[UserDataProxy sharedProxy].verify] && [UserDataProxy sharedProxy].lastLoginUid != LONG_LONG_MAX;
     if (self.hasVerified) {
         [[IMNWManager sharedNWManager].socketConnect connect:SOCKET_HOST port:SOCKET_PORT];
     }

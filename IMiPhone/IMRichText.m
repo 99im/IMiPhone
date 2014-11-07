@@ -125,7 +125,9 @@
 
     [self drawLocalImagesWithFrame:frame inContext:context];
     
-    }
+    CGContextRestoreGState(context);
+
+}
 
 - (void)drawLocalImagesWithFrame:(CTFrameRef)ctFrame inContext:(CGContextRef)context
 {

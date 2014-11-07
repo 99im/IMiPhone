@@ -27,6 +27,8 @@ typedef enum {
 
 + (ChatDataProxy*)sharedProxy;
 
+- (void)reset;
+
 - (NSMutableArray *)getP2PChatMessagesByTargetUid:(long long)targetUid;
 - (void)updateP2PChatMessage:(DPChatMessage *)dpChatMessage;
 

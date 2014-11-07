@@ -17,6 +17,8 @@
 
 + (MsgDataProxy *)sharedProxy;
 
+- (void)reset;
+
 - (void)updateSysMsgList:(NSArray *)dpMsgList;
 - (DPSysMessage *)getSysMsgByMid:(long long)mid;
 //- (NSArray *)getSysMsgList;

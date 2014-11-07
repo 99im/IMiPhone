@@ -10,4 +10,19 @@
 
 @implementation ActivityDataProxy
 
+static ActivityDataProxy *sharedActivityProxy = nil;
+
++ (ActivityDataProxy *)sharedProxy
+{
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        sharedActivityProxy = [[self alloc] init];
+    });
+    return sharedActivityProxy;
+}
+
+- (void)reset
+{
+}
+
 @end

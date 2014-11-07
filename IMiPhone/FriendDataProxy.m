@@ -38,6 +38,12 @@ static FriendDataProxy *sharedFriendDataProxy = nil;
     return sharedFriendDataProxy;
 }
 
+- (void)reset
+{
+    self.arrUsersFromContact = nil;
+    self.arrFriends = nil;
+}
+
 #pragma mark - contact
 
 - (NSMutableArray *)mutableArrayContact

@@ -28,6 +28,8 @@
 
 + (FriendDataProxy *)sharedProxy;
 
+- (void)reset;
+
 - (NSInteger)getCountOfUsers:(int)byType;
 
 - (NSMutableArray *)mutableArrayContact;

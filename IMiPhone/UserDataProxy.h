@@ -30,6 +30,8 @@
 
 + (UserDataProxy *)sharedProxy;
 
+- (void)reset;
+
 - (NSMutableArray *)mutableArrayUsers;
 
 //所有用户数据的相关操作
