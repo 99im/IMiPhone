@@ -25,14 +25,13 @@
  [mabstring addAttributes:attributes range:NSMakeRange(0, 4)];
  
  [mabstring addAttributes:[IMRichText getWrapModeAttributes] range:NSMakeRange(0, mabstring.length)];
- NSAttributedString *imgAbStr = [IMRichText assembleLocalImageAbStringByImgName:@"E105"];
+ NSAttributedString *imgAbStr = [IMRichText assembleLocalImageAbStringByImgName:@"E105" withSize:CGSizeMake(20, 20) withPlaceHolder:@" "];
  [mabstring replaceCharactersInRange:NSMakeRange(43, 1) withAttributedString:imgAbStr];
- 
+ imgAbStr = [IMRichText assembleLocalImageAbStringByImgName:@"E106" withSize:CGSizeMake(40, 40) withPlaceHolder:@" "];
+ [mabstring replaceCharactersInRange:NSMakeRange(60, 1) withAttributedString:imgAbStr];
  [mabstring endEditing];
  rt = [IMRichText richTextWithAttributedString:mabstring withFrameWidth:150];
  [self.view addSubview:rt];
- 
- // rt.frame = CGRectMake(100, 100, 100, 100);
  }
 
 */
@@ -51,7 +50,7 @@
 + (IMRichText *)richTextWithAttributedString:(NSAttributedString *)abString withFrameWidth:(CGFloat)frameWidth;
 
 //根据本地图片名，组装用于占位的attributedString
-+ (NSAttributedString *)assembleLocalImageAbStringByImgName:(NSString *)imgName;
++ (NSAttributedString *)assembleLocalImageAbStringByImgName:(NSString *)imgName withSize:(CGSize)size;
 
 //返回换行模式的熟悉，用于解决图文混排时，图像超出边界
 + (NSDictionary *)getWrapModeAttributes;

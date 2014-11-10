@@ -133,4 +133,13 @@
 
 }
 
+- (void)testNSString
+{
+//    char c[] = " aaaa    ";
+//    NSString *str = [[NSString alloc] initWithCharactersc length:10];
+
+//    char c = [str characterAtIndex:0];
+//    NSLog(@"str:%d",str.length);
+}
+
 @end
