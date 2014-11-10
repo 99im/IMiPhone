@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="sWe-ai-dJr">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="sWe-ai-dJr">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
@@ -602,7 +602,7 @@
         <scene sceneID="Dsx-qw-qAw">
             <objects>
                 <navigationController definesPresentationContext="YES" id="vfo-zI-J32" userLabel="MainTab-消息NavigationController" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="消息" image="message2" selectedImage="message1" id="YxR-lP-vZR"/>
+                    <tabBarItem key="tabBarItem" title="消息" image="message2" id="YxR-lP-vZR"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="IKa-7X-56I">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -657,7 +657,7 @@
                             <outlet property="delegate" destination="aS9-8z-znb" id="gp7-C1-YlG"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="附近" image="nearby2" selectedImage="nearby1" id="YGp-uQ-RWa"/>
+                    <tabBarItem key="tabBarItem" title="附近" image="nearby2" id="YGp-uQ-RWa"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fwi-ZD-fNA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -684,7 +684,7 @@
                             <outlet property="delegate" destination="OZu-Yg-yCD" id="JUS-Qy-zgu"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="发现" image="discover2" selectedImage="discover1" id="ykm-nA-Tf3"/>
+                    <tabBarItem key="tabBarItem" title="发现" image="discover2" id="ykm-nA-Tf3"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LUq-Cf-Fcf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -2670,7 +2670,7 @@
         <scene sceneID="sn6-oW-3At">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="VpD-M4-6ZC" userLabel="MainTab-联系人" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="联系人" image="contact2" selectedImage="contact1" id="GnX-Mt-m4d"/>
+                    <tabBarItem key="tabBarItem" title="联系人" image="contact2" id="GnX-Mt-m4d"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="aa2-Rr-6DY">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -2692,7 +2692,7 @@
         <scene sceneID="acU-Tb-ivg">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="OqY-yE-MY5" userLabel="MainTab-个人" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="个人" image="profile2" selectedImage="profile1" id="86k-Tl-Csp"/>
+                    <tabBarItem key="tabBarItem" title="个人" image="profile2" id="86k-Tl-Csp"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="VE1-vJ-vE4">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -2712,15 +2712,10 @@
         <image name="ChatDefault" width="68" height="68"/>
         <image name="HeadBg" width="100" height="100"/>
         <image name="MyFans" width="27" height="27"/>
-        <image name="contact1" width="44" height="44"/>
         <image name="contact2" width="44" height="44"/>
-        <image name="discover1" width="44" height="44"/>
         <image name="discover2" width="44" height="44"/>
-        <image name="message1" width="44" height="44"/>
         <image name="message2" width="44" height="44"/>
-        <image name="nearby1" width="44" height="44"/>
         <image name="nearby2" width="44" height="44"/>
-        <image name="profile1" width="44" height="44"/>
         <image name="profile2" width="44" height="44"/>
         <image name="splash.jpg" width="640" height="400"/>
     </resources>
