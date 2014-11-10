@@ -66,7 +66,7 @@
 //绘制内容
 - (void)drawContent : (DPGroup *) dpGroup {
     if (dpGroup) {
-        self.lblGroupId.text = [NSString stringWithFormat:@"群号：%li" , dpGroup.gid];
+        self.lblGroupId.text = [NSString stringWithFormat:@"群号：%lli" , dpGroup.gid];
         self.lblGroupName.text = dpGroup.name;
         self.lblCreatorName.text = [NSString stringWithFormat:@"群主：%@ ", dpGroup.creator_nick];
         self.lblCTime.text = dpGroup.ctime;

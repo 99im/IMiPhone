@@ -52,7 +52,7 @@ static UserMessageProxy *sharedUserMessageProxy = nil;
                 dpUser.oid = [userInfo objectForKey:KEYP_H__USER_SEARCH__LIST_UINFO_OID];
                 dpUser.nick = [userInfo objectForKey:KEYP_H__USER_SEARCH__LIST_UINFO_NICK];
                 
-                NSInteger findIndex = [ImDataUtil getIndexOf:[[UserDataProxy sharedProxy] mutableArrayUsers] byItemKey:DB_PRIMARY_KEY_USER_UID withValue:[NSNumber numberWithInteger:dpUser.uid]];;
+                NSInteger findIndex = [ImDataUtil getIndexOf:[[UserDataProxy sharedProxy] mutableArrayUsers] byItemKey:DB_PRIMARY_KEY_USER_UID withValue:[NSNumber numberWithLongLong:dpUser.uid]];;
                 
                 if (findIndex == NSNotFound) {
                     [[[UserDataProxy sharedProxy] mutableArrayUsers] addObject:dpUser];

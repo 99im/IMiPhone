@@ -16,10 +16,10 @@
 @property (nonatomic, readonly) ChatMessageType messageType;
 @property (nonatomic, readonly) CGRect rectIcon;
 @property (nonatomic, readonly) CGRect rectContentBg;
-@property (nonatomic, retain, readonly) DPChatMessage *chatMessage;
+@property (nonatomic, retain, readonly) DPGroupChatMessage *chatMessage;
 @property (nonatomic, readonly) CGFloat cellHeight; //
 @property (nonatomic, retain, readonly) UIView *viewContent;
 
-- (void)setMsgType:(ChatMessageType)type withMsg:(DPGroupChatMessage *)chatMessage;
+- (void)setMsgType:(ChatMessageType)type withMsg:(DPGroupChatMessage *)dpChatMessage;
 
 @end

@@ -17,10 +17,10 @@
 @synthesize cellHeight = _cellHeight;
 @synthesize viewContent = _viewContent;
 
-- (void)setMsgType:(ChatMessageType)type withMsg:(DPGroupChatMessage *)chatMessage
+- (void)setMsgType:(ChatMessageType)type withMsg:(DPGroupChatMessage *)dpChatMessage
 {
     _messageType = type;
-    _chatMessage = chatMessage;
+    _chatMessage = dpChatMessage;
     
     CGSize winSize = [UIScreen mainScreen].bounds.size;
     CGFloat iconX = CHAT_PORTRAIT_MARGIN_X;
@@ -35,7 +35,7 @@
     }
     _rectIcon = CGRectMake(iconX, iconY, iconWidth, iconHeight);
     
-    _viewContent = [self assembleMessage:chatMessage.content];
+    _viewContent = [self assembleMessage:_chatMessage.content];
     
     CGFloat contentBgX;
     CGFloat contentBgY = iconY;

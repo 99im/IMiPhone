@@ -82,7 +82,7 @@
     }
    
 //    [dao query:(NSString *) Bind:<#(NSArray *)#>]
-    return nil;
+    return arrReult;
 }
 
 

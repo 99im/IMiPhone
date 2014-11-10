@@ -31,20 +31,17 @@ static MsgDataProxy *chatDataProxy = nil;
     return chatDataProxy;
 }
 
-//- (id)init
-//{
-//    if((self = [super init]))
-//    {
-//        self.arrSysMsgs = [NSMutableArray array];
-//    }
-//    return self;
-//}
+- (void)reset
+{
+    self.arrSysMsgs = nil;
+    self.arrUiMsgs = nil;
+}
 
 #pragma mark - sysMsgList
 
 - (void)updateSysMsgList:(NSArray *)dpMsgList
 {
-    self.arrSysMsgs = self.arrSysMsgs;
+    self.arrSysMsgs = [NSMutableArray array];
     [[SysMessageDAO sharedDAO] deleteByCondition:@"" Bind:[NSMutableArray arrayWithObjects:nil]];
     DBSysMessage *dbSysMessage;
     for (NSInteger i = 0; i < dpMsgList.count; i++)
@@ -109,7 +106,7 @@ static MsgDataProxy *chatDataProxy = nil;
 - (DPSysMessage *)getSysMsgByMid:(long long)mid
 {
     NSArray *sysMsgList = [self getSysMsgList];
-    NSInteger findIndex = [ImDataUtil getIndexOf:sysMsgList byItemKey:@"smid" withValue:[NSNumber numberWithLong:mid]];
+    NSInteger findIndex = [ImDataUtil getIndexOf:sysMsgList byItemKey:@"smid" withValue:[NSNumber numberWithLongLong:mid]];
     if (findIndex != NSNotFound) {
         return [sysMsgList objectAtIndex:findIndex];
     }
@@ -126,7 +123,7 @@ static MsgDataProxy *chatDataProxy = nil;
     NSArray *uiMsgList = [self getUiMsgList];
     
     if (dpUiMessage.type == UI_MESSAGE_TYPE_CHAT || dpUiMessage.type == UI_MESSAGE_TYPE_GROUP_CHAT ) {
-        NSInteger findIndex = [ImDataUtil getIndexOf:uiMsgList byItemKey:@"relationId" withValue:[NSNumber numberWithLong:dpUiMessage.relationId]];
+        NSInteger findIndex = [ImDataUtil getIndexOf:uiMsgList byItemKey:@"relationId" withValue:[NSNumber numberWithLongLong:dpUiMessage.relationId]];
         if (findIndex == NSNotFound) {
             [[UiMessageDAO sharedDAO] insert:dbUiMessage];
             [self.arrUiMsgs addObject:dpUiMessage];

@@ -42,6 +42,13 @@ static ChatDataProxy *messageDataProxy = nil;
     });
     return messageDataProxy;
 }
+
+- (void)reset
+{
+    self.dicMessages = nil;
+    self.dicGroupMessages = nil;
+}
+
 #pragma mark - messages
 
 - (NSMutableArray *)getP2PChatMessagesByTargetUid:(long long)targetUid
