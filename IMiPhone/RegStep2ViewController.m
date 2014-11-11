@@ -30,12 +30,14 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self.tfPassword becomeFirstResponder];
+    [self registerMessageNotification];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+    [self removeMessageNotification];
 }
 
 #pragma mark - Navigation

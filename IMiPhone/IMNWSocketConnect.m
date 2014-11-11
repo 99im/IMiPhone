@@ -22,6 +22,7 @@
 @property (nonatomic, retain) NSString *host;
 @property (nonatomic) NSInteger port;
 @property (nonatomic, retain) NSData *dataToSend;
+@property (nonatomic, retain) NSTimer *timer;
 
 @end
 
@@ -79,8 +80,7 @@ char cryptKey[17];
 {
     NSLog(@"Socket connect succceed: %@ : %hu", host, port);
     if (!CRYPT) {
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sendTypeLogin:) name:NOTI_S_ACCOUNT_LOGIN object:nil];
-        [[AccountMessageProxy sharedProxy] sendTypeLogin];
+        self.timer = [NSTimer scheduledTimerWithTimeInterval:0.100f target:self selector:@selector(verifyUser) userInfo:nil repeats:NO];
     }
 }
 
@@ -98,9 +98,15 @@ char cryptKey[17];
         keyRevert(originalKey, cryptKey);
         [self.socket readDataToData:term withTimeout:-1 tag:TAG_MSG];
         
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sendTypeLogin:) name:NOTI_S_ACCOUNT_LOGIN object:nil];
-        [[AccountMessageProxy sharedProxy] sendTypeLogin];
+        self.timer = [NSTimer scheduledTimerWithTimeInterval:0.100f target:self selector:@selector(verifyUser) userInfo:nil repeats:NO];
     }
+}
+
+- (void)verifyUser
+{
+    self.timer = nil;
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sendTypeLogin:) name:NOTI_S_ACCOUNT_LOGIN object:nil];
+    [[AccountMessageProxy sharedProxy] sendTypeLogin];
 }
 
 - (void)socketDidDisconnect:(GCDAsyncSocket *)sender withError:(NSError *)err

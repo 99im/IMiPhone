@@ -11,8 +11,9 @@
 #import "UserDataProxy.h"
 #import "AccountMessageProxy.h"
 #import "IMNWProxyProtocol.h"
+#import "IMNWManager.h"
 
-@interface RegInfoViewController () <UITextFieldDelegate, UITextViewDelegate, UIGestureRecognizerDelegate,VPImageCropperDelegate, IMNWProxyProtocol>
+@interface RegInfoViewController () <UITextFieldDelegate, UITextViewDelegate, UIGestureRecognizerDelegate, VPImageCropperDelegate, IMNWProxyProtocol>
 
 @property (nonatomic, retain) UITextField *tfActive;
 @property (nonatomic, retain) UITextView *tvActive;
@@ -42,7 +43,7 @@
     [self registerMessageNotification];
     
     self.pickBirthday.hidden = YES;
-    tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapHandler:)];
+    tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(viewTapGesture:)];
     [self.view addGestureRecognizer:tap];
     tap.delegate = self;
     tap.cancelsTouchesInView = NO;
@@ -196,7 +197,7 @@
 
 #pragma mark - datepicker
 
-- (IBAction)tapHandler:(UITapGestureRecognizer *)sender
+- (IBAction)viewTapGesture:(UITapGestureRecognizer *)sender
 {
     CGPoint point = [sender locationInView:self.view];
     //NSLog(@"RegInfoViewController tapHandler: x: %f, y: %f", point.x, point.y);
@@ -223,8 +224,10 @@
     }
     
 }
+
 #pragma mark - photopicker
-- (IBAction)handleTapHead:(UITapGestureRecognizer *)sender {
+
+- (IBAction)imgHeadTapGesture:(UITapGestureRecognizer *)sender {
     [[imPhotoPicker sharedPicker] showChoiceSheet:self inView:self.view];
 }
 
@@ -242,6 +245,7 @@
 - (void)registerMessageNotification
 {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sendTypeUpdateinfoResult:) name:NOTI_H__ACCOUNT_UPDATEINFO_ object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(socketConnectResult:) name:NOTI_SOCKET_CONNECT object:nil];
 }
 
 - (void)removeMessageNotification
@@ -249,10 +253,17 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
-- (void)sendTypeUpdateinfoResult:(NSNotification *)notification
+- (void)socketConnectResult:(NSNotification *)notification
 {
     if (!notification.object) {
         [self performSegueWithIdentifier:@"regInfoDoneSegue" sender:self];
+    }
+}
+
+- (void)sendTypeUpdateinfoResult:(NSNotification *)notification
+{
+    if (!notification.object) {
+        [[IMNWManager sharedNWManager].socketConnect connect:SOCKET_HOST port:SOCKET_PORT];
     }
 }
 

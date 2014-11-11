@@ -74,9 +74,10 @@ static AccountMessageProxy *sharedAccountMessageProxy = nil;
             int errorcode = [[json objectForKey:KEYP_H__ACCOUNT_MOBCODE__ERROR_CODE] intValue];
             if (errorcode == 0) {
                 NSInteger uid = [[json objectForKey:KEYP_H__ACCOUNT_REGISTER__UID] integerValue];
-                [UserDataProxy sharedProxy].lastLoginCountry = [UserDataProxy sharedProxy].mobile;
-                [UserDataProxy sharedProxy].lastLoginMobile = [UserDataProxy sharedProxy].mobCountry;
+                [UserDataProxy sharedProxy].lastLoginCountry = [UserDataProxy sharedProxy].mobCountry;
+                [UserDataProxy sharedProxy].lastLoginMobile = [UserDataProxy sharedProxy].mobile;
                 [UserDataProxy sharedProxy].lastLoginUid = uid;
+                [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_H__ACCOUNT_REGISTER_ object:nil userInfo:nil];
             }
             else {
                [self processErrorCode:errorcode fromSource:PATH_H__ACCOUNT_REGISTER_ useNotiName:NOTI_H__ACCOUNT_REGISTER_];
