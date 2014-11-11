@@ -8,9 +8,15 @@
 
 #import "IMRichText.h"
 
+#define RUN_CALLBACK_PARAM_KEY_IMAGE_NAME @"name"
+#define RUN_CALLBACK_PARAM_KEY_IMAGE_WIDTH @"width"
+#define RUN_CALLBACK_PARAM_KEY_IMAGE_HEIGHT @"height"
+
 @interface IMRichText()
 
-@property (nonatomic) CGFloat contenFrameHeight;
+@property (nonatomic) CGFloat contentFrameAutoSizeHeight;
+@property (nonatomic) CGFloat contentFrameAutoSizeWidth;
+@property (nonatomic, retain) NSMutableArray *arrRunParams;
 
 @end
 
@@ -18,6 +24,10 @@
 
 @synthesize abString = _abString;
 @synthesize contentFrameWidth = _contentFrameWidth;
+@synthesize arrRunParams = _arrRunParams;
+
+static NSMutableArray *arrRunParams;//用于保存所用run的参数，否则莫名被释放掉。在run的dealloc回调里再移除掉
+
 
 + (IMRichText *)richTextWithAttributedString:(NSAttributedString *)abString withFrameWidth:(CGFloat)frameWidth
 {
@@ -25,7 +35,7 @@
     return richText;
 }
 
-+ (NSAttributedString *)assembleLocalImageAbStringByImgName:(NSString *)imgName
++ (NSAttributedString *)assembleLocalImageAbStringByImgName:(NSString *)imgName withSize:(CGSize)size
 {
     NSMutableAttributedString *mabString = [[NSMutableAttributedString alloc] initWithString:@" "];
     CTRunDelegateCallbacks imageCallbacks;
@@ -34,10 +44,16 @@
     imageCallbacks.getAscent = localImgRunDeleGetAscentCallback;
     imageCallbacks.getDescent = localImgRunDeleGetDescentCallback;
     imageCallbacks.getWidth = localImgRunDeleGetWidthCallback;
+
     
-    CTRunDelegateRef runDelegate = CTRunDelegateCreate(&imageCallbacks, (__bridge void *)(imgName));
+    NSDictionary *dicParams = [NSDictionary dictionaryWithObjectsAndKeys:imgName, RUN_CALLBACK_PARAM_KEY_IMAGE_NAME, [NSNumber numberWithDouble:size.width] , RUN_CALLBACK_PARAM_KEY_IMAGE_WIDTH, [NSNumber numberWithDouble:size.height], RUN_CALLBACK_PARAM_KEY_IMAGE_HEIGHT, nil];
+    if (arrRunParams == nil){
+        arrRunParams = [NSMutableArray array];
+    }
+    [arrRunParams addObject:dicParams];
+    CTRunDelegateRef runDelegate = CTRunDelegateCreate(&imageCallbacks, (__bridge void *)(dicParams));
     
-    NSRange rangeImg = NSMakeRange(0,1);
+    NSRange rangeImg = NSMakeRange(0,mabString.length);
     [mabString addAttribute:(NSString *)kCTRunDelegateAttributeName value:(__bridge id)(runDelegate) range:rangeImg];
     [mabString addAttribute:LOCAL_IMAGE_ATTRIBUTE_NAME value:imgName range:rangeImg];
     
@@ -88,9 +104,10 @@
         NSLog(@"IMRichText drawRect _frameWidth == 0!!!");
         return;
     }
-    CTFramesetterRef framesetter = CTFramesetterCreateWithAttributedString((CFAttributedStringRef)_abString);
+    CTFramesetterRef framesetter = CTFramesetterCreateWithAttributedString((__bridge CFAttributedStringRef)_abString);
+
     CGMutablePathRef path = CGPathCreateMutable();
-    CGRect pathRect = CGRectMake(0, 0, _contentFrameWidth, _contenFrameHeight);
+    CGRect pathRect = CGRectMake(0, 0, self.contentFrameAutoSizeWidth, self.contentFrameAutoSizeHeight);
     CGPathAddRect(path, NULL, pathRect);
     NSLog(@"CGMutablePathRef:%@",path);
     
@@ -106,7 +123,7 @@
     CGContextSaveGState(context);
     
         //x，y轴方向移动
-    CGContextTranslateCTM(context , 0 ,_contenFrameHeight);
+    CGContextTranslateCTM(context , 0 ,self.contentFrameAutoSizeHeight);
     
     //当前context lower left 为坐标原点,所以要沿x轴翻转
     //缩放x，y轴方向缩放，－1.0为反向1.0倍,坐标系转换,沿x轴翻转180度
@@ -116,7 +133,6 @@
     
     
     CGPathRelease(path);
-    CFRelease(framesetter);
     //绘制内嵌图片
     CFArrayRef lines = CTFrameGetLines(frame);
     int lineCount = CFArrayGetCount(lines);
@@ -172,7 +188,7 @@
                 UIImage *image = [UIImage imageNamed:imageName];
                 if (image) {
                     CGRect imageDrawRect;
-                    imageDrawRect.size = image.size;
+                    imageDrawRect.size = runRect.size;
                     imageDrawRect.origin.x = runRect.origin.x + lineOrigin.x;
                     imageDrawRect.origin.y = lineOrigin.y;
 //                    NSLog(@"imageDrawRect.origin:%f,:%f",imageDrawRect.origin.x,imageDrawRect.origin.y);
@@ -185,83 +201,44 @@
     }
 }
 
-void localImgRunDeleDeallocCallback( void* refCon ){
+static void localImgRunDeleDeallocCallback( void* refCon ){
     NSLog(@"localImgRunDeleDeallocCallback");
+    [arrRunParams removeObject:(__bridge id)(refCon)];
 }
 
-CGFloat localImgRunDeleGetAscentCallback( void *refCon ){
-    NSString *imageName = (__bridge NSString *)refCon;
-    return [UIImage imageNamed:imageName].size.height;
+static CGFloat localImgRunDeleGetAscentCallback( void *refCon ){
+//    NSLog(@"localImgRunDeleGetAscentCallback refCon:%@", (__bridge NSDictionary *)refCon);
+//    return 0;
+    CFDictionaryRef dicParams = refCon;
+    NSString *imageName = CFDictionaryGetValue(dicParams, RUN_CALLBACK_PARAM_KEY_IMAGE_NAME);
+    NSNumber *numHeight = CFDictionaryGetValue(dicParams, RUN_CALLBACK_PARAM_KEY_IMAGE_HEIGHT);
+    CGFloat height = [numHeight doubleValue];
+    if (height == 0) {//未指定图片高度，图片显示原本高度
+        height = [UIImage imageNamed:imageName].size.height;
+    }
+    return height;
 }
 
-CGFloat localImgRunDeleGetDescentCallback(void *refCon)
+static CGFloat localImgRunDeleGetDescentCallback(void *refCon)
 {
+    NSLog(@"localImgRunDeleGetDescentCallback refCon:%@", refCon);
+
     return 0;
 }
-CGFloat localImgRunDeleGetWidthCallback(void *refCon)
+static CGFloat localImgRunDeleGetWidthCallback(void *refCon)
 {
-    NSString *imageName = (__bridge NSString *)refCon;
-    return [UIImage imageNamed:imageName].size.width;
-}
-
-- (void)drawImages:(CTFrameRef)ctFrame withContext:(CGContextRef)context
-{
-    CFArrayRef lines = CTFrameGetLines(ctFrame);
-    int lineCount = CFArrayGetCount(lines);
-    CGPoint lineOrigins[lineCount];
-    CTFrameGetLineOrigins(ctFrame, CFRangeMake(0, 0), lineOrigins);
-    
-    CTLineRef line;
-    CGFloat lineAscent;
-    CGFloat lineDescent;
-    CGFloat lineLeading;
-    CFArrayRef runs;
-    int runCount;
-    
-    for (int i = 0; i < lineCount; i++) {
-        
-        line = CFArrayGetValueAtIndex(lines, i);
-        
-        CTLineGetTypographicBounds(line, &lineAscent, &lineDescent, &lineLeading);
-        NSLog(@"ascent = %f,descent = %f,leading = %f",lineAscent,lineDescent,lineLeading);
-        runs = CTLineGetGlyphRuns(line);
-
-        runCount = CFArrayGetCount(runs);
-        
-        CGFloat runAscent;
-        CGFloat runDescent;
-        CGPoint lineOrigin = lineOrigins[i];//baseline 起始点的坐标
-        CTRunRef run;
-        NSDictionary* attributes;
-        CGRect runRect;
-        
-
-        for (int j = 0; j < runCount; j++) {
-            run = CFArrayGetValueAtIndex(runs, j);
-            attributes = (NSDictionary*)CTRunGetAttributes(run);
-            runRect.size.width = CTRunGetTypographicBounds(run, CFRangeMake(0,0), &runAscent, &runDescent, NULL);
-            NSLog(@"width = %f",runRect.size.width);
-            runRect=CGRectMake(lineOrigin.x + CTLineGetOffsetForStringIndex(line, CTRunGetStringRange(run).location, NULL), lineOrigin.y - runDescent, runRect.size.width, runAscent + runDescent);
-            NSString *imageName = [attributes objectForKey:@"imageName"];
-            //图片渲染逻辑
-            if (imageName) {
-                UIImage *image = [UIImage imageNamed:imageName];
-                if (image) {
-                    CGRect imageDrawRect;
-                    imageDrawRect.size = image.size;
-                    imageDrawRect.origin.x = runRect.origin.x + lineOrigin.x;
-                    imageDrawRect.origin.y = lineOrigin.y;
-                    NSLog(@"imageDrawRect.origin:%f,:%f",imageDrawRect.origin.x,imageDrawRect.origin.y);
-                
-                    CGContextDrawImage(context, imageDrawRect, image.CGImage);
-                }
-            }
-        }
-
+//    NSLog(@"localImgRunDeleGetWidthCallback refCon:%@", refCon);
+//    return 0;
+    CFDictionaryRef dicParams = refCon;
+    NSString *imageName = CFDictionaryGetValue(dicParams, RUN_CALLBACK_PARAM_KEY_IMAGE_NAME);
+    NSNumber *numWidth = CFDictionaryGetValue(dicParams, RUN_CALLBACK_PARAM_KEY_IMAGE_WIDTH);
+    CGFloat width = [numWidth doubleValue];
+    if (width == 0) {//未指定图片高度，图片显示原本高度
+        width = [UIImage imageNamed:imageName].size.width;
     }
-
-
+    return width;
 }
+//M80AttributedLabelAttachment* attributedImage = (M80AttributedLabelAttachment *)CTRunDelegateGetRefCon(delegate);获得run中的图片信息
 
 - (IMRichText *)initWithAttributedString:(NSAttributedString *)abString withFrameWidth:(CGFloat)frameWidth
 {
@@ -269,7 +246,7 @@ CGFloat localImgRunDeleGetWidthCallback(void *refCon)
         _abString = abString;
         _contentFrameWidth = frameWidth;
         [self initFrame];
-        self.backgroundColor = [UIColor blueColor];
+        self.backgroundColor = [UIColor clearColor];
     }
     return self;
 }
@@ -287,13 +264,30 @@ CGFloat localImgRunDeleGetWidthCallback(void *refCon)
     }
    
     CTFramesetterRef framesetter = CTFramesetterCreateWithAttributedString((__bridge CFAttributedStringRef)_abString);
-    CGSize targetSize = CGSizeMake(_contentFrameWidth, CGFLOAT_MAX);
-    CGSize fitSize = CTFramesetterSuggestFrameSizeWithConstraints(framesetter, CFRangeMake(0, 0), NULL, targetSize, NULL);
+    
+//    CGSizeMake(CGFLOAT_MAX, <#CGFloat height#>)
+    
+    CGSize noConstraintsSize = CGSizeMake(CGFLOAT_MAX, CGFLOAT_MAX);
+    CGSize fitSizeOfNoConstraints = CTFramesetterSuggestFrameSizeWithConstraints(framesetter, CFRangeMake(0, 0), NULL, noConstraintsSize, NULL);
+    if (fitSizeOfNoConstraints.width < _contentFrameWidth) {
+        
+        self.contentFrameAutoSizeWidth = fitSizeOfNoConstraints.width;
+        self.contentFrameAutoSizeHeight = fitSizeOfNoConstraints.height;
+    }
+    else {
+        
+        self.contentFrameAutoSizeWidth = _contentFrameWidth;
+
+        CGSize widthConstraintsSize = CGSizeMake(_contentFrameWidth, CGFLOAT_MAX);
+
+        CGSize fitSizeOfWidthConstraints = CTFramesetterSuggestFrameSizeWithConstraints(framesetter, CFRangeMake(0, 0), NULL, widthConstraintsSize, NULL);
+        
+        self.contentFrameAutoSizeHeight = fitSizeOfWidthConstraints.height;
+    }
+
     CFRelease(framesetter);
     
-    _contenFrameHeight = fitSize.height;
-
-    self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, _contentFrameWidth, _contenFrameHeight);
+    self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, self.contentFrameAutoSizeWidth, self.contentFrameAutoSizeHeight);
 }
 
 @end
