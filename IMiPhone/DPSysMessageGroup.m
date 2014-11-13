@@ -8,7 +8,15 @@
 
 #import "DPSysMessageGroup.h"
 
+@interface DPSysMessageGroup ()
+
+@property (nonatomic, retain) NSDictionary *msgParams;
+
+@end
+
 @implementation DPSysMessageGroup
+
+@synthesize msgParams = _msgParams;
 
 #pragma mark - 通用属性
 @synthesize userId;
@@ -23,8 +31,7 @@
 #pragma mark - 基类方法实现
 - (NSDictionary *)getParamsDictionary
 {
-    NSDictionary *dic = [ImDataUtil getDicFromNormalClass:self containSuper:NO];
-    return dic;
+    return _msgParams;
 }
 
 - (void)setParamsProperty:(NSDictionary *)params
@@ -58,5 +65,6 @@
         self.groupId = [[info objectForKey:@"gid"] longLongValue];
         self.groupName = [info objectForKey:@"name"];
     }
+    _msgParams = params;
 }
 @end
