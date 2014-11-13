@@ -18,9 +18,7 @@
 
 @property(weak, nonatomic) IBOutlet UIImageView *imgAvatar;
 @property(weak, nonatomic) IBOutlet UILabel *lblUserName;
-@property(weak, nonatomic) IBOutlet UIButton *btnFocusOrCancel;
 
 - (void)fillWithIndexPath:(NSIndexPath *)indexPath;
-- (IBAction)btnFocusOrCancelTouchUp:(id)sender;
 
 @end

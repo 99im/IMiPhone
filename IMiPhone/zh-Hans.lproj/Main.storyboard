@@ -1423,18 +1423,6 @@
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pf1-Zz-j9K">
                                             <rect key="frame" x="8" y="6" width="48" height="48"/>
                                         </imageView>
-                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" placeholderIntrinsicWidth="80" placeholderIntrinsicHeight="30" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7u5-h1-SFi">
-                                            <rect key="frame" x="250" y="16" width="80" height="30"/>
-                                            <color key="backgroundColor" red="1" green="0.65497355479999997" blue="0.26269184769999998" alpha="1" colorSpace="calibratedRGB"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                            <state key="normal" title="关注TA">
-                                                <color key="titleColor" red="1" green="0.031768761787782429" blue="0.083637181606886601" alpha="1" colorSpace="calibratedRGB"/>
-                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                            </state>
-                                            <connections>
-                                                <action selector="btnFocusOrCancelTouchUp:" destination="Lfw-iq-ho9" eventType="touchUpInside" id="4yp-aa-8FH"/>
-                                            </connections>
-                                        </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9LC-Wq-AYt">
                                             <rect key="frame" x="82" y="14" width="80" height="31"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="20"/>
@@ -1444,7 +1432,6 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="BtnFocusOrCancel" destination="7u5-h1-SFi" id="Dhe-n2-xKr"/>
                                     <outlet property="LblUserName" destination="9LC-Wq-AYt" id="ygF-xz-Oqp"/>
                                     <outlet property="imgAvatar" destination="pf1-Zz-j9K" id="FP2-P4-I0j"/>
                                 </connections>
@@ -2734,7 +2721,7 @@
         <segue reference="AcC-yW-RwT"/>
         <segue reference="B9e-R6-y8A"/>
         <segue reference="F18-ln-36K"/>
-        <segue reference="EnR-fJ-pM5"/>
+        <segue reference="1vQ-4Q-Gdd"/>
         <segue reference="j7u-OT-bsU"/>
         <segue reference="NpR-cO-pjh"/>
     </inferredMetricsTieBreakers>
