@@ -169,6 +169,7 @@
 		11FC327A19F0C677000A6733 /* DBFriend.m in Sources */ = {isa = PBXBuildFile; fileRef = 11FDE12519EFB52F002AEDB7 /* DBFriend.m */; };
 		11FDE12319EFB516002AEDB7 /* FriendDAO.m in Sources */ = {isa = PBXBuildFile; fileRef = 11FDE12219EFB516002AEDB7 /* FriendDAO.m */; };
 		11FDE12619EFB52F002AEDB7 /* DBFriend.m in Sources */ = {isa = PBXBuildFile; fileRef = 11FDE12519EFB52F002AEDB7 /* DBFriend.m */; };
+		581A272F1A11DE6400E5BE5F /* AccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 581A272E1A11DE6400E5BE5F /* AccountViewController.m */; };
 		5825D8F119D808CA004FF6FF /* CategoryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5825D8F019D808CA004FF6FF /* CategoryTableViewController.m */; };
 		58438C0D19D412E400B6962B /* NearbyTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58438C0C19D412E400B6962B /* NearbyTableViewController.m */; };
 		585971D21999F0C700258CB1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 585971D11999F0C700258CB1 /* Foundation.framework */; };
@@ -448,6 +449,8 @@
 		11FDE12219EFB516002AEDB7 /* FriendDAO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendDAO.m; sourceTree = "<group>"; };
 		11FDE12419EFB52F002AEDB7 /* DBFriend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBFriend.h; sourceTree = "<group>"; };
 		11FDE12519EFB52F002AEDB7 /* DBFriend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBFriend.m; sourceTree = "<group>"; };
+		581A272D1A11DE6400E5BE5F /* AccountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountViewController.h; sourceTree = "<group>"; };
+		581A272E1A11DE6400E5BE5F /* AccountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountViewController.m; sourceTree = "<group>"; };
 		5825D8EF19D808CA004FF6FF /* CategoryTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryTableViewController.h; sourceTree = "<group>"; };
 		5825D8F019D808CA004FF6FF /* CategoryTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoryTableViewController.m; sourceTree = "<group>"; };
 		58438C0B19D412E400B6962B /* NearbyTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NearbyTableViewController.h; sourceTree = "<group>"; };
@@ -1043,6 +1046,8 @@
 				58BC1E2E19C0304900722A00 /* RegStep1ViewController.m */,
 				58BC1E2F19C0304900722A00 /* RegStep2ViewController.h */,
 				58BC1E3019C0304900722A00 /* RegStep2ViewController.m */,
+				581A272D1A11DE6400E5BE5F /* AccountViewController.h */,
+				581A272E1A11DE6400E5BE5F /* AccountViewController.m */,
 			);
 			name = Account;
 			path = ..;
@@ -1351,6 +1356,7 @@
 				58F2AA3419A2F85400DC2FFB /* imUtil.m in Sources */,
 				58D95F5119A5ECA4007139AB /* UserMessageProxy.m in Sources */,
 				58B9F66419F8D24100567BCC /* EmotionViewController.m in Sources */,
+				581A272F1A11DE6400E5BE5F /* AccountViewController.m in Sources */,
 				116B6E9519B058A400DB1B5E /* SqlightAdapter.m in Sources */,
 				58B496E819A7186A0082AE30 /* MKNetworkOperation.m in Sources */,
 				58BC1E3519C0304900722A00 /* RegisterViewController.m in Sources */,

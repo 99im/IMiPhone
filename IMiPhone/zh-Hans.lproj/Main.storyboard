@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="sWe-ai-dJr">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="sWe-ai-dJr">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
     </dependencies>
     <scenes>
-        <!--Welcome-欢迎页-->
+        <!--Account-欢迎页-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController storyboardIdentifier="imViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="vXZ-lx-hvc" userLabel="Welcome-欢迎页" customClass="AccountViewController" sceneMemberID="viewController">
+                <viewController useStoryboardIdentifierAsRestorationIdentifier="YES" id="vXZ-lx-hvc" userLabel="Account-欢迎页" customClass="AccountViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="hP2-Iy-YXc"/>
                         <viewControllerLayoutGuide type="bottom" id="lmd-hK-qRe"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="欢迎" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kXX-pQ-Fqz">
@@ -26,7 +26,7 @@
                                 <rect key="frame" x="40" y="159" width="240" height="128"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uBg-Mg-2aC">
-                                <rect key="frame" x="77" y="450" width="30" height="30"/>
+                                <rect key="frame" x="84" y="442" width="30" height="30"/>
                                 <state key="normal" title="注册">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -35,7 +35,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SLz-my-e6j">
-                                <rect key="frame" x="213" y="450" width="30" height="30"/>
+                                <rect key="frame" x="212" y="442" width="30" height="30"/>
                                 <state key="normal" title="登录">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -47,6 +47,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="WvH-ka-3ix"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
@@ -61,7 +62,7 @@
                         <viewControllerLayoutGuide type="bottom" id="eS4-Z8-EWJ"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="0dl-mD-GMj">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="登录密码" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="h7b-SR-1zh">
@@ -121,7 +122,7 @@
                         <viewControllerLayoutGuide type="bottom" id="DJW-OV-btU"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8Dx-uU-kbW">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="请输入手机号码" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="dda-bN-zvH">
@@ -169,7 +170,7 @@
                         <viewControllerLayoutGuide type="bottom" id="mV5-85-lys"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="puO-i4-409">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="请输入验证码" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XXS-kK-4qr">
@@ -222,7 +223,7 @@
                         <viewControllerLayoutGuide type="bottom" id="YWB-mk-OZz"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="omk-R5-KSy">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="请设置密码（6-20位）" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="SA2-1J-mo0">
@@ -261,11 +262,11 @@
                         <viewControllerLayoutGuide type="bottom" id="hJD-BD-c6U"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="e4w-ti-2hr">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" keyboardDismissMode="interactive" translatesAutoresizingMaskIntoConstraints="NO" id="cer-KH-ivo">
-                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                                <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SZm-I1-Ve7">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="619"/>
@@ -393,7 +394,7 @@
                                 </constraints>
                             </scrollView>
                             <datePicker contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" useCurrentDate="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HTa-gL-rdw">
-                                <rect key="frame" x="0.0" y="406" width="320" height="162"/>
+                                <rect key="frame" x="0.0" y="318" width="320" height="162"/>
                                 <date key="date" timeIntervalSinceReferenceDate="-330141172.43070197">
                                     <!--1990-07-16 22:07:07 +0000-->
                                 </date>
@@ -420,6 +421,8 @@
                             <constraint firstAttribute="trailing" secondItem="cer-KH-ivo" secondAttribute="trailing" id="h5q-j5-HzC"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="aVd-xz-nNg"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <connections>
                         <outlet property="btnBirthday" destination="lQS-Aa-0BZ" id="APJ-Fr-29g"/>
                         <outlet property="ctlSex" destination="YB3-9O-O7x" id="gzr-Tz-Fge"/>
@@ -436,7 +439,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ASR-EU-oGu" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="PIC-zU-Cic"/>
+                <tapGestureRecognizer id="PIC-zU-Cic">
+                    <connections>
+                        <action selector="imgHeadTapGesture:" destination="tkh-RH-kvT" id="5gn-E6-zYn"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="3042" y="-1216"/>
         </scene>
@@ -602,7 +609,7 @@
         <scene sceneID="Dsx-qw-qAw">
             <objects>
                 <navigationController definesPresentationContext="YES" id="vfo-zI-J32" userLabel="MainTab-消息NavigationController" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="消息" image="message2" selectedImage="message1" id="YxR-lP-vZR"/>
+                    <tabBarItem key="tabBarItem" title="消息" image="message2" id="YxR-lP-vZR"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="IKa-7X-56I">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -657,7 +664,7 @@
                             <outlet property="delegate" destination="aS9-8z-znb" id="gp7-C1-YlG"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="附近" image="nearby2" selectedImage="nearby1" id="YGp-uQ-RWa"/>
+                    <tabBarItem key="tabBarItem" title="附近" image="nearby2" id="YGp-uQ-RWa"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fwi-ZD-fNA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -684,7 +691,7 @@
                             <outlet property="delegate" destination="OZu-Yg-yCD" id="JUS-Qy-zgu"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="发现" image="discover2" selectedImage="discover1" id="ykm-nA-Tf3"/>
+                    <tabBarItem key="tabBarItem" title="发现" image="discover2" id="ykm-nA-Tf3"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LUq-Cf-Fcf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1609,9 +1616,7 @@
                                 <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="xaZ-BL-KuI">
-                                <rect key="frame" x="0.0" y="86" width="320" height="482"/>
-                            </mapView>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="xaZ-BL-KuI"/>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -1733,7 +1738,6 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OVv-fu-vJj">
-                                <rect key="frame" x="63" y="112" width="222" height="60"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -1933,7 +1937,6 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="C7s-Zn-B4E">
-                                <rect key="frame" x="9" y="51" width="300" height="60"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -2517,7 +2520,6 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="shB-ap-Tqj">
-                                <rect key="frame" x="0.0" y="100" width="320" height="416"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="c0g-nm-GUp">
@@ -2552,10 +2554,10 @@
             </objects>
             <point key="canvasLocation" x="1793" y="2927"/>
         </scene>
-        <!--Splash-->
+        <!--封面-->
         <scene sceneID="D1c-zn-Hvg">
             <objects>
-                <viewController id="sWe-ai-dJr" userLabel="Splash" customClass="imViewController" sceneMemberID="viewController">
+                <viewController id="sWe-ai-dJr" userLabel="封面" customClass="imViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Lun-4x-NkC"/>
                         <viewControllerLayoutGuide type="bottom" id="cER-oI-loR"/>
@@ -2571,8 +2573,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
-                        <segue destination="KMJ-qM-QtR" kind="modal" identifier="Start2AccountSegue" id="iIs-SU-ZLV"/>
+                        <segue destination="KMJ-qM-QtR" kind="modal" identifier="Start2AccountSegue" modalTransitionStyle="crossDissolve" id="iIs-SU-ZLV"/>
                         <segue destination="MIG-TR-klW" kind="modal" identifier="Start2MainSegue" id="AcC-yW-RwT"/>
+                        <segue destination="tkh-RH-kvT" kind="modal" identifier="Start2ReginfoSegue" id="kdV-GO-inJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Ua-6B-GaK" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2670,7 +2673,7 @@
         <scene sceneID="sn6-oW-3At">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="VpD-M4-6ZC" userLabel="MainTab-联系人" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="联系人" image="contact2" selectedImage="contact1" id="GnX-Mt-m4d"/>
+                    <tabBarItem key="tabBarItem" title="联系人" image="contact2" id="GnX-Mt-m4d"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="aa2-Rr-6DY">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -2692,7 +2695,7 @@
         <scene sceneID="acU-Tb-ivg">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="OqY-yE-MY5" userLabel="MainTab-个人" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="个人" image="profile2" selectedImage="profile1" id="86k-Tl-Csp"/>
+                    <tabBarItem key="tabBarItem" title="个人" image="profile2" id="86k-Tl-Csp"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="VE1-vJ-vE4">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -2712,15 +2715,10 @@
         <image name="ChatDefault" width="68" height="68"/>
         <image name="HeadBg" width="100" height="100"/>
         <image name="MyFans" width="27" height="27"/>
-        <image name="contact1" width="44" height="44"/>
         <image name="contact2" width="44" height="44"/>
-        <image name="discover1" width="44" height="44"/>
         <image name="discover2" width="44" height="44"/>
-        <image name="message1" width="44" height="44"/>
         <image name="message2" width="44" height="44"/>
-        <image name="nearby1" width="44" height="44"/>
         <image name="nearby2" width="44" height="44"/>
-        <image name="profile1" width="44" height="44"/>
         <image name="profile2" width="44" height="44"/>
         <image name="splash.jpg" width="640" height="400"/>
     </resources>
@@ -2730,13 +2728,13 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="iIs-SU-ZLV"/>
+        <segue reference="j7u-OT-bsU"/>
         <segue reference="AcC-yW-RwT"/>
+        <segue reference="iIs-SU-ZLV"/>
+        <segue reference="kdV-GO-inJ"/>
+        <segue reference="B9e-R6-y8A"/>
         <segue reference="F18-ln-36K"/>
         <segue reference="EnR-fJ-pM5"/>
-        <segue reference="j7u-OT-bsU"/>
         <segue reference="NpR-cO-pjh"/>
-        <segue reference="B9e-R6-y8A"/>
-        <segue reference="fNZ-Tb-k0o"/>
     </inferredMetricsTieBreakers>
 </document>
