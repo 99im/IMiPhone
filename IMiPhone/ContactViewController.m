@@ -37,7 +37,6 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self openSubTags:-1];
-    [self registerMessageNotification];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -46,15 +45,21 @@
     NSLog(@"%f, %f, %f", rect.origin.x, rect.origin.y, rect.size.height);
     rect = self.subviewContainer.bounds;
     NSLog(@"%f, %f, %f", rect.origin.x, rect.origin.y, rect.size.height);
+    [self registerMessageNotification];
+    [super viewWillAppear:animated];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-    [self removeMessageNotification];
 }
 
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [self removeMessageNotification];
+    [super viewWillDisappear:animated];
+}
 
 #pragma mark - Navigation
 

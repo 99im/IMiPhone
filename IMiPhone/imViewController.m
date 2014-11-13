@@ -28,13 +28,18 @@
     [super viewDidLoad];
         
 	// Do any additional setup after loading the view, typically from a nib.
-    [self registerMessageNotification];
     [[IMNWManager sharedNWManager] initHttpConnect];
     [[IMNWManager sharedNWManager] initSocketConnect];
     self.hasVerified = ![imUtil checkBlankString:[UserDataProxy sharedProxy].verify] && [UserDataProxy sharedProxy].lastLoginUid != LONG_LONG_MAX;
     if (self.hasVerified) {
         [[AccountMessageProxy sharedProxy] sendTypeMyinfo];
     }
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [self registerMessageNotification];
+    [super viewWillAppear:animated];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -51,7 +56,12 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
     [self removeMessageNotification];
+    [super viewWillDisappear:animated];
 }
 
 #pragma mark - IMNWProxyProtocol Method

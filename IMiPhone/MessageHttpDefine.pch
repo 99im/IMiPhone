@@ -1,5 +1,432 @@
 
 
+#define MARK_CHAT @"chat"
+
+/*
+mark: chat
+type: /chat/chatlist/
+kind: http
+method: http-get
+describe: 
+example: http://local.taiqiu.com:7070/chat/chatlist/?stage=group&targetId=8&beforeMid=&start=0&pageNum=20&verify=17_1411380649_8cd8f6306fb1232f98573dae4e137f50
+
+{
+"error_code": 0,
+"list": [
+{
+"mid": 384,
+"gid": "g_8",
+"suid": 8,
+"msgType": 1,
+"content": " {\"imgExt\": [52,\"jpeg\",494637,688,688],\"sign\": \"0f7f37417c7d7f9d2cb1e180c77e67f0\",\"thumbnail\": \"http://local.p.taiqiuui.com:81/i/3/1/17/52/1a824bd6b1cfdff5e7a9bd685efc855e_30x55.jpeg\",\"src\": \"http://local.p.taiqiuui.com:81/i/3/1/17/52/1a824bd6b1cfdff5e7a9bd685efc855e.jpeg\"}",
+"ctime": "2014-11-06 14:17:51",
+"status": 0
+},
+{
+"mid": 383,
+"gid": "g_8",
+"suid": 8,
+"msgType": 1,
+"content": " {\"imgExt\": [52,\"jpeg\",494637,688,688],\"sign\": \"0f7f37417c7d7f9d2cb1e180c77e67f0\",\"thumbnail\": \"http://local.p.taiqiuui.com:81/i/3/1/17/52/1a824bd6b1cfdff5e7a9bd685efc855e_30x55.jpeg\",\"src\": \"http://local.p.taiqiuui.com:81/i/3/1/17/52/1a824bd6b1cfdff5e7a9bd685efc855e.jpeg\"}",
+"ctime": "2014-11-06 14:17:51",
+"status": 0
+},
+{
+"mid": 382,
+"gid": "g_8",
+"suid": 8,
+"msgType": 1,
+"content": " {\"imgExt\": [52,\"jpeg\",494637,688,688],\"sign\": \"0f7f37417c7d7f9d2cb1e180c77e67f0\",\"thumbnail\": \"http://local.p.taiqiuui.com:81/i/3/1/17/52/1a824bd6b1cfdff5e7a9bd685efc855e_30x55.jpeg\",\"src\": \"http://local.p.taiqiuui.com:81/i/3/1/17/52/1a824bd6b1cfdff5e7a9bd685efc855e.jpeg\"}",
+"ctime": "2014-11-06 14:17:51",
+"status": 0
+}
+]
+}
+*/
+#define PATH_H__CHAT_CHATLIST_ @"/chat/chatlist/"
+#define NOTI_H__CHAT_CHATLIST_ @"MPchatchatlistNotifiction"
+#define METHOD_H__CHAT_CHATLIST_ @"GET"
+#define KEYQ_H__CHAT_CHATLIST__STAGE @"stage" //stage string 聊天场景 p2p group
+#define KEYQ_H__CHAT_CHATLIST__TARGETID @"targetId" //targetId int 具体场景的id p2p 对应好友的uid group对应群号
+#define KEYQ_H__CHAT_CHATLIST__BEFOREMID @"beforeMid" //beforeMid int 获取消息编号之前的消息，mid倒叙排列
+#define KEYQ_H__CHAT_CHATLIST__AFTERMID @"afterMid" //afterMid int 获取消息编号之后的消息，mid正叙排列 (如何beforeMid和afterMid都为0，则返回最新的)
+#define KEYQ_H__CHAT_CHATLIST__START @"start" //start int 开始
+#define KEYQ_H__CHAT_CHATLIST__PAGENUM @"pageNum" //pageNum int 数量（默认为20）
+#define KEYP_H__CHAT_CHATLIST__ERROR_CODE @"error_code" //error_code
+#define KEYP_H__CHAT_CHATLIST__LIST @"list" //list
+#define KEYP_H__CHAT_CHATLIST__LIST_MID @"mid" // mid int 聊天编号
+#define KEYP_H__CHAT_CHATLIST__LIST_GID @"gid" // gid string 聊天场景唯一标示符 
+#define KEYP_H__CHAT_CHATLIST__LIST_SUID @"suid" // suid int 发送者uid
+#define KEYP_H__CHAT_CHATLIST__LIST_MSGTYPE @"msgType" // msgType int 消息类型
+#define KEYP_H__CHAT_CHATLIST__LIST_CONTENT @"content" // content int 消息内容
+#define KEYP_H__CHAT_CHATLIST__LIST_CTIME @"ctime" // ctime int 时间
+#define KEYP_H__CHAT_CHATLIST__LIST_STATUS @"status" // status int 状态
+
+
+#define MARK_PHOTO @"photo"
+
+/*
+mark: photo
+type: /photo/logo-del/
+kind: http
+method: http-get
+describe: 删除logo专辑中的图片
+example: http://local.taiqiu.com:7070/photo/logo-del/?pid=84&verify=17_1411380649_8cd8f6306fb1232f98573dae4e137f50
+*/
+#define PATH_H__PHOTO_LOGO_DEL_ @"/photo/logo-del/"
+#define NOTI_H__PHOTO_LOGO_DEL_ @"MPphotologo-delNotifiction"
+#define METHOD_H__PHOTO_LOGO_DEL_ @"GET"
+#define KEYQ_H__PHOTO_LOGO_DEL__PID @"pid" //pid int
+#define KEYP_H__PHOTO_LOGO_DEL__ERROR_CODE @"error_code" //error_code int 0
+
+/*
+mark: photo
+type: /photo/logo-sort/
+kind: http
+method: http-post
+describe: 头像相册排序
+example: http://local.taiqiu.com:7070/photo/logo-sort/?sortInfos=[[79,1022]]&verify=17_1411380649_8cd8f6306fb1232f98573dae4e137f50
+
+
+*/
+#define PATH_H__PHOTO_LOGO_SORT_ @"/photo/logo-sort/"
+#define NOTI_H__PHOTO_LOGO_SORT_ @"MPphotologo-sortNotifiction"
+#define METHOD_H__PHOTO_LOGO_SORT_ @"POST"
+#define KEYQ_H__PHOTO_LOGO_SORT__SORTINFOS @"sortInfos" //sortInfos array
+#define KEYP_H__PHOTO_LOGO_SORT__SORTINFOS_PID @"pid" // pid sortOrder 数组 相片id 排序值
+#define KEYP_H__PHOTO_LOGO_SORT__ERROR_CODE @"error_code" //error_code int 0
+
+/*
+mark: photo
+type: /photo/logo-list/
+kind: http
+method: http-get
+describe: 获取头像列表
+example: http://local.taiqiu.com:7070/photo/logo-list/?verify=17_1411380649_8cd8f6306fb1232f98573dae4e137f50
+
+{
+"error_code": 0,
+"list": [
+{
+"uid": 17,
+"albumId": 19,
+"pid": 77,
+"title": "TEST001",
+"sortOrder": "1024",
+"imgInfo": {
+"width": 688,
+"height": 688,
+"format": "jpeg",
+"size": 494637
+},
+"ctime": "2014-11-11 17:48:14",
+"mtime": "0000-00-00 00:00:00",
+"exif": ""
+},
+{
+"uid": 17,
+"albumId": 19,
+"pid": 78,
+"title": "TEST001",
+"sortOrder": "1024",
+"imgInfo": {
+"width": 688,
+"height": 688,
+"format": "jpeg",
+"size": 494637
+},
+"ctime": "2014-11-11 17:48:21",
+"mtime": "0000-00-00 00:00:00",
+"exif": ""
+},
+{
+"uid": 17,
+"albumId": 19,
+"pid": 79,
+"title": "TEST003",
+"sortOrder": "1024",
+"imgInfo": {
+"width": 688,
+"height": 688,
+"format": "jpeg",
+"size": 494637
+},
+"ctime": "2014-11-11 17:48:25",
+"mtime": "0000-00-00 00:00:00",
+"exif": ""
+}
+]
+}
+*/
+#define PATH_H__PHOTO_LOGO_LIST_ @"/photo/logo-list/"
+#define NOTI_H__PHOTO_LOGO_LIST_ @"MPphotologo-listNotifiction"
+#define METHOD_H__PHOTO_LOGO_LIST_ @"GET"
+#define KEYQ_H__PHOTO_LOGO_LIST__START @"start" //start int
+#define KEYQ_H__PHOTO_LOGO_LIST__PAGENUM @"pageNum" //pageNum int
+#define KEYP_H__PHOTO_LOGO_LIST__LIST @"list" //list object
+#define KEYP_H__PHOTO_LOGO_LIST__LIST_UID @"uid" // uid
+#define KEYP_H__PHOTO_LOGO_LIST__LIST_ALBUMID @"albumId" // albumId
+#define KEYP_H__PHOTO_LOGO_LIST__LIST_PID @"pid" // pid
+#define KEYP_H__PHOTO_LOGO_LIST__LIST_TITLE @"title" // title
+#define KEYP_H__PHOTO_LOGO_LIST__LIST_SORTORDER @"sortOrder" // sortOrder
+#define KEYP_H__PHOTO_LOGO_LIST__LIST_EXIF @"exif" // exif
+#define KEYP_H__PHOTO_LOGO_LIST__LIST_CTIME @"ctime" // ctime
+#define KEYP_H__PHOTO_LOGO_LIST__LIST_MTIME @"mtime" // mtime
+
+/*
+mark: photo
+type: /photo/logo-add/
+kind: http
+method: http-post
+describe: 上传头像图片
+example: http://local.taiqiu.com:7070/photo/logo-add/?verify=17_1411380649_8cd8f6306fb1232f98573dae4e137f50
+
+{
+"error_code": 0,
+"pid": 79,
+"albumId": 19
+}
+*/
+#define PATH_H__PHOTO_LOGO_ADD_ @"/photo/logo-add/"
+#define NOTI_H__PHOTO_LOGO_ADD_ @"MPphotologo-addNotifiction"
+#define METHOD_H__PHOTO_LOGO_ADD_ @"POST"
+#define KEYQ_H__PHOTO_LOGO_ADD__TITLE @"title" //title string 说明
+#define KEYQ_H__PHOTO_LOGO_ADD__EXIF @"exif" //exif string 图片的exif信息
+#define KEYP_H__PHOTO_LOGO_ADD__PID @"pid" //pid int 图片id
+#define KEYP_H__PHOTO_LOGO_ADD__ALBUMID @"albumId" //albumId int 相册id
+
+
+#define MARK_COMMENT @"comment"
+
+/*
+mark: comment
+type: /comment/list/
+kind: http
+method: http-get
+describe: 获取评论列表
+parentCid指定主线获取
+
+example: http://local.taiqiu.com:7070/comment/list/?otype=1&oid=1&ruid=17&parentCid=0&verify=16_1411380260_8e01b76b234112ca88fdb3645eacac44
+
+{
+"error_code": 0,
+"list": [
+{
+"cid": 7,
+"otype": 1,
+"oid": 1,
+"parentCid": 0,
+"childNum": 2,
+"suid": 16,
+"ruid": 17,
+"juid": 0,
+"ctime": "2014-11-11 11:10:05",
+"lasttime": "0000-00-00 00:00:00",
+"hidden": 0,
+"del": 0,
+"delUid": 0,
+"contentType": 0,
+"content": "test"
+},
+{
+"cid": 8,
+"otype": 1,
+"oid": 1,
+"parentCid": 0,
+"childNum": 0,
+"suid": 16,
+"ruid": 17,
+"juid": 0,
+"ctime": "2014-11-11 11:10:51",
+"lasttime": "0000-00-00 00:00:00",
+"hidden": 0,
+"del": 0,
+"delUid": 0,
+"contentType": 0,
+"content": "test"
+},
+{
+"cid": 9,
+"otype": 1,
+"oid": 1,
+"parentCid": 0,
+"childNum": 0,
+"suid": 16,
+"ruid": 17,
+"juid": 0,
+"ctime": "2014-11-11 11:10:52",
+"lasttime": "0000-00-00 00:00:00",
+"hidden": 0,
+"del": 0,
+"delUid": 0,
+"contentType": 0,
+"content": "test"
+}
+],
+"uinfos": {
+"16": {
+"uid": 16,
+"oid": "16",
+"nick": "谁谁谁",
+"city": "",
+"vip": 0
+},
+"17": {
+"uid": 17,
+"oid": "17",
+"nick": "嘎嘎嘎",
+"city": "",
+"vip": 0
+}
+}
+}
+*/
+#define PATH_H__COMMENT_LIST_ @"/comment/list/"
+#define NOTI_H__COMMENT_LIST_ @"MPcommentlistNotifiction"
+#define METHOD_H__COMMENT_LIST_ @"GET"
+#define KEYQ_H__COMMENT_LIST__OTYPE @"otype" //otype int 评论对象类型
+#define KEYQ_H__COMMENT_LIST__OID @"oid" //oid int 评论对象id
+#define KEYQ_H__COMMENT_LIST__RUID @"ruid" //ruid int 评论对象所属uid
+#define KEYQ_H__COMMENT_LIST__PARENTCID @"parentCid" //parentCid int 评论对象为评论时，评论id
+#define KEYP_H__COMMENT_LIST__ERROR_CODE @"error_code" //error_code int 0
+#define KEYP_H__COMMENT_LIST__LIST @"list" //list 
+#define KEYP_H__COMMENT_LIST__LIST_CID @"cid" // cid
+#define KEYP_H__COMMENT_LIST__LIST_OTYPE @"otype" // otype
+#define KEYP_H__COMMENT_LIST__LIST_OID @"oid" // oid
+#define KEYP_H__COMMENT_LIST__LIST_PARENTCID @"parentCid" // parentCid
+#define KEYP_H__COMMENT_LIST__LIST_CONTENTTYPE @"contentType" // contentType
+#define KEYP_H__COMMENT_LIST__LIST_CONTENT @"content" // content
+#define KEYP_H__COMMENT_LIST__LIST_HIDDEN @"hidden" // hidden
+#define KEYP_H__COMMENT_LIST__UINFO @"uinfo" //uinfo
+
+/*
+mark: comment
+type: /comment/post/
+kind: http
+method: http-post
+describe: 评论
+otype 说明
+ 1 测试对象
+ 
+example: http://local.taiqiu.com:7070/comment/post/?otype=1&oid=1&ruid=17&parentCid=7&contentType=0&content=test&verify=16_1411380260_8e01b76b234112ca88fdb3645eacac44
+
+{
+"error_code": 0,
+"cid": 11
+}
+*/
+#define PATH_H__COMMENT_POST_ @"/comment/post/"
+#define NOTI_H__COMMENT_POST_ @"MPcommentpostNotifiction"
+#define METHOD_H__COMMENT_POST_ @"POST"
+#define KEYQ_H__COMMENT_POST__OTYPE @"otype" //otype int 评论对象类型
+#define KEYQ_H__COMMENT_POST__OID @"oid" //oid int 评论对象id
+#define KEYQ_H__COMMENT_POST__RUID @"ruid" //ruid int 评论对象所属uid
+#define KEYQ_H__COMMENT_POST__JUID @"juid" //juid int 当前评论参与者
+#define KEYQ_H__COMMENT_POST__HIDDEN @"hidden" //hidden int 是否为悄悄话 0不是 1是
+#define KEYQ_H__COMMENT_POST__CONTENTTYPE @"contentType" //contentType int 评论内容类型 0 为文字
+#define KEYQ_H__COMMENT_POST__CONTENT @"content" //content string 评论内容
+#define KEYQ_H__COMMENT_POST__PARENTCID @"parentCid" //parentCid int 评论对象为评论时，评论id
+#define KEYP_H__COMMENT_POST__ERROR_CODE @"error_code" //error_code int 0
+#define KEYP_H__COMMENT_POST__CID @"cid" //cid int 评论id
+
+/*
+mark: chat
+type: /chat/uploadimg/
+kind: http
+method: http-post
+describe: encode multi-part 
+聊天发送图片，上传图片接口，得到imgInfo之后，打包成json串，作为聊天内容发送，并将聊天的msgtype设为1 （图片）
+example: http://local.taiqiu.com:7070/chat/uploadimg/?verify=17_1411380649_8cd8f6306fb1232f98573dae4e137f50
+
+{
+"error_code": 0,
+"imgInfo": {
+"imgExt": [
+52,
+"jpeg",
+494637,
+688,
+688
+],
+"sign": "0f7f37417c7d7f9d2cb1e180c77e67f0",
+"thumbnail": "http://local.p.taiqiuui.com:81/i/3/1/17/52/1a824bd6b1cfdff5e7a9bd685efc855e_30x55.jpeg",
+"src": "http://local.p.taiqiuui.com:81/i/3/1/17/52/1a824bd6b1cfdff5e7a9bd685efc855e.jpeg"
+}
+}
+*/
+#define PATH_H__CHAT_UPLOADIMG_ @"/chat/uploadimg/"
+#define NOTI_H__CHAT_UPLOADIMG_ @"MPchatuploadimgNotifiction"
+#define METHOD_H__CHAT_UPLOADIMG_ @"POST"
+#define KEYQ_H__CHAT_UPLOADIMG__UPLOADIMG @"uploadimg" //uploadimg FILE 图片文件 支持 jpg jpeg png bmp
+#define KEYP_H__CHAT_UPLOADIMG__ERROR_CODE @"error_code" //error_code int 0
+#define KEYP_H__CHAT_UPLOADIMG__IMGINFO @"imgInfo" //imgInfo object
+#define KEYP_H__CHAT_UPLOADIMG__IMGINFO_IMGEXT @"imgExt" // imgExt array
+#define KEYP_H__CHAT_UPLOADIMG__IMGINFO_SIGN @"sign" // sign string
+#define KEYP_H__CHAT_UPLOADIMG__IMGINFO_THUMBNAIL @"thumbnail" // thumbnail string 缩略图url
+#define KEYP_H__CHAT_UPLOADIMG__IMGINFO_SRC @"src" // src string 原图url
+
+
+#define MARK_DISCOVERY @"discovery"
+
+/*
+mark: discovery
+type: /discovery/nearbylist/
+kind: http
+method: http-get
+describe: 获取附近的人，100公里
+example: http://local.taiqiu.com:7070/discovery/nearbylist/?lon=115.725&lat=39.12&alt=0&&verify=17_1411380649_8cd8f6306fb1232f98573dae4e137f50
+
+{
+"error_code": 0,
+"list": [
+{
+"uid": 16,
+"distance": 173,
+"uinfo": {
+"uid": 16,
+"oid": "16",
+"nick": "谁谁谁",
+"city": "",
+"vip": 0
+}
+}
+]
+}
+*/
+#define PATH_H__DISCOVERY_NEARBYLIST_ @"/discovery/nearbylist/"
+#define NOTI_H__DISCOVERY_NEARBYLIST_ @"MPdiscoverynearbylistNotifiction"
+#define METHOD_H__DISCOVERY_NEARBYLIST_ @"GET"
+#define KEYQ_H__DISCOVERY_NEARBYLIST__LON @"lon" //lon string 经度
+#define KEYQ_H__DISCOVERY_NEARBYLIST__LAT @"lat" //lat string 纬度
+#define KEYQ_H__DISCOVERY_NEARBYLIST__ALT @"alt" //alt string 海拔
+#define KEYP_H__DISCOVERY_NEARBYLIST__ERROR_CODE @"error_code" //error_code int 0
+#define KEYP_H__DISCOVERY_NEARBYLIST__LIST @"list" //list
+#define KEYP_H__DISCOVERY_NEARBYLIST__LIST_UID @"uid" // uid int 
+#define KEYP_H__DISCOVERY_NEARBYLIST__LIST_DISTANCE @"distance" // distance int
+#define KEYP_H__DISCOVERY_NEARBYLIST__LIST_UINFO @"uinfo" // uinfo
+#define KEYP_H__DISCOVERY_NEARBYLIST__LIST_UINFO_UID @"uid" //  uid int
+#define KEYP_H__DISCOVERY_NEARBYLIST__LIST_UINFO_OID @"oid" //  oid string
+#define KEYP_H__DISCOVERY_NEARBYLIST__LIST_UINFO_NICK @"nick" //  nick string
+#define KEYP_H__DISCOVERY_NEARBYLIST__LIST_UINFO_CITY @"city" //  city string
+#define KEYP_H__DISCOVERY_NEARBYLIST__LIST_UINFO_VIP @"vip" //  vip string
+
+/*
+mark: discovery
+type: /discovery/reportgeo/
+kind: http
+method: http-get
+describe: 用户上传位置信息
+example: http://local.taiqiu.com:7070/discovery/reportgeo/?lon=115.723421&lat=39.12&alt=0&&verify=17_1411380649_8cd8f6306fb1232f98573dae4e137f50
+*/
+#define PATH_H__DISCOVERY_REPORTGEO_ @"/discovery/reportgeo/"
+#define NOTI_H__DISCOVERY_REPORTGEO_ @"MPdiscoveryreportgeoNotifiction"
+#define METHOD_H__DISCOVERY_REPORTGEO_ @"GET"
+#define KEYQ_H__DISCOVERY_REPORTGEO__LON @"lon" //lon string 经度
+#define KEYQ_H__DISCOVERY_REPORTGEO__LAT @"lat" //lat string 纬度
+#define KEYQ_H__DISCOVERY_REPORTGEO__ALT @"alt" //alt string 海拔
+#define KEYP_H__DISCOVERY_REPORTGEO__ERROR_CODE @"error_code" //error_code int 0
+
+
 #define MARK_GROUP @"group"
 
 /*
@@ -15,9 +442,6 @@ example: http://local.taiqiu.com:7070/group/exit/?gid=8&verify=34_1414218322_d23
 #define METHOD_H__GROUP_EXIT_ @"GET"
 #define KEYQ_H__GROUP_EXIT__GID @"gid" //gid int 8
 #define KEYP_H__GROUP_EXIT__ERROR_CODE @"error_code" //error_code int 0
-
-
-#define MARK_CHAT @"chat"
 
 /*
 mark: chat
@@ -1092,10 +1516,11 @@ type: /account/login/
 kind: http
 method: http-post
 describe: 登录获取verify
+
 example: local.taiqiu.com:7070/account/login/?mobCountry=%2B86&mobile=13811121213&password=222222222&mobCode=22&nick=32222222
 
 
-{"error_code":0,"uid":15,"verify":"15_1410252423_b1388aeea1a1c94e7ae4aa4e8f6b2e83"}
+{"error_code":0,"uid":15,"verify":"15_1410252423_b1388aeea1a1c94e7ae4aa4e8f6b2e83_2"}
 */
 #define PATH_H__ACCOUNT_LOGIN_ @"/account/login/"
 #define NOTI_H__ACCOUNT_LOGIN_ @"MPaccountloginNotifiction"
@@ -1103,9 +1528,12 @@ example: local.taiqiu.com:7070/account/login/?mobCountry=%2B86&mobile=1381112121
 #define KEYQ_H__ACCOUNT_LOGIN__MOBCOUNTRY @"mobCountry" //mobCountry : string 国家通讯代码（目前只支持+86）
 #define KEYQ_H__ACCOUNT_LOGIN__MOBILE @"mobile" //mobile     : string 手机号
 #define KEYQ_H__ACCOUNT_LOGIN__PASSWORD @"password" //password   : string 密码
+#define KEYQ_H__ACCOUNT_LOGIN__UUID @"uuid" //uuid string app唯一id
+#define KEYQ_H__ACCOUNT_LOGIN__PLAT @"plat" //plat string 平台 iphone5 iphone5s iphone6 android-xiaomi android-sanxing
+#define KEYQ_H__ACCOUNT_LOGIN__OSVERSION @"osversion" //osversion string 4.2.3
 #define KEYP_H__ACCOUNT_LOGIN__ERROR_CODE @"error_code" //error_code
 #define KEYP_H__ACCOUNT_LOGIN__UID @"uid" //uid
-#define KEYP_H__ACCOUNT_LOGIN__VERIFY @"verify" //verify      string 用户认证串 有效期暂定一年 15_1410252423_b1388aeea1a1c94e7ae4aa4e8f6b2e83
+#define KEYP_H__ACCOUNT_LOGIN__VERIFY @"verify" //verify      string 用户认证串 有效期暂定一年 15_1410252423_b1388aeea1a1c94e7ae4aa4e8f6b2e83_2
 
 /*
 mark: account

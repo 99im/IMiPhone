@@ -10,6 +10,7 @@
 #import "AccountMessageProxy.h"
 #import "IMNWProxyProtocol.h"
 #import "UserDataProxy.h"
+#import "IMNWManager.h"
 
 @interface LoginViewController () <IMNWProxyProtocol, UITextFieldDelegate>
 
@@ -30,15 +31,24 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [self registerMessageNotification];
     self.tfUsername.text = [UserDataProxy sharedProxy].lastLoginMobile;
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [self registerMessageNotification];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-    [self registerMessageNotification];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [self removeMessageNotification];
+    [super viewWillDisappear:animated];
 }
 
 /*
@@ -64,6 +74,7 @@
 {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sendHttpLoginResult:) name:NOTI_H__ACCOUNT_LOGIN_ object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sendHttpMyinfoResult:) name:NOTI_H__ACCOUNT_MYINFO_ object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(socketConnectResult:) name:NOTI_SOCKET_CONNECT object:nil];
 }
 
 - (void)removeMessageNotification
@@ -78,6 +89,11 @@
     }
 }
 
+- (void)socketConnectResult:(NSNotification *)notification
+{
+    [self performSegueWithIdentifier:@"login2mainSegue" sender:self];
+}
+
 - (void)sendHttpMyinfoResult:(NSNotification *)notification
 {
     if (!notification.object) {
@@ -85,7 +101,7 @@
             [self performSegueWithIdentifier:@"login2reginfoSegue" sender:self];
         }
         else {
-            [self performSegueWithIdentifier:@"login2mainSegue" sender:self];
+            [[IMNWManager sharedNWManager].socketConnect connect:SOCKET_HOST port:SOCKET_PORT];
         }
     }
 }

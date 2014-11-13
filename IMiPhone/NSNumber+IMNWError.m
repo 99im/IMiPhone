@@ -15,6 +15,12 @@
     NSString *sError = @"";
 
     switch (self.integerValue) {
+        case 10028:
+            sError = @"相册图片数量达到上限，没有权限再次添加";
+            break;
+        case 10027:
+            sError = @"用户专辑不存在";
+            break;
         case 10026:
             sError = @"批准加入群，别的管理员已经拒绝";
             break;

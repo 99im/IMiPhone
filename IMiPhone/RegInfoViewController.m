@@ -40,7 +40,6 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [self registerMessageNotification];
     
     self.pickBirthday.hidden = YES;
     tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(viewTapGesture:)];
@@ -55,7 +54,13 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-    [self removeMessageNotification];
+    
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [self registerMessageNotification];
+    [super viewWillAppear:animated];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -81,7 +86,7 @@
     //解除键盘隐藏通知
     [[NSNotificationCenter defaultCenter] removeObserver:self
                                                     name: UIKeyboardDidHideNotification object:nil];
-    
+    [self removeMessageNotification];
     [super viewWillDisappear:animated];
 }
 

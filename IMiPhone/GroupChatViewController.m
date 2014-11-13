@@ -59,7 +59,6 @@
     self.tap.delegate = self;
     self.tap.cancelsTouchesInView = NO;
     
-    [self registerMessageNotification];
     //
     long long groupid = [GroupDataProxy sharedProxy].getGroupIdCurrent;
     DPGroup *dpGroup = [[GroupDataProxy sharedProxy] getGroupInfoCurrent:NO];
@@ -83,10 +82,17 @@
 
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [self scrollToLastCell:NO];
+    [self registerMessageNotification];
+    [super viewWillAppear:animated];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-    [self removeMessageNotification];
+    
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -101,11 +107,6 @@
     
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
-    [self scrollToLastCell:NO];
-}
-
 - (void)viewWillDisappear:(BOOL)animated {
     //解除键盘出现通知
     [[NSNotificationCenter defaultCenter] removeObserver:self
@@ -113,7 +114,7 @@
     //解除键盘隐藏通知
     [[NSNotificationCenter defaultCenter] removeObserver:self
                                                     name: UIKeyboardDidHideNotification object:nil];
-    
+    [self removeMessageNotification];
     [super viewWillDisappear:animated];
 }
 
