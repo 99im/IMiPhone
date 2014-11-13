@@ -54,7 +54,6 @@ enum
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    [self registerMessageNotification];
     //筛选数据
     self.arrUsers = [NSMutableArray array];
     self.arrAddressBookNames = [NSMutableArray array];
@@ -85,11 +84,22 @@ enum
     }
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [self registerMessageNotification];
+    [super viewWillAppear:animated];
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
     [self removeMessageNotification];
+    [super viewWillDisappear:animated];
 }
 
 #pragma mark - Table view data source
