@@ -981,7 +981,7 @@ example: http://local.taiqiu.com:7070/friend/brief/?focusUid=16&verify=17_141138
 #define PATH_H__FRIEND_BRIEF_ @"/friend/brief/"
 #define NOTI_H__FRIEND_BRIEF_ @"MPfriendbriefNotifiction"
 #define METHOD_H__FRIEND_BRIEF_ @"GET"
-#define KEYQ_H__FRIEND_BRIEF__VERIFY @"verify" //verify string
+#define KEYP_H__FRIEND_BRIEF__ERROR_CODE @"error_code" //error_code int 0
 #define KEYP_H__FRIEND_BRIEF__FOCUSTOTAL @"focusTotal" //focusTotal
 #define KEYP_H__FRIEND_BRIEF__FANTOTAL @"fanTotal" //fanTotal
 #define KEYP_H__FRIEND_BRIEF__FRIENDTOTAL @"friendTotal" //friendTotal

@@ -13,6 +13,7 @@
 #import "ContactDAO.h"
 #import "UsersFromContactDAO.h"
 #import "FriendDAO.h"
+#import "imRms.h"
 
 @interface FriendDataProxy : NSObject
 
@@ -25,6 +26,10 @@
 @property(nonatomic) uint currUserListType;
 @property(nonatomic, retain) NSArray *listMyFocus;
 @property(nonatomic, retain) NSArray *listMyFans;
+
+@property (nonatomic, setter=setFocusTotal:, getter=getFocusTotal) NSInteger focusTotal;
+@property (nonatomic, setter=setFanTotal:, getter=getFanTotal) NSInteger fanTotal;
+@property (nonatomic, setter=setFriendTotal:, getter=getFriendTotal) NSInteger friendTotal;
 
 + (FriendDataProxy *)sharedProxy;
 

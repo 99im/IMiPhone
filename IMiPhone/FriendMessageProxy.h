@@ -29,4 +29,6 @@
 
 - (void)sendTypeFriendList:(NSNumber *)start withPageNum:(NSNumber *)pageNum;
 
+- (void)sendHttpBrief;
+
 @end

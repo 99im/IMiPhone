@@ -24,19 +24,31 @@
   NSString *plistPath = [bundle pathForResource:@"contact" ofType:@"plist"];
   self.arrCategorys = [[[NSDictionary alloc] initWithContentsOfFile:plistPath]
       objectForKey:@"Category"];
-
+    
   // Uncomment the following line to preserve selection between presentations.
   // self.clearsSelectionOnViewWillAppear = NO;
 
   // Uncomment the following line to display an Edit button in the navigation
   // bar for this view controller.
   // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    [[FriendMessageProxy sharedProxy] sendHttpBrief];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [self registerMessageNotification];
+}
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [self removeMessageNotification];
 }
 
 - (void)didReceiveMemoryWarning {
   [super didReceiveMemoryWarning];
   // Dispose of any resources that can be recreated.
 }
+
 
 #pragma mark - Table view delegate
 
@@ -83,6 +95,16 @@
       setImage:[UIImage
                    imageNamed:[[self.arrCategorys objectAtIndex:indexPath.row]
                                   objectForKey:@"image"]]];
+    NSInteger personNum;
+    NSString *cellId = [[self.arrCategorys objectAtIndex:indexPath.row] objectForKey:@"id"];
+    if ([cellId isEqualToString:@"fan"]) {
+        personNum = [FriendDataProxy sharedProxy].fanTotal;
+    }
+    else if ([cellId isEqualToString:@"focus"]) {
+        personNum = [FriendDataProxy sharedProxy].focusTotal;
+    }
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"%i%@",personNum ,NSLocalizedString(@"Unit.Person", nil)];
+
   return cell;
 }
 
@@ -137,5 +159,24 @@ preparation before navigation
     // Pass the selected object to the new view controller.
 }
 */
+
+#pragma mark - register and remove notification listener
+
+- (void)registerMessageNotification
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dealFriendBrief:) name:NOTI_H__FRIEND_BRIEF_ object:nil];
+}
+
+- (void)removeMessageNotification
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)dealFriendBrief:(NSNotification *)notification
+{
+    [self.tableView reloadData];
+}
+
+
 
 @end

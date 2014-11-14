@@ -62,7 +62,7 @@
     //footerview
     btnViewContact = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     [btnViewContact.layer setCornerRadius:5.0];
-    btnViewContact.frame = CGRectMake(20, 0, self.tableView.frame.size.width - 40, 40);
+    btnViewContact.frame = CGRectMake(10, 10, self.tableView.frame.size.width - 20, 40);
     [btnViewContact setTitle:NSLocalizedString(@"View.Contact.Friends", null) forState:UIControlStateNormal];
     btnViewContact.backgroundColor = [UIColor lightGrayColor];
     btnViewContact.showsTouchWhenHighlighted=YES;
