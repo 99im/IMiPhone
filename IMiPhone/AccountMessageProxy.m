@@ -96,6 +96,9 @@ static AccountMessageProxy *sharedAccountMessageProxy = nil;
     [params setObject:mobile forKey:KEYQ_H__ACCOUNT_LOGIN__MOBILE];
     [params setObject:mobCountry forKey:KEYQ_H__ACCOUNT_LOGIN__MOBCOUNTRY];
     [params setObject:password forKey:KEYQ_H__ACCOUNT_LOGIN__PASSWORD];
+    [params setObject:[[UIDevice currentDevice] identifierForVendor].UUIDString forKey:KEYQ_H__ACCOUNT_LOGIN__UUID];
+    [params setObject:[UIDevice currentDevice].systemName forKey:KEYQ_H__ACCOUNT_LOGIN__PLAT];
+    [params setObject:[UIDevice currentDevice].systemVersion forKey:KEYQ_H__ACCOUNT_LOGIN__OSVERSION];
     IMNWMessage *message = [IMNWMessage createForHttp:PATH_H__ACCOUNT_LOGIN_ withParams:params withMethod:METHOD_H__ACCOUNT_LOGIN_ ssl:NO ];
     [[IMNWManager sharedNWManager] sendMessage:message withResponse:^(NSString *responseString, NSData *responseData) {
         NSError *err = nil;

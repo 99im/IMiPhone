@@ -81,18 +81,19 @@
     self.tap.delegate = self;
     self.tap.cancelsTouchesInView = NO;
     
-    [self registerMessageNotification];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-    [self removeMessageNotification];
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [self scrollToLastCell:NO];
+    [self registerMessageNotification];
+    [super viewWillAppear:animated];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -103,7 +104,7 @@
     //注册键盘隐藏通知
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector (keyboardDidHide:)
                                                  name: UIKeyboardDidHideNotification object:nil];
-    [super viewDidAppear:YES];
+    [super viewDidAppear:animated];
 
 }
 
@@ -114,7 +115,7 @@
     //解除键盘隐藏通知
     [[NSNotificationCenter defaultCenter] removeObserver:self
                                                     name: UIKeyboardDidHideNotification object:nil];
-    
+    [self removeMessageNotification];
     [super viewWillDisappear:animated];
 }
 

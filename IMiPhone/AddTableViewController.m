@@ -57,14 +57,24 @@ NSInteger const ROW_CREATE_ZU = 1;
     self.arrTPs = [[[NSDictionary alloc] initWithContentsOfFile:plistPath] objectForKey:@"AddTP"];
     self.arrGroupMenus4Add = [[[NSDictionary alloc] initWithContentsOfFile:plistPath] objectForKey:@"GroupMenus4Add"];
 
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
     [self registerMessageNotification];
+    [super viewWillAppear:animated];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [self removeMessageNotification];
+    [super viewWillDisappear:animated];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-    [self removeMessageNotification];
 }
 
 - (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender {

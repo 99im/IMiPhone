@@ -21,8 +21,6 @@
   NSLog(@"group viewDidLoad");
   [super viewDidLoad];
 
-  [self registerMessageNotification];
-
     [[GroupDataProxy sharedProxy] getGroupMyList:SEND_HTTP_AUTO];
 
   // Uncomment the following line to preserve selection between presentations.ß
@@ -31,6 +29,18 @@
   // Uncomment the following line to display an Edit button in the navigation
   // bar for this view controller.
   // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [self registerMessageNotification];
+    [super viewWillAppear:animated];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [self removeMessageNotification];
+    [super viewWillDisappear:animated];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -43,7 +53,6 @@
 {
     NSLog(@"group viewDidAppear.");
     [super viewDidAppear:animated];
-
     //TODO : 群组刷新时长判断-超过30分钟触发刷新
 //    [[GroupMessageProxy sharedProxy] sendGroupMyList:[NSNumber numberWithInteger:0]
 //                                         withPageNum:[NSNumber numberWithInteger:50]];

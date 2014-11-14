@@ -53,21 +53,24 @@ char cryptKey[17];
 
 - (void)connect:(NSString *)hostIP port:(uint16_t)hostPort
 {
+    NSLog(@"Socket ready to connect: %@ : %hu", hostIP, hostPort);
     self.host = hostIP;
     self.port = hostPort;
     
     NSError *err = nil;
-    if(![self.socket connectToHost:hostIP onPort:hostPort withTimeout:SOCKET_TIMEOUT error:&err])
+    if([self.socket connectToHost:hostIP onPort:hostPort withTimeout:SOCKET_TIMEOUT error:&err])
     {
+        if (CRYPT) {
+            [self.socket readDataToData:term withTimeout:-1 tag:TAG_CRYPT];
+        }
+        else {
+            [self.socket readDataToData:term withTimeout:-1 tag:TAG_MSG];
+        }
+    }
+    else {
         NSLog(@"Socket connect error: %@", err);
         [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_SOCKET_CONNECT object:err];
         self.dataToSend = nil;
-    }
-    if (CRYPT) {
-        [self.socket readDataToData:term withTimeout:-1 tag:TAG_CRYPT];
-    }
-    else {
-        [self.socket readDataToData:term withTimeout:-1 tag:TAG_MSG];
     }
 }
 
@@ -171,6 +174,7 @@ char cryptKey[17];
         }
         else {
             [self.socket writeData:data withTimeout:-1 tag:TAG_MSG];
+            [self.socket writeData:term withTimeout:-1 tag:TAG_MSG];
         }
     }
 }
