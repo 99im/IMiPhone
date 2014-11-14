@@ -45,4 +45,9 @@
     return dic;
 }
 
+-(void)setValue:(id)value forUndefinedKey:(NSString *)key
+{
+    NSLog(@"undefine key ---%@",key);
+}
+
 @end
