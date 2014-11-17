@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>好友动态</key>
+	<dict>
+		<key>message</key>
+		<string>说明内容说明内容</string>
+		<key>time</key>
+		<string>更新时间2014.11.12 10:00</string>
+		<key>userArray</key>
+		<array>
+			<dict>
+				<key>gid</key>
+				<string>234</string>
+				<key>messageNum</key>
+				<string>2</string>
+			</dict>
+			<dict>
+				<key>gid</key>
+				<string>123</string>
+				<key>messageNum</key>
+				<string>1</string>
+			</dict>
+		</array>
+	</dict>
+	<key>玩乐</key>
+	<dict>
+		<key>message</key>
+		<string>附近群组</string>
+		<key>nearbyGroup</key>
+		<dict>
+			<key>gid</key>
+			<string>1234</string>
+			<key>groupName</key>
+			<string>那些年</string>
+		</dict>
+	</dict>
+	<key>服务</key>
+	<array>
+		<dict>
+			<key>gid</key>
+			<string>123</string>
+			<key>gname</key>
+			<string>群组A</string>
+			<key>gdescription</key>
+			<string>群A说明群说明</string>
+		</dict>
+		<dict>
+			<key>gid</key>
+			<string>234</string>
+			<key>gname</key>
+			<string>群组B</string>
+			<key>gdescription</key>
+			<string>群B说明群说明</string>
+		</dict>
+	</array>
+</dict>
+</plist>
