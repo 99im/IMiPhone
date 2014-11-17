@@ -30,14 +30,24 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self.tfPhonenum becomeFirstResponder];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
     [self registerMessageNotification];
+    [super viewWillAppear:animated];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
     [self removeMessageNotification];
+    [super viewWillDisappear:animated];
 }
 
 - (IBAction)nextStepSelector:(id)sender {

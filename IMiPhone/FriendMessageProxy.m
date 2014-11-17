@@ -258,7 +258,7 @@ static FriendMessageProxy *sharedFriendMessageProxy = nil;
                          dpUser.nick = [userInfo objectForKey:KEYP_H__FRIEND_FRIEND_LIST__LIST_UINFO_NICK];
                          
                          
-                         NSInteger findIndex = [ImDataUtil getIndexOf:[[UserDataProxy sharedProxy] mutableArrayUsers] byItemKey:DB_PRIMARY_KEY_USER_UID withValue:[NSNumber numberWithInteger:dpUser.uid]];;
+                         NSInteger findIndex = [ImDataUtil getIndexOf:[[UserDataProxy sharedProxy] mutableArrayUsers] byItemKey:DB_PRIMARY_KEY_USER_UID withValue:[NSNumber numberWithLongLong:dpUser.uid]];;
 
                          if (findIndex == NSNotFound) {
                              [[[UserDataProxy sharedProxy] mutableArrayUsers] addObject:dpUser];
@@ -290,6 +290,40 @@ static FriendMessageProxy *sharedFriendMessageProxy = nil;
              }
              else {
                  NSLog(@"Http connect response error: %i", errorcode);
+             }
+         }
+     }];
+}
+
+- (void)sendHttpBrief
+{
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    IMNWMessage *message = [IMNWMessage
+                            createForHttp:PATH_H__FRIEND_BRIEF_
+                            withParams:params
+                            withMethod:METHOD_H__FRIEND_BRIEF_
+                            ssl:NO];
+    [[IMNWManager sharedNWManager]
+     sendMessage:message
+     withResponse:    ^(NSString *responseString, NSData *responseData) {
+         NSError *err = nil;
+         NSMutableDictionary *json = [NSJSONSerialization
+                                      JSONObjectWithData:responseData
+                                      options:NSJSONReadingAllowFragments
+                                      error:&err];
+         if (err) {
+             NSLog(@"JSON create error: %@", err);
+         } else {
+             NSInteger errorcode = [[json objectForKey:KEYP_H__FRIEND_BRIEF__ERROR_CODE] integerValue];
+            
+             if (errorcode == 0) {
+                 [FriendDataProxy sharedProxy].fanTotal = [[json objectForKey:KEYP_H__FRIEND_BRIEF__FANTOTAL]  integerValue];
+                 [FriendDataProxy sharedProxy].focusTotal = [[json objectForKey:KEYP_H__FRIEND_BRIEF__FOCUSTOTAL]  integerValue];
+                 [FriendDataProxy sharedProxy].friendTotal = [[json objectForKey:KEYP_H__FRIEND_BRIEF__FRIENDTOTAL]  integerValue];
+                 [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_H__FRIEND_BRIEF_ object:nil];
+             }
+             else {
+                 [self processErrorCode:errorcode fromSource:PATH_H__FRIEND_BRIEF_ useNotiName:NOTI_H__FRIEND_BRIEF_];
              }
          }
      }];

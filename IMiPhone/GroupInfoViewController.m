@@ -16,8 +16,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    //准备注释监听
-    [self registerMessageNotification];
 
     DPGroup *currGroup = [[GroupDataProxy sharedProxy] getGroupInfoCurrent:SEND_HTTP_AUTO];
     [self drawContent: currGroup];
@@ -26,15 +24,21 @@
 }
 
 - (void)viewDidAppear:(BOOL)animated {
+    [self registerMessageNotification];
     [super viewDidAppear:animated];
 }
 
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    [self removeMessageNotification];
     // Dispose of any resources that can be recreated.
     //body
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [self removeMessageNotification];
+    [super viewWillDisappear:animated];
 }
 
 #pragma mark - 消息监听
@@ -66,7 +70,7 @@
 //绘制内容
 - (void)drawContent : (DPGroup *) dpGroup {
     if (dpGroup) {
-        self.lblGroupId.text = [NSString stringWithFormat:@"群号：%li" , dpGroup.gid];
+        self.lblGroupId.text = [NSString stringWithFormat:@"群号：%lli" , dpGroup.gid];
         self.lblGroupName.text = dpGroup.name;
         self.lblCreatorName.text = [NSString stringWithFormat:@"群主：%@ ", dpGroup.creator_nick];
         self.lblCTime.text = dpGroup.ctime;

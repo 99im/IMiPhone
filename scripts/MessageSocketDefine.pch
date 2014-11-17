@@ -37,12 +37,26 @@ example: {"mark":"chat","type":"chatN","info":{"stage":"p2p","time":1412751697,"
 #define KEYP_S_CHAT_CHATN_TIME @"time" //time int unix时间戳
 #define KEYP_S_CHAT_CHATN_SENDUID @"sendUid" //sendUid int 发送用户uid
 #define KEYP_S_CHAT_CHATN_MID @"mid" //mid int 消息id
+#define KEYP_S_CHAT_CHATN_GID @"gid" //gid string 会话id
 
 /*
 mark: chat
 type: chat
 kind: socket
 describe: 好友聊天
+图片类型 content json序列号 uploadpic 返回的结果
+{
+"imgExt": [
+52,
+"jpeg",
+494637,
+688,
+688
+],
+"sign": "0f7f37417c7d7f9d2cb1e180c77e67f0",
+"thumbnail": "http://local.p.taiqiuui.com:81/i/3/1/17/52/1a824bd6b1cfdff5e7a9bd685efc855e_30x55.jpeg",
+"src": "http://local.p.taiqiuui.com:81/i/3/1/17/52/1a824bd6b1cfdff5e7a9bd685efc855e.jpeg"
+}
 example: {"mark":"chat","type":"chat","info":{"stage":"p2p","content":"hello","msgType":0,"targetId":17,"sid":16}}
 
 */
@@ -50,7 +64,7 @@ example: {"mark":"chat","type":"chat","info":{"stage":"p2p","content":"hello","m
 #define NOTI_S_CHAT_CHAT @"MPchatchatNotifiction"
 #define KEYQ_S_CHAT_CHAT_STAGE @"stage" //stage p2p(私聊) group（群组）
 #define KEYQ_S_CHAT_CHAT_TARGETID @"targetId" //targetId int 好友uid 群组id
-#define KEYQ_S_CHAT_CHAT_MSGTYPE @"msgType" //msgType int 消息类型 0 为文本 1 为声音
+#define KEYQ_S_CHAT_CHAT_MSGTYPE @"msgType" //msgType int 消息类型 0 为文本 1 为图片
 #define KEYQ_S_CHAT_CHAT_CONTENT @"content" //content string 消息内容
 #define KEYP_S_CHAT_CHAT_RES @"res" //res
 

@@ -14,5 +14,6 @@
 @synthesize mid;
 @synthesize relationId;
 @synthesize type;
+@synthesize unreadNum;
 
 @end

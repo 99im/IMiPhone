@@ -99,6 +99,8 @@
 		1171F7D519E9278A00865A0B /* DBContactPerson.m in Sources */ = {isa = PBXBuildFile; fileRef = 1171F7D319E9278A00865A0B /* DBContactPerson.m */; };
 		11795E2819D297CD003FD9A7 /* DPFriend.m in Sources */ = {isa = PBXBuildFile; fileRef = 11795E2719D297CD003FD9A7 /* DPFriend.m */; };
 		11795E2919D297CD003FD9A7 /* DPFriend.m in Sources */ = {isa = PBXBuildFile; fileRef = 11795E2719D297CD003FD9A7 /* DPFriend.m */; };
+		117A19001A10675E00E3B790 /* ChatGraphicsUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 117A18FF1A10675E00E3B790 /* ChatGraphicsUtil.m */; };
+		117A19011A10675E00E3B790 /* ChatGraphicsUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 117A18FF1A10675E00E3B790 /* ChatGraphicsUtil.m */; };
 		117AC69419EE763E00143973 /* IMAddressBook.m in Sources */ = {isa = PBXBuildFile; fileRef = 117AC69119EE763E00143973 /* IMAddressBook.m */; };
 		117AC69519EE763E00143973 /* IMAddressPerson.m in Sources */ = {isa = PBXBuildFile; fileRef = 117AC69319EE763E00143973 /* IMAddressPerson.m */; };
 		117AC69C19EE766200143973 /* DBUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 117AC69719EE766200143973 /* DBUser.m */; };
@@ -167,6 +169,7 @@
 		11FC327A19F0C677000A6733 /* DBFriend.m in Sources */ = {isa = PBXBuildFile; fileRef = 11FDE12519EFB52F002AEDB7 /* DBFriend.m */; };
 		11FDE12319EFB516002AEDB7 /* FriendDAO.m in Sources */ = {isa = PBXBuildFile; fileRef = 11FDE12219EFB516002AEDB7 /* FriendDAO.m */; };
 		11FDE12619EFB52F002AEDB7 /* DBFriend.m in Sources */ = {isa = PBXBuildFile; fileRef = 11FDE12519EFB52F002AEDB7 /* DBFriend.m */; };
+		581A272F1A11DE6400E5BE5F /* AccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 581A272E1A11DE6400E5BE5F /* AccountViewController.m */; };
 		5825D8F119D808CA004FF6FF /* CategoryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5825D8F019D808CA004FF6FF /* CategoryTableViewController.m */; };
 		58438C0D19D412E400B6962B /* NearbyTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58438C0C19D412E400B6962B /* NearbyTableViewController.m */; };
 		585971D21999F0C700258CB1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 585971D11999F0C700258CB1 /* Foundation.framework */; };
@@ -389,6 +392,8 @@
 		1171F7D319E9278A00865A0B /* DBContactPerson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBContactPerson.m; sourceTree = "<group>"; };
 		11795E2619D297CD003FD9A7 /* DPFriend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPFriend.h; sourceTree = "<group>"; };
 		11795E2719D297CD003FD9A7 /* DPFriend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPFriend.m; sourceTree = "<group>"; };
+		117A18FE1A10675E00E3B790 /* ChatGraphicsUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatGraphicsUtil.h; sourceTree = "<group>"; };
+		117A18FF1A10675E00E3B790 /* ChatGraphicsUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatGraphicsUtil.m; sourceTree = "<group>"; };
 		117AC69019EE763E00143973 /* IMAddressBook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMAddressBook.h; sourceTree = "<group>"; };
 		117AC69119EE763E00143973 /* IMAddressBook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMAddressBook.m; sourceTree = "<group>"; };
 		117AC69219EE763E00143973 /* IMAddressPerson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMAddressPerson.h; sourceTree = "<group>"; };
@@ -449,6 +454,8 @@
 		11FDE12219EFB516002AEDB7 /* FriendDAO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendDAO.m; sourceTree = "<group>"; };
 		11FDE12419EFB52F002AEDB7 /* DBFriend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBFriend.h; sourceTree = "<group>"; };
 		11FDE12519EFB52F002AEDB7 /* DBFriend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBFriend.m; sourceTree = "<group>"; };
+		581A272D1A11DE6400E5BE5F /* AccountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountViewController.h; sourceTree = "<group>"; };
+		581A272E1A11DE6400E5BE5F /* AccountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountViewController.m; sourceTree = "<group>"; };
 		5825D8EF19D808CA004FF6FF /* CategoryTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryTableViewController.h; sourceTree = "<group>"; };
 		5825D8F019D808CA004FF6FF /* CategoryTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoryTableViewController.m; sourceTree = "<group>"; };
 		58438C0B19D412E400B6962B /* NearbyTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NearbyTableViewController.h; sourceTree = "<group>"; };
@@ -700,6 +707,8 @@
 				1194302319F7B01D00FD9206 /* ChatTableViewCell.m */,
 				1194302A19F8DD8C00FD9206 /* ChatTableViewCellFrame.h */,
 				1194302B19F8DD8C00FD9206 /* ChatTableViewCellFrame.m */,
+				117A18FE1A10675E00E3B790 /* ChatGraphicsUtil.h */,
+				117A18FF1A10675E00E3B790 /* ChatGraphicsUtil.m */,
 			);
 			name = Chat;
 			sourceTree = "<group>";
@@ -1052,6 +1061,8 @@
 				58BC1E2E19C0304900722A00 /* RegStep1ViewController.m */,
 				58BC1E2F19C0304900722A00 /* RegStep2ViewController.h */,
 				58BC1E3019C0304900722A00 /* RegStep2ViewController.m */,
+				581A272D1A11DE6400E5BE5F /* AccountViewController.h */,
+				581A272E1A11DE6400E5BE5F /* AccountViewController.m */,
 			);
 			name = Account;
 			path = ..;
@@ -1378,6 +1389,7 @@
 				58F2AA3419A2F85400DC2FFB /* imUtil.m in Sources */,
 				58D95F5119A5ECA4007139AB /* UserMessageProxy.m in Sources */,
 				58B9F66419F8D24100567BCC /* EmotionViewController.m in Sources */,
+				581A272F1A11DE6400E5BE5F /* AccountViewController.m in Sources */,
 				116B6E9519B058A400DB1B5E /* SqlightAdapter.m in Sources */,
 				58B496E819A7186A0082AE30 /* MKNetworkOperation.m in Sources */,
 				58BC1E3519C0304900722A00 /* RegisterViewController.m in Sources */,
@@ -1419,6 +1431,7 @@
 				111B4ECD1A0A30AC0043A29F /* ActivityDetailController.m in Sources */,
 				116B6E7D19AEF83500DB1B5E /* imRms.m in Sources */,
 				AB6396231A038CA500FF0BC6 /* DPSysMessageGroup.m in Sources */,
+				117A19001A10675E00E3B790 /* ChatGraphicsUtil.m in Sources */,
 				58B496DA19A7186A0082AE30 /* NSData+MKBase64.m in Sources */,
 				DB6FACB91A0B71DB0048B76B /* FindViewController.m in Sources */,
 				116BF87119C81E030015561B /* AudioRecordManager.m in Sources */,
@@ -1548,6 +1561,7 @@
 				110F561319D56CF8003B9EB4 /* DPChatMessage.m in Sources */,
 				58C14DE719CAB631009334E1 /* AddTableViewController.m in Sources */,
 				1192B5D519FE1F030013119E /* GroupMessageProxy.m in Sources */,
+				117A19011A10675E00E3B790 /* ChatGraphicsUtil.m in Sources */,
 				117AC6AD19EEB95500143973 /* UserDAO.m in Sources */,
 				117AC6A719EEB8A100143973 /* ContactTest.m in Sources */,
 				11DF6A971A04B57C00A4B1D3 /* DPGroupChatMessage.m in Sources */,

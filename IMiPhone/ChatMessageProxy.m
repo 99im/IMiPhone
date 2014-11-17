@@ -72,6 +72,7 @@ static ChatMessageProxy *messageProxy = nil;
         dpChatMessage.senderUid = [[info objectForKey:KEYP_S_CHAT_CHATN_SENDUID] integerValue];
         dpChatMessage.targetId = [[info objectForKey:KEYP_S_CHAT_CHATN_TARGETID] integerValue];
         dpChatMessage.stage = [info objectForKey:KEYP_S_CHAT_CHATN_STAGE];
+        dpChatMessage.gid = [info objectForKey:KEYP_S_CHAT_CHATN_GID];
         [[ChatDataProxy sharedProxy] updateP2PChatMessage:dpChatMessage];
       
         dpUiMessage.type = UI_MESSAGE_TYPE_CHAT;
@@ -95,6 +96,7 @@ static ChatMessageProxy *messageProxy = nil;
         dpGroupChatMsg.senderUid = [[info objectForKey:KEYP_S_CHAT_CHATN_SENDUID] integerValue];
         dpGroupChatMsg.targetId = [[info objectForKey:KEYP_S_CHAT_CHATN_TARGETID] integerValue];
         dpGroupChatMsg.stage = [info objectForKey:KEYP_S_CHAT_CHATN_STAGE];
+        dpGroupChatMsg.gid = [info objectForKey:KEYP_S_CHAT_CHATN_GID];
         [[ChatDataProxy sharedProxy] updateGroupChatMessage:dpGroupChatMsg];
         dpUiMessage.type = UI_MESSAGE_TYPE_GROUP_CHAT;
         dpUiMessage.mid = dpGroupChatMsg.mid;

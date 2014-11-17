@@ -25,10 +25,12 @@
 @property (nonatomic, retain) NSString *mobile;
 @property (nonatomic, retain) NSString *password;
 
-@property (nonatomic) NSInteger showUserInfoUid;
+@property (nonatomic) long long showUserInfoUid;
 @property (nonatomic) NSInteger showUserInfoRleation;
 
 + (UserDataProxy *)sharedProxy;
+
+- (void)reset;
 
 - (NSMutableArray *)mutableArrayUsers;
 

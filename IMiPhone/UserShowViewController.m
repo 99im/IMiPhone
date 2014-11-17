@@ -36,14 +36,23 @@
     else {
         [self showStrangerButton:NO];
     }
-    [self registerMessageNotification];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [self registerMessageNotification];
+    [super viewWillAppear:animated];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
     [self removeMessageNotification];
+    [super viewWillDisappear:animated];
 }
 
 /*
@@ -101,7 +110,7 @@
         }
         else if(buttonIndex == 1) {
             NSLog(@"OK");
-            [[FriendMessageProxy sharedProxy] sendTypeFocusAdd:[NSNumber numberWithInteger:userInfo.uid]];
+            [[FriendMessageProxy sharedProxy] sendTypeFocusAdd:[NSNumber numberWithLongLong:userInfo.uid]];
         }
         self.alertViewFocus = nil;
     }
@@ -116,7 +125,7 @@
     }
     else if(buttonIndex == 1) {
         NSLog(@"Focus Cancel");
-        [[FriendMessageProxy sharedProxy] sendTypeFocusCancel:[NSNumber numberWithInteger:userInfo.uid]];
+        [[FriendMessageProxy sharedProxy] sendTypeFocusCancel:[NSNumber numberWithLongLong:userInfo.uid]];
     }
     else if (buttonIndex == 2) {
         NSLog(@"Black list and report");

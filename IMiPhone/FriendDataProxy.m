@@ -9,6 +9,10 @@
 #import "FriendDataProxy.h"
 #import "ImDataUtil.h"
 
+#define KEY_FRIEND_FOCUS_TOTAL @"key_friend_focus_total"
+#define KEY_FRIEND_FAN_TOTAL @"key_friend_fan_total"
+#define KEY_FRIEND_FRIEND_TOTAL @"key_friend_friend_total"
+
 @interface FriendDataProxy()
 
 @property (nonatomic, retain) NSMutableArray *arrContact;
@@ -26,6 +30,9 @@
 @synthesize currUserListType;
 @synthesize listMyFocus;
 @synthesize listMyFans;
+@synthesize focusTotal = _focusTotal;
+@synthesize fanTotal = _fanTotal;
+@synthesize friendTotal = _friendTotal;
 
 static FriendDataProxy *sharedFriendDataProxy = nil;
 
@@ -36,6 +43,72 @@ static FriendDataProxy *sharedFriendDataProxy = nil;
         sharedFriendDataProxy = [[self alloc] init];
     });
     return sharedFriendDataProxy;
+}
+
+- (id)init
+{
+    if (self = [super init]) {
+        _focusTotal = NSIntegerMax;
+        _fanTotal = NSIntegerMax;
+        _friendTotal = NSIntegerMax;
+    }
+    return self;
+}
+
+- (void)reset
+{
+    _arrUsersFromContact = nil;
+    _arrFriends = nil;
+    _focusTotal = NSIntegerMax;
+    _fanTotal = NSIntegerMax;
+    _friendTotal = NSIntegerMax;
+}
+
+#pragma mark - 好友，粉丝，关注的总数量
+
+- (void)setFocusTotal:(NSInteger)value
+{
+    _focusTotal = value;
+    [imRms userDefaultsWrite:KEY_FRIEND_FOCUS_TOTAL withIntValue:_focusTotal isBindUid:YES];
+}
+
+- (NSInteger)getFocusTotal
+{
+    if (_focusTotal == NSIntegerMax) {
+        _focusTotal = [imRms userDefaultsReadInt:KEY_FRIEND_FOCUS_TOTAL isBindUid:YES];
+        NSLog(@"read from rms _focusTotal:%i",_focusTotal);
+    }
+    return  _focusTotal;
+}
+
+- (void)setFanTotal:(NSInteger)value
+{
+    _fanTotal = value;
+    [imRms userDefaultsWrite:KEY_FRIEND_FAN_TOTAL withIntValue:_fanTotal isBindUid:YES];
+}
+
+- (NSInteger)getFanTotal
+{
+    if (_fanTotal == NSIntegerMax) {
+        _fanTotal = [imRms userDefaultsReadInt:KEY_FRIEND_FOCUS_TOTAL isBindUid:YES];
+        NSLog(@"read from rms _fanTotal:%i",_fanTotal);
+    }
+    return  _fanTotal;
+}
+
+- (void)setFriendTotal:(NSInteger)value
+{
+    _friendTotal = value;
+    [imRms userDefaultsWrite:KEY_FRIEND_FRIEND_TOTAL withIntValue:_friendTotal isBindUid:YES];
+}
+
+- (NSInteger)getFriendTotal
+{
+    if (_friendTotal == NSIntegerMax) {
+        _friendTotal = [imRms userDefaultsReadInt:KEY_FRIEND_FRIEND_TOTAL isBindUid:YES];
+        NSLog(@"read from rms _friendTotal:%i",_friendTotal);
+    }
+    return  _friendTotal;
 }
 
 #pragma mark - contact

@@ -16,14 +16,24 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self registerMessageNotification];
     // Do any additional setup after loading the view.
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [self registerMessageNotification];
+    [super viewWillAppear:animated];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    [self removeMessageNotification];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [self removeMessageNotification];
+    [super viewWillDisappear:animated];
 }
 
 /*

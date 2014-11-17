@@ -5,7 +5,7 @@
 //  Created by 雷运梁 on 14-10-20.
 //  Copyright (c) 2014年 尹晓君. All rights reserved.
 //
-
+// test edit in web
 #import "GroupDataProxy.h"
 
 @interface GroupDataProxy ()
@@ -30,6 +30,11 @@
 //@synthesize groupInfoCurrent = _groupInfoCurrent;
 @synthesize arrGroupsSearch = _arrGroupsSearch;
 
+//用于更换账号数据清除
+- (void)reset
+{
+    self.dicMessages = nil;
+}
 #pragma mark - 静态工具函数
 static GroupDataProxy *sharedGroupDataProxy = nil;
 + (GroupDataProxy *)sharedProxy

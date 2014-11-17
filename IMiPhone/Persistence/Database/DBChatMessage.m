@@ -17,6 +17,7 @@
 @synthesize msgType;
 @synthesize content;
 @synthesize sendTime;
+@synthesize gid;
 
 -(void)setValue:(id)value forUndefinedKey:(NSString *)key
 {

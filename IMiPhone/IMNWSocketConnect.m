@@ -22,6 +22,7 @@
 @property (nonatomic, retain) NSString *host;
 @property (nonatomic) NSInteger port;
 @property (nonatomic, retain) NSData *dataToSend;
+@property (nonatomic, retain) NSTimer *timer;
 
 @end
 
@@ -52,21 +53,24 @@ char cryptKey[17];
 
 - (void)connect:(NSString *)hostIP port:(uint16_t)hostPort
 {
+    NSLog(@"Socket ready to connect: %@ : %hu", hostIP, hostPort);
     self.host = hostIP;
     self.port = hostPort;
     
     NSError *err = nil;
-    if(![self.socket connectToHost:hostIP onPort:hostPort withTimeout:SOCKET_TIMEOUT error:&err])
+    if([self.socket connectToHost:hostIP onPort:hostPort withTimeout:SOCKET_TIMEOUT error:&err])
     {
+        if (CRYPT) {
+            [self.socket readDataToData:term withTimeout:-1 tag:TAG_CRYPT];
+        }
+        else {
+            [self.socket readDataToData:term withTimeout:-1 tag:TAG_MSG];
+        }
+    }
+    else {
         NSLog(@"Socket connect error: %@", err);
         [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_SOCKET_CONNECT object:err];
         self.dataToSend = nil;
-    }
-    if (CRYPT) {
-        [self.socket readDataToData:term withTimeout:-1 tag:TAG_CRYPT];
-    }
-    else {
-        [self.socket readDataToData:term withTimeout:-1 tag:TAG_MSG];
     }
 }
 
@@ -79,8 +83,7 @@ char cryptKey[17];
 {
     NSLog(@"Socket connect succceed: %@ : %hu", host, port);
     if (!CRYPT) {
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sendTypeLogin:) name:NOTI_S_ACCOUNT_LOGIN object:nil];
-        [[AccountMessageProxy sharedProxy] sendTypeLogin];
+        self.timer = [NSTimer scheduledTimerWithTimeInterval:0.100f target:self selector:@selector(verifyUser) userInfo:nil repeats:NO];
     }
 }
 
@@ -98,9 +101,15 @@ char cryptKey[17];
         keyRevert(originalKey, cryptKey);
         [self.socket readDataToData:term withTimeout:-1 tag:TAG_MSG];
         
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sendTypeLogin:) name:NOTI_S_ACCOUNT_LOGIN object:nil];
-        [[AccountMessageProxy sharedProxy] sendTypeLogin];
+        self.timer = [NSTimer scheduledTimerWithTimeInterval:0.100f target:self selector:@selector(verifyUser) userInfo:nil repeats:NO];
     }
+}
+
+- (void)verifyUser
+{
+    self.timer = nil;
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sendTypeLogin:) name:NOTI_S_ACCOUNT_LOGIN object:nil];
+    [[AccountMessageProxy sharedProxy] sendTypeLogin];
 }
 
 - (void)socketDidDisconnect:(GCDAsyncSocket *)sender withError:(NSError *)err
@@ -165,6 +174,7 @@ char cryptKey[17];
         }
         else {
             [self.socket writeData:data withTimeout:-1 tag:TAG_MSG];
+            [self.socket writeData:term withTimeout:-1 tag:TAG_MSG];
         }
     }
 }

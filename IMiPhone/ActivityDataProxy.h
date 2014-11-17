@@ -10,4 +10,7 @@
 
 @interface ActivityDataProxy : NSObject
 
++ (ActivityDataProxy *)sharedProxy;
+- (void)reset;
+
 @end

@@ -32,10 +32,22 @@
     [self.tfPassword becomeFirstResponder];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [self registerMessageNotification];
+    [super viewWillAppear:animated];
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [self removeMessageNotification];
+    [super viewWillDisappear:animated];
 }
 
 #pragma mark - Navigation

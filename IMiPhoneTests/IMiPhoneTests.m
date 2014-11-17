@@ -9,6 +9,7 @@
 #import <XCTest/XCTest.h>
 //#import "GroupDAO.h"
 #import "DPUtil.h"
+#import "imUtil.h"
 
 @interface IMiPhoneTests : XCTestCase
 
@@ -131,6 +132,41 @@
     
     NSLog(@"测试文本计算宽:%f,高:%f",size.width, size.height);
 
+}
+
+- (void)testNSString
+{
+//    char c[] = " aaaa    ";
+//    NSString *str = [[NSString alloc] initWithCharactersc length:10];
+
+//    char c = [str characterAtIndex:0];
+//    NSLog(@"str:%d",str.length);
+}
+
+- (void)testDictionaryInDictionary
+{
+    NSError *error;
+    
+    NSDictionary *dicChild = [[NSDictionary alloc] initWithObjectsAndKeys:@"childValue", @"childKey", nil];
+    NSDictionary *dic = [[NSDictionary alloc] initWithObjectsAndKeys:dicChild, @"key", nil];
+    NSData *data = [NSJSONSerialization dataWithJSONObject:dic options:0  error:&error];
+    NSString *params = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+    NSLog(@"%@", params);
+    
+    data = [params dataUsingEncoding:NSUTF8StringEncoding];
+    
+    dic = [NSJSONSerialization JSONObjectWithData:data
+              
+                                             options:NSJSONReadingAllowFragments
+              
+                                               error:&error];
+    NSLog(@"%@", dic);
+
+}
+
+- (void)testUuid
+{
+    NSLog(@"%@", [imUtil uuid]);
 }
 
 @end

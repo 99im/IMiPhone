@@ -23,8 +23,11 @@
 
 @property (nonatomic, retain) NSArray *arrGroupsSearch;
 
+- (void)reset;
+
 #pragma mark - 静态方法
 + (GroupDataProxy *)sharedProxy;
+
 //+ (long long)nowTime;
 //+ (long long)longLongNowTime:(NSString *)dateFormat;
 //+ (long long)getExpireTime:(NSInteger)minutes;

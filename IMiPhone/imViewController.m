@@ -28,16 +28,18 @@
     [super viewDidLoad];
         
 	// Do any additional setup after loading the view, typically from a nib.
-    [self registerMessageNotification];
     [[IMNWManager sharedNWManager] initHttpConnect];
     [[IMNWManager sharedNWManager] initSocketConnect];
-    self.hasVerified = ![imUtil checkBlankString:[UserDataProxy sharedProxy].verify] && [UserDataProxy sharedProxy].lastLoginUid != NSNotFound;
+    self.hasVerified = ![imUtil checkBlankString:[UserDataProxy sharedProxy].verify] && [UserDataProxy sharedProxy].lastLoginUid != LONG_LONG_MAX;
     if (self.hasVerified) {
-        [[IMNWManager sharedNWManager].socketConnect connect:SOCKET_HOST port:SOCKET_PORT];
+        [[AccountMessageProxy sharedProxy] sendTypeMyinfo];
     }
-//    else {
-//        [self performSegueWithIdentifier:@"Start2AccountSegue" sender:self];
-//    }
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [self registerMessageNotification];
+    [super viewWillAppear:animated];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -54,7 +56,12 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
     [self removeMessageNotification];
+    [super viewWillDisappear:animated];
 }
 
 #pragma mark - IMNWProxyProtocol Method
@@ -62,6 +69,7 @@
 - (void)registerMessageNotification
 {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(socketConnectResult:) name:NOTI_SOCKET_CONNECT object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sendHttpMyinfoResult:) name:NOTI_H__ACCOUNT_MYINFO_ object:nil];
 }
 
 - (void)removeMessageNotification
@@ -74,6 +82,18 @@
     //if (!notification.object) {
         [self performSegueWithIdentifier:@"Start2MainSegue" sender:self];
     //}
+}
+
+- (void)sendHttpMyinfoResult:(NSNotification *)notification
+{
+    if (!notification.object) {
+        if ([imUtil checkBlankString:[UserDataProxy sharedProxy].user.nick]) {
+            [self performSegueWithIdentifier:@"Start2ReginfoSegue" sender:self];
+        }
+        else {
+            [[IMNWManager sharedNWManager].socketConnect connect:SOCKET_HOST port:SOCKET_PORT];
+        }
+    }
 }
 
 @end

@@ -25,5 +25,6 @@
 - (IBAction)btnBirthdayTouchUpInside:(id)sender;
 - (IBAction)doneSelector:(id)sender;
 - (IBAction)ctlSexValueChanged:(id)sender;
+- (IBAction)imgHeadTapGesture:(UITapGestureRecognizer *)sender;
 
 @end

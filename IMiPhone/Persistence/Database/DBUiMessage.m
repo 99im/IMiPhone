@@ -14,6 +14,7 @@
 @synthesize mid;
 @synthesize relationId;
 @synthesize type;
+@synthesize unreadNum;
 
 -(void)setValue:(id)value forUndefinedKey:(NSString *)key
 {
