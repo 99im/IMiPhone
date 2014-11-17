@@ -51,22 +51,27 @@
 */
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 3;
+    return 4;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 0) {
+        ActivityCellTableViewCell *cell0 = [tableView dequeueReusableCellWithIdentifier:@"activityCell" forIndexPath:indexPath];
+        [cell0 creatBtn];
+        return cell0;
+    }
+    else if (indexPath.section == 1) {
         FriendDynamicTableViewCell *cell1 = [tableView dequeueReusableCellWithIdentifier:@"friendDynamicCell" forIndexPath:indexPath];
         [cell1 creatHead:self.dataFDList];
         return cell1;
     }
-    else if (indexPath.section == 1){
+    else if (indexPath.section == 2){
         HavingFunTableViewCell *cell2 = [tableView dequeueReusableCellWithIdentifier:@"havingFunCell" forIndexPath:indexPath];
         NSString *message = [self.dataHFList objectForKey:@"message"];
         NSMutableDictionary *nearbyGroup = [self.dataHFList objectForKey:@"nearbyGroup"];
         [cell2 creatServer:message andDescription:[nearbyGroup objectForKey:@"groupName"]];
         return cell2;
     }
-    else if (indexPath.section == 2){
+    else if (indexPath.section == 3){
         ServiceTableViewCell *cell3 = [tableView dequeueReusableCellWithIdentifier:@"serviceCell" forIndexPath:indexPath];
         NSString *server = [[self.dataSList objectAtIndex:indexPath.row] objectForKey:@"gname"];
         NSString *description = [[self.dataSList objectAtIndex:indexPath.row] objectForKey:@"gdescription"];
@@ -79,16 +84,21 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if(section == 0)
         return 1;
-    else if (section == 1)
+    else if(section == 1)
+        return 1;
+    else if (section == 2)
         return 1;
     else
         return self.dataSList.count;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
-    if(section == 0)
+    if (section == 0) {
+        return nil;
+    }
+    else if(section == 1)
         return @"好友动态";
-    else if (section == 1)
+    else if (section == 2)
         return @"玩乐";
     else
         return @"服务";
@@ -96,7 +106,7 @@
 
 -(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
 {
-    if (section == 2) {
+    if (section == 3) {
         
         UILabel *lable = [[UILabel alloc]initWithFrame:CGRectMake(0, 0,self.view.frame.size.width, 15)];
         lable.text = @"查看更多";
@@ -109,7 +119,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
 {
-    if (section == 2) {
+    if (section == 3) {
         return 20;
     }
      return 0;
@@ -118,6 +128,7 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     NSLog(@"点击");
 }
+
 
 
 - (void) didShowList{

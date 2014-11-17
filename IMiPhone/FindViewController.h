@@ -10,6 +10,7 @@
 #import "FriendDynamicTableViewCell.h"
 #import "HavingFunTableViewCell.h"
 #import "ServiceTableViewCell.h"
+#import "ActivityCellTableViewCell.h"
 
 @interface FindViewController : UIViewController<UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableview;

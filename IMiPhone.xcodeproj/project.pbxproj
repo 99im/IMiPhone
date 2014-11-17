@@ -300,6 +300,8 @@
 		DBD2A9281A1996030020EECD /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DBD2A9271A1996030020EECD /* Images.xcassets */; };
 		DBD2A92B1A19D88D0020EECD /* head.png in Resources */ = {isa = PBXBuildFile; fileRef = DBD2A9291A19D88D0020EECD /* head.png */; };
 		DBD2A92E1A19E5430020EECD /* ActivityCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DBD2A92D1A19E5430020EECD /* ActivityCellTableViewCell.m */; };
+		DBD2A9311A1A10F50020EECD /* FindNearbyGroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DBD2A9301A1A10F50020EECD /* FindNearbyGroupViewController.m */; };
+		DBD2A9341A1A137C0020EECD /* AllGroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DBD2A9331A1A137C0020EECD /* AllGroupViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -631,6 +633,10 @@
 		DBD2A92A1A19D88D0020EECD /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "zh-Hans"; path = "zh-Hans.lproj/head.png"; sourceTree = "<group>"; };
 		DBD2A92C1A19E5430020EECD /* ActivityCellTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityCellTableViewCell.h; sourceTree = "<group>"; };
 		DBD2A92D1A19E5430020EECD /* ActivityCellTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityCellTableViewCell.m; sourceTree = "<group>"; };
+		DBD2A92F1A1A10F50020EECD /* FindNearbyGroupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FindNearbyGroupViewController.h; sourceTree = "<group>"; };
+		DBD2A9301A1A10F50020EECD /* FindNearbyGroupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FindNearbyGroupViewController.m; sourceTree = "<group>"; };
+		DBD2A9321A1A137C0020EECD /* AllGroupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AllGroupViewController.h; sourceTree = "<group>"; };
+		DBD2A9331A1A137C0020EECD /* AllGroupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AllGroupViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1247,6 +1253,10 @@
 				DB6FACC51A0B7BC90048B76B /* FindList.plist */,
 				DBD2A92C1A19E5430020EECD /* ActivityCellTableViewCell.h */,
 				DBD2A92D1A19E5430020EECD /* ActivityCellTableViewCell.m */,
+				DBD2A92F1A1A10F50020EECD /* FindNearbyGroupViewController.h */,
+				DBD2A9301A1A10F50020EECD /* FindNearbyGroupViewController.m */,
+				DBD2A9321A1A137C0020EECD /* AllGroupViewController.h */,
+				DBD2A9331A1A137C0020EECD /* AllGroupViewController.m */,
 			);
 			name = Find;
 			sourceTree = "<group>";
@@ -1393,6 +1403,7 @@
 				58C14DD219C80D67009334E1 /* ContactViewController.m in Sources */,
 				58C14DEA19CAD70F009334E1 /* AddByInputTableViewCell.m in Sources */,
 				58B9F66919F8E5C500567BCC /* EmotIconViewController.m in Sources */,
+				DBD2A9311A1A10F50020EECD /* FindNearbyGroupViewController.m in Sources */,
 				11E1581319F4FFE1008544D1 /* MsgTableViewController.m in Sources */,
 				116B6E8919B0534000DB1B5E /* DBGroup.m in Sources */,
 				117AC6A119EE7BCF00143973 /* UserDAO.m in Sources */,
@@ -1411,6 +1422,7 @@
 				58BACF0F19B5DAB900A72391 /* imPhotoPicker.m in Sources */,
 				116B6E9619B058A400DB1B5E /* SqlightDriver.m in Sources */,
 				11335B6919F53D6200FA32FA /* ChatMsgTableViewCellP2G.m in Sources */,
+				DBD2A9341A1A137C0020EECD /* AllGroupViewController.m in Sources */,
 				117B198A19FDEAE00056546C /* DPUtil.m in Sources */,
 				116B6E9719B058A400DB1B5E /* SqlightResult.m in Sources */,
 				ABA91EFC19F658270017B045 /* GroupTableViewController.m in Sources */,
