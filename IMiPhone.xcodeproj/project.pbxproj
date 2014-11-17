@@ -285,6 +285,7 @@
 		AB62170819FF3F65003C2FBB /* GroupApplyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB62170719FF3F65003C2FBB /* GroupApplyViewController.m */; };
 		AB62170B19FFA01A003C2FBB /* AddItemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AB62170A19FFA01A003C2FBB /* AddItemTableViewCell.m */; };
 		AB6396231A038CA500FF0BC6 /* DPSysMessageGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = AB6396221A038CA500FF0BC6 /* DPSysMessageGroup.m */; };
+		AB645E4A1A19CD00008AC05D /* LocationGroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB645E491A19CD00008AC05D /* LocationGroupViewController.m */; };
 		AB72235119ED110700E603E2 /* CategoryListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AB5554E719EBEAFA00B413F3 /* CategoryListTableViewCell.m */; };
 		ABA91EF919F64B970017B045 /* GroupTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ABA91EF819F64B970017B045 /* GroupTableViewCell.m */; };
 		ABA91EFC19F658270017B045 /* GroupTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABA91EFB19F658270017B045 /* GroupTableViewController.m */; };
@@ -607,6 +608,8 @@
 		AB62170A19FFA01A003C2FBB /* AddItemTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddItemTableViewCell.m; sourceTree = "<group>"; };
 		AB6396211A038CA500FF0BC6 /* DPSysMessageGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPSysMessageGroup.h; sourceTree = "<group>"; };
 		AB6396221A038CA500FF0BC6 /* DPSysMessageGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPSysMessageGroup.m; sourceTree = "<group>"; };
+		AB645E481A19CD00008AC05D /* LocationGroupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationGroupViewController.h; sourceTree = "<group>"; };
+		AB645E491A19CD00008AC05D /* LocationGroupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationGroupViewController.m; sourceTree = "<group>"; };
 		ABA91EF719F64B970017B045 /* GroupTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupTableViewCell.h; sourceTree = "<group>"; };
 		ABA91EF819F64B970017B045 /* GroupTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupTableViewCell.m; sourceTree = "<group>"; };
 		ABA91EFA19F658270017B045 /* GroupTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupTableViewController.h; sourceTree = "<group>"; };
@@ -1188,6 +1191,8 @@
 			children = (
 				AB199ACE1A0A4B5C00F6B858 /* LocationViewController.h */,
 				AB199ACF1A0A4B5C00F6B858 /* LocationViewController.m */,
+				AB645E481A19CD00008AC05D /* LocationGroupViewController.h */,
+				AB645E491A19CD00008AC05D /* LocationGroupViewController.m */,
 			);
 			name = LBS;
 			sourceTree = "<group>";
@@ -1428,6 +1433,7 @@
 				1152E3191A078C6B00400D2A /* IMRichText.m in Sources */,
 				58B496E219A7186A0082AE30 /* UIAlertView+MKNetworkKitAdditions.m in Sources */,
 				111B4EB91A0A2DFE0043A29F /* ActivityReadyTabMembersController.m in Sources */,
+				AB645E4A1A19CD00008AC05D /* LocationGroupViewController.m in Sources */,
 				11335B6D19F5407400FA32FA /* ChatViewController.m in Sources */,
 				111B4EAD1A0A2B100043A29F /* ActivityRuningTabController.m in Sources */,
 				11B1C62819E4E069003D2711 /* ChatMessageProxy.m in Sources */,
