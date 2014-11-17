@@ -5,6 +5,10 @@
 //  Created by 雷运梁 on 14-11-5.
 //  Copyright (c) 2014年 尹晓君. All rights reserved.
 //
+/**
+ 测试数据：
+ 赛尔大厦   116.338154,40.000304
+ */
 
 #import "LocationDataProxy.h"
 
