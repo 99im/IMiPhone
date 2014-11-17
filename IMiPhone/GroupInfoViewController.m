@@ -20,24 +20,25 @@
     DPGroup *currGroup = [[GroupDataProxy sharedProxy] getGroupInfoCurrent:SEND_HTTP_AUTO];
     [self drawContent: currGroup];
     // Do any additional setup after loading the view.
-    //body
+    [self registerMessageNotification];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
-    [self registerMessageNotification];
+    //[self registerMessageNotification];
     [super viewDidAppear:animated];
 }
 
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
+    [self removeMessageNotification];
     // Dispose of any resources that can be recreated.
     //body
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
-    [self removeMessageNotification];
+    //[self removeMessageNotification];
     [super viewWillDisappear:animated];
 }
 
@@ -74,10 +75,11 @@
         self.lblGroupName.text = dpGroup.name;
         self.lblCreatorName.text = [NSString stringWithFormat:@"群主：%@ ", dpGroup.creator_nick];
         self.lblCTime.text = dpGroup.ctime;
-        self.lblMemberNum.text = [NSString stringWithFormat:@"%i",dpGroup.memberNum];
+        self.lblMemberNum.text = [NSString stringWithFormat:@"%li",dpGroup.memberNum];
         self.tvIntro.text = [NSString stringWithFormat:@"%@\n(本地过期时间：%qi)",dpGroup.intro , dpGroup.localExpireTime];
         self.lblCity.text = dpGroup.creator_city;
-        if ([GroupDataProxy isInMyGroups:dpGroup] == YES) {
+        NSLog(@"group:%@ inMyGroups:%i", dpGroup.name , [GroupDataProxy isInMyGroups:dpGroup]);
+        if ([GroupDataProxy isInMyGroups:dpGroup]) {
             self.btnApply.hidden = YES;
             self.btnGroupChat.hidden = NO;
             self.btnGroupSetting.hidden = NO;

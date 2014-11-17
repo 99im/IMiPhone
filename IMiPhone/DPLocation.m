@@ -19,4 +19,6 @@
 @synthesize street;
 @synthesize zip;
 
+@synthesize localExpireTime;
+
 @end

@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreLocation/CoreLocation.h>
+#import <CoreLocation/CLLocationManagerDelegate.h>
 
-@interface LocationViewController : UIViewController
+@interface LocationViewController : UIViewController <CLLocationManagerDelegate>
+
+-(void) startUpdatingLocation:(id)delegate;
+-(void) stopUpdatingLocation;
 
 @end
