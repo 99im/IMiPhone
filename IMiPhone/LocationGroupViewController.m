@@ -16,7 +16,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    // 定位
+    if ([CLLocationManager locationServicesEnabled ]) {
+        _mapView.mapType = MKMapTypeStandard;
+        _mapView.delegate = self;
+        _mapView.showsUserLocation = YES;
+        [_mapView setUserTrackingMode:MKUserTrackingModeFollow animated:YES];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
