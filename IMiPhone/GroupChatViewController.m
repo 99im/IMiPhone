@@ -21,6 +21,7 @@
 
 //rootview 上的组件
 @property (weak, nonatomic) IBOutlet UITableView *tableViewChat;
+
 @property (weak, nonatomic) IBOutlet ChatInputTextView *viewChatInputText;
 @property (weak, nonatomic) IBOutlet ChatInputSoundView *viewChatInputSound;
 @property (weak, nonatomic) IBOutlet UITextField *tfInputText;
@@ -251,7 +252,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    long long groupid = [GroupDataProxy sharedProxy].getGroupIdCurrent;
+    long long groupid = [[GroupDataProxy sharedProxy] getGroupIdCurrent];
     NSArray *arrGroupChatMsgs = [[ChatDataProxy sharedProxy] getGroupChatMessagesByGroupid:groupid];
     return arrGroupChatMsgs.count;
 }

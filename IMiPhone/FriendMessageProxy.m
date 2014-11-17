@@ -295,4 +295,38 @@ static FriendMessageProxy *sharedFriendMessageProxy = nil;
      }];
 }
 
+- (void)sendHttpBrief
+{
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    IMNWMessage *message = [IMNWMessage
+                            createForHttp:PATH_H__FRIEND_BRIEF_
+                            withParams:params
+                            withMethod:METHOD_H__FRIEND_BRIEF_
+                            ssl:NO];
+    [[IMNWManager sharedNWManager]
+     sendMessage:message
+     withResponse:    ^(NSString *responseString, NSData *responseData) {
+         NSError *err = nil;
+         NSMutableDictionary *json = [NSJSONSerialization
+                                      JSONObjectWithData:responseData
+                                      options:NSJSONReadingAllowFragments
+                                      error:&err];
+         if (err) {
+             NSLog(@"JSON create error: %@", err);
+         } else {
+             NSInteger errorcode = [[json objectForKey:KEYP_H__FRIEND_BRIEF__ERROR_CODE] integerValue];
+            
+             if (errorcode == 0) {
+                 [FriendDataProxy sharedProxy].fanTotal = [[json objectForKey:KEYP_H__FRIEND_BRIEF__FANTOTAL]  integerValue];
+                 [FriendDataProxy sharedProxy].focusTotal = [[json objectForKey:KEYP_H__FRIEND_BRIEF__FOCUSTOTAL]  integerValue];
+                 [FriendDataProxy sharedProxy].friendTotal = [[json objectForKey:KEYP_H__FRIEND_BRIEF__FRIENDTOTAL]  integerValue];
+                 [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_H__FRIEND_BRIEF_ object:nil];
+             }
+             else {
+                 [self processErrorCode:errorcode fromSource:PATH_H__FRIEND_BRIEF_ useNotiName:NOTI_H__FRIEND_BRIEF_];
+             }
+         }
+     }];
+}
+
 @end

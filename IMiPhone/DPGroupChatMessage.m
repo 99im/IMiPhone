@@ -17,5 +17,6 @@
 @synthesize msgType;
 @synthesize content;
 @synthesize sendTime;
+@synthesize gid;
 
 @end

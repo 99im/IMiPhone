@@ -12,6 +12,7 @@
 #import "imRms.h"
 #import "DBGroup.h"
 #import "ImDataUtil.h"
+#import "ChatDataProxy.h"
 
 @interface PersistenceTest : XCTestCase
 
@@ -87,7 +88,7 @@
 }
 - (void)testGroupDAO
 {
-    BaseDAO *dao = [GroupDAO sharedDAO];
+//    BaseDAO *dao = [GroupDAO sharedDAO];
     
 //    DBGroup *g = [[DBGroup alloc]init];
 //    g.groupId = 10;
@@ -147,6 +148,14 @@
 //    NSString *keys = @"bb";
 //    [imRms userDefaultsWrite:keys withBoolValue:NO isBindUid:YES];
 //    NSLog(keys);
+}
+
+- (void)testGetlimitedCountData
+{
+    [DatabaseConfig shareDatabaseConfig].databaseName = @"26";
+    DBChatMessage *dbChatMsg = [[DBChatMessage alloc] init];
+//    [[ChatMessageDAO sharedDAO] query:@"targetId=?" Bind:[NSArray  arrayWithObjects:<#(id), ...#>, nil]]
+    
 }
 
 @end

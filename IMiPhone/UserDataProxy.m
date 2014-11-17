@@ -67,7 +67,7 @@ static UserDataProxy *sharedProxy = nil;
 }
 - (void)reset
 {
-    self.arrUsers = nil;
+    _arrUsers = nil;
 }
 
 - (NSString *)getLastLoginCountry

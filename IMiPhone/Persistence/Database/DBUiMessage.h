@@ -16,5 +16,6 @@
 @property (nonatomic) long mid;
 @property (nonatomic) long relationId;//对方id 或者是群id
 @property (nonatomic) NSInteger type;//私聊，群聊,系统消息...
+@property (nonatomic) NSInteger unreadNum;//未读数量（本地存储最后一条消息之后产生的消息数量）
 
 @end

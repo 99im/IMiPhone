@@ -20,4 +20,9 @@
 @synthesize birthday;
 @synthesize blogUrls;
 
+-(void)setValue:(id)value forUndefinedKey:(NSString *)key
+{
+    NSLog(@"undefine key ---%@",key);
+}
+
 @end

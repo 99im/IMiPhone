@@ -37,6 +37,7 @@ example: {"mark":"chat","type":"chatN","info":{"stage":"p2p","time":1412751697,"
 #define KEYP_S_CHAT_CHATN_TIME @"time" //time int unix时间戳
 #define KEYP_S_CHAT_CHATN_SENDUID @"sendUid" //sendUid int 发送用户uid
 #define KEYP_S_CHAT_CHATN_MID @"mid" //mid int 消息id
+#define KEYP_S_CHAT_CHATN_GID @"gid" //gid string 会话id
 
 /*
 mark: chat

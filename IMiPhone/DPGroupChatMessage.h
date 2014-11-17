@@ -17,5 +17,6 @@
 @property (nonatomic) long long mid;
 @property (nonatomic) long long senderUid;
 @property (nonatomic, retain) NSString *sendTime;
+@property (nonatomic, retain) NSString *gid;
 
 @end
