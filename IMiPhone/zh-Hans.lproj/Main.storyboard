@@ -654,6 +654,40 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="activityCell" id="qAK-Vw-LJz" customClass="ActivityCellTableViewCell">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qAK-Vw-LJz" id="cOM-bH-mlo">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hAm-bc-ur0">
+                                                    <rect key="frame" x="20" y="8" width="65" height="45"/>
+                                                    <state key="normal" title="参加活动">
+                                                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YeE-xU-Mn4">
+                                                    <rect key="frame" x="220" y="8" width="65" height="45"/>
+                                                    <state key="normal" title="发起活动">
+                                                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ons-xr-chQ">
+                                                    <rect key="frame" x="100" y="8" width="105" height="45"/>
+                                                    <state key="normal">
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                </button>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="btnCreatGroup" destination="Ons-xr-chQ" id="m6z-Iw-D3h"/>
+                                            <outlet property="btnJoinActivity" destination="hAm-bc-ur0" id="DVY-ZM-PJe"/>
+                                            <outlet property="btnStartActivity" destination="YeE-xU-Mn4" id="57t-oc-8wM"/>
+                                        </connections>
+                                    </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="friendDynamicCell" id="Gbf-h4-Eh1" customClass="FriendDynamicTableViewCell">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
@@ -661,7 +695,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BDh-4l-MX6">
-                                                    <rect key="frame" x="10" y="5" width="290" height="40"/>
+                                                    <rect key="frame" x="10" y="5" width="270" height="40"/>
                                                 </scrollView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="[消息内容消息内容内]" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8cC-SW-hXa">
                                                     <rect key="frame" x="10" y="43" width="120" height="21"/>
@@ -2819,9 +2853,9 @@
         <image name="HeadBg" width="100" height="100"/>
         <image name="MyFans" width="27" height="27"/>
         <image name="contact2" width="44" height="44"/>
+        <image name="discover1" width="44" height="44"/>
         <image name="discover2" width="44" height="44"/>
         <image name="headBig" width="50" height="50"/>
-        <image name="message1" width="44" height="44"/>
         <image name="message2" width="44" height="44"/>
         <image name="nearby2" width="44" height="44"/>
         <image name="profile2" width="44" height="44"/>

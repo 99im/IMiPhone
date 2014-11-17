@@ -11,6 +11,9 @@
 @implementation FriendDynamicTableViewCell
 @synthesize imgHead;
 @synthesize labMessageNum;
+@synthesize userArray;
+@synthesize message;
+@synthesize time;
 
 - (void)awakeFromNib {
     // Initialization code
@@ -22,16 +25,25 @@
     // Configure the view for the selected state
 }
 
-- (void) creatHead
+- (void) creatHead:(NSMutableDictionary *) dataFDList
 {
     self.scrollView.delegate = self;
     
     self.scrollView.alwaysBounceVertical = NO;
     self.scrollView.alwaysBounceHorizontal = YES;
-    self.scrollView.clipsToBounds = NO;
-    self.scrollView.pagingEnabled = YES;
+    self.scrollView.clipsToBounds = YES;
+    self.scrollView.pagingEnabled = NO;
+    [self.scrollView setShowsHorizontalScrollIndicator:NO];
+    //获取userArray
+    self.userArray = [dataFDList objectForKey:@"userArray"];
+    self.message = [dataFDList objectForKey:@"message"];
+    self.time = [dataFDList objectForKey:@"time"];
     
-    for (NSInteger i = 0; i < 8; i ++) {
+    self.LabMessage.text = self.message;
+    self.LabRenewalTime.text = self.time;
+    
+    
+    for (NSInteger i = 0; i < self.userArray.count; i ++) {
         self.imgHead = [[UIImageView alloc] initWithFrame:CGRectMake(8 + (40 * i), 6, 28, 28)];
         [self.imgHead setImage:[UIImage imageNamed:@"head.png"]];
         [self.imgHead.layer setShouldRasterize:NO];
@@ -42,16 +54,19 @@
         UIFont *tfont = [UIFont fontWithName:@"Blazed" size:8];
         self.labMessageNum.font = tfont;
         self.labMessageNum.textAlignment = NSTextAlignmentCenter;
-        self.labMessageNum.text = @"1";
+        self.labMessageNum.text = [[self.userArray objectAtIndex:i] objectForKey:@"messageNum"];
         [self.imgHead addSubview:self.labMessageNum];
         
         
-        self.imgHead.frame = CGRectMake(28 * i, 0.0f, self.imgHead.frame.size.width, self.scrollView.frame.size.height);
+        self.imgHead.frame = CGRectMake(40 * i, 0.0f, self.imgHead.frame.size.width, self.imgHead.frame.size.height);
         [self.scrollView addSubview:self.imgHead];
         
     }
     
-    self.scrollView.contentSize = CGSizeMake(200, self.imgHead.frame.size.height/2);
+    self.scrollView.contentSize = CGSizeMake(40 * self.userArray.count, self.imgHead.frame.size.height/2);
     self.scrollView.frame = self.imgHead.frame;
 }
+
+
+
 @end

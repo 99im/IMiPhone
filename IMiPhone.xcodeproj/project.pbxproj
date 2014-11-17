@@ -296,7 +296,9 @@
 		DB6FACBF1A0B785A0048B76B /* HavingFunTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DB6FACBE1A0B785A0048B76B /* HavingFunTableViewCell.m */; };
 		DB6FACC21A0B787D0048B76B /* ServiceTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DB6FACC11A0B787D0048B76B /* ServiceTableViewCell.m */; };
 		DB6FACC61A0B7BC90048B76B /* FindList.plist in Resources */ = {isa = PBXBuildFile; fileRef = DB6FACC51A0B7BC90048B76B /* FindList.plist */; };
-		DBCCE0AE1A135BED00B209B2 /* head.png in Resources */ = {isa = PBXBuildFile; fileRef = DBCCE0AD1A135BED00B209B2 /* head.png */; };
+		DBD2A9281A1996030020EECD /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DBD2A9271A1996030020EECD /* Images.xcassets */; };
+		DBD2A92B1A19D88D0020EECD /* head.png in Resources */ = {isa = PBXBuildFile; fileRef = DBD2A9291A19D88D0020EECD /* head.png */; };
+		DBD2A92E1A19E5430020EECD /* ActivityCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DBD2A92D1A19E5430020EECD /* ActivityCellTableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -622,7 +624,10 @@
 		DB6FACC01A0B787D0048B76B /* ServiceTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceTableViewCell.h; sourceTree = "<group>"; };
 		DB6FACC11A0B787D0048B76B /* ServiceTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceTableViewCell.m; sourceTree = "<group>"; };
 		DB6FACC51A0B7BC90048B76B /* FindList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = FindList.plist; sourceTree = "<group>"; };
-		DBCCE0AD1A135BED00B209B2 /* head.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = head.png; path = ../../../../Users/tiancong/Downloads/head.png; sourceTree = "<group>"; };
+		DBD2A9271A1996030020EECD /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		DBD2A92A1A19D88D0020EECD /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "zh-Hans"; path = "zh-Hans.lproj/head.png"; sourceTree = "<group>"; };
+		DBD2A92C1A19E5430020EECD /* ActivityCellTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityCellTableViewCell.h; sourceTree = "<group>"; };
+		DBD2A92D1A19E5430020EECD /* ActivityCellTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityCellTableViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -871,6 +876,7 @@
 		585971D71999F0C700258CB1 /* IMiPhone */ = {
 			isa = PBXGroup;
 			children = (
+				DBD2A9271A1996030020EECD /* Images.xcassets */,
 				DB6FACB61A0B70F00048B76B /* Find */,
 				AB24A95219F7CE2F00026299 /* Main.storyboard */,
 				111B4E9A1A0A26800043A29F /* Activity */,
@@ -947,7 +953,7 @@
 		5859720819A1CBE500258CB1 /* Image */ = {
 			isa = PBXGroup;
 			children = (
-				DBCCE0AD1A135BED00B209B2 /* head.png */,
+				DBD2A9291A19D88D0020EECD /* head.png */,
 				11DF9F8519A2276C00AE5D89 /* splash.jpg */,
 			);
 			name = Image;
@@ -1234,6 +1240,8 @@
 				DB6FACC01A0B787D0048B76B /* ServiceTableViewCell.h */,
 				DB6FACC11A0B787D0048B76B /* ServiceTableViewCell.m */,
 				DB6FACC51A0B7BC90048B76B /* FindList.plist */,
+				DBD2A92C1A19E5430020EECD /* ActivityCellTableViewCell.h */,
+				DBD2A92D1A19E5430020EECD /* ActivityCellTableViewCell.m */,
 			);
 			name = Find;
 			sourceTree = "<group>";
@@ -1316,9 +1324,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DBD2A9281A1996030020EECD /* Images.xcassets in Resources */,
 				11DF9F8319A2276C00AE5D89 /* splash.jpg in Resources */,
+				DBD2A92B1A19D88D0020EECD /* head.png in Resources */,
 				58C14DED19CAE196009334E1 /* contact.plist in Resources */,
-				DBCCE0AE1A135BED00B209B2 /* head.png in Resources */,
 				58AF048719AF10560077DCBC /* Localizable.strings in Resources */,
 				AB24A95419F7CE2F00026299 /* Main.storyboard in Resources */,
 				DB6FACC61A0B7BC90048B76B /* FindList.plist in Resources */,
@@ -1412,6 +1421,7 @@
 				116B6E7B19AEF83500DB1B5E /* DBChatMessage.m in Sources */,
 				58A000761A0212F200DF1E68 /* MsgGroupApplyTableViewCell.m in Sources */,
 				11FDE12619EFB52F002AEDB7 /* DBFriend.m in Sources */,
+				DBD2A92E1A19E5430020EECD /* ActivityCellTableViewCell.m in Sources */,
 				11DF6A8E1A047B7700A4B1D3 /* SysMsgTableViewDefaultCell.m in Sources */,
 				58B496E419A7186A0082AE30 /* UIImageView+MKNetworkKitAdditions.m in Sources */,
 				58A331AD19E52CDE005BE980 /* CategoryContactTableViewCell.m in Sources */,
@@ -1674,6 +1684,14 @@
 				AB24A95319F7CE2F00026299 /* zh-Hans */,
 			);
 			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		DBD2A9291A19D88D0020EECD /* head.png */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DBD2A92A1A19D88D0020EECD /* zh-Hans */,
+			);
+			name = head.png;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

@@ -14,4 +14,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *LabDescription1;
 @property (weak, nonatomic) IBOutlet UILabel *LabDescription2;
 
+//实现方法
+-(void) creatServer:(NSString *) server andDescription:(NSString *) Description;
 @end

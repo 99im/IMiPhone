@@ -12,4 +12,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *ImgHead;
 @property (weak, nonatomic) IBOutlet UILabel *LabServer;
 @property (weak, nonatomic) IBOutlet UILabel *LabDescription;
+
+//实现方法
+-(void) creatServer:(NSString *) server andDescription:(NSString *) Description;
 @end

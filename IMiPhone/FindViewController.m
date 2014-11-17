@@ -56,22 +56,21 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 0) {
         FriendDynamicTableViewCell *cell1 = [tableView dequeueReusableCellWithIdentifier:@"friendDynamicCell" forIndexPath:indexPath];
-        [cell1 creatHead];
+        [cell1 creatHead:self.dataFDList];
         return cell1;
     }
     else if (indexPath.section == 1){
         HavingFunTableViewCell *cell2 = [tableView dequeueReusableCellWithIdentifier:@"havingFunCell" forIndexPath:indexPath];
         NSString *message = [self.dataHFList objectForKey:@"message"];
         NSMutableDictionary *nearbyGroup = [self.dataHFList objectForKey:@"nearbyGroup"];
-        cell2.LabServer.text = message;
-        cell2.LabDescription2.text = [nearbyGroup objectForKey:@"groupName"];
+        [cell2 creatServer:message andDescription:[nearbyGroup objectForKey:@"groupName"]];
         return cell2;
     }
     else if (indexPath.section == 2){
         ServiceTableViewCell *cell3 = [tableView dequeueReusableCellWithIdentifier:@"serviceCell" forIndexPath:indexPath];
-        //cell3.lable1.text = [self.dataSList objectAtIndex:indexPath.row][0];
-        cell3.LabServer.text = [[self.dataSList objectAtIndex:indexPath.row] objectForKey:@"gname"];
-        cell3.LabDescription.text = [[self.dataSList objectAtIndex:indexPath.row] objectForKey:@"gdescription"];
+        NSString *server = [[self.dataSList objectAtIndex:indexPath.row] objectForKey:@"gname"];
+        NSString *description = [[self.dataSList objectAtIndex:indexPath.row] objectForKey:@"gdescription"];
+        [cell3 creatServer:server andDescription:description];
         return cell3;
     }
     return nil;
@@ -95,11 +94,31 @@
         return @"服务";
 }
 
-- (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section{
-    if(section == 2)
-        return @"查看更多";
+-(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
+{
+    if (section == 2) {
+        
+        UILabel *lable = [[UILabel alloc]initWithFrame:CGRectMake(0, 0,self.view.frame.size.width, 15)];
+        lable.text = @"查看更多";
+        lable.textAlignment = NSTextAlignmentCenter;
+        
+        return lable;
+    }
     return nil;
 }
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+{
+    if (section == 2) {
+        return 20;
+    }
+     return 0;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    NSLog(@"点击");
+}
+
 
 - (void) didShowList{
     [self.tableview reloadData];

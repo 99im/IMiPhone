@@ -20,4 +20,9 @@
     // Configure the view for the selected state
 }
 
+- (void) creatServer:(NSString *)server andDescription:(NSString *)Description{
+    self.LabServer.text = server;
+    self.LabDescription.text = Description;
+}
+
 @end

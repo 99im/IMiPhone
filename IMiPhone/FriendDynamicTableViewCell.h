@@ -16,7 +16,12 @@
 @property (strong, nonatomic) UIImageView *imgHead;
 @property (strong, nonatomic) UILabel *labMessageNum;
 
+//数据
+@property (strong, nonatomic) NSMutableArray *userArray;
+@property (strong, nonatomic) NSString *message;
+@property (strong, nonatomic) NSString *time;
+
 
 //实现方法
-- (void) creatHead;
+- (void) creatHead:(NSMutableDictionary *) dataFDList;
 @end
