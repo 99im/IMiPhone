@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ChatShareMenuViewController : UIViewController
+@interface ChatPlusViewController : UIViewController
 
 @end

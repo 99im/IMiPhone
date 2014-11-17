@@ -1010,7 +1010,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dYa-pp-Mwv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1032" y="8378"/>
+            <point key="canvasLocation" x="-1020" y="8377"/>
         </scene>
         <!--Chat-表情页-->
         <scene sceneID="Q0T-eA-oa3">
@@ -1021,7 +1021,7 @@
                         <viewControllerLayoutGuide type="bottom" id="X3K-Xs-87d"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="0Jn-ml-8gc">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="240"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="253"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <pageControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" hidesForSinglePage="YES" numberOfPages="2" translatesAutoresizingMaskIntoConstraints="NO" id="A5f-Wx-jYn">
@@ -1049,7 +1049,7 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="320" height="240"/>
+                    <size key="freeformSize" width="320" height="253"/>
                     <connections>
                         <outlet property="pageControl" destination="A5f-Wx-jYn" id="Oo7-aV-6Ub"/>
                         <outlet property="scrollView" destination="82T-Yf-8XN" id="ygC-co-sYk"/>
@@ -1097,7 +1097,7 @@
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="touchUpInsideBtnShare:" destination="U0M-ht-yaq" eventType="touchUpInside" id="QpO-3i-2Ma"/>
+                                                    <action selector="btnTextPlusTouchUpInside:" destination="U0M-ht-yaq" eventType="touchUpInside" id="HEp-GB-xP5"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iD5-we-tEM">
@@ -1140,7 +1140,7 @@
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="touchUpInsideInputSoudBtnShare:" destination="U0M-ht-yaq" eventType="touchUpInside" id="eXT-qp-b38"/>
+                                                    <action selector="btnSoundPlusTouchUpInside:" destination="U0M-ht-yaq" eventType="touchUpInside" id="jtl-p1-W35"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rda-WO-Z4a">
@@ -1195,23 +1195,71 @@
             </objects>
             <point key="canvasLocation" x="-445" y="8201"/>
         </scene>
-        <!--Chat Share Menu View-->
+        <!--Chat-功能页-->
         <scene sceneID="ux7-7h-wgH">
             <objects>
-                <viewController storyboardIdentifier="ChatShareMenuViewController" id="858-A8-8KR" userLabel="Chat Share Menu View" customClass="ChatShareMenuViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ChatPlusViewController" id="858-A8-8KR" userLabel="Chat-功能页" customClass="ChatPlusViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ptr-pC-Wb5"/>
                         <viewControllerLayoutGuide type="bottom" id="M3S-Xq-dyb"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="iVT-oh-DTd">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="253"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BGC-l2-wVB">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="220"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Gy4-FT-7JJ">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="220"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="COD-wq-LEY">
+                                                <rect key="frame" x="0.0" y="0.0" width="80" height="110"/>
+                                                <state key="normal" image="image">
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="btnImageTouchUpInside:" destination="858-A8-8KR" eventType="touchUpInside" id="ouU-gH-P3p"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rQE-XD-yFS">
+                                                <rect key="frame" x="80" y="0.0" width="80" height="110"/>
+                                                <state key="normal" image="photo">
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="btnPhotoTouchUpInside:" destination="858-A8-8KR" eventType="touchUpInside" id="I1X-rD-Rpt"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2am-6o-ViB">
+                                                <rect key="frame" x="160" y="0.0" width="80" height="110"/>
+                                                <state key="normal" image="location">
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="btnLocationTouchUpInside:" destination="858-A8-8KR" eventType="touchUpInside" id="xzb-yk-7Vh"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
+                                </subviews>
+                            </scrollView>
+                            <pageControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" hidesForSinglePage="YES" numberOfPages="1" translatesAutoresizingMaskIntoConstraints="NO" id="a27-0K-nIs"/>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="320" height="253"/>
+                    <connections>
+                        <outlet property="btnImage" destination="COD-wq-LEY" id="TUO-5p-44P"/>
+                        <outlet property="btnLocation" destination="2am-6o-ViB" id="fRT-wM-dkB"/>
+                        <outlet property="btnPhoto" destination="rQE-XD-yFS" id="gbl-6u-Nkz"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7ZL-WK-dFZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1417" y="8201"/>
+            <point key="canvasLocation" x="-1412" y="8036.5"/>
         </scene>
         <!--User-个人信息页-->
         <scene sceneID="Ztv-wa-Bt9">
@@ -2705,8 +2753,11 @@
         <image name="MyFans" width="27" height="27"/>
         <image name="contact2" width="44" height="44"/>
         <image name="discover2" width="44" height="44"/>
+        <image name="image" width="44" height="44"/>
+        <image name="location" width="44" height="44"/>
         <image name="message2" width="44" height="44"/>
         <image name="nearby2" width="44" height="44"/>
+        <image name="photo" width="44" height="44"/>
         <image name="profile2" width="44" height="44"/>
         <image name="splash.jpg" width="640" height="400"/>
     </resources>
@@ -2716,12 +2767,12 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="kdV-GO-inJ"/>
         <segue reference="iIs-SU-ZLV"/>
+        <segue reference="kdV-GO-inJ"/>
         <segue reference="AcC-yW-RwT"/>
-        <segue reference="B9e-R6-y8A"/>
         <segue reference="F18-ln-36K"/>
         <segue reference="1vQ-4Q-Gdd"/>
+        <segue reference="8gL-WP-3D1"/>
         <segue reference="j7u-OT-bsU"/>
         <segue reference="NpR-cO-pjh"/>
     </inferredMetricsTieBreakers>
