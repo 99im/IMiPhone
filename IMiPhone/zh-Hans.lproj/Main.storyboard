@@ -1524,7 +1524,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Rdk-oI-GGl">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="800"/>
+                                <rect key="frame" x="0.0" y="22" width="320" height="568"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dlg-nV-kFa">
                                         <rect key="frame" x="95" y="6" width="186" height="25"/>
@@ -1584,7 +1584,7 @@
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="abL-fc-KFT">
-                                        <rect key="frame" x="4" y="359" width="145" height="51"/>
+                                        <rect key="frame" x="111" y="406" width="91" height="41"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                         <state key="normal" title="进入聊天">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -1600,24 +1600,13 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DnI-3q-dXv">
-                                        <rect key="frame" x="99" y="368" width="123" height="30"/>
+                                        <rect key="frame" x="95" y="413" width="123" height="30"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                         <state key="normal" title="申请加入">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
                                             <segue destination="zdu-lY-f24" kind="modal" id="dLH-M0-4FS"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BmJ-ql-D7D">
-                                        <rect key="frame" x="149" y="359" width="167" height="48"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                        <state key="normal" title="设置管理">
-                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <segue destination="f2G-Kw-Ad0" kind="push" identifier="groupInfo2groupSetting" id="R7g-Do-l4l"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -1627,11 +1616,16 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" id="HL7-CH-2Tf"/>
+                    <navigationItem key="navigationItem" id="HL7-CH-2Tf">
+                        <barButtonItem key="rightBarButtonItem" title="更多" id="noa-7x-vQF">
+                            <connections>
+                                <action selector="btnMoreTouchUp:" destination="nqj-0p-hk3" id="Boz-pc-rhr"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="btnApply" destination="DnI-3q-dXv" id="fgE-BS-pPM"/>
                         <outlet property="btnGroupChat" destination="abL-fc-KFT" id="xod-qn-sho"/>
-                        <outlet property="btnGroupSetting" destination="BmJ-ql-D7D" id="UUg-Ng-7SF"/>
                         <outlet property="imgAvatar" destination="ZjC-fs-DKb" id="JAi-av-oZ5"/>
                         <outlet property="lblCTime" destination="NIq-K2-5KG" id="5Im-Zt-au4"/>
                         <outlet property="lblCity" destination="oJb-ek-GzQ" id="wuG-Sg-oef"/>
@@ -1641,11 +1635,12 @@
                         <outlet property="lblMemberNum" destination="qC8-MD-ylo" id="SxB-ME-pB0"/>
                         <outlet property="tvIntro" destination="Skp-jk-w4A" id="E8t-9b-BFY"/>
                         <segue destination="Tez-zb-r5A" kind="push" id="3hi-GN-j2D"/>
+                        <segue destination="f2G-Kw-Ad0" kind="push" identifier="groupInfo2groupSetting" id="yxd-bB-42b"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0bI-9q-o0A" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3092" y="5229"/>
+            <point key="canvasLocation" x="4048" y="4997"/>
         </scene>
         <!--Loation-选择群地点-->
         <scene sceneID="Nkt-KA-a64">
@@ -1793,7 +1788,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ibF-87-OIE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3808" y="4387"/>
+            <point key="canvasLocation" x="3453" y="5219"/>
         </scene>
         <!--Group-创建群-->
         <scene sceneID="E93-zC-ePk">
@@ -1998,7 +1993,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HnK-vI-JGP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3996" y="6201"/>
+            <point key="canvasLocation" x="4600" y="5877"/>
         </scene>
         <!--Group-申请加入群-->
         <scene sceneID="hIz-F5-FbG">
@@ -2052,7 +2047,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k8u-pJ-2kB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4630" y="6217"/>
+            <point key="canvasLocation" x="4058" y="6061"/>
         </scene>
         <!--Group-群聊-->
         <scene sceneID="zxE-yQ-ZxD">
@@ -2179,7 +2174,13 @@
                             <constraint firstItem="yHX-Y0-GbZ" firstAttribute="top" secondItem="9Vj-Im-Qql" secondAttribute="top" id="h0c-fJ-Igc"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="sbk-dD-Ffh"/>
+                    <navigationItem key="navigationItem" id="sbk-dD-Ffh">
+                        <barButtonItem key="rightBarButtonItem" title="详细" id="izB-PO-1Y7">
+                            <connections>
+                                <segue destination="nqj-0p-hk3" kind="push" id="D1x-Fu-sxM"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableViewChat" destination="KqY-XJ-01n" id="0Wy-sH-Q3P"/>
                         <outlet property="tfInputText" destination="t24-px-E8v" id="SL1-a7-erc"/>
@@ -2807,12 +2808,12 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="yXo-ak-l89"/>
         <segue reference="AcC-yW-RwT"/>
         <segue reference="kdV-GO-inJ"/>
-        <segue reference="iIs-SU-ZLV"/>
+        <segue reference="6IF-l5-3Iq"/>
+        <segue reference="yXo-ak-l89"/>
+        <segue reference="NpR-cO-pjh"/>
+        <segue reference="D64-tG-s28"/>
         <segue reference="8gL-WP-3D1"/>
-        <segue reference="1vQ-4Q-Gdd"/>
-        <segue reference="55j-EX-b7r"/>
     </inferredMetricsTieBreakers>
 </document>
