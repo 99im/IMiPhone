@@ -131,7 +131,7 @@
 {
     if (buttonIndex == 0) {
         //NSLog(@"群组设置");
-        [self performSegueWithIdentifier:@"groupInfo2groupSetting" sender:self];
+        [self performSegueWithIdentifier:@"groupInfo2GroupSetting" sender:self];
     }
     else if (buttonIndex == 1) {
         NSLog(@"查看成员");
