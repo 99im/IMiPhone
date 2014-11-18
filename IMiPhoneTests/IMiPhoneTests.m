@@ -164,9 +164,5 @@
 
 }
 
-- (void)testUuid
-{
-    NSLog(@"%@", [imUtil uuid]);
-}
 
 @end

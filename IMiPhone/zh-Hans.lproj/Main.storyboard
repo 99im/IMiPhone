@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="sWe-ai-dJr">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="sWe-ai-dJr">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
@@ -1010,7 +1010,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dYa-pp-Mwv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1032" y="8378"/>
+            <point key="canvasLocation" x="-1020" y="8377"/>
         </scene>
         <!--Chat-表情页-->
         <scene sceneID="Q0T-eA-oa3">
@@ -1021,7 +1021,7 @@
                         <viewControllerLayoutGuide type="bottom" id="X3K-Xs-87d"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="0Jn-ml-8gc">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="240"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="253"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <pageControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" hidesForSinglePage="YES" numberOfPages="2" translatesAutoresizingMaskIntoConstraints="NO" id="A5f-Wx-jYn">
@@ -1049,7 +1049,7 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="320" height="240"/>
+                    <size key="freeformSize" width="320" height="253"/>
                     <connections>
                         <outlet property="pageControl" destination="A5f-Wx-jYn" id="Oo7-aV-6Ub"/>
                         <outlet property="scrollView" destination="82T-Yf-8XN" id="ygC-co-sYk"/>
@@ -1097,7 +1097,7 @@
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="touchUpInsideBtnShare:" destination="U0M-ht-yaq" eventType="touchUpInside" id="QpO-3i-2Ma"/>
+                                                    <action selector="btnTextPlusTouchUpInside:" destination="U0M-ht-yaq" eventType="touchUpInside" id="HEp-GB-xP5"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iD5-we-tEM">
@@ -1140,7 +1140,7 @@
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="touchUpInsideInputSoudBtnShare:" destination="U0M-ht-yaq" eventType="touchUpInside" id="eXT-qp-b38"/>
+                                                    <action selector="btnSoundPlusTouchUpInside:" destination="U0M-ht-yaq" eventType="touchUpInside" id="jtl-p1-W35"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rda-WO-Z4a">
@@ -1195,28 +1195,76 @@
             </objects>
             <point key="canvasLocation" x="-445" y="8201"/>
         </scene>
-        <!--Chat Share Menu View-->
+        <!--Chat-功能页-->
         <scene sceneID="ux7-7h-wgH">
             <objects>
-                <viewController storyboardIdentifier="ChatShareMenuViewController" id="858-A8-8KR" userLabel="Chat Share Menu View" customClass="ChatShareMenuViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ChatPlusViewController" id="858-A8-8KR" userLabel="Chat-功能页" customClass="ChatPlusViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ptr-pC-Wb5"/>
                         <viewControllerLayoutGuide type="bottom" id="M3S-Xq-dyb"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="iVT-oh-DTd">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="253"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BGC-l2-wVB">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="220"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Gy4-FT-7JJ">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="220"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="COD-wq-LEY">
+                                                <rect key="frame" x="0.0" y="0.0" width="80" height="110"/>
+                                                <state key="normal" image="image">
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="btnImageTouchUpInside:" destination="858-A8-8KR" eventType="touchUpInside" id="ouU-gH-P3p"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rQE-XD-yFS">
+                                                <rect key="frame" x="80" y="0.0" width="80" height="110"/>
+                                                <state key="normal" image="photo">
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="btnPhotoTouchUpInside:" destination="858-A8-8KR" eventType="touchUpInside" id="I1X-rD-Rpt"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2am-6o-ViB">
+                                                <rect key="frame" x="160" y="0.0" width="80" height="110"/>
+                                                <state key="normal" image="location">
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="btnLocationTouchUpInside:" destination="858-A8-8KR" eventType="touchUpInside" id="xzb-yk-7Vh"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
+                                </subviews>
+                            </scrollView>
+                            <pageControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" hidesForSinglePage="YES" numberOfPages="1" translatesAutoresizingMaskIntoConstraints="NO" id="a27-0K-nIs"/>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="320" height="253"/>
+                    <connections>
+                        <outlet property="btnImage" destination="COD-wq-LEY" id="TUO-5p-44P"/>
+                        <outlet property="btnLocation" destination="2am-6o-ViB" id="fRT-wM-dkB"/>
+                        <outlet property="btnPhoto" destination="rQE-XD-yFS" id="gbl-6u-Nkz"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7ZL-WK-dFZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1417" y="8201"/>
+            <point key="canvasLocation" x="-1412" y="8036.5"/>
         </scene>
         <!--User-个人信息页-->
         <scene sceneID="Ztv-wa-Bt9">
             <objects>
-                <viewController id="Ixd-6h-fyu" userLabel="User-个人信息页" customClass="UserShowViewController" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="Ixd-6h-fyu" userLabel="User-个人信息页" customClass="UserShowViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Iey-5W-vgx"/>
                         <viewControllerLayoutGuide type="bottom" id="hXK-eM-Cea"/>
@@ -1399,7 +1447,7 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <segue destination="C6j-pz-mYn" kind="push" id="JfN-oz-5Dg"/>
+                        <segue destination="C6j-pz-mYn" kind="push" identifier="Category2FocusAndFanListSegue" id="JfN-oz-5Dg"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fYB-ei-dNA" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1410,22 +1458,34 @@
         <scene sceneID="kNA-sS-Sy3">
             <objects>
                 <tableViewController id="C6j-pz-mYn" userLabel="Contact-关注、粉丝列表" customClass="CategoryListTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="22" sectionFooterHeight="22" id="2Za-d2-dcB">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="90" sectionHeaderHeight="22" sectionFooterHeight="22" id="2Za-d2-dcB">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" restorationIdentifier="CellUserList" selectionStyle="default" indentationWidth="10" reuseIdentifier="CellUserList" id="Lfw-iq-ho9" customClass="CategoryListTableViewCell">
+                            <tableViewCell contentMode="scaleToFill" restorationIdentifier="CellUserList" selectionStyle="default" indentationWidth="10" reuseIdentifier="ContactFocusAndFanTableCell" id="Lfw-iq-ho9" customClass="CategoryListTableViewCell">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Lfw-iq-ho9" id="lJC-Vz-4uE">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pf1-Zz-j9K">
-                                            <rect key="frame" x="8" y="6" width="48" height="48"/>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ChatDefault" translatesAutoresizingMaskIntoConstraints="NO" id="pf1-Zz-j9K">
+                                            <rect key="frame" x="8" y="15" width="60" height="60"/>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9LC-Wq-AYt">
-                                            <rect key="frame" x="82" y="14" width="80" height="31"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                            <rect key="frame" x="76" y="15" width="80" height="31"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="距离|时间" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BE8-ms-qbE">
+                                            <rect key="frame" x="233" y="20" width="60" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="简介" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qvd-SX-E7Y">
+                                            <rect key="frame" x="76" y="54" width="160" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -1444,7 +1504,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="sqI-HZ-Krv"/>
                     <connections>
-                        <segue destination="Ixd-6h-fyu" kind="push" id="1vQ-4Q-Gdd"/>
+                        <segue destination="Ixd-6h-fyu" kind="push" identifier="ContactFocusAndFanList2UserInfo" id="1vQ-4Q-Gdd"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GcJ-RX-qyE" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2564,7 +2624,6 @@
                     <connections>
                         <outlet property="segSubTags" destination="c0g-nm-GUp" id="qP3-If-kYD"/>
                         <outlet property="subviewContainer" destination="shB-ap-Tqj" id="4Et-Wc-gIm"/>
-                        <segue destination="C6j-pz-mYn" kind="push" identifier="CategoryListSegue" id="F18-ln-36K"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oCn-2l-5Ua" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2734,8 +2793,11 @@
         <image name="MyFans" width="27" height="27"/>
         <image name="contact2" width="44" height="44"/>
         <image name="discover2" width="44" height="44"/>
+        <image name="image" width="44" height="44"/>
+        <image name="location" width="44" height="44"/>
         <image name="message2" width="44" height="44"/>
         <image name="nearby2" width="44" height="44"/>
+        <image name="photo" width="44" height="44"/>
         <image name="profile2" width="44" height="44"/>
         <image name="splash.jpg" width="640" height="400"/>
     </resources>
@@ -2748,10 +2810,9 @@
         <segue reference="AcC-yW-RwT"/>
         <segue reference="iIs-SU-ZLV"/>
         <segue reference="kdV-GO-inJ"/>
-        <segue reference="B9e-R6-y8A"/>
-        <segue reference="F18-ln-36K"/>
         <segue reference="j7u-OT-bsU"/>
         <segue reference="NpR-cO-pjh"/>
         <segue reference="1vQ-4Q-Gdd"/>
+        <segue reference="8gL-WP-3D1"/>
     </inferredMetricsTieBreakers>
 </document>

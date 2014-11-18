@@ -63,4 +63,23 @@
 
 }
 
+- (void)testProperty
+{
+    DPUser *dpUser = [[DPUser alloc] init];
+    //b 为YES 所以不能用下面方法判断对象是否有某个属性
+    BOOL b = [dpUser validateValue:nil forKey:@"aa" error:nil];
+    
+//    id d = [dpUser :@"aa"];
+    
+    b = [ImDataUtil isValidKey:@"uid" ofObj:dpUser];
+    b = [ImDataUtil isValidKey:@"aa" ofObj:dpUser];
+    
+    NSDictionary *dicTemp = [NSDictionary dictionaryWithObjectsAndKeys:@"aa",@"1",@"bb",@"2", nil];
+    id ee  = [dicTemp objectForKey:@"3"];
+    if (ee == nil) {
+        NSLog(@"ee == nil");
+    }
+    ee = [dicTemp objectForKey:@"1"];
+}
+
 @end

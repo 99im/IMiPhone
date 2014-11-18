@@ -6,13 +6,21 @@
 //  Copyright (c) 2014年 尹晓君. All rights reserved.
 //
 
-#import "ChatShareMenuViewController.h"
+#import "ChatPlusViewController.h"
 
-@interface ChatShareMenuViewController ()
+@interface ChatPlusViewController ()
+
+@property (weak, nonatomic) IBOutlet UIButton *btnImage;
+@property (weak, nonatomic) IBOutlet UIButton *btnPhoto;
+@property (weak, nonatomic) IBOutlet UIButton *btnLocation;
+
+- (IBAction)btnImageTouchUpInside:(id)sender;
+- (IBAction)btnPhotoTouchUpInside:(id)sender;
+- (IBAction)btnLocationTouchUpInside:(id)sender;
 
 @end
 
-@implementation ChatShareMenuViewController
+@implementation ChatPlusViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -34,4 +42,12 @@
 }
 */
 
+- (IBAction)btnImageTouchUpInside:(id)sender {
+}
+
+- (IBAction)btnPhotoTouchUpInside:(id)sender {
+}
+
+- (IBAction)btnLocationTouchUpInside:(id)sender {
+}
 @end

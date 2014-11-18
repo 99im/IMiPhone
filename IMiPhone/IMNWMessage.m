@@ -16,9 +16,12 @@
 @synthesize connect;
 @synthesize mark;
 @synthesize type;
+@synthesize data;
+@synthesize multiPartData;
 @synthesize host;
 @synthesize port;
 @synthesize path;
+@synthesize responseBlocks;
 @synthesize useSSL;
 @synthesize method;
 

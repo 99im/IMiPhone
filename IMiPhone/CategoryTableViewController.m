@@ -9,6 +9,7 @@
 #import "CategoryTableViewController.h"
 #import "FriendMessageProxy.h"
 
+
 @interface CategoryTableViewController ()
 
 @property(nonatomic, retain) NSArray *arrCategorys;
@@ -49,7 +50,6 @@
   // Dispose of any resources that can be recreated.
 }
 
-
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView
@@ -64,15 +64,15 @@
     }
   }
   if ([categoryId isEqualToString:@"focus"]) {
-    [FriendDataProxy sharedProxy].currUserListType = USER_LIST_FOR_FOCUS;
-    [[FriendMessageProxy sharedProxy]
-        sendTypeFocusList:[NSNumber numberWithInt:0]
-              withPageNum:[NSNumber numberWithInt:LIST_PAGENUM]];
+      [FriendDataProxy sharedProxy].currUserListType = USER_LIST_FOR_FOCUS;
+      [self performSegueWithIdentifier:@"Category2FocusAndFanListSegue" sender:self];
+      
+//    [[FriendMessageProxy sharedProxy]
+//        sendTypeFocusList:[NSNumber numberWithInt:0]
+//              withPageNum:[NSNumber numberWithInt:LIST_PAGENUM]];
   } else if ([categoryId isEqualToString:@"fan"]) {
-    [FriendDataProxy sharedProxy].currUserListType = USER_LIST_FOR_FANS;
-    [[FriendMessageProxy sharedProxy]
-        sendTypeFanList:[NSNumber numberWithInt:0]
-            withPageNum:[NSNumber numberWithInt:LIST_PAGENUM]];
+      [FriendDataProxy sharedProxy].currUserListType = USER_LIST_FOR_FANS;
+      [self performSegueWithIdentifier:@"Category2FocusAndFanListSegue" sender:self];
   }
 }
 

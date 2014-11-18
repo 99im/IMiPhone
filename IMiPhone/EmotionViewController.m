@@ -18,7 +18,7 @@
 @implementation EmotionViewController
 
 NSInteger const EMOTS_PAGENUM = 4;
-float const EMOTS_HEIGHT = 240.0f;
+float const EMOTS_HEIGHT = 253.0f;
 
 - (void)viewDidLoad {
     [super viewDidLoad];

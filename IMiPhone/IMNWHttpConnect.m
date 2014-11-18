@@ -25,6 +25,19 @@
     
     MKNetworkOperation *op = [self operationWithPath:message.path params:params httpMethod:message.method ssl:message.useSSL];
     
+    if (message.multiPartData) {
+        id object = nil;
+        for (NSString *key in [message.multiPartData allKeys]) {
+            object = [message.multiPartData objectForKey:key];
+            if ([object isKindOfClass:[NSData class]]) {
+                [op addData:object forKey:key];
+            }
+            else if ([object isKindOfClass:[NSString class]]) {
+                [op addFile:object forKey:key];
+            }
+        }
+    }
+    
     [op addCompletionHandler:^(MKNetworkOperation *completedOperation) {
         NSLog(@"Http connect response string: %@", [completedOperation responseString]);
         //NSLog(@"Http connect response data: %@", [[NSString alloc] initWithData:[completedOperation responseData] encoding:NSUTF8StringEncoding]);

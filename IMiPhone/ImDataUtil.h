@@ -22,4 +22,6 @@
 
 + (NSInteger)getIndexOf:(NSArray *)srcArray byItemKey:(NSString *)key withValue:(id)value;
 
++ (BOOL)isValidKey:(NSString *)key ofObj:(id)obj;
+
 @end

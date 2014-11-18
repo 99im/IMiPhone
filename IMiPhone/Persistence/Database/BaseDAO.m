@@ -152,7 +152,7 @@ static NSDictionary *dicSQLDataType;
     NSInteger count = arrConditonKey.count - 1;//排除数组掉最后一个元素（空字符串）
     for (NSInteger i = 0; i < count; i++) {
         NSString *conditionKey = arrConditonKey[i];
-        if ([dicData validateValue:nil forKey:conditionKey error:nil]) {
+        if ([dicData objectForKey:conditionKey] != nil) {
             [dicData removeObjectForKey:conditionKey];
         }
     }
