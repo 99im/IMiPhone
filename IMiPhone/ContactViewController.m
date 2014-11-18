@@ -97,7 +97,7 @@
             subviewId = @"recommendViewController";
             break;
         case 2:
-            subviewId = @"storyGroupMyList";
+            subviewId = @"GroupTableViewController";
             break;
         case 3:
             subviewId = @"CategoryTableViewController";
@@ -114,9 +114,9 @@
         UIStoryboard* mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
         UIViewController *viewController = nil;
         viewController = [mainStoryboard instantiateViewControllerWithIdentifier:subviewId];
-        UIView *view = viewController.view;
-        [self.subviewContainer addSubview:view];
+        viewController.view.frame = CGRectMake(0.0f, 0.0f, self.subviewContainer.frame.size.width, self.subviewContainer.frame.size.height);
         [self addChildViewController:viewController];
+        [self.subviewContainer addSubview:viewController.view];
         self.curViewController = viewController;
         self.curSubViewId = subviewId;
         self.navigationItem.title = subviewTitle;

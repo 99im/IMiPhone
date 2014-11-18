@@ -790,7 +790,7 @@
             <objects>
                 <tableViewController id="WOu-4k-SM9" userLabel="Contact-添加联系人" customClass="AddTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="YZj-hg-yi2">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
@@ -1068,14 +1068,14 @@
                         <viewControllerLayoutGuide type="bottom" id="jdk-ke-gUq"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="vdW-Q2-z1e">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sS0-Ne-O7G">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="50" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="329-xQ-y4w">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="520"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="368"/>
                                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                         <prototypes>
                                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ChatTableViewCell" id="6ZA-Da-DgV" customClass="ChatTableViewCell">
@@ -1270,7 +1270,7 @@
                         <viewControllerLayoutGuide type="bottom" id="hXK-eM-Cea"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="SlK-oq-AUt">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bFz-SV-ZjS">
@@ -1310,7 +1310,7 @@
                                 </connections>
                             </button>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tbe-oe-gHj">
-                                <rect key="frame" x="-4" y="64" width="320" height="466"/>
+                                <rect key="frame" x="-4" y="64" width="320" height="314"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yh4-C3-Ghc">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="466"/>
@@ -1409,7 +1409,7 @@
             <objects>
                 <tableViewController storyboardIdentifier="CategoryTableViewController" id="Z1b-GW-NPt" userLabel="Contact-联系人分类" customClass="CategoryTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Nsv-T5-khs">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -1446,6 +1446,8 @@
                     <nil key="simulatedStatusBarMetrics"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="320" height="416"/>
                     <connections>
                         <segue destination="C6j-pz-mYn" kind="push" identifier="Category2FocusAndFanListSegue" id="JfN-oz-5Dg"/>
                     </connections>
@@ -1457,9 +1459,9 @@
         <!--Contact-关注、粉丝列表-->
         <scene sceneID="kNA-sS-Sy3">
             <objects>
-                <tableViewController id="C6j-pz-mYn" userLabel="Contact-关注、粉丝列表" customClass="CategoryListTableViewController" sceneMemberID="viewController">
+                <tableViewController hidesBottomBarWhenPushed="YES" id="C6j-pz-mYn" userLabel="Contact-关注、粉丝列表" customClass="CategoryListTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="90" sectionHeaderHeight="22" sectionFooterHeight="22" id="2Za-d2-dcB">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -1656,12 +1658,10 @@
                         <viewControllerLayoutGuide type="bottom" id="Lrs-dk-j7u"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="mJh-ZL-CFH">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="aUm-KX-Dyp">
-                                <rect key="frame" x="0.0" y="64" width="320" height="320"/>
-                            </mapView>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="aUm-KX-Dyp"/>
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ojl-3h-aRL">
                                 <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                 <items>
@@ -1748,7 +1748,7 @@
         <!--Group-我加入的群-->
         <scene sceneID="OH2-Fr-kDb">
             <objects>
-                <tableViewController storyboardIdentifier="storyGroupMyList" id="8NY-Sg-b0A" userLabel="Group-我加入的群" customClass="GroupTableViewController" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="GroupTableViewController" id="8NY-Sg-b0A" userLabel="Group-我加入的群" customClass="GroupTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="22" sectionFooterHeight="22" id="Lv3-YA-N3B">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1804,7 +1804,7 @@
                         <viewControllerLayoutGuide type="bottom" id="J4T-gF-n7j"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="1ax-Qq-dvD">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xoK-wb-cf9">
@@ -1813,7 +1813,6 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OVv-fu-vJj">
-                                <rect key="frame" x="63" y="131" width="241" height="60"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -2592,13 +2591,9 @@
                         <viewControllerLayoutGuide type="bottom" id="5mI-Wi-Zgu"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Jey-Uo-Lbe">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="shB-ap-Tqj">
-                                <rect key="frame" x="0.0" y="100" width="320" height="416"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                            </view>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="c0g-nm-GUp">
                                 <rect key="frame" x="0.0" y="64" width="320" height="29"/>
                                 <segments>
@@ -2611,8 +2606,18 @@
                                     <action selector="segmentedControllerValueChanged:" destination="BLe-RL-pb4" eventType="valueChanged" id="zBh-7L-Kpv"/>
                                 </connections>
                             </segmentedControl>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="shB-ap-Tqj">
+                                <rect key="frame" x="0.0" y="100" width="320" height="331"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="shB-ap-Tqj" firstAttribute="top" secondItem="Jey-Uo-Lbe" secondAttribute="top" constant="100" id="BRy-CH-LYU"/>
+                            <constraint firstAttribute="bottom" secondItem="shB-ap-Tqj" secondAttribute="bottom" constant="49" id="IWM-Lp-hoh"/>
+                            <constraint firstItem="shB-ap-Tqj" firstAttribute="leading" secondItem="Jey-Uo-Lbe" secondAttribute="leading" id="WH6-Lj-JaX"/>
+                            <constraint firstAttribute="trailing" secondItem="shB-ap-Tqj" secondAttribute="trailing" id="f5z-ul-WNf"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Title" id="j4O-Yu-EJV">
                         <barButtonItem key="rightBarButtonItem" title="添加" id="S7i-kr-ROF">
@@ -2621,6 +2626,7 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <connections>
                         <outlet property="segSubTags" destination="c0g-nm-GUp" id="qP3-If-kYD"/>
                         <outlet property="subviewContainer" destination="shB-ap-Tqj" id="4Et-Wc-gIm"/>
@@ -2751,6 +2757,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="VpD-M4-6ZC" userLabel="MainTab-联系人" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="联系人" image="contact2" id="GnX-Mt-m4d"/>
                     <toolbarItems/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="aa2-Rr-6DY">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -2807,12 +2814,12 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="AcC-yW-RwT"/>
         <segue reference="iIs-SU-ZLV"/>
+        <segue reference="AcC-yW-RwT"/>
         <segue reference="kdV-GO-inJ"/>
-        <segue reference="j7u-OT-bsU"/>
-        <segue reference="NpR-cO-pjh"/>
-        <segue reference="1vQ-4Q-Gdd"/>
         <segue reference="8gL-WP-3D1"/>
+        <segue reference="1vQ-4Q-Gdd"/>
+        <segue reference="Dql-ZX-dEr"/>
+        <segue reference="NpR-cO-pjh"/>
     </inferredMetricsTieBreakers>
 </document>
