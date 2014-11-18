@@ -7,7 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AllGroupTableViewCell.h"
 
-@interface AllGroupViewController : UIViewController
+@interface AllGroupViewController : UIViewController<UITableViewDelegate, UITableViewDataSource>
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
+//数据存储
+@property (strong, nonatomic) NSMutableArray *nearbyGroupList;
+@property (strong, nonatomic) NSMutableArray *nearbyGroupRecruitList;
+
+//当前使用数据
+@property (strong, nonatomic) NSMutableArray *nowGroupList;
+
+//设置当前显示数据
+- (void) setNowGroupList:(NSInteger) tag;
 @end

@@ -20,6 +20,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self openSubTags:-1];
+    self.automaticallyAdjustsScrollViewInsets = YES;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -46,13 +47,14 @@
         tag = 1;
     }
     NSString *subviewID = nil;
-    NSString *subviewTitle = [self.segmentedControl titleForSegmentAtIndex:tag];
+   // NSString *subviewTitle = [self.segmentedControl titleForSegmentAtIndex:tag];
     switch (tag) {
         case 1:
             subviewID = @"allGroupView";
             break;
         case 0:
         default:
+            subviewID = @"allGroupView";
             break;
     }
     if (![subviewID isEqualToString:self.curSubViewId]) {

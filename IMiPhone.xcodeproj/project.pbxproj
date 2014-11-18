@@ -302,6 +302,7 @@
 		DBD2A92E1A19E5430020EECD /* ActivityCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DBD2A92D1A19E5430020EECD /* ActivityCellTableViewCell.m */; };
 		DBD2A9311A1A10F50020EECD /* FindNearbyGroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DBD2A9301A1A10F50020EECD /* FindNearbyGroupViewController.m */; };
 		DBD2A9341A1A137C0020EECD /* AllGroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DBD2A9331A1A137C0020EECD /* AllGroupViewController.m */; };
+		DBDD8F401A1AE31300B9F5C9 /* AllGroupTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DBDD8F3F1A1AE31300B9F5C9 /* AllGroupTableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -637,6 +638,8 @@
 		DBD2A9301A1A10F50020EECD /* FindNearbyGroupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FindNearbyGroupViewController.m; sourceTree = "<group>"; };
 		DBD2A9321A1A137C0020EECD /* AllGroupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AllGroupViewController.h; sourceTree = "<group>"; };
 		DBD2A9331A1A137C0020EECD /* AllGroupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AllGroupViewController.m; sourceTree = "<group>"; };
+		DBDD8F3E1A1AE31300B9F5C9 /* AllGroupTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AllGroupTableViewCell.h; sourceTree = "<group>"; };
+		DBDD8F3F1A1AE31300B9F5C9 /* AllGroupTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AllGroupTableViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1257,6 +1260,8 @@
 				DBD2A9301A1A10F50020EECD /* FindNearbyGroupViewController.m */,
 				DBD2A9321A1A137C0020EECD /* AllGroupViewController.h */,
 				DBD2A9331A1A137C0020EECD /* AllGroupViewController.m */,
+				DBDD8F3E1A1AE31300B9F5C9 /* AllGroupTableViewCell.h */,
+				DBDD8F3F1A1AE31300B9F5C9 /* AllGroupTableViewCell.m */,
 			);
 			name = Find;
 			sourceTree = "<group>";
@@ -1505,6 +1510,7 @@
 				58438C0D19D412E400B6962B /* NearbyTableViewController.m in Sources */,
 				111B4EA91A0A2A8E0043A29F /* ActivityReadyTabController.m in Sources */,
 				117AC69519EE763E00143973 /* IMAddressPerson.m in Sources */,
+				DBDD8F401A1AE31300B9F5C9 /* AllGroupTableViewCell.m in Sources */,
 				1171F7D419E9278A00865A0B /* DBContactPerson.m in Sources */,
 				5859721819A1DEE500258CB1 /* LoginViewController.m in Sources */,
 				1171F7C119E8DAE300865A0B /* TPContactsTableViewController.m in Sources */,
