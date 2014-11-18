@@ -43,7 +43,7 @@
   // Dispose of any resources that can be recreated.
 }
 
-- (void)viewDidAppear:(BOOL)animated
+- (void)viewWillAppear:(BOOL)animated
 {
     [self registerMessageNotification];
     if ([FriendDataProxy sharedProxy].currUserListType == USER_LIST_FOR_FANS) {
@@ -53,11 +53,13 @@
         [[FriendDataProxy sharedProxy] getFocusListInRange:NSMakeRange(0, LIST_PAGENUM)];
     }
     [self.tableView reloadData];
+    [super viewWillAppear:animated];
 }
 
-- (void)viewDidDisappear:(BOOL)animated
+- (void)viewWillDisappear:(BOOL)animated
 {
     [self removeMessageNotification];
+    [super viewWillDisappear:animated];
 }
 
 #pragma mark - 注册与移除通知监听
