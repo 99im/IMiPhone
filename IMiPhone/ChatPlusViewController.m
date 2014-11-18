@@ -43,6 +43,7 @@
 */
 
 - (IBAction)btnImageTouchUpInside:(id)sender {
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_CHATPLUS_BTNSELECTED object:self userInfo:nil];
 }
 
 - (IBAction)btnPhotoTouchUpInside:(id)sender {

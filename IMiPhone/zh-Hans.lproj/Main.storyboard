@@ -1129,6 +1129,9 @@
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="48" id="c5N-pu-VgU"/>
+                                        </constraints>
                                     </view>
                                     <view hidden="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" restorationIdentifier="ChatInputSoundView" translatesAutoresizingMaskIntoConstraints="NO" id="l2f-od-NdP" userLabel="Chat Input Sound View" customClass="ChatInputSoundView">
                                         <rect key="frame" x="0.0" y="520" width="320" height="48"/>
@@ -1165,6 +1168,9 @@
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="48" id="M5e-1S-t7n"/>
+                                        </constraints>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1183,6 +1189,8 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="聊天标题" id="e9w-hA-9aF"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <connections>
                         <outlet property="tableViewChat" destination="329-xQ-y4w" id="Ya7-85-vfu"/>
                         <outlet property="tfInputText" destination="SOo-Re-DHd" id="MC0-hY-XHb"/>

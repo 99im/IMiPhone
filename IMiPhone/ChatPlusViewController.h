@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+#define NOTI_CHATPLUS_BTNSELECTED @"UIChatPlusBtnSelectedNotifiction"
+
 @interface ChatPlusViewController : UIViewController
 
 @end
