@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface GroupChatViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@interface GroupChatViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UIAlertViewDelegate, UIActionSheetDelegate>
 
 - (IBAction)tfInputTextDidEndOnExit:(id)sender;
 

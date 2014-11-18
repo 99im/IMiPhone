@@ -19,7 +19,7 @@
 #import "ChatDataProxy.h"
 #import "ChatPlusViewController.h"
 
-@interface ChatViewController () <UITextFieldDelegate, UIGestureRecognizerDelegate>
+@interface ChatViewController () <UITextFieldDelegate, UIGestureRecognizerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
 //rootview 上的组件
 @property (weak, nonatomic) IBOutlet UITableView *tableViewChat;
@@ -332,6 +332,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onEmotionSelected:) name:NOTI_EMOTION_SELECTED object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onEmotionSend:) name:NOTI_EMOTION_SEND object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onEmotionDelete:) name:NOTI_EMOTION_DELETE object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onChatPlusBtnSelected:) name:NOTI_CHATPLUS_BTNSELECTED object:nil];
 }
 
 - (void)removeMessageNotification
@@ -340,6 +341,25 @@
 }
 
 #pragma mark
+
+- (void)onChatPlusBtnSelected:(NSNotification *)notification
+{
+    [self hideCurSubViewController];
+    self.viewChatContainer.bounds = self.view.bounds;
+    if ([imUtil isPhotoLibraryAvailable]) {
+        UIImagePickerController *controller = [[UIImagePickerController alloc] init];
+        controller.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+        NSMutableArray *mediaTypes = [NSMutableArray array];
+        [mediaTypes addObject:(__bridge NSString *)kUTTypeImage];
+        controller.mediaTypes = mediaTypes;
+        controller.delegate = self;
+        [self presentViewController:controller
+                                      animated:YES
+                                    completion:^(void){
+                                        NSLog(@"Picker View Controller is presented");
+                                    }];
+    }
+}
 
 - (void)onEmotionSelected:(NSNotification *)notification
 {
