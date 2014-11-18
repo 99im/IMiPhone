@@ -25,6 +25,8 @@
 
 + (ChatMessageProxy *)sharedProxy;
 
+- (void)sendHttpUploadimg:(id)image;
+
 - (void)sendTypeP2PChatList:(NSInteger)targetUid before:(NSInteger)beforeMid after:(NSInteger)afterMid startAt:(NSInteger)startIndex getNum:(NSInteger)pageNum;
 - (void)parseTypeP2PChatList:(id)json;
 

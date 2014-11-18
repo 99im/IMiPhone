@@ -22,6 +22,31 @@ static ChatMessageProxy *messageProxy = nil;
     return messageProxy;
 }
 
+- (void)sendHttpUploadimg:(id)image
+{
+    IMNWMessage *message = [IMNWMessage createForHttp:PATH_H__CHAT_UPLOADIMG_ withParams:nil withMethod:METHOD_H__CHAT_UPLOADIMG_ ssl:NO];
+    NSMutableDictionary *multiPartData = [NSMutableDictionary dictionary];
+    [multiPartData setObject:image forKey:KEYQ_H__CHAT_UPLOADIMG__UPLOADIMG];
+    message.multiPartData = multiPartData;
+    [[IMNWManager sharedNWManager] sendMessage:message withResponse:^(NSString *responseString, NSData *responseData) {
+        NSError *err = nil;
+        NSMutableDictionary *json = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingAllowFragments error:&err];
+        if (err) {
+            NSLog(@"JSON create error: %@", err);
+        }
+        else {
+            int errorcode = [[json objectForKey:KEYP_H__CHAT_UPLOADIMG__ERROR_CODE] intValue];
+            if (errorcode == 0) {
+                NSDictionary *dicImgInfo = [json objectForKey:KEYP_H__CHAT_UPLOADIMG__IMGINFO];
+                [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_H__CHAT_UPLOADIMG_ object:nil userInfo:dicImgInfo];
+            }
+            else {
+                [self processErrorCode:errorcode fromSource:PATH_H__CHAT_UPLOADIMG_ useNotiName:NOTI_H__CHAT_UPLOADIMG_];
+            }
+        }
+    }];
+}
+
 - (void)sendTypeP2PChatList:(NSInteger)targetUid before:(NSInteger)beforeMid after:(NSInteger)afterMid startAt:(NSInteger)startIndex getNum:(NSInteger)pageNum
 {
     
