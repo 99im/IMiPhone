@@ -39,4 +39,6 @@
 - (DPUser *)getUserByUid:(long long) uid;
 //- (void)delUserByUid:(NSInteger) uid;
 
+- (void)addServerUinfo:(NSDictionary *)uinfo;
+
 @end
