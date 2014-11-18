@@ -14,6 +14,7 @@
 #import "FriendDataProxy.h"
 #import "UserDataProxy.h"
 #import "ImDataUtil.h"
+#import "UserMessageProxy.h"
 
 #define TYPE_GROUPS @"groups"
 
@@ -52,19 +53,27 @@ static FriendMessageProxy *sharedFriendMessageProxy = nil;
             NSInteger errorcode = [[json
                 objectForKey:KEYP_H__FRIEND_FOCUS_ADD__ERROR_CODE] integerValue];
             if (errorcode != 0) {
-              NSNumber *errorCodeNumber =
-                  [NSNumber numberWithInteger:errorcode];
-              NSString *errorMessage = [errorCodeNumber errorMessage];
-              NSDictionary *userInfo =
-                  [NSDictionary dictionaryWithObject:errorMessage
-                                              forKey:NSLocalizedDescriptionKey];
-              NSError *error = [NSError errorWithDomain:PATH_H__FRIEND_FOCUS_ADD_
-                                                   code:errorcode
-                                               userInfo:userInfo];
-              [[NSNotificationCenter defaultCenter]
-                  postNotificationName:NOTI_H__FRIEND_FOCUS_ADD_
-                                object:error];
+                [self processErrorCode:errorcode fromSource:PATH_H__FRIEND_FOCUS_ADD_ useNotiName:NOTI_H__FRIEND_FOCUS_ADD_];
             } else {
+                if ([UserDataProxy sharedProxy].showUserInfoUid == [uid longLongValue]) {
+                    //保证showUserInfoRleation的正确
+                    if ([UserDataProxy sharedProxy].showUserInfoRleation == RELATION_FRIEND) {
+                        NSLog(@"FOCUS_ADD showUserInfoRleation RELATION_FRIEND 错误!!!");
+
+                    }
+                    else if ([UserDataProxy sharedProxy].showUserInfoRleation == RELATION_FOCUS) {
+                        NSLog(@"FOCUS_ADD showUserInfoRleation RELATION_FOCUS 错误!!!");
+                    }
+                    else if ([UserDataProxy sharedProxy].showUserInfoRleation == RELATION_FAN) {
+                       [UserDataProxy sharedProxy].showUserInfoRleation = RELATION_FRIEND;
+                    }
+                    else if ([UserDataProxy sharedProxy].showUserInfoRleation == RELATION_STRANGER) {
+                         [UserDataProxy sharedProxy].showUserInfoRleation = RELATION_FOCUS;
+                    }
+                    else {
+                        NSLog(@"FOCUS_ADD showUserInfoRleation 非法值!!!");
+                    }
+                }
               [[NSNotificationCenter defaultCenter]
                   postNotificationName:NOTI_H__FRIEND_FOCUS_ADD_
                                 object:nil];
@@ -155,25 +164,31 @@ static FriendMessageProxy *sharedFriendMessageProxy = nil;
                 [[json objectForKey:
                            KEYP_H__FRIEND_FOCUS_CANCEL__ERROR_CODE] integerValue];
             if (errorcode != 0) {
-              NSNumber *errorCodeNumber =
-                  [NSNumber numberWithInteger:errorcode];
-              NSString *errorMessage = [errorCodeNumber errorMessage];
-              NSDictionary *userInfo =
-                  [NSDictionary dictionaryWithObject:errorMessage
-                                              forKey:NSLocalizedDescriptionKey];
-              NSError *error =
-                  [NSError errorWithDomain:PATH_H__FRIEND_FOCUS_CANCEL_
-                                      code:errorcode
-                                  userInfo:userInfo];
-              [[NSNotificationCenter defaultCenter]
-                  postNotificationName:NOTI_H__FRIEND_FOCUS_CANCEL_
-                                object:error];
-            } else {
-              [[NSNotificationCenter defaultCenter]
-                  postNotificationName:NOTI_H__FRIEND_FOCUS_CANCEL_
-                                object:nil];
+                [self processErrorCode:errorcode fromSource:PATH_H__FRIEND_FOCUS_CANCEL_ useNotiName:NOTI_H__FRIEND_FOCUS_CANCEL_];
+            }
+            else {
+////                修改关注列表
+//                [[FriendDataProxy sharedProxy] deleteFocusUserByUid:uid];
+////                修改好友列表
+//                [[FriendDataProxy sharedProxy] deleteFriendByUid:uid];
+                if ([UserDataProxy sharedProxy].showUserInfoUid == [uid longLongValue]) {
+                    //保证showUserInfoRleation的正确
+                    if ([UserDataProxy sharedProxy].showUserInfoRleation == RELATION_FRIEND) {
+                        [UserDataProxy sharedProxy].showUserInfoRleation = RELATION_FAN;
+                        }
+                    else if ([UserDataProxy sharedProxy].showUserInfoRleation == RELATION_FOCUS) {
+                        [UserDataProxy sharedProxy].showUserInfoRleation = RELATION_STRANGER;
+                    }
+                    else {
+                        NSLog(@"showUserInfoRleation 错误!!!");
+                    }
+                }
+                [[NSNotificationCenter defaultCenter]
+                 postNotificationName:NOTI_H__FRIEND_FOCUS_CANCEL_
+                 object:nil];
             }
           }
+          
       }];
 }
 
@@ -260,6 +275,12 @@ static FriendMessageProxy *sharedFriendMessageProxy = nil;
                  NSArray *list = [json objectForKey:KEYP_H__FRIEND_FRIEND_LIST__LIST];
                  NSLog(@"%@",list);
                  if (list) {
+                     //临时删掉所有好友
+                     NSMutableArray *arrFriends = [[FriendDataProxy sharedProxy] mutableArrayFriends];
+                     for (NSInteger i = 0; i < arrFriends.count; i ++) {
+                         [arrFriends removeObjectAtIndex:i];
+                     }
+                     
                      for (NSInteger i = 0; i < list.count; i++) {
                          NSDictionary *tempFriend = list[i];
                          DPUser *dpUser = [[DPUser alloc] init];
@@ -268,7 +289,6 @@ static FriendMessageProxy *sharedFriendMessageProxy = nil;
                          dpUser.uid = [[userInfo objectForKey:KEYP_H__FRIEND_FRIEND_LIST__LIST_UINFO_UID] integerValue];
                          dpUser.oid = [userInfo objectForKey:KEYP_H__FRIEND_FRIEND_LIST__LIST_UINFO_OID];
                          dpUser.nick = [userInfo objectForKey:KEYP_H__FRIEND_FRIEND_LIST__LIST_UINFO_NICK];
-                         
                          
                          NSInteger findIndex = [ImDataUtil getIndexOf:[[UserDataProxy sharedProxy] mutableArrayUsers] byItemKey:DB_PRIMARY_KEY_USER_UID withValue:[NSNumber numberWithLongLong:dpUser.uid]];;
 

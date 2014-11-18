@@ -43,21 +43,12 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-
-    [[FriendMessageProxy sharedProxy] sendTypeFriendList:[NSNumber numberWithInteger:0] withPageNum:[NSNumber numberWithInteger:50]];
     
     self.searchDisplayController.searchResultsTableView.rowHeight = self.tableView.rowHeight;
     
     
     //组装table数据
-    self.arrFriendsData = [NSMutableArray array];
-    for (NSInteger i = 0; i < [[FriendDataProxy sharedProxy] mutableArrayFriends].count; i++) {
-        DPFriend *friend = [[[FriendDataProxy sharedProxy] mutableArrayFriends] objectAtIndex:i];
-        DPUser *user = [[UserDataProxy sharedProxy] getUserByUid:friend.uid];
-        if (user) {
-            [self.arrFriendsData addObject:user];
-        }
-    }
+    [self initArrFriendsData];
     //footerview
     btnViewContact = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     [btnViewContact.layer setCornerRadius:5.0];
@@ -81,6 +72,7 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    [[FriendMessageProxy sharedProxy] sendTypeFriendList:[NSNumber numberWithInteger:0] withPageNum:[NSNumber numberWithInteger:50]];
     [self registerMessageNotification];
     [super viewWillAppear:animated];
 }
@@ -207,6 +199,7 @@
 
 - (void)receiceFriendListData:(NSNotification *)notification
 {
+    [self initArrFriendsData];
     [self.tableView reloadData];
 }
 
@@ -244,6 +237,21 @@
     
     return YES;
     
+}
+
+#pragma mark - 组装好友列表数据
+
+- (void)initArrFriendsData
+{
+    //组装table数据
+    self.arrFriendsData = [NSMutableArray array];
+    for (NSInteger i = 0; i < [[FriendDataProxy sharedProxy] mutableArrayFriends].count; i++) {
+        DPFriend *friend = [[[FriendDataProxy sharedProxy] mutableArrayFriends] objectAtIndex:i];
+        DPUser *user = [[UserDataProxy sharedProxy] getUserByUid:friend.uid];
+        if (user) {
+            [self.arrFriendsData addObject:user];
+        }
+    }
 }
 
 @end
