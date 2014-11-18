@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="sWe-ai-dJr">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="sWe-ai-dJr">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
@@ -1781,7 +1781,7 @@
                                     <outlet property="imgAvatar" destination="Jif-IK-TEo" id="Rue-6y-2dg"/>
                                     <outlet property="lblIntro" destination="wmR-yv-xG7" id="KW2-oR-uQh"/>
                                     <outlet property="lblName" destination="xTc-Fb-b5C" id="2cw-TC-5Mc"/>
-                                    <segue destination="nqj-0p-hk3" kind="push" identifier="groupList2viewInfoSegue" id="Dql-ZX-dEr"/>
+                                    <segue destination="yEJ-R3-2p3" kind="push" identifier="groupList2GroupChat" id="55j-EX-b7r"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -2807,12 +2807,12 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="yXo-ak-l89"/>
         <segue reference="AcC-yW-RwT"/>
-        <segue reference="iIs-SU-ZLV"/>
         <segue reference="kdV-GO-inJ"/>
-        <segue reference="j7u-OT-bsU"/>
-        <segue reference="NpR-cO-pjh"/>
-        <segue reference="1vQ-4Q-Gdd"/>
+        <segue reference="iIs-SU-ZLV"/>
         <segue reference="8gL-WP-3D1"/>
+        <segue reference="1vQ-4Q-Gdd"/>
+        <segue reference="55j-EX-b7r"/>
     </inferredMetricsTieBreakers>
 </document>
