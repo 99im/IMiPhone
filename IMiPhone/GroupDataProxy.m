@@ -234,7 +234,7 @@ static GroupDataProxy *sharedGroupDataProxy = nil;
 
 + (BOOL)isInMyGroups:(DPGroup *)dpGroup
 {
-    NSLog(@"myRelation:%li", dpGroup.myRelation);
+    NSLog(@"myRelation:%li", (long)dpGroup.myRelation);
     if (dpGroup.myRelation > 0) {
         return YES;
     }

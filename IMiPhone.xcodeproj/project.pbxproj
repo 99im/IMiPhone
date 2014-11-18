@@ -182,12 +182,13 @@
 		11FDE12319EFB516002AEDB7 /* FriendDAO.m in Sources */ = {isa = PBXBuildFile; fileRef = 11FDE12219EFB516002AEDB7 /* FriendDAO.m */; };
 		11FDE12619EFB52F002AEDB7 /* DBFriend.m in Sources */ = {isa = PBXBuildFile; fileRef = 11FDE12519EFB52F002AEDB7 /* DBFriend.m */; };
 		581A27321A1AE5D200E5BE5F /* AccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 581A27311A1AE5D200E5BE5F /* AccountViewController.m */; };
+		581A27361A1AE86000E5BE5F /* shanghai.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 581A27351A1AE86000E5BE5F /* shanghai.gpx */; };
+		581A27371A1AE9AA00E5BE5F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 585971F91999F0C700258CB1 /* InfoPlist.strings */; };
 		5825D8F119D808CA004FF6FF /* CategoryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5825D8F019D808CA004FF6FF /* CategoryTableViewController.m */; };
 		58438C0D19D412E400B6962B /* NearbyTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58438C0C19D412E400B6962B /* NearbyTableViewController.m */; };
 		585971D21999F0C700258CB1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 585971D11999F0C700258CB1 /* Foundation.framework */; };
 		585971D41999F0C700258CB1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 585971D31999F0C700258CB1 /* CoreGraphics.framework */; };
 		585971D61999F0C700258CB1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 585971D51999F0C700258CB1 /* UIKit.framework */; };
-		585971DC1999F0C700258CB1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 585971DA1999F0C700258CB1 /* InfoPlist.strings */; };
 		585971DE1999F0C700258CB1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 585971DD1999F0C700258CB1 /* main.m */; };
 		585971E21999F0C700258CB1 /* imAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 585971E11999F0C700258CB1 /* imAppDelegate.m */; };
 		585971E81999F0C700258CB1 /* imViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 585971E71999F0C700258CB1 /* imViewController.m */; };
@@ -300,7 +301,6 @@
 		AB6396231A038CA500FF0BC6 /* DPSysMessageGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = AB6396221A038CA500FF0BC6 /* DPSysMessageGroup.m */; };
 		AB645E4A1A19CD00008AC05D /* LocationGroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB645E491A19CD00008AC05D /* LocationGroupViewController.m */; };
 		AB645E531A19F8C9008AC05D /* DiscoveryMessageProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = AB645E521A19F8C9008AC05D /* DiscoveryMessageProxy.m */; };
-		AB64602E1A1AE6A5008AC05D /* shanghai.gpx in Resources */ = {isa = PBXBuildFile; fileRef = AB64602D1A1AE6A5008AC05D /* shanghai.gpx */; };
 		AB72235119ED110700E603E2 /* CategoryListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AB5554E719EBEAFA00B413F3 /* CategoryListTableViewCell.m */; };
 		ABA91EF919F64B970017B045 /* GroupTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ABA91EF819F64B970017B045 /* GroupTableViewCell.m */; };
 		ABA91EFC19F658270017B045 /* GroupTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABA91EFB19F658270017B045 /* GroupTableViewController.m */; };
@@ -478,6 +478,7 @@
 		11FDE12519EFB52F002AEDB7 /* DBFriend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBFriend.m; sourceTree = "<group>"; };
 		581A27301A1AE5D200E5BE5F /* AccountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AccountViewController.h; path = IMiPhone/AccountViewController.h; sourceTree = "<group>"; };
 		581A27311A1AE5D200E5BE5F /* AccountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AccountViewController.m; path = IMiPhone/AccountViewController.m; sourceTree = "<group>"; };
+		581A27351A1AE86000E5BE5F /* shanghai.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = shanghai.gpx; sourceTree = "<group>"; };
 		5825D8EF19D808CA004FF6FF /* CategoryTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryTableViewController.h; sourceTree = "<group>"; };
 		5825D8F019D808CA004FF6FF /* CategoryTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoryTableViewController.m; sourceTree = "<group>"; };
 		58438C0B19D412E400B6962B /* NearbyTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NearbyTableViewController.h; sourceTree = "<group>"; };
@@ -632,7 +633,6 @@
 		AB645E491A19CD00008AC05D /* LocationGroupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationGroupViewController.m; sourceTree = "<group>"; };
 		AB645E511A19F8C9008AC05D /* DiscoveryMessageProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiscoveryMessageProxy.h; sourceTree = "<group>"; };
 		AB645E521A19F8C9008AC05D /* DiscoveryMessageProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiscoveryMessageProxy.m; sourceTree = "<group>"; };
-		AB64602D1A1AE6A5008AC05D /* shanghai.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = shanghai.gpx; sourceTree = "<group>"; };
 		ABA91EF719F64B970017B045 /* GroupTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupTableViewCell.h; sourceTree = "<group>"; };
 		ABA91EF819F64B970017B045 /* GroupTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupTableViewCell.m; sourceTree = "<group>"; };
 		ABA91EFA19F658270017B045 /* GroupTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupTableViewController.h; sourceTree = "<group>"; };
@@ -835,6 +835,26 @@
 			name = Msg;
 			sourceTree = "<group>";
 		};
+		581A27331A1AE70500E5BE5F /* pch */ = {
+			isa = PBXGroup;
+			children = (
+				11FDE12019EFA3A0002AEDB7 /* MessageHttpDefine.pch */,
+				58A331AF19E547CC005BE980 /* MessageSocketDefine.pch */,
+				585971DF1999F0C700258CB1 /* IMiPhone-Prefix.pch */,
+			);
+			name = pch;
+			sourceTree = "<group>";
+		};
+		581A27341A1AE71E00E5BE5F /* plist */ = {
+			isa = PBXGroup;
+			children = (
+				585971D91999F0C700258CB1 /* IMiPhone-Info.plist */,
+				58C14DEC19CAE196009334E1 /* contact.plist */,
+				58B9F66519F8DEE200567BCC /* emotion.plist */,
+			);
+			name = plist;
+			sourceTree = "<group>";
+		};
 		58438C0A19D412C400B6962B /* Nearby */ = {
 			isa = PBXGroup;
 			children = (
@@ -928,17 +948,13 @@
 		585971D81999F0C700258CB1 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				11FDE12019EFA3A0002AEDB7 /* MessageHttpDefine.pch */,
-				AB64602D1A1AE6A5008AC05D /* shanghai.gpx */,
-				58A331AF19E547CC005BE980 /* MessageSocketDefine.pch */,
+				581A27341A1AE71E00E5BE5F /* plist */,
+				581A27331A1AE70500E5BE5F /* pch */,
 				5859720819A1CBE500258CB1 /* Image */,
-				585971D91999F0C700258CB1 /* IMiPhone-Info.plist */,
-				585971DA1999F0C700258CB1 /* InfoPlist.strings */,
 				585971DD1999F0C700258CB1 /* main.m */,
-				585971DF1999F0C700258CB1 /* IMiPhone-Prefix.pch */,
+				581A27351A1AE86000E5BE5F /* shanghai.gpx */,
+				585971DA1999F0C700258CB1 /* InfoPlist.strings */,
 				58AF048A19AF10560077DCBC /* Localizable.strings */,
-				58C14DEC19CAE196009334E1 /* contact.plist */,
-				58B9F66519F8DEE200567BCC /* emotion.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -1334,13 +1350,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				581A27371A1AE9AA00E5BE5F /* InfoPlist.strings in Resources */,
 				11DF9F8319A2276C00AE5D89 /* splash.jpg in Resources */,
 				58C14DED19CAE196009334E1 /* contact.plist in Resources */,
 				58AF048719AF10560077DCBC /* Localizable.strings in Resources */,
 				AB24A95419F7CE2F00026299 /* Main.storyboard in Resources */,
-				AB64602E1A1AE6A5008AC05D /* shanghai.gpx in Resources */,
+				581A27361A1AE86000E5BE5F /* shanghai.gpx in Resources */,
 				585971EA1999F0C700258CB1 /* Images.xcassets in Resources */,
-				585971DC1999F0C700258CB1 /* InfoPlist.strings in Resources */,
 				58B9F66619F8DEE200567BCC /* emotion.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1407,7 +1423,6 @@
 				58F2AA3419A2F85400DC2FFB /* imUtil.m in Sources */,
 				58D95F5119A5ECA4007139AB /* UserMessageProxy.m in Sources */,
 				58B9F66419F8D24100567BCC /* EmotionViewController.m in Sources */,
-				581A272F1A11DE6400E5BE5F /* AccountViewController.m in Sources */,
 				114BF73C1A198A6F00A28A94 /* DBFocusUser.m in Sources */,
 				116B6E9519B058A400DB1B5E /* SqlightAdapter.m in Sources */,
 				58B496E819A7186A0082AE30 /* MKNetworkOperation.m in Sources */,
