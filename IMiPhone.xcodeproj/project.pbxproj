@@ -835,6 +835,26 @@
 			name = Msg;
 			sourceTree = "<group>";
 		};
+		581A27331A1AE70500E5BE5F /* pch */ = {
+			isa = PBXGroup;
+			children = (
+				11FDE12019EFA3A0002AEDB7 /* MessageHttpDefine.pch */,
+				58A331AF19E547CC005BE980 /* MessageSocketDefine.pch */,
+				585971DF1999F0C700258CB1 /* IMiPhone-Prefix.pch */,
+			);
+			name = pch;
+			sourceTree = "<group>";
+		};
+		581A27341A1AE71E00E5BE5F /* plist */ = {
+			isa = PBXGroup;
+			children = (
+				585971D91999F0C700258CB1 /* IMiPhone-Info.plist */,
+				58C14DEC19CAE196009334E1 /* contact.plist */,
+				58B9F66519F8DEE200567BCC /* emotion.plist */,
+			);
+			name = plist;
+			sourceTree = "<group>";
+		};
 		58438C0A19D412C400B6962B /* Nearby */ = {
 			isa = PBXGroup;
 			children = (
@@ -928,17 +948,13 @@
 		585971D81999F0C700258CB1 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				AB645E541A1A1A84008AC05D /* shanghai.gpx */,
-				11FDE12019EFA3A0002AEDB7 /* MessageHttpDefine.pch */,
-				58A331AF19E547CC005BE980 /* MessageSocketDefine.pch */,
+				581A27341A1AE71E00E5BE5F /* plist */,
+				581A27331A1AE70500E5BE5F /* pch */,
 				5859720819A1CBE500258CB1 /* Image */,
-				585971D91999F0C700258CB1 /* IMiPhone-Info.plist */,
-				585971DA1999F0C700258CB1 /* InfoPlist.strings */,
+				AB645E541A1A1A84008AC05D /* shanghai.gpx */,
 				585971DD1999F0C700258CB1 /* main.m */,
-				585971DF1999F0C700258CB1 /* IMiPhone-Prefix.pch */,
+				585971DA1999F0C700258CB1 /* InfoPlist.strings */,
 				58AF048A19AF10560077DCBC /* Localizable.strings */,
-				58C14DEC19CAE196009334E1 /* contact.plist */,
-				58B9F66519F8DEE200567BCC /* emotion.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -1407,7 +1423,6 @@
 				58F2AA3419A2F85400DC2FFB /* imUtil.m in Sources */,
 				58D95F5119A5ECA4007139AB /* UserMessageProxy.m in Sources */,
 				58B9F66419F8D24100567BCC /* EmotionViewController.m in Sources */,
-				581A272F1A11DE6400E5BE5F /* AccountViewController.m in Sources */,
 				114BF73C1A198A6F00A28A94 /* DBFocusUser.m in Sources */,
 				116B6E9519B058A400DB1B5E /* SqlightAdapter.m in Sources */,
 				58B496E819A7186A0082AE30 /* MKNetworkOperation.m in Sources */,
