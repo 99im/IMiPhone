@@ -105,9 +105,9 @@
     if (arrDestProps) {
         for (NSInteger i = 0; i < arrDestProps.count; i++) {
             NSString *key = arrDestProps[i][0];
-            id autoReleaseI;
-            if ([src validateValue:&autoReleaseI forKey:key error:nil]) {
-               id value = [src valueForKey:key];
+
+            if ([self isValidKey:key ofObj:src]) {
+                id value = [src valueForKey:key];
                 if (value != nil) {
                     [dest setValue:value forKey:key];
                 }
@@ -122,7 +122,7 @@
     if (srcArray) {
         resultIndex = [srcArray indexOfObjectPassingTest:^BOOL(id obj, NSUInteger idx, BOOL *stop) {
             BOOL result = NO;
-            if (obj && [obj validateValue:nil forKey:key error:nil]) {
+            if (obj && [self isValidKey:key ofObj:obj]) {
                 id tempItemValue = [obj valueForKey:key];
                 
                 result = [[NSString stringWithFormat:@"%@",tempItemValue] isEqualToString:[NSString stringWithFormat:@"%@",value] ];
@@ -131,6 +131,18 @@
         }];
     }
     return resultIndex;
+}
+
++ (BOOL)isValidKey:(NSString *)key ofObj:(id)obj
+{
+    NSArray *arrProps = [ImDataUtil getArrPropsFromDataModeClass:[obj class] containSuper:YES];
+    for (NSInteger i = 0; i < arrProps.count; i++) {
+        NSString *tempKey = arrProps[i][0];
+        if ([tempKey isEqualToString:key]) {
+            return YES;
+        }
+    }
+    return NO;
 }
 
 @end

@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "FriendDataProxy.h"
+#import "IMNWProxyProtocol.h"
 
-@interface CategoryTableViewController : UITableViewController
+@interface CategoryTableViewController : UITableViewController <IMNWProxyProtocol>
 
 @end

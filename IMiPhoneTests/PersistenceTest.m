@@ -152,9 +152,11 @@
 
 - (void)testGetlimitedCountData
 {
-    [DatabaseConfig shareDatabaseConfig].databaseName = @"26";
-    DBChatMessage *dbChatMsg = [[DBChatMessage alloc] init];
-//    [[ChatMessageDAO sharedDAO] query:@"targetId=?" Bind:[NSArray  arrayWithObjects:<#(id), ...#>, nil]]
+
+    [DatabaseConfig shareDatabaseConfig].databaseName = @"27";
+
+    NSArray *arrR = [[UiMessageDAO sharedDAO] query:@"orderid <= 4 order by mid limit 0,5" Bind:nil];
+    NSLog(@"%@",arrR);
     
 }
 

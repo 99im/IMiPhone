@@ -259,5 +259,18 @@ static UserDataProxy *sharedProxy = nil;
     return nil;
 }
 
+- (void)addServerUinfo:(NSDictionary *)uinfo
+{
+    DPUser *dpUser = [[DPUser alloc] init];
+    dpUser.uid = [[uinfo objectForKey:@"uid"] longLongValue];
+    dpUser.oid = [uinfo objectForKey:@"oid"];
+    dpUser.nick = [uinfo objectForKey:@"nick"];
+    dpUser.city = [uinfo objectForKey:@"city"];
+    dpUser.vip = [[uinfo objectForKey:@"vip"] integerValue];
+//    dpUser.logo = [uinfo objectForKey:@"logo"];
+//    dpUser.logoAlbumId = [uinfo objectForKey:@"logoAlbumId"];
+    
+    [[self mutableArrayUsers] addObject:dpUser];
+}
 
 @end
