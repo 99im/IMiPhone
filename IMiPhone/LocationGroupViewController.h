@@ -6,10 +6,11 @@
 //  Copyright (c) 2014年 尹晓君. All rights reserved.
 //
 
-#import "LocationViewController.h"
+//#import "LocationViewController.h"
 #import <MapKit/MapKit.h>
+#import "LocationDataProxy.h"
 
-@interface LocationGroupViewController : LocationViewController <MKMapViewDelegate>
+@interface LocationGroupViewController : UIViewController <MKMapViewDelegate>
 
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 

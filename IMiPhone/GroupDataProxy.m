@@ -34,6 +34,12 @@
 - (void)reset
 {
     self.dicMessages = nil;
+    _arrGroupMyList = nil;
+    _arrGroupsSearch = nil;
+    _groupIdSendLast = 0;
+    _groupInfoCurrent = nil;
+    _groupIdCurrent = 0;
+
 }
 #pragma mark - 静态工具函数
 static GroupDataProxy *sharedGroupDataProxy = nil;
@@ -66,7 +72,7 @@ static GroupDataProxy *sharedGroupDataProxy = nil;
 //    return [GroupDataProxy longLongNowTime:@"yyyyMMddHHmmss"];
 //}
 //
-//+ (long long)getExpireTime:(NSInteger)minutes{
+//+ (long long)getExpireTimeWithMinutes:(NSInteger)minutes{
 //    long long expireTime = [imUtil nowTime];
 //    if (minutes > 1) {
 //        expireTime = expireTime + minutes * 60;
@@ -126,7 +132,7 @@ static GroupDataProxy *sharedGroupDataProxy = nil;
 //    _arrGroupMyList = [NSMutableArray array];
 //    //}
 //
-//    long long localExpireTime = [imUtil getExpireTime:TIMEOUT_GROUP_INFO];
+//    long long localExpireTime = [imUtil getExpireTimeWithMinutes:TIMEOUT_GROUP_INFO];
 //    for (NSInteger i = 0; i < [list count]; i++) {
 //        DPGroup *dpGroup = [[DPGroup alloc] init];
 //        NSDictionary *group = [list objectAtIndex:i];
@@ -219,7 +225,7 @@ static GroupDataProxy *sharedGroupDataProxy = nil;
 - (void)updateGroupInfo:(DPGroup *)group
 {
     //客户端存储
-    //long long localExpireTime = [imUtil getExpireTime:TIMEOUT_GROUP_INFO];
+    //long long localExpireTime = [imUtil getExpireTimeWithMinutes:TIMEOUT_GROUP_INFO];
     //group.localExpireTime = localExpireTime;
     
     // TODO: 入库保存群信息

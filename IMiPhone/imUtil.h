@@ -34,7 +34,7 @@
 #pragma mark - 获取时间相关
 + (long long)longLongNowTime:(NSString *)dateFormat;
 + (long long)nowTime;
-+ (long long)getExpireTime:(NSInteger)minutes;
++ (long long)getExpireTimeWithMinutes:(NSInteger)minutes;
 
 #pragma mark camera utility
 + (BOOL)isCameraAvailable;
@@ -45,5 +45,7 @@
 + (BOOL)canUserPickVideosFromPhotoLibrary;
 + (BOOL)canUserPickPhotosFromPhotoLibrary;
 + (BOOL)cameraSupportsMedia:(NSString *)paramMediaType sourceType:(UIImagePickerControllerSourceType)paramSourceType;
+
++ (NSString *)storeCacheImage:(UIImage *)image useName:(NSString *)name;
 
 @end

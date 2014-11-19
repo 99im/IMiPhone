@@ -10,6 +10,10 @@
 
 #define NOTI_CHATPLUS_BTNSELECTED @"UIChatPlusBtnSelectedNotifiction"
 
+#define CHATPLUS_BTN_IMAGE @"image"
+#define CHATPLUS_BTN_PHOTO @"photo"
+#define CHATPLUS_BTN_LOCATION @"location"
+
 @interface ChatPlusViewController : UIViewController
 
 @end

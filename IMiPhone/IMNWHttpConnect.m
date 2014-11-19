@@ -33,14 +33,13 @@
                 [op addData:object forKey:key];
             }
             else if ([object isKindOfClass:[NSString class]]) {
-                [op addFile:object forKey:key];
+                [op addFile:object  forKey:key];
             }
         }
     }
     
     [op addCompletionHandler:^(MKNetworkOperation *completedOperation) {
         NSLog(@"Http connect response string: %@", [completedOperation responseString]);
-        //NSLog(@"Http connect response data: %@", [[NSString alloc] initWithData:[completedOperation responseData] encoding:NSUTF8StringEncoding]);
         if (response) {
             response([completedOperation responseString], [completedOperation responseData]);
         } else {

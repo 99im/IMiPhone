@@ -154,7 +154,7 @@
     
     CGRect bounds = self.view.bounds;
     bounds.origin.y = kbRect.size.height;
-        self.viewChatContainer.bounds = bounds;
+    self.viewChatContainer.bounds = bounds;
     [self hideCurSubViewController];
 }
 
@@ -262,6 +262,16 @@
     }
 }
 
+- (void)scrollToLastCell:(BOOL)animated
+{
+    NSInteger maxRow = [self.tableViewChat numberOfRowsInSection:0] - 1;
+    if (maxRow < 0) {
+        return;
+    }
+    NSIndexPath *indexPathMax = [NSIndexPath indexPathForRow:maxRow inSection:0];
+    [self.tableViewChat scrollToRowAtIndexPath:indexPathMax atScrollPosition:UITableViewScrollPositionBottom animated:animated];
+}
+
 //- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 //{
 //    NSLog(@"will display %@",indexPath);
@@ -277,16 +287,6 @@
         ((UITextField *)sender).text = @"";
     }
 
-}
-
-- (void)scrollToLastCell:(BOOL)animated
-{
-    NSInteger maxRow = [self.tableViewChat numberOfRowsInSection:0] - 1;
-    if (maxRow < 0) {
-       return;
-    }
-    NSIndexPath *indexPathMax = [NSIndexPath indexPathForRow:maxRow inSection:0];
-    [self.tableViewChat scrollToRowAtIndexPath:indexPathMax atScrollPosition:UITableViewScrollPositionBottom animated:animated];
 }
 
 #pragma mark - view input text buttons logic
@@ -333,6 +333,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onEmotionSend:) name:NOTI_EMOTION_SEND object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onEmotionDelete:) name:NOTI_EMOTION_DELETE object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onChatPlusBtnSelected:) name:NOTI_CHATPLUS_BTNSELECTED object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onChatUploadImg:) name:NOTI_H__CHAT_UPLOADIMG_ object:nil];
 }
 
 - (void)removeMessageNotification
@@ -342,22 +343,52 @@
 
 #pragma mark
 
+- (void)onChatUploadImg:(NSNotification *)notification
+{
+    if (!notification.object) {
+        NSData *jsonData = [NSJSONSerialization dataWithJSONObject:notification.userInfo options:0 error:nil];
+        NSString *content = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+        [[ChatMessageProxy sharedProxy] sendTypeChat:CHAT_STAGE_P2P targetId:[ChatDataProxy sharedProxy].chatToUid msgType:CHAT_MASSAGE_TYPE_IMAGE content:content];
+    }
+}
+
 - (void)onChatPlusBtnSelected:(NSNotification *)notification
 {
-    [self hideCurSubViewController];
-    self.viewChatContainer.bounds = self.view.bounds;
-    if ([imUtil isPhotoLibraryAvailable]) {
-        UIImagePickerController *controller = [[UIImagePickerController alloc] init];
-        controller.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-        NSMutableArray *mediaTypes = [NSMutableArray array];
-        [mediaTypes addObject:(__bridge NSString *)kUTTypeImage];
-        controller.mediaTypes = mediaTypes;
-        controller.delegate = self;
-        [self presentViewController:controller
-                                      animated:YES
-                                    completion:^(void){
-                                        NSLog(@"Picker View Controller is presented");
-                                    }];
+    NSString *button = [[notification.userInfo allValues] objectAtIndex:0];
+    if ([button isEqualToString:CHATPLUS_BTN_PHOTO]) {
+        if ([imUtil isCameraAvailable] && [imUtil doesCameraSupportTakingPhotos]) {
+            UIImagePickerController *controller = [[UIImagePickerController alloc] init];
+            controller.sourceType = UIImagePickerControllerSourceTypeCamera;
+            if ([imUtil isFrontCameraAvailable]) {
+                controller.cameraDevice = UIImagePickerControllerCameraDeviceFront;
+            }
+            NSMutableArray *mediaTypes = [NSMutableArray array];
+            [mediaTypes addObject:(__bridge NSString *)kUTTypeImage];
+            controller.mediaTypes = mediaTypes;
+            controller.delegate = self;
+            [self presentViewController:controller
+                                          animated:YES
+                                        completion:^(void){
+                                            NSLog(@"Picker View Controller is presented");
+                                        }];
+        }
+    }
+    else if ([button isEqualToString:CHATPLUS_BTN_IMAGE]) {
+        [self hideCurSubViewController];
+        self.viewChatContainer.bounds = self.view.bounds;
+        if ([imUtil isPhotoLibraryAvailable]) {
+            UIImagePickerController *controller = [[UIImagePickerController alloc] init];
+            controller.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+            NSMutableArray *mediaTypes = [NSMutableArray array];
+            [mediaTypes addObject:(__bridge NSString *)kUTTypeImage];
+            controller.mediaTypes = mediaTypes;
+            controller.delegate = self;
+            [self presentViewController:controller
+                                          animated:YES
+                                        completion:^(void){
+                                            NSLog(@"Picker View Controller is presented");
+                                        }];
+        }
     }
 }
 
@@ -397,6 +428,25 @@
     [self.arrAllCellFrames addObject:chatTableCellFrame];
     [self.tableViewChat reloadData];
     [self scrollToLastCell:YES];
+}
+
+#pragma mark - UIImagePickerControllerDelegate
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+    [picker dismissViewControllerAnimated:YES completion:^() {
+        UIImage *originalImage = [info objectForKey:UIImagePickerControllerOriginalImage];
+        //NSURL *referenceURL = [info objectForKey:UIImagePickerControllerReferenceURL];
+        //NSString *mediaType = [info objectForKey:UIImagePickerControllerMediaType];
+        
+        NSString *imgPath = [imUtil storeCacheImage:originalImage useName:@"test"];
+        if (imgPath) {
+            [[ChatMessageProxy sharedProxy] sendHttpUploadimg:imgPath];
+        }
+    }];
+}
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
+    [picker dismissViewControllerAnimated:YES completion:^(){
+    }];
 }
 
 @end
