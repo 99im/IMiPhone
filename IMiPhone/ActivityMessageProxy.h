@@ -7,9 +7,36 @@
 //
 
 #import "IMNWProxy.h"
+#import "IMNWManager.h"
+#import "ActivityDataProxy.h"
+#import "UserDataProxy.h"
+
+#define ACTIVITY_TYPE_GROUP 1
+#define ACTIVITY_TYPE_CLUB 2
+#define ACTIVITY_TYPE_TEMP 3
+
+#define ACTIVITY_LIMIT_NONE 0
+#define ACTIVITY_LIMIT_FEMALE 1
+#define ACTIVITY_LIMIT_GROUP 2
+#define ACTIVITY_LIMIT_CLUB_FAN 3
+#define ACTIVITY_LIMIT_VIP 4
+
+#define ACTIVITY_PAY_TYPE_AA 1
+#define ACTIVITY_PAY_TYPE_ORIGINATOR 2
+#define ACTIVITY_PAY_TYPE_FAIL 3
+#define ACTIVITY_PAY_TYPE_BY_HOUR 4
 
 @interface ActivityMessageProxy : IMNWProxy
 
 + (ActivityMessageProxy *)sharedProxy;
+
+//创建活动
+- (void)sendHttpCreateWithType:(NSInteger)type withTypeId:(long long)typeId withTitle:(NSString *)title withDetail:(NSString *)detail withSignerLimit:(NSInteger)signerLimit withPayType:(NSInteger)payType withLon:(NSString *)lon withLat:(NSString *)lat withAlt:(NSString *)alt withBeginTime:(NSString *)beginTime withMaxNum:(NSInteger)maxNum;
+
+//加入活动
+- (void)sendHttpJoinWithAid:(long long)aid;
+
+//活动信息查询
+- (void)sendHttpInfoWithAid:(long long)aid;
 
 @end
