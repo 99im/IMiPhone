@@ -10,8 +10,6 @@
 
 @implementation DPActivity
 
-@synthesize
-
 @synthesize aid;//活动id
 @synthesize title;//活动标题
 @synthesize detail;
