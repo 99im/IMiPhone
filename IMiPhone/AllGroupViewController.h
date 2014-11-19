@@ -17,8 +17,8 @@
 @property (strong, nonatomic) NSMutableArray *nearbyGroupRecruitList;
 
 //当前使用数据
-@property (strong, nonatomic) NSMutableArray *nowGroupList;
+@property (nonatomic, retain) NSArray *nowGroupList;
 
 //设置当前显示数据
-- (void) setNowGroupList:(NSInteger) tag;
+- (void) settingNowGroupList:(NSInteger) tag;
 @end

@@ -25,9 +25,6 @@
     self.nearbyGroupList = [[[[NSDictionary alloc] initWithContentsOfFile:plistPath] valueForKey:@"玩乐"] objectForKey:@"nearbyGroups"];
     self.nearbyGroupRecruitList = [[[[NSDictionary alloc] initWithContentsOfFile:plistPath] valueForKey:@"玩乐"] objectForKey:@"nearbyGroupRecruit"];
     
-    //IOS7 TableView适配
-    self.tableView.contentInset = UIEdgeInsetsMake(- 64, 0, 0, 0);
-    
 }
 
 
@@ -46,40 +43,37 @@
 }
 */
 
-- (void) setNowGroupList:(NSInteger)tag{
-    if (tag == 0) {
-        self.nowGroupList = self.nearbyGroupList;
-    }
-    else
-    {
+- (void) settingNowGroupList:(NSInteger)tag{
+    if (tag == 1)
         self.nowGroupList = self.nearbyGroupRecruitList;
-    }
+    else
+        self.nowGroupList = self.nearbyGroupList;
 }
 
 
 - (NSInteger) numberOfSectionsInTableView:(UITableView *)tableView{
-    return self.nearbyGroupList.count;
+    return self.nowGroupList.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     AllGroupTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"allGroupCell" forIndexPath:indexPath];
-    [cell paddingDataForCell:[[self.nearbyGroupList objectAtIndex:indexPath.section] objectAtIndex:indexPath.row]];
+    [cell paddingDataForCell:[[self.nowGroupList objectAtIndex:indexPath.section] objectAtIndex:indexPath.row]];
     return cell;
     return nil;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    for (NSInteger i = 0; i < self.nearbyGroupList.count; i ++) {
+    for (NSInteger i = 0; i < self.nowGroupList.count; i ++) {
         if (section == i) {
-            NSLog(@"%lu",(unsigned long)[[self.nearbyGroupList objectAtIndex:i] count]);
-            return [[self.nearbyGroupList objectAtIndex:i] count];
+            NSLog(@"%lu",(unsigned long)[[self.nowGroupList objectAtIndex:i] count]);
+            return [[self.nowGroupList objectAtIndex:i] count];
         }
     }
     return 0;
 }
 
 - (UIView *) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
-    for (NSInteger i = 0; i < self.nearbyGroupList.count; i ++) {
+    for (NSInteger i = 0; i < self.nowGroupList.count; i ++) {
         if (section == i) {
            
             UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 22)];
@@ -95,7 +89,7 @@
             UILabel *lblNum = [[UILabel alloc] initWithFrame:CGRectMake(200, 2, 100, 22)];
             lblNum.font = [UIFont fontWithName:@"Arial" size:12.0f];
             NSString *strN = @"个群组";
-            NSInteger num = [[self.nearbyGroupList objectAtIndex:i] count];
+            NSInteger num = [[self.nowGroupList objectAtIndex:i] count];
             NSString *strNum = [NSString stringWithFormat:@"%ld",(long)num];
             strNum = [strNum stringByAppendingString:strN];
             lblNum.text = strNum;
@@ -108,6 +102,12 @@
         }
     }
     return nil;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [self.tableView deselectRowAtIndexPath:indexPath animated:NO];
+    [self.view endEditing:YES];
 }
 
 @end

@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AllGroupViewController.h"
 
 @interface FindNearbyGroupViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segmentedControl;

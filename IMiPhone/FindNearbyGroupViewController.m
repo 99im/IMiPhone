@@ -20,7 +20,12 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self openSubTags:-1];
-    self.automaticallyAdjustsScrollViewInsets = YES;
+    
+//    if(floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_6_1)
+//    {
+//        self.edgesForExtendedLayout = UIRectEdgeNone;
+//        self.automaticallyAdjustsScrollViewInsets = NO;
+//    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -44,32 +49,50 @@
 - (void)openSubTags:(NSInteger)tag
 {
     if (tag == -1) {
-        tag = 1;
+        tag = 0;
     }
-    NSString *subviewID = nil;
+    NSString *subviewID = @"allGroupView";
+    NSString *subviewName = nil;
    // NSString *subviewTitle = [self.segmentedControl titleForSegmentAtIndex:tag];
     switch (tag) {
         case 1:
-            subviewID = @"allGroupView";
+            subviewName = @"RecruitmentGroupView";
             break;
         case 0:
         default:
-            subviewID = @"allGroupView";
+            subviewName = @"allGroupView";
             break;
     }
-    if (![subviewID isEqualToString:self.curSubViewId]) {
+    if (![subviewName isEqualToString:self.curSubViewId]) {
         [self.curViewController.view removeFromSuperview];
         [self.curViewController removeFromParentViewController];
         
         UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        UIViewController *viewController = nil;
+        AllGroupViewController *viewController = nil;
         viewController = [mainStoryboard instantiateViewControllerWithIdentifier:subviewID];
         UIView *view = viewController.view;
         [self.segmentView addSubview:view];
         [self addChildViewController:viewController];
+        [viewController settingNowGroupList:tag];
         self.curViewController = viewController;
-        self.curSubViewId = subviewID;
-       // self.navigationItem.title = subviewTitle;
+        self.curSubViewId = subviewName;
+//
+//        [self.curViewController.view removeFromSuperview];
+//        [self.curViewController removeFromParentViewController];
+//        
+//        UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+//        UIViewController *viewController = nil;
+//        viewController = [mainStoryboard instantiateViewControllerWithIdentifier:subviewID];
+//        UIView *view = viewController.view;
+//        [self.segmentView addSubview:view];
+//        [self addChildViewController:viewController];
+//
+//        
+//        self.curViewController = viewController;
+//        self.curSubViewId = subviewID;
+        // self.navigationItem.title = subviewTitle;
     }
+    
+    
 }
 @end
