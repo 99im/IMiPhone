@@ -8,7 +8,7 @@
 
 #import "ChatTableViewCell.h"
 #import "DPChatMessage.h"
-
+#import "ChatMessageProxy.h"
 
 @interface ChatTableViewCell ()
 //自定义组件
@@ -26,6 +26,10 @@
 - (void)setCellFrame:(ChatTableViewCellFrame *)cellFrame
 {
     _cellFrame = cellFrame;
+    
+    if (_cellFrame.chatMessage.msgType == CHAT_MASSAGE_TYPE_IMAGE) {
+        [_cellFrame.chatMessage parseImageContent];
+    }
     
     self.imgViewBg.frame = cellFrame.rectContentBg;
     

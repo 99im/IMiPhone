@@ -19,4 +19,10 @@
 @property (nonatomic, retain) NSString *sendTime;
 @property (nonatomic, retain) NSString *gid;
 
+//图片信息
+@property (nonatomic, retain) NSString *imgThumbnail;
+@property (nonatomic, retain) NSString *imgSrc;
+
+- (void)parseImageContent;
+
 @end

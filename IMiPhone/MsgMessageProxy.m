@@ -44,7 +44,7 @@ static MsgMessageProxy  *messageProxy = nil;
                                       options:NSJSONReadingAllowFragments
                                       error:&err];
          if (err) {
-             NSAssert1(YES, @"JSON create error: %@", err);
+             NSLog(@"JSON create error: %@", err);
          } else {
              
              int errorcode = [

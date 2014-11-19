@@ -66,6 +66,10 @@ example: {"mark":"chat","type":"chat","info":{"stage":"p2p","content":"hello","m
 #define KEYQ_S_CHAT_CHAT_TARGETID @"targetId" //targetId int 好友uid 群组id
 #define KEYQ_S_CHAT_CHAT_MSGTYPE @"msgType" //msgType int 消息类型 0 为文本 1 为图片
 #define KEYQ_S_CHAT_CHAT_CONTENT @"content" //content string 消息内容
+#define KEYP_S_CHAT_CHAT_CONTENT_IMGEXT @"imgExt" // imgExt 图片类型消息才有的参数：［id，类型，大小，宽，高］
+#define KEYP_S_CHAT_CHAT_CONTENT_SIGN @"sign" // sign 图片类型消息才有的参数
+#define KEYP_S_CHAT_CHAT_CONTENT_THUMBNAIL @"thumbnail" // thumbnail 图片类型消息才有的参数：缩略图url
+#define KEYP_S_CHAT_CHAT_CONTENT_SRC @"src" // src 图片类型消息才有的参数：原图url
 #define KEYP_S_CHAT_CHAT_RES @"res" //res
 
 /*
