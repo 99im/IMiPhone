@@ -202,4 +202,24 @@
     }];
     return result;
 }
+
++ (NSString *)storeCacheImage:(UIImage *)image useName:(NSString *)name
+{
+    NSData *imgData;
+    NSString *imgPath;
+    [[NSFileManager defaultManager] createDirectoryAtPath:[NSString stringWithFormat:@"%@/Documents/cache/image/", NSHomeDirectory()] withIntermediateDirectories:YES attributes:nil error:nil];
+    if (UIImagePNGRepresentation(image) == nil) {
+        imgData = UIImageJPEGRepresentation(image, 1);
+        imgPath = [NSString stringWithFormat:@"%@/Documents/cache/image/%@.jpg", NSHomeDirectory(), name];
+    } else {
+        imgData = UIImagePNGRepresentation(image);
+        imgPath = [NSString stringWithFormat:@"%@/Documents/cache/image/%@.png", NSHomeDirectory(), name];
+    }
+    
+    if (imgPath) {
+        [imgData writeToFile:imgPath atomically:YES];
+    }
+    return imgPath;
+}
+
 @end
