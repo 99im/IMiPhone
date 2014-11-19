@@ -312,8 +312,8 @@
 		DBD2A9341A1A137C0020EECD /* AllGroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DBD2A9331A1A137C0020EECD /* AllGroupViewController.m */; };
 		DBD687771A1C8AF00001857D /* DBFanUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 114BF7471A1A458A00A28A94 /* DBFanUser.m */; };
 		DBD687781A1C8B580001857D /* DPFanUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 114BF74F1A1A499100A28A94 /* DPFanUser.m */; };
-		DBD6877E1A1C99AB0001857D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DBD6877C1A1C99AB0001857D /* Main.storyboard */; };
 		DBDD8F401A1AE31300B9F5C9 /* AllGroupTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DBDD8F3F1A1AE31300B9F5C9 /* AllGroupTableViewCell.m */; };
+		DBF2E5C21A1C9C9E00C85E27 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DBF2E5C01A1C9C9E00C85E27 /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -663,9 +663,9 @@
 		DBD2A9301A1A10F50020EECD /* FindNearbyGroupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FindNearbyGroupViewController.m; sourceTree = "<group>"; };
 		DBD2A9321A1A137C0020EECD /* AllGroupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AllGroupViewController.h; sourceTree = "<group>"; };
 		DBD2A9331A1A137C0020EECD /* AllGroupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AllGroupViewController.m; sourceTree = "<group>"; };
-		DBD6877D1A1C99AB0001857D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = "zh-Hans"; path = "zh-Hans.lproj/Main.storyboard"; sourceTree = "<group>"; };
 		DBDD8F3E1A1AE31300B9F5C9 /* AllGroupTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AllGroupTableViewCell.h; sourceTree = "<group>"; };
 		DBDD8F3F1A1AE31300B9F5C9 /* AllGroupTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AllGroupTableViewCell.m; sourceTree = "<group>"; };
+		DBF2E5C11A1C9C9E00C85E27 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = "zh-Hans"; path = "zh-Hans.lproj/Main.storyboard"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -942,7 +942,7 @@
 		585971D71999F0C700258CB1 /* IMiPhone */ = {
 			isa = PBXGroup;
 			children = (
-				DBD6877C1A1C99AB0001857D /* Main.storyboard */,
+				DBF2E5C01A1C9C9E00C85E27 /* Main.storyboard */,
 				DBD2A9271A1996030020EECD /* Images.xcassets */,
 				DB6FACB61A0B70F00048B76B /* Find */,
 				111B4E9A1A0A26800043A29F /* Activity */,
@@ -1404,7 +1404,7 @@
 				DBD2A9281A1996030020EECD /* Images.xcassets in Resources */,
 				11DF9F8319A2276C00AE5D89 /* splash.jpg in Resources */,
 				DBD2A92B1A19D88D0020EECD /* head.png in Resources */,
-				DBD6877E1A1C99AB0001857D /* Main.storyboard in Resources */,
+				DBF2E5C21A1C9C9E00C85E27 /* Main.storyboard in Resources */,
 				58C14DED19CAE196009334E1 /* contact.plist in Resources */,
 				58AF048719AF10560077DCBC /* Localizable.strings in Resources */,
 				DB6FACC61A0B7BC90048B76B /* FindList.plist in Resources */,
@@ -1778,10 +1778,10 @@
 			name = head.png;
 			sourceTree = "<group>";
 		};
-		DBD6877C1A1C99AB0001857D /* Main.storyboard */ = {
+		DBF2E5C01A1C9C9E00C85E27 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				DBD6877D1A1C99AB0001857D /* zh-Hans */,
+				DBF2E5C11A1C9C9E00C85E27 /* zh-Hans */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
