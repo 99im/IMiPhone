@@ -15,10 +15,19 @@
 
 #define TIMEOUT_LOCATION_CURRENT 10 //过期时间(分钟):当前位置
 
-@interface LocationDataProxy : NSObject <CLLocationManagerDelegate>
+#define LBS_STATUS_SUCCESS 0  //正常
+#define LBS_STATUS_SERVICES_NOT_ENABLED 500 //不支持服务
+
+#pragma mark - 消息名宏定义
+#define NOTI_LBS_didUpdateLocations @"NOTI_LBS_didUpdateLocations"
+#define NOTI_LBS_didFailWithError @"NOTI_LBS_didFailWithError"
+
+@interface LocationDataProxy : NSObject 
 
 + (LocationDataProxy *)sharedProxy;
 
 - (DPLocation *)getLocationCurrent;
 
+-(NSInteger) startUpdatingLocation:(NSInteger)updateTimes;
+-(void) stopUpdatingLocation;
 @end

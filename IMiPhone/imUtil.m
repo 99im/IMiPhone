@@ -146,7 +146,7 @@
     return [imUtil longLongNowTime:@"yyyyMMddHHmmss"];
 }
 
-+ (long long)getExpireTime:(NSInteger)minutes{
++ (long long)getExpireTimeWithMinutes:(NSInteger)minutes{
     long long expireTime = [imUtil nowTime];
     if (minutes > 1) {
         expireTime = expireTime + minutes * 60;
