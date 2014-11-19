@@ -34,6 +34,12 @@
 - (void)reset
 {
     self.dicMessages = nil;
+    _arrGroupMyList = nil;
+    _arrGroupsSearch = nil;
+    _groupIdSendLast = 0;
+    _groupInfoCurrent = nil;
+    _groupIdCurrent = 0;
+
 }
 #pragma mark - 静态工具函数
 static GroupDataProxy *sharedGroupDataProxy = nil;
@@ -234,7 +240,7 @@ static GroupDataProxy *sharedGroupDataProxy = nil;
 
 + (BOOL)isInMyGroups:(DPGroup *)dpGroup
 {
-    NSLog(@"myRelation:%i", dpGroup.myRelation);
+    NSLog(@"myRelation:%li", (long)dpGroup.myRelation);
     if (dpGroup.myRelation > 0) {
         return YES;
     }

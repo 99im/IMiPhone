@@ -155,4 +155,71 @@
     }
     return expireTime;
 }
+
+#pragma mark camera utility
+
++ (BOOL) isCameraAvailable{
+    return [UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera];
+}
+
++ (BOOL) isRearCameraAvailable{
+    return [UIImagePickerController isCameraDeviceAvailable:UIImagePickerControllerCameraDeviceRear];
+}
+
++ (BOOL) isFrontCameraAvailable {
+    return [UIImagePickerController isCameraDeviceAvailable:UIImagePickerControllerCameraDeviceFront];
+}
+
++ (BOOL) doesCameraSupportTakingPhotos {
+    return [self cameraSupportsMedia:(__bridge NSString *)kUTTypeImage sourceType:UIImagePickerControllerSourceTypeCamera];
+}
+
++ (BOOL) isPhotoLibraryAvailable{
+    return [UIImagePickerController isSourceTypeAvailable:
+            UIImagePickerControllerSourceTypePhotoLibrary];
+}
++ (BOOL) canUserPickVideosFromPhotoLibrary{
+    return [self
+            cameraSupportsMedia:(__bridge NSString *)kUTTypeMovie sourceType:UIImagePickerControllerSourceTypePhotoLibrary];
+}
++ (BOOL) canUserPickPhotosFromPhotoLibrary{
+    return [self
+            cameraSupportsMedia:(__bridge NSString *)kUTTypeImage sourceType:UIImagePickerControllerSourceTypePhotoLibrary];
+}
+
++ (BOOL) cameraSupportsMedia:(NSString *)paramMediaType sourceType:(UIImagePickerControllerSourceType)paramSourceType{
+    __block BOOL result = NO;
+    if ([paramMediaType length] == 0) {
+        return NO;
+    }
+    NSArray *availableMediaTypes = [UIImagePickerController availableMediaTypesForSourceType:paramSourceType];
+    [availableMediaTypes enumerateObjectsUsingBlock: ^(id obj, NSUInteger idx, BOOL *stop) {
+        NSString *mediaType = (NSString *)obj;
+        if ([mediaType isEqualToString:paramMediaType]){
+            result = YES;
+            *stop= YES;
+        }
+    }];
+    return result;
+}
+
++ (NSString *)storeCacheImage:(UIImage *)image useName:(NSString *)name
+{
+    NSData *imgData;
+    NSString *imgPath;
+    [[NSFileManager defaultManager] createDirectoryAtPath:[NSString stringWithFormat:@"%@/Documents/cache/image/", NSHomeDirectory()] withIntermediateDirectories:YES attributes:nil error:nil];
+    if (UIImagePNGRepresentation(image) == nil) {
+        imgData = UIImageJPEGRepresentation(image, 1);
+        imgPath = [NSString stringWithFormat:@"%@/Documents/cache/image/%@.jpg", NSHomeDirectory(), name];
+    } else {
+        imgData = UIImagePNGRepresentation(image);
+        imgPath = [NSString stringWithFormat:@"%@/Documents/cache/image/%@.png", NSHomeDirectory(), name];
+    }
+    
+    if (imgPath) {
+        [imgData writeToFile:imgPath atomically:YES];
+    }
+    return imgPath;
+}
+
 @end

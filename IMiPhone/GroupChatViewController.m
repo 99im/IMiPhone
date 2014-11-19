@@ -8,7 +8,6 @@
 
 #import "GroupChatViewController.h"
 #import "EmotionViewController.h"
-#import "IMNWProxyProtocol.h"
 #import "GroupDataProxy.h"
 #import "ChatInputTextView.h"
 #import "ChatInputSoundView.h"
@@ -16,8 +15,9 @@
 #import "ChatMessageProxy.h"
 #import "GroupChatTableViewCell.h"
 #import "GroupChatTableViewCellFrame.h"
+#import "ChatPlusViewController.h"
 
-@interface GroupChatViewController () <IMNWProxyProtocol, UITextFieldDelegate, UIGestureRecognizerDelegate>
+@interface GroupChatViewController () <UITextFieldDelegate, UIGestureRecognizerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
 //rootview 上的组件
 @property (weak, nonatomic) IBOutlet UITableView *tableViewChat;
@@ -34,6 +34,15 @@
 
 //表情弹框
 @property (strong, nonatomic) EmotionViewController *emotionViewController;
+//＋功能弹框
+@property (nonatomic, retain) ChatPlusViewController *plusViewController;
+@property (nonatomic, retain) UIViewController *curSubViewController;
+
+- (IBAction)btnTextPlusTouchUpInside:(id)sender;
+- (IBAction)btnSoundPlusTouchUpInside:(id)sender;
+- (IBAction)btnSoundTouchUpInside:(id)sender;
+- (IBAction)tfInputTextDidEndOnExit:(id)sender;
+- (IBAction)btnExpressionTouchUpInside:(id)sender;
 
 @end
 
@@ -54,6 +63,11 @@
     self.emotionViewController.view.frame = CGRectMake(0.0f, self.view.frame.size.height, self.view.frame.size.width, EMOTS_HEIGHT);
     [self.view addSubview:self.emotionViewController.view];
     [self addChildViewController:self.emotionViewController];
+    
+    self.plusViewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"ChatPlusViewController"];
+    self.plusViewController.view.frame = CGRectMake(0.0f, self.view.frame.size.height, self.view.frame.size.width, EMOTS_HEIGHT);
+    [self.view addSubview:self.plusViewController.view];
+    [self addChildViewController:self.plusViewController];
     
     self.tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapHandler:)];
     [self.view addGestureRecognizer:self.tap];
@@ -122,8 +136,6 @@
 - (IBAction)tapHandler:(UITapGestureRecognizer *)sender
 {
     CGPoint point = [sender locationInView:self.view];
-    //NSLog(@"RegInfoViewController tapHandler: x: %f, y: %f", point.x, point.y);
-//    if (CGRectContainsPoint(self.viewChatContainer.frame, point))
     if (point.y < self.view.frame.size.height - self.viewChatContainer.bounds.origin.y - self.viewChatInputText.frame.size.height)
     {
         if ([self.tfInputText isFirstResponder]) {
@@ -131,9 +143,7 @@
         }
         else
             self.viewChatContainer.bounds = self.view.bounds;
-        [UIView animateWithDuration:0.25f animations:^{
-            self.emotionViewController.view.frame = CGRectMake(0.0f, self.view.frame.size.height, self.view.frame.size.width, EMOTS_HEIGHT);
-        }];
+        [self hideCurSubViewController];
     }
 }
 
@@ -145,90 +155,62 @@
     
     CGRect bounds = self.view.bounds;
     bounds.origin.y = kbRect.size.height;
-    //[UIView animateWithDuration:0.25f animations:^{
     self.viewChatContainer.bounds = bounds;
-    //        [self.view layoutIfNeeded];
-    //}];
-    [UIView animateWithDuration:0.25f animations:^{
-        self.emotionViewController.view.frame = CGRectMake(0.0f, self.view.frame.size.height, self.view.frame.size.width, EMOTS_HEIGHT);
-    }];
+    [self hideCurSubViewController];
 }
 
 - (void)keyboardDidHide:(NSNotification *)notification
 {
     //[UIView animateWithDuration:0.25f animations:^{
-    if (self.emotionViewController.view.frame.origin.y >= self.view.frame.size.height) {
+    if (!self.curSubViewController) {
         self.viewChatContainer.bounds = self.view.bounds;
     }
     //        [self.view layoutIfNeeded];
     //}];
 }
 
-
-#pragma mark - IMNWProxyProtocol
-
-- (void)registerMessageNotification
+- (void)showSubViewController:(UIViewController *)viewController
 {
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dealGroupChatN:) name:NOTI_S_CHAT_CHATN object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onEmotionSelected:) name:NOTI_EMOTION_SELECTED object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onEmotionSend:) name:NOTI_EMOTION_SEND object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onEmotionDelete:) name:NOTI_EMOTION_DELETE object:nil];
-
-}
-
-- (void)removeMessageNotification
-{
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
-
-- (void)onEmotionSelected:(NSNotification *)notification
-{
-    NSIndexPath *indexPath = (NSIndexPath *)notification.object;
-    NSInteger emotIndex = indexPath.section * EMOTS_PAGENUM + indexPath.row;
-    NSString *emotId = [[[ChatDataProxy sharedProxy].arrEmotions objectAtIndex:emotIndex] objectForKey:@"id"];
-    NSLog(@"Emotion %@ selected!", emotId);
-    NSMutableString *inputText = [[NSMutableString alloc] initWithString:self.tfInputText.text];
-    [inputText appendString:emotId];
-    self.tfInputText.text = inputText;
-}
-
-- (void)onEmotionSend:(NSNotification *)notification
-{
-    [self tfInputTextDidEndOnExit:self.tfInputText];
-}
-
-- (void)onEmotionDelete:(NSNotification *)notification
-{
-}
-
-- (void)dealGroupChatN:(NSNotification *)notification
-{
+    //缩回当前弹框
+    [self hideCurSubViewController];
     
-    DPGroupChatMessage *dpChatMsg = notification.object;
+    //弹出新弹框
+    [UIView animateWithDuration:0.25f animations:^{
+        viewController.view.frame = CGRectMake(0.0f, self.view.frame.size.height - EMOTS_HEIGHT, self.view.frame.size.width, EMOTS_HEIGHT);
+    }];
+    CGRect bounds = self.view.bounds;
+    bounds.origin.y = EMOTS_HEIGHT;
+    [UIView animateWithDuration:0.25f animations:^{
+        self.viewChatContainer.bounds = bounds;
+    }];
     
-    GroupChatTableViewCellFrame *chatTableCellFrame = [[GroupChatTableViewCellFrame alloc] init];
-    ChatMessageType msgType;
-    if (dpChatMsg.senderUid == [UserDataProxy sharedProxy].lastLoginUid) {
-        msgType = ChatMessageTypeMe;
+    //缩回键盘
+    if ([self.tfInputText isFirstResponder]) {
+        [self.tfInputText resignFirstResponder];
     }
-    else {
-        msgType = ChatMessageTypeOther;
+    
+    self.curSubViewController = viewController;
+}
+
+- (void)hideCurSubViewController
+{
+    if (self.curSubViewController) {
+        [UIView animateWithDuration:0.25f animations:^{
+            self.curSubViewController.view.frame = CGRectMake(0.0f, self.view.frame.size.height, self.view.frame.size.width, EMOTS_HEIGHT);
+        }];
+        self.curSubViewController = nil;
     }
-    [chatTableCellFrame setMsgType:msgType withMsg:dpChatMsg];
-    [self.arrAllCellFrames addObject:chatTableCellFrame];
-    [self.tableViewChat reloadData];
-    [self scrollToLastCell:YES];
 }
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 #pragma mark - UITextFieldDelegate method
 
@@ -293,30 +275,170 @@
 #pragma mark - chat text input logic
 
 - (IBAction)tfInputTextDidEndOnExit:(id)sender {
-        
+    
     [[ChatMessageProxy sharedProxy] sendTypeChat:CHAT_STAGE_GROUP targetId:[GroupDataProxy sharedProxy].getGroupIdCurrent msgType:CHAT_MASSAGE_TYPE_TEXT content:((UITextField *)sender).text];
     
     ((UITextField *)sender).text = @"";
     
 }
 
+#pragma mark - view input text buttons logic
 
-#pragma mark
+- (IBAction)btnTextPlusTouchUpInside:(id)sender {
+    [self showSubViewController:self.plusViewController];
+}
 
-- (IBAction)btnEmotiontouchUpInside:(id)sender {
-    [UIView animateWithDuration:0.25f animations:^{
-        self.emotionViewController.view.frame = CGRectMake(0.0f, self.view.frame.size.height - EMOTS_HEIGHT, self.view.frame.size.width, EMOTS_HEIGHT);
-    }];
-    CGRect bounds = self.view.bounds;
-    bounds.origin.y = EMOTS_HEIGHT;
-    [UIView animateWithDuration:0.25f animations:^{
-        self.viewChatContainer.bounds = bounds;
-    }];
-    if ([self.tfInputText isFirstResponder]) {
-        [self.tfInputText resignFirstResponder];
+- (IBAction)btnExpressionTouchUpInside:(id)sender {
+    [self showSubViewController:self.emotionViewController];
+}
+
+- (IBAction)btnSoundTouchUpInside:(id)sender {
+    self.viewChatInputSound.hidden = false;
+    self.viewChatInputText.hidden = true;
+}
+
+#pragma mark - view input sound buttons logic
+
+- (IBAction)btnSoundPlusTouchUpInside:(id)sender {
+    [self showSubViewController:self.plusViewController];
+}
+
+- (IBAction)touchCancelRecord:(id)sender {
+}
+
+- (IBAction)touchUpInsideRecord:(id)sender {
+}
+
+- (IBAction)touchDownBtnRecord:(id)sender {
+}
+
+- (IBAction)touchUpInsideBtnText:(id)sender {
+    self.viewChatInputSound.hidden = true;
+    self.viewChatInputText.hidden = false;
+}
+
+#pragma mark - IMNWProxyProtocol
+
+- (void)registerMessageNotification
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dealGroupChatN:) name:NOTI_S_CHAT_CHATN object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onEmotionSelected:) name:NOTI_EMOTION_SELECTED object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onEmotionSend:) name:NOTI_EMOTION_SEND object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onEmotionDelete:) name:NOTI_EMOTION_DELETE object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onChatPlusBtnSelected:) name:NOTI_CHATPLUS_BTNSELECTED object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onChatUploadImg:) name:NOTI_H__CHAT_UPLOADIMG_ object:nil];
+}
+
+- (void)removeMessageNotification
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)onChatUploadImg:(NSNotification *)notification
+{
+    if (!notification.object) {
+        NSData *jsonData = [NSJSONSerialization dataWithJSONObject:notification.userInfo options:0 error:nil];
+        NSString *content = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+        [[ChatMessageProxy sharedProxy] sendTypeChat:CHAT_STAGE_P2P targetId:[ChatDataProxy sharedProxy].chatToUid msgType:CHAT_MASSAGE_TYPE_IMAGE content:content];
     }
 }
 
+- (void)onChatPlusBtnSelected:(NSNotification *)notification
+{
+    NSString *button = [[notification.userInfo allValues] objectAtIndex:0];
+    if ([button isEqualToString:CHATPLUS_BTN_PHOTO]) {
+        if ([imUtil isCameraAvailable] && [imUtil doesCameraSupportTakingPhotos]) {
+            UIImagePickerController *controller = [[UIImagePickerController alloc] init];
+            controller.sourceType = UIImagePickerControllerSourceTypeCamera;
+            if ([imUtil isFrontCameraAvailable]) {
+                controller.cameraDevice = UIImagePickerControllerCameraDeviceFront;
+            }
+            NSMutableArray *mediaTypes = [NSMutableArray array];
+            [mediaTypes addObject:(__bridge NSString *)kUTTypeImage];
+            controller.mediaTypes = mediaTypes;
+            controller.delegate = self;
+            [self presentViewController:controller
+                               animated:YES
+                             completion:^(void){
+                                 NSLog(@"Picker View Controller is presented");
+                             }];
+        }
+    }
+    else if ([button isEqualToString:CHATPLUS_BTN_IMAGE]) {
+        [self hideCurSubViewController];
+        self.viewChatContainer.bounds = self.view.bounds;
+        if ([imUtil isPhotoLibraryAvailable]) {
+            UIImagePickerController *controller = [[UIImagePickerController alloc] init];
+            controller.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+            NSMutableArray *mediaTypes = [NSMutableArray array];
+            [mediaTypes addObject:(__bridge NSString *)kUTTypeImage];
+            controller.mediaTypes = mediaTypes;
+            controller.delegate = self;
+            [self presentViewController:controller
+                               animated:YES
+                             completion:^(void){
+                                 NSLog(@"Picker View Controller is presented");
+                             }];
+        }
+    }
+}
 
+- (void)onEmotionSelected:(NSNotification *)notification
+{
+    NSIndexPath *indexPath = (NSIndexPath *)notification.object;
+    NSInteger emotIndex = indexPath.section * EMOTS_PAGENUM + indexPath.row;
+    NSString *emotId = [[[ChatDataProxy sharedProxy].arrEmotions objectAtIndex:emotIndex] objectForKey:@"id"];
+    NSLog(@"Emotion %@ selected!", emotId);
+    NSMutableString *inputText = [[NSMutableString alloc] initWithString:self.tfInputText.text];
+    [inputText appendString:emotId];
+    self.tfInputText.text = inputText;
+}
+
+- (void)onEmotionSend:(NSNotification *)notification
+{
+    [self tfInputTextDidEndOnExit:self.tfInputText];
+}
+
+- (void)onEmotionDelete:(NSNotification *)notification
+{
+}
+
+- (void)dealGroupChatN:(NSNotification *)notification
+{
+    
+    DPGroupChatMessage *dpChatMsg = notification.object;
+    
+    GroupChatTableViewCellFrame *chatTableCellFrame = [[GroupChatTableViewCellFrame alloc] init];
+    ChatMessageType msgType;
+    if (dpChatMsg.senderUid == [UserDataProxy sharedProxy].lastLoginUid) {
+        msgType = ChatMessageTypeMe;
+    }
+    else {
+        msgType = ChatMessageTypeOther;
+    }
+    [chatTableCellFrame setMsgType:msgType withMsg:dpChatMsg];
+    [self.arrAllCellFrames addObject:chatTableCellFrame];
+    [self.tableViewChat reloadData];
+    [self scrollToLastCell:YES];
+}
+
+#pragma mark - UIImagePickerControllerDelegate
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+    [picker dismissViewControllerAnimated:YES completion:^() {
+        UIImage *originalImage = [info objectForKey:UIImagePickerControllerOriginalImage];
+        //NSURL *referenceURL = [info objectForKey:UIImagePickerControllerReferenceURL];
+        //NSString *mediaType = [info objectForKey:UIImagePickerControllerMediaType];
+        
+        NSString *imgPath = [imUtil storeCacheImage:originalImage useName:@"test"];
+        if (imgPath) {
+            [[ChatMessageProxy sharedProxy] sendHttpUploadimg:imgPath];
+        }
+    }];
+}
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
+    [picker dismissViewControllerAnimated:YES completion:^(){
+    }];
+}
 
 @end

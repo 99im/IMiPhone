@@ -17,8 +17,9 @@
 #import "ChatTableViewCellFrame.h"
 #import "EmotionViewController.h"
 #import "ChatDataProxy.h"
+#import "ChatPlusViewController.h"
 
-@interface ChatViewController () <UITextFieldDelegate, UIGestureRecognizerDelegate>
+@interface ChatViewController () <UITextFieldDelegate, UIGestureRecognizerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
 //rootview 上的组件
 @property (weak, nonatomic) IBOutlet UITableView *tableViewChat;
@@ -33,7 +34,13 @@
 @property (nonatomic,retain) NSMutableArray *arrAllCellFrames;
 
 //表情弹框
-@property (strong, nonatomic) EmotionViewController *emotionViewController;
+@property (nonatomic, retain) EmotionViewController *emotionViewController;
+//＋功能弹框
+@property (nonatomic, retain) ChatPlusViewController *plusViewController;
+@property (nonatomic, retain) UIViewController *curSubViewController;
+
+- (IBAction)btnTextPlusTouchUpInside:(id)sender;
+- (IBAction)btnSoundPlusTouchUpInside:(id)sender;
 
 @end
 
@@ -75,6 +82,11 @@
     self.emotionViewController.view.frame = CGRectMake(0.0f, self.view.frame.size.height, self.view.frame.size.width, EMOTS_HEIGHT);
     [self.view addSubview:self.emotionViewController.view];
     [self addChildViewController:self.emotionViewController];
+    
+    self.plusViewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"ChatPlusViewController"];
+    self.plusViewController.view.frame = CGRectMake(0.0f, self.view.frame.size.height, self.view.frame.size.width, EMOTS_HEIGHT);
+    [self.view addSubview:self.plusViewController.view];
+    [self addChildViewController:self.plusViewController];
     
     self.tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapHandler:)];
     [self.view addGestureRecognizer:self.tap];
@@ -122,7 +134,6 @@
 - (IBAction)tapHandler:(UITapGestureRecognizer *)sender
 {
     CGPoint point = [sender locationInView:self.view];
-//    if (CGRectContainsPoint(self.viewChatContainer.frame, point))
     if (point.y < self.view.frame.size.height - self.viewChatContainer.bounds.origin.y - self.viewChatInputText.frame.size.height)
     {
         if ([self.tfInputText isFirstResponder]) {
@@ -130,9 +141,7 @@
         }
         else
             self.viewChatContainer.bounds = self.view.bounds;
-        [UIView animateWithDuration:0.25f animations:^{
-            self.emotionViewController.view.frame = CGRectMake(0.0f, self.view.frame.size.height, self.view.frame.size.width, EMOTS_HEIGHT);
-        }];
+        [self hideCurSubViewController];
     }
 }
 
@@ -145,25 +154,52 @@
     
     CGRect bounds = self.view.bounds;
     bounds.origin.y = kbRect.size.height;
-    //[UIView animateWithDuration:0.25f animations:^{
-        self.viewChatContainer.bounds = bounds;
-    //        [self.view layoutIfNeeded];
-    //}];
-    [UIView animateWithDuration:0.25f animations:^{
-        self.emotionViewController.view.frame = CGRectMake(0.0f, self.view.frame.size.height, self.view.frame.size.width, EMOTS_HEIGHT);
-    }];
+    self.viewChatContainer.bounds = bounds;
+    [self hideCurSubViewController];
 }
 
 - (void)keyboardDidHide:(NSNotification *)notification
 {
     //[UIView animateWithDuration:0.25f animations:^{
-    if (self.emotionViewController.view.frame.origin.y >= self.view.frame.size.height) {
+    if (!self.curSubViewController) {
         self.viewChatContainer.bounds = self.view.bounds;
     }
     //        [self.view layoutIfNeeded];
     //}];
 }
 
+- (void)showSubViewController:(UIViewController *)viewController
+{
+    //缩回当前弹框
+    [self hideCurSubViewController];
+    
+    //弹出新弹框
+    [UIView animateWithDuration:0.25f animations:^{
+        viewController.view.frame = CGRectMake(0.0f, self.view.frame.size.height - EMOTS_HEIGHT, self.view.frame.size.width, EMOTS_HEIGHT);
+    }];
+    CGRect bounds = self.view.bounds;
+    bounds.origin.y = EMOTS_HEIGHT;
+    [UIView animateWithDuration:0.25f animations:^{
+        self.viewChatContainer.bounds = bounds;
+    }];
+    
+    //缩回键盘
+    if ([self.tfInputText isFirstResponder]) {
+        [self.tfInputText resignFirstResponder];
+    }
+    
+    self.curSubViewController = viewController;
+}
+
+- (void)hideCurSubViewController
+{
+    if (self.curSubViewController) {
+        [UIView animateWithDuration:0.25f animations:^{
+            self.curSubViewController.view.frame = CGRectMake(0.0f, self.view.frame.size.height, self.view.frame.size.width, EMOTS_HEIGHT);
+        }];
+        self.curSubViewController = nil;
+    }
+}
 
 /*
 #pragma mark - Navigation
@@ -226,6 +262,16 @@
     }
 }
 
+- (void)scrollToLastCell:(BOOL)animated
+{
+    NSInteger maxRow = [self.tableViewChat numberOfRowsInSection:0] - 1;
+    if (maxRow < 0) {
+        return;
+    }
+    NSIndexPath *indexPathMax = [NSIndexPath indexPathForRow:maxRow inSection:0];
+    [self.tableViewChat scrollToRowAtIndexPath:indexPathMax atScrollPosition:UITableViewScrollPositionBottom animated:animated];
+}
+
 //- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 //{
 //    NSLog(@"will display %@",indexPath);
@@ -243,35 +289,14 @@
 
 }
 
-- (void)scrollToLastCell:(BOOL)animated
-{
-    NSInteger maxRow = [self.tableViewChat numberOfRowsInSection:0] - 1;
-    if (maxRow < 0) {
-       return;
-    }
-    NSIndexPath *indexPathMax = [NSIndexPath indexPathForRow:maxRow inSection:0];
-    [self.tableViewChat scrollToRowAtIndexPath:indexPathMax atScrollPosition:UITableViewScrollPositionBottom animated:animated];
-}
-
-
 #pragma mark - view input text buttons logic
 
-- (IBAction)touchUpInsideBtnShare:(id)sender {
-    //TODO: 点击“+”显示分享菜单
+- (IBAction)btnTextPlusTouchUpInside:(id)sender {
+    [self showSubViewController:self.plusViewController];
 }
 
 - (IBAction)touchUpInsideBtnExpression:(id)sender {
-    [UIView animateWithDuration:0.25f animations:^{
-        self.emotionViewController.view.frame = CGRectMake(0.0f, self.view.frame.size.height - EMOTS_HEIGHT, self.view.frame.size.width, EMOTS_HEIGHT);
-    }];
-    CGRect bounds = self.view.bounds;
-    bounds.origin.y = EMOTS_HEIGHT;
-    [UIView animateWithDuration:0.25f animations:^{
-        self.viewChatContainer.bounds = bounds;
-    }];
-    if ([self.tfInputText isFirstResponder]) {
-        [self.tfInputText resignFirstResponder];
-    }
+    [self showSubViewController:self.emotionViewController];
 }
 
 - (IBAction)touchInsideBtnSound:(id)sender {
@@ -281,8 +306,8 @@
 
 #pragma mark - view input sound buttons logic
 
-- (IBAction)touchUpInsideInputSoudBtnShare:(id)sender {
-    //TODO: 点击“+”显示分享菜单
+- (IBAction)btnSoundPlusTouchUpInside:(id)sender {
+    [self showSubViewController:self.plusViewController];
 }
 
 - (IBAction)touchCancelRecord:(id)sender {
@@ -307,6 +332,8 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onEmotionSelected:) name:NOTI_EMOTION_SELECTED object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onEmotionSend:) name:NOTI_EMOTION_SEND object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onEmotionDelete:) name:NOTI_EMOTION_DELETE object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onChatPlusBtnSelected:) name:NOTI_CHATPLUS_BTNSELECTED object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onChatUploadImg:) name:NOTI_H__CHAT_UPLOADIMG_ object:nil];
 }
 
 - (void)removeMessageNotification
@@ -315,6 +342,55 @@
 }
 
 #pragma mark
+
+- (void)onChatUploadImg:(NSNotification *)notification
+{
+    if (!notification.object) {
+        NSData *jsonData = [NSJSONSerialization dataWithJSONObject:notification.userInfo options:0 error:nil];
+        NSString *content = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+        [[ChatMessageProxy sharedProxy] sendTypeChat:CHAT_STAGE_P2P targetId:[ChatDataProxy sharedProxy].chatToUid msgType:CHAT_MASSAGE_TYPE_IMAGE content:content];
+    }
+}
+
+- (void)onChatPlusBtnSelected:(NSNotification *)notification
+{
+    NSString *button = [[notification.userInfo allValues] objectAtIndex:0];
+    if ([button isEqualToString:CHATPLUS_BTN_PHOTO]) {
+        if ([imUtil isCameraAvailable] && [imUtil doesCameraSupportTakingPhotos]) {
+            UIImagePickerController *controller = [[UIImagePickerController alloc] init];
+            controller.sourceType = UIImagePickerControllerSourceTypeCamera;
+            if ([imUtil isFrontCameraAvailable]) {
+                controller.cameraDevice = UIImagePickerControllerCameraDeviceFront;
+            }
+            NSMutableArray *mediaTypes = [NSMutableArray array];
+            [mediaTypes addObject:(__bridge NSString *)kUTTypeImage];
+            controller.mediaTypes = mediaTypes;
+            controller.delegate = self;
+            [self presentViewController:controller
+                                          animated:YES
+                                        completion:^(void){
+                                            NSLog(@"Picker View Controller is presented");
+                                        }];
+        }
+    }
+    else if ([button isEqualToString:CHATPLUS_BTN_IMAGE]) {
+        [self hideCurSubViewController];
+        self.viewChatContainer.bounds = self.view.bounds;
+        if ([imUtil isPhotoLibraryAvailable]) {
+            UIImagePickerController *controller = [[UIImagePickerController alloc] init];
+            controller.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+            NSMutableArray *mediaTypes = [NSMutableArray array];
+            [mediaTypes addObject:(__bridge NSString *)kUTTypeImage];
+            controller.mediaTypes = mediaTypes;
+            controller.delegate = self;
+            [self presentViewController:controller
+                                          animated:YES
+                                        completion:^(void){
+                                            NSLog(@"Picker View Controller is presented");
+                                        }];
+        }
+    }
+}
 
 - (void)onEmotionSelected:(NSNotification *)notification
 {
@@ -352,6 +428,25 @@
     [self.arrAllCellFrames addObject:chatTableCellFrame];
     [self.tableViewChat reloadData];
     [self scrollToLastCell:YES];
+}
+
+#pragma mark - UIImagePickerControllerDelegate
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+    [picker dismissViewControllerAnimated:YES completion:^() {
+        UIImage *originalImage = [info objectForKey:UIImagePickerControllerOriginalImage];
+        //NSURL *referenceURL = [info objectForKey:UIImagePickerControllerReferenceURL];
+        //NSString *mediaType = [info objectForKey:UIImagePickerControllerMediaType];
+        
+        NSString *imgPath = [imUtil storeCacheImage:originalImage useName:@"test"];
+        if (imgPath) {
+            [[ChatMessageProxy sharedProxy] sendHttpUploadimg:imgPath];
+        }
+    }];
+}
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
+    [picker dismissViewControllerAnimated:YES completion:^(){
+    }];
 }
 
 @end

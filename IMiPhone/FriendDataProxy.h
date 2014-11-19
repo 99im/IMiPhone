@@ -14,6 +14,11 @@
 #import "UsersFromContactDAO.h"
 #import "FriendDAO.h"
 #import "imRms.h"
+#import "FriendMessageProxy.h"
+#import "FocusUserDAO.h"
+#import "FanUserDAO.h"
+#import "DPFanUser.h"
+#import "DPFocusUser.h"
 
 @interface FriendDataProxy : NSObject
 
@@ -23,9 +28,8 @@
 
 //@property (nonatomic, retain) NSArray *arrGroups;
 
-@property(nonatomic) uint currUserListType;
-@property(nonatomic, retain) NSArray *listMyFocus;
-@property(nonatomic, retain) NSArray *listMyFans;
+@property(nonatomic) NSUInteger currUserListType;
+@property (nonatomic, retain, readonly) NSArray *arrCurrentPageList;//用于当前显示的关注或者粉丝或者好友列表数据
 
 @property (nonatomic, setter=setFocusTotal:, getter=getFocusTotal) NSInteger focusTotal;
 @property (nonatomic, setter=setFanTotal:, getter=getFanTotal) NSInteger fanTotal;
@@ -35,7 +39,19 @@
 
 - (void)reset;
 
-- (NSInteger)getCountOfUsers:(int)byType;
+- (void)clearArrCurrentPageList;
+
+//返回第range区间的关注列表。
+- (void)getFocusListInRange:(NSRange)range;
+
+//根据组装的dp数组更新本地数据
+- (void)updateFocusListByDpArray:(NSArray *)arrDpFocus fromOder:(NSInteger)fOder;
+
+//返回第range区间的粉丝列表。
+- (void)getFanListInRange:(NSRange)range;
+
+//根据组装的dp数组更新本地数据
+- (void)updateFanListByDpArray:(NSArray *)arrDpFan fromOder:(NSInteger)fOder;
 
 - (NSMutableArray *)mutableArrayContact;
 

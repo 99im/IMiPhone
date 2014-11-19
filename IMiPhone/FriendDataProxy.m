@@ -13,11 +13,15 @@
 #define KEY_FRIEND_FAN_TOTAL @"key_friend_fan_total"
 #define KEY_FRIEND_FRIEND_TOTAL @"key_friend_friend_total"
 
+
 @interface FriendDataProxy()
 
 @property (nonatomic, retain) NSMutableArray *arrContact;
 @property (nonatomic, retain) NSMutableArray *arrUsersFromContact;
 @property (nonatomic, retain) NSMutableArray *arrFriends;
+
+@property (nonatomic, retain) NSMutableDictionary *dicFocus;
+@property (nonatomic, retain) NSMutableDictionary *dicFan;
 
 @end
 
@@ -28,11 +32,13 @@
 @synthesize arrFriends = _arrFriends;
 
 @synthesize currUserListType;
-@synthesize listMyFocus;
-@synthesize listMyFans;
+@synthesize dicFocus = _dicFocus;
+@synthesize dicFan = _dicFan;
 @synthesize focusTotal = _focusTotal;
 @synthesize fanTotal = _fanTotal;
 @synthesize friendTotal = _friendTotal;
+
+@synthesize arrCurrentPageList = _arrCurrentPageList;
 
 static FriendDataProxy *sharedFriendDataProxy = nil;
 
@@ -59,6 +65,7 @@ static FriendDataProxy *sharedFriendDataProxy = nil;
 {
     _arrUsersFromContact = nil;
     _arrFriends = nil;
+    _dicFocus = nil;
     _focusTotal = NSIntegerMax;
     _fanTotal = NSIntegerMax;
     _friendTotal = NSIntegerMax;
@@ -305,21 +312,130 @@ static FriendDataProxy *sharedFriendDataProxy = nil;
 //    NSLog(@"replace arrFriends at %d,with new uid:%@",index,((DPFriend *)object).uid);
 //}
 
-#pragma mark - others
+//#pragma mark - others
+//
+//- (NSInteger)getCountOfUsers:(int)byType {
+//    if (byType == USER_LIST_FOR_FOCUS) {
+//        return [listMyFocus count];
+//    } else if (byType == USER_LIST_FOR_FANS) {
+//        return [listMyFans count];
+//    } else if (byType == USER_LIST_FOR_CURR) {
+//        if (currUserListType == USER_LIST_FOR_FOCUS) {
+//            return [listMyFocus count];
+//        } else if (currUserListType == USER_LIST_FOR_FANS) {
+//            return [listMyFans count];
+//        }
+//    }
+//    return 0;
+//}
 
-- (NSInteger)getCountOfUsers:(int)byType {
-    if (byType == USER_LIST_FOR_FOCUS) {
-        return [listMyFocus count];
-    } else if (byType == USER_LIST_FOR_FANS) {
-        return [listMyFans count];
-    } else if (byType == USER_LIST_FOR_CURR) {
-        if (currUserListType == USER_LIST_FOR_FOCUS) {
-            return [listMyFocus count];
-        } else if (currUserListType == USER_LIST_FOR_FANS) {
-            return [listMyFans count];
-        }
+#pragma mark - 关注列表
+
+- (void)getFocusListInRange:(NSRange)range;
+{
+    //因为关注列表随时可能变化，所以每次需要数据时候，都要向服务器请求
+    [[FriendMessageProxy sharedProxy] sendTypeFocusList:[NSNumber numberWithInteger:range.location] withPageNum:[NSNumber numberWithUnsignedInteger:range.length]];
+    if (_dicFocus == nil) {
+        _dicFocus = [NSMutableDictionary dictionary];
     }
-    return 0;
+    NSMutableArray *arrResult = [_dicFocus objectForKey:[NSNumber numberWithInteger:range.location] ];
+    if (arrResult) {
+        _arrCurrentPageList = arrResult;
+    }
+    else {
+        arrResult = [NSMutableArray array];
+        [_dicFocus setObject:arrResult forKey:[NSNumber numberWithInteger:range.location]];
+        //读取本地数据库
+        NSString *strQuerySql = [NSString stringWithFormat:@"%@ > = %i and %@ < %i", DB_PRIMARY_KEY_FOCUS_USER_ORDERID, range.location, DB_PRIMARY_KEY_FOCUS_USER_ORDERID, range.location + range.length];
+        NSArray *arrDbFocusUser = [[FocusUserDAO sharedDAO] query:strQuerySql Bind:nil];
+        DBFocusUser *dbTempData;
+        DPFocusUser *dpFoucusUser;
+        for (NSInteger i = 0; i < arrDbFocusUser.count; i++) {
+            dbTempData = [arrDbFocusUser objectAtIndex:i];
+            dpFoucusUser = [[DPFocusUser alloc] init];
+            [ImDataUtil copyFrom:dbTempData To:dpFoucusUser];
+            [arrResult addObject:dpFoucusUser];
+        }
+        _arrCurrentPageList = arrResult;
+    }
+}
+
+- (void)updateFocusListByDpArray:(NSArray *)arrDpFocus fromOder:(NSInteger)fOder
+{
+    if (_arrCurrentPageList == [_dicFocus objectForKey:[NSNumber numberWithInteger:fOder]]) {
+        _arrCurrentPageList = arrDpFocus;
+    }
+    [_dicFocus setObject:arrDpFocus forKey:[NSNumber numberWithInteger:fOder]];
+    //先删除数据库
+    NSString *strDelSql = [NSString stringWithFormat:@"%@ > = %i and %@ < %i", DB_PRIMARY_KEY_FOCUS_USER_ORDERID, fOder, DB_PRIMARY_KEY_FOCUS_USER_ORDERID, fOder + arrDpFocus.count];
+    [[FocusUserDAO sharedDAO] deleteByCondition:strDelSql Bind:nil];
+    //再插入数据库
+    DBFocusUser *dbFocusUser;
+    for (NSInteger i = 0; i < arrDpFocus.count; i++) {
+        dbFocusUser = [[DBFocusUser alloc] init];
+        [ImDataUtil copyFrom:[arrDpFocus objectAtIndex:i] To:dbFocusUser];
+        dbFocusUser.orderId = fOder + i;
+        [[FocusUserDAO sharedDAO] insert:dbFocusUser];
+    }
+}
+
+#pragma mark - 粉丝列表
+
+//返回第range区间的粉丝列表。
+- (void)getFanListInRange:(NSRange)range
+{
+    //因为粉丝列表随时可能变化，所以每次需要数据时候，都要向服务器请求
+    [[FriendMessageProxy sharedProxy] sendTypeFanList:[NSNumber numberWithInteger:range.location] withPageNum:[NSNumber numberWithUnsignedInteger:range.length]];
+    if (_dicFan == nil) {
+        _dicFan = [NSMutableDictionary dictionary];
+    }
+    NSMutableArray *arrResult = [_dicFan objectForKey:[NSNumber numberWithInteger:range.location] ];
+    if (arrResult) {
+        _arrCurrentPageList = arrResult;
+    }
+    else {
+        arrResult = [NSMutableArray array];
+        [_dicFan setObject:arrResult forKey:[NSNumber numberWithInteger:range.location]];
+        //读取本地数据库
+        NSString *strQuerySql = [NSString stringWithFormat:@"%@ > = %i and %@ < %i", DB_PRIMARY_KEY_FAN_USER_ORDERID, range.location, DB_PRIMARY_KEY_FAN_USER_ORDERID, range.location + range.length];
+        NSArray *arrDbFanUser = [[FanUserDAO sharedDAO] query:strQuerySql Bind:nil];
+        DBFanUser *dbTempData;
+        DPFanUser *dpFanUser;
+        for (NSInteger i = 0; i < arrDbFanUser.count; i++) {
+            dbTempData = [arrDbFanUser objectAtIndex:i];
+            dpFanUser = [[DPFanUser alloc] init];
+            [ImDataUtil copyFrom:dbTempData To:dpFanUser];
+            [arrResult addObject:dpFanUser];
+        }
+        _arrCurrentPageList = arrResult;
+    }
+}
+
+//根据组装的dp数组更新本地数据
+- (void)updateFanListByDpArray:(NSArray *)arrDpFan fromOder:(NSInteger)fOder
+{
+    if (_arrCurrentPageList == [_dicFan objectForKey:[NSNumber numberWithInteger:fOder]]) {
+        _arrCurrentPageList = arrDpFan;
+    }
+    [_dicFan setObject:arrDpFan forKey:[NSNumber numberWithInteger:fOder]];
+    //先删除数据库
+    NSString *strDelSql = [NSString stringWithFormat:@"%@ > = %i and %@ < %i", DB_PRIMARY_KEY_FAN_USER_ORDERID, fOder, DB_PRIMARY_KEY_FAN_USER_ORDERID, fOder + arrDpFan.count];
+    [[FanUserDAO sharedDAO] deleteByCondition:strDelSql Bind:nil];
+    //再插入数据库
+    DBFanUser *dbFanUser;
+    for (NSInteger i = 0; i < arrDpFan.count; i++) {
+        dbFanUser = [[DBFanUser alloc] init];
+        [ImDataUtil copyFrom:[arrDpFan objectAtIndex:i] To:dbFanUser];
+        dbFanUser.orderId = fOder + i;
+        [[FanUserDAO sharedDAO] insert:dbFanUser];
+    }
+}
+
+# pragma mark - 
+
+- (void)clearArrCurrentPageList
+{
+    _arrCurrentPageList = [NSArray array];
 }
 
 @end

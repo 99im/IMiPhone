@@ -21,6 +21,8 @@
 @property (nonatomic, retain) NSString *mark;
 @property (nonatomic, retain) NSString *type;
 @property (nonatomic, retain) id data;
+///multi-part 类型数据，图片等
+@property (nonatomic, retain) NSMutableDictionary *multiPartData;
 @property (nonatomic, retain) NSString *host;
 @property (nonatomic) int port;
 @property (nonatomic, retain) NSString *path;

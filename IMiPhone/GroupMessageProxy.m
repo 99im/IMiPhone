@@ -162,6 +162,7 @@ static GroupMessageProxy *sharedGroupMessageProxy = nil;
                     dpGroup.creator_vip = [[creator objectForKey:KEYP_H__GROUP_INFO__INFO_CREATOR_VIP] integerValue];
                     dpGroup.creator_city = [creator objectForKey:KEYP_H__GROUP_INFO__INFO_CREATOR_CITY];
                     [[GroupDataProxy sharedProxy] updateGroupInfo:dpGroup];
+                    //NSLog(@"group:%@\n myrelation:%i \n isInMyGroups:%i", dpGroup.name, dpGroup.myRelation, [GroupDataProxy isInMyGroups:dpGroup]);
 
                     [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_H__GROUP_INFO_ object:nil];
                 }

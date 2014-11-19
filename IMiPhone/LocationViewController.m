@@ -45,7 +45,8 @@
 
 -(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
     CLLocation *currLocation = [locations lastObject];
-    NSLog(@"纬度:%3.5f 经度:%3.5f" , currLocation.coordinate.latitude , currLocation.coordinate.longitude);
+
+    NSLog(@"纬度:%3.5f 经度:%3.5f 海拔:%3.5f" , currLocation.coordinate.latitude , currLocation.coordinate.longitude, currLocation.altitude);
 
 }
 
@@ -58,9 +59,15 @@
             _locationManager = [[CLLocationManager alloc] init];
             _locationManager.delegate = delegate;
             _locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters; //10米级
-            _locationManager.distanceFilter = 100.0f;
+            _locationManager.distanceFilter = 1000.0f;
         }
-        NSLog(@"开始定位:");
+
+        NSLog(@"currentDevice systemVersion:%2.1f\n开始定位:", [[[UIDevice currentDevice] systemVersion] floatValue]);
+
+        if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0){
+            [_locationManager requestWhenInUseAuthorization];
+        }
+        
         [_locationManager startUpdatingLocation];
     } else {
         NSLog(@"请开启定位功能。");

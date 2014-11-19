@@ -36,4 +36,16 @@
 + (long long)nowTime;
 + (long long)getExpireTime:(NSInteger)minutes;
 
+#pragma mark camera utility
++ (BOOL)isCameraAvailable;
++ (BOOL)isRearCameraAvailable;
++ (BOOL)isFrontCameraAvailable;
++ (BOOL)doesCameraSupportTakingPhotos;
++ (BOOL)isPhotoLibraryAvailable;
++ (BOOL)canUserPickVideosFromPhotoLibrary;
++ (BOOL)canUserPickPhotosFromPhotoLibrary;
++ (BOOL)cameraSupportsMedia:(NSString *)paramMediaType sourceType:(UIImagePickerControllerSourceType)paramSourceType;
+
++ (NSString *)storeCacheImage:(UIImage *)image useName:(NSString *)name;
+
 @end

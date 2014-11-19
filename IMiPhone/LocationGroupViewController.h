@@ -7,8 +7,12 @@
 //
 
 #import "LocationViewController.h"
+#import <MapKit/MapKit.h>
 
-@interface LocationGroupViewController : LocationViewController <CLLocationManagerDelegate>
+@interface LocationGroupViewController : LocationViewController <MKMapViewDelegate>
+
+@property (weak, nonatomic) IBOutlet MKMapView *mapView;
+
 - (IBAction)goBackTouchUp:(id)sender;
 
 @end

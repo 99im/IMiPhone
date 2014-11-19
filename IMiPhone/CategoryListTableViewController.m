@@ -8,16 +8,28 @@
 
 #import "CategoryListTableViewController.h"
 #import "CategoryListTableViewCell.h"
+#import "UserDataProxy.h"
+#import "UserMessageProxy.h"
+#import "FriendDataProxy.h"
 
-//@interface CategoryListTableViewController ()
-//
-//@end
+@interface CategoryListTableViewController ()
+
+
+@end
 
 @implementation CategoryListTableViewController
 
 - (void)viewDidLoad {
-  [super viewDidLoad];
-
+    
+    [super viewDidLoad];
+    [[FriendDataProxy sharedProxy] clearArrCurrentPageList];
+    if ([FriendDataProxy sharedProxy].currUserListType == USER_LIST_FOR_FANS) {
+        self.title = NSLocalizedString(@"Category.Fan", nil);
+       
+        }
+    else if ([FriendDataProxy sharedProxy].currUserListType == USER_LIST_FOR_FOCUS) {
+        self.title = NSLocalizedString(@"Category.Focus", nil);
+    }
   // Uncomment the following line to preserve selection between presentations.
   // self.clearsSelectionOnViewWillAppear = NO;
 
@@ -27,9 +39,57 @@
 }
 
 - (void)didReceiveMemoryWarning {
-  [super didReceiveMemoryWarning];
+    [super didReceiveMemoryWarning];
   // Dispose of any resources that can be recreated.
 }
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [self registerMessageNotification];
+    if ([FriendDataProxy sharedProxy].currUserListType == USER_LIST_FOR_FANS) {
+        [[FriendDataProxy sharedProxy] getFanListInRange:NSMakeRange(0, LIST_PAGENUM)];
+    }
+    else if ([FriendDataProxy sharedProxy].currUserListType == USER_LIST_FOR_FOCUS) {
+        [[FriendDataProxy sharedProxy] getFocusListInRange:NSMakeRange(0, LIST_PAGENUM)];
+    }
+    [self.tableView reloadData];
+    [super viewWillAppear:animated];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [self removeMessageNotification];
+    [super viewWillDisappear:animated];
+}
+
+#pragma mark - 注册与移除通知监听
+- (void)registerMessageNotification
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dealFanList:) name:NOTI_H__FRIEND_FAN_LIST_ object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dealFocusList:) name:NOTI_H__FRIEND_FOCUS_LIST_ object:nil];
+}
+
+- (void)removeMessageNotification
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)dealFanList:(NSNotification *)notification
+{
+    [self.tableView reloadData];
+}
+
+- (void)dealFocusList:(NSNotification *)notification
+{
+    if (notification.object != nil) {
+        //服务端返回错误码的处理
+        NSLog(@"%@",notification.object);
+    }
+    else {
+        [self.tableView reloadData];
+    }
+}
+
 
 #pragma mark - Table view data source
 
@@ -40,28 +100,52 @@
 
 - (NSInteger)tableView:(UITableView *)tableView
     numberOfRowsInSection:(NSInteger)section {
-  return [[FriendDataProxy sharedProxy] getCountOfUsers:USER_LIST_FOR_CURR];
-  //  NSArray *listUserInfo;
-  //  uint currUserListType = [FriendDataProxy sharedProxy].currUserListType;
-  //  if (currUserListType == USER_LIST_FOR_FOCUS) {
-  //    listUserInfo = [FriendDataProxy sharedProxy].listMyFocus;
-  //  } else if (currUserListType == USER_LIST_FOR_FANS) {
-  //    listUserInfo = [FriendDataProxy sharedProxy].listMyFans;
-  //  } else {
-  //    return 0;
-  //  }
-  //  return [listUserInfo count];
+  return [FriendDataProxy sharedProxy].arrCurrentPageList.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView
          cellForRowAtIndexPath:(NSIndexPath *)indexPath {
   CategoryListTableViewCell *cell =
-      [tableView dequeueReusableCellWithIdentifier:@"CellUserList"
+      [tableView dequeueReusableCellWithIdentifier:@"ContactFocusAndFanTableCell"
                                       forIndexPath:indexPath];
 
-  [cell fillWithIndexPath:indexPath];
+    if ([FriendDataProxy sharedProxy].currUserListType == USER_LIST_FOR_FANS) {
+        [cell fillWithDPFanUser:[[FriendDataProxy sharedProxy].arrCurrentPageList objectAtIndex:indexPath.row]];
+    }
+    else if ([FriendDataProxy sharedProxy].currUserListType == USER_LIST_FOR_FOCUS) {
+        [cell fillWithDPFocusUser:[[FriendDataProxy sharedProxy].arrCurrentPageList objectAtIndex:indexPath.row]];
+    }
+    else {
+        NSLog(@"非法currUserListType!!!");
+    }
 
   return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath;
+{
+    DPUser *dpUser;
+    if (USER_LIST_FOR_FOCUS == [FriendDataProxy sharedProxy].currUserListType) {
+         [UserDataProxy sharedProxy].showUserInfoRleation = RELATION_FOCUS;
+        DPFocusUser *dpFocusUser = [[FriendDataProxy sharedProxy].arrCurrentPageList objectAtIndex:indexPath.row];
+        dpUser = [[UserDataProxy sharedProxy] getUserByUid:dpFocusUser.focusUid];
+           }
+    else if (USER_LIST_FOR_FANS == [FriendDataProxy sharedProxy].currUserListType) {
+        [UserDataProxy sharedProxy].showUserInfoRleation = RELATION_FAN;
+        DPFanUser *dpFanUser = [[FriendDataProxy sharedProxy].arrCurrentPageList objectAtIndex:indexPath.row];
+        dpUser = [[UserDataProxy sharedProxy] getUserByUid:dpFanUser.fanUid];
+
+
+    }
+    if (dpUser == nil) {
+        NSLog(@"不能找到用户信息(categoryListTable didSelectRowAtIndexPath)");
+    }
+    else
+    {
+        [UserDataProxy sharedProxy].showUserInfoUid = dpUser.uid ;
+        [self performSegueWithIdentifier:@"ContactFocusAndFanList2UserInfo" sender:self];
+    }
+
 }
 
 /*

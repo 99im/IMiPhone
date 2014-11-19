@@ -9,6 +9,7 @@
 #import "CategoryTableViewController.h"
 #import "FriendMessageProxy.h"
 
+
 @interface CategoryTableViewController ()
 
 @property(nonatomic, retain) NSArray *arrCategorys;
@@ -31,24 +32,25 @@
   // Uncomment the following line to display an Edit button in the navigation
   // bar for this view controller.
   // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    [[FriendMessageProxy sharedProxy] sendHttpBrief];
 }
 
-- (void)viewDidAppear:(BOOL)animated
+- (void)viewWillAppear:(BOOL)animated
 {
     [self registerMessageNotification];
+    [[FriendMessageProxy sharedProxy] sendHttpBrief];
+    [super viewWillAppear:animated];
 }
 
-- (void)viewDidDisappear:(BOOL)animated
+- (void)viewWillDisappear:(BOOL)animated
 {
     [self removeMessageNotification];
+    [super viewWillDisappear:animated];
 }
 
 - (void)didReceiveMemoryWarning {
   [super didReceiveMemoryWarning];
   // Dispose of any resources that can be recreated.
 }
-
 
 #pragma mark - Table view delegate
 
@@ -64,15 +66,15 @@
     }
   }
   if ([categoryId isEqualToString:@"focus"]) {
-    [FriendDataProxy sharedProxy].currUserListType = USER_LIST_FOR_FOCUS;
-    [[FriendMessageProxy sharedProxy]
-        sendTypeFocusList:[NSNumber numberWithInt:0]
-              withPageNum:[NSNumber numberWithInt:LIST_PAGENUM]];
+      [FriendDataProxy sharedProxy].currUserListType = USER_LIST_FOR_FOCUS;
+      [self performSegueWithIdentifier:@"Category2FocusAndFanListSegue" sender:self];
+      
+//    [[FriendMessageProxy sharedProxy]
+//        sendTypeFocusList:[NSNumber numberWithInt:0]
+//              withPageNum:[NSNumber numberWithInt:LIST_PAGENUM]];
   } else if ([categoryId isEqualToString:@"fan"]) {
-    [FriendDataProxy sharedProxy].currUserListType = USER_LIST_FOR_FANS;
-    [[FriendMessageProxy sharedProxy]
-        sendTypeFanList:[NSNumber numberWithInt:0]
-            withPageNum:[NSNumber numberWithInt:LIST_PAGENUM]];
+      [FriendDataProxy sharedProxy].currUserListType = USER_LIST_FOR_FANS;
+      [self performSegueWithIdentifier:@"Category2FocusAndFanListSegue" sender:self];
   }
 }
 

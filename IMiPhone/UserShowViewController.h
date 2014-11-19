@@ -22,4 +22,6 @@
 
 - (void)showStrangerButton:(BOOL)value;
 
+- (void)hideButtonsByReleation:(NSInteger)releation;
+
 @end

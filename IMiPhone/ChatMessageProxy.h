@@ -19,11 +19,13 @@
 #define CHAT_STAGE_GROUP @"group"
 
 #define CHAT_MASSAGE_TYPE_TEXT 0
-#define CHAT_MASSAGE_TYPE_AUDIO 1
+#define CHAT_MASSAGE_TYPE_IMAGE 1
 
 @interface ChatMessageProxy : IMNWProxy
 
 + (ChatMessageProxy *)sharedProxy;
+
+- (void)sendHttpUploadimg:(id)image;
 
 - (void)sendTypeP2PChatList:(NSInteger)targetUid before:(NSInteger)beforeMid after:(NSInteger)afterMid startAt:(NSInteger)startIndex getNum:(NSInteger)pageNum;
 - (void)parseTypeP2PChatList:(id)json;
