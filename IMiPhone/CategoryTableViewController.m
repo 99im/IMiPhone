@@ -32,17 +32,19 @@
   // Uncomment the following line to display an Edit button in the navigation
   // bar for this view controller.
   // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    [[FriendMessageProxy sharedProxy] sendHttpBrief];
 }
 
-- (void)viewDidAppear:(BOOL)animated
+- (void)viewWillAppear:(BOOL)animated
 {
     [self registerMessageNotification];
+    [[FriendMessageProxy sharedProxy] sendHttpBrief];
+    [super viewWillAppear:animated];
 }
 
-- (void)viewDidDisappear:(BOOL)animated
+- (void)viewWillDisappear:(BOOL)animated
 {
     [self removeMessageNotification];
+    [super viewWillDisappear:animated];
 }
 
 - (void)didReceiveMemoryWarning {

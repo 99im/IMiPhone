@@ -30,12 +30,7 @@
     [self.lblOid setText:userInfo.oid];
     
     NSInteger userRelation = [UserDataProxy sharedProxy].showUserInfoRleation;
-    if (userRelation == RELATION_STRANGER || userRelation == RELATION_FAN) {
-        [self showStrangerButton:YES];
-    }
-    else {
-        [self showStrangerButton:NO];
-    }
+    [self hideButtonsByReleation:userRelation];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -74,7 +69,19 @@
     self.btnMore.hidden = value;
 }
 
+- (void)hideButtonsByReleation:(NSInteger)releation
+{
+    if (releation == RELATION_STRANGER || releation == RELATION_FAN) {
+        [self showStrangerButton:YES];
+    }
+    else {
+        [self showStrangerButton:NO];
+    }
+
+}
+
 #pragma mark - reactive the buttons event
+
 - (IBAction)focusTouchUpInside:(id)sender {
 
     if (self.alertViewFocus == nil) {
@@ -160,6 +167,9 @@
         strTip = NSLocalizedString(@"Alert.Tip.Focus.Success", nil);
     }
     [imUtil alertViewMessage:strTip disappearAfter:2.0f];
+    
+    NSInteger userRelation = [UserDataProxy sharedProxy].showUserInfoRleation;
+    [self hideButtonsByReleation:userRelation];
 }
 
 - (void)showFocusCancelResult:(NSNotification *)notification
@@ -173,6 +183,9 @@
         strTip = NSLocalizedString(@"Alert.Tip.Focus.Cancel.Success", nil);
     }
     [imUtil alertViewMessage:strTip disappearAfter:2.0f];
+    
+    NSInteger userRelation = [UserDataProxy sharedProxy].showUserInfoRleation;
+    [self hideButtonsByReleation:userRelation];
 }
 
 @end
