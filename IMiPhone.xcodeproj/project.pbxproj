@@ -286,7 +286,6 @@
 		AB199AD01A0A4B5C00F6B858 /* LocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB199ACF1A0A4B5C00F6B858 /* LocationViewController.m */; };
 		AB20EE8419F4DCCC004627C8 /* GroupDataProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = AB20EE8319F4DCCC004627C8 /* GroupDataProxy.m */; };
 		AB20EE8719F4DD8C004627C8 /* GroupMessageProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = AB20EE8619F4DD8C004627C8 /* GroupMessageProxy.m */; };
-		AB24A95419F7CE2F00026299 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB24A95219F7CE2F00026299 /* Main.storyboard */; };
 		AB24A95719F89DDA00026299 /* GroupInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB24A95619F89DDA00026299 /* GroupInfoViewController.m */; };
 		AB24A95D19F8DC6500026299 /* GroupCreateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB24A95C19F8DC6500026299 /* GroupCreateViewController.m */; };
 		AB24A96019F8E59D00026299 /* GroupSettingTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB24A95F19F8E59D00026299 /* GroupSettingTableViewController.m */; };
@@ -313,6 +312,7 @@
 		DBD2A9341A1A137C0020EECD /* AllGroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DBD2A9331A1A137C0020EECD /* AllGroupViewController.m */; };
 		DBD687771A1C8AF00001857D /* DBFanUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 114BF7471A1A458A00A28A94 /* DBFanUser.m */; };
 		DBD687781A1C8B580001857D /* DPFanUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 114BF74F1A1A499100A28A94 /* DPFanUser.m */; };
+		DBD6877E1A1C99AB0001857D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DBD6877C1A1C99AB0001857D /* Main.storyboard */; };
 		DBDD8F401A1AE31300B9F5C9 /* AllGroupTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DBDD8F3F1A1AE31300B9F5C9 /* AllGroupTableViewCell.m */; };
 /* End PBXBuildFile section */
 
@@ -618,7 +618,6 @@
 		AB20EE8319F4DCCC004627C8 /* GroupDataProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupDataProxy.m; sourceTree = "<group>"; };
 		AB20EE8519F4DD8C004627C8 /* GroupMessageProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupMessageProxy.h; sourceTree = "<group>"; };
 		AB20EE8619F4DD8C004627C8 /* GroupMessageProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupMessageProxy.m; sourceTree = "<group>"; };
-		AB24A95319F7CE2F00026299 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = "zh-Hans"; path = "zh-Hans.lproj/Main.storyboard"; sourceTree = "<group>"; };
 		AB24A95519F89DDA00026299 /* GroupInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupInfoViewController.h; sourceTree = "<group>"; };
 		AB24A95619F89DDA00026299 /* GroupInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupInfoViewController.m; sourceTree = "<group>"; };
 		AB24A95B19F8DC6500026299 /* GroupCreateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupCreateViewController.h; sourceTree = "<group>"; };
@@ -664,6 +663,7 @@
 		DBD2A9301A1A10F50020EECD /* FindNearbyGroupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FindNearbyGroupViewController.m; sourceTree = "<group>"; };
 		DBD2A9321A1A137C0020EECD /* AllGroupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AllGroupViewController.h; sourceTree = "<group>"; };
 		DBD2A9331A1A137C0020EECD /* AllGroupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AllGroupViewController.m; sourceTree = "<group>"; };
+		DBD6877D1A1C99AB0001857D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = "zh-Hans"; path = "zh-Hans.lproj/Main.storyboard"; sourceTree = "<group>"; };
 		DBDD8F3E1A1AE31300B9F5C9 /* AllGroupTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AllGroupTableViewCell.h; sourceTree = "<group>"; };
 		DBDD8F3F1A1AE31300B9F5C9 /* AllGroupTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AllGroupTableViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -942,9 +942,9 @@
 		585971D71999F0C700258CB1 /* IMiPhone */ = {
 			isa = PBXGroup;
 			children = (
+				DBD6877C1A1C99AB0001857D /* Main.storyboard */,
 				DBD2A9271A1996030020EECD /* Images.xcassets */,
 				DB6FACB61A0B70F00048B76B /* Find */,
-				AB24A95219F7CE2F00026299 /* Main.storyboard */,
 				111B4E9A1A0A26800043A29F /* Activity */,
 				AB20EE8919F4F67D004627C8 /* Group */,
 				AB199ACD1A0A4A3200F6B858 /* LBS */,
@@ -1404,9 +1404,9 @@
 				DBD2A9281A1996030020EECD /* Images.xcassets in Resources */,
 				11DF9F8319A2276C00AE5D89 /* splash.jpg in Resources */,
 				DBD2A92B1A19D88D0020EECD /* head.png in Resources */,
+				DBD6877E1A1C99AB0001857D /* Main.storyboard in Resources */,
 				58C14DED19CAE196009334E1 /* contact.plist in Resources */,
 				58AF048719AF10560077DCBC /* Localizable.strings in Resources */,
-				AB24A95419F7CE2F00026299 /* Main.storyboard in Resources */,
 				DB6FACC61A0B7BC90048B76B /* FindList.plist in Resources */,
 				58B9F66619F8DEE200567BCC /* emotion.plist in Resources */,
 			);
@@ -1770,20 +1770,20 @@
 			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
-		AB24A95219F7CE2F00026299 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				AB24A95319F7CE2F00026299 /* zh-Hans */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		DBD2A9291A19D88D0020EECD /* head.png */ = {
 			isa = PBXVariantGroup;
 			children = (
 				DBD2A92A1A19D88D0020EECD /* zh-Hans */,
 			);
 			name = head.png;
+			sourceTree = "<group>";
+		};
+		DBD6877C1A1C99AB0001857D /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DBD6877D1A1C99AB0001857D /* zh-Hans */,
+			);
+			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
