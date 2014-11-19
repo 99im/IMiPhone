@@ -1844,7 +1844,6 @@
                     <connections>
                         <outlet property="btnApply" destination="DnI-3q-dXv" id="fgE-BS-pPM"/>
                         <outlet property="btnGroupChat" destination="abL-fc-KFT" id="xod-qn-sho"/>
-                        <outlet property="btnGroupSetting" destination="BmJ-ql-D7D" id="UUg-Ng-7SF"/>
                         <outlet property="imgAvatar" destination="ZjC-fs-DKb" id="JAi-av-oZ5"/>
                         <outlet property="lblCTime" destination="NIq-K2-5KG" id="5Im-Zt-au4"/>
                         <outlet property="lblCity" destination="oJb-ek-GzQ" id="wuG-Sg-oef"/>
