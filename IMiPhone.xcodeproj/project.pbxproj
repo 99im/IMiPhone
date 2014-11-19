@@ -59,11 +59,9 @@
 		114BF7411A198B9C00A28A94 /* DPFocusUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 114BF73F1A198B9B00A28A94 /* DPFocusUser.m */; };
 		114BF7441A198BED00A28A94 /* FocusUserDAO.m in Sources */ = {isa = PBXBuildFile; fileRef = 114BF7431A198BED00A28A94 /* FocusUserDAO.m */; };
 		114BF7451A198BED00A28A94 /* FocusUserDAO.m in Sources */ = {isa = PBXBuildFile; fileRef = 114BF7431A198BED00A28A94 /* FocusUserDAO.m */; };
-		114BF7481A1A458A00A28A94 /* DBFanUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 114BF7471A1A458A00A28A94 /* DBFanUser.m */; };
 		114BF7491A1A458A00A28A94 /* DBFanUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 114BF7471A1A458A00A28A94 /* DBFanUser.m */; };
 		114BF74C1A1A468E00A28A94 /* FanUserDAO.m in Sources */ = {isa = PBXBuildFile; fileRef = 114BF74B1A1A468E00A28A94 /* FanUserDAO.m */; };
 		114BF74D1A1A468E00A28A94 /* FanUserDAO.m in Sources */ = {isa = PBXBuildFile; fileRef = 114BF74B1A1A468E00A28A94 /* FanUserDAO.m */; };
-		114BF7501A1A499100A28A94 /* DPFanUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 114BF74F1A1A499100A28A94 /* DPFanUser.m */; };
 		114BF7511A1A499100A28A94 /* DPFanUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 114BF74F1A1A499100A28A94 /* DPFanUser.m */; };
 		1152E3191A078C6B00400D2A /* IMRichText.m in Sources */ = {isa = PBXBuildFile; fileRef = 1152E3181A078C6B00400D2A /* IMRichText.m */; };
 		1152E31A1A078C6B00400D2A /* IMRichText.m in Sources */ = {isa = PBXBuildFile; fileRef = 1152E3181A078C6B00400D2A /* IMRichText.m */; };
@@ -182,8 +180,6 @@
 		11FDE12319EFB516002AEDB7 /* FriendDAO.m in Sources */ = {isa = PBXBuildFile; fileRef = 11FDE12219EFB516002AEDB7 /* FriendDAO.m */; };
 		11FDE12619EFB52F002AEDB7 /* DBFriend.m in Sources */ = {isa = PBXBuildFile; fileRef = 11FDE12519EFB52F002AEDB7 /* DBFriend.m */; };
 		581A27321A1AE5D200E5BE5F /* AccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 581A27311A1AE5D200E5BE5F /* AccountViewController.m */; };
-		581A27361A1AE86000E5BE5F /* shanghai.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 581A27351A1AE86000E5BE5F /* shanghai.gpx */; };
-		581A27371A1AE9AA00E5BE5F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 585971F91999F0C700258CB1 /* InfoPlist.strings */; };
 		5825D8F119D808CA004FF6FF /* CategoryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5825D8F019D808CA004FF6FF /* CategoryTableViewController.m */; };
 		58438C0D19D412E400B6962B /* NearbyTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58438C0C19D412E400B6962B /* NearbyTableViewController.m */; };
 		585971D21999F0C700258CB1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 585971D11999F0C700258CB1 /* Foundation.framework */; };
@@ -299,7 +295,6 @@
 		AB62170B19FFA01A003C2FBB /* AddItemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AB62170A19FFA01A003C2FBB /* AddItemTableViewCell.m */; };
 		AB6396231A038CA500FF0BC6 /* DPSysMessageGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = AB6396221A038CA500FF0BC6 /* DPSysMessageGroup.m */; };
 		AB645E4A1A19CD00008AC05D /* LocationGroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB645E491A19CD00008AC05D /* LocationGroupViewController.m */; };
-		AB645E531A19F8C9008AC05D /* DiscoveryMessageProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = AB645E521A19F8C9008AC05D /* DiscoveryMessageProxy.m */; };
 		AB72235119ED110700E603E2 /* CategoryListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AB5554E719EBEAFA00B413F3 /* CategoryListTableViewCell.m */; };
 		ABA91EF919F64B970017B045 /* GroupTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ABA91EF819F64B970017B045 /* GroupTableViewCell.m */; };
 		ABA91EFC19F658270017B045 /* GroupTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABA91EFB19F658270017B045 /* GroupTableViewController.m */; };
@@ -316,6 +311,8 @@
 		DBD2A92E1A19E5430020EECD /* ActivityCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DBD2A92D1A19E5430020EECD /* ActivityCellTableViewCell.m */; };
 		DBD2A9311A1A10F50020EECD /* FindNearbyGroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DBD2A9301A1A10F50020EECD /* FindNearbyGroupViewController.m */; };
 		DBD2A9341A1A137C0020EECD /* AllGroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DBD2A9331A1A137C0020EECD /* AllGroupViewController.m */; };
+		DBD687771A1C8AF00001857D /* DBFanUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 114BF7471A1A458A00A28A94 /* DBFanUser.m */; };
+		DBD687781A1C8B580001857D /* DPFanUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 114BF74F1A1A499100A28A94 /* DPFanUser.m */; };
 		DBDD8F401A1AE31300B9F5C9 /* AllGroupTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DBDD8F3F1A1AE31300B9F5C9 /* AllGroupTableViewCell.m */; };
 /* End PBXBuildFile section */
 
@@ -1411,7 +1408,6 @@
 				58AF048719AF10560077DCBC /* Localizable.strings in Resources */,
 				AB24A95419F7CE2F00026299 /* Main.storyboard in Resources */,
 				DB6FACC61A0B7BC90048B76B /* FindList.plist in Resources */,
-				585971DC1999F0C700258CB1 /* InfoPlist.strings in Resources */,
 				58B9F66619F8DEE200567BCC /* emotion.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1447,7 +1443,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DBD687771A1C8AF00001857D /* DBFanUser.m in Sources */,
 				117AC6A419EE7C2F00143973 /* DPUserFromContact.m in Sources */,
+				DBD687781A1C8B580001857D /* DPFanUser.m in Sources */,
 				111B4EC91A0A2F4F0043A29F /* ActivityMessageProxy.m in Sources */,
 				AB72235119ED110700E603E2 /* CategoryListTableViewCell.m in Sources */,
 				111B4EBD1A0A2E180043A29F /* ActivityRunningTabChatController.m in Sources */,
