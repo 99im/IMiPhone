@@ -83,7 +83,7 @@
         self.lblGroupName.text = dpGroup.name;
         self.lblCreatorName.text = [NSString stringWithFormat:@"群主：%@ ", dpGroup.creator_nick];
         self.lblCTime.text = dpGroup.ctime;
-        self.lblMemberNum.text = [NSString stringWithFormat:@"%li", dpGroup.memberNum];
+        self.lblMemberNum.text = [NSString stringWithFormat:@"%li", (long)dpGroup.memberNum];
         self.tvIntro.text =
             [NSString stringWithFormat:@"%@\n(本地过期时间：%qi)", dpGroup.intro, dpGroup.localExpireTime];
         self.lblCity.text = dpGroup.creator_city;

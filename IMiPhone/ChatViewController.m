@@ -154,7 +154,7 @@
     
     CGRect bounds = self.view.bounds;
     bounds.origin.y = kbRect.size.height;
-        self.viewChatContainer.bounds = bounds;
+    self.viewChatContainer.bounds = bounds;
     [self hideCurSubViewController];
 }
 
@@ -262,6 +262,16 @@
     }
 }
 
+- (void)scrollToLastCell:(BOOL)animated
+{
+    NSInteger maxRow = [self.tableViewChat numberOfRowsInSection:0] - 1;
+    if (maxRow < 0) {
+        return;
+    }
+    NSIndexPath *indexPathMax = [NSIndexPath indexPathForRow:maxRow inSection:0];
+    [self.tableViewChat scrollToRowAtIndexPath:indexPathMax atScrollPosition:UITableViewScrollPositionBottom animated:animated];
+}
+
 //- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 //{
 //    NSLog(@"will display %@",indexPath);
@@ -277,16 +287,6 @@
         ((UITextField *)sender).text = @"";
     }
 
-}
-
-- (void)scrollToLastCell:(BOOL)animated
-{
-    NSInteger maxRow = [self.tableViewChat numberOfRowsInSection:0] - 1;
-    if (maxRow < 0) {
-       return;
-    }
-    NSIndexPath *indexPathMax = [NSIndexPath indexPathForRow:maxRow inSection:0];
-    [self.tableViewChat scrollToRowAtIndexPath:indexPathMax atScrollPosition:UITableViewScrollPositionBottom animated:animated];
 }
 
 #pragma mark - view input text buttons logic
