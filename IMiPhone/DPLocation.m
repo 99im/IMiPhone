@@ -10,15 +10,16 @@
 
 @implementation DPLocation
 
-@synthesize lon;
-@synthesize lat;
-@synthesize alt;
+@synthesize longitude;
+@synthesize latitude;
+@synthesize altitude;
 
 @synthesize state;
 @synthesize city;
 @synthesize street;
 @synthesize zip;
 
+@synthesize localUpdateTime;
 @synthesize localExpireTime;
 
 @end

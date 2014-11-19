@@ -38,17 +38,17 @@
 */
 
 //
--(void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
-    NSLog(@"location error:%@", error);
-}
-
-
--(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
-    CLLocation *currLocation = [locations lastObject];
-
-    NSLog(@"纬度:%3.5f 经度:%3.5f 海拔:%3.5f" , currLocation.coordinate.latitude , currLocation.coordinate.longitude, currLocation.altitude);
-
-}
+//-(void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
+//    NSLog(@"location error:%@", error);
+//}
+//
+//
+//-(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
+//    CLLocation *currLocation = [locations lastObject];
+//
+//    NSLog(@"纬度:%3.5f 经度:%3.5f 海拔:%3.5f" , currLocation.coordinate.latitude , currLocation.coordinate.longitude, currLocation.altitude);
+//
+//}
 
 #pragma mark - Location
 -(void) startUpdatingLocation:(id)delegate {
@@ -70,7 +70,7 @@
         
         [_locationManager startUpdatingLocation];
     } else {
-        NSLog(@"请开启定位功能。");
+        NSLog(@"Location services are not enabled");
     }
 }
 

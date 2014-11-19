@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "DPActivity.h"
 
 @interface ActivityDataProxy : NSObject
 

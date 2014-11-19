@@ -181,6 +181,12 @@
 		11FC327A19F0C677000A6733 /* DBFriend.m in Sources */ = {isa = PBXBuildFile; fileRef = 11FDE12519EFB52F002AEDB7 /* DBFriend.m */; };
 		11FDE12319EFB516002AEDB7 /* FriendDAO.m in Sources */ = {isa = PBXBuildFile; fileRef = 11FDE12219EFB516002AEDB7 /* FriendDAO.m */; };
 		11FDE12619EFB52F002AEDB7 /* DBFriend.m in Sources */ = {isa = PBXBuildFile; fileRef = 11FDE12519EFB52F002AEDB7 /* DBFriend.m */; };
+		11FFA4EF1A1C3CBF00F6F00A /* DPActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 11FFA4EE1A1C3CBF00F6F00A /* DPActivity.m */; };
+		11FFA4F01A1C3CBF00F6F00A /* DPActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 11FFA4EE1A1C3CBF00F6F00A /* DPActivity.m */; };
+		11FFA4F31A1C63BA00F6F00A /* DBActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 11FFA4F21A1C63BA00F6F00A /* DBActivity.m */; };
+		11FFA4F41A1C63BA00F6F00A /* DBActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 11FFA4F21A1C63BA00F6F00A /* DBActivity.m */; };
+		11FFA4F71A1C646E00F6F00A /* ActivityDAO.m in Sources */ = {isa = PBXBuildFile; fileRef = 11FFA4F61A1C646E00F6F00A /* ActivityDAO.m */; };
+		11FFA4F81A1C646E00F6F00A /* ActivityDAO.m in Sources */ = {isa = PBXBuildFile; fileRef = 11FFA4F61A1C646E00F6F00A /* ActivityDAO.m */; };
 		581A27321A1AE5D200E5BE5F /* AccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 581A27311A1AE5D200E5BE5F /* AccountViewController.m */; };
 		581A27361A1AE86000E5BE5F /* shanghai.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 581A27351A1AE86000E5BE5F /* shanghai.gpx */; };
 		581A27371A1AE9AA00E5BE5F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 585971F91999F0C700258CB1 /* InfoPlist.strings */; };
@@ -476,6 +482,12 @@
 		11FDE12219EFB516002AEDB7 /* FriendDAO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendDAO.m; sourceTree = "<group>"; };
 		11FDE12419EFB52F002AEDB7 /* DBFriend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBFriend.h; sourceTree = "<group>"; };
 		11FDE12519EFB52F002AEDB7 /* DBFriend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBFriend.m; sourceTree = "<group>"; };
+		11FFA4ED1A1C3CBF00F6F00A /* DPActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPActivity.h; sourceTree = "<group>"; };
+		11FFA4EE1A1C3CBF00F6F00A /* DPActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPActivity.m; sourceTree = "<group>"; };
+		11FFA4F11A1C63BA00F6F00A /* DBActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBActivity.h; sourceTree = "<group>"; };
+		11FFA4F21A1C63BA00F6F00A /* DBActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBActivity.m; sourceTree = "<group>"; };
+		11FFA4F51A1C646E00F6F00A /* ActivityDAO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityDAO.h; sourceTree = "<group>"; };
+		11FFA4F61A1C646E00F6F00A /* ActivityDAO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityDAO.m; sourceTree = "<group>"; };
 		581A27301A1AE5D200E5BE5F /* AccountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AccountViewController.h; path = IMiPhone/AccountViewController.h; sourceTree = "<group>"; };
 		581A27311A1AE5D200E5BE5F /* AccountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AccountViewController.m; path = IMiPhone/AccountViewController.m; sourceTree = "<group>"; };
 		581A27351A1AE86000E5BE5F /* shanghai.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = shanghai.gpx; sourceTree = "<group>"; };
@@ -789,6 +801,10 @@
 				114BF73B1A198A6F00A28A94 /* DBFocusUser.m */,
 				114BF74A1A1A468E00A28A94 /* FanUserDAO.h */,
 				114BF74B1A1A468E00A28A94 /* FanUserDAO.m */,
+				11FFA4F11A1C63BA00F6F00A /* DBActivity.h */,
+				11FFA4F21A1C63BA00F6F00A /* DBActivity.m */,
+				11FFA4F51A1C646E00F6F00A /* ActivityDAO.h */,
+				11FFA4F61A1C646E00F6F00A /* ActivityDAO.m */,
 			);
 			path = Database;
 			sourceTree = "<group>";
@@ -1048,6 +1064,8 @@
 				114BF73F1A198B9B00A28A94 /* DPFocusUser.m */,
 				114BF74E1A1A499100A28A94 /* DPFanUser.h */,
 				114BF74F1A1A499100A28A94 /* DPFanUser.m */,
+				11FFA4ED1A1C3CBF00F6F00A /* DPActivity.h */,
+				11FFA4EE1A1C3CBF00F6F00A /* DPActivity.m */,
 			);
 			name = DataProxy;
 			sourceTree = "<group>";
@@ -1412,6 +1430,7 @@
 				58C14DD219C80D67009334E1 /* ContactViewController.m in Sources */,
 				58C14DEA19CAD70F009334E1 /* AddByInputTableViewCell.m in Sources */,
 				58B9F66919F8E5C500567BCC /* EmotIconViewController.m in Sources */,
+				11FFA4F31A1C63BA00F6F00A /* DBActivity.m in Sources */,
 				114BF7481A1A458A00A28A94 /* DBFanUser.m in Sources */,
 				11E1581319F4FFE1008544D1 /* MsgTableViewController.m in Sources */,
 				116B6E8919B0534000DB1B5E /* DBGroup.m in Sources */,
@@ -1441,6 +1460,7 @@
 				11795E2819D297CD003FD9A7 /* DPFriend.m in Sources */,
 				11C936021A03709100D26CFF /* DPSysMessageFriend.m in Sources */,
 				58D3F28919E63082006589F9 /* IMNWProxy.m in Sources */,
+				11FFA4F71A1C646E00F6F00A /* ActivityDAO.m in Sources */,
 				117AC69E19EE766200143973 /* UsersFromContactDAO.m in Sources */,
 				116BF87719C96F8F0015561B /* UserDataProxy.m in Sources */,
 				58EF8C3F19BEEE1600C5A7AC /* AccountMessageProxy.m in Sources */,
@@ -1451,6 +1471,7 @@
 				58B496E419A7186A0082AE30 /* UIImageView+MKNetworkKitAdditions.m in Sources */,
 				58A331AD19E52CDE005BE980 /* CategoryContactTableViewCell.m in Sources */,
 				1152E3191A078C6B00400D2A /* IMRichText.m in Sources */,
+				11FFA4EF1A1C3CBF00F6F00A /* DPActivity.m in Sources */,
 				58B496E219A7186A0082AE30 /* UIAlertView+MKNetworkKitAdditions.m in Sources */,
 				111B4EB91A0A2DFE0043A29F /* ActivityReadyTabMembersController.m in Sources */,
 				AB645E4A1A19CD00008AC05D /* LocationGroupViewController.m in Sources */,
@@ -1558,6 +1579,7 @@
 				58BC1E5C19C06BAE00722A00 /* UIAlertView+MKNetworkKitAdditions.m in Sources */,
 				58BC1E5D19C06BAE00722A00 /* UIImageView+MKNetworkKitAdditions.m in Sources */,
 				1171F7D519E9278A00865A0B /* DBContactPerson.m in Sources */,
+				11FFA4F81A1C646E00F6F00A /* ActivityDAO.m in Sources */,
 				58BC1E5E19C06BAE00722A00 /* crypt.c in Sources */,
 				114BF7411A198B9C00A28A94 /* DPFocusUser.m in Sources */,
 				11FAA8C519EF558E002048FA /* FriendTableViewCellUser.m in Sources */,
@@ -1607,6 +1629,7 @@
 				11DF6A971A04B57C00A4B1D3 /* DPGroupChatMessage.m in Sources */,
 				114BF7511A1A499100A28A94 /* DPFanUser.m in Sources */,
 				110F560B19D55792003B9EB4 /* DBUiMessage.m in Sources */,
+				11FFA4F01A1C3CBF00F6F00A /* DPActivity.m in Sources */,
 				114BF74D1A1A468E00A28A94 /* FanUserDAO.m in Sources */,
 				110487A319D79DFB0002AB36 /* ChatMessageDAO.m in Sources */,
 				58BC1E5419C06B9000722A00 /* VPImageCropperViewController.m in Sources */,
@@ -1620,6 +1643,7 @@
 				117AC6B219EEB9A500143973 /* IMNWSocketConnect.m in Sources */,
 				117AC6AC19EEB91500143973 /* DPUserFromContact.m in Sources */,
 				116AB14619B731CF00092E2C /* SqlightResult.m in Sources */,
+				11FFA4F41A1C63BA00F6F00A /* DBActivity.m in Sources */,
 				58BC1E3819C0304900722A00 /* RegStep1ViewController.m in Sources */,
 				114BF73D1A198A6F00A28A94 /* DBFocusUser.m in Sources */,
 				5887FD2A19CC00EF001BFAFB /* TPContactsTableViewController.m in Sources */,
