@@ -46,4 +46,6 @@
 + (BOOL)canUserPickPhotosFromPhotoLibrary;
 + (BOOL)cameraSupportsMedia:(NSString *)paramMediaType sourceType:(UIImagePickerControllerSourceType)paramSourceType;
 
++ (NSString *)storeCacheImage:(UIImage *)image useName:(NSString *)name;
+
 @end

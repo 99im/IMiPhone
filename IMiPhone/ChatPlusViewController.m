@@ -43,12 +43,20 @@
 */
 
 - (IBAction)btnImageTouchUpInside:(id)sender {
-    [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_CHATPLUS_BTNSELECTED object:self userInfo:nil];
+    NSMutableDictionary *userInfo = [NSMutableDictionary dictionaryWithCapacity:1];
+    [userInfo setObject:CHATPLUS_BTN_IMAGE forKey:@"button"];
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_CHATPLUS_BTNSELECTED object:self userInfo:userInfo];
 }
 
 - (IBAction)btnPhotoTouchUpInside:(id)sender {
+    NSMutableDictionary *userInfo = [NSMutableDictionary dictionaryWithCapacity:1];
+    [userInfo setObject:CHATPLUS_BTN_PHOTO forKey:@"button"];
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_CHATPLUS_BTNSELECTED object:self userInfo:userInfo];
 }
 
 - (IBAction)btnLocationTouchUpInside:(id)sender {
+    NSMutableDictionary *userInfo = [NSMutableDictionary dictionaryWithCapacity:1];
+    [userInfo setObject:CHATPLUS_BTN_LOCATION forKey:@"button"];
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_CHATPLUS_BTNSELECTED object:self userInfo:userInfo];
 }
 @end

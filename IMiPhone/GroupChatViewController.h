@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "IMNWProxyProtocol.h"
 
-@interface GroupChatViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UIAlertViewDelegate, UIActionSheetDelegate>
+@interface GroupChatViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UIAlertViewDelegate, UIActionSheetDelegate, IMNWProxyProtocol>
 
 - (IBAction)tfInputTextDidEndOnExit:(id)sender;
 

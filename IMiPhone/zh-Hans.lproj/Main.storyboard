@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="sWe-ai-dJr">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="sWe-ai-dJr">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
@@ -384,17 +384,22 @@
                                             </label>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="619" id="9Hd-08-PsI"/>
+                                        </constraints>
                                     </view>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="SZm-I1-Ve7" firstAttribute="top" secondItem="cer-KH-ivo" secondAttribute="top" id="T4z-KE-1Wr"/>
                                     <constraint firstItem="SZm-I1-Ve7" firstAttribute="leading" secondItem="cer-KH-ivo" secondAttribute="leading" id="efK-Og-FpY"/>
-                                    <constraint firstAttribute="bottom" secondItem="SZm-I1-Ve7" secondAttribute="bottom" id="fI0-us-kIk"/>
                                     <constraint firstAttribute="trailing" secondItem="SZm-I1-Ve7" secondAttribute="trailing" id="hqL-0v-SSW"/>
                                 </constraints>
                             </scrollView>
-                            <datePicker contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" useCurrentDate="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HTa-gL-rdw">
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" useCurrentDate="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HTa-gL-rdw">
                                 <rect key="frame" x="0.0" y="318" width="320" height="162"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="162" id="Zin-yx-KFr"/>
+                                </constraints>
                                 <date key="date" timeIntervalSinceReferenceDate="-330141172.43070197">
                                     <!--1990-07-16 22:07:07 +0000-->
                                 </date>
@@ -415,10 +420,12 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="cer-KH-ivo" firstAttribute="top" secondItem="e4w-ti-2hr" secondAttribute="top" constant="64" id="7K1-yh-KO7"/>
+                            <constraint firstAttribute="trailing" secondItem="HTa-gL-rdw" secondAttribute="trailing" id="H5f-Lr-vxz"/>
                             <constraint firstAttribute="bottom" secondItem="HTa-gL-rdw" secondAttribute="bottom" id="Mnl-KX-YC6"/>
                             <constraint firstItem="cer-KH-ivo" firstAttribute="leading" secondItem="e4w-ti-2hr" secondAttribute="leading" id="O3Q-jl-asZ"/>
                             <constraint firstAttribute="bottom" secondItem="cer-KH-ivo" secondAttribute="bottom" id="eXk-LZ-C7B"/>
                             <constraint firstAttribute="trailing" secondItem="cer-KH-ivo" secondAttribute="trailing" id="h5q-j5-HzC"/>
+                            <constraint firstItem="HTa-gL-rdw" firstAttribute="leading" secondItem="e4w-ti-2hr" secondAttribute="leading" id="nhz-AN-NAj"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="aVd-xz-nNg"/>
@@ -1071,10 +1078,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sS0-Ne-O7G">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sS0-Ne-O7G">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                                 <subviews>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="50" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="329-xQ-y4w">
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="50" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="329-xQ-y4w">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="432"/>
                                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                         <prototypes>
@@ -1087,8 +1094,8 @@
                                         </prototypes>
                                         <sections/>
                                     </tableView>
-                                    <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" restorationIdentifier="ChatInputTextView" translatesAutoresizingMaskIntoConstraints="NO" id="aNi-Nk-VGM" userLabel="Chat Input Text View" customClass="ChatInputTextView">
-                                        <rect key="frame" x="0.0" y="520" width="320" height="48"/>
+                                    <view contentMode="scaleToFill" restorationIdentifier="ChatInputTextView" translatesAutoresizingMaskIntoConstraints="NO" id="aNi-Nk-VGM" userLabel="Chat Input Text View" customClass="ChatInputTextView">
+                                        <rect key="frame" x="0.0" y="432" width="320" height="48"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xg4-QP-bWw">
                                                 <rect key="frame" x="10" y="8" width="25" height="25"/>
@@ -1133,8 +1140,8 @@
                                             <constraint firstAttribute="height" constant="48" id="c5N-pu-VgU"/>
                                         </constraints>
                                     </view>
-                                    <view hidden="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" restorationIdentifier="ChatInputSoundView" translatesAutoresizingMaskIntoConstraints="NO" id="l2f-od-NdP" userLabel="Chat Input Sound View" customClass="ChatInputSoundView">
-                                        <rect key="frame" x="0.0" y="520" width="320" height="48"/>
+                                    <view hidden="YES" contentMode="scaleToFill" restorationIdentifier="ChatInputSoundView" translatesAutoresizingMaskIntoConstraints="NO" id="l2f-od-NdP" userLabel="Chat Input Sound View" customClass="ChatInputSoundView">
+                                        <rect key="frame" x="0.0" y="432" width="320" height="48"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="22i-6T-mw0">
                                                 <rect key="frame" x="10" y="8" width="25" height="25"/>
@@ -1176,16 +1183,24 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="aNi-Nk-VGM" secondAttribute="bottom" id="01a-q8-SWw"/>
+                                    <constraint firstItem="aNi-Nk-VGM" firstAttribute="leading" secondItem="sS0-Ne-O7G" secondAttribute="leading" id="1x9-2N-KSQ"/>
                                     <constraint firstAttribute="bottom" secondItem="l2f-od-NdP" secondAttribute="bottom" id="FrD-ow-OD7"/>
                                     <constraint firstItem="329-xQ-y4w" firstAttribute="top" secondItem="sS0-Ne-O7G" secondAttribute="top" id="L0c-b2-yRF"/>
+                                    <constraint firstAttribute="trailing" secondItem="l2f-od-NdP" secondAttribute="trailing" id="Mbh-TG-9RK"/>
+                                    <constraint firstAttribute="trailing" secondItem="aNi-Nk-VGM" secondAttribute="trailing" id="bf0-2W-Fpn"/>
+                                    <constraint firstItem="329-xQ-y4w" firstAttribute="leading" secondItem="sS0-Ne-O7G" secondAttribute="leading" id="dlW-pd-Vds"/>
+                                    <constraint firstAttribute="trailing" secondItem="329-xQ-y4w" secondAttribute="trailing" id="jOT-dH-bOO"/>
                                     <constraint firstAttribute="bottom" secondItem="329-xQ-y4w" secondAttribute="bottom" constant="48" id="m36-6C-Nct"/>
+                                    <constraint firstItem="l2f-od-NdP" firstAttribute="leading" secondItem="sS0-Ne-O7G" secondAttribute="leading" id="nKv-Ze-SOg"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="sS0-Ne-O7G" firstAttribute="leading" secondItem="vdW-Q2-z1e" secondAttribute="leading" id="BFY-So-p06"/>
                             <constraint firstItem="sS0-Ne-O7G" firstAttribute="top" secondItem="vdW-Q2-z1e" secondAttribute="top" id="X8i-kl-Ydo"/>
                             <constraint firstAttribute="bottom" secondItem="sS0-Ne-O7G" secondAttribute="bottom" id="mB3-f2-L1B"/>
+                            <constraint firstAttribute="trailing" secondItem="sS0-Ne-O7G" secondAttribute="trailing" id="zEd-be-IgP"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="聊天标题" id="e9w-hA-9aF"/>
@@ -1223,6 +1238,7 @@
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="COD-wq-LEY">
                                                 <rect key="frame" x="0.0" y="0.0" width="80" height="110"/>
+                                                <accessibility key="accessibilityConfiguration" label=""/>
                                                 <state key="normal" image="image">
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
@@ -1278,11 +1294,11 @@
                         <viewControllerLayoutGuide type="bottom" id="hXK-eM-Cea"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="SlK-oq-AUt">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bFz-SV-ZjS">
-                                <rect key="frame" x="110" y="525" width="101" height="30"/>
+                                <rect key="frame" x="110" y="538" width="101" height="30"/>
                                 <state key="normal" title="添加关注">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -1291,7 +1307,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Ar-5g-u0F">
-                                <rect key="frame" x="219" y="525" width="101" height="30"/>
+                                <rect key="frame" x="219" y="538" width="101" height="30"/>
                                 <state key="normal" title="拉黑举报">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -1300,7 +1316,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Omi-G2-oWd">
-                                <rect key="frame" x="0.0" y="525" width="102" height="30"/>
+                                <rect key="frame" x="0.0" y="538" width="102" height="30"/>
                                 <state key="normal" title="发送消息">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -1308,17 +1324,8 @@
                                     <action selector="btnMessageTouchUpInside:" destination="Ixd-6h-fyu" eventType="touchUpInside" id="wOU-nA-3cO"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y8v-na-mKc">
-                                <rect key="frame" x="0.0" y="525" width="320" height="30"/>
-                                <state key="normal" title="对话">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="btnChatTouchUpInside:" destination="Ixd-6h-fyu" eventType="touchUpInside" id="D0P-Vv-0Yk"/>
-                                </connections>
-                            </button>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tbe-oe-gHj">
-                                <rect key="frame" x="-4" y="64" width="320" height="378"/>
+                                <rect key="frame" x="0.0" y="64" width="320" height="466"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yh4-C3-Ghc">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="466"/>
@@ -1352,6 +1359,15 @@
                                     </view>
                                 </subviews>
                             </scrollView>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y8v-na-mKc">
+                                <rect key="frame" x="0.0" y="538" width="320" height="30"/>
+                                <state key="normal" title="对话">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="btnChatTouchUpInside:" destination="Ixd-6h-fyu" eventType="touchUpInside" id="D0P-Vv-0Yk"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -1530,7 +1546,7 @@
                         <viewControllerLayoutGuide type="bottom" id="FYC-zJ-UcU"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="ED3-dV-pXs" customClass="UIScrollView">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Rdk-oI-GGl">
@@ -1645,7 +1661,7 @@
                         <outlet property="lblGroupName" destination="dlg-nV-kFa" id="yD6-Eq-gg4"/>
                         <outlet property="lblMemberNum" destination="qC8-MD-ylo" id="SxB-ME-pB0"/>
                         <outlet property="tvIntro" destination="Skp-jk-w4A" id="E8t-9b-BFY"/>
-                        <segue destination="Tez-zb-r5A" kind="push" id="3hi-GN-j2D"/>
+                        <segue destination="Tez-zb-r5A" kind="push" identifier="GroupInfo2MembersSegue" id="3hi-GN-j2D"/>
                         <segue destination="f2G-Kw-Ad0" kind="push" identifier="groupInfo2GroupSetting" id="Gnm-RN-Gtp"/>
                     </connections>
                 </viewController>
@@ -1710,7 +1726,7 @@
             <objects>
                 <tableViewController id="Tez-zb-r5A" userLabel="Group-群成员列表" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="GEC-7y-mnh">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -1742,7 +1758,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="jBD-ov-1Ep"/>
                     <connections>
-                        <segue destination="Ixd-6h-fyu" kind="push" id="xJX-I6-fGX"/>
+                        <segue destination="Ixd-6h-fyu" kind="push" identifier="GroupMembers2UserInfoSegue" id="xJX-I6-fGX"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5qz-4A-Fxo" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1877,7 +1893,7 @@
                         <outlet property="tfCity" destination="PhO-ju-4lS" id="bSu-ZD-4BA"/>
                         <outlet property="tfName" destination="xoK-wb-cf9" id="fmL-cH-giI"/>
                         <outlet property="tvIntro" destination="OVv-fu-vJj" id="FsK-NT-wdY"/>
-                        <segue destination="nqj-0p-hk3" kind="push" id="j7u-OT-bsU"/>
+                        <segue destination="nqj-0p-hk3" kind="push" identifier="CreatGroup2InfoSegue" id="j7u-OT-bsU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ent-cM-L0I" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1889,7 +1905,7 @@
             <objects>
                 <tableViewController storyboardIdentifier="storyGroupSetting" hidesBottomBarWhenPushed="YES" id="f2G-Kw-Ad0" userLabel="Group-群设置" customClass="GroupSettingTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" sectionIndexMinimumDisplayRowCount="10" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="QKv-vj-09f" userLabel="Table">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <button key="tableFooterView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="tAz-49-9OP">
@@ -2012,7 +2028,7 @@
                         <viewControllerLayoutGuide type="bottom" id="PFQ-by-q8u"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="UdB-8E-pvC">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="C7s-Zn-B4E">
@@ -2066,14 +2082,14 @@
                         <viewControllerLayoutGuide type="bottom" id="1DE-Tv-kht"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="9Vj-Im-Qql">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yHX-Y0-GbZ">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yHX-Y0-GbZ">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <subviews>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="KqY-XJ-01n">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="432"/>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="KqY-XJ-01n">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="520"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <prototypes>
                                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="GroupChatTableViewCell" id="VmY-1L-lPn" customClass="GroupChatTableViewCell">
@@ -2085,7 +2101,7 @@
                                             </tableViewCell>
                                         </prototypes>
                                     </tableView>
-                                    <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" restorationIdentifier="ChatInputTextView" translatesAutoresizingMaskIntoConstraints="NO" id="jPq-oe-xPE" userLabel="Chat Input Text View" customClass="ChatInputTextView">
+                                    <view contentMode="scaleToFill" restorationIdentifier="ChatInputTextView" translatesAutoresizingMaskIntoConstraints="NO" id="jPq-oe-xPE" userLabel="Chat Input Text View" customClass="ChatInputTextView">
                                         <rect key="frame" x="0.0" y="520" width="320" height="48"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6i6-OX-Sf8">
@@ -2095,7 +2111,7 @@
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="touchUpInsideBtnShare:" destination="U0M-ht-yaq" eventType="touchUpInside" id="vJ6-Ml-5zR"/>
+                                                    <action selector="btnTextPlusTouchUpInside:" destination="yEJ-R3-2p3" eventType="touchUpInside" id="HGf-si-5Ux"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tQS-fK-6r7">
@@ -2105,8 +2121,7 @@
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="btnEmotiontouchUpInside:" destination="yEJ-R3-2p3" eventType="touchUpInside" id="uAt-5I-Aaj"/>
-                                                    <action selector="touchUpInsideBtnExpression:" destination="U0M-ht-yaq" eventType="touchUpInside" id="Euq-M8-W5B"/>
+                                                    <action selector="btnExpressionTouchUpInside:" destination="yEJ-R3-2p3" eventType="touchUpInside" id="ljJ-HY-WEs"/>
                                                 </connections>
                                             </button>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="请输入内容" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="t24-px-E8v">
@@ -2114,8 +2129,7 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="alphabet" returnKeyType="send" enablesReturnKeyAutomatically="YES"/>
                                                 <connections>
-                                                    <action selector="tfInputTextDidEndOnExit:" destination="yEJ-R3-2p3" eventType="editingDidEndOnExit" id="71M-kD-6BM"/>
-                                                    <action selector="tfInputTextDidEndOnExit:" destination="U0M-ht-yaq" eventType="editingDidEndOnExit" id="tek-QK-RGR"/>
+                                                    <action selector="tfInputTextDidEndOnExit:" destination="yEJ-R3-2p3" eventType="editingDidEndOnExit" id="jkN-rk-E5U"/>
                                                 </connections>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x6r-JM-h9C">
@@ -2124,13 +2138,16 @@
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="touchInsideBtnSound:" destination="U0M-ht-yaq" eventType="touchUpInside" id="czI-X3-yoa"/>
+                                                    <action selector="btnSoundTouchUpInside:" destination="yEJ-R3-2p3" eventType="touchUpInside" id="BQj-Kg-QXK"/>
                                                 </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="48" id="n7W-4W-tOj"/>
+                                        </constraints>
                                     </view>
-                                    <view hidden="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" restorationIdentifier="ChatInputSoundView" translatesAutoresizingMaskIntoConstraints="NO" id="x2C-GP-KUE" userLabel="Chat Input Sound View" customClass="ChatInputSoundView">
+                                    <view hidden="YES" contentMode="scaleToFill" restorationIdentifier="ChatInputSoundView" translatesAutoresizingMaskIntoConstraints="NO" id="x2C-GP-KUE" userLabel="Chat Input Sound View" customClass="ChatInputSoundView">
                                         <rect key="frame" x="0.0" y="520" width="320" height="48"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kAR-PI-iJF">
@@ -2140,7 +2157,7 @@
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="touchUpInsideInputSoudBtnShare:" destination="U0M-ht-yaq" eventType="touchUpInside" id="MRV-8N-n5l"/>
+                                                    <action selector="btnSoundPlusTouchUpInside:" destination="yEJ-R3-2p3" eventType="touchUpInside" id="EVQ-T3-shu"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dS7-j0-NVE">
@@ -2149,9 +2166,9 @@
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="touchCancelRecord:" destination="U0M-ht-yaq" eventType="touchCancel" id="OcG-8T-4S6"/>
-                                                    <action selector="touchDownBtnRecord:" destination="U0M-ht-yaq" eventType="touchDown" id="4vK-zm-Gy9"/>
-                                                    <action selector="touchUpInsideRecord:" destination="U0M-ht-yaq" eventType="touchUpInside" id="AV0-qs-aoV"/>
+                                                    <action selector="touchCancelRecord:" destination="yEJ-R3-2p3" eventType="touchCancel" id="Mdr-Dt-C3J"/>
+                                                    <action selector="touchDownBtnRecord:" destination="yEJ-R3-2p3" eventType="touchDown" id="yR8-ca-X2Q"/>
+                                                    <action selector="touchUpInsideRecord:" destination="yEJ-R3-2p3" eventType="touchUpInside" id="eZm-7G-AiE"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mq3-UJ-nUc">
@@ -2160,19 +2177,28 @@
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="touchUpInsideBtnText:" destination="U0M-ht-yaq" eventType="touchUpInside" id="8nU-Ue-ydt"/>
+                                                    <action selector="touchUpInsideBtnText:" destination="yEJ-R3-2p3" eventType="touchUpInside" id="6wQ-nA-fCW"/>
                                                 </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="48" id="sEB-LS-qDc"/>
+                                        </constraints>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="x2C-GP-KUE" secondAttribute="bottom" id="95I-j5-6QH"/>
+                                    <constraint firstItem="KqY-XJ-01n" firstAttribute="leading" secondItem="yHX-Y0-GbZ" secondAttribute="leading" id="CEP-jE-Yhj"/>
+                                    <constraint firstItem="x2C-GP-KUE" firstAttribute="leading" secondItem="yHX-Y0-GbZ" secondAttribute="leading" id="Ffc-qJ-OqY"/>
                                     <constraint firstAttribute="bottom" secondItem="jPq-oe-xPE" secondAttribute="bottom" id="Lbg-ov-4n4"/>
                                     <constraint firstItem="KqY-XJ-01n" firstAttribute="top" secondItem="yHX-Y0-GbZ" secondAttribute="top" id="Lx9-5b-yij"/>
                                     <constraint firstAttribute="bottom" secondItem="KqY-XJ-01n" secondAttribute="bottom" constant="48" id="OcI-fC-Bd9"/>
+                                    <constraint firstAttribute="trailing" secondItem="x2C-GP-KUE" secondAttribute="trailing" id="kqu-Lv-i7P"/>
+                                    <constraint firstAttribute="trailing" secondItem="KqY-XJ-01n" secondAttribute="trailing" id="kwC-SR-Bvt"/>
+                                    <constraint firstAttribute="trailing" secondItem="jPq-oe-xPE" secondAttribute="trailing" id="qIw-al-wbH"/>
+                                    <constraint firstItem="jPq-oe-xPE" firstAttribute="leading" secondItem="yHX-Y0-GbZ" secondAttribute="leading" id="sLK-Wt-TGP"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -2180,6 +2206,8 @@
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="yHX-Y0-GbZ" secondAttribute="bottom" id="Qge-1B-4zf"/>
                             <constraint firstItem="yHX-Y0-GbZ" firstAttribute="top" secondItem="9Vj-Im-Qql" secondAttribute="top" id="h0c-fJ-Igc"/>
+                            <constraint firstAttribute="trailing" secondItem="yHX-Y0-GbZ" secondAttribute="trailing" id="m5g-Q7-MOt"/>
+                            <constraint firstItem="yHX-Y0-GbZ" firstAttribute="leading" secondItem="9Vj-Im-Qql" secondAttribute="leading" id="t1o-KR-tgc"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="sbk-dD-Ffh">
@@ -2826,10 +2854,10 @@
     <inferredMetricsTieBreakers>
         <segue reference="AcC-yW-RwT"/>
         <segue reference="kdV-GO-inJ"/>
-        <segue reference="iIs-SU-ZLV"/>
-        <segue reference="B9e-R6-y8A"/>
-        <segue reference="j7u-OT-bsU"/>
-        <segue reference="XMs-XJ-Qq0"/>
+        <segue reference="6IF-l5-3Iq"/>
+        <segue reference="XGz-ue-SSV"/>
+        <segue reference="tGe-34-b6p"/>
         <segue reference="xJX-I6-fGX"/>
+        <segue reference="8gL-WP-3D1"/>
     </inferredMetricsTieBreakers>
 </document>
