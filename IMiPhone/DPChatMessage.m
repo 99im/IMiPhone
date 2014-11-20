@@ -19,4 +19,24 @@
 @synthesize sendTime;
 @synthesize gid;
 
+@synthesize imgThumbnail;
+@synthesize imgSrc;
+
+- (void)parseImageContent
+{
+    if (!imgThumbnail && !imgSrc) {
+        NSError *err = nil;
+        NSDictionary *imgInfo = [NSJSONSerialization
+                                 JSONObjectWithData:[content dataUsingEncoding:NSUTF8StringEncoding]
+                                 options:NSJSONReadingAllowFragments
+                                 error:&err];
+        if (err) {
+            NSLog(@"JSON create error: %@", err);
+        } else {
+            imgThumbnail = [imgInfo objectForKey:KEYP_S_CHAT_CHAT_CONTENT_THUMBNAIL];
+            imgSrc = [imgInfo objectForKey:KEYP_S_CHAT_CHAT_CONTENT_SRC];
+        }
+    }
+}
+
 @end

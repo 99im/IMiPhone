@@ -1,5 +1,129 @@
 
 
+#define MARK_ACTIVITY @"activity"
+
+/*
+mark: activity
+type: /activity/join/
+kind: http
+method: http-get
+describe: 加入活动
+
+example: http://local.taiqiu.com:7070/activity/join/?aid=12&verify=17_1411380649_8cd8f6306fb1232f98573dae4e137f50
+*/
+#define PATH_H__ACTIVITY_JOIN_ @"/activity/join/"
+#define NOTI_H__ACTIVITY_JOIN_ @"MPactivityjoinNotifiction"
+#define METHOD_H__ACTIVITY_JOIN_ @"GET"
+#define KEYQ_H__ACTIVITY_JOIN__AID @"aid" //aid int 活动id
+#define KEYP_H__ACTIVITY_JOIN__ERROR_CODE @"error_code" //error_code int 0
+
+/*
+mark: activity
+type: /activity/info/
+kind: http
+method: http-get
+describe: 获取活动信息
+
+example: http://local.taiqiu.com:7070/activity/info/?aid=9&verify=16_1411380260_8e01b76b234112ca88fdb3645eacac44
+
+{
+"error_code": 0,
+"info": {
+"aid": 9,
+"title": "test001",
+"detail": "welcome",
+"typeId": 2,
+"type": 2,
+"signerLimit": 1,
+"payType": 1,
+"ladyFree": 2,
+"maxNum": 20,
+"beginTime": "2014-12-01 09:00:00",
+"location": {
+"lon": "115.725",
+"lat": "39.12",
+"alt": "0",
+"geohash": "wwfq93s6"
+},
+"curNum": 1,
+"creator": {
+"uid": 16,
+"oid": "16",
+"nick": "谁谁谁",
+"city": "",
+"vip": 0,
+"logoAlbumId": 0,
+"logo": false
+},
+"ctime": "2014-11-18 15:22:13",
+"myrelation": 1
+}
+}
+*/
+#define PATH_H__ACTIVITY_INFO_ @"/activity/info/"
+#define NOTI_H__ACTIVITY_INFO_ @"MPactivityinfoNotifiction"
+#define METHOD_H__ACTIVITY_INFO_ @"GET"
+#define KEYQ_H__ACTIVITY_INFO__AID @"aid" //aid int 活动id
+#define KEYP_H__ACTIVITY_INFO__ERROR_CODE @"error_code" //error_code
+#define KEYP_H__ACTIVITY_INFO__AID @"aid" //aid int 
+#define KEYP_H__ACTIVITY_INFO__TITLE @"title" //title string
+#define KEYP_H__ACTIVITY_INFO__DETAIL @"detail" //detail string
+#define KEYP_H__ACTIVITY_INFO__TYPE @"type" //type int
+#define KEYP_H__ACTIVITY_INFO__TYPEID @"typeId" //typeId int
+#define KEYP_H__ACTIVITY_INFO__SIGNERLIMIT @"signerLimit" //signerLimit int
+#define KEYP_H__ACTIVITY_INFO__PAYTYPE @"payType" //payType int 
+#define KEYP_H__ACTIVITY_INFO__LADYFREE @"ladyFree" //ladyFree int
+#define KEYP_H__ACTIVITY_INFO__LOCATION @"location" //location object
+#define KEYP_H__ACTIVITY_INFO__CURNUM @"curNum" //curNum int
+#define KEYP_H__ACTIVITY_INFO__CREATOR @"creator" //creator object
+#define KEYP_H__ACTIVITY_INFO__CTIME @"ctime" //ctime datetime
+#define KEYP_H__ACTIVITY_INFO__BEGINTIME @"beginTime" //beginTime datetime
+#define KEYP_H__ACTIVITY_INFO__MAXNUM @"maxNum" //maxNum int
+#define KEYP_H__ACTIVITY_INFO__MYRELATION @"myrelation" //myrelation int
+
+/*
+mark: activity
+type: /activity/create/
+kind: http
+method: http-post
+describe: 创建活动
+
+ type 活动类型说明
+      1 群活动        typeId 群id
+      2 俱乐部活动    typeId 俱乐部Id
+      3 临时活动      
+ signerLimit 报名对象限制 说明
+      0 没有限制
+      1 女士
+      2 群内
+      3 俱乐部粉丝
+      4 vip会员
+ payType 支付类型
+      1 AA
+      2 发起者付款
+      3 输家付款
+      4 小时付费
+example: http://local.taiqiu.com:7070/activity/create/?payType=1&ladyFree=1&maxNum=20&signerLimit=1&title=test001&detail=welcome&type=2&typeId=1&lon=115.725&lat=39.12&alt=0&verify=16_1411380260_8e01b76b234112ca88fdb3645eacac44
+*/
+#define PATH_H__ACTIVITY_CREATE_ @"/activity/create/"
+#define NOTI_H__ACTIVITY_CREATE_ @"MPactivitycreateNotifiction"
+#define METHOD_H__ACTIVITY_CREATE_ @"POST"
+#define KEYQ_H__ACTIVITY_CREATE__TITLE @"title" //title string 标题64个字符
+#define KEYQ_H__ACTIVITY_CREATE__DETAIL @"detail" //detail string 详情120个字符
+#define KEYQ_H__ACTIVITY_CREATE__LON @"lon" //lon string 经度
+#define KEYQ_H__ACTIVITY_CREATE__LAT @"lat" //lat string 纬度
+#define KEYQ_H__ACTIVITY_CREATE__ALT @"alt" //alt string 海拔
+#define KEYQ_H__ACTIVITY_CREATE__ADDRESS @"address" //address string 地点
+#define KEYQ_H__ACTIVITY_CREATE__BEGINTIME @"beginTime" //beginTime string 开始时间
+#define KEYQ_H__ACTIVITY_CREATE__TYPE @"type" //type int 归属类型
+#define KEYQ_H__ACTIVITY_CREATE__TYPEID @"typeId" //typeId int 归属目标id
+#define KEYQ_H__ACTIVITY_CREATE__SIGNERLIMIT @"signerLimit" //signerLimit int 报名对象限制
+#define KEYQ_H__ACTIVITY_CREATE__PAYTYPE @"payType" //payType int 支付类型
+#define KEYQ_H__ACTIVITY_CREATE__MAXNUM @"maxNum" //maxNum int 最多人数
+#define KEYP_H__ACTIVITY_CREATE__ERROR_CODE @"error_code" //error_code
+#define KEYP_H__ACTIVITY_CREATE__AID @"aid" //aid int 活动id
+
+
 #define MARK_CHAT @"chat"
 
 /*
