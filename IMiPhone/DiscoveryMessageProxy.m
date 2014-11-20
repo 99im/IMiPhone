@@ -24,9 +24,9 @@ static DiscoveryMessageProxy *discoveryProxy = nil;
 {
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
 
-    [params setObject:[NSNumber numberWithDouble:dpLocation.lat] forKey:KEYQ_H__DISCOVERY_REPORTGEO__LAT];
-    [params setObject:[NSNumber numberWithDouble:dpLocation.lon] forKey:KEYQ_H__DISCOVERY_REPORTGEO__LON];
-    [params setObject:[NSNumber numberWithDouble:dpLocation.alt] forKey:KEYQ_H__DISCOVERY_REPORTGEO__ALT];
+    [params setObject:[NSNumber numberWithDouble:dpLocation.latitude] forKey:KEYQ_H__DISCOVERY_REPORTGEO__LAT];
+    [params setObject:[NSNumber numberWithDouble:dpLocation.longitude] forKey:KEYQ_H__DISCOVERY_REPORTGEO__LON];
+    [params setObject:[NSNumber numberWithDouble:dpLocation.altitude] forKey:KEYQ_H__DISCOVERY_REPORTGEO__ALT];
 
     IMNWMessage *message = [IMNWMessage createForHttp:PATH_H__DISCOVERY_REPORTGEO_
                                            withParams:params

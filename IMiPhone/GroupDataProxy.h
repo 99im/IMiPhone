@@ -30,7 +30,7 @@
 
 //+ (long long)nowTime;
 //+ (long long)longLongNowTime:(NSString *)dateFormat;
-//+ (long long)getExpireTime:(NSInteger)minutes;
+//+ (long long)getExpireTimeWithMinutes:(NSInteger)minutes;
 
 #pragma mark - 群列表相关
 - (NSMutableArray *)getGroupMyList:(NSInteger)httpMode;

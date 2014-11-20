@@ -15,6 +15,24 @@
     NSString *sError = @"";
 
     switch (self.integerValue) {
+        case 10034:
+            sError = @"活动已经开始，无法离开";
+            break;
+        case 10033:
+            sError = @"活动已经开始了，无法加入 ";
+            break;
+        case 10032:
+            sError = @"活动参加人数达到上限";
+            break;
+        case 10031:
+            sError = @"没有权限对活动进行操作";
+            break;
+        case 10030:
+            sError = @"已经参加活动了";
+            break;
+        case 10029:
+            sError = @"活动归属值错误";
+            break;
         case 10028:
             sError = @"相册图片数量达到上限，没有权限再次添加";
             break;

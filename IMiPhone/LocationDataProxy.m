@@ -12,15 +12,17 @@
 
 #import "LocationDataProxy.h"
 
-@interface LocationDataProxy ()
+@interface LocationDataProxy () <CLLocationManagerDelegate>
 @property (nonatomic, strong) CLLocationManager *locationManager;
-@property (nonatomic, retain) DPLocation *locationCurrent;
+@property (nonatomic, retain) DPLocation *dpCurrLocation;
+@property (nonatomic) NSInteger remainTimes;
 
 @end
 
 @implementation LocationDataProxy
 
-@synthesize locationCurrent = _locationCurrent;
+@synthesize dpCurrLocation = _dpCurrLocation;
+@synthesize locationManager = _locationManager;
 
 #pragma mark - 静态方法
 static LocationDataProxy *sharedLocationDataProxy = nil;
@@ -31,28 +33,53 @@ static LocationDataProxy *sharedLocationDataProxy = nil;
     return sharedLocationDataProxy;
 }
 
-#pragma mark - 委托方法
-- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
-{
-    CLLocation *location = [locations lastObject];
-
-    NSLog(@"get location success:\nlat %f\nlon %f\nalt %f", location.coordinate.latitude, location.coordinate.longitude,
-          location.altitude);
-    [manager stopUpdatingLocation];
-}
-
-- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
-{
-    //[manager stopUpdatingLocation];
-    NSLog(@"get location error:%@", error);
-}
-
 #pragma mark - 接口方法
+- (NSInteger)startUpdatingLocation:(NSInteger)updateTimes
+{
+    NSInteger status = LBS_STATUS_SUCCESS;
+    if ([CLLocationManager locationServicesEnabled]) {
+        // 初始化定位管理对象
+        if (_locationManager == nil) {
+            _locationManager = [[CLLocationManager alloc] init];
+            _locationManager.delegate = self;
+            _locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters; // 100米级
+            _locationManager.distanceFilter = 1000.0f;
+        }
+
+        // NSLog(@"currentDevice systemVersion:%2.1f\n开始定位:", [[[UIDevice currentDevice] systemVersion]
+        // floatValue]);
+
+        if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0) {
+            NSLog(@"requestWhenInUseAuthorization:");
+            [_locationManager requestWhenInUseAuthorization];
+        }
+        NSLog(@"startUpdatingLocation:");
+        if (updateTimes > 0) {
+            _remainTimes = updateTimes;
+        }
+        [_locationManager startUpdatingLocation];
+    }
+    else {
+        NSLog(@"Location services are not enabled");
+        status = LBS_STATUS_SERVICES_NOT_ENABLED;
+    }
+    return status;
+}
+
+- (void)stopUpdatingLocation
+{
+    // 停止定位
+    NSLog(@"stopUpdatingLocation:");
+    [_locationManager stopUpdatingLocation];
+    _remainTimes = 0;
+}
+
 - (DPLocation *)getLocationCurrent
 {
-    if (!_locationCurrent) {
-        _locationCurrent = [[DPLocation alloc] init];
-        NSLog(@"初始化定位管理对象");
+    if (!_dpCurrLocation) { //从未取过
+        _dpCurrLocation = [[DPLocation alloc] init];
+        [self startUpdatingLocation:1];
+        // NSLog(@"初始化定位管理对象");
 
         //        //初始化定位管理对象
         //        if (!_locationManager) {
@@ -64,7 +91,52 @@ static LocationDataProxy *sharedLocationDataProxy = nil;
         //        [_locationManager startUpdatingLocation];
         //        NSLog(@"开始定位 _locationManager startUpdatingLocation");
     }
-    return _locationCurrent;
+    else if (_dpCurrLocation.localExpireTime < [imUtil nowTime]) { //已过期，重新取
+        [self startUpdatingLocation:1];
+    }
+    return _dpCurrLocation;
+}
+
+#pragma mark - 委托方法
+- (void)locationManager:(CLLocationManager *)locationManager didUpdateLocations:(NSArray *)locations
+{
+    if (_remainTimes > 1) {
+        _remainTimes--;
+    }
+    else {
+        [locationManager stopUpdatingLocation];
+    }
+
+    //开始记录
+    CLLocation *location = [locations lastObject];
+    // NSLog(@"get location success:\nlat %f\nlon %f\nalt %f", location.coordinate.latitude,
+    // location.coordinate.longitude,
+    //      location.altitude);
+
+    if (!_dpCurrLocation) {
+        _dpCurrLocation = [[DPLocation alloc] init];
+    }
+    _dpCurrLocation.latitude = location.coordinate.latitude;
+    _dpCurrLocation.longitude = location.coordinate.longitude;
+    _dpCurrLocation.altitude = location.altitude;
+
+    _dpCurrLocation.localUpdateTime = [imUtil nowTime];//本地更新时间
+    _dpCurrLocation.localExpireTime = [imUtil getExpireTimeWithMinutes:LBS_TIMEOUT_LOCATION]; //过期时间
+
+
+    NSLog(@"locationManager:didUpdateLocations:\n<lat:%f lon:%f alt %f> %qi ~ %qi", _dpCurrLocation.latitude,
+          _dpCurrLocation.longitude, _dpCurrLocation.altitude, _dpCurrLocation.localUpdateTime, _dpCurrLocation.localExpireTime);
+
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_LBS_didUpdateLocations
+                                                        object:nil];
+}
+
+- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
+{
+    //[manager stopUpdatingLocation];
+    NSLog(@"locationManager:didFailWithError:%@", error);
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_LBS_didFailWithError
+                                                        object:error];
 }
 
 @end
