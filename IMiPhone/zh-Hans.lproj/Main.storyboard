@@ -3232,13 +3232,13 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="6IF-l5-3Iq"/>
         <segue reference="AcC-yW-RwT"/>
         <segue reference="kdV-GO-inJ"/>
-        <segue reference="6IF-l5-3Iq"/>
         <segue reference="dkl-wS-iyY"/>
-        <segue reference="8gL-WP-3D1"/>
+        <segue reference="Yan-Ot-060"/>
         <segue reference="xJX-I6-fGX"/>
-        <segue reference="tGe-34-b6p"/>
+        <segue reference="8gL-WP-3D1"/>
         <segue reference="XGz-ue-SSV"/>
     </inferredMetricsTieBreakers>
 </document>

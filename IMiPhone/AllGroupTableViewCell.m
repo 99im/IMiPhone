@@ -25,13 +25,21 @@
 
 
 //实现方法
-- (void) paddingDataForCell:(NSMutableDictionary *)dic{
-    NSLog(@"群名称：%@",[dic objectForKey:@"groupName"]);
-    self.groupId = [[dic objectForKey:@"gid"] longLongValue];
-    self.lblGroupName.text = [dic objectForKey:@"groupName"];
-    self.lblDistance.text = [dic objectForKey:@"groupDistance"];
-    self.lblGroupLevel.text = [dic objectForKey:@"groupLevel"];
-    self.lblGroupIntroduce.text = [dic objectForKey:@"groupPresentation"];
+//- (void) paddingDataForCell:(NSMutableDictionary *)dic{
+//    NSLog(@"群名称：%@",[dic objectForKey:@"groupName"]);
+//    self.groupId = [[dic objectForKey:@"gid"] longLongValue];
+//    self.lblGroupName.text = [dic objectForKey:@"groupName"];
+//    self.lblDistance.text = [dic objectForKey:@"groupDistance"];
+//    self.lblGroupLevel.text = [dic objectForKey:@"groupLevel"];
+//    self.lblGroupIntroduce.text = [dic objectForKey:@"groupPresentation"];
+//}
+- (void)paddingDataForCell:(NSIndexPath *)indexPath{
+    DPGroup *dpGroup = [[GroupDataProxy sharedProxy] getGroupSearchInfoAtRow:indexPath.row];
+    if (dpGroup) {
+        self.groupId = dpGroup.gid;
+        self.lblGroupName.text = dpGroup.name;
+        self.lblGroupIntroduce.text = dpGroup.intro;
+    }
 }
 
 @end

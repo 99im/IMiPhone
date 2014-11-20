@@ -4,6 +4,188 @@
 
 /*
 mark: activity
+type: /activity/exit/
+kind: http
+method: http-get
+describe: 退出活动
+example: http://local.taiqiu.com:7070/activity/exit/?aid=10&verify=33_1416451076_d39ab1fa50cf1107107bbfc6b692c724_2
+
+{
+"error_code": 0
+}
+*/
+#define PATH_H__ACTIVITY_EXIT_ @"/activity/exit/"
+#define NOTI_H__ACTIVITY_EXIT_ @"MPactivityexitNotifiction"
+#define METHOD_H__ACTIVITY_EXIT_ @"GET"
+#define KEYQ_H__ACTIVITY_EXIT__AID @"aid" //aid int 活动gid
+#define KEYP_H__ACTIVITY_EXIT__ERROR_CODE @"error_code" //error_code int 0
+
+/*
+mark: activity
+type: /activity/mylist/
+kind: http
+method: http-get
+describe: 获取我参与的活动列表
+example: http://local.taiqiu.com:7070/activity/mylist/?aid=12&verify=16_1411380260_8e01b76b234112ca88fdb3645eacac44
+{
+"error_code": 0,
+"list": [
+{
+"aid": 7,
+"ctime": "2014-11-18 14:03:20",
+"relation": 1,
+"detail": {
+"aid": 7,
+"title": "test001",
+"detail": "welcome",
+"typeId": 1,
+"type": 1,
+"signerLimit": 1,
+"payType": 1,
+"ladyFree": 1,
+"maxNum": 20,
+"beginTime": "2014-12-01 09:00:00",
+"location": {
+"lon": "115.725",
+"lat": "39.12",
+"alt": "0",
+"geohash": "wwfq93s6"
+},
+"curNum": 1,
+"creator": {
+"uid": 16,
+"oid": "16",
+"nick": "谁谁谁",
+"city": "",
+"gender": 0,
+"vip": 0,
+"logoAlbumId": 0,
+"logo": false
+},
+"ctime": "2014-11-18 14:03:20"
+}
+},
+{
+"aid": 8,
+"ctime": "2014-11-18 15:22:10",
+"relation": 1,
+"detail": {
+"aid": 8,
+"title": "test001",
+"detail": "welcome",
+"typeId": 2,
+"type": 2,
+"signerLimit": 1,
+"payType": 1,
+"ladyFree": 2,
+"maxNum": 20,
+"beginTime": "2014-12-01 09:00:00",
+"location": {
+"lon": "115.725",
+"lat": "39.12",
+"alt": "0",
+"geohash": "wwfq93s6"
+},
+"curNum": 1,
+"creator": {
+"uid": 16,
+"oid": "16",
+"nick": "谁谁谁",
+"city": "",
+"gender": 0,
+"vip": 0,
+"logoAlbumId": 0,
+"logo": false
+},
+"ctime": "2014-11-18 15:22:10"
+}
+}
+}
+*/
+#define PATH_H__ACTIVITY_MYLIST_ @"/activity/mylist/"
+#define NOTI_H__ACTIVITY_MYLIST_ @"MPactivitymylistNotifiction"
+#define METHOD_H__ACTIVITY_MYLIST_ @"GET"
+#define KEYQ_H__ACTIVITY_MYLIST__START @"start" //start  int  0
+#define KEYQ_H__ACTIVITY_MYLIST__PAGENUM @"pageNum" //pageNum  int  20
+#define KEYP_H__ACTIVITY_MYLIST__ERROR_CODE @"error_code" //error_code int 0
+#define KEYP_H__ACTIVITY_MYLIST__LIST @"list" //list 
+#define KEYP_H__ACTIVITY_MYLIST__LIST_GID @"gid" // gid
+#define KEYP_H__ACTIVITY_MYLIST__LIST_CTIME @"ctime" // ctime
+#define KEYP_H__ACTIVITY_MYLIST__LIST_RELATION @"relation" // relation 群关系 1 创建者 2 管理者 3 成员 4待定
+#define KEYP_H__ACTIVITY_MYLIST__LIST_DETAIL @"detail" // detail object 活动详细信息
+
+/*
+mark: activity
+type: /activity/members/
+kind: http
+method: http-get
+describe: 获取活动内成员
+
+用户关系 0 无 1 创建者 2 管理员 3 成员 4待选
+example: http://local.taiqiu.com:7070/activity/members/?aid=12&verify=16_1411380260_8e01b76b234112ca88fdb3645eacac44
+
+{
+"error_code": 0,
+"list": [
+{
+"aid": 12,
+"ctime": "2014-11-18 16:37:00",
+"relation": 1,
+"uid": 16,
+"uinfo": {
+"uid": 16,
+"oid": "16",
+"nick": "谁谁谁",
+"city": "",
+"gender": 0,
+"vip": 0,
+"logoAlbumId": 0,
+"logo": false
+}
+},
+{
+"aid": 12,
+"ctime": "2014-11-18 16:43:47",
+"relation": 3,
+"uid": 17,
+"uinfo": {
+"uid": 17,
+"oid": "17",
+"nick": "嘎嘎嘎",
+"city": "",
+"gender": 1,
+"vip": 0,
+"logoAlbumId": 19,
+"logo": {
+"src": "http://local.p.taiqiuui.com:81/i/5/1/17/79/75bfffe04a2339136c34a90d10f3a109.jpeg",
+"thumb": "http://local.p.taiqiuui.com:81/i/5/1/17/79/75bfffe04a2339136c34a90d10f3a109_80x100.jpeg"
+}
+}
+}
+]
+}
+*/
+#define PATH_H__ACTIVITY_MEMBERS_ @"/activity/members/"
+#define NOTI_H__ACTIVITY_MEMBERS_ @"MPactivitymembersNotifiction"
+#define METHOD_H__ACTIVITY_MEMBERS_ @"GET"
+#define KEYQ_H__ACTIVITY_MEMBERS__AID @"aid" //aid int 
+#define KEYQ_H__ACTIVITY_MEMBERS__START @"start" //start int 0
+#define KEYQ_H__ACTIVITY_MEMBERS__PAGENUM @"pageNum" //pageNum int 20
+#define KEYP_H__ACTIVITY_MEMBERS__ERROR_CODE @"error_code" //error_code int 0
+#define KEYP_H__ACTIVITY_MEMBERS__LIST @"list" //list
+#define KEYP_H__ACTIVITY_MEMBERS__LIST_AID @"aid" // aid
+#define KEYP_H__ACTIVITY_MEMBERS__LIST_CTIME @"ctime" // ctime
+#define KEYP_H__ACTIVITY_MEMBERS__LIST_RELATION @"relation" // relation
+#define KEYP_H__ACTIVITY_MEMBERS__LIST_UID @"uid" // uid
+#define KEYP_H__ACTIVITY_MEMBERS__LIST_UINFO @"uinfo" // uinfo 
+#define KEYP_H__ACTIVITY_MEMBERS__LIST_UINFO_UID @"uid" //  uid
+#define KEYP_H__ACTIVITY_MEMBERS__LIST_UINFO_OID @"oid" //  oid
+#define KEYP_H__ACTIVITY_MEMBERS__LIST_UINFO_NICK @"nick" //  nick
+#define KEYP_H__ACTIVITY_MEMBERS__LIST_UINFO_CITY @"city" //  city
+#define KEYP_H__ACTIVITY_MEMBERS__LIST_UINFO_VIP @"vip" //  vip
+
+/*
+mark: activity
 type: /activity/join/
 kind: http
 method: http-get
@@ -115,6 +297,7 @@ example: http://local.taiqiu.com:7070/activity/create/?payType=1&ladyFree=1&maxN
 #define KEYQ_H__ACTIVITY_CREATE__ALT @"alt" //alt string 海拔
 #define KEYQ_H__ACTIVITY_CREATE__ADDRESS @"address" //address string 地点
 #define KEYQ_H__ACTIVITY_CREATE__BEGINTIME @"beginTime" //beginTime string 开始时间
+#define KEYQ_H__ACTIVITY_CREATE__ENDTIME @"endTime" //endTime string 结束时间
 #define KEYQ_H__ACTIVITY_CREATE__TYPE @"type" //type int 归属类型
 #define KEYQ_H__ACTIVITY_CREATE__TYPEID @"typeId" //typeId int 归属目标id
 #define KEYQ_H__ACTIVITY_CREATE__SIGNERLIMIT @"signerLimit" //signerLimit int 报名对象限制
@@ -701,6 +884,11 @@ example: http://local.taiqiu.com:7070/group/search/?keyname=test&verify=17_14113
 #define KEYP_H__GROUP_SEARCH__LIST_MYRELATION @"myrelation" // myrelation
 #define KEYP_H__GROUP_SEARCH__LIST_CREATEUID @"createUid" // createUid
 #define KEYP_H__GROUP_SEARCH__LIST_CREATOR @"creator" // creator
+#define KEYP_H__GROUP_SEARCH__LIST_CREATOR_UID @"uid" //  uid
+#define KEYP_H__GROUP_SEARCH__LIST_CREATOR_OID @"oid" //  oid
+#define KEYP_H__GROUP_SEARCH__LIST_CREATOR_NICK @"nick" //  nick
+#define KEYP_H__GROUP_SEARCH__LIST_CREATOR_CITY @"city" //  city
+#define KEYP_H__GROUP_SEARCH__LIST_CREATOR_VIP @"vip" //  vip
 
 /*
 mark: group
@@ -1678,6 +1866,7 @@ example: http://local.taiqiu.com:7070/account/register/?mobCountry=%2B86&mobile=
 #define KEYQ_H__ACCOUNT_REGISTER__FROMSOURCE @"fromSource" //fromSource string 可选 128以内 注册来源
 #define KEYP_H__ACCOUNT_REGISTER__ERROR_CODE @"error_code" //error_code
 #define KEYP_H__ACCOUNT_REGISTER__UID @"uid" //uid
+#define KEYP_H__ACCOUNT_REGISTER__OID @"oid" //oid 靓号
 
 /*
 mark: account

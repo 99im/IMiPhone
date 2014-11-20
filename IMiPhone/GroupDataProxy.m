@@ -17,6 +17,7 @@
 @property (nonatomic, retain) DPGroup *groupInfoCurrent;
 //@property (nonatomic) int countSendGroupInfo;
 //@property (nonatomic) long long updateTimeGroupMyList;
+@property (nonatomic, retain) NSMutableArray *arrGroupsSearch;
 
 @end
 
@@ -297,5 +298,55 @@ static GroupDataProxy *sharedGroupDataProxy = nil;
     }
     return [_dicMessages objectForKey:numGid];
 }
+
+#pragma mark  - 搜寻群相关
+- (NSMutableArray *)getGroupSearchList:(NSInteger)httpMode{
+    BOOL needSendHttp = NO;
+    if (_arrGroupsSearch == nil) {
+        needSendHttp = YES;
+        _arrGroupsSearch = [NSMutableArray array];
+    }
+    else if (httpMode == SEND_HTTP_YES)
+        needSendHttp = YES;
+    
+    //如何不需要强制请求数据，判断本地缓存是否过期
+    if (needSendHttp != YES) {
+        long long nowTime = [imUtil nowTime];
+        for (NSInteger i = 0; i < [_arrGroupsSearch count]; i ++) {
+            DPGroup *dpGroup = _arrGroupsSearch[i];
+            if (dpGroup.localExpireTime < nowTime) {
+                needSendHttp = YES;
+                break;
+            }
+        }
+    }
+    //发送http请求新的群搜索列表   发送空搜索值过去，请求所以的群列表
+    if (needSendHttp == YES) {
+        [[GroupMessageProxy sharedProxy] sendGroupSearch:@""];
+    }
+    return [self mutableArrayValueForKey:@"arrGroupsSearch"];
+}
+
+- (NSInteger)updateGroupSearchList:(NSMutableArray *)groupSearchList{
+    _arrGroupsSearch = groupSearchList;
+    
+    return 0;
+}
+
+- (NSInteger)countGroupSearchList{
+    if (_arrGroupsSearch) {
+        return [_arrGroupsSearch count];
+    }
+    return 0;
+}
+
+- (DPGroup *)getGroupSearchInfoAtRow:(NSInteger)row{
+    if (_arrGroupsSearch && row < [_arrGroupsSearch count]) {
+       return _arrGroupsSearch[row];
+    }
+    return nil;
+}
+
+
 
 @end
