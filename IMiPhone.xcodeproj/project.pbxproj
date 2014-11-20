@@ -289,6 +289,7 @@
 		58D3F28D19E630A1006589F9 /* IMNWHttpConnect.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D3F28C19E630A1006589F9 /* IMNWHttpConnect.m */; };
 		58D95F4819A5BDF4007139AB /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D95F4719A5BDF4007139AB /* GCDAsyncSocket.m */; };
 		58D95F5119A5ECA4007139AB /* UserMessageProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D95F5019A5ECA4007139AB /* UserMessageProxy.m */; };
+		58E8699B1A1DB776001437A2 /* ChatImageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 58E8699A1A1DB776001437A2 /* ChatImageTableViewCell.m */; };
 		58EF8C3F19BEEE1600C5A7AC /* AccountMessageProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 58EF8C3E19BEEE1600C5A7AC /* AccountMessageProxy.m */; };
 		58EF8C4019BEEE1600C5A7AC /* AccountMessageProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 58EF8C3E19BEEE1600C5A7AC /* AccountMessageProxy.m */; };
 		58EF8C4619BF04B600C5A7AC /* imNetWorkTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 58EF8C4519BF04B600C5A7AC /* imNetWorkTest.m */; };
@@ -633,6 +634,8 @@
 		58D95F4719A5BDF4007139AB /* GCDAsyncSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDAsyncSocket.m; sourceTree = "<group>"; };
 		58D95F4F19A5ECA4007139AB /* UserMessageProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserMessageProxy.h; sourceTree = "<group>"; };
 		58D95F5019A5ECA4007139AB /* UserMessageProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserMessageProxy.m; sourceTree = "<group>"; };
+		58E869991A1DB776001437A2 /* ChatImageTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatImageTableViewCell.h; sourceTree = "<group>"; };
+		58E8699A1A1DB776001437A2 /* ChatImageTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatImageTableViewCell.m; sourceTree = "<group>"; };
 		58EF8C3D19BEEE1600C5A7AC /* AccountMessageProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountMessageProxy.h; sourceTree = "<group>"; };
 		58EF8C3E19BEEE1600C5A7AC /* AccountMessageProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountMessageProxy.m; sourceTree = "<group>"; };
 		58EF8C4519BF04B600C5A7AC /* imNetWorkTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = imNetWorkTest.m; sourceTree = "<group>"; };
@@ -789,6 +792,8 @@
 				1194302B19F8DD8C00FD9206 /* ChatTableViewCellFrame.m */,
 				117A18FE1A10675E00E3B790 /* ChatGraphicsUtil.h */,
 				117A18FF1A10675E00E3B790 /* ChatGraphicsUtil.m */,
+				58E869991A1DB776001437A2 /* ChatImageTableViewCell.h */,
+				58E8699A1A1DB776001437A2 /* ChatImageTableViewCell.m */,
 			);
 			name = Chat;
 			sourceTree = "<group>";
@@ -1575,6 +1580,7 @@
 				114BF74C1A1A468E00A28A94 /* FanUserDAO.m in Sources */,
 				58B496DA19A7186A0082AE30 /* NSData+MKBase64.m in Sources */,
 				DB6FACB91A0B71DB0048B76B /* FindViewController.m in Sources */,
+				58E8699B1A1DB776001437A2 /* ChatImageTableViewCell.m in Sources */,
 				116BF87119C81E030015561B /* AudioRecordManager.m in Sources */,
 				1171F7C419E8DE4000865A0B /* AddressInviteTableViewCell.m in Sources */,
 				585971E81999F0C700258CB1 /* imViewController.m in Sources */,

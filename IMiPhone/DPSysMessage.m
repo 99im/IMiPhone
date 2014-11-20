@@ -38,7 +38,7 @@
         dpSysMessage.content = content;
         return dpSysMessage;
     }
-    NSLog(@"没有找到对应modeid:%i和type:%i的DP数据模型",modeid,type);
+    NSLog(@"没有找到对应modeid:%li和type:%li的DP数据模型",(long)modeid,(long)type);
     return nil;
 }
 

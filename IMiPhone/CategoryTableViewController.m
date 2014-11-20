@@ -105,7 +105,7 @@
     else if ([cellId isEqualToString:@"focus"]) {
         personNum = [FriendDataProxy sharedProxy].focusTotal;
     }
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"%i%@",personNum ,NSLocalizedString(@"Unit.Person", nil)];
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"%li%@",(long)personNum ,NSLocalizedString(@"Unit.Person", nil)];
 
   return cell;
 }
