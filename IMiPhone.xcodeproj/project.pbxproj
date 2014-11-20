@@ -297,6 +297,7 @@
 		AB199ACA1A0A244E00F6B858 /* DPSysMessageGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = AB6396221A038CA500FF0BC6 /* DPSysMessageGroup.m */; };
 		AB199ACC1A0A24A800F6B858 /* LocationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = AB199ACB1A0A24A800F6B858 /* LocationTest.m */; };
 		AB199AD01A0A4B5C00F6B858 /* LocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB199ACF1A0A4B5C00F6B858 /* LocationViewController.m */; };
+		AB1B830D1A1D9A8D00BDC841 /* DiscoveryMessageProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = AB645E521A19F8C9008AC05D /* DiscoveryMessageProxy.m */; };
 		AB20EE8419F4DCCC004627C8 /* GroupDataProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = AB20EE8319F4DCCC004627C8 /* GroupDataProxy.m */; };
 		AB20EE8719F4DD8C004627C8 /* GroupMessageProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = AB20EE8619F4DD8C004627C8 /* GroupMessageProxy.m */; };
 		AB24A95719F89DDA00026299 /* GroupInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB24A95619F89DDA00026299 /* GroupInfoViewController.m */; };
@@ -1485,6 +1486,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AB1B830D1A1D9A8D00BDC841 /* DiscoveryMessageProxy.m in Sources */,
 				DBD687771A1C8AF00001857D /* DBFanUser.m in Sources */,
 				117AC6A419EE7C2F00143973 /* DPUserFromContact.m in Sources */,
 				DBD687781A1C8B580001857D /* DPFanUser.m in Sources */,
