@@ -16,11 +16,6 @@
 @property (nonatomic) double latitude; //纬度
 @property (nonatomic) double altitude; //海拔
 
-//@property (nonatomic, retain) NSString *state;
-//@property (nonatomic, retain) NSString *city;
-//@property (nonatomic, retain) NSString *street;
-//@property (nonatomic, retain) NSString *zip;
-
 @property (nonatomic) long long localUpdateTime; //本地更新时间，格式(yyyyMMddHHmmss)：201411024125959
 @property (nonatomic) long long localExpireTime; //本地过期时间，格式(yyyyMMddHHmmss)：201411024125959
 

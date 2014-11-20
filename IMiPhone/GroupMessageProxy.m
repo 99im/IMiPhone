@@ -525,7 +525,7 @@ static GroupMessageProxy *sharedGroupMessageProxy = nil;
 - (void)sendGroupSearch:(NSString *)keyname
 {
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    [params setObject:keyname forKey:KEYQ_H__GROUP_SEARCH__KEYNAME];
+    //[params setObject:keyname forKey:KEYQ_H__GROUP_SEARCH__KEYNAME];
     IMNWMessage *message =
         [IMNWMessage createForHttp:PATH_H__GROUP_SEARCH_ withParams:params withMethod:METHOD_H__GROUP_SEARCH_ ssl:NO];
     [[IMNWManager sharedNWManager]
@@ -541,9 +541,43 @@ static GroupMessageProxy *sharedGroupMessageProxy = nil;
                 NSInteger errorcode = [[json objectForKey:KEYP_H__GROUP_SEARCH__ERROR_CODE] integerValue];
                 if (errorcode == 0) {
                     NSArray *arrGroups = (NSArray *)[json objectForKey:KEYP_H__GROUP_SEARCH__LIST];
-                    [GroupDataProxy sharedProxy].arrGroupsSearch = arrGroups;
-                    //[[NSNotificationCenter defaultCenter] postNotificationName:NOTI_H__GROUP_SEARCH_ object:nil];
-                    [self processSuccessNotiName:NOTI_H__GROUP_SEARCH_ withUserInfo:nil];
+                    
+                    NSMutableArray *searchGroupList = [NSMutableArray array];
+                    
+                    long long localExpireTime = [imUtil getExpireTimeWithMinutes:TIMEOUT_GROUP_INFO];
+                    
+                    for (NSInteger i = 0; i < [arrGroups count]; i ++) {
+                        DPGroup *dpGroup = [[DPGroup alloc] init];
+                        NSDictionary *group = [arrGroups objectAtIndex:i];
+                        
+                        //群基本信息
+                        long gid = [[group objectForKey:KEYP_H__GROUP_SEARCH__LIST_GID] longLongValue];
+                        dpGroup.gid = gid;
+                        dpGroup.ctime = [group objectForKey:KEYP_H__GROUP_SEARCH__LIST_CTIME];
+                        dpGroup.name = [group objectForKey:KEYP_H__GROUP_SEARCH__LIST_NAME];
+                        dpGroup.intro = [group objectForKey:KEYP_H__GROUP_SEARCH__LIST_INTRO];
+                        dpGroup.myRelation = [[group objectForKey:KEYP_H__GROUP_SEARCH__LIST_MYRELATION] integerValue];
+                        
+                        //群主信息
+                        NSDictionary *creator  = [group objectForKey:KEYP_H__GROUP_SEARCH__LIST_CREATOR];
+                        dpGroup.creator_uid = [[creator objectForKey:KEYP_H__GROUP_SEARCH__LIST_CREATOR_UID] longLongValue];
+                        dpGroup.creator_oid = [[creator objectForKey:KEYP_H__GROUP_SEARCH__LIST_CREATOR_OID] longLongValue];
+                        dpGroup.creator_nick = [creator objectForKey:KEYP_H__GROUP_SEARCH__LIST_CREATOR_NICK];
+                        dpGroup.creator_city = [creator objectForKey:KEYP_H__GROUP_SEARCH__LIST_CREATOR_CITY];
+                        dpGroup.creator_vip = [[creator objectForKey:KEYP_H__GROUP_SEARCH__LIST_CREATOR_VIP] integerValue];
+                        
+                        //更新本地时间
+                        dpGroup.localExpireTime = localExpireTime;
+                        
+                        [searchGroupList addObject:dpGroup];
+                    }
+                    
+                    errorcode = [[GroupDataProxy sharedProxy] updateGroupSearchList:searchGroupList];
+                    if (errorcode == 0) {
+                        [self processSuccessNotiName:NOTI_H__GROUP_SEARCH_ withUserInfo:nil];
+                    }
+                    else
+                        NSLog(@"updateGroupSearchList 更新失败");
                 }
                 else {
                     [self processErrorCode:errorcode fromSource:PATH_H__GROUP_SEARCH_ useNotiName:NOTI_H__GROUP_SEARCH_];

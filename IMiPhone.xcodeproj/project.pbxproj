@@ -190,8 +190,12 @@
 		11FFA50C1A1CA34E00F6F00A /* ActivityCreateTableTitleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 11FFA50A1A1CA34E00F6F00A /* ActivityCreateTableTitleCell.m */; };
 		11FFA50F1A1CA3FF00F6F00A /* ActivityCreateTableLimitCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 11FFA50E1A1CA3FF00F6F00A /* ActivityCreateTableLimitCell.m */; };
 		11FFA5101A1CA3FF00F6F00A /* ActivityCreateTableLimitCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 11FFA50E1A1CA3FF00F6F00A /* ActivityCreateTableLimitCell.m */; };
-		11FFA5131A1CA4BE00F6F00A /* ActivityCreateTablePayCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 11FFA5121A1CA4BE00F6F00A /* ActivityCreateTablePayCell.m */; };
-		11FFA5141A1CA4BE00F6F00A /* ActivityCreateTablePayCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 11FFA5121A1CA4BE00F6F00A /* ActivityCreateTablePayCell.m */; };
+		11FFA5131A1CA4BE00F6F00A /* ActivityCreateTableInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 11FFA5121A1CA4BE00F6F00A /* ActivityCreateTableInfoCell.m */; };
+		11FFA5141A1CA4BE00F6F00A /* ActivityCreateTableInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 11FFA5121A1CA4BE00F6F00A /* ActivityCreateTableInfoCell.m */; };
+		11FFA51F1A1CE27100F6F00A /* ActivityCreateTableLabelAndContentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 11FFA51E1A1CE27100F6F00A /* ActivityCreateTableLabelAndContentCell.m */; };
+		11FFA5201A1CE27100F6F00A /* ActivityCreateTableLabelAndContentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 11FFA51E1A1CE27100F6F00A /* ActivityCreateTableLabelAndContentCell.m */; };
+		11FFA5231A1CE2AC00F6F00A /* ActivityCreateTableDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 11FFA5221A1CE2AC00F6F00A /* ActivityCreateTableDetailCell.m */; };
+		11FFA5241A1CE2AC00F6F00A /* ActivityCreateTableDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 11FFA5221A1CE2AC00F6F00A /* ActivityCreateTableDetailCell.m */; };
 		581A27321A1AE5D200E5BE5F /* AccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 581A27311A1AE5D200E5BE5F /* AccountViewController.m */; };
 		5825D8F119D808CA004FF6FF /* CategoryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5825D8F019D808CA004FF6FF /* CategoryTableViewController.m */; };
 		58438C0D19D412E400B6962B /* NearbyTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58438C0C19D412E400B6962B /* NearbyTableViewController.m */; };
@@ -299,6 +303,8 @@
 		AB199ACC1A0A24A800F6B858 /* LocationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = AB199ACB1A0A24A800F6B858 /* LocationTest.m */; };
 		AB199AD01A0A4B5C00F6B858 /* LocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB199ACF1A0A4B5C00F6B858 /* LocationViewController.m */; };
 		AB1B830D1A1D9A8D00BDC841 /* DiscoveryMessageProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = AB645E521A19F8C9008AC05D /* DiscoveryMessageProxy.m */; };
+		AB1B830F1A1DBF9E00BDC841 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB1B830E1A1DBF9E00BDC841 /* AddressBook.framework */; };
+		AB1B83121A1DC5D800BDC841 /* DPPlacemark.m in Sources */ = {isa = PBXBuildFile; fileRef = AB1B83111A1DC5D800BDC841 /* DPPlacemark.m */; };
 		AB20EE8419F4DCCC004627C8 /* GroupDataProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = AB20EE8319F4DCCC004627C8 /* GroupDataProxy.m */; };
 		AB20EE8719F4DD8C004627C8 /* GroupMessageProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = AB20EE8619F4DD8C004627C8 /* GroupMessageProxy.m */; };
 		AB24A95719F89DDA00026299 /* GroupInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB24A95619F89DDA00026299 /* GroupInfoViewController.m */; };
@@ -511,8 +517,12 @@
 		11FFA50A1A1CA34E00F6F00A /* ActivityCreateTableTitleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityCreateTableTitleCell.m; sourceTree = "<group>"; };
 		11FFA50D1A1CA3FF00F6F00A /* ActivityCreateTableLimitCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityCreateTableLimitCell.h; sourceTree = "<group>"; };
 		11FFA50E1A1CA3FF00F6F00A /* ActivityCreateTableLimitCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityCreateTableLimitCell.m; sourceTree = "<group>"; };
-		11FFA5111A1CA4BE00F6F00A /* ActivityCreateTablePayCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityCreateTablePayCell.h; sourceTree = "<group>"; };
-		11FFA5121A1CA4BE00F6F00A /* ActivityCreateTablePayCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityCreateTablePayCell.m; sourceTree = "<group>"; };
+		11FFA5111A1CA4BE00F6F00A /* ActivityCreateTableInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityCreateTableInfoCell.h; sourceTree = "<group>"; };
+		11FFA5121A1CA4BE00F6F00A /* ActivityCreateTableInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityCreateTableInfoCell.m; sourceTree = "<group>"; };
+		11FFA51D1A1CE27100F6F00A /* ActivityCreateTableLabelAndContentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityCreateTableLabelAndContentCell.h; sourceTree = "<group>"; };
+		11FFA51E1A1CE27100F6F00A /* ActivityCreateTableLabelAndContentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityCreateTableLabelAndContentCell.m; sourceTree = "<group>"; };
+		11FFA5211A1CE2AC00F6F00A /* ActivityCreateTableDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityCreateTableDetailCell.h; sourceTree = "<group>"; };
+		11FFA5221A1CE2AC00F6F00A /* ActivityCreateTableDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityCreateTableDetailCell.m; sourceTree = "<group>"; };
 		581A27301A1AE5D200E5BE5F /* AccountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AccountViewController.h; path = IMiPhone/AccountViewController.h; sourceTree = "<group>"; };
 		581A27311A1AE5D200E5BE5F /* AccountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AccountViewController.m; path = IMiPhone/AccountViewController.m; sourceTree = "<group>"; };
 		581A27351A1AE86000E5BE5F /* shanghai.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = shanghai.gpx; sourceTree = "<group>"; };
@@ -646,6 +656,9 @@
 		AB199ACB1A0A24A800F6B858 /* LocationTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationTest.m; sourceTree = "<group>"; };
 		AB199ACE1A0A4B5C00F6B858 /* LocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationViewController.h; sourceTree = "<group>"; };
 		AB199ACF1A0A4B5C00F6B858 /* LocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationViewController.m; sourceTree = "<group>"; };
+		AB1B830E1A1DBF9E00BDC841 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
+		AB1B83101A1DC5D800BDC841 /* DPPlacemark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPPlacemark.h; sourceTree = "<group>"; };
+		AB1B83111A1DC5D800BDC841 /* DPPlacemark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPPlacemark.m; sourceTree = "<group>"; };
 		AB20EE8219F4DCCC004627C8 /* GroupDataProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupDataProxy.h; sourceTree = "<group>"; };
 		AB20EE8319F4DCCC004627C8 /* GroupDataProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupDataProxy.m; sourceTree = "<group>"; };
 		AB20EE8519F4DD8C004627C8 /* GroupMessageProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupMessageProxy.h; sourceTree = "<group>"; };
@@ -705,6 +718,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AB1B830F1A1DBF9E00BDC841 /* AddressBook.framework in Frameworks */,
 				5881BC041A07A6EC0046E5E4 /* CoreLocation.framework in Frameworks */,
 				5881BC021A079ABE0046E5E4 /* StoreKit.framework in Frameworks */,
 				5881BC001A079A980046E5E4 /* WebKit.framework in Frameworks */,
@@ -763,8 +777,12 @@
 				11FFA50A1A1CA34E00F6F00A /* ActivityCreateTableTitleCell.m */,
 				11FFA50D1A1CA3FF00F6F00A /* ActivityCreateTableLimitCell.h */,
 				11FFA50E1A1CA3FF00F6F00A /* ActivityCreateTableLimitCell.m */,
-				11FFA5111A1CA4BE00F6F00A /* ActivityCreateTablePayCell.h */,
-				11FFA5121A1CA4BE00F6F00A /* ActivityCreateTablePayCell.m */,
+				11FFA5111A1CA4BE00F6F00A /* ActivityCreateTableInfoCell.h */,
+				11FFA5121A1CA4BE00F6F00A /* ActivityCreateTableInfoCell.m */,
+				11FFA51D1A1CE27100F6F00A /* ActivityCreateTableLabelAndContentCell.h */,
+				11FFA51E1A1CE27100F6F00A /* ActivityCreateTableLabelAndContentCell.m */,
+				11FFA5211A1CE2AC00F6F00A /* ActivityCreateTableDetailCell.h */,
+				11FFA5221A1CE2AC00F6F00A /* ActivityCreateTableDetailCell.m */,
 			);
 			name = Activity;
 			sourceTree = "<group>";
@@ -967,6 +985,7 @@
 		585971D01999F0C700258CB1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AB1B830E1A1DBF9E00BDC841 /* AddressBook.framework */,
 				5881BC031A07A6EC0046E5E4 /* CoreLocation.framework */,
 				5881BC011A079ABE0046E5E4 /* StoreKit.framework */,
 				5881BBFF1A079A980046E5E4 /* WebKit.framework */,
@@ -1339,6 +1358,8 @@
 		ABAF97C21A09CDEA00BE29B8 /* LBS */ = {
 			isa = PBXGroup;
 			children = (
+				AB1B83101A1DC5D800BDC841 /* DPPlacemark.h */,
+				AB1B83111A1DC5D800BDC841 /* DPPlacemark.m */,
 				ABAF97C91A09F8F700BE29B8 /* DPLocation.h */,
 				ABAF97CA1A09F8F700BE29B8 /* DPLocation.m */,
 				ABAF97C61A09D44800BE29B8 /* LocationDataProxy.h */,
@@ -1498,11 +1519,12 @@
 				111B4EC91A0A2F4F0043A29F /* ActivityMessageProxy.m in Sources */,
 				AB72235119ED110700E603E2 /* CategoryListTableViewCell.m in Sources */,
 				111B4EBD1A0A2E180043A29F /* ActivityRunningTabChatController.m in Sources */,
-				11FFA5131A1CA4BE00F6F00A /* ActivityCreateTablePayCell.m in Sources */,
+				11FFA5131A1CA4BE00F6F00A /* ActivityCreateTableInfoCell.m in Sources */,
 				11FC326F19F0A92C000A6733 /* FriendTableViewController.m in Sources */,
 				11FDE12319EFB516002AEDB7 /* FriendDAO.m in Sources */,
 				58BACF0919B5805800A72391 /* crypt.c in Sources */,
 				117AC69D19EE766200143973 /* DBUserFromContact.m in Sources */,
+				AB1B83121A1DC5D800BDC841 /* DPPlacemark.m in Sources */,
 				58CDC03C19FE2EF600173FD7 /* GroupChatViewController.m in Sources */,
 				1171F7C819E8DE6300865A0B /* AddressAddTableViewCell.m in Sources */,
 				58BACF0819B5804700A72391 /* FriendMessageProxy.m in Sources */,
@@ -1562,6 +1584,7 @@
 				58B496E219A7186A0082AE30 /* UIAlertView+MKNetworkKitAdditions.m in Sources */,
 				111B4EB91A0A2DFE0043A29F /* ActivityReadyTabMembersController.m in Sources */,
 				AB645E4A1A19CD00008AC05D /* LocationGroupViewController.m in Sources */,
+				11FFA5231A1CE2AC00F6F00A /* ActivityCreateTableDetailCell.m in Sources */,
 				11335B6D19F5407400FA32FA /* ChatViewController.m in Sources */,
 				111B4EAD1A0A2B100043A29F /* ActivityRuningTabController.m in Sources */,
 				11B1C62819E4E069003D2711 /* ChatMessageProxy.m in Sources */,
@@ -1622,6 +1645,7 @@
 				114BF7441A198BED00A28A94 /* FocusUserDAO.m in Sources */,
 				117AC69C19EE766200143973 /* DBUser.m in Sources */,
 				116B6E8019AF0F8C00DB1B5E /* DatabaseConfig.m in Sources */,
+				11FFA51F1A1CE27100F6F00A /* ActivityCreateTableLabelAndContentCell.m in Sources */,
 				110F561A19D57013003B9EB4 /* DPUiMessage.m in Sources */,
 				1194301419F75CED00FD9206 /* ChatInputTextView.m in Sources */,
 				58438C0D19D412E400B6962B /* NearbyTableViewController.m in Sources */,
@@ -1734,7 +1758,7 @@
 				117AC6AB19EEB90600143973 /* IMAddressPerson.m in Sources */,
 				AB199ACC1A0A24A800F6B858 /* LocationTest.m in Sources */,
 				114BF7491A1A458A00A28A94 /* DBFanUser.m in Sources */,
-				11FFA5141A1CA4BE00F6F00A /* ActivityCreateTablePayCell.m in Sources */,
+				11FFA5141A1CA4BE00F6F00A /* ActivityCreateTableInfoCell.m in Sources */,
 				116AB14A19B731DE00092E2C /* DBGroup.m in Sources */,
 				117AC6B219EEB9A500143973 /* IMNWSocketConnect.m in Sources */,
 				117AC6AC19EEB91500143973 /* DPUserFromContact.m in Sources */,
@@ -1748,6 +1772,7 @@
 				11335B6E19F5407400FA32FA /* ChatViewController.m in Sources */,
 				58BC1E3619C0304900722A00 /* RegisterViewController.m in Sources */,
 				58C14DDB19C81562009334E1 /* RecommendViewController.m in Sources */,
+				11FFA5241A1CE2AC00F6F00A /* ActivityCreateTableDetailCell.m in Sources */,
 				11FFA5101A1CA3FF00F6F00A /* ActivityCreateTableLimitCell.m in Sources */,
 				116AB14D19B733C400092E2C /* FriendDataProxyTest.m in Sources */,
 				11DF6A8F1A047B7700A4B1D3 /* SysMsgTableViewDefaultCell.m in Sources */,
@@ -1766,6 +1791,7 @@
 				116AB14819B731D600092E2C /* DatabaseConfig.m in Sources */,
 				110487A919D7DA560002AB36 /* OSTest.m in Sources */,
 				116BF87419C81E680015561B /* AudioRecordManager.m in Sources */,
+				11FFA5201A1CE27100F6F00A /* ActivityCreateTableLabelAndContentCell.m in Sources */,
 				117AC6A919EEB8D900143973 /* DBUserFromContact.m in Sources */,
 				116AB14919B731DA00092E2C /* BaseDAO.m in Sources */,
 				11FC327019F0A92C000A6733 /* FriendTableViewController.m in Sources */,
