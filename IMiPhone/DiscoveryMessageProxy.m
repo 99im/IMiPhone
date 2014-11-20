@@ -44,7 +44,7 @@ static DiscoveryMessageProxy *discoveryProxy = nil;
             else {
                 NSInteger errorcode = [[json objectForKey:KEYP_H__DISCOVERY_REPORTGEO__ERROR_CODE] integerValue];
                 if (errorcode == 0) {
-                    NSLog(@"查询附近的人\nsendDiscoveryReportGEO response ok:\n%@", json);
+                    NSLog(@"sendDiscoveryReportGEO response ok:\n%@", json);
                     [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_H__DISCOVERY_REPORTGEO_ object:nil];
                     //[self processSuccessNotiName:NOTI_H__DISCOVERY_REPORTGEO_ withUserInfo:nil];
                 }
