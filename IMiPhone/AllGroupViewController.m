@@ -20,11 +20,23 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     //获取FindList.plist数据
-    NSBundle *bundle = [NSBundle mainBundle];
-    NSString *plistPath = [bundle pathForResource:@"FindList" ofType:@"plist"];
-    self.nearbyGroupList = [[[[NSDictionary alloc] initWithContentsOfFile:plistPath] valueForKey:@"玩乐"] objectForKey:@"nearbyGroups"];
-    self.nearbyGroupRecruitList = [[[[NSDictionary alloc] initWithContentsOfFile:plistPath] valueForKey:@"玩乐"] objectForKey:@"nearbyGroupRecruit"];
+//    NSBundle *bundle = [NSBundle mainBundle];
+//    NSString *plistPath = [bundle pathForResource:@"FindList" ofType:@"plist"];
+//    self.nearbyGroupList = [[[[NSDictionary alloc] initWithContentsOfFile:plistPath] valueForKey:@"玩乐"] objectForKey:@"nearbyGroups"];
+//    self.nearbyGroupRecruitList = [[[[NSDictionary alloc] initWithContentsOfFile:plistPath] valueForKey:@"玩乐"] objectForKey:@"nearbyGroupRecruit"];
+    //
+    [self registerMessageNotification];
+    [[GroupDataProxy sharedProxy] getGroupSearchList:SEND_HTTP_AUTO];
     
+}
+
+- (void) viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+}
+
+- (void) viewDidDisappear:(BOOL)animated{
+    [self reomveMessageNotification];
+    [super viewDidDisappear:animated];
 }
 
 
@@ -52,62 +64,100 @@
 
 
 - (NSInteger) numberOfSectionsInTableView:(UITableView *)tableView{
-    return self.nowGroupList.count;
+    //return self.nowGroupList.count;
+    return 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     AllGroupTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"allGroupCell" forIndexPath:indexPath];
-    [cell paddingDataForCell:[[self.nowGroupList objectAtIndex:indexPath.section] objectAtIndex:indexPath.row]];
+    //[cell paddingDataForCell:[[self.nowGroupList objectAtIndex:indexPath.section] objectAtIndex:indexPath.row]];
+    [cell paddingDataForCell:indexPath];
     return cell;
-    return nil;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    for (NSInteger i = 0; i < self.nowGroupList.count; i ++) {
-        if (section == i) {
-            NSLog(@"%lu",(unsigned long)[[self.nowGroupList objectAtIndex:i] count]);
-            return [[self.nowGroupList objectAtIndex:i] count];
-        }
-    }
-    return 0;
+//    for (NSInteger i = 0; i < self.nowGroupList.count; i ++) {
+//        if (section == i) {
+//            NSLog(@"%lu",(unsigned long)[[self.nowGroupList objectAtIndex:i] count]);
+//            return [[self.nowGroupList objectAtIndex:i] count];
+//        }
+//    }
+//    return 0;
+    return [[GroupDataProxy sharedProxy] countGroupSearchList];
 }
 
 - (UIView *) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
-    for (NSInteger i = 0; i < self.nowGroupList.count; i ++) {
-        if (section == i) {
-           
-            UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 22)];
-            
-            UILabel *lblName = [[UILabel alloc] initWithFrame:CGRectMake(10, 2, 200, 22)];
-            lblName.font = [UIFont fontWithName:@"Arial" size:12.0f];
-            NSString *str = @"清华科技园";
-            NSString *strI = [NSString stringWithFormat:@"%ld",(long)i];
-            str = [str stringByAppendingString:strI];
-            lblName.text = str;
-            lblName.textAlignment = NSTextAlignmentLeft;
-            
-            UILabel *lblNum = [[UILabel alloc] initWithFrame:CGRectMake(200, 2, 100, 22)];
-            lblNum.font = [UIFont fontWithName:@"Arial" size:12.0f];
-            NSString *strN = @"个群组";
-            NSInteger num = [[self.nowGroupList objectAtIndex:i] count];
-            NSString *strNum = [NSString stringWithFormat:@"%ld",(long)num];
-            strNum = [strNum stringByAppendingString:strN];
-            lblNum.text = strNum;
-            lblNum.textAlignment = NSTextAlignmentRight;
-            
-            [view addSubview:lblName];
-            [view addSubview:lblNum];
-            
-            return view;
-        }
-    }
-    return nil;
+//    for (NSInteger i = 0; i < self.nowGroupList.count; i ++) {
+//        if (section == i) {
+//           
+//            UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 22)];
+//            
+//            UILabel *lblName = [[UILabel alloc] initWithFrame:CGRectMake(10, 2, 200, 22)];
+//            lblName.font = [UIFont fontWithName:@"Arial" size:12.0f];
+//            NSString *str = @"清华科技园";
+//            NSString *strI = [NSString stringWithFormat:@"%ld",(long)i];
+//            str = [str stringByAppendingString:strI];
+//            lblName.text = str;
+//            lblName.textAlignment = NSTextAlignmentLeft;
+//            
+//            UILabel *lblNum = [[UILabel alloc] initWithFrame:CGRectMake(200, 2, 100, 22)];
+//            lblNum.font = [UIFont fontWithName:@"Arial" size:12.0f];
+//            NSString *strN = @"个群组";
+//            NSInteger num = [[self.nowGroupList objectAtIndex:i] count];
+//            NSString *strNum = [NSString stringWithFormat:@"%ld",(long)num];
+//            strNum = [strNum stringByAppendingString:strN];
+//            lblNum.text = strNum;
+//            lblNum.textAlignment = NSTextAlignmentRight;
+//            
+//            [view addSubview:lblName];
+//            [view addSubview:lblNum];
+//            
+//            return view;
+//        }
+//    }
+      UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 22)];
+    
+      UILabel *lblName = [[UILabel alloc] initWithFrame:CGRectMake(10, 2, 200, 22)];
+      lblName.font = [UIFont fontWithName:@"Arial" size:12.0f];
+      NSString *str = @"清华科技园";
+      lblName.text = str;
+      lblName.textAlignment = NSTextAlignmentLeft;
+    
+      UILabel *lblNum = [[UILabel alloc] initWithFrame:CGRectMake(200, 2, 100, 22)];
+      lblNum.font = [UIFont fontWithName:@"Arial" size:12.0f];
+      NSString *strN = @"个群组";
+      NSInteger num = [[GroupDataProxy sharedProxy] countGroupSearchList];
+      NSString *strNum = [NSString stringWithFormat:@"%ld",(long)num];
+      strNum = [strNum stringByAppendingString:strN];
+      lblNum.text = strNum;
+      lblNum.textAlignment = NSTextAlignmentRight;
+    
+      [view addSubview:lblName];
+      [view addSubview:lblNum];
+                
+     return view;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [self.tableView deselectRowAtIndexPath:indexPath animated:NO];
     [self.view endEditing:YES];
+}
+
+#pragma mark - 消息处理
+- (void) registerMessageNotification{
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                          selector:@selector(didShowNearbyGroupList:)
+                                          name:NOTI_H__GROUP_SEARCH_
+                                          object:nil];
+}
+
+- (void) reomveMessageNotification{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void) didShowNearbyGroupList:(NSNotification *)notification {
+    [self.tableView reloadData];
 }
 
 @end

@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "GroupDataProxy.h"
+#import "DPGroup.h"
 
 @interface AllGroupTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *lblGroupName;
@@ -19,5 +20,5 @@
 
 
 //实现方法
-- (void) paddingDataForCell: (NSMutableDictionary *) dic;
+- (void) paddingDataForCell:(NSIndexPath *)indexPath;
 @end

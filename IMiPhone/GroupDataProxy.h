@@ -21,7 +21,6 @@
 
 @interface GroupDataProxy : NSObject
 
-@property (nonatomic, retain) NSArray *arrGroupsSearch;
 
 - (void)reset;
 
@@ -56,5 +55,12 @@
 #pragma mark - 群聊天
 ///获得某个群组的聊天消息
 - (NSMutableArray *)getGroupMessages:(NSInteger)gid;
+
+#pragma mark - 搜寻群相关
+- (NSMutableArray *)getGroupSearchList:(NSInteger)httpMode;
+- (NSInteger)updateGroupSearchList:(NSMutableArray *)groupSearchList;
+- (NSInteger)countGroupSearchList;
+- (DPGroup *)getGroupSearchInfoAtRow:(NSInteger)row;
+
 
 @end
