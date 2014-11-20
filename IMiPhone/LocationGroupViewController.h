@@ -13,6 +13,8 @@
 @interface LocationGroupViewController : UIViewController <MKMapViewDelegate>
 
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
+@property (weak, nonatomic) IBOutlet UILabel *lblLon;
+@property (weak, nonatomic) IBOutlet UILabel *lblLat;
 
 - (IBAction)goBackTouchUp:(id)sender;
 

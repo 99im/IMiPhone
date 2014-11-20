@@ -15,6 +15,7 @@
 @interface LocationDataProxy () <CLLocationManagerDelegate>
 @property (nonatomic, strong) CLLocationManager *locationManager;
 @property (nonatomic, retain) DPLocation *dpCurrLocation;
+@property (nonatomic, retain) DPLocation *dpReportLocation;
 @property (nonatomic) NSInteger remainTimes;
 
 @end
@@ -23,6 +24,7 @@
 
 @synthesize dpCurrLocation = _dpCurrLocation;
 @synthesize locationManager = _locationManager;
+@synthesize dpReportLocation = _dpReportLocation;
 
 #pragma mark - 静态方法
 static LocationDataProxy *sharedLocationDataProxy = nil;
@@ -31,6 +33,27 @@ static LocationDataProxy *sharedLocationDataProxy = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{ sharedLocationDataProxy = [[self alloc] init]; });
     return sharedLocationDataProxy;
+}
+
+#pragma mark - 私有方法
+- (void)updateReportLocation:(DPLocation *)dpLocation {
+    BOOL needReport = NO;
+    if (!_dpReportLocation) { //从未取过
+        _dpReportLocation = [[DPLocation alloc] init];
+        needReport = YES;
+    } else if(_dpReportLocation.localExpireTime < dpLocation.localUpdateTime) {
+        needReport = YES;
+    } else {//TODO：判断距离变化是否超过临界值
+        //needReport = YES;
+    }
+
+    if (needReport == YES) {
+        _dpReportLocation.latitude = dpLocation.latitude;
+        _dpReportLocation.longitude = dpLocation.longitude;
+        _dpReportLocation.localUpdateTime = dpLocation.localUpdateTime;
+        NSLog(@"sendDiscoveryReportGEO:<%f,%f,%f>",_dpReportLocation.longitude, _dpReportLocation.latitude , _dpReportLocation.altitude);
+        [[DiscoveryMessageProxy sharedProxy] sendDiscoveryReportGEO:_dpReportLocation];
+    }
 }
 
 #pragma mark - 接口方法
@@ -56,6 +79,7 @@ static LocationDataProxy *sharedLocationDataProxy = nil;
         NSLog(@"startUpdatingLocation:");
         if (updateTimes > 0) {
             _remainTimes = updateTimes;
+            //_remainTimes = 1000; //临时测试
         }
         [_locationManager startUpdatingLocation];
     }
@@ -74,7 +98,7 @@ static LocationDataProxy *sharedLocationDataProxy = nil;
     _remainTimes = 0;
 }
 
-- (DPLocation *)getLocationCurrent
+- (DPLocation *)getLocationWithUpdate:(BOOL)needUpdate
 {
     if (!_dpCurrLocation) { //从未取过
         _dpCurrLocation = [[DPLocation alloc] init];
@@ -91,7 +115,7 @@ static LocationDataProxy *sharedLocationDataProxy = nil;
         //        [_locationManager startUpdatingLocation];
         //        NSLog(@"开始定位 _locationManager startUpdatingLocation");
     }
-    else if (_dpCurrLocation.localExpireTime < [imUtil nowTime]) { //已过期，重新取
+    else if (needUpdate || _dpCurrLocation.localExpireTime < [imUtil nowTime]) { //已过期，重新取
         [self startUpdatingLocation:1];
     }
     return _dpCurrLocation;
@@ -129,6 +153,7 @@ static LocationDataProxy *sharedLocationDataProxy = nil;
 
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_LBS_didUpdateLocations
                                                         object:nil];
+    [self updateReportLocation:_dpCurrLocation];
 }
 
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error

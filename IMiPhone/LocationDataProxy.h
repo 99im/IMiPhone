@@ -12,6 +12,7 @@
 
 #import "imUtil.h"
 #import "DPLocation.h"
+#import "DiscoveryMessageProxy.h"
 
 #define TIMEOUT_LOCATION_CURRENT 10 //过期时间(分钟):当前位置
 
@@ -20,13 +21,13 @@
 
 #pragma mark - 消息名宏定义
 #define NOTI_LBS_didUpdateLocations @"NOTI_LBS_didUpdateLocations"
-#define NOTI_LBS_didFailWithError @"NOTI_LBS_didFailWithError"
+#define NOTI_LBS_didFailWithError @"NOTI_LBS_UPDATE_ERROR"
 
 @interface LocationDataProxy : NSObject 
 
 + (LocationDataProxy *)sharedProxy;
 
-- (DPLocation *)getLocationCurrent;
+- (DPLocation *)getLocationWithUpdate:(BOOL)needUpdate;
 
 -(NSInteger) startUpdatingLocation:(NSInteger)updateTimes;
 -(void) stopUpdatingLocation;
