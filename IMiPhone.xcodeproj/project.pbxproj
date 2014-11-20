@@ -298,6 +298,7 @@
 		AB199ACC1A0A24A800F6B858 /* LocationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = AB199ACB1A0A24A800F6B858 /* LocationTest.m */; };
 		AB199AD01A0A4B5C00F6B858 /* LocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB199ACF1A0A4B5C00F6B858 /* LocationViewController.m */; };
 		AB1B830D1A1D9A8D00BDC841 /* DiscoveryMessageProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = AB645E521A19F8C9008AC05D /* DiscoveryMessageProxy.m */; };
+		AB1B830F1A1DBF9E00BDC841 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB1B830E1A1DBF9E00BDC841 /* AddressBook.framework */; };
 		AB20EE8419F4DCCC004627C8 /* GroupDataProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = AB20EE8319F4DCCC004627C8 /* GroupDataProxy.m */; };
 		AB20EE8719F4DD8C004627C8 /* GroupMessageProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = AB20EE8619F4DD8C004627C8 /* GroupMessageProxy.m */; };
 		AB24A95719F89DDA00026299 /* GroupInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB24A95619F89DDA00026299 /* GroupInfoViewController.m */; };
@@ -643,6 +644,7 @@
 		AB199ACB1A0A24A800F6B858 /* LocationTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationTest.m; sourceTree = "<group>"; };
 		AB199ACE1A0A4B5C00F6B858 /* LocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationViewController.h; sourceTree = "<group>"; };
 		AB199ACF1A0A4B5C00F6B858 /* LocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationViewController.m; sourceTree = "<group>"; };
+		AB1B830E1A1DBF9E00BDC841 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		AB20EE8219F4DCCC004627C8 /* GroupDataProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupDataProxy.h; sourceTree = "<group>"; };
 		AB20EE8319F4DCCC004627C8 /* GroupDataProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupDataProxy.m; sourceTree = "<group>"; };
 		AB20EE8519F4DD8C004627C8 /* GroupMessageProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupMessageProxy.h; sourceTree = "<group>"; };
@@ -702,6 +704,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AB1B830F1A1DBF9E00BDC841 /* AddressBook.framework in Frameworks */,
 				5881BC041A07A6EC0046E5E4 /* CoreLocation.framework in Frameworks */,
 				5881BC021A079ABE0046E5E4 /* StoreKit.framework in Frameworks */,
 				5881BC001A079A980046E5E4 /* WebKit.framework in Frameworks */,
@@ -962,6 +965,7 @@
 		585971D01999F0C700258CB1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AB1B830E1A1DBF9E00BDC841 /* AddressBook.framework */,
 				5881BC031A07A6EC0046E5E4 /* CoreLocation.framework */,
 				5881BC011A079ABE0046E5E4 /* StoreKit.framework */,
 				5881BBFF1A079A980046E5E4 /* WebKit.framework */,
