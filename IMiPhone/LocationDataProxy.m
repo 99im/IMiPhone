@@ -70,8 +70,8 @@ static LocationDataProxy *sharedLocationDataProxy = nil;
                          if (!_dpCurrPlacemark) {
                              _dpCurrPlacemark = [[DPPlacemark alloc] init];
                          }
-                         // DPPlacemark *dpPlacemark = [[DPPlacemark alloc] init];
-                         CLPlacemark *placemark = placemarks[0];
+                         CLPlacemark *placemark = [placemarks lastObject];
+                         //CLPlacemark *placemark = placemarks[0];
                          NSDictionary *addressDictionary = placemark.addressDictionary;
                          NSArray *addressLines = [addressDictionary objectForKey:@"FormattedAddressLines"];
 

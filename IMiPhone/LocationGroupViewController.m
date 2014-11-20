@@ -10,6 +10,13 @@
 
 @interface LocationGroupViewController ()
 
+@property (weak, nonatomic) IBOutlet MKMapView *mapView;
+@property (weak, nonatomic) IBOutlet UILabel *lblLon;
+@property (weak, nonatomic) IBOutlet UILabel *lblLat;
+@property (weak, nonatomic) IBOutlet UILabel *lblAddress;
+
+- (IBAction)goBackTouchUp:(id)sender;
+
 @end
 
 @implementation LocationGroupViewController
@@ -34,15 +41,32 @@
     //[[LocationDataProxy sharedProxy] startUpdatingLocation:1];
     // map 定位
     if ([CLLocationManager locationServicesEnabled ]) {
-        _mapView.mapType = MKMapTypeStandard;
-        _mapView.delegate = self;
-        _mapView.showsUserLocation = YES;
-        [_mapView setUserTrackingMode:MKUserTrackingModeFollow animated:YES];
+        DPPlacemark *dpPlacemark = [[LocationDataProxy sharedProxy] getPlacemarkWithUpdate:NO];
+        [self didUpdatePlacemarkView:dpPlacemark];
+
+//        _mapView.mapType = MKMapTypeStandard;
+//        _mapView.delegate = self;
+//        _mapView.showsUserLocation = YES;
+//        [_mapView setUserTrackingMode:MKUserTrackingModeFollow animated:YES];
+//
+//        //坐标中心点
+//        CLLocationCoordinate2D center;
+//        //center.latitude = 40.000304;
+//        //center.longitude = 116.338154;
+//        center.latitude = dpPlacemark.latitude;
+//        center.longitude = dpPlacemark.longitude;
+//
+//        //坐标偏移量
+//        MKCoordinateSpan span;
+//        span.latitudeDelta = 0.02;
+//        span.longitudeDelta = 0.02;
+//
+//        //坐标区
+//        MKCoordinateRegion region = {center,span};
+//        [_mapView setRegion:region];
     }
 //    DPLocation *dpCurrLocation = [[LocationDataProxy sharedProxy] getLocationWithUpdate:NO];
 //    [self didUpdateLocationView:dpCurrLocation];
-    DPPlacemark *dpPlacemark = [[LocationDataProxy sharedProxy] getPlacemarkWithUpdate:NO];
-    [self didUpdatePlacemarkView:dpPlacemark];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -72,10 +96,10 @@
 
 - (void)registerMessageNotification
 {
-//    [[NSNotificationCenter defaultCenter] addObserver:self
-//                                             selector:@selector(didUpdateLocations:)
-//                                                 name:NOTI_LBS_didUpdateLocations
-//                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(didUpdateLocations:)
+                                                 name:NOTI_LBS_didUpdateLocations
+                                               object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(didReverseGeocodeLocation:)
                                                  name:NOTI_LBS_didReverseGeocodeLocation
@@ -91,16 +115,32 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
-//- (void)didUpdateLocations:(NSNotification *)notification
-//{
-//    if (!notification.object) {
-//        DPLocation *dpCurrLocation = [[LocationDataProxy sharedProxy] getLocationWithUpdate:NO];
-//        [self didUpdateLocationView:dpCurrLocation];
-//    } else {
-//        self.lblAddress.text = [NSString stringWithFormat:@"%@", notification.object];
-//    }
-//
-//}
+- (void)didUpdateLocations:(NSNotification *)notification
+{
+    if (!notification.object) {
+        DPLocation *dpCurrLocation = [[LocationDataProxy sharedProxy] getLocationWithUpdate:NO];
+        [self didUpdateLocationView:dpCurrLocation];
+
+        //坐标中心点
+        CLLocationCoordinate2D center;
+        //center.latitude = 40.000304;
+        //center.longitude = 116.338154;
+        center.latitude = dpCurrLocation.latitude;
+        center.longitude = dpCurrLocation.longitude;
+
+        //坐标偏移量
+        MKCoordinateSpan span;
+        span.latitudeDelta = 0.02;
+        span.longitudeDelta = 0.02;
+
+        //坐标区
+        MKCoordinateRegion region = {center,span};
+        [_mapView setRegion:region];
+    } else {
+        self.lblAddress.text = [NSString stringWithFormat:@"%@", notification.object];
+    }
+
+}
 
 -(void)didReverseGeocodeLocation:(NSNotification *)notification
 {
@@ -118,20 +158,20 @@
 //    NSLog(@"消息处理\n获取当前位置失败:%@", notification.object);
 //}
 
-//-(void)didUpdateLocationView:(DPLocation *)dpCurrLocation {
-//    self.lblLon.text = [NSString stringWithFormat:@"经度:%f (%qi)", dpCurrLocation.longitude, dpCurrLocation.localUpdateTime];
-//    self.lblLat.text = [NSString stringWithFormat:@"纬度:%f", dpCurrLocation.latitude];
-//    //开始定位MapView
-//    //NSLog(@"mapView 准备重新定位 经度:%f %f", dpCurrLocation.longitude, dpCurrLocation.latitude);
-//
-//}
+-(void)didUpdateLocationView:(DPLocation *)dpCurrLocation {
+    self.lblLon.text = [NSString stringWithFormat:@"经度:%f (%qi)", dpCurrLocation.longitude, dpCurrLocation.localUpdateTime];
+    self.lblLat.text = [NSString stringWithFormat:@"纬度:%f", dpCurrLocation.latitude];
+    //开始定位MapView
+    //NSLog(@"mapView 准备重新定位 经度:%f %f", dpCurrLocation.longitude, dpCurrLocation.latitude);
+
+}
 
 
 -(void)didUpdatePlacemarkView:(DPPlacemark *)dpCurrPlacemark {
     self.lblLon.text = [NSString stringWithFormat:@"经度:%f (%qi)", dpCurrPlacemark.longitude, dpCurrPlacemark.localUpdateTime];
     self.lblLat.text = [NSString stringWithFormat:@"纬度:%f", dpCurrPlacemark.latitude];
-    self.lblAddress.text = [NSString stringWithFormat:@"地址:%@",dpCurrPlacemark.name];
-    //self.lblAddress.text = [NSString stringWithFormat:@"地址:%@",dpCurrPlacemark.addressLines];
+    //self.lblAddress.text = [NSString stringWithFormat:@"地址:%@",dpCurrPlacemark.name];
+    self.lblAddress.text = [NSString stringWithFormat:@"(%@):%@ %@ %@", dpCurrPlacemark.postalCode, dpCurrPlacemark.administrativeArea, dpCurrPlacemark.locality,dpCurrPlacemark.thoroughfare];
     //self.lblAddress.text = [NSString stringWithFormat:@"地址:(%@)%@%@ %@",dpCurrPlacemark.countryCode, dpCurrPlacemark.city , dpCurrPlacemark.state , dpCurrPlacemark.subLocality];
 }
 
@@ -151,6 +191,7 @@
 }
 
 -(void)mapViewDidFinishLoadingMap:(MKMapView *)mapView {
+    NSLog(@"mapViewDidFinishLoadingMap:");
 
 }
 
