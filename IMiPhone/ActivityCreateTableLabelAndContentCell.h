@@ -1,5 +1,5 @@
 //
-//  ActivityCreateTabelController.h
+//  ActivityCreateTableEndTimeCell.h
 //  IMiPhone
 //
 //  Created by 王 国良 on 14/11/19.
@@ -7,8 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "IMNWProxyProtocol.h"
 
-@interface ActivityCreateTabelController : UITableViewController <IMNWProxyProtocol>
+@interface ActivityCreateTableLabelAndContentCell : UITableViewCell
 
 @end
