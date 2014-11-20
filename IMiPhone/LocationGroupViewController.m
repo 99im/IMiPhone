@@ -39,8 +39,10 @@
         _mapView.showsUserLocation = YES;
         [_mapView setUserTrackingMode:MKUserTrackingModeFollow animated:YES];
     }
-    DPLocation *dpCurrLocation = [[LocationDataProxy sharedProxy] getLocationWithUpdate:NO];
-    [self didUpdateView:dpCurrLocation];
+//    DPLocation *dpCurrLocation = [[LocationDataProxy sharedProxy] getLocationWithUpdate:NO];
+//    [self didUpdateLocationView:dpCurrLocation];
+    DPPlacemark *dpPlacemark = [[LocationDataProxy sharedProxy] getPlacemarkWithUpdate:NO];
+    [self didUpdatePlacemarkView:dpPlacemark];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -70,14 +72,18 @@
 
 - (void)registerMessageNotification
 {
+//    [[NSNotificationCenter defaultCenter] addObserver:self
+//                                             selector:@selector(didUpdateLocations:)
+//                                                 name:NOTI_LBS_didUpdateLocations
+//                                               object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(didUpdateLocations:)
-                                                 name:NOTI_LBS_didUpdateLocations
+                                             selector:@selector(didReverseGeocodeLocation:)
+                                                 name:NOTI_LBS_didReverseGeocodeLocation
                                                object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(didFailWithError:)
-                                                 name:NOTI_LBS_didFailWithError
-                                               object:nil];
+//    [[NSNotificationCenter defaultCenter] addObserver:self
+//                                             selector:@selector(didFailWithError:)
+//                                                 name:NOTI_LBS_didFailWithError
+//                                               object:nil];
 }
 
 - (void)removeMessageNotification
@@ -85,22 +91,47 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
-- (void)didUpdateLocations:(NSNotification *)notification
+//- (void)didUpdateLocations:(NSNotification *)notification
+//{
+//    if (!notification.object) {
+//        DPLocation *dpCurrLocation = [[LocationDataProxy sharedProxy] getLocationWithUpdate:NO];
+//        [self didUpdateLocationView:dpCurrLocation];
+//    } else {
+//        self.lblAddress.text = [NSString stringWithFormat:@"%@", notification.object];
+//    }
+//
+//}
+
+-(void)didReverseGeocodeLocation:(NSNotification *)notification
 {
-    DPLocation *dpCurrLocation = [[LocationDataProxy sharedProxy] getLocationWithUpdate:NO];
-    [self didUpdateView:dpCurrLocation];
+    if (!notification.object) {
+        DPPlacemark *dpCurrPlacemark = [[LocationDataProxy sharedProxy] getPlacemarkWithUpdate:NO];
+        [self didUpdatePlacemarkView:dpCurrPlacemark];
+
+    } else {
+        self.lblAddress.text = [NSString stringWithFormat:@"%@", notification.object];
+    }
 }
 
-- (void)didFailWithError:(NSNotification *)notification
-{
-    NSLog(@"消息处理\n获取当前位置失败:%@", notification.object);
-}
--(void)didUpdateView:(DPLocation *)dpCurrLocation {
-    self.lblLon.text = [NSString stringWithFormat:@"经度:%f (%qi)", dpCurrLocation.longitude, dpCurrLocation.localUpdateTime];
-    self.lblLat.text = [NSString stringWithFormat:@"纬度:%f", dpCurrLocation.latitude];
-    //开始定位MapView
-    NSLog(@"mapView 准备重新定位 经度:%f %f", dpCurrLocation.longitude, dpCurrLocation.latitude);
+//- (void)didFailWithError:(NSNotification *)notification
+//{
+//    NSLog(@"消息处理\n获取当前位置失败:%@", notification.object);
+//}
 
+//-(void)didUpdateLocationView:(DPLocation *)dpCurrLocation {
+//    self.lblLon.text = [NSString stringWithFormat:@"经度:%f (%qi)", dpCurrLocation.longitude, dpCurrLocation.localUpdateTime];
+//    self.lblLat.text = [NSString stringWithFormat:@"纬度:%f", dpCurrLocation.latitude];
+//    //开始定位MapView
+//    //NSLog(@"mapView 准备重新定位 经度:%f %f", dpCurrLocation.longitude, dpCurrLocation.latitude);
+//
+//}
+
+
+-(void)didUpdatePlacemarkView:(DPPlacemark *)dpCurrPlacemark {
+    self.lblLon.text = [NSString stringWithFormat:@"经度:%f (%qi)", dpCurrPlacemark.longitude, dpCurrPlacemark.localUpdateTime];
+    self.lblLat.text = [NSString stringWithFormat:@"纬度:%f", dpCurrPlacemark.latitude];
+    self.lblAddress.text = [NSString stringWithFormat:@"地址:%@",dpCurrPlacemark.addressLines];
+    //self.lblAddress.text = [NSString stringWithFormat:@"地址:(%@)%@%@ %@",dpCurrPlacemark.countryCode, dpCurrPlacemark.city , dpCurrPlacemark.state , dpCurrPlacemark.subLocality];
 }
 
 //

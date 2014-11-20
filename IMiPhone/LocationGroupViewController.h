@@ -15,6 +15,7 @@
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @property (weak, nonatomic) IBOutlet UILabel *lblLon;
 @property (weak, nonatomic) IBOutlet UILabel *lblLat;
+@property (weak, nonatomic) IBOutlet UILabel *lblAddress;
 
 - (IBAction)goBackTouchUp:(id)sender;
 

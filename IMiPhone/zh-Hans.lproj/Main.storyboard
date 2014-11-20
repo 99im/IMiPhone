@@ -1983,7 +1983,7 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="aUm-KX-Dyp" userLabel="groupMapView" propertyAccessControl="none">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" placeholderIntrinsicWidth="320" placeholderIntrinsicHeight="300" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="aUm-KX-Dyp" userLabel="groupMapView" propertyAccessControl="none">
                                 <rect key="frame" x="0.0" y="66" width="320" height="300"/>
                             </mapView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="纬度：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XaY-yM-F8V">
@@ -1998,10 +1998,17 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="地址：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nu7-uV-6aY">
+                                <rect key="frame" x="16" y="430" width="288" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
+                        <outlet property="lblAddress" destination="Nu7-uV-6aY" id="1Rx-kB-b1y"/>
                         <outlet property="lblLat" destination="XaY-yM-F8V" id="Ebw-jB-Cg7"/>
                         <outlet property="lblLon" destination="N1j-jY-oXx" id="sGG-7j-RmM"/>
                         <outlet property="mapView" destination="aUm-KX-Dyp" id="K1e-Gq-2Hy"/>

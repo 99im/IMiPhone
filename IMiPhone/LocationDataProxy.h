@@ -9,9 +9,11 @@
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CoreLocation.h>
 #import <CoreLocation/CLLocationManagerDelegate.h>
+#import <AddressBook/AddressBook.h>
 
 #import "imUtil.h"
 #import "DPLocation.h"
+#import "DPPlacemark.h"
 #import "DiscoveryMessageProxy.h"
 
 #define TIMEOUT_LOCATION_CURRENT 10 //过期时间(分钟):当前位置
@@ -21,14 +23,16 @@
 
 #pragma mark - 消息名宏定义
 #define NOTI_LBS_didUpdateLocations @"NOTI_LBS_didUpdateLocations"
-#define NOTI_LBS_didFailWithError @"NOTI_LBS_UPDATE_ERROR"
+#define NOTI_LBS_didReverseGeocodeLocation @"NOTI_LBS_didReverseGeocodeLocation"
+//#define NOTI_LBS_didFailWithError @"NOTI_LBS_UPDATE_ERROR"
 
 @interface LocationDataProxy : NSObject 
 
 + (LocationDataProxy *)sharedProxy;
 
 - (DPLocation *)getLocationWithUpdate:(BOOL)needUpdate;
+- (DPPlacemark *)getPlacemarkWithUpdate:(BOOL)needUpdate;
 
--(NSInteger) startUpdatingLocation:(NSInteger)updateTimes;
+-(NSInteger) startUpdatingLocation:(NSInteger)updateTimes; //待定：是否对外开放
 -(void) stopUpdatingLocation;
 @end

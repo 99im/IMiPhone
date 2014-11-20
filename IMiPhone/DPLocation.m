@@ -14,11 +14,6 @@
 @synthesize latitude;
 @synthesize altitude;
 
-//@synthesize state;
-//@synthesize city;
-//@synthesize street;
-//@synthesize zip;
-
 @synthesize localUpdateTime;
 @synthesize localExpireTime;
 

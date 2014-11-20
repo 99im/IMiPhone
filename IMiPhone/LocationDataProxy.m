@@ -14,6 +14,7 @@
 
 @interface LocationDataProxy () <CLLocationManagerDelegate>
 @property (nonatomic, strong) CLLocationManager *locationManager;
+@property (nonatomic, retain) DPPlacemark *dpCurrPlacemark;
 @property (nonatomic, retain) DPLocation *dpCurrLocation;
 @property (nonatomic, retain) DPLocation *dpReportLocation;
 @property (nonatomic) NSInteger remainTimes;
@@ -22,8 +23,9 @@
 
 @implementation LocationDataProxy
 
-@synthesize dpCurrLocation = _dpCurrLocation;
 @synthesize locationManager = _locationManager;
+@synthesize dpCurrPlacemark = _dpCurrPlacemark;
+@synthesize dpCurrLocation = _dpCurrLocation;
 @synthesize dpReportLocation = _dpReportLocation;
 
 #pragma mark - 静态方法
@@ -36,23 +38,77 @@ static LocationDataProxy *sharedLocationDataProxy = nil;
 }
 
 #pragma mark - 私有方法
-- (void)updateReportLocation:(DPLocation *)dpLocation {
+- (void)updateReportLocation:(DPLocation *)dpLocation
+{
     BOOL needReport = NO;
     if (!_dpReportLocation) { //从未取过
         _dpReportLocation = [[DPLocation alloc] init];
         needReport = YES;
-    } else if(_dpReportLocation.localExpireTime < dpLocation.localUpdateTime) {
+    }
+    else if (_dpReportLocation.localExpireTime < dpLocation.localUpdateTime) {
         needReport = YES;
-    } else {//TODO：判断距离变化是否超过临界值
-        //needReport = YES;
+    }
+    else { // TODO：判断距离变化是否超过临界值
+        // needReport = YES;
     }
 
     if (needReport == YES) {
         _dpReportLocation.latitude = dpLocation.latitude;
         _dpReportLocation.longitude = dpLocation.longitude;
         _dpReportLocation.localUpdateTime = dpLocation.localUpdateTime;
-        NSLog(@"sendDiscoveryReportGEO:<%f,%f,%f>",_dpReportLocation.longitude, _dpReportLocation.latitude , _dpReportLocation.altitude);
+        NSLog(@"sendDiscoveryReportGEO:<%f,%f,%f>", _dpReportLocation.longitude, _dpReportLocation.latitude,
+              _dpReportLocation.altitude);
         [[DiscoveryMessageProxy sharedProxy] sendDiscoveryReportGEO:_dpReportLocation];
+
+        CLLocation *location = [[CLLocation alloc] initWithLatitude:dpLocation.latitude longitude:dpLocation.longitude];
+        CLGeocoder *revGeo = [[CLGeocoder alloc] init];
+        [revGeo
+            reverseGeocodeLocation:location
+                 completionHandler:^(NSArray *placemarks, NSError *error) {
+                     if (!error && [placemarks count] > 0) {
+                         if (!_dpCurrPlacemark) {
+                             _dpCurrPlacemark = [[DPPlacemark alloc] init];
+                         }
+                         // DPPlacemark *dpPlacemark = [[DPPlacemark alloc] init];
+                         CLPlacemark *placemark = placemarks[0];
+                         NSDictionary *addressDictionary = placemark.addressDictionary;
+                         NSArray *addressLines = [addressDictionary objectForKey:@"FormattedAddressLines"];
+                         _dpCurrPlacemark.country =
+                             [addressDictionary objectForKey:(NSString *)kABPersonAddressCountryKey];
+                         _dpCurrPlacemark.countryCode =[addressDictionary objectForKey:(NSString *)kABPersonAddressCountryCodeKey];
+                         _dpCurrPlacemark.city = [addressDictionary objectForKey:(NSString *)kABPersonAddressCityKey];
+                         _dpCurrPlacemark.state = [addressDictionary objectForKey:(NSString *)kABPersonAddressStateKey];
+                         _dpCurrPlacemark.street =
+                             [addressDictionary objectForKey:(NSString *)kABPersonAddressStreetKey];
+                         //_dpCurrPlacemark.subLocality = [addressDictionary objectForKeyedSubscript:@"SububLocality"];
+                         //_dpCurrPlacemark.thoroughfare = [addressDictionary objectForKeyedSubscript:@"Thoroughfare"];
+                         //_dpCurrPlacemark.subThoroughfare = [addressDictionary
+                         //objectForKeyedSubscript:@"SubThoroughfare"];
+                         _dpCurrPlacemark.zip = [addressDictionary objectForKey:(NSString *)kABPersonAddressZIPKey];
+                         if (addressLines.count) {
+                             _dpCurrPlacemark.addressLines = addressLines[0];
+                         } else {
+                             _dpCurrPlacemark.addressLines = @"";
+                         }
+
+                          //NSLog(@"FormattedAddressLines(%li) : %@" , addressLines.count , addressLines[0]);
+
+                         _dpCurrPlacemark.longitude = dpLocation.longitude;
+                         _dpCurrPlacemark.latitude = dpLocation.latitude;
+                         _dpCurrPlacemark.altitude = dpLocation.altitude;
+
+                         _dpCurrPlacemark.localExpireTime = dpLocation.localExpireTime;
+                         _dpCurrPlacemark.localUpdateTime = dpLocation.localUpdateTime;
+
+                         [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_LBS_didReverseGeocodeLocation
+                                                                             object:nil];
+                     }
+                     else {
+                         NSLog(@"reverseGeocodeLocation : %@", error);
+                         [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_LBS_didReverseGeocodeLocation
+                                                                             object:error];
+                     }
+                 }];
     }
 }
 
@@ -103,22 +159,23 @@ static LocationDataProxy *sharedLocationDataProxy = nil;
     if (!_dpCurrLocation) { //从未取过
         _dpCurrLocation = [[DPLocation alloc] init];
         [self startUpdatingLocation:1];
-        // NSLog(@"初始化定位管理对象");
-
-        //        //初始化定位管理对象
-        //        if (!_locationManager) {
-        //            _locationManager = [[CLLocationManager alloc] init];
-        //            _locationManager.delegate = self;
-        //            _locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters;
-        //            _locationManager.distanceFilter = 100.0f;
-        //        }
-        //        [_locationManager startUpdatingLocation];
-        //        NSLog(@"开始定位 _locationManager startUpdatingLocation");
     }
     else if (needUpdate || _dpCurrLocation.localExpireTime < [imUtil nowTime]) { //已过期，重新取
         [self startUpdatingLocation:1];
     }
     return _dpCurrLocation;
+}
+
+- (DPPlacemark *)getPlacemarkWithUpdate:(BOOL)needUpdate
+{
+    if (!_dpCurrPlacemark) { //从未取过
+        _dpCurrPlacemark = [[DPPlacemark alloc] init];
+        [self startUpdatingLocation:1];
+    }
+    else if (needUpdate || _dpCurrPlacemark.localExpireTime < [imUtil nowTime]) { //已过期，重新取
+        [self startUpdatingLocation:1];
+    }
+    return _dpCurrPlacemark;
 }
 
 #pragma mark - 委托方法
@@ -144,15 +201,14 @@ static LocationDataProxy *sharedLocationDataProxy = nil;
     _dpCurrLocation.longitude = location.coordinate.longitude;
     _dpCurrLocation.altitude = location.altitude;
 
-    _dpCurrLocation.localUpdateTime = [imUtil nowTime];//本地更新时间
+    _dpCurrLocation.localUpdateTime = [imUtil nowTime]; //本地更新时间
     _dpCurrLocation.localExpireTime = [imUtil getExpireTimeWithMinutes:LBS_TIMEOUT_LOCATION]; //过期时间
 
-
     NSLog(@"locationManager:didUpdateLocations:\n<lat:%f lon:%f alt %f> %qi ~ %qi", _dpCurrLocation.latitude,
-          _dpCurrLocation.longitude, _dpCurrLocation.altitude, _dpCurrLocation.localUpdateTime, _dpCurrLocation.localExpireTime);
+          _dpCurrLocation.longitude, _dpCurrLocation.altitude, _dpCurrLocation.localUpdateTime,
+          _dpCurrLocation.localExpireTime);
 
-    [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_LBS_didUpdateLocations
-                                                        object:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_LBS_didUpdateLocations object:nil];
     [self updateReportLocation:_dpCurrLocation];
 }
 
@@ -160,8 +216,8 @@ static LocationDataProxy *sharedLocationDataProxy = nil;
 {
     //[manager stopUpdatingLocation];
     NSLog(@"locationManager:didFailWithError:%@", error);
-    [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_LBS_didFailWithError
-                                                        object:error];
+    //[[NSNotificationCenter defaultCenter] postNotificationName:NOTI_LBS_didFailWithError object:error];
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_LBS_didUpdateLocations object:error];
 }
 
 @end
