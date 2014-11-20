@@ -21,11 +21,11 @@
     // Do any additional setup after loading the view.
     [self openSubTags:-1];
     
-    if(floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_6_1)
-    {
-        self.edgesForExtendedLayout = UIRectEdgeNone;
-        self.automaticallyAdjustsScrollViewInsets = NO;
-    }
+//    if(floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_6_1)
+//    {
+//        self.edgesForExtendedLayout = UIRectEdgeNone;
+//        self.automaticallyAdjustsScrollViewInsets = NO;
+//    }
 }
 
 - (void)didReceiveMemoryWarning {
