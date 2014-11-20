@@ -14,6 +14,7 @@
 
 @interface LocationDataProxy () <CLLocationManagerDelegate>
 @property (nonatomic, strong) CLLocationManager *locationManager;
+//@property (nonatomic, strong)
 @property (nonatomic, retain) DPPlacemark *dpCurrPlacemark;
 @property (nonatomic, retain) DPLocation *dpCurrLocation;
 @property (nonatomic, retain) DPLocation *dpReportLocation;
@@ -73,22 +74,35 @@ static LocationDataProxy *sharedLocationDataProxy = nil;
                          CLPlacemark *placemark = placemarks[0];
                          NSDictionary *addressDictionary = placemark.addressDictionary;
                          NSArray *addressLines = [addressDictionary objectForKey:@"FormattedAddressLines"];
-                         _dpCurrPlacemark.country =
-                             [addressDictionary objectForKey:(NSString *)kABPersonAddressCountryKey];
-                         _dpCurrPlacemark.countryCode =[addressDictionary objectForKey:(NSString *)kABPersonAddressCountryCodeKey];
-                         _dpCurrPlacemark.city = [addressDictionary objectForKey:(NSString *)kABPersonAddressCityKey];
-                         _dpCurrPlacemark.state = [addressDictionary objectForKey:(NSString *)kABPersonAddressStateKey];
-                         _dpCurrPlacemark.street =
-                             [addressDictionary objectForKey:(NSString *)kABPersonAddressStreetKey];
-                         //_dpCurrPlacemark.subLocality = [addressDictionary objectForKeyedSubscript:@"SububLocality"];
-                         //_dpCurrPlacemark.thoroughfare = [addressDictionary objectForKeyedSubscript:@"Thoroughfare"];
-                         //_dpCurrPlacemark.subThoroughfare = [addressDictionary
-                         //objectForKeyedSubscript:@"SubThoroughfare"];
-                         _dpCurrPlacemark.zip = [addressDictionary objectForKey:(NSString *)kABPersonAddressZIPKey];
+
+                         _dpCurrPlacemark.name = placemark.name;
+                         _dpCurrPlacemark.thoroughfare = placemark.thoroughfare;
+                         _dpCurrPlacemark.subThoroughfare = placemark.subThoroughfare;
+                         _dpCurrPlacemark.locality = placemark.locality;
+                         _dpCurrPlacemark.subLocality = placemark.subLocality;
+                         _dpCurrPlacemark.administrativeArea = placemark.administrativeArea;
+                         _dpCurrPlacemark.subAdministrativeArea = placemark.subAdministrativeArea;
+                         _dpCurrPlacemark.postalCode = placemark.postalCode;
+                         _dpCurrPlacemark.ISOcountryCode = placemark.ISOcountryCode;
+                         _dpCurrPlacemark.country = placemark.country;
+                         _dpCurrPlacemark.inlandWater = placemark.inlandWater;
+                         _dpCurrPlacemark.ocean = placemark.ocean;
+//                         
+//                         //_dpCurrPlacemark.countryCode =[addressDictionary objectForKey:(NSString *)kABPersonAddressCountryCodeKey];
+//                         _dpCurrPlacemark.countryCode = placemark.ISOcountryCode;
+//                         _dpCurrPlacemark.city = [addressDictionary objectForKey:(NSString *)kABPersonAddressCityKey];
+//                         _dpCurrPlacemark.state = [addressDictionary objectForKey:(NSString *)kABPersonAddressStateKey];
+//                         _dpCurrPlacemark.street =
+//                             [addressDictionary objectForKey:(NSString *)kABPersonAddressStreetKey];
+//                         //_dpCurrPlacemark.subLocality = [addressDictionary objectForKeyedSubscript:@"SububLocality"];
+//                         //_dpCurrPlacemark.thoroughfare = [addressDictionary objectForKeyedSubscript:@"Thoroughfare"];
+//                         //_dpCurrPlacemark.subThoroughfare = [addressDictionary
+//                         //objectForKeyedSubscript:@"SubThoroughfare"];
+//                         _dpCurrPlacemark.zip = [addressDictionary objectForKey:(NSString *)kABPersonAddressZIPKey];
                          if (addressLines.count) {
-                             _dpCurrPlacemark.addressLines = addressLines[0];
+                             //_dpCurrPlacemark.addressLines = addressLines[0];
                          } else {
-                             _dpCurrPlacemark.addressLines = @"";
+                             //_dpCurrPlacemark.addressLines = @"";
                          }
 
                           //NSLog(@"FormattedAddressLines(%li) : %@" , addressLines.count , addressLines[0]);

@@ -130,12 +130,30 @@
 -(void)didUpdatePlacemarkView:(DPPlacemark *)dpCurrPlacemark {
     self.lblLon.text = [NSString stringWithFormat:@"经度:%f (%qi)", dpCurrPlacemark.longitude, dpCurrPlacemark.localUpdateTime];
     self.lblLat.text = [NSString stringWithFormat:@"纬度:%f", dpCurrPlacemark.latitude];
-    self.lblAddress.text = [NSString stringWithFormat:@"地址:%@",dpCurrPlacemark.addressLines];
+    self.lblAddress.text = [NSString stringWithFormat:@"地址:%@",dpCurrPlacemark.name];
+    //self.lblAddress.text = [NSString stringWithFormat:@"地址:%@",dpCurrPlacemark.addressLines];
     //self.lblAddress.text = [NSString stringWithFormat:@"地址:(%@)%@%@ %@",dpCurrPlacemark.countryCode, dpCurrPlacemark.city , dpCurrPlacemark.state , dpCurrPlacemark.subLocality];
 }
 
 //
-//#pragma mark - 代理方法
+#pragma mark - 代理方法
+-(void)mapViewDidFailLoadingMap:(MKMapView *)mapView withError:(NSError *)error {
+    NSLog(@"mapViewDidFailLoadingMap:withError:%@",error);
+}
+
+-(void)mapViewWillStartLoadingMap:(MKMapView *)mapView{
+    NSLog(@"mapViewWillStartLoadingMap:");
+}
+
+-(void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation {
+    //NSLog(@"mapView:didUpdateUserLocation:  <%f, %f>", userLocation.location.coordinate.latitude, userLocation.location.coordinate.longitude);
+    //self.lblAddress.text = [NSString stringWithFormat:@"自定义注:%@ %@",userLocation.title, userLocation.subtitle];
+}
+
+-(void)mapViewDidFinishLoadingMap:(MKMapView *)mapView {
+
+}
+
 //
 //- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
 //{
@@ -150,4 +168,5 @@
 //          currLocation.coordinate.longitude, currLocation.altitude);
 //    [self stopUpdatingLocation];
 //}
+
 @end

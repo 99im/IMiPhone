@@ -14,16 +14,18 @@
 @synthesize latitude;
 @synthesize altitude;
 
-@synthesize city;
-@synthesize country;
-@synthesize countryCode;
-@synthesize state;
-@synthesize street;
-@synthesize subLocality;
+@synthesize name;
 @synthesize thoroughfare;
 @synthesize subThoroughfare;
-@synthesize zip;
-@synthesize addressLines;
+@synthesize locality;
+@synthesize subLocality;
+@synthesize administrativeArea;
+@synthesize subAdministrativeArea;
+@synthesize postalCode;
+@synthesize ISOcountryCode;
+@synthesize country;
+@synthesize inlandWater;
+@synthesize ocean;
 
 @synthesize localUpdateTime;
 @synthesize localExpireTime;
