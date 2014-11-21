@@ -25,6 +25,7 @@
 "Alert.Birthday" = "请选择您的生日。";
 "DateFormatClient" = "yyyy年MM月dd日";
 "DateFormatServer" = "yyyy-MM-dd";
+"DateAndTimeFormatServer" = "yyyy'-'MM'-'dd' 'HH':'mm':'ss";
 "Category.Focus" = "关注";
 "Category.Fan" = "粉丝";
 "Remark" = "备注";
@@ -32,6 +33,4 @@
 "Black.List.Report" = "拉黑举报";
 "View.Contact.Friends" = "查看通讯录好友";
 "Unit.Person" = "位";
-
-
-
+"Activity.Create" = "发布";
