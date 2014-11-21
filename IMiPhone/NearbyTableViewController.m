@@ -29,6 +29,14 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    //临时跳转到创建活动
+//    UIStoryboard* mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+//    UIViewController *controller = [mainStoryboard instantiateViewControllerWithIdentifier:@"ActivityCreateTabelController"];
+//    [self presentViewController:controller animated:NO completion:nil];
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {

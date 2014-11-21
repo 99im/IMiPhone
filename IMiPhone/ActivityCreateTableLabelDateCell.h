@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ActivityCreateTableLabelAndContentCell : UITableViewCell
+@interface ActivityCreateTableLabelDateCell : UITableViewCell
 
 @end

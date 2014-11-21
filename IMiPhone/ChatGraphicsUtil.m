@@ -24,7 +24,7 @@
     NSInteger i = 0;
     while (i < mAbString.length) {
         
-        subStr = [mStr substringFromIndex:i];
+        subStr = [mStr substringFromIndex:i];//逐渐缩减查找范围
         rangeBegin = [subStr rangeOfString: BEGIN_FLAG];
         if (rangeBegin.length == 0) {
             //断定已经没有表情替代符
@@ -43,11 +43,11 @@
             imgAbStr = [IMRichText assembleLocalImageAbStringByImgName:imageName withSize:CGSizeMake(EMOTION_WIDTH, EMOTION_HEIGHT)];
             [mAbString replaceCharactersInRange:NSMakeRange(i + rangeBegin.location, imageId.length) withAttributedString:imgAbStr];
             mStr = mAbString.string;
-            i = i + rangeBegin.location + 1; //rangeBegin之前的区间不会再出现表情替代符
+            i = i + rangeBegin.location + imgAbStr.length; //rangeBegin之前的区间不会再出现表情替代符
 
         }
         else {
-            i = i + rangeEnd.location + rangeEnd.length - 1;//rangeEnd之前的区间不会再出现表情替代符
+            i = i + rangeEnd.location + rangeEnd.length;//rangeEnd之前的区间不会再出现表情替代符
         }
     }
     

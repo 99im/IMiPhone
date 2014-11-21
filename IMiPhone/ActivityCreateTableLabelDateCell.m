@@ -6,8 +6,8 @@
 //  Copyright (c) 2014年 尹晓君. All rights reserved.
 //
 
-#import "ActivityCreateTableLabelAndContentCell.h"
+#import "ActivityCreateTableLabelDateCell.h"
 
-@implementation ActivityCreateTableLabelAndContentCell
+@implementation ActivityCreateTableLabelDateCell
 
 @end
