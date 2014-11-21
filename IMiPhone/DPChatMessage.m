@@ -10,6 +10,7 @@
 
 @implementation DPChatMessage
 
+@synthesize nid;
 @synthesize stage;
 @synthesize mid;
 @synthesize senderUid;

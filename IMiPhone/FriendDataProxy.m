@@ -83,7 +83,7 @@ static FriendDataProxy *sharedFriendDataProxy = nil;
 {
     if (_focusTotal == NSIntegerMax) {
         _focusTotal = [imRms userDefaultsReadInt:KEY_FRIEND_FOCUS_TOTAL isBindUid:YES];
-        NSLog(@"read from rms _focusTotal:%i",_focusTotal);
+        NSLog(@"read from rms _focusTotal:%li",(long)_focusTotal);
     }
     return  _focusTotal;
 }
@@ -98,7 +98,7 @@ static FriendDataProxy *sharedFriendDataProxy = nil;
 {
     if (_fanTotal == NSIntegerMax) {
         _fanTotal = [imRms userDefaultsReadInt:KEY_FRIEND_FOCUS_TOTAL isBindUid:YES];
-        NSLog(@"read from rms _fanTotal:%i",_fanTotal);
+        NSLog(@"read from rms _fanTotal:%li",(long)_fanTotal);
     }
     return  _fanTotal;
 }
@@ -113,7 +113,7 @@ static FriendDataProxy *sharedFriendDataProxy = nil;
 {
     if (_friendTotal == NSIntegerMax) {
         _friendTotal = [imRms userDefaultsReadInt:KEY_FRIEND_FRIEND_TOTAL isBindUid:YES];
-        NSLog(@"read from rms _friendTotal:%i",_friendTotal);
+        NSLog(@"read from rms _friendTotal:%li",(long)_friendTotal);
     }
     return  _friendTotal;
 }
@@ -346,7 +346,7 @@ static FriendDataProxy *sharedFriendDataProxy = nil;
         arrResult = [NSMutableArray array];
         [_dicFocus setObject:arrResult forKey:[NSNumber numberWithInteger:range.location]];
         //读取本地数据库
-        NSString *strQuerySql = [NSString stringWithFormat:@"%@ > = %i and %@ < %i", DB_PRIMARY_KEY_FOCUS_USER_ORDERID, range.location, DB_PRIMARY_KEY_FOCUS_USER_ORDERID, range.location + range.length];
+        NSString *strQuerySql = [NSString stringWithFormat:@"%@ > = %li and %@ < %li", DB_PRIMARY_KEY_FOCUS_USER_ORDERID, (long)range.location, DB_PRIMARY_KEY_FOCUS_USER_ORDERID, (long)(range.location + range.length)];
         NSArray *arrDbFocusUser = [[FocusUserDAO sharedDAO] query:strQuerySql Bind:nil];
         DBFocusUser *dbTempData;
         DPFocusUser *dpFoucusUser;
@@ -367,7 +367,7 @@ static FriendDataProxy *sharedFriendDataProxy = nil;
     }
     [_dicFocus setObject:arrDpFocus forKey:[NSNumber numberWithInteger:fOder]];
     //先删除数据库
-    NSString *strDelSql = [NSString stringWithFormat:@"%@ > = %i and %@ < %i", DB_PRIMARY_KEY_FOCUS_USER_ORDERID, fOder, DB_PRIMARY_KEY_FOCUS_USER_ORDERID, fOder + arrDpFocus.count];
+    NSString *strDelSql = [NSString stringWithFormat:@"%@ > = %li and %@ < %li", DB_PRIMARY_KEY_FOCUS_USER_ORDERID, (long)fOder, DB_PRIMARY_KEY_FOCUS_USER_ORDERID, (long)(fOder + arrDpFocus.count)];
     [[FocusUserDAO sharedDAO] deleteByCondition:strDelSql Bind:nil];
     //再插入数据库
     DBFocusUser *dbFocusUser;
@@ -397,7 +397,7 @@ static FriendDataProxy *sharedFriendDataProxy = nil;
         arrResult = [NSMutableArray array];
         [_dicFan setObject:arrResult forKey:[NSNumber numberWithInteger:range.location]];
         //读取本地数据库
-        NSString *strQuerySql = [NSString stringWithFormat:@"%@ > = %i and %@ < %i", DB_PRIMARY_KEY_FAN_USER_ORDERID, range.location, DB_PRIMARY_KEY_FAN_USER_ORDERID, range.location + range.length];
+        NSString *strQuerySql = [NSString stringWithFormat:@"%@ > = %li and %@ < %li", DB_PRIMARY_KEY_FAN_USER_ORDERID, (long)range.location, DB_PRIMARY_KEY_FAN_USER_ORDERID, (long)(range.location + range.length)];
         NSArray *arrDbFanUser = [[FanUserDAO sharedDAO] query:strQuerySql Bind:nil];
         DBFanUser *dbTempData;
         DPFanUser *dpFanUser;
@@ -419,7 +419,7 @@ static FriendDataProxy *sharedFriendDataProxy = nil;
     }
     [_dicFan setObject:arrDpFan forKey:[NSNumber numberWithInteger:fOder]];
     //先删除数据库
-    NSString *strDelSql = [NSString stringWithFormat:@"%@ > = %i and %@ < %i", DB_PRIMARY_KEY_FAN_USER_ORDERID, fOder, DB_PRIMARY_KEY_FAN_USER_ORDERID, fOder + arrDpFan.count];
+    NSString *strDelSql = [NSString stringWithFormat:@"%@ > = %li and %@ < %li", DB_PRIMARY_KEY_FAN_USER_ORDERID, (long)fOder, DB_PRIMARY_KEY_FAN_USER_ORDERID, (long)(fOder + arrDpFan.count)];
     [[FanUserDAO sharedDAO] deleteByCondition:strDelSql Bind:nil];
     //再插入数据库
     DBFanUser *dbFanUser;

@@ -133,7 +133,7 @@ static MsgDataProxy *chatDataProxy = nil;
             DPUiMessage *srcDpUimessage = [self.arrUiMsgs objectAtIndex:findIndex];
             dbUiMessage.orderid  = dpUiMessage.orderid = srcDpUimessage.orderid;
             
-            [[UiMessageDAO sharedDAO] update:dbUiMessage ByCondition:[DB_PRIMARY_KEY_UI_MESSAGE_ORDER_ID stringByAppendingString:@"=?"] Bind:[NSArray arrayWithObject:[NSString stringWithFormat:@"%i",dpUiMessage.orderid]]];
+            [[UiMessageDAO sharedDAO] update:dbUiMessage ByCondition:[DB_PRIMARY_KEY_UI_MESSAGE_ORDER_ID stringByAppendingString:@"=?"] Bind:[NSArray arrayWithObject:[NSString stringWithFormat:@"%li",(long)dpUiMessage.orderid]]];
             [self.arrUiMsgs replaceObjectAtIndex:findIndex withObject:dpUiMessage];
         }
     }

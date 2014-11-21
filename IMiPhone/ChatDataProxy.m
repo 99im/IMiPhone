@@ -80,7 +80,7 @@ static ChatDataProxy *messageDataProxy = nil;
     return [self getP2PChatMessagesByGid:gid];
 }
 
-- (void)updateP2PChatMessage:(DPChatMessage *)dpChatMessage
+- (NSInteger)updateP2PChatMessage:(DPChatMessage *)dpChatMessage
 {
     DBChatMessage *tempDBMessage = [[DBChatMessage alloc] init];
     [ImDataUtil copyFrom:dpChatMessage To:tempDBMessage];
@@ -91,15 +91,21 @@ static ChatDataProxy *messageDataProxy = nil;
 
     NSInteger findIndex = [ImDataUtil getIndexOf:arrMessagesWithHer byItemKey:DB_PRIMARY_KEY_CHAT_MESSAGE_MID withValue:[NSNumber numberWithLongLong:tempDBMessage.mid]];
     if (findIndex != NSNotFound) {
+        dpChatMessage.nid = ((DPChatMessage *)[arrMessagesWithHer objectAtIndex:findIndex]).nid;
         [arrMessagesWithHer replaceObjectAtIndex:findIndex withObject:dpChatMessage];
-        [[ChatMessageDAO sharedDAO] update:tempDBMessage ByCondition:[DB_PRIMARY_KEY_CHAT_MESSAGE_MID stringByAppendingString:@"=?"] Bind:[NSArray arrayWithObject:[NSString stringWithFormat:@"%lli",dpChatMessage.mid]]];
+        [[ChatMessageDAO sharedDAO] update:tempDBMessage ByCondition:[DB_PRIMARY_KEY_CHAT_MESSAGE_MID stringByAppendingString:@"=?"] Bind:[NSArray arrayWithObject:[NSString stringWithFormat:@"%lli", dpChatMessage.mid]]];
     }
     else
     {
+        if (arrMessagesWithHer.count == 0)
+            dpChatMessage.nid = 0;
+        else
+            dpChatMessage.nid = ((DPChatMessage *)arrMessagesWithHer.lastObject).nid + 1;
         [[ChatMessageDAO sharedDAO] insert: tempDBMessage];
         [arrMessagesWithHer addObject:dpChatMessage];
         NSLog(@"arrMessages insert message id:%lli", ((DPChatMessage *)dpChatMessage).mid);
     }
+    return dpChatMessage.nid;
 }
 
 - (DPChatMessage *)getP2PChatMessageByTargetUid:(long long)targetUid withMid:(long long)mid;
