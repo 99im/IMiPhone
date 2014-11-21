@@ -156,6 +156,15 @@
     return expireTime;
 }
 
+#pragma mark - 消息处理
++ (void)postNotificationName:(NSString *)notiName object:(id)object {
+    if (object) {
+        NSLog(@"NotificationName:%@ error: \n%@", notiName, object);
+    }
+    [[NSNotificationCenter defaultCenter] postNotificationName:notiName object:object];
+}
+
+
 #pragma mark camera utility
 
 + (BOOL) isCameraAvailable{

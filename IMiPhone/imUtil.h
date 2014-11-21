@@ -36,6 +36,9 @@
 + (long long)nowTime;
 + (long long)getExpireTimeWithMinutes:(NSInteger)minutes;
 
+#pragma mark - 消息处理
++ (void)postNotificationName:(NSString *)notiName object:(id)object;
+
 #pragma mark camera utility
 + (BOOL)isCameraAvailable;
 + (BOOL)isRearCameraAvailable;
