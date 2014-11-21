@@ -73,10 +73,12 @@ static AccountMessageProxy *sharedAccountMessageProxy = nil;
         else {
             int errorcode = [[json objectForKey:KEYP_H__ACCOUNT_MOBCODE__ERROR_CODE] intValue];
             if (errorcode == 0) {
-                NSInteger uid = [[json objectForKey:KEYP_H__ACCOUNT_REGISTER__UID] integerValue];
+                long long uid = [[json objectForKey:KEYP_H__ACCOUNT_REGISTER__UID] longLongValue];
+                NSString *oid = [json objectForKey:KEYP_H__ACCOUNT_REGISTER__OID];
                 [UserDataProxy sharedProxy].lastLoginCountry = [UserDataProxy sharedProxy].mobCountry;
                 [UserDataProxy sharedProxy].lastLoginMobile = [UserDataProxy sharedProxy].mobile;
                 [UserDataProxy sharedProxy].lastLoginUid = uid;
+                [UserDataProxy sharedProxy].user.oid = oid;
                 [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_H__ACCOUNT_REGISTER_ object:nil userInfo:nil];
             }
             else {

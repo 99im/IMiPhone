@@ -15,6 +15,7 @@
 
 @interface RegInfoViewController () <UITextFieldDelegate, UITextViewDelegate, UIGestureRecognizerDelegate, VPImageCropperDelegate, IMNWProxyProtocol>
 
+@property (weak, nonatomic) IBOutlet UIView *viewAllContent;
 @property (nonatomic, retain) UITextField *tfActive;
 @property (nonatomic, retain) UITextView *tvActive;
 
@@ -65,11 +66,12 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
-    self.scrollView.contentSize = CGSizeMake(320, 751);
+    self.scrollView.contentSize = CGSizeMake(320, 619);
     //self.scrollView.frame = CGRectMake(0, 64, 320, 504);
-    //NSLog(@" self.scrollView.contentSize %f,%f", self.scrollView.contentSize.height, self.scrollView.contentSize.width);
-    //NSLog(@" self.scrollView.frame %f,%f", self.scrollView.frame.size.height, self.scrollView.frame.size.width);
-    
+    NSLog(@" self.scrollView.contentSize %f,%f", self.scrollView.contentSize.height, self.scrollView.contentSize.width);
+    NSLog(@" self.scrollView.frame %f,%f", self.scrollView.frame.size.height, self.scrollView.frame.size.width);
+    NSLog(@" self.viewAllContent.frame %f,%f", self.viewAllContent.frame.size.height, self.viewAllContent.frame.size.width);
+
     //注册键盘出现通知
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector (keyboardDidShow:)
 												 name: UIKeyboardDidShowNotification object:nil];

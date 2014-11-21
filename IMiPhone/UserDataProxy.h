@@ -16,7 +16,6 @@
 
 @property (nonatomic, retain, getter=getLastLoginCountry, setter=setLastLoginCountry:) NSString *lastLoginCountry;
 @property (nonatomic, retain, getter=getLastLoginMobile, setter=setLastLoginMobile:) NSString *lastLoginMobile;
-@property (nonatomic, retain, getter=getLastLoginOid, setter=setLastLoginOid:) NSString *lastLoginOid;
 @property (nonatomic, getter=getLastLoginUid, setter=setLastLoginUid:) long long lastLoginUid;
 @property (nonatomic, retain, getter=getVerify, setter=setVerify:) NSString *verify;
 @property (nonatomic, retain, getter=getUser, setter=setUser:) DPUser *user;
