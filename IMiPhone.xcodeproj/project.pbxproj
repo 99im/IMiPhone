@@ -293,6 +293,7 @@
 		58D3F28D19E630A1006589F9 /* IMNWHttpConnect.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D3F28C19E630A1006589F9 /* IMNWHttpConnect.m */; };
 		58D95F4819A5BDF4007139AB /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D95F4719A5BDF4007139AB /* GCDAsyncSocket.m */; };
 		58D95F5119A5ECA4007139AB /* UserMessageProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 58D95F5019A5ECA4007139AB /* UserMessageProxy.m */; };
+		58E8699B1A1DB776001437A2 /* ChatImageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 58E8699A1A1DB776001437A2 /* ChatImageTableViewCell.m */; };
 		58EF8C3F19BEEE1600C5A7AC /* AccountMessageProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 58EF8C3E19BEEE1600C5A7AC /* AccountMessageProxy.m */; };
 		58EF8C4019BEEE1600C5A7AC /* AccountMessageProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 58EF8C3E19BEEE1600C5A7AC /* AccountMessageProxy.m */; };
 		58EF8C4619BF04B600C5A7AC /* imNetWorkTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 58EF8C4519BF04B600C5A7AC /* imNetWorkTest.m */; };
@@ -302,6 +303,8 @@
 		AB199ACC1A0A24A800F6B858 /* LocationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = AB199ACB1A0A24A800F6B858 /* LocationTest.m */; };
 		AB199AD01A0A4B5C00F6B858 /* LocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB199ACF1A0A4B5C00F6B858 /* LocationViewController.m */; };
 		AB1B830D1A1D9A8D00BDC841 /* DiscoveryMessageProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = AB645E521A19F8C9008AC05D /* DiscoveryMessageProxy.m */; };
+		AB1B830F1A1DBF9E00BDC841 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB1B830E1A1DBF9E00BDC841 /* AddressBook.framework */; };
+		AB1B83121A1DC5D800BDC841 /* DPPlacemark.m in Sources */ = {isa = PBXBuildFile; fileRef = AB1B83111A1DC5D800BDC841 /* DPPlacemark.m */; };
 		AB20EE8419F4DCCC004627C8 /* GroupDataProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = AB20EE8319F4DCCC004627C8 /* GroupDataProxy.m */; };
 		AB20EE8719F4DD8C004627C8 /* GroupMessageProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = AB20EE8619F4DD8C004627C8 /* GroupMessageProxy.m */; };
 		AB24A95719F89DDA00026299 /* GroupInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB24A95619F89DDA00026299 /* GroupInfoViewController.m */; };
@@ -641,6 +644,8 @@
 		58D95F4719A5BDF4007139AB /* GCDAsyncSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDAsyncSocket.m; sourceTree = "<group>"; };
 		58D95F4F19A5ECA4007139AB /* UserMessageProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserMessageProxy.h; sourceTree = "<group>"; };
 		58D95F5019A5ECA4007139AB /* UserMessageProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserMessageProxy.m; sourceTree = "<group>"; };
+		58E869991A1DB776001437A2 /* ChatImageTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatImageTableViewCell.h; sourceTree = "<group>"; };
+		58E8699A1A1DB776001437A2 /* ChatImageTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatImageTableViewCell.m; sourceTree = "<group>"; };
 		58EF8C3D19BEEE1600C5A7AC /* AccountMessageProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountMessageProxy.h; sourceTree = "<group>"; };
 		58EF8C3E19BEEE1600C5A7AC /* AccountMessageProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountMessageProxy.m; sourceTree = "<group>"; };
 		58EF8C4519BF04B600C5A7AC /* imNetWorkTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = imNetWorkTest.m; sourceTree = "<group>"; };
@@ -651,6 +656,9 @@
 		AB199ACB1A0A24A800F6B858 /* LocationTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationTest.m; sourceTree = "<group>"; };
 		AB199ACE1A0A4B5C00F6B858 /* LocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationViewController.h; sourceTree = "<group>"; };
 		AB199ACF1A0A4B5C00F6B858 /* LocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationViewController.m; sourceTree = "<group>"; };
+		AB1B830E1A1DBF9E00BDC841 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
+		AB1B83101A1DC5D800BDC841 /* DPPlacemark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPPlacemark.h; sourceTree = "<group>"; };
+		AB1B83111A1DC5D800BDC841 /* DPPlacemark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPPlacemark.m; sourceTree = "<group>"; };
 		AB20EE8219F4DCCC004627C8 /* GroupDataProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupDataProxy.h; sourceTree = "<group>"; };
 		AB20EE8319F4DCCC004627C8 /* GroupDataProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupDataProxy.m; sourceTree = "<group>"; };
 		AB20EE8519F4DD8C004627C8 /* GroupMessageProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupMessageProxy.h; sourceTree = "<group>"; };
@@ -710,6 +718,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AB1B830F1A1DBF9E00BDC841 /* AddressBook.framework in Frameworks */,
 				5881BC041A07A6EC0046E5E4 /* CoreLocation.framework in Frameworks */,
 				5881BC021A079ABE0046E5E4 /* StoreKit.framework in Frameworks */,
 				5881BC001A079A980046E5E4 /* WebKit.framework in Frameworks */,
@@ -801,6 +810,8 @@
 				1194302B19F8DD8C00FD9206 /* ChatTableViewCellFrame.m */,
 				117A18FE1A10675E00E3B790 /* ChatGraphicsUtil.h */,
 				117A18FF1A10675E00E3B790 /* ChatGraphicsUtil.m */,
+				58E869991A1DB776001437A2 /* ChatImageTableViewCell.h */,
+				58E8699A1A1DB776001437A2 /* ChatImageTableViewCell.m */,
 			);
 			name = Chat;
 			sourceTree = "<group>";
@@ -974,6 +985,7 @@
 		585971D01999F0C700258CB1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AB1B830E1A1DBF9E00BDC841 /* AddressBook.framework */,
 				5881BC031A07A6EC0046E5E4 /* CoreLocation.framework */,
 				5881BC011A079ABE0046E5E4 /* StoreKit.framework */,
 				5881BBFF1A079A980046E5E4 /* WebKit.framework */,
@@ -1346,6 +1358,8 @@
 		ABAF97C21A09CDEA00BE29B8 /* LBS */ = {
 			isa = PBXGroup;
 			children = (
+				AB1B83101A1DC5D800BDC841 /* DPPlacemark.h */,
+				AB1B83111A1DC5D800BDC841 /* DPPlacemark.m */,
 				ABAF97C91A09F8F700BE29B8 /* DPLocation.h */,
 				ABAF97CA1A09F8F700BE29B8 /* DPLocation.m */,
 				ABAF97C61A09D44800BE29B8 /* LocationDataProxy.h */,
@@ -1510,6 +1524,7 @@
 				11FDE12319EFB516002AEDB7 /* FriendDAO.m in Sources */,
 				58BACF0919B5805800A72391 /* crypt.c in Sources */,
 				117AC69D19EE766200143973 /* DBUserFromContact.m in Sources */,
+				AB1B83121A1DC5D800BDC841 /* DPPlacemark.m in Sources */,
 				58CDC03C19FE2EF600173FD7 /* GroupChatViewController.m in Sources */,
 				1171F7C819E8DE6300865A0B /* AddressAddTableViewCell.m in Sources */,
 				58BACF0819B5804700A72391 /* FriendMessageProxy.m in Sources */,
@@ -1588,6 +1603,7 @@
 				114BF74C1A1A468E00A28A94 /* FanUserDAO.m in Sources */,
 				58B496DA19A7186A0082AE30 /* NSData+MKBase64.m in Sources */,
 				DB6FACB91A0B71DB0048B76B /* FindViewController.m in Sources */,
+				58E8699B1A1DB776001437A2 /* ChatImageTableViewCell.m in Sources */,
 				116BF87119C81E030015561B /* AudioRecordManager.m in Sources */,
 				1171F7C419E8DE4000865A0B /* AddressInviteTableViewCell.m in Sources */,
 				585971E81999F0C700258CB1 /* imViewController.m in Sources */,

@@ -18,6 +18,7 @@
 #import "EmotionViewController.h"
 #import "ChatDataProxy.h"
 #import "ChatPlusViewController.h"
+#import "ChatImageTableViewCell.h"
 
 @interface ChatViewController () <UITextFieldDelegate, UIGestureRecognizerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
@@ -237,18 +238,25 @@
     return arrChatMsgs.count;
 }
 
--(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *cellIdentifier = @"ChatTableViewCell";
-    ChatTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
+    ChatTableViewCellFrame *cellFrame = nil;
+    cellFrame = [self.arrAllCellFrames objectAtIndex:indexPath.row];
     
-    cell.cellFrame = [self.arrAllCellFrames objectAtIndex:indexPath.row];
-    
-    return cell;
-    
+    if (cellFrame.chatMessage.msgType == CHAT_MASSAGE_TYPE_TEXT) {
+        ChatTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ChatTableViewCell" forIndexPath:indexPath];
+        cell.cellFrame = [self.arrAllCellFrames objectAtIndex:indexPath.row];
+        return cell;
+    }
+    else if (cellFrame.chatMessage.msgType == CHAT_MASSAGE_TYPE_IMAGE) {
+        ChatImageTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ChatImageTableViewCell" forIndexPath:indexPath];
+        cell.cellFrame = [self.arrAllCellFrames objectAtIndex:indexPath.row];
+        return cell;
+    }
+    return nil;
 }
 
--(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
 //    NSLog(@"height for %@",indexPath);
     ChatTableViewCellFrame *cellFrame = [self.arrAllCellFrames objectAtIndex:indexPath.row];
@@ -299,8 +307,8 @@
 }
 
 - (IBAction)touchInsideBtnSound:(id)sender {
-    self.viewChatInputSound.hidden = false;
-    self.viewChatInputText.hidden = true;
+    self.viewChatInputSound.hidden = NO;
+    self.viewChatInputText.hidden = YES;
 }
 
 #pragma mark - view input sound buttons logic
@@ -319,8 +327,8 @@
 }
 
 - (IBAction)touchUpInsideBtnText:(id)sender {
-    self.viewChatInputSound.hidden = true;
-    self.viewChatInputText.hidden = false;
+    self.viewChatInputSound.hidden = YES;
+    self.viewChatInputText.hidden = NO;
 }
 
 #pragma mark - register and remove notification listener
@@ -436,7 +444,18 @@
         //NSURL *referenceURL = [info objectForKey:UIImagePickerControllerReferenceURL];
         //NSString *mediaType = [info objectForKey:UIImagePickerControllerMediaType];
         
-        NSString *imgPath = [imUtil storeCacheImage:originalImage useName:@"test"];
+        DPChatMessage *chatMessage = [[DPChatMessage alloc] init];
+        chatMessage.msgType = CHAT_MASSAGE_TYPE_IMAGE;
+        chatMessage.content = @"";
+        chatMessage.sendTime = [imUtil nowTimeForServer];
+        chatMessage.mid = 0;
+        chatMessage.senderUid = [UserDataProxy sharedProxy].user.uid;
+        chatMessage.targetId = [ChatDataProxy sharedProxy].chatToUid;
+        chatMessage.stage = CHAT_STAGE_P2P;
+        chatMessage.gid = [[ChatDataProxy sharedProxy] assembleGidWithStage:chatMessage.stage withSenderUid:chatMessage.senderUid withTargetId:chatMessage.targetId];
+        NSInteger nid = [[ChatDataProxy sharedProxy] updateP2PChatMessage:chatMessage];
+        
+        NSString *imgPath = [imUtil storeCacheImage:originalImage useName:[NSString stringWithFormat:@"chat_%li", nid]];
         if (imgPath) {
             [[ChatMessageProxy sharedProxy] sendHttpUploadimg:imgPath];
         }

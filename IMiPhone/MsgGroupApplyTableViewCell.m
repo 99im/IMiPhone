@@ -29,7 +29,7 @@
 - (void)drawCellBody:(DPSysMessageGroup *)dpSysMsg
 {
     NSInteger type = dpSysMsg.type;
-    NSString *title = [NSString stringWithFormat:@"[%i]%@", dpSysMsg.type, dpSysMsg.title];
+    NSString *title = [NSString stringWithFormat:@"[%li]%@", (long)dpSysMsg.type, dpSysMsg.title];
     NSString *content =dpSysMsg.content;
     self.btnAgree.hidden = YES;
     if (dpSysMsg.type == GROUP_MSG_TYPE_APPLY) { //申请入群

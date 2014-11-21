@@ -10,6 +10,7 @@
 
 @interface DPChatMessage : NSObject 
 
+@property (nonatomic) NSInteger nid;
 @property (nonatomic, retain) NSString *stage;
 @property (nonatomic) long long targetId;
 @property (nonatomic) NSInteger msgType;

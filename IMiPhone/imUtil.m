@@ -156,6 +156,13 @@
     return expireTime;
 }
 
++ (NSString *)nowTimeForServer
+{
+    NSDateFormatter *dataFormatter = [[NSDateFormatter alloc] init];
+    [dataFormatter setDateFormat:NSLocalizedString(@"DateFormatServer", nil)];
+    return [dataFormatter stringFromDate:[NSDate date]];
+}
+
 #pragma mark camera utility
 
 + (BOOL) isCameraAvailable{

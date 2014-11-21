@@ -321,7 +321,7 @@ static FriendMessageProxy *sharedFriendMessageProxy = nil;
                   object:nil];
              }
              else {
-                 NSLog(@"Http connect response error: %i", errorcode);
+                 NSLog(@"Http connect response error: %li", (long)errorcode);
              }
          }
      }];

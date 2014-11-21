@@ -73,7 +73,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
     NSArray *uiMsgList = [[MsgDataProxy sharedProxy] getUiMsgList];
-    NSLog(@"uiMsgList(%i): %@", uiMsgList.count , uiMsgList);
+    NSLog(@"uiMsgList(%lu): %@", (unsigned long)uiMsgList.count , uiMsgList);
     return uiMsgList.count;
 }
 
@@ -231,9 +231,9 @@
     if (params) {
         NSInteger agree = [[params objectForKey:KEYQ_H__GROUP_INVITE_RESPONSE__AGREE] integerValue];
         if (agree == 1) {
-            NSLog(@"通过了申请：%i" , agree);
+            NSLog(@"通过了申请：%li" , (long)agree);
         } else {
-            NSLog(@"拒绝了申请：%i" , agree);
+            NSLog(@"拒绝了申请：%li" , (long)agree);
         }
         [self.tableView reloadData];
     } else {

@@ -34,6 +34,7 @@
 #pragma mark - 获取时间相关
 + (long long)longLongNowTime:(NSString *)dateFormat;
 + (long long)nowTime;
++ (NSString *)nowTimeForServer;
 + (long long)getExpireTimeWithMinutes:(NSInteger)minutes;
 
 #pragma mark camera utility

@@ -30,7 +30,7 @@ typedef enum {
 - (void)reset;
 
 - (NSMutableArray *)getP2PChatMessagesByTargetUid:(long long)targetUid;
-- (void)updateP2PChatMessage:(DPChatMessage *)dpChatMessage;
+- (NSInteger)updateP2PChatMessage:(DPChatMessage *)dpChatMessage;
 
 - (DPChatMessage *)getP2PChatMessageByTargetUid:(long long)targetUid withMid:(long long)mid;
 
@@ -44,5 +44,6 @@ typedef enum {
 
 - (DPGroupChatMessage *)getGroupChatMessageByGroupid:(long long)targetUid withMid:(long long)mid;
 
+- (NSString *)assembleGidWithStage:(NSString *)stage withSenderUid:(long long)sid withTargetId:(long long)targetId;
 
 @end

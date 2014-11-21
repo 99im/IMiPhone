@@ -293,8 +293,8 @@
 }
 
 - (IBAction)btnSoundTouchUpInside:(id)sender {
-    self.viewChatInputSound.hidden = false;
-    self.viewChatInputText.hidden = true;
+    self.viewChatInputSound.hidden = NO;
+    self.viewChatInputText.hidden = YES;
 }
 
 #pragma mark - view input sound buttons logic
@@ -313,8 +313,8 @@
 }
 
 - (IBAction)touchUpInsideBtnText:(id)sender {
-    self.viewChatInputSound.hidden = true;
-    self.viewChatInputText.hidden = false;
+    self.viewChatInputSound.hidden = YES;
+    self.viewChatInputText.hidden = NO;
 }
 
 #pragma mark - IMNWProxyProtocol
