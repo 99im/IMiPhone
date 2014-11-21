@@ -33,7 +33,6 @@
 
 @synthesize lastLoginCountry = _lastLoginCountry;
 @synthesize lastLoginMobile = _lastLoginMobile;
-@synthesize lastLoginOid = _lastLoginOid;
 @synthesize lastLoginUid = _lastLoginUid;
 @synthesize verify = _verify;
 @synthesize user = _user;
@@ -94,19 +93,6 @@ static UserDataProxy *sharedProxy = nil;
 {
     _lastLoginMobile = lastLoginMobile;
     [imRms userDefaultsWrite:KEY_USER_LAST_LOGIN_MOBILE withStringValue:_lastLoginMobile isBindUid:NO];
-}
-
-- (NSString *)getLastLoginOid
-{
-    if (_lastLoginOid == nil) {
-        _lastLoginOid = [imRms userDefaultsReadString:KEY_USER_LAST_LOGIN_OID isBindUid:NO];
-    }
-    return _lastLoginOid;
-}
-- (void)setLastLoginOid:(NSString *)lastLoginOid
-{
-    _lastLoginOid = lastLoginOid;
-    [imRms userDefaultsWrite:KEY_USER_LAST_LOGIN_OID withStringValue:_lastLoginOid isBindUid:NO];
 }
 
 - (long long)getLastLoginUid

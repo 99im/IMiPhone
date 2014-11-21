@@ -16,7 +16,8 @@
 @property (nonatomic) double latitude; //纬度
 @property (nonatomic) double altitude; //海拔
 
+@property (nonatomic) NSInteger dataStatus;     //数据状态, 可取值：LBS_STATUS_DATA_INIT、 LBS_STATUS_DATA_UPDATING、 LBS_STATUS_DATA_UPDATED
 @property (nonatomic) long long localUpdateTime; //本地更新时间，格式(yyyyMMddHHmmss)：201411024125959
-@property (nonatomic) long long localExpireTime; //本地过期时间，格式(yyyyMMddHHmmss)：201411024125959
+//@property (nonatomic) long long localExpireTime; //本地过期时间，格式(yyyyMMddHHmmss)：201411024125959
 
 @end

@@ -444,18 +444,18 @@
         //NSURL *referenceURL = [info objectForKey:UIImagePickerControllerReferenceURL];
         //NSString *mediaType = [info objectForKey:UIImagePickerControllerMediaType];
         
-        DPChatMessage *chatMessage = [[DPChatMessage alloc] init];
-        chatMessage.msgType = CHAT_MASSAGE_TYPE_IMAGE;
-        chatMessage.content = @"";
-        chatMessage.sendTime = [imUtil nowTimeForServer];
-        chatMessage.mid = 0;
-        chatMessage.senderUid = [UserDataProxy sharedProxy].user.uid;
-        chatMessage.targetId = [ChatDataProxy sharedProxy].chatToUid;
-        chatMessage.stage = CHAT_STAGE_P2P;
-        chatMessage.gid = [[ChatDataProxy sharedProxy] assembleGidWithStage:chatMessage.stage withSenderUid:chatMessage.senderUid withTargetId:chatMessage.targetId];
-        NSInteger nid = [[ChatDataProxy sharedProxy] updateP2PChatMessage:chatMessage];
-        
-        NSString *imgPath = [imUtil storeCacheImage:originalImage useName:[NSString stringWithFormat:@"chat_%li", nid]];
+//        DPChatMessage *chatMessage = [[DPChatMessage alloc] init];
+//        chatMessage.msgType = CHAT_MASSAGE_TYPE_IMAGE;
+//        chatMessage.content = @"";
+//        chatMessage.sendTime = [imUtil nowTimeForServer];
+//        chatMessage.mid = 0;
+//        chatMessage.senderUid = [UserDataProxy sharedProxy].user.uid;
+//        chatMessage.targetId = [ChatDataProxy sharedProxy].chatToUid;
+//        chatMessage.stage = CHAT_STAGE_P2P;
+//        chatMessage.gid = [[ChatDataProxy sharedProxy] assembleGidWithStage:chatMessage.stage withSenderUid:chatMessage.senderUid withTargetId:chatMessage.targetId];
+//        NSInteger nid = [[ChatDataProxy sharedProxy] updateP2PChatMessage:chatMessage];
+        NSInteger nid = 0;
+        NSString *imgPath = [imUtil storeCacheImage:originalImage useName:[NSString stringWithFormat:@"chat_%li", (long)nid]];
         if (imgPath) {
             [[ChatMessageProxy sharedProxy] sendHttpUploadimg:imgPath];
         }

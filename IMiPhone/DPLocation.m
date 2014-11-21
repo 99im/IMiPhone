@@ -15,6 +15,6 @@
 @synthesize altitude;
 
 @synthesize localUpdateTime;
-@synthesize localExpireTime;
+//@synthesize localExpireTime;
 
 @end

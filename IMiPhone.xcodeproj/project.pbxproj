@@ -1099,6 +1099,7 @@
 		58AF049419B053930077DCBC /* DataProxy */ = {
 			isa = PBXGroup;
 			children = (
+				AB1B83131A1F3DB600BDC841 /* Group */,
 				ABAF97C21A09CDEA00BE29B8 /* LBS */,
 				117AC6A219EE7C2F00143973 /* DPUserFromContact.h */,
 				117AC6A319EE7C2F00143973 /* DPUserFromContact.m */,
@@ -1120,20 +1121,12 @@
 				58AF049719B056050077DCBC /* FriendDataProxy.m */,
 				1171F7CA19E9154F00865A0B /* DPContactPerson.h */,
 				1171F7CB19E9154F00865A0B /* DPContactPerson.m */,
-				AB6396211A038CA500FF0BC6 /* DPSysMessageGroup.h */,
-				AB6396221A038CA500FF0BC6 /* DPSysMessageGroup.m */,
-				AB20EE8219F4DCCC004627C8 /* GroupDataProxy.h */,
-				AB20EE8319F4DCCC004627C8 /* GroupDataProxy.m */,
-				AB4F947D19F789A500397549 /* DPGroup.h */,
-				AB4F947E19F789A500397549 /* DPGroup.m */,
 				117B198819FDEAE00056546C /* DPUtil.h */,
 				117B198919FDEAE00056546C /* DPUtil.m */,
 				11C936001A03709100D26CFF /* DPSysMessageFriend.h */,
 				11C936011A03709100D26CFF /* DPSysMessageFriend.m */,
 				118310C019FE61B700C1968D /* DPSysMessage.h */,
 				118310C119FE61B700C1968D /* DPSysMessage.m */,
-				11DF6A941A04B57C00A4B1D3 /* DPGroupChatMessage.h */,
-				11DF6A951A04B57C00A4B1D3 /* DPGroupChatMessage.m */,
 				111B4EC31A0A2EE70043A29F /* ActivityDataProxy.h */,
 				111B4EC41A0A2EE70043A29F /* ActivityDataProxy.m */,
 				114BF73E1A198B9B00A28A94 /* DPFocusUser.h */,
@@ -1328,6 +1321,21 @@
 				AB645E491A19CD00008AC05D /* LocationGroupViewController.m */,
 			);
 			name = LBS;
+			sourceTree = "<group>";
+		};
+		AB1B83131A1F3DB600BDC841 /* Group */ = {
+			isa = PBXGroup;
+			children = (
+				AB6396211A038CA500FF0BC6 /* DPSysMessageGroup.h */,
+				AB6396221A038CA500FF0BC6 /* DPSysMessageGroup.m */,
+				AB20EE8219F4DCCC004627C8 /* GroupDataProxy.h */,
+				AB20EE8319F4DCCC004627C8 /* GroupDataProxy.m */,
+				AB4F947D19F789A500397549 /* DPGroup.h */,
+				AB4F947E19F789A500397549 /* DPGroup.m */,
+				11DF6A941A04B57C00A4B1D3 /* DPGroupChatMessage.h */,
+				11DF6A951A04B57C00A4B1D3 /* DPGroupChatMessage.m */,
+			);
+			name = Group;
 			sourceTree = "<group>";
 		};
 		AB20EE8919F4F67D004627C8 /* Group */ = {

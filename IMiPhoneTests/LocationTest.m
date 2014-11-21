@@ -40,7 +40,7 @@
 
 - (void)testGetLocation {
     //NSLog(@"test location:");
-    DPLocation *dpLocation = [[LocationDataProxy sharedProxy] getLocationWithUpdate:NO];
+    DPLocation *dpLocation = [[LocationDataProxy sharedProxy] getUserLocation:NO];
 }
 
 @end
