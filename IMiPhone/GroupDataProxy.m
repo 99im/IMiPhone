@@ -166,7 +166,7 @@ static GroupDataProxy *sharedGroupDataProxy = nil;
 }
 
 #pragma mark - 单个群相关
-- (DPGroup *)getGroupInfo:(long long)gid byHttpMode:(NSInteger)httpMode
+- (DPGroup *)getGroupInfo:(IMGroupId)gid byHttpMode:(NSInteger)httpMode
 {
     DPGroup *dpGroup;
     if (gid > 0) {
@@ -233,7 +233,7 @@ static GroupDataProxy *sharedGroupDataProxy = nil;
     _groupInfoCurrent = group;
 }
 
-- (NSInteger)deleteGroupByGid:(long long)gid
+- (NSInteger)deleteGroupByGid:(IMGroupId)gid
 {
     // TODO: 删除指定的群
     return 0;
@@ -264,7 +264,7 @@ static GroupDataProxy *sharedGroupDataProxy = nil;
     return _groupIdCurrent;
 }
 
-- (void)setGroupIdCurrent:(long long)gid
+- (void)setGroupIdCurrent:(IMGroupId)gid
 {
     if (gid > 0) {
         // if (gid != _groupIdCurrent) {

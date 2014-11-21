@@ -37,18 +37,18 @@
 - (NSInteger)countGroupMyList;
 
 #pragma mark - 单个群相关
-- (DPGroup *)getGroupInfo:(long long)gid byHttpMode:(NSInteger)httpMode;
+- (DPGroup *)getGroupInfo:(IMGroupId)gid byHttpMode:(NSInteger)httpMode;
 - (DPGroup *)getGroupInfoAtRow:(NSInteger)row;
 
 - (void)updateGroupInfo:(DPGroup *)group;
-- (NSInteger)deleteGroupByGid:(long long)gid;
+- (NSInteger)deleteGroupByGid:(IMGroupId)gid;
 
 + (BOOL)isInMyGroups:(DPGroup *)dpGroup;
 + (BOOL)isGroupOwner:(DPGroup *)dpGroup;
 
 #pragma mark - 当前群
 -(long long)getGroupIdCurrent;
--(void)setGroupIdCurrent:(long long)gid;
+-(void)setGroupIdCurrent:(IMGroupId)gid;
 - (DPGroup *)getGroupInfoCurrent:(NSInteger)httpMode;
 
 
