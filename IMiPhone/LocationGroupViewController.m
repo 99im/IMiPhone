@@ -15,16 +15,30 @@
 @property (weak, nonatomic) IBOutlet UILabel *lblLat;
 @property (weak, nonatomic) IBOutlet UILabel *lblAddress;
 
+@property (nonatomic, retain) DPPlacemark *dpPlacemarkCurrGroup;
+
 - (IBAction)goBackTouchUp:(id)sender;
 
 @end
 
 @implementation LocationGroupViewController
 
+@synthesize dpPlacemarkCurrGroup = _dpPlacemarkCurrGroup;
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     [self registerMessageNotification];
+
+    //定位当前位置：
+    _dpPlacemarkCurrGroup = [[LocationDataProxy sharedProxy] getUserPlacemark];
+    [self didChangedPlacemark];
+
+
+    //获取用户点击地图某个区域的经纬度：
+    UITapGestureRecognizer *tapMapview = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didPressMapView:)];
+    [_mapView addGestureRecognizer:tapMapview];
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -40,9 +54,10 @@
     //开始定位
     //[[LocationDataProxy sharedProxy] startUpdatingLocation:1];
     // map 定位
+
     if ([CLLocationManager locationServicesEnabled ]) {
-        DPPlacemark *dpPlacemark = [[LocationDataProxy sharedProxy] getPlacemarkWithUpdate:NO];
-        [self didUpdatePlacemarkView:dpPlacemark];
+        //DPPlacemark *dpPlacemark = [[LocationDataProxy sharedProxy] getUserPlacemark];
+        //[self didUpdatePlacemarkView:dpPlacemark];
 
 //        _mapView.mapType = MKMapTypeStandard;
 //        _mapView.delegate = self;
@@ -96,83 +111,98 @@
 
 - (void)registerMessageNotification
 {
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(didUpdateLocations:)
-                                                 name:NOTI_LBS_didUpdateLocations
-                                               object:nil];
+//    [[NSNotificationCenter defaultCenter] addObserver:self
+//                                             selector:@selector(didUpdateLocations:)
+//                                                 name:LBS_NOTI_didUpdateLocations
+//                                               object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(didReverseGeocodeLocation:)
-                                                 name:NOTI_LBS_didReverseGeocodeLocation
+                                                 name:LBS_NOTI_didReverseGEO
                                                object:nil];
-//    [[NSNotificationCenter defaultCenter] addObserver:self
-//                                             selector:@selector(didFailWithError:)
-//                                                 name:NOTI_LBS_didFailWithError
-//                                               object:nil];
 }
 
 - (void)removeMessageNotification
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
-
-- (void)didUpdateLocations:(NSNotification *)notification
-{
-    if (!notification.object) {
-        DPLocation *dpCurrLocation = [[LocationDataProxy sharedProxy] getLocationWithUpdate:NO];
-        [self didUpdateLocationView:dpCurrLocation];
-
-        //坐标中心点
-        CLLocationCoordinate2D center;
-        //center.latitude = 40.000304;
-        //center.longitude = 116.338154;
-        center.latitude = dpCurrLocation.latitude;
-        center.longitude = dpCurrLocation.longitude;
-
-        //坐标偏移量
-        MKCoordinateSpan span;
-        span.latitudeDelta = 0.02;
-        span.longitudeDelta = 0.02;
-
-        //坐标区
-        MKCoordinateRegion region = {center,span};
-        [_mapView setRegion:region];
-    } else {
-        self.lblAddress.text = [NSString stringWithFormat:@"%@", notification.object];
-    }
-
-}
+//
+//- (void)didUpdateLocations:(NSNotification *)notification
+//{
+////    if (!notification.object) {
+////        DPLocation *dpCurrLocation = [[LocationDataProxy sharedProxy] getUserLocation];
+////        [self didUpdateLocationView:dpCurrLocation];
+////
+////        //坐标中心点
+////        CLLocationCoordinate2D center;
+////        //center.latitude = 40.000304;
+////        //center.longitude = 116.338154;
+////        center.latitude = dpCurrLocation.latitude;
+////        center.longitude = dpCurrLocation.longitude;
+////
+////        //坐标偏移量
+////        MKCoordinateSpan span;
+////        span.latitudeDelta = 0.02;
+////        span.longitudeDelta = 0.02;
+////
+////        //坐标区
+////        MKCoordinateRegion region = {center,span};
+////        [_mapView setRegion:region];
+////    } else {
+////        self.lblAddress.text = [NSString stringWithFormat:@"%@", notification.object];
+////    }
+//
+//}
 
 -(void)didReverseGeocodeLocation:(NSNotification *)notification
 {
     if (!notification.object) {
-        DPPlacemark *dpCurrPlacemark = [[LocationDataProxy sharedProxy] getPlacemarkWithUpdate:NO];
-        [self didUpdatePlacemarkView:dpCurrPlacemark];
+        //DPPlacemark *dpCurrPlacemark = [[LocationDataProxy sharedProxy] getUserPlacemark];
+        [self didChangedPlacemark];
 
     } else {
         self.lblAddress.text = [NSString stringWithFormat:@"%@", notification.object];
     }
 }
 
-//- (void)didFailWithError:(NSNotification *)notification
-//{
-//    NSLog(@"消息处理\n获取当前位置失败:%@", notification.object);
+
+//-(void)didUpdateLocationView:(DPLocation *)dpCurrLocation {
+//    self.lblLon.text = [NSString stringWithFormat:@"经度:%f", dpCurrLocation.longitude];
+//    self.lblLat.text = [NSString stringWithFormat:@"纬度:%f", dpCurrLocation.latitude];
+//    //开始定位MapView
+//    //NSLog(@"mapView 准备重新定位 经度:%f %f", dpCurrLocation.longitude, dpCurrLocation.latitude);
+//
 //}
 
--(void)didUpdateLocationView:(DPLocation *)dpCurrLocation {
-    self.lblLon.text = [NSString stringWithFormat:@"经度:%f (%qi)", dpCurrLocation.longitude, dpCurrLocation.localUpdateTime];
-    self.lblLat.text = [NSString stringWithFormat:@"纬度:%f", dpCurrLocation.latitude];
-    //开始定位MapView
-    //NSLog(@"mapView 准备重新定位 经度:%f %f", dpCurrLocation.longitude, dpCurrLocation.latitude);
 
+-(void)didChangedPlacemark {
+    self.lblLon.text = [NSString stringWithFormat:@"经度:%f", _dpPlacemarkCurrGroup.longitude];
+    self.lblLat.text = [NSString stringWithFormat:@"纬度:%f", _dpPlacemarkCurrGroup.latitude];
+    //self.lblAddress.text = [NSString stringWithFormat:@"地址:%@",dpCurrPlacemark.name];
+    self.lblAddress.text = [NSString stringWithFormat:@"(%@):%@ %@ %@", _dpPlacemarkCurrGroup.postalCode, _dpPlacemarkCurrGroup.administrativeArea, _dpPlacemarkCurrGroup.locality,_dpPlacemarkCurrGroup.thoroughfare];
+    //self.lblAddress.text = [NSString stringWithFormat:@"地址:(%@)%@%@ %@",dpCurrPlacemark.countryCode, dpCurrPlacemark.city , dpCurrPlacemark.state , dpCurrPlacemark.subLocality];
+
+    //坐标中心点
+    CLLocationCoordinate2D center;
+    //center.latitude = 40.000304;
+    //center.longitude = 116.338154;
+    center.latitude = _dpPlacemarkCurrGroup.latitude;
+    center.longitude = _dpPlacemarkCurrGroup.longitude;
+
+    //坐标偏移量
+    MKCoordinateSpan span;
+    span.latitudeDelta = 0.02;
+    span.longitudeDelta = 0.02;
+
+    //坐标区
+    MKCoordinateRegion region = {center,span};
+    [_mapView setRegion:region];
 }
 
-
--(void)didUpdatePlacemarkView:(DPPlacemark *)dpCurrPlacemark {
-    self.lblLon.text = [NSString stringWithFormat:@"经度:%f (%qi)", dpCurrPlacemark.longitude, dpCurrPlacemark.localUpdateTime];
-    self.lblLat.text = [NSString stringWithFormat:@"纬度:%f", dpCurrPlacemark.latitude];
-    //self.lblAddress.text = [NSString stringWithFormat:@"地址:%@",dpCurrPlacemark.name];
-    self.lblAddress.text = [NSString stringWithFormat:@"(%@):%@ %@ %@", dpCurrPlacemark.postalCode, dpCurrPlacemark.administrativeArea, dpCurrPlacemark.locality,dpCurrPlacemark.thoroughfare];
-    //self.lblAddress.text = [NSString stringWithFormat:@"地址:(%@)%@%@ %@",dpCurrPlacemark.countryCode, dpCurrPlacemark.city , dpCurrPlacemark.state , dpCurrPlacemark.subLocality];
+-(void)didPressMapView:(UIGestureRecognizer *) gestureRecognizer {
+    CGPoint touchPoint = [gestureRecognizer locationInView:_mapView];
+    CLLocationCoordinate2D touchCoordinate = [_mapView convertPoint:touchPoint toCoordinateFromView:_mapView];
+    [LocationDataProxy updateDPPlacemark:_dpPlacemarkCurrGroup withCoordinate:touchCoordinate];
+    //NSLog(@"press at <%f, %f>" , touchCoordinate.longitude , touchCoordinate.latitude);
 }
 
 //
