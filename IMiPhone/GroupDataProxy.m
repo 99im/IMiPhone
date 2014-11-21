@@ -19,6 +19,8 @@
 //@property (nonatomic) long long updateTimeGroupMyList;
 @property (nonatomic, retain) NSMutableArray *arrGroupsSearch;
 
+@property (nonatomic, retain) DPPlacemark *dpPlacemarkCreate;
+
 @end
 
 @implementation GroupDataProxy
@@ -30,6 +32,8 @@
 @synthesize arrGroupMyList = _arrGroupMyList;
 //@synthesize groupInfoCurrent = _groupInfoCurrent;
 @synthesize arrGroupsSearch = _arrGroupsSearch;
+
+@synthesize dpPlacemarkCreate = _dpPlacemarkCreate;
 
 //用于更换账号数据清除
 - (void)reset
@@ -347,6 +351,14 @@ static GroupDataProxy *sharedGroupDataProxy = nil;
     return nil;
 }
 
+#pragma mark - 群地点
+-(DPPlacemark *)getDPPlacemarkForCreate
+{
+    if (!_dpPlacemarkCreate) {
+        _dpPlacemarkCreate = [[LocationDataProxy sharedProxy] getUserPlacemark];
+    }
 
+    return _dpPlacemarkCreate;
+}
 
 @end

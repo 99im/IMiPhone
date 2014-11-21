@@ -11,6 +11,7 @@
 #import "GroupDAO.h"
 #import "DPGroup.h"
 #import "UserDataProxy.h"
+#import "LocationDataProxy.h"
 #import "GroupMessageProxy.h"
 
 #define SEND_HTTP_NO 0      //禁止发送HTTP
@@ -62,5 +63,7 @@
 - (NSInteger)countGroupSearchList;
 - (DPGroup *)getGroupSearchInfoAtRow:(NSInteger)row;
 
+#pragma mark - 群地点
+-(DPPlacemark *)getDPPlacemarkForCreate;
 
 @end
