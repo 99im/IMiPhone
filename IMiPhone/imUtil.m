@@ -146,18 +146,28 @@
     return [imUtil longLongNowTime:@"yyyyMMddHHmmss"];
 }
 
-+ (long long)getExpireTimeWithMinutes:(NSInteger)minutes{
++ (long long)getExpireTimeWithMinutes:(NSInteger)minutes
+{
     long long expireTime = [imUtil nowTime];
     if (minutes > 1) {
         expireTime = expireTime + minutes * 60;
-    } else {
+    }
+    else {
         expireTime = expireTime + 60;
     }
     return expireTime;
 }
 
++ (NSString *)nowTimeForServer
+{
+    NSDateFormatter *dataFormatter = [[NSDateFormatter alloc] init];
+    [dataFormatter setDateFormat:NSLocalizedString(@"DateFormatServer", nil)];
+    return [dataFormatter stringFromDate:[NSDate date]];
+}
+
 #pragma mark - 消息处理
-+ (void)postNotificationName:(NSString *)notiName object:(id)object {
++ (void)postNotificationName:(NSString *)notiName object:(id)object
+{
     if (object) {
         NSLog(@"NotificationName:%@ error: \n%@", notiName, object);
     }

@@ -41,7 +41,7 @@
 #pragma mark - 数据转换处理
 + (DPLocation *)convertLocation:(CLLocation *)location toDPLocation:(DPLocation *)dpLocation;
 + (DPPlacemark *)convertPlacemark:(CLPlacemark *)placemark toDPPlacemark:(DPPlacemark *)dpPlacemark;
-+ (void)updateDPPlacemark:(DPPlacemark *)dpPlacemark withLatitude:(double)latitude longitude:(double)longitude;
++ (void)reverseGeocodeDPPlacemark:(DPPlacemark *)dpPlacemark withLatitude:(double)latitude longitude:(double)longitude;
 + (void)updateDPPlacemark:(DPPlacemark *)dpPlacemark withCoordinate:(CLLocationCoordinate2D) coordinate;
 
 #pragma mark - 数据读取

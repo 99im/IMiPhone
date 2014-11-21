@@ -43,7 +43,7 @@ static LocationDataProxy *sharedLocationDataProxy = nil;
 {
     _dpLocationUser = [LocationDataProxy convertLocation:location toDPLocation:_dpLocationUser];
 
-    [LocationDataProxy updateDPPlacemark:_dpPlacemarkUser withLatitude:_dpLocationUser.latitude longitude:_dpLocationUser.longitude];
+    [LocationDataProxy reverseGeocodeDPPlacemark:_dpPlacemarkUser withLatitude:_dpLocationUser.latitude longitude:_dpLocationUser.longitude];
 
     //判断是否需要上传
     BOOL needReport = NO;
@@ -98,7 +98,7 @@ static LocationDataProxy *sharedLocationDataProxy = nil;
 }
 
 
-+ (void)updateDPPlacemark:(DPPlacemark *)dpPlacemark withLatitude:(double)latitude longitude:(double)longitude
++ (void)reverseGeocodeDPPlacemark:(DPPlacemark *)dpPlacemark withLatitude:(double)latitude longitude:(double)longitude
 {
     if (dpPlacemark && dpPlacemark.dataStatus != LBS_STATUS_DATA_UPDATING) {
         dpPlacemark.dataStatus = LBS_STATUS_DATA_UPDATING;
@@ -132,7 +132,7 @@ static LocationDataProxy *sharedLocationDataProxy = nil;
 
 + (void)updateDPPlacemark:(DPPlacemark *)dpPlacemark withCoordinate:(CLLocationCoordinate2D)coordinate
 {
-    [LocationDataProxy updateDPPlacemark:dpPlacemark withLatitude:coordinate.latitude longitude:coordinate.longitude];
+    [LocationDataProxy reverseGeocodeDPPlacemark:dpPlacemark withLatitude:coordinate.latitude longitude:coordinate.longitude];
 }
 
 #pragma mark - 设置执行
