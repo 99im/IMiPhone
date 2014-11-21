@@ -192,8 +192,8 @@
 		11FFA5101A1CA3FF00F6F00A /* ActivityCreateTableLimitCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 11FFA50E1A1CA3FF00F6F00A /* ActivityCreateTableLimitCell.m */; };
 		11FFA5131A1CA4BE00F6F00A /* ActivityCreateTableInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 11FFA5121A1CA4BE00F6F00A /* ActivityCreateTableInfoCell.m */; };
 		11FFA5141A1CA4BE00F6F00A /* ActivityCreateTableInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 11FFA5121A1CA4BE00F6F00A /* ActivityCreateTableInfoCell.m */; };
-		11FFA51F1A1CE27100F6F00A /* ActivityCreateTableLabelAndContentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 11FFA51E1A1CE27100F6F00A /* ActivityCreateTableLabelAndContentCell.m */; };
-		11FFA5201A1CE27100F6F00A /* ActivityCreateTableLabelAndContentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 11FFA51E1A1CE27100F6F00A /* ActivityCreateTableLabelAndContentCell.m */; };
+		11FFA51F1A1CE27100F6F00A /* ActivityCreateTableLabelDateCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 11FFA51E1A1CE27100F6F00A /* ActivityCreateTableLabelDateCell.m */; };
+		11FFA5201A1CE27100F6F00A /* ActivityCreateTableLabelDateCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 11FFA51E1A1CE27100F6F00A /* ActivityCreateTableLabelDateCell.m */; };
 		11FFA5231A1CE2AC00F6F00A /* ActivityCreateTableDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 11FFA5221A1CE2AC00F6F00A /* ActivityCreateTableDetailCell.m */; };
 		11FFA5241A1CE2AC00F6F00A /* ActivityCreateTableDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 11FFA5221A1CE2AC00F6F00A /* ActivityCreateTableDetailCell.m */; };
 		581A27321A1AE5D200E5BE5F /* AccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 581A27311A1AE5D200E5BE5F /* AccountViewController.m */; };
@@ -519,8 +519,8 @@
 		11FFA50E1A1CA3FF00F6F00A /* ActivityCreateTableLimitCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityCreateTableLimitCell.m; sourceTree = "<group>"; };
 		11FFA5111A1CA4BE00F6F00A /* ActivityCreateTableInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityCreateTableInfoCell.h; sourceTree = "<group>"; };
 		11FFA5121A1CA4BE00F6F00A /* ActivityCreateTableInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityCreateTableInfoCell.m; sourceTree = "<group>"; };
-		11FFA51D1A1CE27100F6F00A /* ActivityCreateTableLabelAndContentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityCreateTableLabelAndContentCell.h; sourceTree = "<group>"; };
-		11FFA51E1A1CE27100F6F00A /* ActivityCreateTableLabelAndContentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityCreateTableLabelAndContentCell.m; sourceTree = "<group>"; };
+		11FFA51D1A1CE27100F6F00A /* ActivityCreateTableLabelDateCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityCreateTableLabelDateCell.h; sourceTree = "<group>"; };
+		11FFA51E1A1CE27100F6F00A /* ActivityCreateTableLabelDateCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityCreateTableLabelDateCell.m; sourceTree = "<group>"; };
 		11FFA5211A1CE2AC00F6F00A /* ActivityCreateTableDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityCreateTableDetailCell.h; sourceTree = "<group>"; };
 		11FFA5221A1CE2AC00F6F00A /* ActivityCreateTableDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityCreateTableDetailCell.m; sourceTree = "<group>"; };
 		581A27301A1AE5D200E5BE5F /* AccountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AccountViewController.h; path = IMiPhone/AccountViewController.h; sourceTree = "<group>"; };
@@ -779,8 +779,8 @@
 				11FFA50E1A1CA3FF00F6F00A /* ActivityCreateTableLimitCell.m */,
 				11FFA5111A1CA4BE00F6F00A /* ActivityCreateTableInfoCell.h */,
 				11FFA5121A1CA4BE00F6F00A /* ActivityCreateTableInfoCell.m */,
-				11FFA51D1A1CE27100F6F00A /* ActivityCreateTableLabelAndContentCell.h */,
-				11FFA51E1A1CE27100F6F00A /* ActivityCreateTableLabelAndContentCell.m */,
+				11FFA51D1A1CE27100F6F00A /* ActivityCreateTableLabelDateCell.h */,
+				11FFA51E1A1CE27100F6F00A /* ActivityCreateTableLabelDateCell.m */,
 				11FFA5211A1CE2AC00F6F00A /* ActivityCreateTableDetailCell.h */,
 				11FFA5221A1CE2AC00F6F00A /* ActivityCreateTableDetailCell.m */,
 			);
@@ -1645,7 +1645,7 @@
 				114BF7441A198BED00A28A94 /* FocusUserDAO.m in Sources */,
 				117AC69C19EE766200143973 /* DBUser.m in Sources */,
 				116B6E8019AF0F8C00DB1B5E /* DatabaseConfig.m in Sources */,
-				11FFA51F1A1CE27100F6F00A /* ActivityCreateTableLabelAndContentCell.m in Sources */,
+				11FFA51F1A1CE27100F6F00A /* ActivityCreateTableLabelDateCell.m in Sources */,
 				110F561A19D57013003B9EB4 /* DPUiMessage.m in Sources */,
 				1194301419F75CED00FD9206 /* ChatInputTextView.m in Sources */,
 				58438C0D19D412E400B6962B /* NearbyTableViewController.m in Sources */,
@@ -1791,7 +1791,7 @@
 				116AB14819B731D600092E2C /* DatabaseConfig.m in Sources */,
 				110487A919D7DA560002AB36 /* OSTest.m in Sources */,
 				116BF87419C81E680015561B /* AudioRecordManager.m in Sources */,
-				11FFA5201A1CE27100F6F00A /* ActivityCreateTableLabelAndContentCell.m in Sources */,
+				11FFA5201A1CE27100F6F00A /* ActivityCreateTableLabelDateCell.m in Sources */,
 				117AC6A919EEB8D900143973 /* DBUserFromContact.m in Sources */,
 				116AB14919B731DA00092E2C /* BaseDAO.m in Sources */,
 				11FC327019F0A92C000A6733 /* FriendTableViewController.m in Sources */,

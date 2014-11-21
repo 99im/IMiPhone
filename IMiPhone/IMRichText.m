@@ -37,7 +37,10 @@ static NSMutableArray *arrRunParams;//用于保存所用run的参数，否则莫
 
 + (NSAttributedString *)assembleLocalImageAbStringByImgName:(NSString *)imgName withSize:(CGSize)size
 {
-    NSMutableAttributedString *mabString = [[NSMutableAttributedString alloc] initWithString:@" "];
+    //占位符不能用空格,否则提前计算尺寸（CTFramesetterSuggestFrameSizeWithConstraints）时候会有bug
+    unichar charPlacehoder = 0xFFFC;
+    NSString *strPlaceholder = [NSString stringWithCharacters:&charPlacehoder length:1];
+    NSMutableAttributedString *mabString = [[NSMutableAttributedString alloc] initWithString:strPlaceholder];
     CTRunDelegateCallbacks imageCallbacks;
     imageCallbacks.version = kCTRunDelegateVersion1;
     imageCallbacks.dealloc = localImgRunDeleDeallocCallback;
@@ -134,10 +137,6 @@ static NSMutableArray *arrRunParams;//用于保存所用run的参数，否则莫
     
     CGPathRelease(path);
     //绘制内嵌图片
-    CFArrayRef lines = CTFrameGetLines(frame);
-    int lineCount = CFArrayGetCount(lines);
-    CGPoint lineOrigins[lineCount];
-    CTFrameGetLineOrigins(frame, CFRangeMake(0, 0), lineOrigins);
 
     [self drawLocalImagesWithFrame:frame inContext:context];
     
