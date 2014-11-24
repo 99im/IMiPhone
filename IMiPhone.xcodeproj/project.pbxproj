@@ -327,6 +327,7 @@
 		DB6FACBF1A0B785A0048B76B /* HavingFunTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DB6FACBE1A0B785A0048B76B /* HavingFunTableViewCell.m */; };
 		DB6FACC21A0B787D0048B76B /* ServiceTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DB6FACC11A0B787D0048B76B /* ServiceTableViewCell.m */; };
 		DB6FACC61A0B7BC90048B76B /* FindList.plist in Resources */ = {isa = PBXBuildFile; fileRef = DB6FACC51A0B7BC90048B76B /* FindList.plist */; };
+		DBA04B0B1A22CFA100C268EA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DBF2E5C01A1C9C9E00C85E27 /* Main.storyboard */; };
 		DBD2A9281A1996030020EECD /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DBD2A9271A1996030020EECD /* Images.xcassets */; };
 		DBD2A92B1A19D88D0020EECD /* head.png in Resources */ = {isa = PBXBuildFile; fileRef = DBD2A9291A19D88D0020EECD /* head.png */; };
 		DBD2A92E1A19E5430020EECD /* ActivityCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DBD2A92D1A19E5430020EECD /* ActivityCellTableViewCell.m */; };
@@ -335,7 +336,6 @@
 		DBD687771A1C8AF00001857D /* DBFanUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 114BF7471A1A458A00A28A94 /* DBFanUser.m */; };
 		DBD687781A1C8B580001857D /* DPFanUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 114BF74F1A1A499100A28A94 /* DPFanUser.m */; };
 		DBDD8F401A1AE31300B9F5C9 /* AllGroupTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DBDD8F3F1A1AE31300B9F5C9 /* AllGroupTableViewCell.m */; };
-		DBF2E5C41A1CAE6B00C85E27 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DBF2E5C01A1C9C9E00C85E27 /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -1478,7 +1478,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DBF2E5C41A1CAE6B00C85E27 /* Main.storyboard in Resources */,
+				DBA04B0B1A22CFA100C268EA /* Main.storyboard in Resources */,
 				DBD2A9281A1996030020EECD /* Images.xcassets in Resources */,
 				11DF9F8319A2276C00AE5D89 /* splash.jpg in Resources */,
 				DBD2A92B1A19D88D0020EECD /* head.png in Resources */,
