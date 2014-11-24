@@ -97,7 +97,7 @@
     }
 }
 
-- (void)sendHttpLogin:(NSNotification *)notification
+- (void)sendHttpLoginResult:(NSNotification *)notification
 {
     if (!notification.object) {
         [self performSegueWithIdentifier:@"regStep2DoneSegue" sender:self];
