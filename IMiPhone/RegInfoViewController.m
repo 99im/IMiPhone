@@ -208,28 +208,31 @@
 {
     CGPoint point = [sender locationInView:self.view];
     //NSLog(@"RegInfoViewController tapHandler: x: %f, y: %f", point.x, point.y);
-    if (self.pickBirthday.hidden) {
-         NSLog(@"self.pickBirthday.hidden == YES");
-        return;
+    if (!self.pickBirthday.hidden) {
+        if(point.x < self.pickBirthday.frame.origin.x
+           || point.y < self.pickBirthday.frame.origin.y
+           || point.x > self.pickBirthday.frame.origin.x + self.pickBirthday.frame.size.width
+           || point.y > self.pickBirthday.frame.origin.y + self.pickBirthday.frame.size.height)
+        {
+            self.pickBirthday.hidden = YES;
+            
+            NSString * dataStr;
+            NSDateFormatter *dataFormatter = [[NSDateFormatter alloc] init];
+            [dataFormatter setDateFormat:NSLocalizedString(@"DateFormatClient", nil)];
+            dataStr = [dataFormatter stringFromDate:self.pickBirthday.date];
+            [self.btnBirthday setTitle:dataStr forState:UIControlStateNormal];
+            [self.btnBirthday setTitle:dataStr forState:UIControlStateSelected];
+            //保存服务端能够识别日期格式
+            [dataFormatter setDateFormat:NSLocalizedString(@"DateFormatServer", nil)];
+            self.strDateForServer = [dataFormatter stringFromDate:self.pickBirthday.date];
+        }
     }
-    if(point.x < self.pickBirthday.frame.origin.x
-       || point.y < self.pickBirthday.frame.origin.y
-       || point.x > self.pickBirthday.frame.origin.x + self.pickBirthday.frame.size.width
-       || point.y > self.pickBirthday.frame.origin.y + self.pickBirthday.frame.size.height)
-    {
-        self.pickBirthday.hidden = YES;
-        
-        NSString * dataStr;
-        NSDateFormatter *dataFormatter = [[NSDateFormatter alloc] init];
-        [dataFormatter setDateFormat:NSLocalizedString(@"DateFormatClient", nil)];
-        dataStr = [dataFormatter stringFromDate:self.pickBirthday.date];
-        [self.btnBirthday setTitle:dataStr forState:UIControlStateNormal];
-        [self.btnBirthday setTitle:dataStr forState:UIControlStateSelected];
-        //保存服务端能够识别日期格式
-        [dataFormatter setDateFormat:NSLocalizedString(@"DateFormatServer", nil)];
-        self.strDateForServer = [dataFormatter stringFromDate:self.pickBirthday.date];
+    if (self.tfActive) {
+        [self.tfActive resignFirstResponder];
     }
-    
+    if (self.tvActive) {
+        [self.tvActive resignFirstResponder];
+    }
 }
 
 #pragma mark - photopicker
