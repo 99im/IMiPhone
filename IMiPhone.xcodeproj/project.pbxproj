@@ -329,6 +329,11 @@
 		DB6FACC21A0B787D0048B76B /* ServiceTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DB6FACC11A0B787D0048B76B /* ServiceTableViewCell.m */; };
 		DB6FACC61A0B7BC90048B76B /* FindList.plist in Resources */ = {isa = PBXBuildFile; fileRef = DB6FACC51A0B7BC90048B76B /* FindList.plist */; };
 		DBA04B0B1A22CFA100C268EA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DBF2E5C01A1C9C9E00C85E27 /* Main.storyboard */; };
+		DBA04B0C1A2311C000C268EA /* DPLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = ABAF97CA1A09F8F700BE29B8 /* DPLocation.m */; };
+		DBA04B0D1A2311EE00C268EA /* DiscoveryMessageProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = AB645E521A19F8C9008AC05D /* DiscoveryMessageProxy.m */; };
+		DBA04B0E1A23121100C268EA /* DPPlacemark.m in Sources */ = {isa = PBXBuildFile; fileRef = AB1B83111A1DC5D800BDC841 /* DPPlacemark.m */; };
+		DBA04B0F1A23122300C268EA /* FIRMessageProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DBDE2B41A22179E00E28642 /* FIRMessageProxy.m */; };
+		DBA04B131A231C1500C268EA /* UserDynamicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DBA04B121A231C1500C268EA /* UserDynamicViewController.m */; };
 		DBD2A9281A1996030020EECD /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DBD2A9271A1996030020EECD /* Images.xcassets */; };
 		DBD2A92B1A19D88D0020EECD /* head.png in Resources */ = {isa = PBXBuildFile; fileRef = DBD2A9291A19D88D0020EECD /* head.png */; };
 		DBD2A92E1A19E5430020EECD /* ActivityCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DBD2A92D1A19E5430020EECD /* ActivityCellTableViewCell.m */; };
@@ -703,6 +708,8 @@
 		DB6FACC01A0B787D0048B76B /* ServiceTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceTableViewCell.h; sourceTree = "<group>"; };
 		DB6FACC11A0B787D0048B76B /* ServiceTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceTableViewCell.m; sourceTree = "<group>"; };
 		DB6FACC51A0B7BC90048B76B /* FindList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = FindList.plist; sourceTree = "<group>"; };
+		DBA04B111A231C1500C268EA /* UserDynamicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserDynamicViewController.h; sourceTree = "<group>"; };
+		DBA04B121A231C1500C268EA /* UserDynamicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserDynamicViewController.m; sourceTree = "<group>"; };
 		DBD2A9271A1996030020EECD /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		DBD2A92A1A19D88D0020EECD /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "zh-Hans"; path = "zh-Hans.lproj/head.png"; sourceTree = "<group>"; };
 		DBD2A92C1A19E5430020EECD /* ActivityCellTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityCellTableViewCell.h; sourceTree = "<group>"; };
@@ -1012,6 +1019,7 @@
 			children = (
 				DBF2E5C01A1C9C9E00C85E27 /* Main.storyboard */,
 				DBD2A9271A1996030020EECD /* Images.xcassets */,
+				DBA04B101A231B8C00C268EA /* dynamic */,
 				DB6FACB61A0B70F00048B76B /* Find */,
 				111B4E9A1A0A26800043A29F /* Activity */,
 				AB20EE8919F4F67D004627C8 /* Group */,
@@ -1405,6 +1413,15 @@
 			name = Find;
 			sourceTree = "<group>";
 		};
+		DBA04B101A231B8C00C268EA /* dynamic */ = {
+			isa = PBXGroup;
+			children = (
+				DBA04B111A231C1500C268EA /* UserDynamicViewController.h */,
+				DBA04B121A231C1500C268EA /* UserDynamicViewController.m */,
+			);
+			name = dynamic;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1568,6 +1585,7 @@
 				58B496E819A7186A0082AE30 /* MKNetworkOperation.m in Sources */,
 				58BC1E3519C0304900722A00 /* RegisterViewController.m in Sources */,
 				111B4EA21A0A28830043A29F /* ActivityListController.m in Sources */,
+				DBA04B131A231C1500C268EA /* UserDynamicViewController.m in Sources */,
 				58BACF0F19B5DAB900A72391 /* imPhotoPicker.m in Sources */,
 				116B6E9619B058A400DB1B5E /* SqlightDriver.m in Sources */,
 				11335B6919F53D6200FA32FA /* ChatMsgTableViewCellP2G.m in Sources */,
@@ -1735,6 +1753,8 @@
 				58C14DD319C80D67009334E1 /* ContactViewController.m in Sources */,
 				1194301119F74EC200FD9206 /* ChatPlusViewController.m in Sources */,
 				58BC1E4919C06B9000722A00 /* UserMessageProxy.m in Sources */,
+				DBA04B0C1A2311C000C268EA /* DPLocation.m in Sources */,
+				DBA04B0E1A23121100C268EA /* DPPlacemark.m in Sources */,
 				1152E31A1A078C6B00400D2A /* IMRichText.m in Sources */,
 				58BC1E4A19C06B9000722A00 /* FriendMessageProxy.m in Sources */,
 				11795E2919D297CD003FD9A7 /* DPFriend.m in Sources */,
@@ -1794,6 +1814,7 @@
 				11B1C62919E4E069003D2711 /* ChatMessageProxy.m in Sources */,
 				1120945A19B601EF0012D607 /* IMiPhoneTests.m in Sources */,
 				117AC6A819EEB8A100143973 /* IMDataUtilTest.m in Sources */,
+				DBA04B0F1A23122300C268EA /* FIRMessageProxy.m in Sources */,
 				117AC6B419EEBA0000143973 /* DBUser.m in Sources */,
 				117AC6B019EEB99E00143973 /* IMNWManager.m in Sources */,
 				116BF88219CC01C70015561B /* UserDataProxyTest.m in Sources */,
@@ -1814,6 +1835,7 @@
 				11FFA5041A1C9EE400F6F00A /* ActivityCreateTabelController.m in Sources */,
 				1192B5D319FE1CDF0013119E /* GroupDataProxy.m in Sources */,
 				116AB14119B7315000092E2C /* PersistenceTest.m in Sources */,
+				DBA04B0D1A2311EE00C268EA /* DiscoveryMessageProxy.m in Sources */,
 				118310C319FE61B700C1968D /* DPSysMessage.m in Sources */,
 				1192B5D619FE1F0F0013119E /* DPGroup.m in Sources */,
 				111B4EBA1A0A2DFE0043A29F /* ActivityReadyTabMembersController.m in Sources */,
