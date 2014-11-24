@@ -17,13 +17,17 @@
 
 - (void)sendHttpRequest:(IMNWMessage *)message withResponse:(imNWResponseBlock)response
 {
+    MKNetworkOperation *op = nil;
     NSMutableDictionary *params = [message getHttpParams];
-    
-    if ([message.method isEqualToString:METHOD_POST]) {
-        message.path = [NSString stringWithFormat:@"%@?%@=%@", message.path, [HTTP_KEY_VERIFY mk_urlEncodedString], [[UserDataProxy sharedProxy].verify mk_urlEncodedString]];
+    if (message.url) {
+        op = [self operationWithURLString:message.url params:params httpMethod:message.method];
     }
-    
-    MKNetworkOperation *op = [self operationWithPath:message.path params:params httpMethod:message.method ssl:message.useSSL];
+    else {
+        if ([message.method isEqualToString:METHOD_POST]) {
+            message.path = [NSString stringWithFormat:@"%@?%@=%@", message.path, [HTTP_KEY_VERIFY mk_urlEncodedString], [[UserDataProxy sharedProxy].verify mk_urlEncodedString]];
+        }
+        op = [self operationWithPath:message.path params:params httpMethod:message.method ssl:message.useSSL];
+    }
     
     if (message.multiPartData) {
         id object = nil;

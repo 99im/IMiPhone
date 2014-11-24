@@ -29,6 +29,7 @@
 @property (nonatomic, strong) NSMutableArray *responseBlocks;
 @property (nonatomic) BOOL useSSL;
 @property (nonatomic, retain) NSString *method;
+@property (nonatomic, retain) NSString *url;
 
 /**
  *  创建socket基础消息，完善消息数据后，通过send方法发送消息
@@ -51,6 +52,9 @@
  *  @return 返回消息实例
  */
 + (IMNWMessage *)createForHttp:(NSString *)path withParams:(NSMutableDictionary *)params withMethod:(NSString *)method ssl:(BOOL)useSSL;
+
+///使用完整url创建http消息
++ (IMNWMessage *)createForHttpUseURL:(NSString *)url withParams:(NSMutableDictionary *)params withMethod:(NSString *)method;
 
 - (NSData *)getSocketData;
 - (NSMutableDictionary *)getHttpParams;

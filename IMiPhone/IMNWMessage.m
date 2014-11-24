@@ -24,6 +24,7 @@
 @synthesize responseBlocks;
 @synthesize useSSL;
 @synthesize method;
+@synthesize url;
 
 + (IMNWMessage *)createForSocket:(NSString *)mark withType:(NSString *)type
 {
@@ -49,6 +50,19 @@
     message.data = params;
     message.method = method;
     message.useSSL = useSSL;
+    return message;
+}
+
++ (IMNWMessage *)createForHttpUseURL:(NSString *)url withParams:(NSMutableDictionary *)params withMethod:(NSString *)method
+{
+    IMNWMessage *message = [[IMNWMessage alloc] init];
+    message.connect = CONNECT_HTTP;
+    message.url = url;
+    if (params == nil) {
+        params = [NSMutableDictionary dictionary];
+    }
+    message.data = params;
+    message.method = method;
     return message;
 }
 
