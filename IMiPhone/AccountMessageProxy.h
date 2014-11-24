@@ -13,7 +13,7 @@
 
 @interface AccountMessageProxy : IMNWProxy
 
-+ (AccountMessageProxy*)sharedProxy;
++ (AccountMessageProxy *)sharedProxy;
 
 - (void)sendTypeMobcode:(NSString *)phone withCountry:(NSString *)country;
 - (void)sendTypeRegister:(NSString *)password;

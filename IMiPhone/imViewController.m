@@ -13,6 +13,7 @@
 #import "IMNWProxyProtocol.h"
 #import "IMNWSocketConnect.h"
 #import "AccountMessageProxy.h"
+#import "FIRMessageProxy.h"
 
 @interface imViewController () <IMNWProxyProtocol>
 
@@ -34,6 +35,7 @@
     if (self.hasVerified) {
         [[AccountMessageProxy sharedProxy] sendTypeMyinfo];
     }
+    [[FIRMessageProxy sharedProxy] sendHttpVersion];
 }
 
 - (void)viewWillAppear:(BOOL)animated

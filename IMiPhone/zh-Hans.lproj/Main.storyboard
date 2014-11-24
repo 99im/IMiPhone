@@ -23,7 +23,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="splash.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="ew0-bw-dEP">
-                                <rect key="frame" x="40" y="159" width="240" height="128"/>
+                                <rect key="frame" x="40" y="159" width="240" height="150"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uBg-Mg-2aC">
                                 <rect key="frame" x="84" y="420" width="30" height="30"/>
@@ -1352,7 +1352,7 @@
                         <viewControllerLayoutGuide type="bottom" id="jdk-ke-gUq"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="vdW-Q2-z1e">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sS0-Ne-O7G">
@@ -1578,11 +1578,11 @@
                         <viewControllerLayoutGuide type="bottom" id="hXK-eM-Cea"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="SlK-oq-AUt">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bFz-SV-ZjS">
-                                <rect key="frame" x="110" y="450" width="101" height="30"/>
+                                <rect key="frame" x="110" y="538" width="101" height="30"/>
                                 <state key="normal" title="添加关注">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -1591,7 +1591,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Ar-5g-u0F">
-                                <rect key="frame" x="219" y="450" width="101" height="30"/>
+                                <rect key="frame" x="219" y="538" width="101" height="30"/>
                                 <state key="normal" title="拉黑举报">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -1600,7 +1600,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Omi-G2-oWd">
-                                <rect key="frame" x="0.0" y="450" width="102" height="30"/>
+                                <rect key="frame" x="0.0" y="538" width="102" height="30"/>
                                 <state key="normal" title="发送消息">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -1609,7 +1609,7 @@
                                 </connections>
                             </button>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tbe-oe-gHj">
-                                <rect key="frame" x="0.0" y="64" width="320" height="378"/>
+                                <rect key="frame" x="0.0" y="64" width="320" height="466"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yh4-C3-Ghc">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="466"/>
@@ -1644,7 +1644,7 @@
                                 </subviews>
                             </scrollView>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y8v-na-mKc">
-                                <rect key="frame" x="0.0" y="450" width="320" height="30"/>
+                                <rect key="frame" x="0.0" y="538" width="320" height="30"/>
                                 <state key="normal" title="对话">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -3062,7 +3062,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="splash.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="HS9-l8-gPT">
-                                <rect key="frame" x="40" y="159" width="240" height="128"/>
+                                <rect key="frame" x="40" y="159" width="240" height="150"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -3221,7 +3221,7 @@
         <image name="nearby2" width="44" height="44"/>
         <image name="photo" width="44" height="44"/>
         <image name="profile2" width="44" height="44"/>
-        <image name="splash.jpg" width="640" height="400"/>
+        <image name="splash.jpg" width="240" height="150"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
@@ -3229,13 +3229,13 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="xJX-I6-fGX"/>
+        <segue reference="iIs-SU-ZLV"/>
+        <segue reference="kdV-GO-inJ"/>
+        <segue reference="AcC-yW-RwT"/>
+        <segue reference="dkl-wS-iyY"/>
         <segue reference="Yan-Ot-060"/>
         <segue reference="XMs-XJ-Qq0"/>
         <segue reference="8gL-WP-3D1"/>
-        <segue reference="AcC-yW-RwT"/>
-        <segue reference="iIs-SU-ZLV"/>
-        <segue reference="kdV-GO-inJ"/>
-        <segue reference="dkl-wS-iyY"/>
+        <segue reference="D64-tG-s28"/>
     </inferredMetricsTieBreakers>
 </document>

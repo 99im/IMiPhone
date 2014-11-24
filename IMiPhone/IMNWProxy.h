@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "IMNWMessage.h"
 #import "NSNumber+IMNWError.h"
+#import "IMNWManager.h"
 
 @interface IMNWProxy : NSObject
 
