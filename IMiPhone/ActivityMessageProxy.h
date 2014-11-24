@@ -31,7 +31,7 @@
 + (ActivityMessageProxy *)sharedProxy;
 
 //创建活动
-- (void)sendHttpCreateWithType:(NSInteger)type withTypeId:(long long)typeId withTitle:(NSString *)title withDetail:(NSString *)detail withSignerLimit:(NSInteger)signerLimit withPayType:(NSInteger)payType withLon:(NSString *)lon withLat:(NSString *)lat withAlt:(NSString *)alt withBeginTime:(NSString *)beginTime withMaxNum:(NSInteger)maxNum;
+- (void)sendHttpCreateWithType:(NSInteger)type withTypeId:(long long)typeId withTitle:(NSString *)title withDetail:(NSString *)detail withSignerLimit:(NSInteger)signerLimit withPayType:(NSInteger)payType withLon:(NSString *)lon withLat:(NSString *)lat withAlt:(NSString *)alt withBeginTime:(NSString *)beginTime withEndTime:(NSString *)endTime withMaxNum:(NSInteger)maxNum withAddress:(NSString *)address withLadyFree:(NSInteger)ladyFree;
 
 //加入活动
 - (void)sendHttpJoinWithAid:(long long)aid;

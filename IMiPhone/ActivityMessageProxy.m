@@ -23,7 +23,7 @@ static ActivityMessageProxy *activityProxy = nil;
 
 #pragma mark - 创建活动
 
-- (void)sendHttpCreateWithType:(NSInteger)type withTypeId:(long long)typeId withTitle:(NSString *)title withDetail:(NSString *)detail withSignerLimit:(NSInteger)signerLimit withPayType:(NSInteger)payType withLon:(NSString *)lon withLat:(NSString *)lat withAlt:(NSString *)alt withBeginTime:(NSString *)beginTime withMaxNum:(NSInteger)maxNum
+- (void)sendHttpCreateWithType:(NSInteger)type withTypeId:(long long)typeId withTitle:(NSString *)title withDetail:(NSString *)detail withSignerLimit:(NSInteger)signerLimit withPayType:(NSInteger)payType withLon:(NSString *)lon withLat:(NSString *)lat withAlt:(NSString *)alt withBeginTime:(NSString *)beginTime withEndTime:(NSString *)endTime withMaxNum:(NSInteger)maxNum withAddress:(NSString *)address withLadyFree:(NSInteger)ladyFree;
 {
     //使用http
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
@@ -34,12 +34,14 @@ static ActivityMessageProxy *activityProxy = nil;
     [params setObject:lat forKey:KEYQ_H__ACTIVITY_CREATE__LAT];
     [params setObject:alt forKey:KEYQ_H__ACTIVITY_CREATE__ALT];
     [params setObject:beginTime forKey:KEYQ_H__ACTIVITY_CREATE__BEGINTIME];
+    [params setObject:beginTime forKey:KEYQ_H__ACTIVITY_CREATE__ENDTIME];
     [params setObject:[NSNumber numberWithInteger:type] forKey:KEYQ_H__ACTIVITY_CREATE__TYPE];
     [params setObject:[NSNumber numberWithLongLong:typeId] forKey:KEYQ_H__ACTIVITY_CREATE__TYPEID];
     [params setObject:[NSNumber numberWithInteger:signerLimit] forKey:KEYQ_H__ACTIVITY_CREATE__SIGNERLIMIT];
     [params setObject:[NSNumber numberWithInteger:payType] forKey:KEYQ_H__ACTIVITY_CREATE__PAYTYPE];
     [params setObject:[NSNumber numberWithInteger:maxNum] forKey:KEYQ_H__ACTIVITY_CREATE__MAXNUM];
-    
+    [params setObject:address forKey:KEYQ_H__ACTIVITY_CREATE__ADDRESS];
+    [params setObject:[NSNumber numberWithInteger:ladyFree] forKey:KEYQ_H__ACTIVITY_CREATE__LADYFREE];
     IMNWMessage *message = [IMNWMessage createForHttp:PATH_H__ACTIVITY_CREATE_ withParams:params withMethod:METHOD_H__ACTIVITY_CREATE_ ssl:NO];
     [[IMNWManager sharedNWManager] sendMessage:message withResponse:^(NSString *responseString, NSData *responseData) {
         NSError *err = nil;
