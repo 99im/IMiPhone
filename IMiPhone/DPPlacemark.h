@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+#define LBS_TIMEOUT_PLACEMARK 60  //单位（分钟）   1小时：60   1天: 1440 = 60*24   1周:10080 = 7*24*60
+
 @interface DPPlacemark : NSObject
 
 @property (nonatomic) double longitude; //经度
@@ -29,6 +31,7 @@
 @property (nonatomic, copy) NSString *ocean; // eg. Pacific Ocean
 //@property (nonatomic, readonly, copy) NSArray *areasOfInterest; // eg. Golden Gate Park
 
+@property (nonatomic) NSInteger dataStatus;     //数据状态, 可取值：LBS_STATUS_DATA_INIT、 LBS_STATUS_DATA_UPDATING、 LBS_STATUS_DATA_UPDATED
 @property (nonatomic) long long localUpdateTime; //本地更新时间，格式(yyyyMMddHHmmss)：201411024125959
 @property (nonatomic) long long localExpireTime; //本地过期时间，格式(yyyyMMddHHmmss)：201411024125959
 

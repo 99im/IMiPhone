@@ -14,6 +14,8 @@
 #import "ActivityCreateTableLimitCell.h"
 #import "ActivityCreateTableOptionCell.h"
 #import "ActivityCreateTableTitleCell.h"
+#import "ActivityMessageProxy.h"
+#import "ActivityDataProxy.h"
 
 typedef NS_ENUM(NSInteger, ActivityCreateSection)
 {
@@ -33,10 +35,6 @@ typedef NS_ENUM(NSInteger, ActivityCreateSectionInfoRow)
     ActivityCreateSectionInfoRowAddress,//地址
     ActivityCreateSectionInfoRowNum
 };
-
-#define CREATE_TYPE_GROUP 0
-#define CREATE_TYPE_CLUB 1
-#define CREATE_TYPE_TEMP 2
 
 #define ACTIVITY_CREATE_DATE_PICKER_TAG 99
 
@@ -62,6 +60,12 @@ typedef NS_ENUM(NSInteger, ActivityCreateSectionInfoRow)
 
 @property (nonatomic, retain) UIButton *btnCreate;
 
+@property (nonatomic) long long selectedGroupId;
+@property (nonatomic) long long selectedClubId;
+
+
+
+- (IBAction)btnCreateTouchUpInside:(id)sender;
 
 @end
 
@@ -69,18 +73,22 @@ typedef NS_ENUM(NSInteger, ActivityCreateSectionInfoRow)
 
 static NSString *kDateCellID = @"ActivityCreateTableLabelDateCell";     // the cells with the start or end date
 static NSString *kDatePickerID = @"ActivityCreateTableDatePickerCell"; // the cell containing the date picker
+static NSString *kAdrressID = @"ActivityCreateSectionInfoRowAddress";//地址cell
 
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    if (self.type == CREATE_TYPE_GROUP) {
+    
+    [ActivityDataProxy sharedProxy].createActivityType = ACTIVITY_TYPE_TEMP;
+    
+    if ([ActivityDataProxy sharedProxy].createActivityType == ACTIVITY_TYPE_GROUP) {
          self.arrGroups = [[GroupDataProxy sharedProxy] getGroupMyList:SEND_HTTP_NO];
     }
-    else if(self.type == CREATE_TYPE_CLUB) {
+    else if([ActivityDataProxy sharedProxy].createActivityType == ACTIVITY_TYPE_CLUB) {
 //        self.arrClubs = []
     }
-    else if(self.type == CREATE_TYPE_TEMP) {
+    else if([ActivityDataProxy sharedProxy].createActivityType == ACTIVITY_TYPE_TEMP) {
         
     }
     
@@ -88,14 +96,13 @@ static NSString *kDatePickerID = @"ActivityCreateTableDatePickerCell"; // the ce
     self.btnCreate = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     [self.btnCreate.layer setCornerRadius:5.0];
     self.btnCreate.frame = CGRectMake(10, 10, self.tableView.frame.size.width - 20, 40);
-    [self.btnCreate setTitle:NSLocalizedString(@"View.Contact.Friends", null) forState:UIControlStateNormal];
+    [self.btnCreate setTitle:NSLocalizedString(@"Activity.Create", null) forState:UIControlStateNormal];
     self.btnCreate.backgroundColor = [UIColor lightGrayColor];
     self.btnCreate.showsTouchWhenHighlighted=YES;
-    UIView *footerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, 0) ];
-    [footerView addSubview:self.btnCreate];//必须把按钮添加到一个view上 否则按钮会被拉长
-    
-    self.tableView.tableFooterView = footerView;
-    
+ 
+  
+    //按钮添加事件监听
+    [self.btnCreate addTarget:self action:@selector(btnCreateTouchUpInside:) forControlEvents:(UIControlEventTouchUpInside)];
 }
 - (void)viewWillAppear:(BOOL)animated
 {
@@ -119,13 +126,13 @@ static NSString *kDatePickerID = @"ActivityCreateTableDatePickerCell"; // the ce
 {
     switch (section) {
         case ActivityCreateSectionOption:
-            if (self.type == CREATE_TYPE_GROUP) {
+            if ([ActivityDataProxy sharedProxy].createActivityType == ACTIVITY_TYPE_GROUP) {
                 return self.arrGroups.count;
             }
-            else if(self.type == CREATE_TYPE_CLUB) {
+            else if([ActivityDataProxy sharedProxy].createActivityType == ACTIVITY_TYPE_CLUB) {
                 return 0;
             }
-            else if(self.type == CREATE_TYPE_TEMP) {
+            else if([ActivityDataProxy sharedProxy].createActivityType == ACTIVITY_TYPE_TEMP) {
                 return 1;
             }
             break;
@@ -150,12 +157,17 @@ static NSString *kDatePickerID = @"ActivityCreateTableDatePickerCell"; // the ce
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section == ActivityCreateSectionOption) {
-        if (self.type == CREATE_TYPE_GROUP) {
+        if ([ActivityDataProxy sharedProxy].createActivityType == ACTIVITY_TYPE_GROUP) {
             ActivityCreateTableOptionCell *optionCell = [self.tableView dequeueReusableCellWithIdentifier:@"ActivityCreateTableOptionCell" forIndexPath:indexPath];
 //            [optionCell s]
             return optionCell;
         }
-//        else if()
+        else if ([ActivityDataProxy sharedProxy].createActivityType == ACTIVITY_TYPE_TEMP) {
+            UITableViewCell *tempActivityCell;
+            tempActivityCell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"tempActivityCell"];
+            tempActivityCell.textLabel.text = @"临时活动";
+            return tempActivityCell;
+        }
     }
     else if (indexPath.section == ActivityCreateSectionTitle) {
         ActivityCreateTableTitleCell *titleCell = [self.tableView dequeueReusableCellWithIdentifier:@"ActivityCreateTableTitleCell" forIndexPath:indexPath];
@@ -173,12 +185,16 @@ static NSString *kDatePickerID = @"ActivityCreateTableDatePickerCell"; // the ce
             return infoCell;
         }
         else if (indexPath.row == ActivityCreateSectionInfoRowStartTime || indexPath.row == ActivityCreateSectionInfoRowEndTime) {
-                ActivityCreateTableLabelDateCell *lblAndContentCell = [self.tableView dequeueReusableCellWithIdentifier:kDatePickerID forIndexPath:indexPath];
+                ActivityCreateTableLabelDateCell *lblAndContentCell = [self.tableView dequeueReusableCellWithIdentifier:kDateCellID forIndexPath:indexPath];
                 return lblAndContentCell;
         }
         else if (indexPath.row == ActivityCreateSectionInfoRowAddress) {
-            ActivityCreateTableLabelDateCell *lblAndContentAddressCell = [self.tableView dequeueReusableCellWithIdentifier:@"ActivityCreateTableLabelAndContentCell" forIndexPath:indexPath];
-                return lblAndContentAddressCell;
+            UITableViewCell *lblAndContentAddressCell;
+            if (lblAndContentAddressCell == nil) {
+                 lblAndContentAddressCell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kAdrressID];
+            }
+           
+            return lblAndContentAddressCell;
         }
     }
     else if (indexPath.section == ActivityCreateSectionDetail) {
@@ -211,10 +227,33 @@ static NSString *kDatePickerID = @"ActivityCreateTableDatePickerCell"; // the ce
         }
     }
     else if (indexPath.section == ActivityCreateSectionDetail) {
-        return 121;
+        return 126;
     }
     NSLog(@"ActivityCreateTable heightForRowAtIndexPath非法的section:%i或者非法的row:%i!!!",indexPath.section,indexPath.row);
     return 0;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+{
+    if (section == ActivityCreateSectionDetail) {
+        return 90;
+    }
+    else
+        return [super tableView:tableView heightForFooterInSection:section] ;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
+{
+    
+    if (section == ActivityCreateSectionDetail) {
+        
+        UIView *footerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, 0) ];
+        [footerView addSubview:self.btnCreate];//必须把按钮添加到一个view上 否则按钮会被拉长
+        
+        return footerView;
+    }
+    else
+        return [super tableView:tableView viewForFooterInSection:section];
 }
 
 /*! Reveals the date picker inline for the given indexPath, called by "didSelectRowAtIndexPath".
@@ -348,6 +387,8 @@ static NSString *kDatePickerID = @"ActivityCreateTableDatePickerCell"; // the ce
 //    }
 }
 
+//- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+
 #pragma mark - deal notification
 - (void)registerMessageNotification
 {
@@ -406,6 +447,61 @@ static NSString *kDatePickerID = @"ActivityCreateTableDatePickerCell"; // the ce
             [targetedDatePicker setDate:date animated:NO];
         }
     }
+}
+
+#pragma - mark ui事件监听
+
+- (IBAction)btnCreateTouchUpInside:(id)sender
+{
+    NSInteger createActivityType = [ActivityDataProxy sharedProxy].createActivityType;
+    long long typeId;
+    if ( createActivityType == ACTIVITY_TYPE_GROUP) {
+        typeId = self.selectedGroupId;
+    }
+    else if (createActivityType == ACTIVITY_TYPE_CLUB) {
+        typeId = self.selectedClubId;
+    }
+    else {
+        typeId = 0;
+    }
+    
+    NSIndexPath *indexPath;
+    indexPath = [NSIndexPath indexPathForRow:0 inSection:ActivityCreateSectionTitle];
+    ActivityCreateTableTitleCell *titleCell = (ActivityCreateTableTitleCell *)[self.tableView cellForRowAtIndexPath:indexPath];
+    
+    NSString *aTitle;
+    if (titleCell != nil) {
+        aTitle = titleCell.textLabel.text;
+    }
+    else {
+        NSLog(@"没有找到titleCell在indexPath section:%i,row:%i",indexPath.section,indexPath.row);
+       aTitle = @"";
+    }
+    aTitle = @"黑八晋级赛";
+  //TODO: 实现ui选择后修改
+    NSString *aDetail = @"独孤求败，独孤求败独孤求败，独孤求败独孤求败独孤求败独孤求败独孤求败独孤求败独孤求败独孤求败独孤求败独孤求败独孤求败";
+    //TODO: 实现ui选择后修改
+    NSInteger signerLimit = ACTIVITY_LIMIT_NONE;
+    //TODO: 实现ui选择后修改
+    NSInteger payType = ACTIVITY_PAY_TYPE_AA;
+    //TODO: 实现ui选择后修改
+    NSString *lon = @"lon";
+    NSString *lat = @"lat";
+    NSString *alt = @"alt";
+    //TODO: 实现ui选择后修改
+    NSString * dataStr;
+    NSDateFormatter *dataFormatter = [[NSDateFormatter alloc] init];
+    [dataFormatter setDateFormat:NSLocalizedString(@"DateAndTimeFormatServer", nil)];
+
+    NSString *beginTime = [dataFormatter stringFromDate:self.pickerView.date];
+    NSString *endTime = [dataFormatter stringFromDate:self.pickerView.date];
+    //TODO: 实现ui选择后修改
+    NSInteger maxNum = 20;
+    
+    NSString *address = @"黑吧";
+    NSInteger ladyFree = 1;
+    
+    [[ActivityMessageProxy sharedProxy] sendHttpCreateWithType:createActivityType withTypeId:typeId withTitle:aTitle withDetail:aDetail withSignerLimit:signerLimit withPayType:payType withLon:lon withLat:lat withAlt:alt withBeginTime:beginTime withEndTime:endTime withMaxNum:maxNum withAddress:address withLadyFree:ladyFree];
 }
 
 
