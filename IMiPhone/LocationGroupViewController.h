@@ -10,6 +10,6 @@
 #import <MapKit/MapKit.h>
 #import "LocationDataProxy.h"
 
-@interface LocationGroupViewController : UIViewController <MKMapViewDelegate>
+@interface LocationGroupViewController : UIViewController <MKMapViewDelegate,UIGestureRecognizerDelegate>
 
 @end

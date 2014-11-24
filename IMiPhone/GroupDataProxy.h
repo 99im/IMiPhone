@@ -63,7 +63,8 @@
 - (NSInteger)countGroupSearchList;
 - (DPGroup *)getGroupSearchInfoAtRow:(NSInteger)row;
 
-#pragma mark - 群地点
--(DPPlacemark *)getDPPlacemarkForCreate;
+#pragma mark - 群创建
+-(DPGroup *)getGroupCreating;
+-(void)setGroupCreatingCity:(NSString *)city withLatitude:(double)latitude longitude:(double)longitude;
 
 @end
