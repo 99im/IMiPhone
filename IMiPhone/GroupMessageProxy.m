@@ -551,7 +551,7 @@ static GroupMessageProxy *sharedGroupMessageProxy = nil;
                         NSDictionary *group = [arrGroups objectAtIndex:i];
                         
                         //群基本信息
-                        long long gid = [[group objectForKey:KEYP_H__GROUP_SEARCH__LIST_GID] longLongValue];
+                        long gid = [[group objectForKey:KEYP_H__GROUP_SEARCH__LIST_GID] longValue];
                         dpGroup.gid = gid;
                         dpGroup.ctime = [group objectForKey:KEYP_H__GROUP_SEARCH__LIST_CTIME];
                         dpGroup.name = [group objectForKey:KEYP_H__GROUP_SEARCH__LIST_NAME];

@@ -16,7 +16,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *lblGroupLevel;
 @property (weak, nonatomic) IBOutlet UILabel *lblGroupIntroduce;
 
-@property (nonatomic) IMGroupId groupId;
+@property (nonatomic) long long groupId;
 
 
 //实现方法
