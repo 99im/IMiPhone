@@ -111,7 +111,7 @@ static GroupMessageProxy *sharedGroupMessageProxy = nil;
 
 #pragma mark - 信息读取
 
-- (void)sendGroupInfo:(long long)gid
+- (void)sendGroupInfo:(IMGroupId)gid
 {
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
 
@@ -257,7 +257,7 @@ static GroupMessageProxy *sharedGroupMessageProxy = nil;
         }];
 }
 
-- (void)sendGroupMembers:(long long)gid start:(NSInteger)start pageNum:(NSInteger)pageNum
+- (void)sendGroupMembers:(IMGroupId)gid start:(NSInteger)start pageNum:(NSInteger)pageNum
 {
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
 
@@ -296,7 +296,7 @@ static GroupMessageProxy *sharedGroupMessageProxy = nil;
 }
 
 #pragma mark - 进出群
-- (void)sendGroupApply:(long long)gid msg:(NSString *)msg
+- (void)sendGroupApply:(IMGroupId)gid msg:(NSString *)msg
 {
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
 
@@ -374,7 +374,7 @@ static GroupMessageProxy *sharedGroupMessageProxy = nil;
         }];
 }
 
-- (void)sendGroupInvite:(long long)gid targetUids:(NSString *)targetUids msg:(NSString *)msg
+- (void)sendGroupInvite:(IMGroupId)gid targetUids:(NSString *)targetUids msg:(NSString *)msg
 {
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
 
@@ -455,7 +455,7 @@ static GroupMessageProxy *sharedGroupMessageProxy = nil;
 }
 
 
-- (void)sendGroupExit:(long long)gid{
+- (void)sendGroupExit:(IMGroupId)gid{
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
 
     [params setObject:[NSNumber numberWithLongLong:gid] forKey:KEYQ_H__GROUP_EXIT__GID];
