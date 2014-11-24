@@ -19,17 +19,16 @@
 #endif
 
 #define CRYPT YES
-
-  #if TARGET_OS_IPHONE
-    #define SOCKET_HOST @"taiqiu.tv"
-    #define SOCKET_PORT 8000//
-    #define HTTP_HOST @"taiqiu.tv"
-    #define HTTP_PORT 80
-  #elif TARGET_IPHONE_SIMULATOR
+  #if TARGET_IPHONE_SIMULATOR
     #define SOCKET_HOST @"local.taiqiu.com"     //@"taiqiu.tv"//
     #define SOCKET_PORT 7000                    //8000//
     #define HTTP_HOST @"local.taiqiu.com"       //@"taiqiu.tv"//
     #define HTTP_PORT 7070                      //80//
+  #elif TARGET_OS_IPHONE
+    #define SOCKET_HOST @"taiqiu.tv"
+    #define SOCKET_PORT 8000//
+    #define HTTP_HOST @"taiqiu.tv"
+    #define HTTP_PORT 80
   #endif
 
 #define ERRORCODE_OK 0
