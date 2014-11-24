@@ -24,6 +24,11 @@
 @synthesize creator_vip;
 @synthesize creator_city;
 
+@synthesize latitude;
+@synthesize longitude;
+@synthesize altitude;
+@synthesize city;
+
 @synthesize localExpireTime;
 //@synthesize isInMyGroups;
 

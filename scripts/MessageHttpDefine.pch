@@ -303,6 +303,7 @@ example: http://local.taiqiu.com:7070/activity/create/?payType=1&ladyFree=1&maxN
 #define KEYQ_H__ACTIVITY_CREATE__SIGNERLIMIT @"signerLimit" //signerLimit int 报名对象限制
 #define KEYQ_H__ACTIVITY_CREATE__PAYTYPE @"payType" //payType int 支付类型
 #define KEYQ_H__ACTIVITY_CREATE__MAXNUM @"maxNum" //maxNum int 最多人数
+#define KEYQ_H__ACTIVITY_CREATE__LADYFREE @"ladyFree" //ladyFree int 女士免单
 #define KEYP_H__ACTIVITY_CREATE__ERROR_CODE @"error_code" //error_code
 #define KEYP_H__ACTIVITY_CREATE__AID @"aid" //aid int 活动id
 

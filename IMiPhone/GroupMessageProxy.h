@@ -29,23 +29,23 @@
 
 #pragma mark - 信息读取
 ///HTTP:查看群详细信息
-- (void)sendGroupInfo:(long long)gid;
+- (void)sendGroupInfo:(IMGroupId)gid;
 ///HTTP：获取我的群列表
 - (void)sendGroupMyList:(NSInteger)start withPageNum:(NSInteger)pageNum;
 ///HTTP:获取群成员列表
-- (void)sendGroupMembers:(long long)gid start:(NSInteger)start pageNum:(NSInteger)pageNum;
+- (void)sendGroupMembers:(IMGroupId)gid start:(NSInteger)start pageNum:(NSInteger)pageNum;
 
 #pragma mark - 进出群
 ///HTTP: 申请加入群
-- (void)sendGroupApply:(long long)gid msg:(NSString *)msg;
+- (void)sendGroupApply:(IMGroupId)gid msg:(NSString *)msg;
 ///HTTP: 群管理员对申请的回应
 - (void)sendGroupApplyResponse:(long long)rid agree:(NSInteger)agree;
 ///HTTP：邀请加入群组
-- (void)sendGroupInvite:(long long)gid targetUids:(NSString *)targetUids msg:(NSString *)msg;
+- (void)sendGroupInvite:(IMGroupId)gid targetUids:(NSString *)targetUids msg:(NSString *)msg;
 ///HTTP：邀请加入群的回应
-- (void)sendGroupInviteResponse:(long long)rid agree:(NSInteger)agree;
+- (void)sendGroupInviteResponse:(IMGroupId)rid agree:(NSInteger)agree;
 ///HTTP: 退出群
-- (void)sendGroupExit:(long long)gid;
+- (void)sendGroupExit:(IMGroupId)gid;
 
 #pragma mark - 群管理
 ///HTTP：创建群

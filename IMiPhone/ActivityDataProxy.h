@@ -11,6 +11,8 @@
 
 @interface ActivityDataProxy : NSObject
 
+@property (nonatomic) NSInteger createActivityType;
+
 + (ActivityDataProxy *)sharedProxy;
 - (void)reset;
 
