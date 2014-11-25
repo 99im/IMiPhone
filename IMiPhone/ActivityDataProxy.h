@@ -13,7 +13,13 @@
 
 @property (nonatomic) NSInteger createActivityType;
 
+@property (nonatomic) long long curAid;//当前查看活动id
+
 + (ActivityDataProxy *)sharedProxy;
 - (void)reset;
+
+- (void)updateActivityListWithServerList:(NSArray *)serverList withStart:(NSInteger)start;
+
+- (NSArray *)getActivityListWithStart:(NSInteger)start withPageNum:(NSInteger)pageNum;
 
 @end

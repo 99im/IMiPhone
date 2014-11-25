@@ -14,7 +14,6 @@
 #import "ChatTableViewCell.h"
 #import "UserDataProxy.h"
 #import "ChatMessageProxy.h"
-#import "ChatTableViewCellFrame.h"
 #import "EmotionViewController.h"
 #import "ChatDataProxy.h"
 #import "ChatPlusViewController.h"
@@ -31,8 +30,10 @@
 
 @property (nonatomic, retain) UITapGestureRecognizer *tap;
 
-//
-@property (nonatomic,retain) NSMutableArray *arrAllCellFrames;
+//数据
+@property (nonatomic, retain) NSArray *arrChatMessages;
+
+@property (nonatomic,retain) NSMutableDictionary *mdicCellHeight;
 
 //表情弹框
 @property (nonatomic, retain) EmotionViewController *emotionViewController;
@@ -47,6 +48,10 @@
 
 @implementation ChatViewController
 
+static NSString *kChatTextCell = @"ChatTextTableViewCell";
+
+static NSString *kChatImageCell = @"ChatImageTableViewCell";
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -55,27 +60,12 @@
     
     self.viewChatInputSound.hidden = YES;
     
-    self.arrAllCellFrames = [NSMutableArray array];
-    
     if ([ChatDataProxy sharedProxy].chatViewType == ChatViewTypeP2P) {
         DPUser *dpUser = [[UserDataProxy sharedProxy] getUserByUid:[ChatDataProxy sharedProxy].chatToUid];
         if (dpUser) {
              self.title = dpUser.nick;
         }
-        NSArray *arrChatMessages = [[ChatDataProxy sharedProxy] getP2PChatMessagesByTargetUid:[ChatDataProxy sharedProxy].chatToUid];
-        for (NSInteger i = 0; i < arrChatMessages.count; i++) {
-            DPChatMessage *dpChatMsg = [arrChatMessages objectAtIndex:i];
-            ChatTableViewCellFrame *chatTableCellFrame = [[ChatTableViewCellFrame alloc] init];
-            ChatMessageType msgType;
-            if (dpChatMsg.senderUid == [UserDataProxy sharedProxy].lastLoginUid) {
-                msgType = ChatMessageTypeMe;
-            }
-            else {
-                msgType = ChatMessageTypeOther;
-            }
-            [chatTableCellFrame setMsgType:msgType withMsg:dpChatMsg];
-            [self.arrAllCellFrames addObject:chatTableCellFrame];
-        }
+        self.arrChatMessages = [[ChatDataProxy sharedProxy] getP2PChatMessagesByTargetUid:[ChatDataProxy sharedProxy].chatToUid];
     }
     
     UIStoryboard* mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
@@ -122,6 +112,7 @@
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
+    self.mdicCellHeight = nil;
     //解除键盘出现通知
     [[NSNotificationCenter defaultCenter] removeObserver:self
                                                     name: UIKeyboardDidShowNotification object:nil];
@@ -240,17 +231,16 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    ChatTableViewCellFrame *cellFrame = nil;
-    cellFrame = [self.arrAllCellFrames objectAtIndex:indexPath.row];
+    DPChatMessage *dpChatMessage = [self.arrChatMessages objectAtIndex:indexPath.row];
     
-    if (cellFrame.chatMessage.msgType == CHAT_MASSAGE_TYPE_TEXT) {
-        ChatTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ChatTableViewCell" forIndexPath:indexPath];
-        cell.cellFrame = [self.arrAllCellFrames objectAtIndex:indexPath.row];
+    if (dpChatMessage.msgType == CHAT_MASSAGE_TYPE_TEXT) {
+        ChatTextTableViewCell *cell = [self.tableViewChat dequeueReusableCellWithIdentifier:kChatTextCell forIndexPath:indexPath];
+        [cell setMsg:dpChatMessage];
         return cell;
     }
-    else if (cellFrame.chatMessage.msgType == CHAT_MASSAGE_TYPE_IMAGE) {
-        ChatImageTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ChatImageTableViewCell" forIndexPath:indexPath];
-        cell.cellFrame = [self.arrAllCellFrames objectAtIndex:indexPath.row];
+    else if (dpChatMessage.msgType == CHAT_MASSAGE_TYPE_IMAGE) {
+        ChatImageTableViewCell *cell = [self.tableViewChat dequeueReusableCellWithIdentifier:kChatImageCell forIndexPath:indexPath];
+        [cell setMsg:dpChatMessage];
         return cell;
     }
     return nil;
@@ -258,14 +248,27 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//    NSLog(@"height for %@",indexPath);
-    ChatTableViewCellFrame *cellFrame = [self.arrAllCellFrames objectAtIndex:indexPath.row];
-    if (cellFrame) {
-         return cellFrame.cellHeight;
+    NSLog(@"chat view Controller:heightForRowAtIndexPath row:%li",(long)indexPath.row);
+    if (self.mdicCellHeight == nil) {
+        self.mdicCellHeight = [NSMutableDictionary dictionary];
+    }
+    NSString *key = [NSString stringWithFormat:@"%i", indexPath.row];
+    NSNumber *numCellHeight = [self.mdicCellHeight objectForKey:key];
+    if (numCellHeight) {
+        return [numCellHeight doubleValue];
     }
     else {
-        NSLog(@"cannot find ChatTableViewCell at:%@",indexPath);
-        return 0;
+        DPChatMessage *dpChatMessage = [self.arrChatMessages objectAtIndex:indexPath.row];
+        CGFloat height;
+        if (dpChatMessage.msgType == CHAT_MASSAGE_TYPE_TEXT) {
+            height = [ChatTableViewCell heightOfTextCellWithMessage:dpChatMessage.content withFont:[UIFont systemFontOfSize:CHAT_CELL_CONTENT_FONT_SIZE] withContentWidth:CHAT_CELL_CONTENT_WIDTH_MAX];
+        }
+        else if (dpChatMessage.msgType == CHAT_MASSAGE_TYPE_IMAGE) {
+       //TODO:图片单元格高度计算
+        height = 50;
+        }
+        [self.mdicCellHeight setObject:[NSNumber numberWithDouble:height] forKey:key];
+        return height;
     }
 }
 
@@ -421,18 +424,7 @@
 
 - (void)dealChatN:(NSNotification *)notification
 {
-    DPChatMessage *dpChatMsg = notification.object;
-    
-    ChatTableViewCellFrame *chatTableCellFrame = [[ChatTableViewCellFrame alloc] init];
-    ChatMessageType msgType;
-    if (dpChatMsg.senderUid == [UserDataProxy sharedProxy].lastLoginUid) {
-        msgType = ChatMessageTypeMe;
-    }
-    else {
-        msgType = ChatMessageTypeOther;
-    }
-    [chatTableCellFrame setMsgType:msgType withMsg:dpChatMsg];
-    [self.arrAllCellFrames addObject:chatTableCellFrame];
+     self.arrChatMessages = [[ChatDataProxy sharedProxy] getP2PChatMessagesByTargetUid:[ChatDataProxy sharedProxy].chatToUid];
     [self.tableViewChat reloadData];
     [self scrollToLastCell:YES];
 }

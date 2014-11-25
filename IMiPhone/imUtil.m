@@ -241,4 +241,17 @@
     return imgPath;
 }
 
+#pragma mark - view清除子节点
+
++ (void)clearSubviewsInView:(UIView *)superView
+{
+    if (superView == nil) {
+        NSLog(@"clearSubviewsInView superView is nil!");
+        return;
+    }
+    while (superView.subviews.count > 0) {
+        [[superView.subviews objectAtIndex:0] removeFromSuperview];
+    }
+}
+
 @end

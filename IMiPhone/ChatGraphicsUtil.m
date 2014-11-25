@@ -12,6 +12,11 @@
 
 + (IMRichText *)richTextWithMessage:(NSString*)message withFont:(UIFont *)font withContentWidth:(CGFloat) width
 {
+    return [IMRichText richTextWithAttributedString:[self abStringWithMessage:message withFont:font ] withFrameWidth:width];
+}
+
++ (NSAttributedString *)abStringWithMessage:(NSString*)message withFont:(UIFont *)font
+{
     NSString *mStr = message;
     NSMutableAttributedString *mAbString = [[NSMutableAttributedString alloc] initWithString:message];
     [mAbString beginEditing];
@@ -37,14 +42,14 @@
         }
         
         imageId = [subStr substringWithRange:NSMakeRange(rangeBegin.location, rangeEnd.location - rangeBegin.location + rangeEnd.length)];//裁出表情替代符
-    
+        
         NSString *imageName = [[[ChatDataProxy sharedProxy] getEmotionDic] objectForKey:imageId];
         if (imageName != nil) {
             imgAbStr = [IMRichText assembleLocalImageAbStringByImgName:imageName withSize:CGSizeMake(EMOTION_WIDTH, EMOTION_HEIGHT)];
             [mAbString replaceCharactersInRange:NSMakeRange(i + rangeBegin.location, imageId.length) withAttributedString:imgAbStr];
             mStr = mAbString.string;
             i = i + rangeBegin.location + imgAbStr.length; //rangeBegin之前的区间不会再出现表情替代符
-
+            
         }
         else {
             i = i + rangeEnd.location + rangeEnd.length;//rangeEnd之前的区间不会再出现表情替代符
@@ -53,7 +58,7 @@
     
     //设置字体
     NSMutableDictionary *attributes = [NSMutableDictionary dictionaryWithObject:(id)[UIColor blackColor].CGColor forKey:(id)kCTForegroundColorAttributeName];
-
+    
     [attributes setObject:font forKey:(id)kCTFontAttributeName];
     
     //设置换行模式，表情图标出界自动换行
@@ -61,8 +66,7 @@
     
     [mAbString addAttributes:attributes range:NSMakeRange(0, mAbString.length)];
     [mAbString endEditing];
-    
-    return [IMRichText richTextWithAttributedString:mAbString withFrameWidth:width];    
+    return mAbString;
 }
 
 @end
