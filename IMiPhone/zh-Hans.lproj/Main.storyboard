@@ -3682,23 +3682,6 @@
             </objects>
             <point key="canvasLocation" x="-1835" y="1927"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="xqC-XJ-Nbu">
-            <objects>
-                <viewController id="l9Q-Ad-NdB" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="MZi-l7-rCY"/>
-                        <viewControllerLayoutGuide type="bottom" id="ne5-vR-jAL"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="nRX-dl-DRL">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Zzr-GE-vCW" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-        </scene>
     </scenes>
     <resources>
         <image name="ChatDefault" width="68" height="68"/>
