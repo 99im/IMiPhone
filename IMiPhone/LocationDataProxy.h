@@ -28,25 +28,29 @@
 #define LBS_NOTI_didUpdateLocations @"LBS_NOTI_didUpdateLocations"
 //#define LBS_NOTI_didUpdateLocationsFail @"LBS_NOTI_didUpdateLocationsFail"
 #define LBS_NOTI_didReverseGEO @"LBS_NOTI_didReverseGEO"
+#define LBS_NOTI_didReverseDPPlacemarks @"LBS_NOTI_didReverseDPPlacemarks"
 //#define LBS_NOTI_didReverseGEOFail @"LBS_NOTI_didReverseGEOFail"
 
 //TODO:错误码统一规划
 #define LBS_ERR_DOMAIN @"LocationDataProxy"
 #define LBS_ERR_CODE_locationServicesDisabled -1001
 
-@interface LocationDataProxy : NSObject 
+@interface LocationDataProxy : NSObject
 
 + (LocationDataProxy *)sharedProxy;
 
 #pragma mark - 数据转换处理
 + (DPLocation *)convertLocation:(CLLocation *)location toDPLocation:(DPLocation *)dpLocation;
 + (DPPlacemark *)convertPlacemark:(CLPlacemark *)placemark toDPPlacemark:(DPPlacemark *)dpPlacemark;
-+ (void)reverseGeocodeDPPlacemark:(DPPlacemark *)dpPlacemark withLatitude:(double)latitude longitude:(double)longitude;
++ (void)reverseDPPlacemark:(DPPlacemark *)dpPlacemark withLatitude:(double)latitude longitude:(double)longitude;
++ (void)reverseDPPlacemarks:(NSMutableArray *)dpPlacemarks withLatitude:(double)latitude longitude:(double)longitude;
 + (void)updateDPPlacemark:(DPPlacemark *)dpPlacemark withCoordinate:(CLLocationCoordinate2D) coordinate;
 
 #pragma mark - 数据读取
 - (DPLocation *)getUserLocation;
 - (DPPlacemark *)getUserPlacemark;
+- (NSMutableArray *)getPlacemarks;
+- (NSMutableArray *)getPlacemarksWithLatitude:(double)latitude longitude:(double)longitude;
 
 #pragma mark - 其它
 -(void) startUpdatingLocation:(NSInteger)updateTimes; //待定：是否对外开放

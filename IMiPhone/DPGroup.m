@@ -12,6 +12,8 @@
 
 @synthesize gid;
 @synthesize name;
+@synthesize categoryId;
+@synthesize categoryName;
 @synthesize memberNum;
 @synthesize myRelation;
 @synthesize ctime;

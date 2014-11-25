@@ -9,6 +9,7 @@
 //#import "LocationViewController.h"
 #import <MapKit/MapKit.h>
 #import "LocationDataProxy.h"
+#import "GroupDataProxy.h"
 
 @interface LocationGroupViewController : UIViewController <MKMapViewDelegate,UIGestureRecognizerDelegate>
 

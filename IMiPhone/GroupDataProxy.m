@@ -357,7 +357,6 @@ static GroupDataProxy *sharedGroupDataProxy = nil;
     if (!_dpGroupCreating) {
         _dpGroupCreating = [[DPGroup alloc] init];
     }
-
     return _dpGroupCreating;
 }
 
@@ -368,7 +367,6 @@ static GroupDataProxy *sharedGroupDataProxy = nil;
     }
     _dpGroupCreating.latitude = latitude;
     _dpGroupCreating.longitude = latitude;
-
 }
 
 @end

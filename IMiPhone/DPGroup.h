@@ -23,11 +23,13 @@ typedef long long IMUserId;
 #pragma mark - 群基信息
 @property (nonatomic) IMGroupId gid;
 @property (nonatomic, retain) NSString *name;
-@property (nonatomic) NSInteger memberNum;  //成员数
+@property (nonatomic) NSInteger categoryId;             //群分类ID
+@property (nonatomic, retain) NSString *categoryName;   //群分类名称
+@property (nonatomic) NSInteger memberNum;              //成员数
 @property (nonatomic) NSInteger myRelation;
 @property (nonatomic, retain) NSString *ctime;
 @property (nonatomic, retain) NSString *intro;
-@property (nonatomic, retain) NSString *portraitUrl;//头像地址
+@property (nonatomic, retain) NSString *portraitUrl;    //头像地址
 
 #pragma mark - 群主信息
 @property (nonatomic) IMUserId creator_uid;
