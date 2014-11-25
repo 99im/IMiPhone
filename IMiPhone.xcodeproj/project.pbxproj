@@ -334,6 +334,8 @@
 		DBA04B0E1A23121100C268EA /* DPPlacemark.m in Sources */ = {isa = PBXBuildFile; fileRef = AB1B83111A1DC5D800BDC841 /* DPPlacemark.m */; };
 		DBA04B0F1A23122300C268EA /* FIRMessageProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DBDE2B41A22179E00E28642 /* FIRMessageProxy.m */; };
 		DBA04B131A231C1500C268EA /* UserDynamicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DBA04B121A231C1500C268EA /* UserDynamicViewController.m */; };
+		DBA04B161A2330CA00C268EA /* UserD1TableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DBA04B151A2330CA00C268EA /* UserD1TableViewCell.m */; };
+		DBA04B191A2330F500C268EA /* UserD2TableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DBA04B181A2330F500C268EA /* UserD2TableViewCell.m */; };
 		DBD2A9281A1996030020EECD /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DBD2A9271A1996030020EECD /* Images.xcassets */; };
 		DBD2A92B1A19D88D0020EECD /* head.png in Resources */ = {isa = PBXBuildFile; fileRef = DBD2A9291A19D88D0020EECD /* head.png */; };
 		DBD2A92E1A19E5430020EECD /* ActivityCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DBD2A92D1A19E5430020EECD /* ActivityCellTableViewCell.m */; };
@@ -710,6 +712,10 @@
 		DB6FACC51A0B7BC90048B76B /* FindList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = FindList.plist; sourceTree = "<group>"; };
 		DBA04B111A231C1500C268EA /* UserDynamicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserDynamicViewController.h; sourceTree = "<group>"; };
 		DBA04B121A231C1500C268EA /* UserDynamicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserDynamicViewController.m; sourceTree = "<group>"; };
+		DBA04B141A2330CA00C268EA /* UserD1TableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserD1TableViewCell.h; sourceTree = "<group>"; };
+		DBA04B151A2330CA00C268EA /* UserD1TableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserD1TableViewCell.m; sourceTree = "<group>"; };
+		DBA04B171A2330F500C268EA /* UserD2TableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserD2TableViewCell.h; sourceTree = "<group>"; };
+		DBA04B181A2330F500C268EA /* UserD2TableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserD2TableViewCell.m; sourceTree = "<group>"; };
 		DBD2A9271A1996030020EECD /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		DBD2A92A1A19D88D0020EECD /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "zh-Hans"; path = "zh-Hans.lproj/head.png"; sourceTree = "<group>"; };
 		DBD2A92C1A19E5430020EECD /* ActivityCellTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityCellTableViewCell.h; sourceTree = "<group>"; };
@@ -1418,6 +1424,10 @@
 			children = (
 				DBA04B111A231C1500C268EA /* UserDynamicViewController.h */,
 				DBA04B121A231C1500C268EA /* UserDynamicViewController.m */,
+				DBA04B141A2330CA00C268EA /* UserD1TableViewCell.h */,
+				DBA04B151A2330CA00C268EA /* UserD1TableViewCell.m */,
+				DBA04B171A2330F500C268EA /* UserD2TableViewCell.h */,
+				DBA04B181A2330F500C268EA /* UserD2TableViewCell.m */,
 			);
 			name = dynamic;
 			sourceTree = "<group>";
@@ -1594,6 +1604,7 @@
 				116B6E9719B058A400DB1B5E /* SqlightResult.m in Sources */,
 				ABA91EFC19F658270017B045 /* GroupTableViewController.m in Sources */,
 				5825D8F119D808CA004FF6FF /* CategoryTableViewController.m in Sources */,
+				DBA04B191A2330F500C268EA /* UserD2TableViewCell.m in Sources */,
 				11DF6A961A04B57C00A4B1D3 /* DPGroupChatMessage.m in Sources */,
 				58D3F28819E63082006589F9 /* IMNWMessage.m in Sources */,
 				11795E2819D297CD003FD9A7 /* DPFriend.m in Sources */,
@@ -1697,6 +1708,7 @@
 				DB6FACC21A0B787D0048B76B /* ServiceTableViewCell.m in Sources */,
 				AB24A95D19F8DC6500026299 /* GroupCreateViewController.m in Sources */,
 				58BC1E3719C0304900722A00 /* RegStep1ViewController.m in Sources */,
+				DBA04B161A2330CA00C268EA /* UserD1TableViewCell.m in Sources */,
 				AB62170819FF3F65003C2FBB /* GroupApplyViewController.m in Sources */,
 				116BF87F19C981AD0015561B /* DPUser.m in Sources */,
 				58D026C419D17D4800BE4748 /* NSNumber+IMNWError.m in Sources */,

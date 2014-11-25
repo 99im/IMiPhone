@@ -7,7 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "UserD1TableViewCell.h"
+#import "UserD2TableViewCell.h"
 
-@interface UserDynamicViewController : UIViewController
+@interface UserDynamicViewController : UIViewController<UITableViewDelegate,UITableViewDataSource>
+- (IBAction)returnParentInterface:(UIBarButtonItem *)sender;
+
+@property (weak, nonatomic) IBOutlet UITableView *tableview;
+@property (weak, nonatomic) IBOutlet UIView *imageView;
 
 @end
