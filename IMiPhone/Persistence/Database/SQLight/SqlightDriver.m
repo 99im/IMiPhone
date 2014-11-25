@@ -24,6 +24,7 @@
 	if (self = [super init]) {
         NSArray *documentPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
 		NSString *documentsDir = [[documentPaths objectAtIndex:0] stringByAppendingString:@"/MomDB/"];
+        NSLog(@"数据库地址:%@",documentsDir);
         
         if (![[NSFileManager defaultManager] fileExistsAtPath:documentsDir]) {
             [[NSFileManager defaultManager] createDirectoryAtPath:documentsDir withIntermediateDirectories:YES attributes:nil error:nil];

@@ -54,7 +54,7 @@
     // Pass the selected object to the new view controller.
 }
 */
-
+//暂时不用，显示的是全部群组信息
 - (void) settingNowGroupList:(NSInteger)tag{
     if (tag == 1)
         self.nowGroupList = self.nearbyGroupRecruitList;

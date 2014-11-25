@@ -13,6 +13,7 @@
 #import "IMNWProxyProtocol.h"
 #import "IMNWSocketConnect.h"
 #import "AccountMessageProxy.h"
+#import "FIRMessageProxy.h"
 
 @interface imViewController () <IMNWProxyProtocol>
 
@@ -34,6 +35,9 @@
     if (self.hasVerified) {
         [[AccountMessageProxy sharedProxy] sendTypeMyinfo];
     }
+#if TARGET_OS_IPHONE
+    [[FIRMessageProxy sharedProxy] sendHttpVersion];
+#endif
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -93,6 +97,12 @@
         else {
             [[IMNWManager sharedNWManager].socketConnect connect:SOCKET_HOST port:SOCKET_PORT];
         }
+    }
+    else
+    {
+        [UserDataProxy sharedProxy].lastLoginUid = NAN;
+        [UserDataProxy sharedProxy].verify = nil;
+        [self performSegueWithIdentifier:@"Start2AccountSegue" sender:self];
     }
 }
 

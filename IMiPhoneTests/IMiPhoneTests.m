@@ -164,5 +164,13 @@
 
 }
 
+- (void)testNumberFormatter
+{
+    NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
+    id value;
+    value = [numberFormatter numberFromString:@"1"];
+    NSLog(@"testNumberFormatter: %@",value);
+}
+
 
 @end

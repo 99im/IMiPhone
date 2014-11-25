@@ -9,6 +9,7 @@
 #import "RegStep2ViewController.h"
 #import "AccountMessageProxy.h"
 #import "IMNWProxyProtocol.h"
+#import "UserDataProxy.h"
 
 @interface RegStep2ViewController () <UITextFieldDelegate, IMNWProxyProtocol>
 
@@ -80,7 +81,8 @@
 
 - (void)registerMessageNotification
 {
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sendTypeRegisterResult:) name:NOTI_H__ACCOUNT_REGISTER_ object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sendHttpRegisterResult:) name:NOTI_H__ACCOUNT_REGISTER_ object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sendHttpLoginResult:) name:NOTI_H__ACCOUNT_LOGIN_ object:nil];
 }
 
 - (void)removeMessageNotification
@@ -88,7 +90,14 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
-- (void)sendTypeRegisterResult:(NSNotification *)notification
+- (void)sendHttpRegisterResult:(NSNotification *)notification
+{
+    if (!notification.object) {
+        [[AccountMessageProxy sharedProxy] sendHttpLogin:[UserDataProxy sharedProxy].mobile fromCountry:[UserDataProxy sharedProxy].mobCountry withPwd:self.tfPassword.text];
+    }
+}
+
+- (void)sendHttpLoginResult:(NSNotification *)notification
 {
     if (!notification.object) {
         [self performSegueWithIdentifier:@"regStep2DoneSegue" sender:self];
