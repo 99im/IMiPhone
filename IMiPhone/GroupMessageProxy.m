@@ -6,6 +6,7 @@
 //  Copyright (c) 2014年 尹晓君. All rights reserved.
 //
 
+
 #import "GroupMessageProxy.h"
 #import "NSNumber+IMNWError.h"
 
