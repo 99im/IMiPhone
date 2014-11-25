@@ -27,8 +27,8 @@
 
 @implementation LocationGroupViewController
 
-double const latitudeDelta = 0.02;
-double const longitudeDelta = 0.02;
+double const latitudeDelta = 1;
+double const longitudeDelta = 1;
 
 @synthesize dpPlacemarkCurrGroup = _dpPlacemarkCurrGroup;
 @synthesize dpGroupCreating = _dpGroupCreating;
@@ -62,7 +62,7 @@ double const longitudeDelta = 0.02;
     self.tbResult.dataSource = self;
     _mapView.delegate = self;
 
-    if (_dpGroupCreating.city) {
+    if (_dpGroupCreating.address && _dpGroupCreating.address.length > 0) {
         CLLocationCoordinate2D center;     //中心点
         center.latitude = _dpGroupCreating.latitude;
         center.longitude = _dpGroupCreating.longitude;
@@ -199,7 +199,8 @@ double const longitudeDelta = 0.02;
     if (_dpPlacemarks.count>0) {//暂存选中的地点
         NSInteger row = self.tbResult.indexPathForSelectedRow.row;
         DPPlacemark *dpPlacemark = [_dpPlacemarks objectAtIndex:row];
-        _dpGroupCreating.city = [dpPlacemark getAddress];
+        //_dpGroupCreating.address = [dpPlacemark getCityName];
+        _dpGroupCreating.address = [dpPlacemark getAddress];
         _dpGroupCreating.latitude = dpPlacemark.latitude;
         _dpGroupCreating.longitude = dpPlacemark.longitude;
     }
@@ -293,11 +294,7 @@ double const longitudeDelta = 0.02;
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     PlacemarkCell *cell = [tableView dequeueReusableCellWithIdentifier:@"placemarkCell" forIndexPath:indexPath];
-    //cell.lblTitle.text = [[_dpPlacemarks objectAtIndex:indexPath.row] getAddress];
-    cell.lblTitle.text = [[_dpPlacemarks objectAtIndex:indexPath.row] getFullAdress];
-
-//    NSInteger row = indexPath.row;
-//    [cell drawBodyWithDPPlacemark:[_dpPlacemarks objectAtIndex:row]];
+    [cell drawBodyWidthDPPlacemark:[_dpPlacemarks objectAtIndex:indexPath.row]];
     return cell;
 }
 

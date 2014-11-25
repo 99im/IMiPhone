@@ -14,4 +14,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *lblTitle;
 @property (weak, nonatomic) IBOutlet UILabel *lblDetail;
 
+-(void)drawBodyWidthDPPlacemark:(DPPlacemark *)dpPlacemark;
+
 @end

@@ -42,7 +42,7 @@ typedef long long IMUserId;
 @property (nonatomic) double longitude; //经度
 @property (nonatomic) double latitude; //纬度
 @property (nonatomic) double altitude; //海拔
-@property (nonatomic, copy) NSString *city;         // 城市, eg. 北京
+@property (nonatomic, copy) NSString *address;         //地址
 //@property (nonatomic, copy) NSString *countryCode;  // 国家码, eg. CN
 //@property (nonatomic, copy) NSString *province;     // 省, eg. 北京
 

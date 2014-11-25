@@ -24,4 +24,10 @@
     // Configure the view for the selected state
 }
 
+-(void)drawBodyWidthDPPlacemark:(DPPlacemark *)dpPlacemark
+{
+    self.lblTitle.text = [dpPlacemark getAddress];
+    self.lblDetail.text = @"俱乐部";
+}
+
 @end

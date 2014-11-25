@@ -49,7 +49,7 @@
 
 #pragma mark - 群管理
 ///HTTP：创建群
-- (void)sendGroupCreate:(NSString *)name withIntro:(NSString *)intro;
+- (void)sendGroupCreate:(DPGroup *)dpGroup;
 
 ///HTTP：搜索群
 - (void)sendGroupSearch:(NSString *)keyword;

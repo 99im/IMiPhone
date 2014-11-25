@@ -4,6 +4,150 @@
 
 /*
 mark: activity
+type: /activity/nearby/
+kind: http
+method: http-get
+describe: 附近的群组
+
+example: http://local.taiqiu.com:7070/activity/nearby/?lon=115.713421&lat=39.12&verify=16_1411380260_8e01b76b234112ca88fdb3645eacac44
+
+{
+"error_code": 0,
+"list": [
+{
+"aid": 7,
+"title": "test001",
+"detail": "welcome",
+"typeId": 1,
+"type": 1,
+"signerLimit": 1,
+"payType": 1,
+"ladyFree": 1,
+"maxNum": 20,
+"beginTime": "2014-12-01 09:00:00",
+"location": {
+"lon": "115.725",
+"lat": "39.12",
+"alt": "0",
+"geohash": "wwfq93s6"
+},
+"curNum": 1,
+"creator": null,
+"ctime": "2014-11-18 14:03:20",
+"distance": 1000,
+"myrelation": 1
+}
+}}
+*/
+#define PATH_H__ACTIVITY_NEARBY_ @"/activity/nearby/"
+#define NOTI_H__ACTIVITY_NEARBY_ @"MPactivitynearbyNotifiction"
+#define METHOD_H__ACTIVITY_NEARBY_ @"GET"
+#define KEYQ_H__ACTIVITY_NEARBY__LON @"lon" //lon string
+#define KEYQ_H__ACTIVITY_NEARBY__LAT @"lat" //lat string
+#define KEYQ_H__ACTIVITY_NEARBY__START @"start" //start int
+#define KEYQ_H__ACTIVITY_NEARBY__PAGENUM @"pageNum" //pageNum int
+#define KEYP_H__ACTIVITY_NEARBY__ERROR_CODE @"error_code" //error_code int 0
+#define KEYP_H__ACTIVITY_NEARBY__LIST @"list" //list
+#define KEYP_H__ACTIVITY_NEARBY__LIST_AID @"aid" // aid
+#define KEYP_H__ACTIVITY_NEARBY__LIST_TITLE @"title" // title
+#define KEYP_H__ACTIVITY_NEARBY__LIST_DETAIL @"detail" // detail
+#define KEYP_H__ACTIVITY_NEARBY__LIST_TYPEID @"typeId" // typeId
+#define KEYP_H__ACTIVITY_NEARBY__LIST_TYPE @"type" // type
+#define KEYP_H__ACTIVITY_NEARBY__LIST_SIGNERLIMIT @"signerLimit" // signerLimit
+#define KEYP_H__ACTIVITY_NEARBY__LIST_PAYTYPE @"payType" // payType
+#define KEYP_H__ACTIVITY_NEARBY__LIST_LADYFREE @"ladyFree" // ladyFree
+#define KEYP_H__ACTIVITY_NEARBY__LIST_MAXNUM @"maxNum" // maxNum
+#define KEYP_H__ACTIVITY_NEARBY__LIST_BEGINTIME @"beginTime" // beginTime
+#define KEYP_H__ACTIVITY_NEARBY__LIST_LOCATION @"location" // location
+#define KEYP_H__ACTIVITY_NEARBY__LIST_LOCATION_LON @"lon" //  lon
+#define KEYP_H__ACTIVITY_NEARBY__LIST_LOCATION_LAT @"lat" //  lat
+#define KEYP_H__ACTIVITY_NEARBY__LIST_LOCATION_ALT @"alt" //  alt
+#define KEYP_H__ACTIVITY_NEARBY__LIST_LOCATION_GEOHASH @"geohash" //  geohash
+#define KEYP_H__ACTIVITY_NEARBY__LIST_CURNUM @"curNum" // curNum
+#define KEYP_H__ACTIVITY_NEARBY__LIST_CTIME @"ctime" // ctime
+#define KEYP_H__ACTIVITY_NEARBY__LIST_DISTANCE @"distance" // distance
+#define KEYP_H__ACTIVITY_NEARBY__LIST_MYRELATION @"myrelation" // myrelation
+#define KEYP_H__ACTIVITY_NEARBY__LIST_CREATOR @"creator" // creator
+
+
+#define MARK_GROUP @"group"
+
+/*
+mark: group
+type: /group/nearby/
+kind: http
+method: http-get
+describe: 附近的群组
+example: http://local.taiqiu.com:7070/group/nearby/?lon=115.723421&lat=39.12&verify=16_1411380260_8e01b76b234112ca88fdb3645eacac44
+
+{
+"error_code": 0,
+"list": [
+{
+"gid": 23,
+"name": "testgroup001",
+"intro": "hellogroup",
+"memberNum": 1,
+"createUid": 16,
+"adminUids": [
+"16"
+],
+"location": {
+"lon": "115.723421",
+"lat": "39.12",
+"alt": "0",
+"geohash": "wwfq93e4x0sc",
+"address": "wudaokou"
+},
+"ctime": "2014-11-24 15:15:50",
+"distance": 0,
+"myrelation": 1
+},
+{
+"gid": 24,
+"name": "testgroup001",
+"intro": "hellogroup",
+"memberNum": 1,
+"createUid": 16,
+"adminUids": [
+"16"
+],
+"location": {
+"lon": "115.713421",
+"lat": "39.12",
+"alt": "0",
+"geohash": "wwfq91efw0s3",
+"address": "wudaokou"
+},
+"ctime": "2014-11-24 15:30:18",
+"distance": 864,
+"myrelation": 1
+}
+]
+}
+*/
+#define PATH_H__GROUP_NEARBY_ @"/group/nearby/"
+#define NOTI_H__GROUP_NEARBY_ @"MPgroupnearbyNotifiction"
+#define METHOD_H__GROUP_NEARBY_ @"GET"
+#define KEYQ_H__GROUP_NEARBY__LON @"lon" //lon string
+#define KEYQ_H__GROUP_NEARBY__LAT @"lat" //lat string
+#define KEYQ_H__GROUP_NEARBY__START @"start" //start int
+#define KEYQ_H__GROUP_NEARBY__PAGENUM @"pageNum" //pageNum int
+#define KEYP_H__GROUP_NEARBY__ERROR_CODE @"error_code" //error_code int 
+#define KEYP_H__GROUP_NEARBY__LIST @"list" //list int 
+#define KEYP_H__GROUP_NEARBY__LIST_GID @"gid" // gid int
+#define KEYP_H__GROUP_NEARBY__LIST_NAME @"name" // name string
+#define KEYP_H__GROUP_NEARBY__LIST_INTRO @"intro" // intro string
+#define KEYP_H__GROUP_NEARBY__LIST_MEMBERNUM @"memberNum" // memberNum int 
+#define KEYP_H__GROUP_NEARBY__LIST_CREATEUID @"createUid" // createUid int 
+#define KEYP_H__GROUP_NEARBY__LIST_LOCATION @"location" // location
+#define KEYP_H__GROUP_NEARBY__LIST_LOCATION_ADDRESS @"address" //  address
+#define KEYP_H__GROUP_NEARBY__LIST_DISTANCE @"distance" // distance
+#define KEYP_H__GROUP_NEARBY__LIST_MYRELATION @"myrelation" // myrelation int 
+#define KEYP_H__GROUP_NEARBY__LIST_CTIME @"ctime" // ctime datetime
+
+/*
+mark: activity
 type: /activity/exit/
 kind: http
 method: http-get
@@ -732,10 +876,8 @@ example: http://local.taiqiu.com:7070/discovery/reportgeo/?lon=115.723421&lat=39
 #define KEYQ_H__DISCOVERY_REPORTGEO__LON @"lon" //lon string 经度
 #define KEYQ_H__DISCOVERY_REPORTGEO__LAT @"lat" //lat string 纬度
 #define KEYQ_H__DISCOVERY_REPORTGEO__ALT @"alt" //alt string 海拔
+#define KEYQ_H__DISCOVERY_REPORTGEO__ADDRESS @"address" //address string 地点 128字符
 #define KEYP_H__DISCOVERY_REPORTGEO__ERROR_CODE @"error_code" //error_code int 0
-
-
-#define MARK_GROUP @"group"
 
 /*
 mark: group
@@ -1174,6 +1316,10 @@ example: http://local.taiqiu.com:7070/group/create/?name=testgroup001&intro=hell
 #define METHOD_H__GROUP_CREATE_ @"POST"
 #define KEYQ_H__GROUP_CREATE__NAME @"name" //name string 群名称
 #define KEYQ_H__GROUP_CREATE__INTRO @"intro" //intro string 群介绍
+#define KEYQ_H__GROUP_CREATE__LON @"lon" //lon string 经度
+#define KEYQ_H__GROUP_CREATE__LAT @"lat" //lat string 纬度
+#define KEYQ_H__GROUP_CREATE__ALT @"alt" //alt string 海拔
+#define KEYQ_H__GROUP_CREATE__ADDRESS @"address" //address string 地点
 #define KEYP_H__GROUP_CREATE__ERROR_CODE @"error_code" //error_code int 0
 #define KEYP_H__GROUP_CREATE__GID @"gid" //gid int 群编号
 

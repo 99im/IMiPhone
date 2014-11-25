@@ -29,7 +29,7 @@
 @synthesize latitude;
 @synthesize longitude;
 @synthesize altitude;
-@synthesize city;
+@synthesize address;
 
 @synthesize localExpireTime;
 //@synthesize isInMyGroups;

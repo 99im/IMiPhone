@@ -490,12 +490,15 @@ static GroupMessageProxy *sharedGroupMessageProxy = nil;
 
 #pragma mark - 群管理
 
-- (void)sendGroupCreate:(NSString *)name withIntro:(NSString *)intro
+- (void)sendGroupCreate:(DPGroup *)dpGroup
 {
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
 
-    [params setObject:name forKey:KEYQ_H__GROUP_CREATE__NAME];
-    [params setObject:intro forKey:KEYQ_H__GROUP_CREATE__INTRO];
+    [params setObject:dpGroup.name forKey:KEYQ_H__GROUP_CREATE__NAME];
+    [params setObject:dpGroup.intro forKey:KEYQ_H__GROUP_CREATE__INTRO];
+    [params setObject:[NSNumber numberWithDouble:dpGroup.latitude] forKey:KEYQ_H__GROUP_CREATE__LAT];
+    [params setObject:[NSNumber numberWithDouble:dpGroup.longitude] forKey:KEYQ_H__GROUP_CREATE__LON];
+    [params setObject:dpGroup.address forKey:KEYQ_H__GROUP_CREATE__ADDRESS];
 
     IMNWMessage *message =
         [IMNWMessage createForHttp:PATH_H__GROUP_CREATE_ withParams:params withMethod:METHOD_H__GROUP_CREATE_ ssl:NO];

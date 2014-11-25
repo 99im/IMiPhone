@@ -31,12 +31,31 @@
 @synthesize localExpireTime;
 
 
+-(NSString *)getCityName
+{
+    NSString *cityName = @"";
+    if (self.locality) {
+        cityName = [cityName stringByAppendingString:self.locality];
+    }
+    if (self.subLocality) {
+        cityName = [cityName stringByAppendingString:self.subLocality];
+    }
+    return cityName;
+}
+
+-(NSString *)getFullCityName
+{
+    NSString *cityName = @"";
+    if (self.administrativeArea) {
+        cityName = [cityName stringByAppendingString:self.administrativeArea];
+    }
+    cityName = [cityName stringByAppendingString:[self getCityName]];
+    return cityName;
+}
+
 -(NSString *)getAddress
 {
-    NSString *address = @"";
-    if (self.locality) {
-        address = [address stringByAppendingString:self.locality];
-    }
+    NSString *address = [self getCityName];
     if (self.thoroughfare) {
         address = [address stringByAppendingString:self.thoroughfare];
     }
@@ -46,7 +65,7 @@
     return address;
 }
 
--(NSString *)getFullAdress
+-(NSString *)getFullAddress
 {
     NSString *address = @"";
     if (self.administrativeArea) {
