@@ -30,4 +30,32 @@
 @synthesize localUpdateTime;
 @synthesize localExpireTime;
 
+
+-(NSString *)getAddress
+{
+    NSString *address = @"";
+    if (self.locality) {
+        address = [address stringByAppendingString:self.locality];
+    }
+    if (self.thoroughfare) {
+        address = [address stringByAppendingString:self.thoroughfare];
+    }
+    if (self.subThoroughfare) {
+        address = [address stringByAppendingString:self.subThoroughfare];
+    }
+    return address;
+}
+
+-(NSString *)getFullAdress
+{
+    NSString *address = @"";
+    if (self.administrativeArea) {
+        address = [address stringByAppendingString:self.administrativeArea];
+    }
+    if (self.subAdministrativeArea) {
+        address = [address stringByAppendingString:self.subAdministrativeArea];
+    }
+    address = [address stringByAppendingString:[self getAddress]];
+    return address;
+}
 @end

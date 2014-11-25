@@ -245,22 +245,23 @@ static LocationDataProxy *sharedLocationDataProxy = nil;
 - (NSMutableArray *)getPlacemarks
 {
     if (!_dpPlacemarks) {
-        return [self getPlacemarksWithLatitude:40.000304 longitude:116.338154];//默认为五道口坐标
+        [self loadPlacemarksWithLatitude:40.000304 longitude:116.338154];//默认为五道口坐标
     }
     return _dpPlacemarks;
 }
 
-- (NSMutableArray *)getPlacemarksWithLatitude:(double)latitude longitude:(double)longitude;
+- (void)loadPlacemarksWithLatitude:(double)latitude longitude:(double)longitude;
 {
-    if (!_dpPlacemarks) {
-        _dpPlacemarks = [NSMutableArray array];
-    } else if(_lastLatitude == latitude && _lastLongitude == longitude){//返回上次的结果
-        return _dpPlacemarks;
-    }
-    _lastLatitude = latitude;
-    _lastLongitude = longitude;
-    [LocationDataProxy reverseDPPlacemarks:_dpPlacemarks withLatitude:_lastLatitude longitude:_lastLongitude];
-    return _dpPlacemarks;
+    // TODO:过滤机制待定
+//    if(_lastLatitude != latitude || _lastLongitude != longitude || !_dpPlacemarks){
+        _lastLatitude = latitude;
+        _lastLongitude = longitude;
+        if (!_dpPlacemarks) {
+            _dpPlacemarks = [NSMutableArray array];
+        }
+        [LocationDataProxy reverseDPPlacemarks:_dpPlacemarks withLatitude:_lastLatitude longitude:_lastLongitude];
+//    }
+
 }
 
 #pragma mark - 委托方法

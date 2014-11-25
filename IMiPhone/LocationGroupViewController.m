@@ -37,6 +37,22 @@ double const longitudeDelta = 0.02;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
+}
+
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    [self removeMessageNotification];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+
+    _dpGroupCreating = [[GroupDataProxy sharedProxy] getGroupCreating];
+
     [self registerMessageNotification];
 
     //定位当前位置：
@@ -56,36 +72,14 @@ double const longitudeDelta = 0.02;
         MKCoordinateRegion region = { center, span };   //地标显示区
         [_mapView setRegion:region];
         [self viewInitWithLatitude:_dpGroupCreating.latitude longitude:_dpGroupCreating.longitude];
-        [[LocationDataProxy sharedProxy] getPlacemarksWithLatitude:_dpGroupCreating.latitude longitude:_dpGroupCreating.longitude];
     } else {
         [[LocationDataProxy sharedProxy] getUserLocation];
-//        center.latitude = dpLocation.latitude;
-//        center.longitude = dpLocation.longitude;
-//       [[LocationDataProxy sharedProxy] getPlacemarksWithLatitude:dpLocation.latitude longitude:dpLocation.longitude];
     }
 
 
     //获取用户点击地图
     UITapGestureRecognizer *tapMapView = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(actionTapMapView:)];
     [_mapView addGestureRecognizer:tapMapView];
-}
-
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    [self removeMessageNotification];
-}
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-
-    _dpGroupCreating = [[GroupDataProxy sharedProxy] getGroupCreating];
-
-    //开始定位
-    //[[LocationDataProxy sharedProxy] startUpdatingLocation:1];
-    // map 定位
 
 }
 
@@ -205,8 +199,7 @@ double const longitudeDelta = 0.02;
     if (_dpPlacemarks.count>0) {//暂存选中的地点
         NSInteger row = self.tbResult.indexPathForSelectedRow.row;
         DPPlacemark *dpPlacemark = [_dpPlacemarks objectAtIndex:row];
-        NSString *address = [NSString stringWithFormat:@"%@%@" , dpPlacemark.administrativeArea, dpPlacemark.locality];
-        _dpGroupCreating.city = address;
+        _dpGroupCreating.city = [dpPlacemark getAddress];
         _dpGroupCreating.latitude = dpPlacemark.latitude;
         _dpGroupCreating.longitude = dpPlacemark.longitude;
     }
@@ -231,19 +224,18 @@ double const longitudeDelta = 0.02;
 #pragma mark - 视图数据加载
 -(void)viewInitWithLatitude:(double)latitude longitude:(double)longitude
 {
-    //坐标中心点
-    CLLocationCoordinate2D center;
+    //mapView setRegion :
+    CLLocationCoordinate2D center;  //坐标中心点
     center.latitude = latitude;
     center.longitude = longitude;
-
-    //坐标偏移量
-    MKCoordinateSpan span;
+    MKCoordinateSpan span;   //坐标偏移量
     span.latitudeDelta = latitudeDelta;
     span.longitudeDelta = longitudeDelta;
-
-    //坐标区
-    MKCoordinateRegion region = {center,span};
+    MKCoordinateRegion region = {center,span};  //坐标区
     [_mapView setRegion:region];
+
+    //getPlacemarks:
+    [[LocationDataProxy sharedProxy] loadPlacemarksWithLatitude:_dpGroupCreating.latitude longitude:_dpGroupCreating.longitude];
 }
 
 -(void)viewChangeWithLatitude:(double)latitude longitude:(double)longitude
@@ -259,7 +251,7 @@ double const longitudeDelta = 0.02;
 //    MKCoordinateRegion region = { center, span };   //地标显示区
 //    [_mapView setRegion:region];
     [_mapView setCenterCoordinate:center];
-    [[LocationDataProxy sharedProxy] getPlacemarksWithLatitude:latitude longitude:longitude];
+    [[LocationDataProxy sharedProxy] loadPlacemarksWithLatitude:latitude longitude:longitude];
 
 }
 
@@ -267,12 +259,6 @@ double const longitudeDelta = 0.02;
     _dpPlacemarks = [[LocationDataProxy sharedProxy] getPlacemarks];
     NSInteger count = _dpPlacemarks.count;
     self.lblResult.text = [NSString stringWithFormat:@"查询结果：共%li条",(long)count];
-//    for (NSInteger i = 0; i< count; i++) {
-//        DPPlacemark *dpPlacemark = [_dpPlacemarks objectAtIndex:i];
-//        NSString *address = [NSString stringWithFormat:@"%@ %@" , dpPlacemark.administrativeArea, dpPlacemark.locality];
-//        NSLog(@"%@", address);
-//    }
-
     [self.tbResult reloadData];
     //NSLog(@"%li", (long)[self.tbResult numberOfRowsInSection:1]);
 }
@@ -307,8 +293,11 @@ double const longitudeDelta = 0.02;
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     PlacemarkCell *cell = [tableView dequeueReusableCellWithIdentifier:@"placemarkCell" forIndexPath:indexPath];
-    NSInteger row = indexPath.row;
-    [cell drawBodyWithDPPlacemark:[_dpPlacemarks objectAtIndex:row]];
+    //cell.lblTitle.text = [[_dpPlacemarks objectAtIndex:indexPath.row] getAddress];
+    cell.lblTitle.text = [[_dpPlacemarks objectAtIndex:indexPath.row] getFullAdress];
+
+//    NSInteger row = indexPath.row;
+//    [cell drawBodyWithDPPlacemark:[_dpPlacemarks objectAtIndex:row]];
     return cell;
 }
 

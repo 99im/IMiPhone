@@ -44,13 +44,15 @@
 + (DPPlacemark *)convertPlacemark:(CLPlacemark *)placemark toDPPlacemark:(DPPlacemark *)dpPlacemark;
 + (void)reverseDPPlacemark:(DPPlacemark *)dpPlacemark withLatitude:(double)latitude longitude:(double)longitude;
 + (void)reverseDPPlacemarks:(NSMutableArray *)dpPlacemarks withLatitude:(double)latitude longitude:(double)longitude;
+
+#pragma mark - 数据异步加载
 + (void)updateDPPlacemark:(DPPlacemark *)dpPlacemark withCoordinate:(CLLocationCoordinate2D) coordinate;
+- (void)loadPlacemarksWithLatitude:(double)latitude longitude:(double)longitude;
 
 #pragma mark - 数据读取
 - (DPLocation *)getUserLocation;
 - (DPPlacemark *)getUserPlacemark;
 - (NSMutableArray *)getPlacemarks;
-- (NSMutableArray *)getPlacemarksWithLatitude:(double)latitude longitude:(double)longitude;
 
 #pragma mark - 其它
 -(void) startUpdatingLocation:(NSInteger)updateTimes; //待定：是否对外开放

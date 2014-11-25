@@ -11,6 +11,7 @@
 
 @interface PlacemarkCell : UITableViewCell
 
--(void)drawBodyWithDPPlacemark:(DPPlacemark *)dpPlacemark;
+@property (weak, nonatomic) IBOutlet UILabel *lblTitle;
+@property (weak, nonatomic) IBOutlet UILabel *lblDetail;
 
 @end
