@@ -16,13 +16,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [self registerMessageNotification];
     [super viewWillAppear:animated];
+    // Do any additional setup after loading the view.
+    DPGroup *dpGroup = [[GroupDataProxy sharedProxy] getGroupCreating];
+    self.tfCity.text = dpGroup.city;
 }
 
 - (void)didReceiveMemoryWarning {

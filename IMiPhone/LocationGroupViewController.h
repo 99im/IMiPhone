@@ -10,7 +10,8 @@
 #import <MapKit/MapKit.h>
 #import "LocationDataProxy.h"
 #import "GroupDataProxy.h"
+#import "PlacemarkCell.h"
 
-@interface LocationGroupViewController : UIViewController <MKMapViewDelegate,UIGestureRecognizerDelegate>
+@interface LocationGroupViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, MKMapViewDelegate,UIGestureRecognizerDelegate>
 
 @end

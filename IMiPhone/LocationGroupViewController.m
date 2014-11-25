@@ -11,21 +11,28 @@
 @interface LocationGroupViewController ()
 
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
-@property (weak, nonatomic) IBOutlet UILabel *lblLon;
-@property (weak, nonatomic) IBOutlet UILabel *lblLat;
+@property (weak, nonatomic) IBOutlet UILabel *lblLonLat;
+@property (weak, nonatomic) IBOutlet UILabel *lblResult;
 @property (weak, nonatomic) IBOutlet UILabel *lblAddress;
+@property (weak, nonatomic) IBOutlet UITableView *tbResult;
 
 @property (nonatomic, retain) DPPlacemark *dpPlacemarkCurrGroup;
 @property (nonatomic, retain) DPGroup *dpGroupCreating;
+@property (nonatomic, retain) NSMutableArray *dpPlacemarks;
 
 - (IBAction)goBackTouchUp:(id)sender;
+- (IBAction)btnSubmitTouchUp:(id)sender;
 
 @end
 
 @implementation LocationGroupViewController
 
+double const latitudeDelta = 0.02;
+double const longitudeDelta = 0.02;
+
 @synthesize dpPlacemarkCurrGroup = _dpPlacemarkCurrGroup;
 @synthesize dpGroupCreating = _dpGroupCreating;
+@synthesize dpPlacemarks = _dpPlacemarks;
 
 - (void)viewDidLoad
 {
@@ -35,18 +42,34 @@
     //定位当前位置：
     //_dpPlacemarkCurrGroup = [[LocationDataProxy sharedProxy] getUserPlacemark];
     //[self didChangedPlacemark];
+    self.tbResult.delegate = self;
+    self.tbResult.dataSource = self;
+    _mapView.delegate = self;
 
     if (_dpGroupCreating.city) {
+        CLLocationCoordinate2D center;     //中心点
+        center.latitude = _dpGroupCreating.latitude;
+        center.longitude = _dpGroupCreating.longitude;
+        MKCoordinateSpan span;              //偏移量
+        span.latitudeDelta = latitudeDelta;
+        span.longitudeDelta = longitudeDelta;
+        MKCoordinateRegion region = { center, span };   //地标显示区
+        [_mapView setRegion:region];
+        [self viewInitWithLatitude:_dpGroupCreating.latitude longitude:_dpGroupCreating.longitude];
         [[LocationDataProxy sharedProxy] getPlacemarksWithLatitude:_dpGroupCreating.latitude longitude:_dpGroupCreating.longitude];
     } else {
-        DPLocation *dpLocation = [[DPLocation alloc] init];
-        [[LocationDataProxy sharedProxy] getPlacemarksWithLatitude:dpLocation.latitude longitude:dpLocation.longitude];
+        [[LocationDataProxy sharedProxy] getUserLocation];
+//        center.latitude = dpLocation.latitude;
+//        center.longitude = dpLocation.longitude;
+//       [[LocationDataProxy sharedProxy] getPlacemarksWithLatitude:dpLocation.latitude longitude:dpLocation.longitude];
     }
+
 
     //获取用户点击地图
     UITapGestureRecognizer *tapMapView = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(actionTapMapView:)];
     [_mapView addGestureRecognizer:tapMapView];
 }
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -64,33 +87,6 @@
     //[[LocationDataProxy sharedProxy] startUpdatingLocation:1];
     // map 定位
 
-    if ([CLLocationManager locationServicesEnabled ]) {
-        //DPPlacemark *dpPlacemark = [[LocationDataProxy sharedProxy] getUserPlacemark];
-        //[self didUpdatePlacemarkView:dpPlacemark];
-
-//        _mapView.mapType = MKMapTypeStandard;
-//        _mapView.delegate = self;
-//        _mapView.showsUserLocation = YES;
-//        [_mapView setUserTrackingMode:MKUserTrackingModeFollow animated:YES];
-//
-//        //坐标中心点
-//        CLLocationCoordinate2D center;
-//        //center.latitude = 40.000304;
-//        //center.longitude = 116.338154;
-//        center.latitude = dpPlacemark.latitude;
-//        center.longitude = dpPlacemark.longitude;
-//
-//        //坐标偏移量
-//        MKCoordinateSpan span;
-//        span.latitudeDelta = 0.02;
-//        span.longitudeDelta = 0.02;
-//
-//        //坐标区
-//        MKCoordinateRegion region = {center,span};
-//        [_mapView setRegion:region];
-    }
-//    DPLocation *dpCurrLocation = [[LocationDataProxy sharedProxy] getLocationWithUpdate:NO];
-//    [self didUpdateLocationView:dpCurrLocation];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -111,19 +107,15 @@
 }
 */
 
-- (IBAction)goBackTouchUp:(id)sender
-{
-    [self dismissViewControllerAnimated:YES completion:^{ NSLog(@"返回"); }];
-}
 
 #pragma mark - 消息处理
 
 - (void)registerMessageNotification
 {
-//    [[NSNotificationCenter defaultCenter] addObserver:self
-//                                             selector:@selector(didUpdateLocations:)
-//                                                 name:LBS_NOTI_didUpdateLocations
-//                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(didUpdateLocations:)
+                                                 name:LBS_NOTI_didUpdateLocations
+                                               object:nil];
 //    [[NSNotificationCenter defaultCenter] addObserver:self
 //                                             selector:@selector(didReverseGeocodeLocation:)
 //                                                 name:LBS_NOTI_didReverseGEO
@@ -139,32 +131,19 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 //
-//- (void)didUpdateLocations:(NSNotification *)notification
-//{
-////    if (!notification.object) {
-////        DPLocation *dpCurrLocation = [[LocationDataProxy sharedProxy] getUserLocation];
-////        [self didUpdateLocationView:dpCurrLocation];
-////
-////        //坐标中心点
-////        CLLocationCoordinate2D center;
-////        //center.latitude = 40.000304;
-////        //center.longitude = 116.338154;
-////        center.latitude = dpCurrLocation.latitude;
-////        center.longitude = dpCurrLocation.longitude;
-////
-////        //坐标偏移量
-////        MKCoordinateSpan span;
-////        span.latitudeDelta = 0.02;
-////        span.longitudeDelta = 0.02;
-////
-////        //坐标区
-////        MKCoordinateRegion region = {center,span};
-////        [_mapView setRegion:region];
-////    } else {
-////        self.lblAddress.text = [NSString stringWithFormat:@"%@", notification.object];
-////    }
-//
-//}
+- (void)didUpdateLocations:(NSNotification *)notification
+{
+    if (!notification.object) {
+        DPLocation *dpCurrLocation = [[LocationDataProxy sharedProxy] getUserLocation];
+        //[self didUpdateLocationView:dpCurrLocation];
+
+        [self viewInitWithLatitude:dpCurrLocation.latitude longitude:dpCurrLocation.longitude];
+
+    } else {
+        self.lblAddress.text = [NSString stringWithFormat:@"%@", notification.object];
+    }
+
+}
 
 -(void)didReverseGeocodeLocation:(NSNotification *)notification
 {
@@ -194,7 +173,7 @@
         if (code == kCLErrorDenied) {
             NSLog(@"%i", code);
         } else if(code == kCLErrorGeocodeFoundNoResult){
-
+            self.lblResult.text = [NSString stringWithFormat:@"查询结果：共0条"];
         } else {
 
         }
@@ -217,10 +196,29 @@
 
 #pragma mark - 动作行为
 
--(void)actionTapMapView:(UIGestureRecognizer *) gestureRecognizer {
+- (IBAction)goBackTouchUp:(id)sender
+{
+    [self dismissViewControllerAnimated:YES completion:^{ NSLog(@"返回"); }];
+}
+
+- (IBAction)btnSubmitTouchUp:(id)sender {
+    if (_dpPlacemarks.count>0) {//暂存选中的地点
+        NSInteger row = self.tbResult.indexPathForSelectedRow.row;
+        DPPlacemark *dpPlacemark = [_dpPlacemarks objectAtIndex:row];
+        NSString *address = [NSString stringWithFormat:@"%@%@" , dpPlacemark.administrativeArea, dpPlacemark.locality];
+        _dpGroupCreating.city = address;
+        _dpGroupCreating.latitude = dpPlacemark.latitude;
+        _dpGroupCreating.longitude = dpPlacemark.longitude;
+    }
+    [self dismissViewControllerAnimated:YES completion:^{ NSLog(@"确定"); }];
+}
+
+- (void)actionTapMapView:(UIGestureRecognizer *)gestureRecognizer
+{
     CGPoint touchPoint = [gestureRecognizer locationInView:_mapView];
     CLLocationCoordinate2D touchCoordinate = [_mapView convertPoint:touchPoint toCoordinateFromView:_mapView];
-    [_mapView setCenterCoordinate:touchCoordinate];
+    //[_mapView setCenterCoordinate:touchCoordinate];
+
     [self viewChangeWithLatitude:touchCoordinate.latitude longitude:touchCoordinate.longitude];
 }
 
@@ -231,38 +229,52 @@
 }
 
 #pragma mark - 视图数据加载
+-(void)viewInitWithLatitude:(double)latitude longitude:(double)longitude
+{
+    //坐标中心点
+    CLLocationCoordinate2D center;
+    center.latitude = latitude;
+    center.longitude = longitude;
+
+    //坐标偏移量
+    MKCoordinateSpan span;
+    span.latitudeDelta = latitudeDelta;
+    span.longitudeDelta = longitudeDelta;
+
+    //坐标区
+    MKCoordinateRegion region = {center,span};
+    [_mapView setRegion:region];
+}
+
 -(void)viewChangeWithLatitude:(double)latitude longitude:(double)longitude
 {
-    self.lblLon.text = [NSString stringWithFormat:@"经纬度(%f, %f)", latitude, latitude];
+    self.lblLonLat.text = [NSString stringWithFormat:@"经纬度(%f, %f)", latitude, latitude];
+
+    CLLocationCoordinate2D center;     //中心点
+    center.latitude = latitude;
+    center.longitude = longitude;
+//    MKCoordinateSpan span;              //偏移量
+//    span.latitudeDelta = 0.5;
+//    span.longitudeDelta = 0.5;
+//    MKCoordinateRegion region = { center, span };   //地标显示区
+//    [_mapView setRegion:region];
+    [_mapView setCenterCoordinate:center];
     [[LocationDataProxy sharedProxy] getPlacemarksWithLatitude:latitude longitude:longitude];
 
 }
 
 -(void)viewReloadPlacemarks {
-    NSMutableArray *placemarks = [[LocationDataProxy sharedProxy] getPlacemarks];
-    for (NSInteger i = 0; i< placemarks.count; i++) {
-        DPPlacemark *dpPlacemark = [placemarks objectAtIndex:i];
-        NSString *address = [NSString stringWithFormat:@"%@ %@" , dpPlacemark.administrativeArea, dpPlacemark.locality];
-        NSLog(@"%@", address);
-    }
+    _dpPlacemarks = [[LocationDataProxy sharedProxy] getPlacemarks];
+    NSInteger count = _dpPlacemarks.count;
+    self.lblResult.text = [NSString stringWithFormat:@"查询结果：共%li条",(long)count];
+//    for (NSInteger i = 0; i< count; i++) {
+//        DPPlacemark *dpPlacemark = [_dpPlacemarks objectAtIndex:i];
+//        NSString *address = [NSString stringWithFormat:@"%@ %@" , dpPlacemark.administrativeArea, dpPlacemark.locality];
+//        NSLog(@"%@", address);
+//    }
 
-    //self.lblAddress.text = [NSString stringWithFormat:@"地址:(%@)%@%@ %@",dpCurrPlacemark.countryCode, dpCurrPlacemark.city , dpCurrPlacemark.state , dpCurrPlacemark.subLocality];
-
-    //    //坐标中心点
-    //    CLLocationCoordinate2D center;
-    //    //center.latitude = 40.000304;
-    //    //center.longitude = 116.338154;
-    //    center.latitude = _dpPlacemarkCurrGroup.latitude;
-    //    center.longitude = _dpPlacemarkCurrGroup.longitude;
-    //
-    //    //坐标偏移量
-    //    MKCoordinateSpan span;
-    //    span.latitudeDelta = 0.02;
-    //    span.longitudeDelta = 0.02;
-    //
-    //    //坐标区
-    //    MKCoordinateRegion region = {center,span};
-    //    [_mapView setRegion:region];
+    [self.tbResult reloadData];
+    //NSLog(@"%li", (long)[self.tbResult numberOfRowsInSection:1]);
 }
 
 //
@@ -284,6 +296,22 @@
     NSLog(@"mapViewDidFinishLoadingMap:");
 
 }
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return [_dpPlacemarks count];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    PlacemarkCell *cell = [tableView dequeueReusableCellWithIdentifier:@"placemarkCell" forIndexPath:indexPath];
+    NSInteger row = indexPath.row;
+    [cell drawBodyWithDPPlacemark:[_dpPlacemarks objectAtIndex:row]];
+    return cell;
+}
+
 
 //
 //- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
