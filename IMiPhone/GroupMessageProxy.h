@@ -12,6 +12,11 @@
 #import "GroupDataProxy.h"
 #import "IMNWProxy.h"
 
+#define GROUP_PRO_ID_info   10  //群详信息
+#define GROUP_PRO_ID_mylist 20  //我的群聊表
+#define GROUP_PRO_ID_search 21  //查找
+#define GROUP_PRO_ID_nearby 22  //附近的群
+
 //全局能用型KEY
 #define GOL_KEY_PAGE_START @"start"
 #define GOL_KEY_PAGE_NUM @"pageNum"
@@ -21,11 +26,15 @@
 @interface GroupMessageProxy : IMNWProxy
 #pragma mark - 静态方法
 + (GroupMessageProxy *)sharedProxy;
-//+ (DPGroup *)groupInfoWithJSON:(NSMutableDictionary *) json;
+
+#pragma mark - 数据转换
++ (DPGroup *)convertGroupJSON:(NSMutableDictionary *) json withProtoId:(NSInteger)protoId;
 //+ (NSMutableArray *)groupListWithJSON:(NSMutableDictionary *) json;
 
 #pragma mark - 消息发送
 -(void)processSuccessNotiName:(NSString *)notiName withUserInfo:(NSDictionary *)userInfo;
+
+//- (void)sendHttpSysmsgUnreadClear:(NSString *)smids;
 
 #pragma mark - 信息读取
 ///HTTP:查看群详细信息

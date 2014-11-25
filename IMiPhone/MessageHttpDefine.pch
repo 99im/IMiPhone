@@ -644,6 +644,7 @@ example: http://local.taiqiu.com:7070/photo/logo-add/?verify=17_1411380649_8cd8f
 #define METHOD_H__PHOTO_LOGO_ADD_ @"POST"
 #define KEYQ_H__PHOTO_LOGO_ADD__TITLE @"title" //title string 说明
 #define KEYQ_H__PHOTO_LOGO_ADD__EXIF @"exif" //exif string 图片的exif信息
+#define KEYQ_H__PHOTO_LOGO_ADD__UPLOADIMG @"uploadimg" //uploadimg FILE 图片
 #define KEYP_H__PHOTO_LOGO_ADD__PID @"pid" //pid int 图片id
 #define KEYP_H__PHOTO_LOGO_ADD__ALBUMID @"albumId" //albumId int 相册id
 
@@ -1207,6 +1208,12 @@ example: http://local.taiqiu.com:7070/group/mylist/?&verify=16_1411380260_8e01b7
 #define KEYP_H__GROUP_MYLIST__LIST_DETAIL_MEMBERNUM @"memberNum" //  memberNum
 #define KEYP_H__GROUP_MYLIST__LIST_DETAIL_CREATOR @"creator" //  creator
 #define KEYP_H__GROUP_MYLIST__LIST_DETAIL_CTIME @"ctime" //  ctime
+#define KEYP_H__GROUP_MYLIST__LIST_LOCATION @"location" // location
+#define KEYP_H__GROUP_MYLIST__LIST_LOCATION_LON @"lon" //  lon
+#define KEYP_H__GROUP_MYLIST__LIST_LOCATION_LAT @"lat" //  lat
+#define KEYP_H__GROUP_MYLIST__LIST_LOCATION_ALT @"alt" //  alt
+#define KEYP_H__GROUP_MYLIST__LIST_LOCATION_GEOHASH @"geohash" //  geohash
+#define KEYP_H__GROUP_MYLIST__LIST_LOCATION_ADDRESS @"address" //  address
 
 /*
 mark: group

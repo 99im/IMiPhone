@@ -24,42 +24,43 @@ static GroupMessageProxy *sharedGroupMessageProxy = nil;
     return sharedGroupMessageProxy;
 }
 
-//+ (DPGroup *)groupInfoWithJSON:(NSMutableDictionary *)json
-//{
-//    NSDictionary *info = [json objectForKey:KEYP_H__GROUP_INFO__INFO];
-//
-//    long gid = [[info objectForKey:KEYP_H__GROUP_INFO__INFO_GID] longValue];
-//    if (gid < 1) {
-//        return nil; //客户端错误码，待统一整理
-//    }
-//
-//    // NSTimeInterval timeInterval= [imUtil nowTime];
-//    DPGroup *dpGroup = [[DPGroup alloc] init];
-//
-//    //客户端存储
-//    // long long localExpireTime = [imUtil nowTime] + TIME_GROUP_INFO;
-//    // dpGroup.localExpireTime = localExpireTime;
-//    // dpGroup.isInMyGroups = [self isInMyGroups:gid];
-//
-//    //群基本信息
-//    dpGroup.gid = gid;
-//    dpGroup.name = [info objectForKey:KEYP_H__GROUP_INFO__INFO_NAME];
-//    dpGroup.intro = [info objectForKey:KEYP_H__GROUP_INFO__INFO_INTRO];
-//    dpGroup.ctime = [info objectForKey:KEYP_H__GROUP_INFO__INFO_CTIME];
-//    // NSLog(@"更新群创建时间：%@", dpGroup.ctime);
-//    dpGroup.memberNum = [[info objectForKey:KEYP_H__GROUP_INFO__INFO_MEMBERNUM] integerValue];
-//    dpGroup.myRelation = [[info objectForKey:KEYP_H__GROUP_SEARCH__LIST_MYRELATION] integerValue];
-//
-//    //群主信息
-//    NSDictionary *creator = [info objectForKey:KEYP_H__GROUP_INFO__INFO_CREATOR];
-//    dpGroup.creator_uid = [[creator objectForKey:KEYP_H__GROUP_INFO__INFO_CREATOR_UID] longLongValue];
-//    dpGroup.creator_nick = [creator objectForKey:KEYP_H__GROUP_INFO__INFO_CREATOR_NICK];
-//    dpGroup.creator_oid = [[creator objectForKey:KEYP_H__GROUP_INFO__INFO_CREATOR_OID] longLongValue];
-//    dpGroup.creator_vip = [[creator objectForKey:KEYP_H__GROUP_INFO__INFO_CREATOR_VIP] integerValue];
-//    dpGroup.creator_city = [creator objectForKey:KEYP_H__GROUP_INFO__INFO_CREATOR_CITY];
-//
-//    return dpGroup;
-//}
+#pragma mark - 数据转换
+
+
++ (DPGroup *)convertGroupJSON:(NSMutableDictionary *) json withProtoId:(NSInteger)protoId
+{
+    NSDictionary *info = [json objectForKey:KEYP_H__GROUP_INFO__INFO];
+    IMGroupId gid = [[info objectForKey:KEYP_H__GROUP_INFO__INFO_GID] longLongValue];
+
+    DPGroup *dpGroup = [[GroupDataProxy sharedProxy] getGroupInfo:gid byHttpMode:SEND_HTTP_NO];
+    if (dpGroup == nil) {
+        dpGroup = [[DPGroup alloc] init];
+    }
+
+
+
+    //群基本信息
+    dpGroup.gid = gid;
+    dpGroup.name = [info objectForKey:KEYP_H__GROUP_INFO__INFO_NAME];
+    dpGroup.intro = [info objectForKey:KEYP_H__GROUP_INFO__INFO_INTRO];
+    dpGroup.ctime = [info objectForKey:KEYP_H__GROUP_INFO__INFO_CTIME];
+    // NSLog(@"更新群创建时间：%@", dpGroup.ctime);
+    dpGroup.memberNum = [[info objectForKey:KEYP_H__GROUP_INFO__INFO_MEMBERNUM] integerValue];
+    dpGroup.myRelation = [[info objectForKey:KEYP_H__GROUP_SEARCH__LIST_MYRELATION] integerValue];
+
+    //群主信息
+    NSDictionary *creator = [info objectForKey:KEYP_H__GROUP_INFO__INFO_CREATOR];
+    dpGroup.creator_uid = [[creator objectForKey:KEYP_H__GROUP_INFO__INFO_CREATOR_UID] longLongValue];
+    dpGroup.creator_nick = [creator objectForKey:KEYP_H__GROUP_INFO__INFO_CREATOR_NICK];
+    dpGroup.creator_oid = [[creator objectForKey:KEYP_H__GROUP_INFO__INFO_CREATOR_OID] longLongValue];
+    dpGroup.creator_vip = [[creator objectForKey:KEYP_H__GROUP_INFO__INFO_CREATOR_VIP] integerValue];
+    dpGroup.creator_city = [creator objectForKey:KEYP_H__GROUP_INFO__INFO_CREATOR_CITY];
+
+    //客户端存储
+    dpGroup.localExpireTime = [imUtil getExpireTimeWithMinutes:TIMEOUT_GROUP_INFO];
+
+    return dpGroup;
+}
 
 - (void)processSuccessNotiName:(NSString *)notiName withUserInfo:(NSDictionary *)userInfo
 {
@@ -209,7 +210,7 @@ static GroupMessageProxy *sharedGroupMessageProxy = nil;
                         NSDictionary *group = [list objectAtIndex:i];
 
                         //基本信息
-                        long gid = [[group objectForKey:KEYP_H__GROUP_MYLIST__LIST_GID] longValue];
+                        IMGroupId gid = [[group objectForKey:KEYP_H__GROUP_MYLIST__LIST_GID] longValue];
                         dpGroup.gid = gid;
                         NSDictionary *detail = [group objectForKey:KEYP_H__GROUP_MYLIST__LIST_DETAIL];
                         dpGroup.name = [detail objectForKey:KEYP_H__GROUP_MYLIST__LIST_DETAIL_NAME];

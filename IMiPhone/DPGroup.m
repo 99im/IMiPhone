@@ -34,4 +34,9 @@
 @synthesize localExpireTime;
 //@synthesize isInMyGroups;
 
+-(BOOL)isExpired
+{
+    return NO;
+}
+
 @end

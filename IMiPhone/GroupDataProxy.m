@@ -174,8 +174,6 @@ static GroupDataProxy *sharedGroupDataProxy = nil;
 {
     DPGroup *dpGroup;
     if (gid > 0) {
-        ;
-
         if (_groupInfoCurrent && _groupInfoCurrent.gid == gid) {
             dpGroup = _groupInfoCurrent;
         }

@@ -49,4 +49,7 @@ typedef long long IMUserId;
 #pragma mark - 客户端附加信息
 @property (nonatomic) long long localExpireTime;  //本地过期时间，格式(yyyyMMddHHmmss)：201411024125959
 //@property (nonatomic) BOOL isInMyGroups;
+
+-(BOOL)isExpired;
+
 @end
