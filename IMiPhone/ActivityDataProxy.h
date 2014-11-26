@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 #import "DPActivity.h"
+#import "DPMyActivity.h"
+#import "DPMyActivity.h"
 
 @interface ActivityDataProxy : NSObject
 
@@ -18,8 +20,18 @@
 + (ActivityDataProxy *)sharedProxy;
 - (void)reset;
 
-- (void)updateActivityListWithServerList:(NSArray *)serverList withStart:(NSInteger)start;
+- (void)updateActivityListWithServerList:(NSArray *)serverList;
 
-- (NSArray *)getActivityListWithStart:(NSInteger)start withPageNum:(NSInteger)pageNum;
+- (DPActivity *)getActivityWithAid:(long long)aid;
+
+//我的活动
+- (void)updateMyActivityListWithStart:(NSInteger)start withServerMyList:(NSArray *)serverMyList;
+//我的活动
+- (DPActivity *)getMyActivityListWithStart:(NSInteger)start withPageNum:(NSInteger)pageNum;
+
+//附近活动
+- (void)updateNearbyActivityListWithStart:(NSInteger)start withServerNearbyList:(NSArray *)serverNearbyList;
+//附近活动
+- (DPActivity *)getNearbyActivityListWithStart:(NSInteger)start withPageNum:(NSInteger)pageNum;
 
 @end

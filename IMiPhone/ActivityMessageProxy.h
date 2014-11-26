@@ -41,6 +41,10 @@
 
 //附近活动列表
 - (void)sendHttpNearbyWithLon:(NSString *)lon withLat:(NSString *)lat withStart:(NSInteger)start withPageNum:(NSInteger)pageNum;
-//
+//退出活动
+- (void)sendHttpExitWithAid:(long long)aid;
+
+//我的活动列表
+- (void)sendHttpMyListWithStart:(NSInteger)start withPageNum:(NSInteger)pageNum;
 
 @end
