@@ -6,9 +6,9 @@
 //  Copyright (c) 2014年 尹晓君. All rights reserved.
 //
 
-#import "GroupChatTableViewCell.h"
+#import "GroupChatTextTableViewCell.h"
 
-@implementation GroupChatTableViewCell
+@implementation GroupChatTextTableViewCell
 
 //- (void)awakeFromNib {
 //    // Initialization code

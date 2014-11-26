@@ -10,13 +10,4 @@
 
 @implementation DPGroupChatMessage
 
-@synthesize stage;
-@synthesize mid;
-@synthesize senderUid;
-@synthesize targetId;
-@synthesize msgType;
-@synthesize content;
-@synthesize sendTime;
-@synthesize gid;
-
 @end

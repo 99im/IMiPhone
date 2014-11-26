@@ -30,6 +30,5 @@
 @property (nonatomic) NSInteger curNum;
 @property (nonatomic) long long createrUid;
 @property (nonatomic, retain) NSString *ctime;
-@property (nonatomic) NSInteger myreleation;
 
 @end

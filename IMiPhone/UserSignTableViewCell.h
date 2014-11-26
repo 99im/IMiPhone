@@ -1,14 +1,14 @@
 //
-//  UserD3TableViewCell.h
+//  UserSignTableViewCell.h
 //  IMiPhone
 //
-//  Created by 田聪 on 14/11/25.
+//  Created by 田聪 on 14/11/26.
 //  Copyright (c) 2014年 尹晓君. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 
-@interface UserD3TableViewCell : UITableViewCell
+@interface UserSignTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UIButton *btnDescription;
 
 @end

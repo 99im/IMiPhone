@@ -11,10 +11,9 @@
 #import "ChatInputSoundView.h"
 #import "DPChatMessage.h"
 #import "ChatDataProxy.h"
-#import "ChatTableViewCell.h"
+#import "ChatTextTableViewCell.h"
 #import "UserDataProxy.h"
 #import "ChatMessageProxy.h"
-#import "ChatTableViewCellFrame.h"
 #import "EmotionViewController.h"
 #import "ChatDataProxy.h"
 #import "ChatPlusViewController.h"
@@ -31,8 +30,8 @@
 
 @property (nonatomic, retain) UITapGestureRecognizer *tap;
 
-//
-@property (nonatomic,retain) NSMutableArray *arrAllCellFrames;
+//数据
+@property (nonatomic, retain) NSArray *arrChatMessages;
 
 //表情弹框
 @property (nonatomic, retain) EmotionViewController *emotionViewController;
@@ -47,6 +46,10 @@
 
 @implementation ChatViewController
 
+static NSString *kChatTextCell = @"ChatTextTableViewCell";
+
+static NSString *kChatImageCell = @"ChatImageTableViewCell";
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -55,27 +58,12 @@
     
     self.viewChatInputSound.hidden = YES;
     
-    self.arrAllCellFrames = [NSMutableArray array];
-    
     if ([ChatDataProxy sharedProxy].chatViewType == ChatViewTypeP2P) {
         DPUser *dpUser = [[UserDataProxy sharedProxy] getUserByUid:[ChatDataProxy sharedProxy].chatToUid];
         if (dpUser) {
              self.title = dpUser.nick;
         }
-        NSArray *arrChatMessages = [[ChatDataProxy sharedProxy] getP2PChatMessagesByTargetUid:[ChatDataProxy sharedProxy].chatToUid];
-        for (NSInteger i = 0; i < arrChatMessages.count; i++) {
-            DPChatMessage *dpChatMsg = [arrChatMessages objectAtIndex:i];
-            ChatTableViewCellFrame *chatTableCellFrame = [[ChatTableViewCellFrame alloc] init];
-            ChatMessageType msgType;
-            if (dpChatMsg.senderUid == [UserDataProxy sharedProxy].lastLoginUid) {
-                msgType = ChatMessageTypeMe;
-            }
-            else {
-                msgType = ChatMessageTypeOther;
-            }
-            [chatTableCellFrame setMsgType:msgType withMsg:dpChatMsg];
-            [self.arrAllCellFrames addObject:chatTableCellFrame];
-        }
+        self.arrChatMessages = [[ChatDataProxy sharedProxy] getP2PChatMessagesByTargetUid:[ChatDataProxy sharedProxy].chatToUid];
     }
     
     UIStoryboard* mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
@@ -240,17 +228,16 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    ChatTableViewCellFrame *cellFrame = nil;
-    cellFrame = [self.arrAllCellFrames objectAtIndex:indexPath.row];
+    DPChatMessage *dpChatMessage = [self.arrChatMessages objectAtIndex:indexPath.row];
     
-    if (cellFrame.chatMessage.msgType == CHAT_MASSAGE_TYPE_TEXT) {
-        ChatTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ChatTableViewCell" forIndexPath:indexPath];
-        cell.cellFrame = [self.arrAllCellFrames objectAtIndex:indexPath.row];
+    if (dpChatMessage.msgType == CHAT_MASSAGE_TYPE_TEXT) {
+        ChatTextTableViewCell *cell = [self.tableViewChat dequeueReusableCellWithIdentifier:kChatTextCell forIndexPath:indexPath];
+        [cell setMsg:dpChatMessage];
         return cell;
     }
-    else if (cellFrame.chatMessage.msgType == CHAT_MASSAGE_TYPE_IMAGE) {
-        ChatImageTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ChatImageTableViewCell" forIndexPath:indexPath];
-        cell.cellFrame = [self.arrAllCellFrames objectAtIndex:indexPath.row];
+    else if (dpChatMessage.msgType == CHAT_MASSAGE_TYPE_IMAGE) {
+        ChatImageTableViewCell *cell = [self.tableViewChat dequeueReusableCellWithIdentifier:kChatImageCell forIndexPath:indexPath];
+        [cell setMsg:dpChatMessage];
         return cell;
     }
     return nil;
@@ -258,15 +245,9 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//    NSLog(@"height for %@",indexPath);
-    ChatTableViewCellFrame *cellFrame = [self.arrAllCellFrames objectAtIndex:indexPath.row];
-    if (cellFrame) {
-         return cellFrame.cellHeight;
-    }
-    else {
-        NSLog(@"cannot find ChatTableViewCell at:%@",indexPath);
-        return 0;
-    }
+    NSLog(@"chat view Controller:heightForRowAtIndexPath row:%li",(long)indexPath.row);
+    DPChatMessage *dpChatMessage = [self.arrChatMessages objectAtIndex:indexPath.row];
+    return dpChatMessage.cellHeight;
 }
 
 - (void)scrollToLastCell:(BOOL)animated
@@ -421,18 +402,7 @@
 
 - (void)dealChatN:(NSNotification *)notification
 {
-    DPChatMessage *dpChatMsg = notification.object;
-    
-    ChatTableViewCellFrame *chatTableCellFrame = [[ChatTableViewCellFrame alloc] init];
-    ChatMessageType msgType;
-    if (dpChatMsg.senderUid == [UserDataProxy sharedProxy].lastLoginUid) {
-        msgType = ChatMessageTypeMe;
-    }
-    else {
-        msgType = ChatMessageTypeOther;
-    }
-    [chatTableCellFrame setMsgType:msgType withMsg:dpChatMsg];
-    [self.arrAllCellFrames addObject:chatTableCellFrame];
+    self.arrChatMessages = [[ChatDataProxy sharedProxy] getP2PChatMessagesByTargetUid:[ChatDataProxy sharedProxy].chatToUid];
     [self.tableViewChat reloadData];
     [self scrollToLastCell:YES];
 }
@@ -444,21 +414,21 @@
         //NSURL *referenceURL = [info objectForKey:UIImagePickerControllerReferenceURL];
         //NSString *mediaType = [info objectForKey:UIImagePickerControllerMediaType];
         
-//        DPChatMessage *chatMessage = [[DPChatMessage alloc] init];
-//        chatMessage.msgType = CHAT_MASSAGE_TYPE_IMAGE;
-//        chatMessage.content = @"";
-//        chatMessage.sendTime = [imUtil nowTimeForServer];
-//        chatMessage.mid = 0;
-//        chatMessage.senderUid = [UserDataProxy sharedProxy].user.uid;
-//        chatMessage.targetId = [ChatDataProxy sharedProxy].chatToUid;
-//        chatMessage.stage = CHAT_STAGE_P2P;
-//        chatMessage.gid = [[ChatDataProxy sharedProxy] assembleGidWithStage:chatMessage.stage withSenderUid:chatMessage.senderUid withTargetId:chatMessage.targetId];
-//        NSInteger nid = [[ChatDataProxy sharedProxy] updateP2PChatMessage:chatMessage];
-        NSInteger nid = 0;
-        NSString *imgPath = [imUtil storeCacheImage:originalImage useName:[NSString stringWithFormat:@"chat_%li", (long)nid]];
+        DPChatMessage *chatMessage = [[DPChatMessage alloc] init];
+        chatMessage.msgType = CHAT_MASSAGE_TYPE_IMAGE;
+        chatMessage.content = @"";
+        chatMessage.sendTime = [imUtil nowTimeForServer];
+        chatMessage.mid = 0;
+        chatMessage.senderUid = [UserDataProxy sharedProxy].user.uid;
+        chatMessage.targetId = [ChatDataProxy sharedProxy].chatToUid;
+        chatMessage.stage = CHAT_STAGE_P2P;
+        chatMessage.gid = [[ChatDataProxy sharedProxy] assembleGidWithStage:chatMessage.stage withSenderUid:chatMessage.senderUid withTargetId:chatMessage.targetId];
+        chatMessage.nid = [[ChatDataProxy sharedProxy] updateP2PChatMessage:chatMessage];
+        NSString *imgPath = [imUtil storeCacheImage:originalImage useName:[NSString stringWithFormat:@"chat_%li", (long)chatMessage.nid]];
         if (imgPath) {
             [[ChatMessageProxy sharedProxy] sendHttpUploadimg:imgPath];
         }
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_S_CHAT_CHATN object:self];
     }];
 }
 

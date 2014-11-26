@@ -8,12 +8,30 @@
 
 #import <Foundation/Foundation.h>
 #import "DPActivity.h"
+#import "DPMyActivity.h"
+#import "DPNearbyActivity.h"
 
 @interface ActivityDataProxy : NSObject
 
 @property (nonatomic) NSInteger createActivityType;
 
+@property (nonatomic) long long curAid;//当前查看活动id
+
 + (ActivityDataProxy *)sharedProxy;
 - (void)reset;
+
+- (void)updateActivityListWithServerList:(NSArray *)serverList;
+
+- (DPActivity *)getActivityWithAid:(long long)aid;
+
+//我的活动
+- (void)updateMyActivityListWithStart:(NSInteger)start withServerMyList:(NSArray *)serverMyList;
+//我的活动
+- (DPActivity *)getMyActivityListWithStart:(NSInteger)start withPageNum:(NSInteger)pageNum;
+
+//附近活动
+- (void)updateNearbyActivityListWithStart:(NSInteger)start withServerNearbyList:(NSArray *)serverNearbyList;
+//附近活动
+- (DPActivity *)getNearbyActivityListWithStart:(NSInteger)start withPageNum:(NSInteger)pageNum;
 
 @end

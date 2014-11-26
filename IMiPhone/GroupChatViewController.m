@@ -13,9 +13,9 @@
 #import "ChatInputSoundView.h"
 #import "ChatDataProxy.h"
 #import "ChatMessageProxy.h"
-#import "GroupChatTableViewCell.h"
-#import "GroupChatTableViewCellFrame.h"
+#import "GroupChatTextTableViewCell.h"
 #import "ChatPlusViewController.h"
+#import "GroupChatImageTableViewCell.h"
 
 @interface GroupChatViewController () <UITextFieldDelegate, UIGestureRecognizerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
@@ -30,7 +30,7 @@
 @property (nonatomic, retain) UITapGestureRecognizer *tap;
 
 //
-@property (nonatomic,retain) NSMutableArray *arrAllCellFrames;
+@property (nonatomic,retain) NSArray *arrChatMessages;
 
 //表情弹框
 @property (strong, nonatomic) EmotionViewController *emotionViewController;
@@ -48,6 +48,9 @@
 
 @implementation GroupChatViewController
 
+static NSString *kGroupChatTextCell = @"GroupChatTextTableViewCell";
+
+static NSString *kGroupChatImageCell = @"GroupChatImageTableViewCell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -55,8 +58,6 @@
     self.tableViewChat.delegate = self;
     
     self.viewChatInputSound.hidden = YES;
-    
-    self.arrAllCellFrames = [NSMutableArray array];
     
     UIStoryboard* mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     self.emotionViewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"EmotionViewController"];
@@ -80,21 +81,7 @@
     if (dpGroup) {
         self.title = dpGroup.name;
     }
-    NSArray *arrChatMessages = [[ChatDataProxy sharedProxy] getGroupChatMessagesByGroupid:groupid];
-    for (NSInteger i = 0; i < arrChatMessages.count; i++) {
-        DPGroupChatMessage *dpChatMsg = [arrChatMessages objectAtIndex:i];
-        GroupChatTableViewCellFrame *chatTableCellFrame = [[GroupChatTableViewCellFrame alloc] init];
-        ChatMessageType msgType;
-        if (dpChatMsg.senderUid == [UserDataProxy sharedProxy].lastLoginUid) {
-            msgType = ChatMessageTypeMe;
-        }
-        else {
-            msgType = ChatMessageTypeOther;
-        }
-        [chatTableCellFrame setMsgType:msgType withMsg:dpChatMsg];
-        [self.arrAllCellFrames addObject:chatTableCellFrame];
-    }
-
+    self.arrChatMessages = [[ChatDataProxy sharedProxy] getGroupChatMessagesByGroupid:groupid];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -241,25 +228,25 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *cellIdentifier = @"GroupChatTableViewCell";
-    GroupChatTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
+    DPGroupChatMessage *dpChatMessage = [self.arrChatMessages objectAtIndex:indexPath.row];
     
-    cell.cellFrame =
-    [self.arrAllCellFrames objectAtIndex:indexPath.row];
-    return cell;
+    if (dpChatMessage.msgType == CHAT_MASSAGE_TYPE_TEXT) {
+        GroupChatTextTableViewCell *cell = [self.tableViewChat dequeueReusableCellWithIdentifier:kGroupChatTextCell forIndexPath:indexPath];
+        [cell setMsg:dpChatMessage];
+        return cell;
+    }
+    else if (dpChatMessage.msgType == CHAT_MASSAGE_TYPE_IMAGE) {
+        GroupChatImageTableViewCell *cell = [self.tableViewChat dequeueReusableCellWithIdentifier:kGroupChatImageCell forIndexPath:indexPath];
+        [cell setMsg:dpChatMessage];
+        return cell;
+    }
+    return nil;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    //    NSLog(@"height for %@",indexPath);
-    ChatTableViewCellFrame *cellFrame = [self.arrAllCellFrames objectAtIndex:indexPath.row];
-    if (cellFrame) {
-        return cellFrame.cellHeight;
-    }
-    else {
-        NSLog(@"cannot find ChatTableViewCell at:%@",indexPath);
-        return 0;
-    }
+    DPGroupChatMessage *dpChatMessage = [self.arrChatMessages objectAtIndex:indexPath.row];
+    return dpChatMessage.cellHeight;
 }
 
 - (void)scrollToLastCell:(BOOL)animated
@@ -406,18 +393,9 @@
 - (void)dealGroupChatN:(NSNotification *)notification
 {
     
-    DPGroupChatMessage *dpChatMsg = notification.object;
-    
-    GroupChatTableViewCellFrame *chatTableCellFrame = [[GroupChatTableViewCellFrame alloc] init];
-    ChatMessageType msgType;
-    if (dpChatMsg.senderUid == [UserDataProxy sharedProxy].lastLoginUid) {
-        msgType = ChatMessageTypeMe;
-    }
-    else {
-        msgType = ChatMessageTypeOther;
-    }
-    [chatTableCellFrame setMsgType:msgType withMsg:dpChatMsg];
-    [self.arrAllCellFrames addObject:chatTableCellFrame];
+    long long groupid = [GroupDataProxy sharedProxy].getGroupIdCurrent;
+    self.arrChatMessages = [[ChatDataProxy sharedProxy] getGroupChatMessagesByGroupid:groupid];
+
     [self.tableViewChat reloadData];
     [self scrollToLastCell:YES];
 }

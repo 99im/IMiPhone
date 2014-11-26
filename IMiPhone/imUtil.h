@@ -40,7 +40,7 @@
 #pragma mark - 消息处理
 + (void)postNotificationName:(NSString *)notiName object:(id)object;
 
-#pragma mark camera utility
+#pragma mark - camera utility
 + (BOOL)isCameraAvailable;
 + (BOOL)isRearCameraAvailable;
 + (BOOL)isFrontCameraAvailable;
@@ -51,5 +51,9 @@
 + (BOOL)cameraSupportsMedia:(NSString *)paramMediaType sourceType:(UIImagePickerControllerSourceType)paramSourceType;
 
 + (NSString *)storeCacheImage:(UIImage *)image useName:(NSString *)name;
+
+#pragma mark - view清除子节点
+
++ (void)clearSubviewsInView:(UIView *)superView;
 
 @end

@@ -1,14 +1,14 @@
 //
-//  UserD1TableViewCell.m
+//  UserDescriptionTableViewCell.m
 //  IMiPhone
 //
-//  Created by 田聪 on 14/11/24.
+//  Created by 田聪 on 14/11/26.
 //  Copyright (c) 2014年 尹晓君. All rights reserved.
 //
 
-#import "UserD1TableViewCell.h"
+#import "UserDescriptionTableViewCell.h"
 
-@implementation UserD1TableViewCell
+@implementation UserDescriptionTableViewCell
 
 - (void)awakeFromNib {
     // Initialization code

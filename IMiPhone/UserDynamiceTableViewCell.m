@@ -1,14 +1,14 @@
 //
-//  UserD2TableViewCell.m
+//  UserDynamiceTableViewCell.m
 //  IMiPhone
 //
-//  Created by 田聪 on 14/11/24.
+//  Created by 田聪 on 14/11/26.
 //  Copyright (c) 2014年 尹晓君. All rights reserved.
 //
 
-#import "UserD2TableViewCell.h"
+#import "UserDynamiceTableViewCell.h"
 
-@implementation UserD2TableViewCell
+@implementation UserDynamiceTableViewCell
 
 - (void)awakeFromNib {
     // Initialization code

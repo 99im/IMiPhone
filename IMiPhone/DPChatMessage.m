@@ -7,6 +7,8 @@
 //
 
 #import "DPChatMessage.h"
+#import "ChatMessageProxy.h"
+#import "ChatTextTableViewCell.h"
 
 @implementation DPChatMessage
 
@@ -23,6 +25,8 @@
 @synthesize imgThumbnail;
 @synthesize imgSrc;
 
+@synthesize cellHeight = _cellHeight;
+
 - (void)parseImageContent
 {
     if (!imgThumbnail && !imgSrc) {
@@ -38,6 +42,22 @@
             imgSrc = [imgInfo objectForKey:KEYP_S_CHAT_CHAT_CONTENT_SRC];
         }
     }
+}
+
+- (CGFloat)getCellHeight
+{
+    if (_cellHeight > 0)
+        return _cellHeight;
+    else
+    {
+        if (self.msgType == CHAT_MASSAGE_TYPE_TEXT) {
+            _cellHeight = [ChatTextTableViewCell heightOfTextCellWithMessage:self.content withFont:[UIFont systemFontOfSize:CHAT_CELL_CONTENT_FONT_SIZE] withContentWidth:CHAT_CELL_CONTENT_WIDTH_MAX];
+        }
+        else if (self.msgType == CHAT_MASSAGE_TYPE_IMAGE) {
+        }
+
+    }
+    return _cellHeight;
 }
 
 @end

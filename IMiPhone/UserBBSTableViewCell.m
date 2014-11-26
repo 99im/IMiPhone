@@ -1,29 +1,29 @@
 //
-//  UserD4TableViewCell.m
+//  UserBBSTableViewCell.m
 //  IMiPhone
 //
-//  Created by 田聪 on 14/11/25.
+//  Created by 田聪 on 14/11/26.
 //  Copyright (c) 2014年 尹晓君. All rights reserved.
 //
 
-#import "UserD4TableViewCell.h"
+#import "UserBBSTableViewCell.h"
 
-@implementation UserD4TableViewCell
-@synthesize lblItem;
+@implementation UserBBSTableViewCell
 @synthesize lblBallArm;
 @synthesize lblBox;
+@synthesize lblItem;
 @synthesize lblOther;
 
 - (void)awakeFromNib {
     // Initialization code
-    [self.lblItem.layer setCornerRadius:1.0];
-    [self.lblItem.layer setBorderWidth:1.0];
-    
     [self.lblBallArm.layer setCornerRadius:1.0];
     [self.lblBallArm.layer setBorderWidth:1.0];
     
     [self.lblBox.layer setCornerRadius:1.0];
     [self.lblBox.layer setBorderWidth:1.0];
+    
+    [self.lblItem.layer setCornerRadius:1.0];
+    [self.lblItem.layer setBorderWidth:1.0];
     
     [self.lblOther.layer setCornerRadius:1.0];
     [self.lblOther.layer setBorderWidth:1.0];

@@ -27,5 +27,8 @@
 @synthesize createrUid;
 @synthesize ctime;
 @synthesize myreleation;
+@synthesize maxNum;//最大人员数量
+@synthesize beginTime;
+@synthesize endTime;
 
 @end

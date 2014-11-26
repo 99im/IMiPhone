@@ -28,6 +28,5 @@
 @synthesize curNum;
 @synthesize createrUid;
 @synthesize ctime;
-@synthesize myreleation;
 
 @end
