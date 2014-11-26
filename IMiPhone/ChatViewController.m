@@ -424,8 +424,11 @@ static NSString *kChatImageCell = @"ChatImageTableViewCell";
         chatMessage.stage = CHAT_STAGE_P2P;
         chatMessage.gid = [[ChatDataProxy sharedProxy] assembleGidWithStage:chatMessage.stage withSenderUid:chatMessage.senderUid withTargetId:chatMessage.targetId];
         chatMessage.nid = [[ChatDataProxy sharedProxy] updateP2PChatMessage:chatMessage];
+        [[ChatDataProxy sharedProxy] updateP2PChatMessage:chatMessage];
         NSString *imgPath = [imUtil storeCacheImage:originalImage useName:[NSString stringWithFormat:@"chat_%li", (long)chatMessage.nid]];
         if (imgPath) {
+            chatMessage.imgSrc = imgPath;
+            chatMessage.imgThumbnail = imgPath;
             [[ChatMessageProxy sharedProxy] sendHttpUploadimg:imgPath];
         }
         [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_S_CHAT_CHATN object:self];

@@ -118,7 +118,7 @@ static AccountMessageProxy *sharedAccountMessageProxy = nil;
                 [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_H__ACCOUNT_LOGIN_ object:nil];
             }
             else {
-                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Alert", nil) message:[NSString stringWithFormat:NSLocalizedString(@"Alert.LoginError", nil), errorcode] delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", nil) otherButtonTitles:nil];
+                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Alert", nil) message:[NSString stringWithFormat:@"%i: %@", errorcode, [[NSNumber numberWithLong:errorcode] errorMessage]] delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", nil) otherButtonTitles:nil];
                 [alertView show];
                 [self processErrorCode:errorcode fromSource:PATH_H__ACCOUNT_LOGIN_ useNotiName:NOTI_H__ACCOUNT_LOGIN_];
             }
