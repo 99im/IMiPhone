@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ChatTableViewCell.h"
+#import "ChatTextTableViewCell.h"
 
 @interface GroupChatImageTableViewCell :ChatTextTableViewCell
 

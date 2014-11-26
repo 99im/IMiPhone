@@ -35,4 +35,9 @@
 @property (nonatomic) long long localUpdateTime; //本地更新时间，格式(yyyyMMddHHmmss)：201411024125959
 @property (nonatomic) long long localExpireTime; //本地过期时间，格式(yyyyMMddHHmmss)：201411024125959
 
+-(NSString *)getCityName;       //返回: 城市名
+-(NSString *)getFullCityName;   //返回: 省名 + 城市名
+-(NSString *)getAddress;    //返回拼接的地址，格式（城市+街道+楼号）
+-(NSString *)getFullAddress; //返回拼接的地址，格式（省名 + 城市名 + 街道名 + 楼号）
+
 @end

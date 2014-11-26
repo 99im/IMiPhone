@@ -34,20 +34,6 @@
     return imgBg;
 }
 
-+ (CGFloat)heightOfTextCellWithMessage:(NSString*)message withFont:(UIFont *)font withContentWidth:(CGFloat) width
-{
-    NSAttributedString *abStr = [ChatGraphicsUtil abStringWithMessage:message withFont:font];
-    CGFloat contentH;
-    CGSize size = [IMRichText sizeOfRichTextWithAttributedString:abStr withFrameWidth:width];
-    if (size.height < CHAT_PORTRAIT_HEIGHT) {
-        contentH = CHAT_PORTRAIT_HEIGHT;
-    }
-    else {
-        contentH = size.height;
-    }
-    return CHAT_PORTRAIT_TOP_MARGIN_Y + contentH + CHAT_CELL_CONTENT_BG_OFF_HEIGHT;
-}
-
 - (void)awakeFromNib {
     
     self.backgroundColor = [UIColor clearColor];

@@ -19,7 +19,7 @@
 //@property (nonatomic) long long updateTimeGroupMyList;
 @property (nonatomic, retain) NSMutableArray *arrGroupsSearch;
 
-@property (nonatomic, retain) DPPlacemark *dpPlacemarkCreate;
+@property (nonatomic, retain) DPGroup *dpGroupCreating;
 
 @end
 
@@ -33,7 +33,7 @@
 //@synthesize groupInfoCurrent = _groupInfoCurrent;
 @synthesize arrGroupsSearch = _arrGroupsSearch;
 
-@synthesize dpPlacemarkCreate = _dpPlacemarkCreate;
+@synthesize dpGroupCreating = _dpGroupCreating;
 
 //用于更换账号数据清除
 - (void)reset
@@ -174,8 +174,6 @@ static GroupDataProxy *sharedGroupDataProxy = nil;
 {
     DPGroup *dpGroup;
     if (gid > 0) {
-        ;
-
         if (_groupInfoCurrent && _groupInfoCurrent.gid == gid) {
             dpGroup = _groupInfoCurrent;
         }
@@ -351,14 +349,22 @@ static GroupDataProxy *sharedGroupDataProxy = nil;
     return nil;
 }
 
-#pragma mark - 群地点
--(DPPlacemark *)getDPPlacemarkForCreate
+#pragma mark - 群创建
+-(DPGroup *)getGroupCreating
 {
-    if (!_dpPlacemarkCreate) {
-        _dpPlacemarkCreate = [[LocationDataProxy sharedProxy] getUserPlacemark];
+    if (!_dpGroupCreating) {
+        _dpGroupCreating = [[DPGroup alloc] init];
     }
+    return _dpGroupCreating;
+}
 
-    return _dpPlacemarkCreate;
+-(void)setGroupCreatingCity:(NSString *)city withLatitude:(double)latitude longitude:(double)longitude
+{
+    if (!_dpGroupCreating) {
+        _dpGroupCreating = [[DPGroup alloc] init];
+    }
+    _dpGroupCreating.latitude = latitude;
+    _dpGroupCreating.longitude = latitude;
 }
 
 @end

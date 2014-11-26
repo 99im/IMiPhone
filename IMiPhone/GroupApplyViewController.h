@@ -12,11 +12,4 @@
 
 @interface GroupApplyViewController : UIViewController
 
-@property (weak, nonatomic) IBOutlet UIBarButtonItem *btnCancel;
-@property (weak, nonatomic) IBOutlet UIBarButtonItem *btnSubmit;
-@property (weak, nonatomic) IBOutlet UITextView *tvMsg;
-
-- (IBAction)checkGroupApply:(id)sender;
-- (IBAction)cancelGroupApply:(id)sender;
-
 @end

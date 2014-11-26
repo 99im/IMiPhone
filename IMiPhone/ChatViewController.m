@@ -11,7 +11,7 @@
 #import "ChatInputSoundView.h"
 #import "DPChatMessage.h"
 #import "ChatDataProxy.h"
-#import "ChatTableViewCell.h"
+#import "ChatTextTableViewCell.h"
 #import "UserDataProxy.h"
 #import "ChatMessageProxy.h"
 #import "EmotionViewController.h"
@@ -32,8 +32,6 @@
 
 //数据
 @property (nonatomic, retain) NSArray *arrChatMessages;
-
-@property (nonatomic,retain) NSMutableDictionary *mdicCellHeight;
 
 //表情弹框
 @property (nonatomic, retain) EmotionViewController *emotionViewController;
@@ -112,7 +110,6 @@ static NSString *kChatImageCell = @"ChatImageTableViewCell";
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
-    self.mdicCellHeight = nil;
     //解除键盘出现通知
     [[NSNotificationCenter defaultCenter] removeObserver:self
                                                     name: UIKeyboardDidShowNotification object:nil];
