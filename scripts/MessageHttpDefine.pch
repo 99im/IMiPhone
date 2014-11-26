@@ -1,5 +1,30 @@
 
 
+#define MARK_GROUP @"group"
+
+/*
+mark: group
+type: /group/set/
+kind: http
+method: http-post
+describe: 群设置修改
+example: http://local.taiqiu.com:7070/group/set/?gid=8&intro=hello&lon=32&lat=120&address=zhichunlu&verify=16_1411380260_8e01b76b234112ca88fdb3645eacac44
+
+{
+"error_code": 0
+}
+*/
+#define PATH_H__GROUP_SET_ @"/group/set/"
+#define NOTI_H__GROUP_SET_ @"MPgroupsetNotifiction"
+#define METHOD_H__GROUP_SET_ @"POST"
+#define KEYQ_H__GROUP_SET__INTRO @"intro" //intro string
+#define KEYQ_H__GROUP_SET__LON @"lon" //lon string 
+#define KEYQ_H__GROUP_SET__LAT @"lat" //lat string
+#define KEYQ_H__GROUP_SET__ALT @"alt" //alt string
+#define KEYQ_H__GROUP_SET__ADDRESS @"address" //address string
+#define KEYP_H__GROUP_SET__ERROR_CODE @"error_code" //error_code
+
+
 #define MARK_ACTIVITY @"activity"
 
 /*
@@ -68,9 +93,6 @@ example: http://local.taiqiu.com:7070/activity/nearby/?lon=115.713421&lat=39.12&
 #define KEYP_H__ACTIVITY_NEARBY__LIST_DISTANCE @"distance" // distance
 #define KEYP_H__ACTIVITY_NEARBY__LIST_MYRELATION @"myrelation" // myrelation
 #define KEYP_H__ACTIVITY_NEARBY__LIST_CREATOR @"creator" // creator
-
-
-#define MARK_GROUP @"group"
 
 /*
 mark: group
@@ -1303,6 +1325,12 @@ example: http://local.taiqiu.com:7070/group/info/?gid=8&verify=16_1411380260_8e0
 #define KEYP_H__GROUP_INFO__INFO_CREATOR_NICK @"nick" //  nick
 #define KEYP_H__GROUP_INFO__INFO_CREATOR_CITY @"city" //  city
 #define KEYP_H__GROUP_INFO__INFO_CREATOR_VIP @"vip" //  vip
+#define KEYP_H__GROUP_INFO__INFO_LOCATION @"location" // location
+#define KEYP_H__GROUP_INFO__INFO_LOCATION_LON @"lon" //  lon
+#define KEYP_H__GROUP_INFO__INFO_LOCATION_LAT @"lat" //  lat
+#define KEYP_H__GROUP_INFO__INFO_LOCATION_ALT @"alt" //  alt
+#define KEYP_H__GROUP_INFO__INFO_LOCATION_GEOHASH @"geohash" //  geohash
+#define KEYP_H__GROUP_INFO__INFO_LOCATION_ADDRESS @"address" //  address
 #define KEYP_H__GROUP_INFO__INFO_CTIME @"ctime" // ctime datetime 创建时间
 
 /*

@@ -79,14 +79,14 @@
 - (void)drawContent:(DPGroup *)dpGroup
 {
     if (dpGroup) {
-        self.lblGroupId.text = [NSString stringWithFormat:@"群号：%lli", dpGroup.gid];
+        self.lblGroupId.text = [NSString stringWithFormat:@"群号：%qi", dpGroup.gid];
         self.lblGroupName.text = dpGroup.name;
-        self.lblCreatorName.text = [NSString stringWithFormat:@"群主：%@ ", dpGroup.creator_nick];
+        self.lblCreatorName.text = [NSString stringWithFormat:@"群主：%@  (%qi)", dpGroup.creator_nick, dpGroup.creator_oid];
+        self.lblCity.text = [NSString stringWithFormat:@"%@", dpGroup.address];
         self.lblCTime.text = dpGroup.ctime;
-        self.lblMemberNum.text = [NSString stringWithFormat:@"%li", (long)dpGroup.memberNum];
+        self.lblMemberNum.text = [NSString stringWithFormat:@"成员：%li 人", (long)dpGroup.memberNum];
         self.tvIntro.text =
-            [NSString stringWithFormat:@"%@\n(本地过期时间：%qi)", dpGroup.intro, dpGroup.localExpireTime];
-        self.lblCity.text = dpGroup.creator_city;
+            [NSString stringWithFormat:@"%@\n经纬(%f, %f) \n过期(%qi)", dpGroup.intro, dpGroup.longitude, dpGroup.latitude, dpGroup.localExpireTime];
         if ([GroupDataProxy isInMyGroups:dpGroup]) {
             self.btnApply.hidden = YES;
             self.btnGroupChat.hidden = NO;
