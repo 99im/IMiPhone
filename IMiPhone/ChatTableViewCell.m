@@ -18,6 +18,7 @@
 @synthesize imageView = _imageView;
 @synthesize lblState = _lblState;
 @synthesize viewMsgContent = _viewMsgContent;
+@synthesize imgViewBg = _imgViewBg;
 
 + (UIImage *)resizableImageOfMsgBgWithMsgType:(ChatMessageType)messageType
 {
@@ -65,6 +66,20 @@
     
     _lblState = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
     [self.contentView addSubview:self.lblState];
+    
+    _imgViewBg = [[UIImageView alloc] init];
+}
+
+- (void)setMsg:(DPChatMessage *)chatMessage
+{
+    [imUtil clearSubviewsInView:self.viewMsgContent];
+    if (chatMessage.senderUid == [UserDataProxy sharedProxy].lastLoginUid) {
+        self.messageType = ChatMessageTypeMe;
+    }
+    else {
+        self.messageType = ChatMessageTypeOther;
+    }
+    self.imgViewBg.image = [ChatTableViewCell resizableImageOfMsgBgWithMsgType:self.messageType ];
 }
 
 - (void)layoutComponents
@@ -100,16 +115,9 @@
 
 - (void)setMsg:(DPChatMessage *)chatMessage
 {
-
-    if (chatMessage.senderUid == [UserDataProxy sharedProxy].lastLoginUid) {
-        self.messageType = ChatMessageTypeMe;
-    }
-    else {
-        self.messageType = ChatMessageTypeOther;
-    }
+    [super setMsg:chatMessage];
     
-    [imUtil clearSubviewsInView:self.viewMsgContent];
-
+    
     UIView *viewTextContent = [self assembleMessage:chatMessage.content];
     
     NSLog(@"textContent width:%f and height:%f",viewTextContent.frame.size.width, viewTextContent.frame.size.height);

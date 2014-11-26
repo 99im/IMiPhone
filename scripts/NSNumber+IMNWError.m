@@ -15,6 +15,12 @@
     NSString *sError = @"";
 
     switch (self.integerValue) {
+        case 10036:
+            sError = @"已经申请过了";
+            break;
+        case 10035:
+            sError = @"已达到创建群数量的上限";
+            break;
         case 10034:
             sError = @"活动已经开始，无法离开";
             break;

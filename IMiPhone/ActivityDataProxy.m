@@ -25,16 +25,18 @@ static ActivityDataProxy *sharedActivityProxy = nil;
 {
 }
 
-- (void)updateActivityListWithServerList:(NSArray *)serverList withStart:(NSInteger)start;
+- (void)updateActivityListWithServerList:(NSArray *)serverList;
 {
     //TODO:根据服务端返回活动列表更新客户端数据
 
 }
 
-- (NSArray *)getActivityListWithStart:(NSInteger)start withPageNum:(NSInteger)pageNum
+- (DPActivity *)getActivityWithAid:(long long)aid;
 {
-    //TODO:获得start开始后的pageNum数量的活动数据，（先加载本地，再向服务器请求）
-    return [NSArray array];
+    //TODO:根据活动id活动活动数据
+    return nil;
 }
+
+
 
 @end

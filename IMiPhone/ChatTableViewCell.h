@@ -41,9 +41,11 @@ typedef enum {
 
 @interface ChatTableViewCell : UITableViewCell
 
+
 @property (retain, nonatomic, readonly) UIImageView *imgViewPortrait;//头像
 @property (retain, nonatomic, readonly) UILabel *lblState;//状态：发送失败、发送成功、已读等等
 @property (retain, nonatomic, readonly) UIView *viewMsgContent;
+@property (retain, nonatomic, readonly) UIImageView *imgViewBg;//气泡
 
 @property (nonatomic) ChatMessageType messageType;//决定消息依靠屏幕左侧还是右侧
 
@@ -53,14 +55,15 @@ typedef enum {
 //预先计算cell高度
 + (CGFloat)heightOfTextCellWithMessage:(NSString*)message withFont:(UIFont *)font withContentWidth:(CGFloat) width;
 
+//负责公用组件的修改，子类可以重写
+- (void)setMsg:(DPChatMessage *)chatMessage;
+
 //设置完各个组件内容后调用。默认布局方式，子类可以重写
 - (void)layoutComponents;
 
 @end
 
 @interface ChatTextTableViewCell : ChatTableViewCell
-
-@property (retain, nonatomic, readonly) UIImageView *imgViewBg;//气泡
 
 - (void)setMsg:(DPChatMessage *)chatMessage;
 
