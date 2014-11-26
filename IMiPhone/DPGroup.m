@@ -39,6 +39,11 @@
 //    return NO;
 //}
 
+-(BOOL)isGroupOK
+{
+    return YES;
+}
+
 -(BOOL)isGroupOwner
 {
     if (self.myRelation == GROUP_RELATION_OWNER) {
@@ -58,6 +63,22 @@
 -(BOOL)isGroupMember
 {
     if (self.myRelation == GROUP_RELATION_MEMBER || [self isGroupManager]) {
+        return YES;
+    }
+    return NO;
+}
+
+-(BOOL)isGroupApplicant
+{
+    if (self.myRelation == GROUP_RELATION_APPLICANT) {
+        return YES;
+    }
+    return NO;
+}
+
+-(BOOL)canGroupApply
+{
+    if (![self isGroupMember] && ![self isGroupApplicant]) {
         return YES;
     }
     return NO;
