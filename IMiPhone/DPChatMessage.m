@@ -9,6 +9,7 @@
 #import "DPChatMessage.h"
 #import "ChatMessageProxy.h"
 #import "ChatTextTableViewCell.h"
+#import "ChatImageTableViewCell.h"
 
 @implementation DPChatMessage
 
@@ -54,6 +55,7 @@
             _cellHeight = [ChatTextTableViewCell heightOfTextCellWithMessage:self.content withFont:[UIFont systemFontOfSize:CHAT_CELL_CONTENT_FONT_SIZE] withContentWidth:CHAT_CELL_CONTENT_WIDTH_MAX];
         }
         else if (self.msgType == CHAT_MASSAGE_TYPE_IMAGE) {
+            _cellHeight = [ChatImageTableViewCell heightOfCell];
         }
 
     }

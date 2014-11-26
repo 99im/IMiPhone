@@ -246,26 +246,8 @@ static NSString *kChatImageCell = @"ChatImageTableViewCell";
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSLog(@"chat view Controller:heightForRowAtIndexPath row:%li",(long)indexPath.row);
-    if (self.mdicCellHeight == nil) {
-        self.mdicCellHeight = [NSMutableDictionary dictionary];
-    }
-    NSString *key = [NSString stringWithFormat:@"%i", indexPath.row];
-    NSNumber *numCellHeight = [self.mdicCellHeight objectForKey:key];
-    if (numCellHeight) {
-        return [numCellHeight doubleValue];
-    }
-    else {
-        DPChatMessage *dpChatMessage = [self.arrChatMessages objectAtIndex:indexPath.row];
-        CGFloat height;
-        if (dpChatMessage.msgType == CHAT_MASSAGE_TYPE_TEXT) {
-            height = [ChatTableViewCell heightOfTextCellWithMessage:dpChatMessage.content withFont:[UIFont systemFontOfSize:CHAT_CELL_CONTENT_FONT_SIZE] withContentWidth:CHAT_CELL_CONTENT_WIDTH_MAX];
-        }
-        else if (dpChatMessage.msgType == CHAT_MASSAGE_TYPE_IMAGE) {
-            height = [ChatImageTableViewCell heightOfCell];
-        }
-        [self.mdicCellHeight setObject:[NSNumber numberWithDouble:height] forKey:key];
-        return height;
-    }
+    DPChatMessage *dpChatMessage = [self.arrChatMessages objectAtIndex:indexPath.row];
+    return dpChatMessage.cellHeight;
 }
 
 - (void)scrollToLastCell:(BOOL)animated
@@ -442,8 +424,11 @@ static NSString *kChatImageCell = @"ChatImageTableViewCell";
         chatMessage.stage = CHAT_STAGE_P2P;
         chatMessage.gid = [[ChatDataProxy sharedProxy] assembleGidWithStage:chatMessage.stage withSenderUid:chatMessage.senderUid withTargetId:chatMessage.targetId];
         chatMessage.nid = [[ChatDataProxy sharedProxy] updateP2PChatMessage:chatMessage];
+        [[ChatDataProxy sharedProxy] updateP2PChatMessage:chatMessage];
         NSString *imgPath = [imUtil storeCacheImage:originalImage useName:[NSString stringWithFormat:@"chat_%li", (long)chatMessage.nid]];
         if (imgPath) {
+            chatMessage.imgSrc = imgPath;
+            chatMessage.imgThumbnail = imgPath;
             [[ChatMessageProxy sharedProxy] sendHttpUploadimg:imgPath];
         }
         [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_S_CHAT_CHATN object:self];

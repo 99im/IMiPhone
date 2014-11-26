@@ -103,30 +103,3 @@
 }
 
 @end
-
-@implementation ChatTextTableViewCell
-
-
-- (void)setMsg:(DPChatMessage *)chatMessage
-{
-    //要先清掉viewMsgContent 的subview
-    [imUtil clearSubviewsInView:self.viewMsgContent];
-    
-    UIView *viewTextContent = [self assembleMessage:chatMessage.content];
-    
-//    NSLog(@"textContent width:%f and height:%f",viewTextContent.frame.size.width, viewTextContent.frame.size.height);
-
-    [self.viewMsgContent addSubview:viewTextContent];
-    self.viewMsgContent.frame = viewTextContent.frame;
-    
-    //要最后调用
-    [super setMsg:chatMessage];
-}
-
-- (UIView *)assembleMessage:(NSString *)message
-{
-    UIFont *fon = [UIFont systemFontOfSize:CHAT_CELL_CONTENT_FONT_SIZE];
-    return [ChatGraphicsUtil richTextWithMessage:message withFont:fon withContentWidth:CHAT_CELL_CONTENT_WIDTH_MAX];
-}
-
-@end
