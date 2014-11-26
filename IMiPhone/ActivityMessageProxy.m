@@ -194,8 +194,8 @@ static ActivityMessageProxy *activityProxy = nil;
                     dpActivity.createrUid = [[dicCreaterInfo objectForKey:@"uid"] longLongValue];
                     [arrDp addObject:dpActivity];
                 }
-                [[ActivityDataProxy sharedProxy] updateActivityListWithServerList:arrR withStart:start];
-                [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_H__ACTIVITY_NEARBY_ object:nil];
+//                [[ActivityDataProxy sharedProxy] updateActivityListWithServerList:arrR withStart:start];
+//                [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_H__ACTIVITY_NEARBY_ object:nil];
             }
             else {
                 [self processErrorCode:errorCode fromSource:PATH_H__ACTIVITY_NEARBY_ useNotiName:NOTI_H__ACTIVITY_NEARBY_];
@@ -205,6 +205,108 @@ static ActivityMessageProxy *activityProxy = nil;
      ];
 }
 
+//退出活动
+- (void)sendHttpExitWithAid:(long long)aid
+{
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    
+    [params setObject:[NSNumber numberWithLongLong:aid] forKey:KEYQ_H__ACTIVITY_EXIT__AID];
+    
+    IMNWMessage *message = [IMNWMessage createForHttp:PATH_H__ACTIVITY_EXIT_ withParams:params withMethod:METHOD_H__ACTIVITY_EXIT_ ssl:NO];
+    [[IMNWManager sharedNWManager] sendMessage:message withResponse:^(NSString *responseString, NSData *responseData) {
+        NSError *err = nil;
+        NSMutableDictionary *json = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingAllowFragments error:&err];
+        if (err) {
+            NSLog(@"JSON create error: %@", err);
+            [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_H__ACTIVITY_EXIT_ object:err];
+        }
+        else {
+            NSInteger errorCode = [[json objectForKey:KEYP_H__ACTIVITY_EXIT__ERROR_CODE] integerValue];
+            if (errorCode == 0) {
+                NSLog(@"退出活动成功，活动id：%lli", aid);
+                [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_H__ACTIVITY_EXIT_ object:nil];
+            }
+            else {
+                [self processErrorCode:errorCode fromSource:PATH_H__ACTIVITY_INFO_ useNotiName:NOTI_H__ACTIVITY_EXIT_];
+            }
+        }
+    }
+     ];
+}
 
+//我的活动列表
+- (void)sendHttpMyListWithStart:(NSInteger)start withPageNum:(NSInteger)pageNum
+{
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    [params setObject:[NSNumber numberWithInteger:start]  forKey:KEYQ_H__ACTIVITY_MYLIST__START];
+    [params setObject:[NSNumber numberWithInteger:pageNum]  forKey:KEYQ_H__ACTIVITY_MYLIST__PAGENUM];
+    IMNWMessage *message = [IMNWMessage createForHttp:PATH_H__ACTIVITY_MYLIST_ withParams:params withMethod:METHOD_H__ACTIVITY_MYLIST_ ssl:NO];
+    [[IMNWManager sharedNWManager] sendMessage:message withResponse:^(NSString *responseString, NSData *responseData) {
+        NSError *err = nil;
+        NSMutableDictionary *json = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingAllowFragments error:&err];
+        if (err) {
+            NSLog(@"JSON create error: %@", err);
+            [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_H__ACTIVITY_MYLIST_ object:err];
+        }
+        else {
+            NSInteger errorCode = [[json objectForKey:KEYP_H__ACTIVITY_MYLIST__ERROR_CODE] integerValue];
+            if (errorCode == 0) {
+                NSArray *arrR = [json objectForKey:KEYP_H__ACTIVITY_MYLIST__LIST];
+                NSLog(@"查询附近活动列表成功，长度：%li",(unsigned long)arrR.count);
+                NSDictionary *item;
+                NSDictionary *detail;
+                DPActivity *dpActivity;
+                DPMyActivity *dpMyActivity;
+                NSMutableArray *arrDpActivitDetail = [NSMutableArray array];
+                NSMutableArray *arrDpMyList = [NSMutableArray array];
+                for (NSInteger i = 0; i < arrR.count; i++) {
+                    item = [arrR objectAtIndex:i];
+                    detail = [item objectForKey:KEYP_H__ACTIVITY_MYLIST__LIST_DETAIL];
+                    dpActivity = [self dpActivityWithServerInfo:detail];
+                    [arrDpActivitDetail addObject:dpActivity];
+                    //和自己相关的活动信息
+                    dpMyActivity = [[DPMyActivity alloc] init];
+                    dpMyActivity.aid = [[item objectForKey:KEYP_H__ACTIVITY_MYLIST__LIST_AID] longLongValue];
+                    dpMyActivity.ctime = [item objectForKey:KEYP_H__ACTIVITY_MYLIST__LIST_CTIME];
+                    dpMyActivity.releation = [[item objectForKey:KEYP_H__ACTIVITY_MYLIST__LIST_RELATION] integerValue];
+                    [arrDpMyList addObject:dpMyActivity];
+                }
+                [[ActivityDataProxy sharedProxy] updateActivityListWithServerList:arrR];
+                [[ActivityDataProxy sharedProxy] updateMyActivityListWithStart:start withServerMyList:arrDpMyList];
+                [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_H__ACTIVITY_MYLIST_ object:nil];
+            }
+            else {
+                [self processErrorCode:errorCode fromSource:PATH_H__ACTIVITY_MYLIST_ useNotiName:NOTI_H__ACTIVITY_MYLIST_];
+            }
+        }
+    }
+     ];
+}
+
+#pragma mark - uitls
+
+- (DPActivity *)dpActivityWithServerInfo:(NSDictionary *)info
+{
+    DPActivity *dpActivity = [[DPActivity alloc] init];
+    dpActivity.aid = [[info objectForKey:KEYP_H__ACTIVITY_NEARBY__LIST_AID] longLongValue];
+    dpActivity.title = [info objectForKey:KEYP_H__ACTIVITY_NEARBY__LIST_TITLE];
+    dpActivity.detail = [info objectForKey:KEYP_H__ACTIVITY_NEARBY__LIST_DETAIL];
+    dpActivity.type = [[info objectForKey:KEYP_H__ACTIVITY_NEARBY__LIST_TYPE] integerValue];
+    dpActivity.typeId = [[info objectForKey:KEYP_H__ACTIVITY_NEARBY__LIST_TYPEID ] longLongValue];
+    dpActivity.signerLimit = [[info objectForKey:KEYP_H__ACTIVITY_NEARBY__LIST_SIGNERLIMIT] integerValue];
+    dpActivity.payType = [[info objectForKey:KEYP_H__ACTIVITY_NEARBY__LIST_PAYTYPE] integerValue];
+    dpActivity.ladyFree = [[info objectForKey:KEYP_H__ACTIVITY_NEARBY__LIST_LADYFREE] integerValue];
+    dpActivity.lon = [[info objectForKey:KEYP_H__ACTIVITY_NEARBY__LIST_LOCATION] objectForKey:@"lon"];
+    dpActivity.lat = [[info objectForKey:KEYP_H__ACTIVITY_NEARBY__LIST_LOCATION] objectForKey:@"lat"];
+    dpActivity.alt = [[info objectForKey:KEYP_H__ACTIVITY_NEARBY__LIST_LOCATION] objectForKey:@"alt"];
+    dpActivity.curNum = [[info objectForKey:KEYP_H__ACTIVITY_NEARBY__LIST_CURNUM] integerValue];
+    dpActivity.ctime = [info objectForKey:KEYP_H__ACTIVITY_NEARBY__LIST_CTIME];
+    dpActivity.myreleation = [[info objectForKey:KEYP_H__ACTIVITY_NEARBY__LIST_MYRELATION] integerValue];
+    NSDictionary *dicCreaterInfo = [info objectForKey:KEYP_H__ACTIVITY_NEARBY__LIST_CREATOR];
+    [[UserDataProxy sharedProxy] addServerUinfo:dicCreaterInfo];
+    dpActivity.createrUid = [[dicCreaterInfo objectForKey:@"uid"] longLongValue];
+
+    return dpActivity;
+}
 
 @end
