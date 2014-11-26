@@ -263,7 +263,7 @@ static NSString *kGroupChatImageCell = @"GroupChatImageTableViewCell";
 
 - (IBAction)tfInputTextDidEndOnExit:(id)sender {
     
-    [[ChatMessageProxy sharedProxy] sendTypeChat:CHAT_STAGE_GROUP targetId:[GroupDataProxy sharedProxy].getGroupIdCurrent msgType:CHAT_MASSAGE_TYPE_TEXT content:((UITextField *)sender).text];
+    [[ChatMessageProxy sharedProxy] sendTypeChat:CHAT_STAGE_GROUP targetId:[GroupDataProxy sharedProxy].getGroupIdCurrent msgType:CHAT_MASSAGE_TYPE_TEXT content:((UITextField *)sender).text nid:0];
     
     ((UITextField *)sender).text = @"";
     
@@ -324,9 +324,11 @@ static NSString *kGroupChatImageCell = @"GroupChatImageTableViewCell";
 - (void)onChatUploadImg:(NSNotification *)notification
 {
     if (!notification.object) {
-        NSData *jsonData = [NSJSONSerialization dataWithJSONObject:notification.userInfo options:0 error:nil];
+        NSDictionary *dicImgInfo = [notification.userInfo objectForKey:KEYP_H__CHAT_UPLOADIMG__IMGINFO];
+        NSInteger nid = [[notification.userInfo objectForKey:CHAT_MESSAGE_NID] integerValue];
+        NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dicImgInfo options:0 error:nil];
         NSString *content = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
-        [[ChatMessageProxy sharedProxy] sendTypeChat:CHAT_STAGE_P2P targetId:[ChatDataProxy sharedProxy].chatToUid msgType:CHAT_MASSAGE_TYPE_IMAGE content:content];
+        [[ChatMessageProxy sharedProxy] sendTypeChat:CHAT_STAGE_P2P targetId:[ChatDataProxy sharedProxy].chatToUid msgType:CHAT_MASSAGE_TYPE_IMAGE content:content nid:nid];
     }
 }
 
@@ -406,10 +408,10 @@ static NSString *kGroupChatImageCell = @"GroupChatImageTableViewCell";
         UIImage *originalImage = [info objectForKey:UIImagePickerControllerOriginalImage];
         //NSURL *referenceURL = [info objectForKey:UIImagePickerControllerReferenceURL];
         //NSString *mediaType = [info objectForKey:UIImagePickerControllerMediaType];
-        
+        NSInteger nid = 0;
         NSString *imgPath = [imUtil storeCacheImage:originalImage useName:@"test"];
         if (imgPath) {
-            [[ChatMessageProxy sharedProxy] sendHttpUploadimg:imgPath];
+            [[ChatMessageProxy sharedProxy] sendHttpUploadimg:imgPath withMessageNid:nid];
         }
     }];
 }
