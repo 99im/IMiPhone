@@ -13,9 +13,9 @@
 #import "ChatInputSoundView.h"
 #import "ChatDataProxy.h"
 #import "ChatMessageProxy.h"
-#import "GroupChatTableViewCell.h"
-#import "GroupChatTableViewCellFrame.h"
+#import "GroupChatTextTableViewCell.h"
 #import "ChatPlusViewController.h"
+#import "GroupChatImageTableViewCell.h"
 
 @interface GroupChatViewController () <UITextFieldDelegate, UIGestureRecognizerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
@@ -30,7 +30,8 @@
 @property (nonatomic, retain) UITapGestureRecognizer *tap;
 
 //
-@property (nonatomic,retain) NSMutableArray *arrAllCellFrames;
+@property (nonatomic,retain) NSArray *arrChatMessages;
+@property (nonatomic,retain) NSMutableDictionary *mdicCellHeight;
 
 //表情弹框
 @property (strong, nonatomic) EmotionViewController *emotionViewController;
@@ -48,6 +49,9 @@
 
 @implementation GroupChatViewController
 
+static NSString *kGroupChatTextCell = @"GroupChatTextTableViewCell";
+
+static NSString *kGroupChatImageCell = @"GroupChatImageTableViewCell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -55,8 +59,6 @@
     self.tableViewChat.delegate = self;
     
     self.viewChatInputSound.hidden = YES;
-    
-    self.arrAllCellFrames = [NSMutableArray array];
     
     UIStoryboard* mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     self.emotionViewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"EmotionViewController"];
@@ -80,21 +82,7 @@
     if (dpGroup) {
         self.title = dpGroup.name;
     }
-    NSArray *arrChatMessages = [[ChatDataProxy sharedProxy] getGroupChatMessagesByGroupid:groupid];
-    for (NSInteger i = 0; i < arrChatMessages.count; i++) {
-        DPGroupChatMessage *dpChatMsg = [arrChatMessages objectAtIndex:i];
-        GroupChatTableViewCellFrame *chatTableCellFrame = [[GroupChatTableViewCellFrame alloc] init];
-        ChatMessageType msgType;
-        if (dpChatMsg.senderUid == [UserDataProxy sharedProxy].lastLoginUid) {
-            msgType = ChatMessageTypeMe;
-        }
-        else {
-            msgType = ChatMessageTypeOther;
-        }
-        [chatTableCellFrame setMsgType:msgType withMsg:dpChatMsg];
-        [self.arrAllCellFrames addObject:chatTableCellFrame];
-    }
-
+    self.arrChatMessages = [[ChatDataProxy sharedProxy] getGroupChatMessagesByGroupid:groupid];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -123,6 +111,7 @@
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
+    self.mdicCellHeight = nil;
     //解除键盘出现通知
     [[NSNotificationCenter defaultCenter] removeObserver:self
                                                     name: UIKeyboardDidShowNotification object:nil];
@@ -241,24 +230,43 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *cellIdentifier = @"GroupChatTableViewCell";
-    GroupChatTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
+    DPGroupChatMessage *dpChatMessage = [self.arrChatMessages objectAtIndex:indexPath.row];
     
-    cell.cellFrame =
-    [self.arrAllCellFrames objectAtIndex:indexPath.row];
-    return cell;
+    if (dpChatMessage.msgType == CHAT_MASSAGE_TYPE_TEXT) {
+        GroupChatTextTableViewCell *cell = [self.tableViewChat dequeueReusableCellWithIdentifier:kGroupChatTextCell forIndexPath:indexPath];
+        [cell setMsg:dpChatMessage];
+        return cell;
+    }
+    else if (dpChatMessage.msgType == CHAT_MASSAGE_TYPE_IMAGE) {
+        GroupChatImageTableViewCell *cell = [self.tableViewChat dequeueReusableCellWithIdentifier:kGroupChatImageCell forIndexPath:indexPath];
+        [cell setMsg:dpChatMessage];
+        return cell;
+    }
+    return nil;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    //    NSLog(@"height for %@",indexPath);
-    ChatTableViewCellFrame *cellFrame = [self.arrAllCellFrames objectAtIndex:indexPath.row];
-    if (cellFrame) {
-        return cellFrame.cellHeight;
+    if (self.mdicCellHeight == nil) {
+        self.mdicCellHeight = [NSMutableDictionary dictionary];
+    }
+    NSString *key = [NSString stringWithFormat:@"%i", indexPath.row];
+    NSNumber *numCellHeight = [self.mdicCellHeight objectForKey:key];
+    if (numCellHeight) {
+        return [numCellHeight doubleValue];
     }
     else {
-        NSLog(@"cannot find ChatTableViewCell at:%@",indexPath);
-        return 0;
+        DPGroupChatMessage *dpChatMessage = [self.arrChatMessages objectAtIndex:indexPath.row];
+        CGFloat height;
+        if (dpChatMessage.msgType == CHAT_MASSAGE_TYPE_TEXT) {
+            height = [ChatTableViewCell heightOfTextCellWithMessage:dpChatMessage.content withFont:[UIFont systemFontOfSize:CHAT_CELL_CONTENT_FONT_SIZE] withContentWidth:CHAT_CELL_CONTENT_WIDTH_MAX];
+        }
+        else if (dpChatMessage.msgType == CHAT_MASSAGE_TYPE_IMAGE) {
+            //TODO:图片单元格高度计算
+            height = 50;
+        }
+        [self.mdicCellHeight setObject:[NSNumber numberWithDouble:height] forKey:key];
+        return height;
     }
 }
 
@@ -406,18 +414,9 @@
 - (void)dealGroupChatN:(NSNotification *)notification
 {
     
-    DPGroupChatMessage *dpChatMsg = notification.object;
-    
-    GroupChatTableViewCellFrame *chatTableCellFrame = [[GroupChatTableViewCellFrame alloc] init];
-    ChatMessageType msgType;
-    if (dpChatMsg.senderUid == [UserDataProxy sharedProxy].lastLoginUid) {
-        msgType = ChatMessageTypeMe;
-    }
-    else {
-        msgType = ChatMessageTypeOther;
-    }
-    [chatTableCellFrame setMsgType:msgType withMsg:dpChatMsg];
-    [self.arrAllCellFrames addObject:chatTableCellFrame];
+    long long groupid = [GroupDataProxy sharedProxy].getGroupIdCurrent;
+    self.arrChatMessages = [[ChatDataProxy sharedProxy] getGroupChatMessagesByGroupid:groupid];
+
     [self.tableViewChat reloadData];
     [self scrollToLastCell:YES];
 }

@@ -39,4 +39,8 @@
 //活动信息查询
 - (void)sendHttpInfoWithAid:(long long)aid;
 
+//附近活动列表
+- (void)sendHttpNearbyWithLon:(NSString *)lon withLat:(NSString *)lat withStart:(NSInteger)start withPageNum:(NSInteger)pageNum;
+//
+
 @end

@@ -55,5 +55,6 @@
 //返回换行模式的熟悉，用于解决图文混排时，图像超出边界
 + (NSDictionary *)getWrapModeAttributes;
 
-
+//返回richText的frame（注：已自动调整大小）
++ (CGSize)sizeOfRichTextWithAttributedString:(NSAttributedString *)abString withFrameWidth:(CGFloat)frameWidth;
 @end

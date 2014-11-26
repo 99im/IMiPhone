@@ -145,4 +145,66 @@ static ActivityMessageProxy *activityProxy = nil;
 
 }
 
+#pragma - mark 附近活动列表
+
+- (void)sendHttpNearbyWithLon:(NSString *)lon withLat:(NSString *)lat withStart:(NSInteger)start withPageNum:(NSInteger)pageNum
+{
+    //使用http
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    
+    [params setObject:lon forKey:KEYQ_H__ACTIVITY_NEARBY__LON];
+    [params setObject:lat forKey:KEYQ_H__ACTIVITY_NEARBY__LAT];
+    [params setObject:[NSNumber numberWithInteger:start]  forKey:KEYQ_H__ACTIVITY_NEARBY__START];
+    [params setObject:[NSNumber numberWithInteger:pageNum]  forKey:KEYQ_H__ACTIVITY_NEARBY__PAGENUM];
+    IMNWMessage *message = [IMNWMessage createForHttp:PATH_H__ACTIVITY_NEARBY_ withParams:params withMethod:METHOD_H__ACTIVITY_NEARBY_ ssl:NO];
+    [[IMNWManager sharedNWManager] sendMessage:message withResponse:^(NSString *responseString, NSData *responseData) {
+        NSError *err = nil;
+        NSMutableDictionary *json = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingAllowFragments error:&err];
+        if (err) {
+            NSLog(@"JSON create error: %@", err);
+            [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_H__ACTIVITY_NEARBY_ object:err];
+        }
+        else {
+            NSInteger errorCode = [[json objectForKey:KEYP_H__ACTIVITY_NEARBY__ERROR_CODE] integerValue];
+            if (errorCode == 0) {
+                NSArray *arrR = [json objectForKey:KEYP_H__ACTIVITY_NEARBY__LIST];
+                NSLog(@"查询附近活动列表成功，长度：%li",(unsigned long)arrR.count);
+                NSDictionary *item;
+                DPActivity *dpActivity;
+                NSMutableArray *arrDp = [NSMutableArray array];
+                for (NSInteger i = 0; i < arrR.count; i++) {
+                    item = [arrR objectAtIndex:i];
+                    dpActivity = [[DPActivity alloc] init];
+                    dpActivity.aid = [[item objectForKey:KEYP_H__ACTIVITY_NEARBY__LIST_AID] longLongValue];
+                    dpActivity.title = [item objectForKey:KEYP_H__ACTIVITY_NEARBY__LIST_TITLE];
+                    dpActivity.detail = [item objectForKey:KEYP_H__ACTIVITY_NEARBY__LIST_DETAIL];
+                    dpActivity.type = [[item objectForKey:KEYP_H__ACTIVITY_NEARBY__LIST_TYPE] integerValue];
+                    dpActivity.typeId = [[item objectForKey:KEYP_H__ACTIVITY_NEARBY__LIST_TYPEID ] longLongValue];
+                    dpActivity.signerLimit = [[item objectForKey:KEYP_H__ACTIVITY_NEARBY__LIST_SIGNERLIMIT] integerValue];
+                    dpActivity.payType = [[item objectForKey:KEYP_H__ACTIVITY_NEARBY__LIST_PAYTYPE] integerValue];
+                    dpActivity.ladyFree = [[item objectForKey:KEYP_H__ACTIVITY_NEARBY__LIST_LADYFREE] integerValue];
+                    dpActivity.lon = [[item objectForKey:KEYP_H__ACTIVITY_NEARBY__LIST_LOCATION] objectForKey:@"lon"];
+                    dpActivity.lat = [[item objectForKey:KEYP_H__ACTIVITY_NEARBY__LIST_LOCATION] objectForKey:@"lat"];
+                    dpActivity.alt = [[item objectForKey:KEYP_H__ACTIVITY_NEARBY__LIST_LOCATION] objectForKey:@"alt"];
+                    dpActivity.curNum = [[item objectForKey:KEYP_H__ACTIVITY_NEARBY__LIST_CURNUM] integerValue];
+                    dpActivity.ctime = [item objectForKey:KEYP_H__ACTIVITY_NEARBY__LIST_CTIME];
+                    dpActivity.myreleation = [[item objectForKey:KEYP_H__ACTIVITY_NEARBY__LIST_MYRELATION] integerValue];
+                    NSDictionary *dicCreaterInfo = [item objectForKey:KEYP_H__ACTIVITY_NEARBY__LIST_CREATOR];
+                    [[UserDataProxy sharedProxy] addServerUinfo:dicCreaterInfo];
+                    dpActivity.createrUid = [[dicCreaterInfo objectForKey:@"uid"] longLongValue];
+                    [arrDp addObject:dpActivity];
+                }
+                [[ActivityDataProxy sharedProxy] updateActivityListWithServerList:arrR withStart:start];
+                [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_H__ACTIVITY_NEARBY_ object:nil];
+            }
+            else {
+                [self processErrorCode:errorCode fromSource:PATH_H__ACTIVITY_NEARBY_ useNotiName:NOTI_H__ACTIVITY_NEARBY_];
+            }
+        }
+    }
+     ];
+}
+
+
+
 @end
