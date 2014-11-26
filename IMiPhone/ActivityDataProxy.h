@@ -11,6 +11,7 @@
 #import "DPMyActivity.h"
 #import "DPNearbyActivity.h"
 #import "DPActivityMember.h"
+#import "ActivityDAO.h"
 
 @interface ActivityDataProxy : NSObject
 
@@ -27,12 +28,21 @@
 
 //我的活动
 - (void)updateMyActivityListWithStart:(NSInteger)start withServerMyList:(NSArray *)serverMyList;
+
 //我的活动
-- (DPActivity *)getMyActivityListWithStart:(NSInteger)start withPageNum:(NSInteger)pageNum;
+- (NSArray *)getMyActivityListWithStart:(NSInteger)start withPageNum:(NSInteger)pageNum;
 
 //附近活动
 - (void)updateNearbyActivityListWithStart:(NSInteger)start withServerNearbyList:(NSArray *)serverNearbyList;
+
 //附近活动
-- (DPActivity *)getNearbyActivityListWithStart:(NSInteger)start withPageNum:(NSInteger)pageNum;
+- (NSArray *)getNearbyActivityListWithStart:(NSInteger)start withPageNum:(NSInteger)pageNum;
+
+//活动成员
+- (void)updateActivityMembersWithStart:(NSInteger)start withServerMembers:(NSArray *)serverMembers;
+
+//活动成员
+- (NSArray *)getActivityMembersWithStart:(NSInteger)start withPageNum:(NSInteger)pageNum;
+
 
 @end

@@ -48,6 +48,6 @@
 - (void)sendHttpMyListWithStart:(NSInteger)start withPageNum:(NSInteger)pageNum;
 
 //查询活动成员
-- (void)sendHttpMembersWithAid:(long long)aid;
+- (void)sendHttpMembersWithAid:(long long)aid withStart:(NSInteger)start withPageNum:(NSInteger)pageNum;
 
 @end

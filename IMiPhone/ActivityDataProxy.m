@@ -8,6 +8,12 @@
 
 #import "ActivityDataProxy.h"
 
+@interface ActivityDataProxy ()
+
+@property (nonatomic, retain) NSMutableDictionary *dicActivity;
+
+@end
+
 @implementation ActivityDataProxy
 
 static ActivityDataProxy *sharedActivityProxy = nil;
@@ -23,12 +29,26 @@ static ActivityDataProxy *sharedActivityProxy = nil;
 
 - (void)reset
 {
+    self.dicActivity = nil;
 }
 
 - (void)updateActivityListWithServerList:(NSArray *)serverList;
 {
     //TODO:根据服务端返回活动列表更新客户端数据
-
+    DPActivity *dpActivity;
+    DBActivity *dbDataMode;
+    ActivityDAO *dbDAO = [ActivityDAO sharedDAO];
+    for (NSInteger i = 0; i < serverList.count; i++) {
+        dpActivity = [serverList objectAtIndex:i];
+        [ImDataUtil copyFrom:dpActivity To:dbDataMode];
+        //先删除
+        NSString *condition = [NSString stringWithFormat:@"%@ = ?",DB_PRIMARY_KEY_ACTIVITY_AID];
+        NSMutableArray *bind = [NSMutableArray arrayWithObjects:[NSString stringWithFormat:@"%lli", dpActivity.aid], nil];
+        [dbDAO deleteByCondition:condition Bind:bind];
+        //再insert
+        [dbDAO insert:dbDataMode];
+//        [self.dicActivity setObject:dbDataMode forKey:dpActivity.aid];
+    }
 }
 
 - (DPActivity *)getActivityWithAid:(long long)aid;
