@@ -145,6 +145,283 @@ example: http://local.taiqiu.com:7070/group/set/?gid=8&intro=hello&lon=32&lat=12
 
 /*
 mark: activity
+type: /activity/logo/sort/
+kind: http
+method: http-get
+describe: 活动相册排序
+example: http://local.taiqiu.com:7070/activity/logo/sort/?aid=12&sortInfos=[[108,1000]]&verify=17_1411380649_8cd8f6306fb1232f98573dae4e137f50
+
+{
+"error_code": 0
+}
+*/
+#define PATH_H__ACTIVITY_LOGO_SORT_ @"/activity/logo/sort/"
+#define NOTI_H__ACTIVITY_LOGO_SORT_ @"MPactivitylogosortNotifiction"
+#define METHOD_H__ACTIVITY_LOGO_SORT_ @"GET"
+#define KEYQ_H__ACTIVITY_LOGO_SORT__AID @"aid" //aid int 
+#define KEYQ_H__ACTIVITY_LOGO_SORT__PID @"pid" //pid sortOrder 数组 相片id 排序值 （默认值为1024)
+#define KEYP_H__ACTIVITY_LOGO_SORT__ERROR_CODE @"error_code" //error_code int
+
+/*
+mark: activity
+type: /activity/logo/del/
+kind: http
+method: http-get
+describe: 活动相册删除
+example: http://local.taiqiu.com:7070/activity/logo/del/?aid=12&pid=107&verify=17_1411380649_8cd8f6306fb1232f98573dae4e137f50
+
+{
+"error_code": 0
+}
+*/
+#define PATH_H__ACTIVITY_LOGO_DEL_ @"/activity/logo/del/"
+#define NOTI_H__ACTIVITY_LOGO_DEL_ @"MPactivitylogodelNotifiction"
+#define METHOD_H__ACTIVITY_LOGO_DEL_ @"GET"
+#define KEYQ_H__ACTIVITY_LOGO_DEL__AID @"aid" //aid int
+#define KEYQ_H__ACTIVITY_LOGO_DEL__PID @"pid" //pid int
+#define KEYP_H__ACTIVITY_LOGO_DEL__ERROR_CODE @"error_code" //error_code int
+
+/*
+mark: activity
+type: /activity/logo/list/
+kind: http
+method: http-get
+describe: 获取活动logo列表
+example: http://local.taiqiu.com:7070/activity/logo/list/?aid=12&verify=17_1411380649_8cd8f6306fb1232f98573dae4e137f50
+
+{
+"error_code": 0,
+"list": [
+{
+"objType": 2,
+"objId": 12,
+"albumId": 27,
+"pid": 107,
+"title": "",
+"sortOrder": 1000,
+"imgInfo": {
+"width": 640,
+"height": 640,
+"format": "jpeg",
+"size": 74733
+},
+"ctime": "2014-11-26 14:04:15",
+"mtime": "0000-00-00 00:00:00",
+"exif": "",
+"status": "0",
+"src": "http://local.p.taiqiuui.com:81/i/5/2/12/107/3e33e43c93fcbdb75abc0d0c250644b1.jpeg",
+"thumb": "http://local.p.taiqiuui.com:81/i/5/2/12/107/3e33e43c93fcbdb75abc0d0c250644b1_80x100.jpeg"
+},
+{
+"objType": 2,
+"objId": 12,
+"albumId": 27,
+"pid": 108,
+"title": "",
+"sortOrder": 1024,
+"imgInfo": {
+"width": 640,
+"height": 640,
+"format": "jpeg",
+"size": 74733
+},
+"ctime": "2014-11-26 14:20:05",
+"mtime": "0000-00-00 00:00:00",
+"exif": "",
+"status": "0",
+"src": "http://local.p.taiqiuui.com:81/i/5/2/12/108/7ef525f37bfbd4e8d5a83089223a244f.jpeg",
+"thumb": "http://local.p.taiqiuui.com:81/i/5/2/12/108/7ef525f37bfbd4e8d5a83089223a244f_80x100.jpeg"
+}
+]
+}
+*/
+#define PATH_H__ACTIVITY_LOGO_LIST_ @"/activity/logo/list/"
+#define NOTI_H__ACTIVITY_LOGO_LIST_ @"MPactivitylogolistNotifiction"
+#define METHOD_H__ACTIVITY_LOGO_LIST_ @"GET"
+#define KEYQ_H__ACTIVITY_LOGO_LIST__GID @"gid" //gid int
+#define KEYP_H__ACTIVITY_LOGO_LIST__ERROR_CODE @"error_code" //error_code int
+#define KEYP_H__ACTIVITY_LOGO_LIST__LIST @"list" //list array
+#define KEYP_H__ACTIVITY_LOGO_LIST__LIST_OBJTYPE @"objType" // objType 
+#define KEYP_H__ACTIVITY_LOGO_LIST__LIST_OBJID @"objId" // objId
+#define KEYP_H__ACTIVITY_LOGO_LIST__LIST_ALBUMID @"albumId" // albumId
+#define KEYP_H__ACTIVITY_LOGO_LIST__LIST_PID @"pid" // pid
+#define KEYP_H__ACTIVITY_LOGO_LIST__LIST_TITLE @"title" // title
+#define KEYP_H__ACTIVITY_LOGO_LIST__LIST_SORTORDER @"sortOrder" // sortOrder
+#define KEYP_H__ACTIVITY_LOGO_LIST__LIST_IMGINFO @"imgInfo" // imgInfo
+#define KEYP_H__ACTIVITY_LOGO_LIST__LIST_CTIME @"ctime" // ctime
+#define KEYP_H__ACTIVITY_LOGO_LIST__LIST_MTIME @"mtime" // mtime
+#define KEYP_H__ACTIVITY_LOGO_LIST__LIST_STATUS @"status" // status
+#define KEYP_H__ACTIVITY_LOGO_LIST__LIST_SRC @"src" // src
+#define KEYP_H__ACTIVITY_LOGO_LIST__LIST_THUMB @"thumb" // thumb
+
+/*
+mark: activity
+type: /activity/logo/add/
+kind: http
+method: http-post
+describe: 添加活动相册
+example: http://local.taiqiu.com:7070/activity/logo/add/?verify=17_1411380649_8cd8f6306fb1232f98573dae4e137f50
+
+{
+"error_code": 0,
+"pid": 107,
+"albumId": 27
+}
+*/
+#define PATH_H__ACTIVITY_LOGO_ADD_ @"/activity/logo/add/"
+#define NOTI_H__ACTIVITY_LOGO_ADD_ @"MPactivitylogoaddNotifiction"
+#define METHOD_H__ACTIVITY_LOGO_ADD_ @"POST"
+#define KEYQ_H__ACTIVITY_LOGO_ADD__AID @"aid" //aid int
+#define KEYQ_H__ACTIVITY_LOGO_ADD__UPLOADIMG @"uploadimg" //uploadimg file
+#define KEYQ_H__ACTIVITY_LOGO_ADD__TITLE @"title" //title string
+#define KEYQ_H__ACTIVITY_LOGO_ADD__EXIF @"exif" //exif string
+#define KEYP_H__ACTIVITY_LOGO_ADD__ERROR_CODE @"error_code" //error_code Int 
+#define KEYP_H__ACTIVITY_LOGO_ADD__PID @"pid" //pid int
+#define KEYP_H__ACTIVITY_LOGO_ADD__ALBUMID @"albumId" //albumId int
+
+
+#define MARK_GROUP @"group"
+
+/*
+mark: group
+type: /group/logo/sort/
+kind: http
+method: http-get
+describe: 
+example: http://local.taiqiu.com:7070/group/logo/sort/?gid=8&sortInfos=[[105,1000]]&verify=17_1411380649_8cd8f6306fb1232f98573dae4e137f50
+
+{
+"error_code": 0
+}
+*/
+#define PATH_H__GROUP_LOGO_SORT_ @"/group/logo/sort/"
+#define NOTI_H__GROUP_LOGO_SORT_ @"MPgrouplogosortNotifiction"
+#define METHOD_H__GROUP_LOGO_SORT_ @"GET"
+#define KEYQ_H__GROUP_LOGO_SORT__GID @"gid" //gid int 
+#define KEYQ_H__GROUP_LOGO_SORT__PID @"pid" //pid sortOrder 数组 相片id 排序值 （默认值为1024)
+#define KEYP_H__GROUP_LOGO_SORT__ERROR_CODE @"error_code" //error_code int
+
+/*
+mark: group
+type: /group/logo/del/
+kind: http
+method: http-get
+describe: 群相册删除
+example: http://local.taiqiu.com:7070/group/logo/del/?gid=8&pid=106&verify=17_1411380649_8cd8f6306fb1232f98573dae4e137f50
+
+{
+"error_code": 0
+}
+*/
+#define PATH_H__GROUP_LOGO_DEL_ @"/group/logo/del/"
+#define NOTI_H__GROUP_LOGO_DEL_ @"MPgrouplogodelNotifiction"
+#define METHOD_H__GROUP_LOGO_DEL_ @"GET"
+#define KEYQ_H__GROUP_LOGO_DEL__GID @"gid" //gid int
+#define KEYQ_H__GROUP_LOGO_DEL__PID @"pid" //pid int
+#define KEYP_H__GROUP_LOGO_DEL__ERROR_CODE @"error_code" //error_code int
+
+/*
+mark: group
+type: /group/logo/list/
+kind: http
+method: http-get
+describe: 获取群logo列表
+example: http://local.taiqiu.com:7070/group/logo/list/?gid=8&verify=17_1411380649_8cd8f6306fb1232f98573dae4e137f50
+
+{
+"error_code": 0,
+"list": [
+{
+"objType": 1,
+"objId": 8,
+"albumId": 26,
+"pid": 105,
+"title": "332",
+"sortOrder": 1024,
+"imgInfo": {
+"width": 640,
+"height": 640,
+"format": "jpeg",
+"size": 61711
+},
+"ctime": "2014-11-26 11:03:48",
+"mtime": "0000-00-00 00:00:00",
+"exif": "dsds",
+"status": "0",
+"src": "http://local.p.taiqiuui.com:81/i/5/1/8/105/e22dd16333c48610fef5d72ff8cdaaae.jpeg",
+"thumb": "http://local.p.taiqiuui.com:81/i/5/1/8/105/e22dd16333c48610fef5d72ff8cdaaae_80x100.jpeg"
+}
+]
+}
+*/
+#define PATH_H__GROUP_LOGO_LIST_ @"/group/logo/list/"
+#define NOTI_H__GROUP_LOGO_LIST_ @"MPgrouplogolistNotifiction"
+#define METHOD_H__GROUP_LOGO_LIST_ @"GET"
+#define KEYQ_H__GROUP_LOGO_LIST__GID @"gid" //gid int
+#define KEYP_H__GROUP_LOGO_LIST__ERROR_CODE @"error_code" //error_code int
+#define KEYP_H__GROUP_LOGO_LIST__LIST @"list" //list array
+#define KEYP_H__GROUP_LOGO_LIST__LIST_OBJTYPE @"objType" // objType 
+#define KEYP_H__GROUP_LOGO_LIST__LIST_OBJID @"objId" // objId
+#define KEYP_H__GROUP_LOGO_LIST__LIST_ALBUMID @"albumId" // albumId
+#define KEYP_H__GROUP_LOGO_LIST__LIST_PID @"pid" // pid
+#define KEYP_H__GROUP_LOGO_LIST__LIST_TITLE @"title" // title
+#define KEYP_H__GROUP_LOGO_LIST__LIST_SORTORDER @"sortOrder" // sortOrder
+#define KEYP_H__GROUP_LOGO_LIST__LIST_IMGINFO @"imgInfo" // imgInfo
+#define KEYP_H__GROUP_LOGO_LIST__LIST_CTIME @"ctime" // ctime
+#define KEYP_H__GROUP_LOGO_LIST__LIST_MTIME @"mtime" // mtime
+#define KEYP_H__GROUP_LOGO_LIST__LIST_STATUS @"status" // status
+#define KEYP_H__GROUP_LOGO_LIST__LIST_SRC @"src" // src
+#define KEYP_H__GROUP_LOGO_LIST__LIST_THUMB @"thumb" // thumb
+
+/*
+mark: group
+type: /group/logo/add/
+kind: http
+method: http-post
+describe: 添加群相册
+example: http://local.taiqiu.com:7070/group/logo/add/?verify=17_1411380649_8cd8f6306fb1232f98573dae4e137f50
+
+{
+"error_code": 0,
+"pid": 105,
+"albumId": 26
+}
+*/
+#define PATH_H__GROUP_LOGO_ADD_ @"/group/logo/add/"
+#define NOTI_H__GROUP_LOGO_ADD_ @"MPgrouplogoaddNotifiction"
+#define METHOD_H__GROUP_LOGO_ADD_ @"POST"
+#define KEYQ_H__GROUP_LOGO_ADD__GID @"gid" //gid int
+#define KEYQ_H__GROUP_LOGO_ADD__UPLOADIMG @"uploadimg" //uploadimg file
+#define KEYQ_H__GROUP_LOGO_ADD__TITLE @"title" //title string
+#define KEYQ_H__GROUP_LOGO_ADD__EXIF @"exif" //exif string
+#define KEYP_H__GROUP_LOGO_ADD__ERROR_CODE @"error_code" //error_code Int 
+#define KEYP_H__GROUP_LOGO_ADD__PID @"pid" //pid int
+#define KEYP_H__GROUP_LOGO_ADD__ALBUMID @"albumId" //albumId int
+
+/*
+mark: group
+type: /group/set/
+kind: http
+method: http-post
+describe: 群设置修改
+example: http://local.taiqiu.com:7070/group/set/?gid=8&intro=hello&lon=32&lat=120&address=zhichunlu&verify=16_1411380260_8e01b76b234112ca88fdb3645eacac44
+
+{
+"error_code": 0
+}
+*/
+#define PATH_H__GROUP_SET_ @"/group/set/"
+#define NOTI_H__GROUP_SET_ @"MPgroupsetNotifiction"
+#define METHOD_H__GROUP_SET_ @"POST"
+#define KEYQ_H__GROUP_SET__INTRO @"intro" //intro string
+#define KEYQ_H__GROUP_SET__LON @"lon" //lon string 
+#define KEYQ_H__GROUP_SET__LAT @"lat" //lat string
+#define KEYQ_H__GROUP_SET__ALT @"alt" //alt string
+#define KEYQ_H__GROUP_SET__ADDRESS @"address" //address string
+#define KEYP_H__GROUP_SET__ERROR_CODE @"error_code" //error_code
+
+/*
+mark: activity
 type: /activity/nearby/
 kind: http
 method: http-get
@@ -313,54 +590,21 @@ kind: http
 method: http-get
 describe: 获取我参与的活动列表
 example: http://local.taiqiu.com:7070/activity/mylist/?aid=12&verify=16_1411380260_8e01b76b234112ca88fdb3645eacac44
+
 {
 "error_code": 0,
 "list": [
 {
-"aid": 7,
-"ctime": "2014-11-18 14:03:20",
-"myrelation": 1,
+"aid": 12,
+"ctime": "2014-11-18 16:43:47",
+"myrelation": 3,
 "detail": {
-"aid": 7,
+"aid": 12,
 "title": "test001",
 "detail": "welcome",
-"typeId": 1,
+"typeId": 8,
+"albumId": 27,
 "type": 1,
-"signerLimit": 1,
-"payType": 1,
-"ladyFree": 1,
-"maxNum": 20,
-"beginTime": "2014-12-01 09:00:00",
-"location": {
-"lon": "115.725",
-"lat": "39.12",
-"alt": "0",
-"geohash": "wwfq93s6"
-},
-"curNum": 1,
-"creator": {
-"uid": 16,
-"oid": "16",
-"nick": "谁谁谁",
-"city": "",
-"gender": 0,
-"vip": 0,
-"logoAlbumId": 0,
-"logo": false
-},
-"ctime": "2014-11-18 14:03:20"
-}
-},
-{
-"aid": 8,
-"ctime": "2014-11-18 15:22:10",
-"relation": 1,
-"detail": {
-"aid": 8,
-"title": "test001",
-"detail": "welcome",
-"typeId": 2,
-"type": 2,
 "signerLimit": 1,
 "payType": 1,
 "ladyFree": 2,
@@ -372,7 +616,7 @@ example: http://local.taiqiu.com:7070/activity/mylist/?aid=12&verify=16_14113802
 "alt": "0",
 "geohash": "wwfq93s6"
 },
-"curNum": 1,
+"curNum": 2,
 "creator": {
 "uid": 16,
 "oid": "16",
@@ -381,12 +625,19 @@ example: http://local.taiqiu.com:7070/activity/mylist/?aid=12&verify=16_14113802
 "gender": 0,
 "vip": 0,
 "logoAlbumId": 0,
-"logo": false
+"logo": null,
+"roles": [
+0
+]
 },
-"ctime": "2014-11-18 15:22:10"
+"ctime": "2014-11-26 14:04:15",
+"logo": {
+"src": "http://local.p.taiqiuui.com:81/i/5/2/12/108/7ef525f37bfbd4e8d5a83089223a244f.jpeg",
+"thumb": "http://local.p.taiqiuui.com:81/i/5/2/12/108/7ef525f37bfbd4e8d5a83089223a244f_80x100.jpeg"
 }
 }
 }
+]
 }
 */
 #define PATH_H__ACTIVITY_MYLIST_ @"/activity/mylist/"
@@ -547,8 +798,10 @@ example: http://local.taiqiu.com:7070/activity/info/?aid=9&verify=16_1411380260_
 #define KEYP_H__ACTIVITY_INFO__CREATOR @"creator" //creator object
 #define KEYP_H__ACTIVITY_INFO__CTIME @"ctime" //ctime datetime
 #define KEYP_H__ACTIVITY_INFO__BEGINTIME @"beginTime" //beginTime datetime
+#define KEYP_H__ACTIVITY_INFO__ENDTIME @"endTime" //endTime datetime
 #define KEYP_H__ACTIVITY_INFO__MAXNUM @"maxNum" //maxNum int
 #define KEYP_H__ACTIVITY_INFO__MYRELATION @"myrelation" //myrelation int
+#define KEYP_H__ACTIVITY_INFO__LOGO @"logo" //logo object
 
 /*
 mark: activity
@@ -969,21 +1222,108 @@ mark: discovery
 type: /discovery/nearbylist/
 kind: http
 method: http-get
-describe: 获取附近的人，100公里
+describe: 获取附近的item，100公里
+附近的人数据结构
+ uid
+ uinfo
+附近的俱乐部数据结构
+ clubId int
+ name string
+附近的群组
+ gid
+ name
+ intro
+ albumId
+ status
+ memberNum
+ createUid
+ adminUids
+ location 
+ ctime
+ myrelation
 example: http://local.taiqiu.com:7070/discovery/nearbylist/?lon=115.725&lat=39.12&alt=0&&verify=17_1411380649_8cd8f6306fb1232f98573dae4e137f50
 
 {
 "error_code": 0,
 "list": [
 {
-"uid": 16,
+"type": 0,
 "distance": 173,
+"data": {
+"uid": 16,
 "uinfo": {
 "uid": 16,
 "oid": "16",
 "nick": "谁谁谁",
 "city": "",
-"vip": 0
+"gender": 0,
+"vip": 0,
+"logoAlbumId": 0,
+"logo": null,
+"roles": [
+0
+]
+}
+}
+},
+{
+"type": 3,
+"distance": 1000,
+"data": {
+"clubId": 1,
+"name": "欢度时光"
+}
+},
+{
+"type": 1,
+"distance": 136,
+"data": {
+"gid": 23,
+"name": "testgroup001",
+"intro": "hellogroup",
+"albumId": 0,
+"status": 0,
+"memberNum": 1,
+"createUid": 16,
+"adminUids": [
+"16"
+],
+"location": {
+"lon": "115.723421",
+"lat": "39.12",
+"alt": "0",
+"geohash": "wwfq93e4x0sc",
+"address": "wudaokou"
+},
+"ctime": "2014-11-24 15:15:50",
+"distance": 136,
+"myrelation": 0
+}
+},
+{
+"type": 1,
+"distance": 1000,
+"data": {
+"gid": 24,
+"name": "testgroup001",
+"intro": "hellogroup",
+"albumId": 0,
+"status": 0,
+"memberNum": 1,
+"createUid": 16,
+"adminUids": [
+"16"
+],
+"location": {
+"lon": "115.713421",
+"lat": "39.12",
+"alt": "0",
+"geohash": "wwfq91efw0s3",
+"address": "wudaokou"
+},
+"ctime": "2014-11-24 15:30:18",
+"distance": 1000,
+"myrelation": 0
 }
 }
 ]
@@ -997,14 +1337,11 @@ example: http://local.taiqiu.com:7070/discovery/nearbylist/?lon=115.725&lat=39.1
 #define KEYQ_H__DISCOVERY_NEARBYLIST__ALT @"alt" //alt string 海拔
 #define KEYP_H__DISCOVERY_NEARBYLIST__ERROR_CODE @"error_code" //error_code int 0
 #define KEYP_H__DISCOVERY_NEARBYLIST__LIST @"list" //list
-#define KEYP_H__DISCOVERY_NEARBYLIST__LIST_UID @"uid" // uid int 
+#define KEYP_H__DISCOVERY_NEARBYLIST__LIST_TYPE @"type" // type 条目类型 0 表示附近用户 1表示群组 2表示活动 3表示俱乐部 4表示群组招募
 #define KEYP_H__DISCOVERY_NEARBYLIST__LIST_DISTANCE @"distance" // distance int
-#define KEYP_H__DISCOVERY_NEARBYLIST__LIST_UINFO @"uinfo" // uinfo
-#define KEYP_H__DISCOVERY_NEARBYLIST__LIST_UINFO_UID @"uid" //  uid int
-#define KEYP_H__DISCOVERY_NEARBYLIST__LIST_UINFO_OID @"oid" //  oid string
-#define KEYP_H__DISCOVERY_NEARBYLIST__LIST_UINFO_NICK @"nick" //  nick string
-#define KEYP_H__DISCOVERY_NEARBYLIST__LIST_UINFO_CITY @"city" //  city string
-#define KEYP_H__DISCOVERY_NEARBYLIST__LIST_UINFO_VIP @"vip" //  vip string
+#define KEYP_H__DISCOVERY_NEARBYLIST__LIST_DATA @"data" // data object
+#define KEYP_H__DISCOVERY_NEARBYLIST__LIST_DATA_UID @"uid" //  uid
+#define KEYP_H__DISCOVERY_NEARBYLIST__LIST_DATA_UINFO @"uinfo" //  uinfo
 
 /*
 mark: discovery
@@ -1417,16 +1754,40 @@ example: http://local.taiqiu.com:7070/group/info/?gid=8&verify=16_1411380260_8e0
 "info": {
 "gid": 8,
 "name": "testgroup001",
-"intro": "hellogroup",
-"memberNum": 1,
+"intro": "hello",
+"albumId": 26,
+"status": 0,
+"memberNum": 6,
+"createUid": 16,
+"adminUids": [
+"16"
+],
+"location": {
+"lon": "32",
+"lat": "121",
+"alt": "",
+"geohash": "uxyz",
+"address": "zhichunlu"
+},
+"ctime": "2014-10-23 11:05:37",
+"logo": {
+"src": "http://local.p.taiqiuui.com:81/i/5/1/8/105/e22dd16333c48610fef5d72ff8cdaaae.jpeg",
+"thumb": "http://local.p.taiqiuui.com:81/i/5/1/8/105/e22dd16333c48610fef5d72ff8cdaaae_80x100.jpeg"
+},
 "creator": {
 "uid": 16,
 "oid": "16",
 "nick": "谁谁谁",
 "city": "",
-"vip": 0
+"gender": 0,
+"vip": 0,
+"logoAlbumId": 0,
+"logo": null,
+"roles": [
+0
+]
 },
-"ctime": "2014-10-23 11:05:37"
+"myrelation": 1
 }
 }
 */
@@ -2099,9 +2460,34 @@ type: /account/myinfo/
 kind: http
 method: http-get
 describe: 获取我的信息
+vip
 example: http://local.taiqiu.com:7070/account/myinfo/
 
-{"error_code":0,"uinfo":{"uid":"15","nick":"32222222","mobile":"13811121213","mobCountry":"+86","email":"","gender":"0","city":"","status":"0"}}
+{
+"error_code": 0,
+"uinfo": {
+"uid": 16,
+"oid": "16",
+"nick": "谁谁谁",
+"mobile": "13811222222",
+"mobCountry": "+86",
+"email": "",
+"gender": 0,
+"city": "",
+"status": 0,
+"vip": 0,
+"birthday": "0000-00-00",
+"lunarbirth": "0",
+"career": "",
+"interest": "",
+"intro": "",
+"logoAlbumId": 0,
+"logo": null,
+"roles": [
+0
+]
+}
+}
 */
 #define PATH_H__ACCOUNT_MYINFO_ @"/account/myinfo/"
 #define NOTI_H__ACCOUNT_MYINFO_ @"MPaccountmyinfoNotifiction"
@@ -2118,12 +2504,13 @@ example: http://local.taiqiu.com:7070/account/myinfo/
 #define KEYP_H__ACCOUNT_MYINFO__UINFO_GENDER @"gender" // gender
 #define KEYP_H__ACCOUNT_MYINFO__UINFO_CITY @"city" // city
 #define KEYP_H__ACCOUNT_MYINFO__UINFO_STATUS @"status" // status 0
-#define KEYP_H__ACCOUNT_MYINFO__UINFO_VIP @"vip" // vip 0
+#define KEYP_H__ACCOUNT_MYINFO__UINFO_VIP @"vip" // vip 0 0 普通用户 1 为一级会员
 #define KEYP_H__ACCOUNT_MYINFO__UINFO_BIRTHDAY @"birthday" // birthday 0000-00-00
 #define KEYP_H__ACCOUNT_MYINFO__UINFO_LUNARBIRTH @"lunarbirth" // lunarbirth 0
 #define KEYP_H__ACCOUNT_MYINFO__UINFO_CAREER @"career" // career
 #define KEYP_H__ACCOUNT_MYINFO__UINFO_INTEREST @"interest" // interest
 #define KEYP_H__ACCOUNT_MYINFO__UINFO_INTRO @"intro" // intro
+#define KEYP_H__ACCOUNT_MYINFO__UINFO_ROLES @"roles" // roles array 用户身份数组 0 普通 1 宝贝 2助教 3天使 4 俱乐部经理 5明星
 
 /*
 mark: account

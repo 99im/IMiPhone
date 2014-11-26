@@ -10,19 +10,34 @@
 
 @interface GroupCreateViewController ()
 
+@property (weak, nonatomic) IBOutlet UITextField *tfName;
+@property (weak, nonatomic) IBOutlet UITextView *tvIntro;
+@property (weak, nonatomic) IBOutlet UILabel *lblAddress;
+
+@property (weak, nonatomic) DPGroup *dpGroupCreating;
+
 @end
 
 @implementation GroupCreateViewController
 
+@synthesize dpGroupCreating = _dpGroupCreating;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [self registerMessageNotification];
     [super viewWillAppear:animated];
+    // Do any additional setup after loading the view.
+    _dpGroupCreating = [[GroupDataProxy sharedProxy] getGroupCreating];
+    if (_dpGroupCreating.address) {
+        self.lblAddress.text = [NSString stringWithFormat:@"地点:%@",_dpGroupCreating.address];
+    } else {
+        self.lblAddress.text = @"";
+    }
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -87,11 +102,11 @@
 }
 
 - (IBAction)checkGroupCreate:(id)sender {
-    NSString *name = self.tfName.text;
-    NSString *intro = self.tvIntro.text;
+    _dpGroupCreating.name = self.tfName.text;
+    _dpGroupCreating.intro = self.tvIntro.text;
     //TODO : 输入数据机校验
-    if (name.length > 0) {
-        [[GroupMessageProxy sharedProxy] sendGroupCreate:name withIntro:intro];
+    if (_dpGroupCreating.name.length > 0) {
+        [[GroupMessageProxy sharedProxy] sendGroupCreate:_dpGroupCreating];
     }
 }
 @end
