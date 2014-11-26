@@ -85,6 +85,8 @@
     else {
         [self dismissViewControllerAnimated:YES completion:^{
             NSLog(@"群创建成功:%qi", _dpGroupCreating.gid);
+            [[GroupDataProxy sharedProxy] setGroupIdCurrent:_dpGroupCreating.gid];
+            //[self performSegueWithIdentifier:@"CreatGroup2InfoSegue" sender:self];
             //更新群列表
             //[[GroupDataProxy sharedProxy] getGroupMyList:SEND_HTTP_YES];
 
