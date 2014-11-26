@@ -111,7 +111,6 @@
 
 @implementation ChatTextTableViewCell
 
-@synthesize imgViewBg = _imgViewBg;
 
 - (void)setMsg:(DPChatMessage *)chatMessage
 {
@@ -121,11 +120,6 @@
     UIView *viewTextContent = [self assembleMessage:chatMessage.content];
     
     NSLog(@"textContent width:%f and height:%f",viewTextContent.frame.size.width, viewTextContent.frame.size.height);
-    
-    if (self.imgViewBg == nil) {
-        _imgViewBg = [[UIImageView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 0.0f, 0.0f)];
-    }
-    self.imgViewBg.image = [ChatTableViewCell resizableImageOfMsgBgWithMsgType:self.messageType];
 
     self.imgViewBg.frame = CGRectMake(0.0f, 0.0f, viewTextContent.frame.size.width + CHAT_CELL_CONTENT_BG_OFF_WIDTH, viewTextContent.frame.size.height + CHAT_CELL_CONTENT_BG_OFF_HEIGHT);
     [self.viewMsgContent addSubview:self.imgViewBg];
