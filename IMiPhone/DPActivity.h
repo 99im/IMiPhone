@@ -32,6 +32,7 @@
 @property (nonatomic, retain) NSString *beginTime;
 @property (nonatomic, retain) NSString *endTime;
 
+@property (nonatomic, retain) NSArray *members;//成员
 
 @end
 

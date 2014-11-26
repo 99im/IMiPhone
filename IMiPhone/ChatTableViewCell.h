@@ -52,9 +52,6 @@ typedef enum {
 //公用设置气泡九宫格函数
 + (UIImage *)resizableImageOfMsgBgWithMsgType:(ChatMessageType)messageType;
 
-//预先计算cell高度
-+ (CGFloat)heightOfTextCellWithMessage:(NSString*)message withFont:(UIFont *)font withContentWidth:(CGFloat) width;
-
 //负责公用组件的修改，子类可以重写
 - (void)setMsg:(DPChatMessage *)chatMessage;
 
@@ -63,8 +60,3 @@ typedef enum {
 
 @end
 
-@interface ChatTextTableViewCell : ChatTableViewCell
-
-- (void)setMsg:(DPChatMessage *)chatMessage;
-
-@end

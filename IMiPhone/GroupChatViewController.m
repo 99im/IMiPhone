@@ -31,7 +31,6 @@
 
 //
 @property (nonatomic,retain) NSArray *arrChatMessages;
-@property (nonatomic,retain) NSMutableDictionary *mdicCellHeight;
 
 //表情弹框
 @property (strong, nonatomic) EmotionViewController *emotionViewController;
@@ -111,7 +110,6 @@ static NSString *kGroupChatImageCell = @"GroupChatImageTableViewCell";
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
-    self.mdicCellHeight = nil;
     //解除键盘出现通知
     [[NSNotificationCenter defaultCenter] removeObserver:self
                                                     name: UIKeyboardDidShowNotification object:nil];
@@ -247,27 +245,8 @@ static NSString *kGroupChatImageCell = @"GroupChatImageTableViewCell";
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (self.mdicCellHeight == nil) {
-        self.mdicCellHeight = [NSMutableDictionary dictionary];
-    }
-    NSString *key = [NSString stringWithFormat:@"%i", indexPath.row];
-    NSNumber *numCellHeight = [self.mdicCellHeight objectForKey:key];
-    if (numCellHeight) {
-        return [numCellHeight doubleValue];
-    }
-    else {
-        DPGroupChatMessage *dpChatMessage = [self.arrChatMessages objectAtIndex:indexPath.row];
-        CGFloat height;
-        if (dpChatMessage.msgType == CHAT_MASSAGE_TYPE_TEXT) {
-            height = [ChatTableViewCell heightOfTextCellWithMessage:dpChatMessage.content withFont:[UIFont systemFontOfSize:CHAT_CELL_CONTENT_FONT_SIZE] withContentWidth:CHAT_CELL_CONTENT_WIDTH_MAX];
-        }
-        else if (dpChatMessage.msgType == CHAT_MASSAGE_TYPE_IMAGE) {
-            //TODO:图片单元格高度计算
-            height = 50;
-        }
-        [self.mdicCellHeight setObject:[NSNumber numberWithDouble:height] forKey:key];
-        return height;
-    }
+    DPGroupChatMessage *dpChatMessage = [self.arrChatMessages objectAtIndex:indexPath.row];
+    return dpChatMessage.cellHeight;
 }
 
 - (void)scrollToLastCell:(BOOL)animated

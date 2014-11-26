@@ -164,6 +164,8 @@
 		11DF5F6A1A2574E700520243 /* DPMyActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 11DF5F681A2574E700520243 /* DPMyActivity.m */; };
 		11DF5F6D1A25755800520243 /* DPNearbyActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 11DF5F6C1A25755800520243 /* DPNearbyActivity.m */; };
 		11DF5F6E1A25755800520243 /* DPNearbyActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 11DF5F6C1A25755800520243 /* DPNearbyActivity.m */; };
+		11DF5F711A25B9AA00520243 /* ChatTextTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 11DF5F701A25B9AA00520243 /* ChatTextTableViewCell.m */; };
+		11DF5F721A25B9AA00520243 /* ChatTextTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 11DF5F701A25B9AA00520243 /* ChatTextTableViewCell.m */; };
 		11DF6A8E1A047B7700A4B1D3 /* SysMsgTableViewDefaultCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 11DF6A8D1A047B7700A4B1D3 /* SysMsgTableViewDefaultCell.m */; };
 		11DF6A8F1A047B7700A4B1D3 /* SysMsgTableViewDefaultCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 11DF6A8D1A047B7700A4B1D3 /* SysMsgTableViewDefaultCell.m */; };
 		11DF6A961A04B57C00A4B1D3 /* DPGroupChatMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 11DF6A951A04B57C00A4B1D3 /* DPGroupChatMessage.m */; };
@@ -505,6 +507,8 @@
 		11DF5F681A2574E700520243 /* DPMyActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPMyActivity.m; sourceTree = "<group>"; };
 		11DF5F6B1A25755800520243 /* DPNearbyActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPNearbyActivity.h; sourceTree = "<group>"; };
 		11DF5F6C1A25755800520243 /* DPNearbyActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPNearbyActivity.m; sourceTree = "<group>"; };
+		11DF5F6F1A25B9AA00520243 /* ChatTextTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatTextTableViewCell.h; sourceTree = "<group>"; };
+		11DF5F701A25B9AA00520243 /* ChatTextTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatTextTableViewCell.m; sourceTree = "<group>"; };
 		11DF6A8C1A047B7700A4B1D3 /* SysMsgTableViewDefaultCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SysMsgTableViewDefaultCell.h; sourceTree = "<group>"; };
 		11DF6A8D1A047B7700A4B1D3 /* SysMsgTableViewDefaultCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SysMsgTableViewDefaultCell.m; sourceTree = "<group>"; };
 		11DF6A941A04B57C00A4B1D3 /* DPGroupChatMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPGroupChatMessage.h; sourceTree = "<group>"; };
@@ -848,6 +852,8 @@
 				117A18FF1A10675E00E3B790 /* ChatGraphicsUtil.m */,
 				58E869991A1DB776001437A2 /* ChatImageTableViewCell.h */,
 				58E8699A1A1DB776001437A2 /* ChatImageTableViewCell.m */,
+				11DF5F6F1A25B9AA00520243 /* ChatTextTableViewCell.h */,
+				11DF5F701A25B9AA00520243 /* ChatTextTableViewCell.m */,
 			);
 			name = Chat;
 			sourceTree = "<group>";
@@ -1722,6 +1728,7 @@
 				58B496E619A7186A0082AE30 /* MKNetworkEngine.m in Sources */,
 				11FFA5031A1C9EE400F6F00A /* ActivityCreateTabelController.m in Sources */,
 				11FAA8C419EF558E002048FA /* FriendTableViewCellUser.m in Sources */,
+				11DF5F711A25B9AA00520243 /* ChatTextTableViewCell.m in Sources */,
 				1194302419F7B01D00FD9206 /* ChatTableViewCell.m in Sources */,
 				118310C219FE61B700C1968D /* DPSysMessage.m in Sources */,
 				110487A619D7A35C0002AB36 /* UiMessageDAO.m in Sources */,
@@ -1847,6 +1854,7 @@
 				117AC6AB19EEB90600143973 /* IMAddressPerson.m in Sources */,
 				AB199ACC1A0A24A800F6B858 /* LocationTest.m in Sources */,
 				114BF7491A1A458A00A28A94 /* DBFanUser.m in Sources */,
+				11DF5F721A25B9AA00520243 /* ChatTextTableViewCell.m in Sources */,
 				11FFA5141A1CA4BE00F6F00A /* ActivityCreateTableInfoCell.m in Sources */,
 				116AB14A19B731DE00092E2C /* DBGroup.m in Sources */,
 				117AC6B219EEB9A500143973 /* IMNWSocketConnect.m in Sources */,

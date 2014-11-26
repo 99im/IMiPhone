@@ -11,7 +11,7 @@
 #import "ChatInputSoundView.h"
 #import "DPChatMessage.h"
 #import "ChatDataProxy.h"
-#import "ChatTableViewCell.h"
+#import "ChatTextTableViewCell.h"
 #import "UserDataProxy.h"
 #import "ChatMessageProxy.h"
 #import "EmotionViewController.h"
@@ -32,8 +32,6 @@
 
 //数据
 @property (nonatomic, retain) NSArray *arrChatMessages;
-
-@property (nonatomic,retain) NSMutableDictionary *mdicCellHeight;
 
 //表情弹框
 @property (nonatomic, retain) EmotionViewController *emotionViewController;
@@ -112,7 +110,6 @@ static NSString *kChatImageCell = @"ChatImageTableViewCell";
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
-    self.mdicCellHeight = nil;
     //解除键盘出现通知
     [[NSNotificationCenter defaultCenter] removeObserver:self
                                                     name: UIKeyboardDidShowNotification object:nil];
@@ -249,27 +246,8 @@ static NSString *kChatImageCell = @"ChatImageTableViewCell";
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSLog(@"chat view Controller:heightForRowAtIndexPath row:%li",(long)indexPath.row);
-    if (self.mdicCellHeight == nil) {
-        self.mdicCellHeight = [NSMutableDictionary dictionary];
-    }
-    NSString *key = [NSString stringWithFormat:@"%i", indexPath.row];
-    NSNumber *numCellHeight = [self.mdicCellHeight objectForKey:key];
-    if (numCellHeight) {
-        return [numCellHeight doubleValue];
-    }
-    else {
-        DPChatMessage *dpChatMessage = [self.arrChatMessages objectAtIndex:indexPath.row];
-        CGFloat height;
-        if (dpChatMessage.msgType == CHAT_MASSAGE_TYPE_TEXT) {
-            height = [ChatTableViewCell heightOfTextCellWithMessage:dpChatMessage.content withFont:[UIFont systemFontOfSize:CHAT_CELL_CONTENT_FONT_SIZE] withContentWidth:CHAT_CELL_CONTENT_WIDTH_MAX];
-        }
-        else if (dpChatMessage.msgType == CHAT_MASSAGE_TYPE_IMAGE) {
-       //TODO:图片单元格高度计算
-        height = 50;
-        }
-        [self.mdicCellHeight setObject:[NSNumber numberWithDouble:height] forKey:key];
-        return height;
-    }
+    DPChatMessage *dpChatMessage = [self.arrChatMessages objectAtIndex:indexPath.row];
+    return dpChatMessage.cellHeight;
 }
 
 - (void)scrollToLastCell:(BOOL)animated

@@ -34,20 +34,6 @@
     return imgBg;
 }
 
-+ (CGFloat)heightOfTextCellWithMessage:(NSString*)message withFont:(UIFont *)font withContentWidth:(CGFloat) width
-{
-    NSAttributedString *abStr = [ChatGraphicsUtil abStringWithMessage:message withFont:font];
-    CGFloat contentH;
-    CGSize size = [IMRichText sizeOfRichTextWithAttributedString:abStr withFrameWidth:width];
-    if (size.height < CHAT_PORTRAIT_HEIGHT) {
-        contentH = CHAT_PORTRAIT_HEIGHT;
-    }
-    else {
-        contentH = size.height;
-    }
-    return CHAT_PORTRAIT_TOP_MARGIN_Y + contentH + CHAT_CELL_CONTENT_BG_OFF_HEIGHT;
-}
-
 - (void)awakeFromNib {
     
     self.backgroundColor = [UIColor clearColor];
@@ -114,33 +100,6 @@
     self.imgViewBg.frame = CGRectMake(imgBgX, imgBgY, self.imgViewBg.frame.size.width, self.imgViewBg.frame.size.height);
     self.viewMsgContent.frame = CGRectMake(viewMsgContentX, viewMsgContentY, self.viewMsgContent.frame.size.width, self.viewMsgContent.frame.size.height);
     self.lblState.frame = CGRectMake(lblStateX, lblStateY, self.lblState.frame.size.width, self.lblState.frame.size.height);
-}
-
-@end
-
-@implementation ChatTextTableViewCell
-
-
-- (void)setMsg:(DPChatMessage *)chatMessage
-{
-    //要先清掉viewMsgContent 的subview
-    [imUtil clearSubviewsInView:self.viewMsgContent];
-    
-    UIView *viewTextContent = [self assembleMessage:chatMessage.content];
-    
-//    NSLog(@"textContent width:%f and height:%f",viewTextContent.frame.size.width, viewTextContent.frame.size.height);
-
-    [self.viewMsgContent addSubview:viewTextContent];
-    self.viewMsgContent.frame = viewTextContent.frame ;
-    
-    //要最后调用
-    [super setMsg:chatMessage];
-}
-
-- (UIView *)assembleMessage:(NSString *)message
-{
-    UIFont *fon = [UIFont systemFontOfSize:CHAT_CELL_CONTENT_FONT_SIZE];
-    return [ChatGraphicsUtil richTextWithMessage:message withFont:fon withContentWidth:CHAT_CELL_CONTENT_WIDTH_MAX];
 }
 
 @end
