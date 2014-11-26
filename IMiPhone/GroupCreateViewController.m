@@ -84,10 +84,11 @@
     }
     else {
         [self dismissViewControllerAnimated:YES completion:^{
-            NSLog(@"群创建成功！");
+            NSLog(@"群创建成功:%qi", _dpGroupCreating.gid);
             //更新群列表
             //[[GroupDataProxy sharedProxy] getGroupMyList:SEND_HTTP_YES];
-            [[GroupMessageProxy sharedProxy] sendGroupMyList:0 withPageNum:50];
+
+            //[[GroupMessageProxy sharedProxy] sendGroupMyList:0 withPageNum:50];
         }];
     }
 }

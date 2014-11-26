@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="sWe-ai-dJr">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="sWe-ai-dJr">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
@@ -2429,12 +2429,19 @@
                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="status" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uDQ-xE-oMk">
+                                            <rect key="frame" x="230" y="7" width="57" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="imgAvatar" destination="Jif-IK-TEo" id="Rue-6y-2dg"/>
                                     <outlet property="lblIntro" destination="wmR-yv-xG7" id="KW2-oR-uQh"/>
                                     <outlet property="lblName" destination="xTc-Fb-b5C" id="2cw-TC-5Mc"/>
+                                    <outlet property="lblStatus" destination="uDQ-xE-oMk" id="M2R-YK-avj"/>
                                     <segue destination="yEJ-R3-2p3" kind="push" identifier="groupList2GroupChat" id="XGz-ue-SSV"/>
                                 </connections>
                             </tableViewCell>
@@ -2447,7 +2454,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ibF-87-OIE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2976" y="4457"/>
+            <point key="canvasLocation" x="2976" y="4455"/>
         </scene>
         <!--Group-创建群-->
         <scene sceneID="E93-zC-ePk">
@@ -3691,13 +3698,13 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="sBc-ng-CvW"/>
-        <segue reference="DGb-6e-Qb2"/>
-        <segue reference="xJX-I6-fGX"/>
-        <segue reference="8gL-WP-3D1"/>
         <segue reference="SUU-2p-Sgf"/>
         <segue reference="can-Bt-rCz"/>
         <segue reference="6IF-l5-3Iq"/>
         <segue reference="dkl-wS-iyY"/>
+        <segue reference="xJX-I6-fGX"/>
+        <segue reference="sBc-ng-CvW"/>
+        <segue reference="8gL-WP-3D1"/>
+        <segue reference="XGz-ue-SSV"/>
     </inferredMetricsTieBreakers>
 </document>

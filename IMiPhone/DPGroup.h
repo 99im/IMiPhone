@@ -17,6 +17,9 @@
 #define GROUP_RELATION_MEMBER  3    //普通成员
 #define GROUP_RELATION_APPLICANT  -3   //申请者 (编码待定)
 
+#define GROUP_STATUS_AUDITING 1  //审核中
+#define GROUP_STATUS_AUDITED  0  //已经通过
+
 //群错误码
 #define GROUP_ERR_CODE_applied 10036  //已申请过
 
