@@ -49,5 +49,6 @@
            break;
         }
     }
+    [self.tfAddTarget resignFirstResponder];
 }
 @end
