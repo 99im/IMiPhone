@@ -528,6 +528,11 @@ static GroupMessageProxy *sharedGroupMessageProxy = nil;
                 if (errorcode == 0) {
                     // NSLog(@"sendGroupCreate response ok:\n%@", json);
                     //[[NSNotificationCenter defaultCenter] postNotificationName:NOTI_H__GROUP_CREATE_ object:nil];
+                    GroupDataProxy *proxy = [GroupDataProxy sharedProxy];
+                    DPGroup *dpGroup = [proxy getGroupCreating];
+                    dpGroup.gid = [[json objectForKey:KEYP_H__GROUP_CREATE__GID] longLongValue];
+                    dpGroup.status = GROUP_STATUS_AUDITING;
+                    [proxy mergeGroupMyList: dpGroup];
                     [self processSuccessNotiName:NOTI_H__GROUP_CREATE_ withUserInfo:nil];
                 }
                 else {

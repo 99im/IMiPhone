@@ -41,7 +41,10 @@
 
 -(BOOL)isGroupOK
 {
-    return YES;
+    if (self.status == GROUP_STATUS_AUDITED) {
+        return YES;
+    }
+    return NO;
 }
 
 -(BOOL)isGroupOwner

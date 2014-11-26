@@ -169,6 +169,16 @@ static GroupDataProxy *sharedGroupDataProxy = nil;
 //    return 0;
 }
 
+- (void)mergeGroupMyList:(DPGroup *)dpGroup
+{
+    DPGroup *group = [self getGroupInfo:dpGroup.gid byHttpMode:SEND_HTTP_NO];
+    if(group){
+        [ImDataUtil copyFrom:dpGroup To:group];
+    } else {
+        [_arrGroupMyList addObject:group];
+    }
+}
+
 #pragma mark - 单个群相关
 - (DPGroup *)getGroupInfo:(IMGroupId)gid byHttpMode:(NSInteger)httpMode
 {
