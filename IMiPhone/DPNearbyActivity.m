@@ -10,4 +10,8 @@
 
 @implementation DPNearbyActivity
 
+@synthesize aid;
+@synthesize ctime;//加入时间
+@synthesize myReleation;
+
 @end

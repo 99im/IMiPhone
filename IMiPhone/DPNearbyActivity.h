@@ -10,4 +10,8 @@
 
 @interface DPNearbyActivity : NSObject
 
+@property (nonatomic) long long aid;
+@property (nonatomic, retain) NSString *ctime;
+@property (nonatomic) NSInteger myReleation;
+
 @end

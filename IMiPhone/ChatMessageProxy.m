@@ -108,7 +108,7 @@ static ChatMessageProxy *messageProxy = nil;
         else {
             dpUiMessage.relationId = dpChatMessage.senderUid;
         }
-        [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_S_CHAT_CHATN object:dpChatMessage];
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_S_CHAT_CHATN object:self];
     }
     else if ([stage isEqualToString:CHAT_STAGE_GROUP]) {
        
@@ -126,7 +126,7 @@ static ChatMessageProxy *messageProxy = nil;
         dpUiMessage.type = UI_MESSAGE_TYPE_GROUP_CHAT;
         dpUiMessage.mid = dpGroupChatMsg.mid;
         dpUiMessage.relationId = dpGroupChatMsg.targetId ;
-        [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_S_CHAT_CHATN object:dpGroupChatMsg];
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_S_CHAT_CHATN object:self];
     }
     else
     {

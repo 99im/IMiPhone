@@ -12,6 +12,6 @@
 
 @synthesize aid;
 @synthesize ctime;//加入时间
-@synthesize releation;
+@synthesize myReleation;
 
 @end

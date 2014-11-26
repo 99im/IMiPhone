@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "DPActivity.h"
 #import "DPMyActivity.h"
-#import "DPMyActivity.h"
+#import "DPNearbyActivity.h"
 
 @interface ActivityDataProxy : NSObject
 
