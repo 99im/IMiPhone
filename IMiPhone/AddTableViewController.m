@@ -224,7 +224,13 @@ NSInteger const ROW_CREATE_ZU = 1;
 
 - (void)skipToSearchUserResult:(NSNotification *)notification
 {
-    [self performSegueWithIdentifier:@"Add2UserResultSegue" sender:self];
+    if (!notification.object) {
+        [self performSegueWithIdentifier:@"Add2UserResultSegue" sender:self];
+    }
+    else {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Alert", nil) message:[NSString stringWithFormat:@"%i: %@", ((NSError *)notification.object).code, [((NSError *)notification.object).userInfo objectForKey:NSLocalizedDescriptionKey]] delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", nil) otherButtonTitles:nil];
+        [alertView show];
+    }
 }
 
 - (void)skipToSearchGroupResult:(NSNotification *)notification
