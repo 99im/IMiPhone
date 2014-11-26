@@ -12,6 +12,6 @@
 
 @property (nonatomic) long long aid;
 @property (nonatomic, retain) NSString *ctime;//加入时间
-@property (nonatomic) NSInteger releation;
+@property (nonatomic) NSInteger myReleation;
 
 @end
