@@ -124,16 +124,20 @@ static ActivityMessageProxy *activityProxy = nil;
                 dpActivity.signerLimit = [[json objectForKey:KEYP_H__ACTIVITY_INFO__SIGNERLIMIT] integerValue];
                 dpActivity.payType = [[json objectForKey:KEYP_H__ACTIVITY_INFO__PAYTYPE] integerValue];
                 dpActivity.ladyFree = [[json objectForKey:KEYP_H__ACTIVITY_INFO__LADYFREE] integerValue];
-                  dpActivity.lon = [[json objectForKey:KEYP_H__ACTIVITY_INFO__LOCATION] objectForKey:@"lon"];
-                  dpActivity.lat = [[json objectForKey:KEYP_H__ACTIVITY_INFO__LOCATION] objectForKey:@"lat"];
-                  dpActivity.alt = [[json objectForKey:KEYP_H__ACTIVITY_INFO__LOCATION] objectForKey:@"alt"];
-                  dpActivity.curNum = [[json objectForKey:KEYP_H__ACTIVITY_INFO__CURNUM] integerValue];
-                  dpActivity.ctime = [json objectForKey:KEYP_H__ACTIVITY_INFO__CTIME];
-                  dpActivity.myreleation = [[json objectForKey:KEYP_H__ACTIVITY_INFO__MYRELATION] integerValue];
+                dpActivity.lon = [[json objectForKey:KEYP_H__ACTIVITY_INFO__LOCATION] objectForKey:@"lon"];
+                dpActivity.lat = [[json objectForKey:KEYP_H__ACTIVITY_INFO__LOCATION] objectForKey:@"lat"];
+                dpActivity.alt = [[json objectForKey:KEYP_H__ACTIVITY_INFO__LOCATION] objectForKey:@"alt"];
+                dpActivity.curNum = [[json objectForKey:KEYP_H__ACTIVITY_INFO__CURNUM] integerValue];
+                dpActivity.ctime = [json objectForKey:KEYP_H__ACTIVITY_INFO__CTIME];
+                dpActivity.myreleation = [[json objectForKey:KEYP_H__ACTIVITY_INFO__MYRELATION] integerValue];
+                dpActivity.maxNum = [[json objectForKey:KEYP_H__ACTIVITY_INFO__MAXNUM] integerValue];
+                dpActivity.beginTime = [json objectForKey:KEYP_H__ACTIVITY_INFO__BEGINTIME];
+                dpActivity.endTime = [json objectForKey:KEYP_H__ACTIVITY_INFO__ENDTIME];
                 NSDictionary *dicCreaterInfo = [json objectForKey:KEYP_H__ACTIVITY_INFO__CREATOR];
                 [[UserDataProxy sharedProxy] addServerUinfo:dicCreaterInfo];
                 dpActivity.createrUid = [[dicCreaterInfo objectForKey:@"uid"] longLongValue];
 
+                [[ActivityDataProxy sharedProxy] updateActivityListWithServerList: @[dpActivity]];
                 [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_H__ACTIVITY_INFO_ object:self];
             }
             else {
@@ -285,7 +289,6 @@ static ActivityMessageProxy *activityProxy = nil;
 - (DPActivity *)dpActivityWithServerInfo:(NSDictionary *)info
 {
     DPActivity *dpActivity = [[DPActivity alloc] init];
-//    dpActivity.aid = [[info objectForKey:KEYP_H__ACTIVITY_NEARBY__LIST_DETAIL_AID] longLongValue];
     dpActivity.title = [info objectForKey:KEYP_H__ACTIVITY_NEARBY__LIST_DETAIL_TITLE];
     dpActivity.detail = [info objectForKey:KEYP_H__ACTIVITY_NEARBY__LIST_DETAIL_DETAIL];
     dpActivity.type = [[info objectForKey:KEYP_H__ACTIVITY_NEARBY__LIST_DETAIL_TYPE] integerValue];
@@ -300,7 +303,7 @@ static ActivityMessageProxy *activityProxy = nil;
     dpActivity.ctime = [info objectForKey:KEYP_H__ACTIVITY_NEARBY__LIST_DETAIL_CTIME];
 
     dpActivity.beginTime = [info objectForKey:KEYP_H__ACTIVITY_NEARBY__LIST_DETAIL_BEGINTIME];
-//    dpActivity.endTime = [info objectForKey:KEYP_H__ACTIVITY_NEARBY__LIST_DETAIL_ENDTIME];
+    dpActivity.endTime = [info objectForKey:KEYP_H__ACTIVITY_NEARBY__LIST_DETAIL_ENDTIME];
     dpActivity.maxNum = [[info objectForKey:KEYP_H__ACTIVITY_NEARBY__LIST_DETAIL_MAXNUM] integerValue];
 
     NSDictionary *dicCreaterInfo = [info objectForKey:KEYP_H__ACTIVITY_NEARBY__LIST_DETAIL_CREATOR];
@@ -311,7 +314,7 @@ static ActivityMessageProxy *activityProxy = nil;
 }
 
 //活动成员查询
-- (void)sendHttpMembersWithAid:(long long)aid;
+- (void)sendHttpMembersWithAid:(long long)aid withStart:(NSInteger)start withPageNum:(NSInteger)pageNum
 {
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     
@@ -332,9 +335,22 @@ static ActivityMessageProxy *activityProxy = nil;
                 
                 NSArray *arrMembers = [json objectForKey:KEYP_H__ACTIVITY_MEMBERS__LIST];
                 NSDictionary *item;
-//                for (NSinteger i = 0; i < arrMembers.count; i++) {
-//                    item = [arrMembers objectAtIndex:i];
-//                }
+                DPActivityMember *dpActivityMember;
+                NSMutableArray *marr = [NSMutableArray array];
+                for (NSInteger i = 0; i < arrMembers.count; i++) {
+                    item = [arrMembers objectAtIndex:i];
+                    dpActivityMember = [[DPActivityMember alloc] init];
+                    dpActivityMember.aid = [[item objectForKey:KEYP_H__ACTIVITY_MEMBERS__LIST_AID] longLongValue];
+                    dpActivityMember.ctime = [item objectForKey:KEYP_H__ACTIVITY_MEMBERS__LIST_CTIME];
+                    dpActivityMember.uid = [[item objectForKey:KEYP_H__ACTIVITY_MEMBERS__LIST_UID] longLongValue];
+                    dpActivityMember.relation = [[item objectForKey:KEYP_H__ACTIVITY_MEMBERS__LIST_RELATION] integerValue];
+                    [marr addObject:dpActivityMember];
+                    //存储成员信息到user数据中心
+                    NSDictionary *dicMemberInfo = [item objectForKey:KEYP_H__ACTIVITY_MEMBERS__LIST_UINFO];
+                    [[UserDataProxy sharedProxy] addServerUinfo:dicMemberInfo];
+                }
+                
+                [[ActivityDataProxy sharedProxy] updateActivityMembersWithStart:start withServerMembers:marr];
                 
                 [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_H__ACTIVITY_MEMBERS_ object:self];
             }
