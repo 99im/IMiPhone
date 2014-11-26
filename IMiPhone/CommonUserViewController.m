@@ -1,18 +1,20 @@
 //
-//  UserDynamicViewController.m
+//  CommonUserViewController.m
 //  IMiPhone
 //
-//  Created by 田聪 on 14/11/24.
+//  Created by 田聪 on 14/11/25.
 //  Copyright (c) 2014年 尹晓君. All rights reserved.
 //
 
-#import "UserDynamicViewController.h"
+#import "CommonUserViewController.h"
 
-@interface UserDynamicViewController ()
+@interface CommonUserViewController ()
 
 @end
 
-@implementation UserDynamicViewController
+@implementation CommonUserViewController
+@synthesize lblUserNick;
+@synthesize lblUserOid;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -20,6 +22,9 @@
     self.tableview.delegate = self;
     self.tableview.dataSource = self;
     self.tableview.separatorStyle = UITableViewCellSeparatorStyleNone;
+    
+    self.tableview.contentInset = UIEdgeInsetsMake(- 70, 0, 0, 0);
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -36,11 +41,7 @@
     // Pass the selected object to the new view controller.
 }
 */
-
 - (IBAction)returnParentInterface:(UIBarButtonItem *)sender {
-//    [self dismissViewControllerAnimated:YES completion:^{
-//        NSLog(@"取消建群");
-//    }];
     [self dismissViewControllerAnimated:YES completion:^{
         NSLog(@"返回上一级");
     }];
@@ -51,38 +52,38 @@
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.row == 0) {
-        UserD0TableViewCell *cell0 = [tableView dequeueReusableCellWithIdentifier:@"userD0cell" forIndexPath:indexPath];
-        cell0.selectionStyle = UITableViewCellSeparatorStyleNone;
+        UserPictureTableViewCell *cell0 = [tableView dequeueReusableCellWithIdentifier:@"userPicturecell" forIndexPath:indexPath];
+        cell0.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell0;
     }
     else if (indexPath.row == 1) {
-        UserD1TableViewCell *cell1 = [tableView dequeueReusableCellWithIdentifier:@"userD1cell" forIndexPath:indexPath];
-        cell1.selectionStyle = UITableViewCellSeparatorStyleNone;
+        UserInfoTableViewCell *cell1 = [tableView dequeueReusableCellWithIdentifier:@"userInfocell" forIndexPath:indexPath];
+        cell1.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell1;
     }
     else if (indexPath.row == 2){
-        UserD2TableViewCell *cell2 = [tableView dequeueReusableCellWithIdentifier:@"userD2cell" forIndexPath:indexPath];
-        cell2.selectionStyle = UITableViewCellSeparatorStyleNone;
+        UserDynamiceTableViewCell *cell2 = [tableView dequeueReusableCellWithIdentifier:@"userDynamiccell" forIndexPath:indexPath];
+        cell2.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell2;
     }
     else if (indexPath.row == 3){
-        UserD3TableViewCell *cell3 = [tableView dequeueReusableCellWithIdentifier:@"userD3cell" forIndexPath:indexPath];
-        cell3.selectionStyle = UITableViewCellSeparatorStyleNone;
+        UserSignTableViewCell *cell3 = [tableView dequeueReusableCellWithIdentifier:@"userSigncell" forIndexPath:indexPath];
+        cell3.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell3;
     }
     else if (indexPath.row == 4){
-        UserD4TableViewCell *cell4 = [tableView dequeueReusableCellWithIdentifier:@"userD4cell" forIndexPath:indexPath];
-        cell4.selectionStyle = UITableViewCellSeparatorStyleNone;
+        UserBBSTableViewCell *cell4 = [tableView dequeueReusableCellWithIdentifier:@"userBBScell" forIndexPath:indexPath];
+        cell4.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell4;
     }
     else if (indexPath.row == 5){
-        UserD5TableViewCell *cell5 = [tableView dequeueReusableCellWithIdentifier:@"userD5cell" forIndexPath:indexPath];
-        cell5.selectionStyle = UITableViewCellSeparatorStyleNone;
+        UserJoinGroupsTableViewCell *cell5 = [tableView dequeueReusableCellWithIdentifier:@"userJoinGroupscell" forIndexPath:indexPath];
+        cell5.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell5;
     }
     else if (indexPath.row == 6){
-        UserD6TableViewCell *cell6 = [tableView dequeueReusableCellWithIdentifier:@"userD6cell" forIndexPath:indexPath];
-        cell6.selectionStyle = UITableViewCellSeparatorStyleNone;
+        UserDescriptionTableViewCell *cell6 = [tableView dequeueReusableCellWithIdentifier:@"userDescriptioncell" forIndexPath:indexPath];
+        cell6.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell6;
     }
     return nil;

@@ -1,14 +1,14 @@
 //
-//  UserD5TableViewCell.m
+//  UserJoinGroupsTableViewCell.m
 //  IMiPhone
 //
-//  Created by 田聪 on 14/11/25.
+//  Created by 田聪 on 14/11/26.
 //  Copyright (c) 2014年 尹晓君. All rights reserved.
 //
 
-#import "UserD5TableViewCell.h"
+#import "UserJoinGroupsTableViewCell.h"
 
-@implementation UserD5TableViewCell
+@implementation UserJoinGroupsTableViewCell
 
 - (void)awakeFromNib {
     // Initialization code
@@ -27,12 +27,13 @@
     return 1;
 }
 
-- (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return 5;
 }
 
-- (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    JoinGroupCellTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"groupCell" forIndexPath:indexPath];
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    JoinGroupTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"groupCell" forIndexPath:indexPath];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;  
     return cell;
 }
 

@@ -20,17 +20,16 @@
 @end
 
 @implementation UserShowViewController
+@synthesize commonUserViewController;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    DPUser *userInfo = [[UserDataProxy sharedProxy] getUserByUid:[UserDataProxy sharedProxy].showUserInfoUid];
-    [self.lblNickname setText:userInfo.nick];
-    [self.lblOid setText:userInfo.oid];
-    
     NSInteger userRelation = [UserDataProxy sharedProxy].showUserInfoRleation;
     [self hideButtonsByReleation:userRelation];
+    //根据玩家身份显示个人页
+    [self showUserView:0];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -187,5 +186,17 @@
     NSInteger userRelation = [UserDataProxy sharedProxy].showUserInfoRleation;
     [self hideButtonsByReleation:userRelation];
 }
+
+- (void)showUserView:(NSInteger)identity{
+    UIStoryboard* mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    self.commonUserViewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"CommonUserViewController"];
+    self.commonUserViewController.view.frame = CGRectMake(0.0f, 0.0f, self.viewContent.frame.size.width, self.viewContent.frame.size.height);
+    [self.viewContent addSubview:self.commonUserViewController.view];
+    [self addChildViewController:self.commonUserViewController];
+    DPUser *userInfo = [[UserDataProxy sharedProxy] getUserByUid:[UserDataProxy sharedProxy].showUserInfoUid];
+    [self.commonUserViewController.lblUserNick setText:userInfo.nick];
+    [self.commonUserViewController.lblUserOid setText:userInfo.oid];
+}
+
 
 @end
