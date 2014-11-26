@@ -21,7 +21,6 @@
     [super awakeFromNib];
     
     self.imageViewImage = [[UIImageView alloc] init];
-    [self.contentView addSubview:self.imageViewImage];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -32,14 +31,14 @@
 
 - (void)setMsg:(DPChatMessage *)chatMessage
 {
-    //TODO:内容显示
-    [super setMsg:chatMessage];
-    self.imageViewImage.frame = CGRectMake(110.0f, 0.0f, 100.0f, 100.0f);
+    self.imageViewImage.frame = CGRectMake(0.0f, 0.0f, 80.0f, 80.0f);
     self.imageViewImage.image = [UIImage imageNamed:@"HeadBg"];
+    [self.viewMsgContent addSubview:self.imageViewImage];
     
     if (chatMessage.msgType == CHAT_MASSAGE_TYPE_IMAGE) {
         [chatMessage parseImageContent];
     }
+    [super setMsg:chatMessage];
 }
 
 @end

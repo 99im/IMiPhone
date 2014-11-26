@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "ChatTableViewCell.h"
 
-@interface ChatImageTableViewCell : ChatTextTableViewCell
+@interface ChatImageTableViewCell : ChatTableViewCell
 
 @end
