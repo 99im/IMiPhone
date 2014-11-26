@@ -131,7 +131,7 @@
 //    NSLog(@"textContent width:%f and height:%f",viewTextContent.frame.size.width, viewTextContent.frame.size.height);
 
     [self.viewMsgContent addSubview:viewTextContent];
-    self.viewMsgContent.frame = viewTextContent.frame ;
+    self.viewMsgContent.frame = viewTextContent.frame;
     
     //要最后调用
     [super setMsg:chatMessage];

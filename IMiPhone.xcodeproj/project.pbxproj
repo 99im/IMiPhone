@@ -301,6 +301,8 @@
 		58EF8C4619BF04B600C5A7AC /* imNetWorkTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 58EF8C4519BF04B600C5A7AC /* imNetWorkTest.m */; };
 		58F2AA3419A2F85400DC2FFB /* imUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F2AA3319A2F85400DC2FFB /* imUtil.m */; };
 		58F2AA3919A487E300DC2FFB /* AsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F2AA3819A487E300DC2FFB /* AsyncSocket.m */; };
+		58F4FDB61A25C6F500032CD5 /* UIImageView+OnlineImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F4FDB51A25C6F500032CD5 /* UIImageView+OnlineImage.m */; };
+		58F4FDB91A25C72500032CD5 /* AsyncImageDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F4FDB81A25C72500032CD5 /* AsyncImageDownloader.m */; };
 		5DBDE2B51A22179E00E28642 /* FIRMessageProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DBDE2B41A22179E00E28642 /* FIRMessageProxy.m */; };
 		AB199ACA1A0A244E00F6B858 /* DPSysMessageGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = AB6396221A038CA500FF0BC6 /* DPSysMessageGroup.m */; };
 		AB199ACC1A0A24A800F6B858 /* LocationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = AB199ACB1A0A24A800F6B858 /* LocationTest.m */; };
@@ -671,6 +673,10 @@
 		58F2AA3319A2F85400DC2FFB /* imUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = imUtil.m; sourceTree = "<group>"; };
 		58F2AA3719A487E300DC2FFB /* AsyncSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsyncSocket.h; sourceTree = "<group>"; };
 		58F2AA3819A487E300DC2FFB /* AsyncSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsyncSocket.m; sourceTree = "<group>"; };
+		58F4FDB41A25C6F400032CD5 /* UIImageView+OnlineImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+OnlineImage.h"; sourceTree = "<group>"; };
+		58F4FDB51A25C6F500032CD5 /* UIImageView+OnlineImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+OnlineImage.m"; sourceTree = "<group>"; };
+		58F4FDB71A25C72500032CD5 /* AsyncImageDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsyncImageDownloader.h; sourceTree = "<group>"; };
+		58F4FDB81A25C72500032CD5 /* AsyncImageDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsyncImageDownloader.m; sourceTree = "<group>"; };
 		5DBDE2B31A22179E00E28642 /* FIRMessageProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FIRMessageProxy.h; sourceTree = "<group>"; };
 		5DBDE2B41A22179E00E28642 /* FIRMessageProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FIRMessageProxy.m; sourceTree = "<group>"; };
 		AB199ACB1A0A24A800F6B858 /* LocationTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationTest.m; sourceTree = "<group>"; };
@@ -1319,6 +1325,10 @@
 		58F2AA3519A2FBC300DC2FFB /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				58F4FDB71A25C72500032CD5 /* AsyncImageDownloader.h */,
+				58F4FDB81A25C72500032CD5 /* AsyncImageDownloader.m */,
+				58F4FDB41A25C6F400032CD5 /* UIImageView+OnlineImage.h */,
+				58F4FDB51A25C6F500032CD5 /* UIImageView+OnlineImage.m */,
 				58BACF1119B5E89D00A72391 /* VPImageCropperViewController.h */,
 				58BACF1219B5E89D00A72391 /* VPImageCropperViewController.m */,
 				58BACEFD19B4410C00A72391 /* crypt.c */,
@@ -1605,6 +1615,7 @@
 				AB1B83121A1DC5D800BDC841 /* DPPlacemark.m in Sources */,
 				58CDC03C19FE2EF600173FD7 /* GroupChatViewController.m in Sources */,
 				1171F7C819E8DE6300865A0B /* AddressAddTableViewCell.m in Sources */,
+				58F4FDB91A25C72500032CD5 /* AsyncImageDownloader.m in Sources */,
 				58BACF0819B5804700A72391 /* FriendMessageProxy.m in Sources */,
 				110F560E19D56A9E003B9EB4 /* ChatDataProxy.m in Sources */,
 				DB6FACBF1A0B785A0048B76B /* HavingFunTableViewCell.m in Sources */,
@@ -1750,6 +1761,7 @@
 				AB24A95D19F8DC6500026299 /* GroupCreateViewController.m in Sources */,
 				58BC1E3719C0304900722A00 /* RegStep1ViewController.m in Sources */,
 				DBC83B921A2577BB00B8EA81 /* UserPictureTableViewCell.m in Sources */,
+				58F4FDB61A25C6F500032CD5 /* UIImageView+OnlineImage.m in Sources */,
 				AB62170819FF3F65003C2FBB /* GroupApplyViewController.m in Sources */,
 				116BF87F19C981AD0015561B /* DPUser.m in Sources */,
 				58D026C419D17D4800BE4748 /* NSNumber+IMNWError.m in Sources */,

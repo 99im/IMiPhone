@@ -264,8 +264,7 @@ static NSString *kChatImageCell = @"ChatImageTableViewCell";
             height = [ChatTableViewCell heightOfTextCellWithMessage:dpChatMessage.content withFont:[UIFont systemFontOfSize:CHAT_CELL_CONTENT_FONT_SIZE] withContentWidth:CHAT_CELL_CONTENT_WIDTH_MAX];
         }
         else if (dpChatMessage.msgType == CHAT_MASSAGE_TYPE_IMAGE) {
-       //TODO:图片单元格高度计算
-        height = 50;
+            height = [ChatImageTableViewCell heightOfCell];
         }
         [self.mdicCellHeight setObject:[NSNumber numberWithDouble:height] forKey:key];
         return height;

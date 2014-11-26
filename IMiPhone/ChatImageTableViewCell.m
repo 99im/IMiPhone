@@ -7,6 +7,7 @@
 //
 
 #import "ChatImageTableViewCell.h"
+#import "UIImageView+OnlineImage.h"
 
 @interface ChatImageTableViewCell ()
 
@@ -15,6 +16,11 @@
 @end
 
 @implementation ChatImageTableViewCell
+
++ (float)heightOfCell
+{
+    return CHAT_PORTRAIT_TOP_MARGIN_Y + CHAT_CELL_CONTENT_IMAGE_HEIGHT + CHAT_CELL_CONTENT_BG_OFF_HEIGHT;
+}
 
 - (void)awakeFromNib {
     // Initialization code
@@ -31,13 +37,14 @@
 
 - (void)setMsg:(DPChatMessage *)chatMessage
 {
-    self.imageViewImage.frame = CGRectMake(0.0f, 0.0f, 80.0f, 80.0f);
-    self.imageViewImage.image = [UIImage imageNamed:@"HeadBg"];
-    [self.viewMsgContent addSubview:self.imageViewImage];
+    [chatMessage parseImageContent];
     
-    if (chatMessage.msgType == CHAT_MASSAGE_TYPE_IMAGE) {
-        [chatMessage parseImageContent];
-    }
+    self.imageViewImage.frame = CGRectMake(0.0f, 0.0f, CHAT_CELL_CONTENT_IMAGE_HEIGHT, CHAT_CELL_CONTENT_IMAGE_HEIGHT);
+    //self.imageViewImage.image = [UIImage imageNamed:@"HeadBg"];
+    [self.imageViewImage setOnlineImage:chatMessage.imgThumbnail placeholderImage:[UIImage imageNamed:@"HeadBg"]];
+    [self.viewMsgContent addSubview:self.imageViewImage];
+    self.viewMsgContent.frame = self.imageViewImage.frame ;
+    
     [super setMsg:chatMessage];
 }
 
