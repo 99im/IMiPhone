@@ -47,4 +47,7 @@
 //我的活动列表
 - (void)sendHttpMyListWithStart:(NSInteger)start withPageNum:(NSInteger)pageNum;
 
+//查询活动成员
+- (void)sendHttpMembersWithAid:(long long)aid;
+
 @end

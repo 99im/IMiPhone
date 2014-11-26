@@ -1,14 +1,14 @@
 //
-//  JoinGroupCellTableViewCell.m
+//  JoinGroupTableViewCell.m
 //  IMiPhone
 //
-//  Created by 田聪 on 14/11/25.
+//  Created by 田聪 on 14/11/26.
 //  Copyright (c) 2014年 尹晓君. All rights reserved.
 //
 
-#import "JoinGroupCellTableViewCell.h"
+#import "JoinGroupTableViewCell.h"
 
-@implementation JoinGroupCellTableViewCell
+@implementation JoinGroupTableViewCell
 
 - (void)awakeFromNib {
     // Initialization code
