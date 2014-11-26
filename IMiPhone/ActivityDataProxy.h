@@ -10,6 +10,7 @@
 #import "DPActivity.h"
 #import "DPMyActivity.h"
 #import "DPNearbyActivity.h"
+#import "DPActivityMember.h"
 
 @interface ActivityDataProxy : NSObject
 
