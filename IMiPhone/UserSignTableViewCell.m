@@ -1,20 +1,18 @@
 //
-//  UserD3TableViewCell.m
+//  UserSignTableViewCell.m
 //  IMiPhone
 //
-//  Created by 田聪 on 14/11/25.
+//  Created by 田聪 on 14/11/26.
 //  Copyright (c) 2014年 尹晓君. All rights reserved.
 //
 
-#import "UserD3TableViewCell.h"
+#import "UserSignTableViewCell.h"
 
-@implementation UserD3TableViewCell
-@synthesize btnDescription;
+@implementation UserSignTableViewCell
 
 - (void)awakeFromNib {
     // Initialization code
-    [self.btnDescription.layer setMasksToBounds:YES];
-    [self.btnDescription.layer setCornerRadius:5.0];
+    [self.btnDescription.layer setCornerRadius:4.0];
     [self.btnDescription.layer setBorderWidth:1.0];
 }
 
