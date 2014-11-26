@@ -50,6 +50,8 @@ typedef long long IMUserId;
 @property (nonatomic) long long localExpireTime;  //本地过期时间，格式(yyyyMMddHHmmss)：201411024125959
 //@property (nonatomic) BOOL isInMyGroups;
 
--(BOOL)isExpired;
-
+//-(BOOL)isExpired;
+-(BOOL)isGroupOwner;   //判断：当前用户是否为群主
+-(BOOL)isGroupManager; //判断：当前用户是否为管理员
+-(BOOL)isGroupMember;  //判断：当前用户是否为群成员
 @end

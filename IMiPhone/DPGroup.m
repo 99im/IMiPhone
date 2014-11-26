@@ -34,9 +34,32 @@
 @synthesize localExpireTime;
 //@synthesize isInMyGroups;
 
--(BOOL)isExpired
+//-(BOOL)isExpired
+//{
+//    return NO;
+//}
+
+-(BOOL)isGroupOwner
 {
+    if (self.myRelation == GROUP_RELATION_OWNER) {
+        return YES;
+    }
     return NO;
 }
 
+-(BOOL)isGroupManager
+{
+    if (self.myRelation == GROUP_RELATION_MEMBER || [self isGroupOwner]) {
+        return YES;
+    }
+    return NO;
+}
+
+-(BOOL)isGroupMember
+{
+    if (self.myRelation == GROUP_RELATION_MEMBER || [self isGroupManager]) {
+        return YES;
+    }
+    return NO;
+}
 @end
