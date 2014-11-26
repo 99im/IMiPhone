@@ -48,7 +48,7 @@ static GroupMessageProxy *sharedGroupMessageProxy = nil;
 
     //群主信息
     id creator = [info objectForKey:KEYP_H__GROUP_INFO__INFO_CREATOR];
-    if ([creator isKindOfClass:[NSNull class]] ) {
+    if (![creator isKindOfClass:[NSNull class]] ) {
         dpGroup.creator_uid = [[creator objectForKey:KEYP_H__GROUP_INFO__INFO_CREATOR_UID] longLongValue];
         dpGroup.creator_nick = [creator objectForKey:KEYP_H__GROUP_INFO__INFO_CREATOR_NICK];
         dpGroup.creator_oid = [[creator objectForKey:KEYP_H__GROUP_INFO__INFO_CREATOR_OID] longLongValue];
