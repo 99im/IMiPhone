@@ -14,8 +14,8 @@
 
 @interface IMRichText()
 
-@property (nonatomic) CGFloat contentFrameAutoSizeHeight;
-@property (nonatomic) CGFloat contentFrameAutoSizeWidth;
+@property (nonatomic) CGSize contentFrameAutoSize;
+
 @property (nonatomic, retain) NSMutableArray *arrRunParams;
 
 @end
@@ -110,7 +110,7 @@ static NSMutableArray *arrRunParams;//用于保存所用run的参数，否则莫
     CTFramesetterRef framesetter = CTFramesetterCreateWithAttributedString((__bridge CFAttributedStringRef)_abString);
 
     CGMutablePathRef path = CGPathCreateMutable();
-    CGRect pathRect = CGRectMake(0, 0, self.contentFrameAutoSizeWidth, self.contentFrameAutoSizeHeight);
+    CGRect pathRect = CGRectMake(0, 0, self.contentFrameAutoSize.width, self.contentFrameAutoSize.height);
     CGPathAddRect(path, NULL, pathRect);
     NSLog(@"CGMutablePathRef:%@",path);
     
@@ -126,7 +126,7 @@ static NSMutableArray *arrRunParams;//用于保存所用run的参数，否则莫
     CGContextSaveGState(context);
     
         //x，y轴方向移动
-    CGContextTranslateCTM(context , 0 ,self.contentFrameAutoSizeHeight);
+    CGContextTranslateCTM(context , 0 ,self.contentFrameAutoSize.height);
     
     //当前context lower left 为坐标原点,所以要沿x轴翻转
     //缩放x，y轴方向缩放，－1.0为反向1.0倍,坐标系转换,沿x轴翻转180度
@@ -262,31 +262,37 @@ static CGFloat localImgRunDeleGetWidthCallback(void *refCon)
         return;
     }
    
-    CTFramesetterRef framesetter = CTFramesetterCreateWithAttributedString((__bridge CFAttributedStringRef)_abString);
-    
-//    CGSizeMake(CGFLOAT_MAX, <#CGFloat height#>)
+    self.contentFrameAutoSize = [IMRichText sizeOfRichTextWithAttributedString:_abString withFrameWidth:_contentFrameWidth];
+    self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, self.contentFrameAutoSize.width, self.contentFrameAutoSize.height);
+}
+
++ (CGSize)sizeOfRichTextWithAttributedString:(NSAttributedString *)abString withFrameWidth:(CGFloat)frameWidth
+{
+    CGFloat contentFrameAutoSizeWidth;
+    CGFloat contentFrameAutoSizeHeight;
+    CTFramesetterRef framesetter = CTFramesetterCreateWithAttributedString((__bridge CFAttributedStringRef)abString);
     
     CGSize noConstraintsSize = CGSizeMake(CGFLOAT_MAX, CGFLOAT_MAX);
     CGSize fitSizeOfNoConstraints = CTFramesetterSuggestFrameSizeWithConstraints(framesetter, CFRangeMake(0, 0), NULL, noConstraintsSize, NULL);
-    if (fitSizeOfNoConstraints.width < _contentFrameWidth) {
+    if (fitSizeOfNoConstraints.width < frameWidth) {
         
-        self.contentFrameAutoSizeWidth = fitSizeOfNoConstraints.width;
-        self.contentFrameAutoSizeHeight = fitSizeOfNoConstraints.height;
+        contentFrameAutoSizeWidth = fitSizeOfNoConstraints.width;
+        contentFrameAutoSizeHeight = fitSizeOfNoConstraints.height;
     }
     else {
         
-        self.contentFrameAutoSizeWidth = _contentFrameWidth;
-
-        CGSize widthConstraintsSize = CGSizeMake(_contentFrameWidth, CGFLOAT_MAX);
-
+        contentFrameAutoSizeWidth = frameWidth;
+        
+        CGSize widthConstraintsSize = CGSizeMake(frameWidth, CGFLOAT_MAX);
+        
         CGSize fitSizeOfWidthConstraints = CTFramesetterSuggestFrameSizeWithConstraints(framesetter, CFRangeMake(0, 0), NULL, widthConstraintsSize, NULL);
         
-        self.contentFrameAutoSizeHeight = fitSizeOfWidthConstraints.height;
+        contentFrameAutoSizeHeight = fitSizeOfWidthConstraints.height;
     }
-
     CFRelease(framesetter);
     
-    self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, self.contentFrameAutoSizeWidth, self.contentFrameAutoSizeHeight);
+    return CGSizeMake(contentFrameAutoSizeWidth, contentFrameAutoSizeHeight);
 }
+
 
 @end

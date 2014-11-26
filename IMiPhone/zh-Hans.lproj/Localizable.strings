@@ -34,3 +34,5 @@
 "View.Contact.Friends" = "查看通讯录好友";
 "Unit.Person" = "位";
 "Activity.Create" = "发布";
+"Activity.Join" = "报名";
+"Activity.exit" = "退出";

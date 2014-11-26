@@ -30,12 +30,16 @@
     // Configure the view for the selected state
 }
 
-- (void)setCellFrame:(ChatTableViewCellFrame *)cellFrame
+- (void)setMsg:(DPChatMessage *)chatMessage
 {
-    [super setCellFrame:cellFrame];
-    
+    //TODO:内容显示
+    [super setMsg:chatMessage];
     self.imageViewImage.frame = CGRectMake(110.0f, 0.0f, 100.0f, 100.0f);
     self.imageViewImage.image = [UIImage imageNamed:@"HeadBg"];
+    
+    if (chatMessage.msgType == CHAT_MASSAGE_TYPE_IMAGE) {
+        [chatMessage parseImageContent];
+    }
 }
 
 @end
