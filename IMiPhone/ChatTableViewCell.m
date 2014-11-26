@@ -78,10 +78,11 @@
     CGFloat viewMsgContentY = iconY;
     CGFloat lblStateX;
     CGFloat lblStateY = iconY;
-    if(self.messageType == ChatMessageTypeOther){
+    if (self.messageType == ChatMessageTypeOther) {
         viewMsgContentX = iconX + iconWidth + CHAT_PORTRAIT_MARGIN_X;
         lblStateX = viewMsgContentX + self.viewMsgContent.frame.size.width;
-    }else if (self.messageType == ChatMessageTypeMe){
+    }
+    else if (self.messageType == ChatMessageTypeMe) {
         iconX = winSize.width - CHAT_PORTRAIT_MARGIN_X - iconWidth;
         viewMsgContentX = iconX - CHAT_PORTRAIT_MARGIN_X - self.viewMsgContent.frame.size.width;
         lblStateX = viewMsgContentX - self.lblState.frame.size.width;
@@ -94,6 +95,7 @@
 @end
 
 @implementation ChatTextTableViewCell
+
 @synthesize imgViewBg = _imgViewBg;
 
 - (void)setMsg:(DPChatMessage *)chatMessage
@@ -115,7 +117,7 @@
     if (self.imgViewBg == nil) {
         _imgViewBg = [[UIImageView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 0.0f, 0.0f)];
     }
-    self.imgViewBg.image = [ChatTableViewCell resizableImageOfMsgBgWithMsgType:self.messageType ];
+    self.imgViewBg.image = [ChatTableViewCell resizableImageOfMsgBgWithMsgType:self.messageType];
 
     self.imgViewBg.frame = CGRectMake(0.0f, 0.0f, viewTextContent.frame.size.width + CHAT_CELL_CONTENT_BG_OFF_WIDTH, viewTextContent.frame.size.height + CHAT_CELL_CONTENT_BG_OFF_HEIGHT);
     [self.viewMsgContent addSubview:self.imgViewBg];
@@ -136,7 +138,7 @@
     [self layoutComponents];
 }
 
--(UIView *)assembleMessage:(NSString *)message
+- (UIView *)assembleMessage:(NSString *)message
 {
     UIFont *fon = [UIFont systemFontOfSize:CHAT_CELL_CONTENT_FONT_SIZE];
     return [ChatGraphicsUtil richTextWithMessage:message withFont:fon withContentWidth:CHAT_CELL_CONTENT_WIDTH_MAX];
