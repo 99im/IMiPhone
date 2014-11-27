@@ -10,6 +10,8 @@
 
 @implementation DBChatMessage
 
+@synthesize nid;
+
 @synthesize stage;
 @synthesize mid;
 @synthesize senderUid;

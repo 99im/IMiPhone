@@ -154,7 +154,6 @@ static ActivityDataProxy *sharedActivityProxy = nil;
             [ImDataUtil copyFrom:dbTempData To:dpMyActivity];
             [arrResult addObject:dpMyActivity];
         }
-        _arrCurrentPageList = arrResult;
     }
     return arrResult;
 }
@@ -165,12 +164,39 @@ static ActivityDataProxy *sharedActivityProxy = nil;
 ////附近活动
 //- (NSArray *)getNearbyActivityListWithStart:(NSInteger)start withPageNum:(NSInteger)pageNum;
 //
-////活动成员
-//- (void)updateActivityMembersWithStart:(NSInteger)start withServerMembers:(NSArray *)serverMembers;
+//活动成员
+- (void)updateActivityMembersWithStart:(NSInteger)start withServerMembers:(NSArray *)serverMembers
+{
+//    [self.dicMyActivity setObject:serverMyList forKey:[NSNumber numberWithInteger:start]];
+//    DPMyActivity *dpMyActivity;
+//    MyActivityDAO *dbDAO = [MyActivityDAO sharedDAO];
+//    //先删除数据库
+//    NSString *strDelSql = [NSString stringWithFormat:@"%@ > = %li and %@ < %li", DB_PRIMARY_KEY_MY_ACTIVITY_NID, (long)start, DB_PRIMARY_KEY_MY_ACTIVITY_NID, (long)(start + serverMyList.count)];
+//    [dbDAO deleteByCondition:strDelSql Bind:nil];
+//    //再插入数据库
+//    DBMyActivity *dbDataModel;
+//    for (NSInteger i = 0; i < serverMyList.count; i++) {
+//        dbDataModel = [[DBMyActivity alloc] init];
+//        dpMyActivity = [serverMyList objectAtIndex:i];
+//        [ImDataUtil copyFrom:dpMyActivity To:dbDataModel];
+//        dbDataModel.nid = start + i;
+//        [dbDAO insert:dbDataModel];
+//    }
 //
-////活动成员
-//- (NSArray *)getActivityMembersWithStart:(NSInteger)start withPageNum:(NSInteger)pageNum;
+}
+
+//活动成员
+- (NSArray *)getActivityMembersWithStart:(NSInteger)start withPageNum:(NSInteger)pageNum
+{
+    return nil;
+}
 
 
+#pragma mark - utils
+
+//- (void)updateWithStart:(NSInteger)start withArray:(NSArray *)arr withDic:(NSMutableDictionary *)dic withDPCls:(Class)dpCls withDAO:(BaseDAO *)dbDAO withDBPrimaryKey:(NSString *)pkey
+//{
+//    
+//}
 
 @end

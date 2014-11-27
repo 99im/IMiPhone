@@ -18,7 +18,7 @@ static ChatMessageDAO *messageDAO = nil;
     dispatch_once(&onceToken, ^{
         messageDAO = [[ChatMessageDAO alloc] init];
         NSString *tableName = @"tb_message";
-        NSString *primaryKey = DB_PRIMARY_KEY_CHAT_MESSAGE_MID;
+        NSString *primaryKey = DB_PRIMARY_KEY_CHAT_MESSAGE_NID;
         [messageDAO createTableIfNotExist:tableName withDataMode:[DBChatMessage class] withPrimaryKey:primaryKey];
     });
     return messageDAO;

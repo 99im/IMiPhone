@@ -8,7 +8,7 @@
 
 #import "BaseDAO.h"
 
-#define DB_PRIMARY_KEY_BEARBY_ACTIVITY_NID @"nid"
+#define DB_PRIMARY_KEY_NEARBY_ACTIVITY_NID @"nid"
 
 @interface DBNearbyActivity : NSObject
 
