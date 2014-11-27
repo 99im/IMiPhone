@@ -7,6 +7,7 @@
 //
 
 #import "ChatMsgTableViewCellP2G.h"
+#import "ChatMessageProxy.h"
 
 @implementation ChatMsgTableViewCellP2G
 
@@ -28,7 +29,12 @@
         self.lblTitle.text = group.name;
     }
     //        NSLog(@"%@,%@",dpChatMsg.content,dpChatMsg.sendTime);
-    self.lblLastMsg.text = dpGroupChatMsg.content;
+    if (dpGroupChatMsg.msgType == CHAT_MASSAGE_TYPE_IMAGE) {
+        self.lblLastMsg.text = NSLocalizedString(@"Chat.Image", nil);
+    }
+    else if (dpGroupChatMsg.msgType == CHAT_MASSAGE_TYPE_TEXT) {
+        self.lblLastMsg.text = dpGroupChatMsg.content;
+    }
     self.lblTitle.text = dpGroupChatMsg.sendTime;
 }
 

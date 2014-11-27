@@ -12,6 +12,8 @@
 #import "DPNearbyActivity.h"
 #import "DPActivityMember.h"
 #import "ActivityDAO.h"
+#import "MyActivityDAO.h"
+#import "ActivityMessageProxy.h"
 
 @interface ActivityDataProxy : NSObject
 

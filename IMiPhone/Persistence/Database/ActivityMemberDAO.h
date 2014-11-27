@@ -8,11 +8,11 @@
 
 #import "BaseDAO.h"
 
-#define DB_PRIMARY_KEY_ACTIVITY_MEMBER_ORDERID @"orderid"
+#define DB_PRIMARY_KEY_ACTIVITY_MEMBER_NID @"nid"
 
 @interface DBActivityMember : NSObject
 
-@property (nonatomic) NSInteger orderid;
+@property (nonatomic) NSInteger nid;//本地顺序id
 
 @property (nonatomic) long long aid;
 @property (nonatomic, retain) NSString *ctime;
