@@ -49,14 +49,14 @@
 + (BOOL)isGroupOwner:(DPGroup *)dpGroup;
 
 #pragma mark - 当前群
--(long long)getGroupIdCurrent;
--(void)setGroupIdCurrent:(IMGroupId)gid;
+- (long long)getGroupIdCurrent;
+- (void)setGroupIdCurrent:(IMGroupId)gid;
 - (DPGroup *)getGroupInfoCurrent:(NSInteger)httpMode;
 
 
-#pragma mark - 群聊天
-///获得某个群组的聊天消息
-- (NSMutableArray *)getGroupMessages:(NSInteger)gid;
+//#pragma mark - 群聊天
+/////获得某个群组的聊天消息
+//- (NSMutableArray *)getGroupMessages:(NSInteger)gid;
 
 #pragma mark - 搜寻群相关
 - (NSMutableArray *)getGroupSearchList:(NSInteger)httpMode;
@@ -65,7 +65,7 @@
 - (DPGroup *)getGroupSearchInfoAtRow:(NSInteger)row;
 
 #pragma mark - 群创建
--(DPGroup *)getGroupCreating;
--(void)setGroupCreatingCity:(NSString *)city withLatitude:(double)latitude longitude:(double)longitude;
+- (DPGroup *)getGroupCreating;
+- (void)setGroupCreatingCity:(NSString *)city withLatitude:(double)latitude longitude:(double)longitude;
 
 @end

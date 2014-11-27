@@ -11,7 +11,7 @@
 @interface GroupDataProxy ()
 
 @property (nonatomic, retain) NSMutableArray *arrGroupMyList;
-@property (nonatomic, retain) NSMutableDictionary *dicMessages;
+//@property (nonatomic, retain) NSMutableDictionary *dicMessages;
 @property (nonatomic) long long groupIdCurrent;
 @property (nonatomic) long long groupIdSendLast;
 @property (nonatomic, retain) DPGroup *groupInfoCurrent;
@@ -38,7 +38,7 @@
 //用于更换账号数据清除
 - (void)reset
 {
-    self.dicMessages = nil;
+//    self.dicMessages = nil;
     _arrGroupMyList = nil;
     _arrGroupsSearch = nil;
     _groupIdSendLast = 0;
@@ -300,16 +300,16 @@ static GroupDataProxy *sharedGroupDataProxy = nil;
     return _groupInfoCurrent;
 }
 
-#pragma mark - 群消息
-
-- (NSMutableArray *)getGroupMessages:(NSInteger)gid
-{
-    NSNumber *numGid = [NSNumber numberWithInteger:gid];
-    if (![_dicMessages objectForKey:numGid]) {
-        [_dicMessages setObject:[NSMutableArray array] forKey:numGid];
-    }
-    return [_dicMessages objectForKey:numGid];
-}
+//#pragma mark - 群消息
+//
+//- (NSMutableArray *)getGroupMessages:(NSInteger)gid
+//{
+//    NSNumber *numGid = [NSNumber numberWithInteger:gid];
+//    if (![_dicMessages objectForKey:numGid]) {
+//        [_dicMessages setObject:[NSMutableArray array] forKey:numGid];
+//    }
+//    return [_dicMessages objectForKey:numGid];
+//}
 
 #pragma mark  - 搜寻群相关
 - (NSMutableArray *)getGroupSearchList:(NSInteger)httpMode{
