@@ -10,6 +10,8 @@
 
 @interface DPMyActivity : NSObject
 
+@property (nonatomic) NSInteger nid;
+
 @property (nonatomic) long long aid;
 @property (nonatomic, retain) NSString *ctime;//加入时间
 @property (nonatomic) NSInteger myReleation;

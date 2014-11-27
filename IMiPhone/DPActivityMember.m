@@ -10,6 +10,8 @@
 
 @implementation DPActivityMember
 
+@synthesize nid;
+
 @synthesize aid;
 @synthesize ctime;
 @synthesize uid;

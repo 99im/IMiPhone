@@ -158,6 +158,8 @@
 		11B1C62D19E51AFB003D2711 /* MsgDataProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B1C62B19E51AFB003D2711 /* MsgDataProxy.m */; };
 		11C936021A03709100D26CFF /* DPSysMessageFriend.m in Sources */ = {isa = PBXBuildFile; fileRef = 11C936011A03709100D26CFF /* DPSysMessageFriend.m */; };
 		11C936031A03709100D26CFF /* DPSysMessageFriend.m in Sources */ = {isa = PBXBuildFile; fileRef = 11C936011A03709100D26CFF /* DPSysMessageFriend.m */; };
+		11DA19161A272AD700CBD32B /* ActivityListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 11DA19151A272AD700CBD32B /* ActivityListTableViewCell.m */; };
+		11DA19171A272AD700CBD32B /* ActivityListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 11DA19151A272AD700CBD32B /* ActivityListTableViewCell.m */; };
 		11DB34361A2481EC00223B6B /* GroupChatImageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 11DB34351A2481EC00223B6B /* GroupChatImageTableViewCell.m */; };
 		11DB34371A2481EC00223B6B /* GroupChatImageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 11DB34351A2481EC00223B6B /* GroupChatImageTableViewCell.m */; };
 		11DF5F691A2574E700520243 /* DPMyActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 11DF5F681A2574E700520243 /* DPMyActivity.m */; };
@@ -518,6 +520,8 @@
 		11B1C62B19E51AFB003D2711 /* MsgDataProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MsgDataProxy.m; sourceTree = "<group>"; };
 		11C936001A03709100D26CFF /* DPSysMessageFriend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPSysMessageFriend.h; sourceTree = "<group>"; };
 		11C936011A03709100D26CFF /* DPSysMessageFriend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPSysMessageFriend.m; sourceTree = "<group>"; };
+		11DA19141A272AD700CBD32B /* ActivityListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityListTableViewCell.h; sourceTree = "<group>"; };
+		11DA19151A272AD700CBD32B /* ActivityListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityListTableViewCell.m; sourceTree = "<group>"; };
 		11DB34341A2481EC00223B6B /* GroupChatImageTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupChatImageTableViewCell.h; sourceTree = "<group>"; };
 		11DB34351A2481EC00223B6B /* GroupChatImageTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupChatImageTableViewCell.m; sourceTree = "<group>"; };
 		11DF5F671A2574E700520243 /* DPMyActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPMyActivity.h; sourceTree = "<group>"; };
@@ -870,6 +874,8 @@
 				11FFA51E1A1CE27100F6F00A /* ActivityCreateTableLabelDateCell.m */,
 				11FFA5211A1CE2AC00F6F00A /* ActivityCreateTableDetailCell.h */,
 				11FFA5221A1CE2AC00F6F00A /* ActivityCreateTableDetailCell.m */,
+				11DA19141A272AD700CBD32B /* ActivityListTableViewCell.h */,
+				11DA19151A272AD700CBD32B /* ActivityListTableViewCell.m */,
 			);
 			name = Activity;
 			sourceTree = "<group>";
@@ -1831,6 +1837,7 @@
 				110F561A19D57013003B9EB4 /* DPUiMessage.m in Sources */,
 				1194301419F75CED00FD9206 /* ChatInputTextView.m in Sources */,
 				58438C0D19D412E400B6962B /* NearbyTableViewController.m in Sources */,
+				11DA19161A272AD700CBD32B /* ActivityListTableViewCell.m in Sources */,
 				111B4EA91A0A2A8E0043A29F /* ActivityReadyTabController.m in Sources */,
 				11FFA50B1A1CA34E00F6F00A /* ActivityCreateTableTitleCell.m in Sources */,
 				117AC69519EE763E00143973 /* IMAddressPerson.m in Sources */,
@@ -1997,6 +2004,7 @@
 				1192B5D319FE1CDF0013119E /* GroupDataProxy.m in Sources */,
 				116AB14119B7315000092E2C /* PersistenceTest.m in Sources */,
 				DBA04B0D1A2311EE00C268EA /* DiscoveryMessageProxy.m in Sources */,
+				11DA19171A272AD700CBD32B /* ActivityListTableViewCell.m in Sources */,
 				118310C319FE61B700C1968D /* DPSysMessage.m in Sources */,
 				1192B5D619FE1F0F0013119E /* DPGroup.m in Sources */,
 				111B4EBA1A0A2DFE0043A29F /* ActivityReadyTabMembersController.m in Sources */,

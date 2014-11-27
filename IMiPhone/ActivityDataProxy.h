@@ -13,7 +13,10 @@
 #import "DPActivityMember.h"
 #import "ActivityDAO.h"
 #import "MyActivityDAO.h"
+#import "NearbyActivityDAO.h"
 #import "ActivityMessageProxy.h"
+#import "LocationDataProxy.h"
+#import "ActivityMemberDAO.h"
 
 @interface ActivityDataProxy : NSObject
 
@@ -38,13 +41,13 @@
 - (void)updateNearbyActivityListWithStart:(NSInteger)start withServerNearbyList:(NSArray *)serverNearbyList;
 
 //附近活动
-- (NSArray *)getNearbyActivityListWithStart:(NSInteger)start withPageNum:(NSInteger)pageNum;
+- (NSArray *)getNearbyActivityListWithStart:(NSInteger)start withPageNum:(NSInteger)pageNum needRequest:(BOOL)need;
 
 //活动成员
-- (void)updateActivityMembersWithStart:(NSInteger)start withServerMembers:(NSArray *)serverMembers;
+- (void)updateActivityMembersWithStart:(NSInteger)start withServerMembers:(NSArray *)serverMembers withAid:(long long)aid;
 
 //活动成员
-- (NSArray *)getActivityMembersWithStart:(NSInteger)start withPageNum:(NSInteger)pageNum;
+- (NSArray *)getActivityMembersWithStart:(NSInteger)start withPageNum:(NSInteger)pageNum withAid:(long long)aid;
 
 
 @end
