@@ -36,6 +36,7 @@
 - (NSMutableArray *)getGroupMyList:(NSInteger)httpMode;
 - (NSInteger)updateGroupMyList:(NSMutableArray *)myList;
 - (NSInteger)countGroupMyList;
+- (void)mergeGroupMyList:(DPGroup *)dpGroup;
 
 #pragma mark - 单个群相关
 - (DPGroup *)getGroupInfo:(IMGroupId)gid byHttpMode:(NSInteger)httpMode;

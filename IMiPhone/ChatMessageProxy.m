@@ -22,7 +22,7 @@ static ChatMessageProxy *messageProxy = nil;
     return messageProxy;
 }
 
-- (void)sendHttpUploadimg:(id)image
+- (void)sendHttpUploadimg:(id)image withMessageNid:(NSInteger)nid
 {
     IMNWMessage *message = [IMNWMessage createForHttp:PATH_H__CHAT_UPLOADIMG_ withParams:nil withMethod:METHOD_H__CHAT_UPLOADIMG_ ssl:NO];
     NSMutableDictionary *multiPartData = [NSMutableDictionary dictionary];
@@ -38,7 +38,8 @@ static ChatMessageProxy *messageProxy = nil;
             int errorcode = [[json objectForKey:KEYP_H__CHAT_UPLOADIMG__ERROR_CODE] intValue];
             if (errorcode == 0) {
                 NSDictionary *dicImgInfo = [json objectForKey:KEYP_H__CHAT_UPLOADIMG__IMGINFO];
-                [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_H__CHAT_UPLOADIMG_ object:nil userInfo:dicImgInfo];
+                NSDictionary *userInfo = [NSDictionary dictionaryWithObjectsAndKeys:dicImgInfo, KEYP_H__CHAT_UPLOADIMG__IMGINFO, [NSNumber numberWithInteger:nid], CHAT_MESSAGE_NID, nil];
+                [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_H__CHAT_UPLOADIMG_ object:self userInfo:userInfo];
             }
             else {
                 [self processErrorCode:errorcode fromSource:PATH_H__CHAT_UPLOADIMG_ useNotiName:NOTI_H__CHAT_UPLOADIMG_];
@@ -57,7 +58,7 @@ static ChatMessageProxy *messageProxy = nil;
     
 }
 
-- (void)sendTypeChat:(NSString *)stage targetId:(long long)targetId msgType:(NSInteger)msgType content:(NSString *)content
+- (void)sendTypeChat:(NSString *)stage targetId:(long long)targetId msgType:(NSInteger)msgType content:(NSString *)content nid:(NSInteger)nid
 {
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     [params setObject:stage forKey:KEYQ_S_CHAT_CHAT_STAGE];

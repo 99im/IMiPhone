@@ -237,6 +237,13 @@ NSInteger const ROW_CREATE_ZU = 1;
 {
     if (!notification.object) {
         [self performSegueWithIdentifier:@"Add2GroupResultSegue" sender:self];
+    } else {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"查找群"
+                                                            message:@"该群不存在"
+                                                           delegate:self
+                                                  cancelButtonTitle:@"确定"
+                                                  otherButtonTitles:nil, nil];
+        [alertView show];
     }
 }
 
@@ -250,8 +257,9 @@ NSInteger const ROW_CREATE_ZU = 1;
 {
     //监听搜索用户结果的监听
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(skipToSearchUserResult:) name:NOTI_H__USER_SEARCH_ object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(skipToSearchGroupResult:) name:@"skipToSearchGroupResult" object:nil];
-    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(skipToSearchGroupResult:) name:NOTI_H__GROUP_INFO_ object:nil];
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(skipToSearchGroupResult:) name:@"skipToSearchGroupResult" object:nil];
+
 
 //    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(skipToGroupCreate:) name:@"skipToGroupCreate" object:nil];
 }

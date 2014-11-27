@@ -270,7 +270,7 @@ static NSString *kChatImageCell = @"ChatImageTableViewCell";
 - (IBAction)tfInputTextDidEndOnExit:(id)sender {
     if ([ChatDataProxy sharedProxy].chatViewType == ChatViewTypeP2P) {
     
-        [[ChatMessageProxy sharedProxy] sendTypeChat:CHAT_STAGE_P2P targetId:[ChatDataProxy sharedProxy].chatToUid msgType:CHAT_MASSAGE_TYPE_TEXT content:((UITextField *)sender).text];
+        [[ChatMessageProxy sharedProxy] sendTypeChat:CHAT_STAGE_P2P targetId:[ChatDataProxy sharedProxy].chatToUid msgType:CHAT_MASSAGE_TYPE_TEXT content:((UITextField *)sender).text nid:0];
     
         ((UITextField *)sender).text = @"";
     }
@@ -336,7 +336,7 @@ static NSString *kChatImageCell = @"ChatImageTableViewCell";
     if (!notification.object) {
         NSData *jsonData = [NSJSONSerialization dataWithJSONObject:notification.userInfo options:0 error:nil];
         NSString *content = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
-        [[ChatMessageProxy sharedProxy] sendTypeChat:CHAT_STAGE_P2P targetId:[ChatDataProxy sharedProxy].chatToUid msgType:CHAT_MASSAGE_TYPE_IMAGE content:content];
+        [[ChatMessageProxy sharedProxy] sendTypeChat:CHAT_STAGE_P2P targetId:[ChatDataProxy sharedProxy].chatToUid msgType:CHAT_MASSAGE_TYPE_IMAGE content:content nid:0];
     }
 }
 
@@ -424,12 +424,12 @@ static NSString *kChatImageCell = @"ChatImageTableViewCell";
         chatMessage.stage = CHAT_STAGE_P2P;
         chatMessage.gid = [[ChatDataProxy sharedProxy] assembleGidWithStage:chatMessage.stage withSenderUid:chatMessage.senderUid withTargetId:chatMessage.targetId];
         chatMessage.nid = [[ChatDataProxy sharedProxy] updateP2PChatMessage:chatMessage];
-        [[ChatDataProxy sharedProxy] updateP2PChatMessage:chatMessage];
         NSString *imgPath = [imUtil storeCacheImage:originalImage useName:[NSString stringWithFormat:@"chat_%li", (long)chatMessage.nid]];
+        chatMessage.imgSrc = imgPath;
+        chatMessage.imgThumbnail = imgPath;
+        [[ChatDataProxy sharedProxy] updateP2PChatMessage:chatMessage];
         if (imgPath) {
-            chatMessage.imgSrc = imgPath;
-            chatMessage.imgThumbnail = imgPath;
-            [[ChatMessageProxy sharedProxy] sendHttpUploadimg:imgPath];
+            [[ChatMessageProxy sharedProxy] sendHttpUploadimg:imgPath withMessageNid:chatMessage.nid];
         }
         [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_S_CHAT_CHATN object:self];
     }];

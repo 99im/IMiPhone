@@ -9,6 +9,11 @@
 #import "GroupTableViewCell.h"
 
 @interface GroupTableViewCell ()
+@property (weak, nonatomic) IBOutlet UILabel *lblName;
+@property (weak, nonatomic) IBOutlet UILabel *lblIntro;
+@property (weak, nonatomic) IBOutlet UILabel *lblDistance;
+@property (weak, nonatomic) IBOutlet UIImageView *imgAvatar;
+@property (weak, nonatomic) IBOutlet UILabel *lblStatus;
 
 @end
 
@@ -35,6 +40,11 @@
         self.groupId = dpGroup.gid;
         self.lblName.text = dpGroup.name;
         self.lblIntro.text =dpGroup.intro;
+        if([dpGroup isGroupOK]){
+             self.lblStatus.text = @"已加入";
+        } else if([dpGroup isGroupMember]){
+            self.lblStatus.text = @"待审核";
+        }
     }
 
 }
