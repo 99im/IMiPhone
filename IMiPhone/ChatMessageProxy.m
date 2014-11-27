@@ -39,7 +39,7 @@ static ChatMessageProxy *messageProxy = nil;
             if (errorcode == 0) {
                 NSDictionary *dicImgInfo = [json objectForKey:KEYP_H__CHAT_UPLOADIMG__IMGINFO];
                 NSDictionary *userInfo = [NSDictionary dictionaryWithObjectsAndKeys:dicImgInfo, KEYP_H__CHAT_UPLOADIMG__IMGINFO, [NSNumber numberWithInteger:nid], CHAT_MESSAGE_NID, nil];
-                [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_H__CHAT_UPLOADIMG_ object:self userInfo:userInfo];
+                [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_H__CHAT_UPLOADIMG_ object:nil userInfo:userInfo];
             }
             else {
                 [self processErrorCode:errorcode fromSource:PATH_H__CHAT_UPLOADIMG_ useNotiName:NOTI_H__CHAT_UPLOADIMG_];
@@ -88,7 +88,6 @@ static ChatMessageProxy *messageProxy = nil;
     DPUiMessage *dpUiMessage = [[DPUiMessage alloc] init];
     dpUiMessage.orderid = [[MsgDataProxy sharedProxy] getUiMsgListNextOrderId];
     if ([stage isEqualToString:CHAT_STAGE_P2P]) {
-        
         DPChatMessage *dpChatMessage = [[DPChatMessage alloc] init];
         dpChatMessage.senderUid = [[info objectForKey:KEYP_S_CHAT_CHATN_SENDUID] integerValue];
         dpChatMessage.msgType = [[info objectForKey:KEYP_S_CHAT_CHATN_MSGTYPE] integerValue];
@@ -109,10 +108,9 @@ static ChatMessageProxy *messageProxy = nil;
         else {
             dpUiMessage.relationId = dpChatMessage.senderUid;
         }
-        [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_S_CHAT_CHATN object:self];
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_S_CHAT_CHATN object:nil];
     }
     else if ([stage isEqualToString:CHAT_STAGE_GROUP]) {
-       
         DPGroupChatMessage *dpGroupChatMsg = [[DPGroupChatMessage alloc] init];
         dpGroupChatMsg.senderUid = [[info objectForKey:KEYP_S_CHAT_CHATN_SENDUID] integerValue];
         dpGroupChatMsg.msgType = [[info objectForKey:KEYP_S_CHAT_CHATN_MSGTYPE] integerValue];
@@ -127,18 +125,16 @@ static ChatMessageProxy *messageProxy = nil;
         dpUiMessage.type = UI_MESSAGE_TYPE_GROUP_CHAT;
         dpUiMessage.mid = dpGroupChatMsg.mid;
         dpUiMessage.relationId = dpGroupChatMsg.targetId ;
-        [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_S_CHAT_CHATN object:self];
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_S_CHAT_CHATN object:nil];
     }
     else
     {
         NSLog(@"parseTypeChatn error stage:%@",stage);
     }
    
-   
     if (dpUiMessage) {
         [[MsgDataProxy sharedProxy] updateUiMsgList:dpUiMessage];
     }
-   
 }
 
 @end

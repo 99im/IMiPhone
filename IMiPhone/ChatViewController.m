@@ -334,9 +334,11 @@ static NSString *kChatImageCell = @"ChatImageTableViewCell";
 - (void)onChatUploadImg:(NSNotification *)notification
 {
     if (!notification.object) {
-        NSData *jsonData = [NSJSONSerialization dataWithJSONObject:notification.userInfo options:0 error:nil];
+        NSDictionary *dicImgInfo = [notification.userInfo objectForKey:KEYP_H__CHAT_UPLOADIMG__IMGINFO];
+        NSInteger nid = [[notification.userInfo objectForKey:CHAT_MESSAGE_NID] integerValue];
+        NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dicImgInfo options:0 error:nil];
         NSString *content = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
-        [[ChatMessageProxy sharedProxy] sendTypeChat:CHAT_STAGE_P2P targetId:[ChatDataProxy sharedProxy].chatToUid msgType:CHAT_MASSAGE_TYPE_IMAGE content:content nid:0];
+        [[ChatMessageProxy sharedProxy] sendTypeChat:CHAT_STAGE_P2P targetId:[ChatDataProxy sharedProxy].chatToUid msgType:CHAT_MASSAGE_TYPE_IMAGE content:content nid:nid];
     }
 }
 
@@ -425,13 +427,13 @@ static NSString *kChatImageCell = @"ChatImageTableViewCell";
         chatMessage.gid = [[ChatDataProxy sharedProxy] assembleGidWithStage:chatMessage.stage withSenderUid:chatMessage.senderUid withTargetId:chatMessage.targetId];
         chatMessage.nid = [[ChatDataProxy sharedProxy] updateP2PChatMessage:chatMessage];
         NSString *imgPath = [imUtil storeCacheImage:originalImage useName:[NSString stringWithFormat:@"chat_%li", (long)chatMessage.nid]];
-        chatMessage.imgSrc = imgPath;
-        chatMessage.imgThumbnail = imgPath;
-        [[ChatDataProxy sharedProxy] updateP2PChatMessage:chatMessage];
+        chatMessage.imgSrcPath = imgPath;
+        chatMessage.imgThumbnailPath = imgPath;
+        //[[ChatDataProxy sharedProxy] updateP2PChatMessage:chatMessage];
         if (imgPath) {
-            [[ChatMessageProxy sharedProxy] sendHttpUploadimg:imgPath withMessageNid:chatMessage.nid];
+            //[[ChatMessageProxy sharedProxy] sendHttpUploadimg:imgPath withMessageNid:chatMessage.nid];
         }
-        [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_S_CHAT_CHATN object:self];
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_S_CHAT_CHATN object:nil];
     }];
 }
 

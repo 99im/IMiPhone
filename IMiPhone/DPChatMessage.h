@@ -23,6 +23,8 @@
 //图片信息
 @property (nonatomic, retain) NSString *imgThumbnail;
 @property (nonatomic, retain) NSString *imgSrc;
+@property (nonatomic, retain) NSString *imgThumbnailPath;
+@property (nonatomic, retain) NSString *imgSrcPath;
 
 //用于ui显示
 @property (nonatomic, readonly, getter=getCellHeight) CGFloat cellHeight;

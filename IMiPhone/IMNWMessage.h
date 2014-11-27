@@ -14,12 +14,14 @@
 #define SOCKET_INFO @"info"
 #define SOCKET_MARK @"mark"
 #define SOCKET_TYPE @"type"
+#define SOCKET__SN @"_sn"
 
 @interface IMNWMessage : NSObject
 
 @property (nonatomic) int connect;
 @property (nonatomic, retain) NSString *mark;
 @property (nonatomic, retain) NSString *type;
+@property (nonatomic) long long _sn;
 @property (nonatomic, retain) id data;
 ///multi-part 类型数据，图片等
 @property (nonatomic, retain) NSMutableDictionary *multiPartData;
