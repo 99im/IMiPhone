@@ -188,6 +188,7 @@ static ActivityMessageProxy *activityProxy = nil;
 
                     //附近活动相关信息
                     dpNearbyActivity = [[DPNearbyActivity alloc] init];
+                    dpNearbyActivity.nid = start + i;
                     dpNearbyActivity.aid = dpActivity.aid;
                     dpNearbyActivity.ctime = [item objectForKey:KEYP_H__ACTIVITY_NEARBY__LIST_CTIME];
                     dpNearbyActivity.myReleation = [[item objectForKey:KEYP_H__ACTIVITY_NEARBY__LIST_MYRELATION] integerValue];
@@ -267,6 +268,7 @@ static ActivityMessageProxy *activityProxy = nil;
                     [arrDpActivitDetail addObject:dpActivity];
                     //和自己相关的活动信息
                     dpMyActivity = [[DPMyActivity alloc] init];
+                    dpMyActivity.nid = start + i;
                     dpMyActivity.aid = dpActivity.aid;
                     dpMyActivity.ctime = [item objectForKey:KEYP_H__ACTIVITY_MYLIST__LIST_CTIME];
                     dpMyActivity.myReleation = [[item objectForKey:KEYP_H__ACTIVITY_MYLIST__LIST_MYRELATION] integerValue];
@@ -340,6 +342,7 @@ static ActivityMessageProxy *activityProxy = nil;
                 for (NSInteger i = 0; i < arrMembers.count; i++) {
                     item = [arrMembers objectAtIndex:i];
                     dpActivityMember = [[DPActivityMember alloc] init];
+                    dpActivityMember.nid = start + i;
                     dpActivityMember.aid = [[item objectForKey:KEYP_H__ACTIVITY_MEMBERS__LIST_AID] longLongValue];
                     dpActivityMember.ctime = [item objectForKey:KEYP_H__ACTIVITY_MEMBERS__LIST_CTIME];
                     dpActivityMember.uid = [[item objectForKey:KEYP_H__ACTIVITY_MEMBERS__LIST_UID] longLongValue];
@@ -350,7 +353,7 @@ static ActivityMessageProxy *activityProxy = nil;
                     [[UserDataProxy sharedProxy] addServerUinfo:dicMemberInfo];
                 }
                 
-                [[ActivityDataProxy sharedProxy] updateActivityMembersWithStart:start withServerMembers:marr];
+                [[ActivityDataProxy sharedProxy] updateActivityMembersWithStart:start withServerMembers:marr withAid:aid];
                 
                 [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_H__ACTIVITY_MEMBERS_ object:self];
             }

@@ -113,21 +113,13 @@ static ActivityDataProxy *sharedActivityProxy = nil;
 //我的活动
 - (void)updateMyActivityListWithStart:(NSInteger)start withServerMyList:(NSArray *)serverMyList
 {
-    [self.dicMyActivity setObject:serverMyList forKey:[NSNumber numberWithInteger:start]];
-    DPMyActivity *dpMyActivity;
     MyActivityDAO *dbDAO = [MyActivityDAO sharedDAO];
-    //先删除数据库
-    NSString *strDelSql = [NSString stringWithFormat:@"%@ > = %li and %@ < %li", DB_PRIMARY_KEY_MY_ACTIVITY_NID, (long)start, DB_PRIMARY_KEY_MY_ACTIVITY_NID, (long)(start + serverMyList.count)];
-    [dbDAO deleteByCondition:strDelSql Bind:nil];
-    //再插入数据库
-    DBMyActivity *dbDataModel;
-    for (NSInteger i = 0; i < serverMyList.count; i++) {
-        dbDataModel = [[DBMyActivity alloc] init];
-        dpMyActivity = [serverMyList objectAtIndex:i];
-        [ImDataUtil copyFrom:dpMyActivity To:dbDataModel];
-        dbDataModel.nid = start + i;
-        [dbDAO insert:dbDataModel];
-    }
+    [self updateWithStart:start
+                withArray:serverMyList
+                  withDic:self.dicMyActivity
+                withDBCls:[DBMyActivity class]
+                  withDAO:dbDAO
+         withDBPrimaryKey:DB_PRIMARY_KEY_MY_ACTIVITY_NID];
 }
 
 //我的活动
@@ -135,68 +127,136 @@ static ActivityDataProxy *sharedActivityProxy = nil;
 {
     //因为我的活动列表随时可能变化，所以每次需要数据时候，都要向服务器请求
     [[ActivityMessageProxy sharedProxy] sendHttpMyListWithStart:start withPageNum:pageNum];
-    NSMutableArray *arrResult = [self.dicMyActivity objectForKey:[NSNumber numberWithInteger:start]];
-    if (arrResult) {
-       
-    }
-    else {
-        arrResult = [NSMutableArray array];
-        [self.dicMyActivity setObject:arrResult forKey:[NSNumber numberWithInteger:start]];
-        MyActivityDAO *dbDAO = [MyActivityDAO sharedDAO];
-        //读取本地数据库
-        NSString *strQuerySql = [NSString stringWithFormat:@"%@ > = %li and %@ < %li", DB_PRIMARY_KEY_MY_ACTIVITY_NID, (long)start, DB_PRIMARY_KEY_MY_ACTIVITY_NID, (long)(start + pageNum)];
-        NSArray *arrDb = [dbDAO query:strQuerySql Bind:nil];
-        DBMyActivity *dbTempData;
-        DPMyActivity *dpMyActivity;
-        for (NSInteger i = 0; i < arrDb.count; i++) {
-            dbTempData = [arrDb objectAtIndex:i];
-            dpMyActivity = [[DPMyActivity alloc] init];
-            [ImDataUtil copyFrom:dbTempData To:dpMyActivity];
-            [arrResult addObject:dpMyActivity];
-        }
-    }
+    MyActivityDAO *dbDAO = [MyActivityDAO sharedDAO];
+    NSMutableArray *arrResult = [self getWithStart:start
+                                       withPageNum:pageNum
+                                           withDic:self.dicMyActivity
+                                         withDPCls:[DPMyActivity
+                                                    class]
+                                           withDAO:dbDAO
+                                  withDBPrimaryKey:DB_PRIMARY_KEY_MY_ACTIVITY_NID];
     return arrResult;
 }
-//
-////附近活动
-//- (void)updateNearbyActivityListWithStart:(NSInteger)start withServerNearbyList:(NSArray *)serverNearbyList;
-//
-////附近活动
-//- (NSArray *)getNearbyActivityListWithStart:(NSInteger)start withPageNum:(NSInteger)pageNum;
-//
-//活动成员
-- (void)updateActivityMembersWithStart:(NSInteger)start withServerMembers:(NSArray *)serverMembers
+
+//附近活动
+- (void)updateNearbyActivityListWithStart:(NSInteger)start withServerNearbyList:(NSArray *)serverNearbyList
 {
-//    [self.dicMyActivity setObject:serverMyList forKey:[NSNumber numberWithInteger:start]];
-//    DPMyActivity *dpMyActivity;
-//    MyActivityDAO *dbDAO = [MyActivityDAO sharedDAO];
-//    //先删除数据库
-//    NSString *strDelSql = [NSString stringWithFormat:@"%@ > = %li and %@ < %li", DB_PRIMARY_KEY_MY_ACTIVITY_NID, (long)start, DB_PRIMARY_KEY_MY_ACTIVITY_NID, (long)(start + serverMyList.count)];
-//    [dbDAO deleteByCondition:strDelSql Bind:nil];
-//    //再插入数据库
-//    DBMyActivity *dbDataModel;
-//    for (NSInteger i = 0; i < serverMyList.count; i++) {
-//        dbDataModel = [[DBMyActivity alloc] init];
-//        dpMyActivity = [serverMyList objectAtIndex:i];
-//        [ImDataUtil copyFrom:dpMyActivity To:dbDataModel];
-//        dbDataModel.nid = start + i;
-//        [dbDAO insert:dbDataModel];
-//    }
-//
+    NearbyActivityDAO *dbDAO = [NearbyActivityDAO sharedDAO];
+    [self updateWithStart:start
+                withArray:serverNearbyList
+                  withDic:self.dicNearbyActivity
+                withDBCls:[DBNearbyActivity class]
+                  withDAO:dbDAO
+         withDBPrimaryKey:DB_PRIMARY_KEY_NEARBY_ACTIVITY_NID];
+}
+
+//附近活动
+- (NSArray *)getNearbyActivityListWithStart:(NSInteger)start withPageNum:(NSInteger)pageNum
+{
+    DPLocation *dpLocation = [[LocationDataProxy sharedProxy] getUserLocation];
+    //因为附近活动列表随时可能变化，所以每次需要数据时候，都要向服务器请求
+    [[ActivityMessageProxy sharedProxy] sendHttpNearbyWithLon:[NSString stringWithFormat:@"%f", dpLocation.longitude]
+                                                      withLat:[NSString stringWithFormat:@"%f", dpLocation.latitude]
+                                                    withStart:start
+                                                  withPageNum:pageNum];
+    MyActivityDAO *dbDAO = [MyActivityDAO sharedDAO];
+    NSMutableArray *arrResult = [self getWithStart:start
+                                       withPageNum:pageNum
+                                           withDic:self.dicNearbyActivity
+                                         withDPCls:[DPNearbyActivity
+                                                    class]
+                                           withDAO:dbDAO
+                                  withDBPrimaryKey:DB_PRIMARY_KEY_NEARBY_ACTIVITY_NID];
+    return arrResult;
+
 }
 
 //活动成员
-- (NSArray *)getActivityMembersWithStart:(NSInteger)start withPageNum:(NSInteger)pageNum
+- (void)updateActivityMembersWithStart:(NSInteger)start withServerMembers:(NSArray *)serverMembers withAid:(long long)aid
 {
-    return nil;
+    NSMutableDictionary *dicMembersInActivity = [self getDicMembersWithAid:aid];
+    ActivityMemberDAO *dbDAO = [ActivityMemberDAO sharedDAO];
+    [self updateWithStart:start
+                withArray:serverMembers
+                  withDic:dicMembersInActivity
+                withDBCls:[DBActivityMember class]
+                  withDAO:dbDAO
+         withDBPrimaryKey:DB_PRIMARY_KEY_ACTIVITY_MEMBER_NID];
+}
+
+//活动成员
+- (NSArray *)getActivityMembersWithStart:(NSInteger)start withPageNum:(NSInteger)pageNum withAid:(long long)aid
+{
+    //因为成员列表随时可能变化，所以每次需要数据时候，都要向服务器请求
+    [[ActivityMessageProxy sharedProxy] sendHttpMembersWithAid:aid withStart:start withPageNum:pageNum];
+    
+    NSMutableDictionary *dicMembersInActivity = [self getDicMembersWithAid:aid];
+
+    ActivityMemberDAO *dbDAO = [ActivityMemberDAO sharedDAO];
+    NSMutableArray *arrResult = [self getWithStart:start
+                                       withPageNum:pageNum
+                                           withDic:dicMembersInActivity
+                                         withDPCls:[DPActivityMember
+                                                    class]
+                                           withDAO:dbDAO
+                                  withDBPrimaryKey:DB_PRIMARY_KEY_ACTIVITY_MEMBER_NID];
+    return arrResult;
 }
 
 
 #pragma mark - utils
 
-//- (void)updateWithStart:(NSInteger)start withArray:(NSArray *)arr withDic:(NSMutableDictionary *)dic withDPCls:(Class)dpCls withDAO:(BaseDAO *)dbDAO withDBPrimaryKey:(NSString *)pkey
-//{
-//    
-//}
+//更新列表数据统一方法
+- (void)updateWithStart:(NSInteger)start withArray:(NSArray *)arr withDic:(NSMutableDictionary *)dic withDBCls:(Class)dbCls withDAO:(BaseDAO *)dbDAO withDBPrimaryKey:(NSString *)pkey
+{
+        [dic setObject:arr forKey:[NSNumber numberWithInteger:start]];
+        NSObject *dpModle;
+        //先删除数据库
+        NSString *strDelSql = [NSString stringWithFormat:@"%@ > = %li and %@ < %li", pkey, (long)start, pkey, (long)(start + arr.count)];
+        [dbDAO deleteByCondition:strDelSql Bind:nil];
+        //再插入数据库
+        NSObject *dbDataModel;
+        for (NSInteger i = 0; i < arr.count; i++) {
+            dbDataModel = [[dbCls alloc] init];
+            dpModle = [arr objectAtIndex:i];
+            [ImDataUtil copyFrom:dpModle To:dbDataModel];
+            [dbDAO insert:dbDataModel];
+        }
+}
+
+//获得列表数据统一方法
+- (NSMutableArray *)getWithStart:(NSInteger)start withPageNum:(NSInteger)pageNum withDic:(NSMutableDictionary *)dic withDPCls:(Class)dpCls withDAO:(BaseDAO *)dbDAO withDBPrimaryKey:(NSString *)pkey
+{
+    NSMutableArray *arrResult = [dic objectForKey:[NSNumber numberWithInteger:start]];
+    if (arrResult) {
+        
+    }
+    else {
+        arrResult = [NSMutableArray array];
+        [dic setObject:arrResult forKey:[NSNumber numberWithInteger:start]];
+        //读取本地数据库
+        NSString *strQuerySql = [NSString stringWithFormat:@"%@ > = %li and %@ < %li", pkey, (long)start, pkey, (long)(start + pageNum)];
+        NSArray *arrDb = [dbDAO query:strQuerySql Bind:nil];
+        NSObject *dbDataModel;
+        NSObject *dpModle;
+        for (NSInteger i = 0; i < arrDb.count; i++) {
+            dbDataModel = [arrDb objectAtIndex:i];
+            dpModle = [[dpCls alloc] init];
+            [ImDataUtil copyFrom:dbDataModel To:dpModle];
+            [arrResult addObject:dpModle];
+        }
+    }
+    return arrResult;
+}
+
+- (NSMutableDictionary *)getDicMembersWithAid:(long long)aid
+{
+    NSNumber *key = [NSNumber numberWithLongLong:aid];
+    NSMutableDictionary *dicResult = [self.dicMembers objectForKey:key];
+    if (dicResult == nil) {
+        dicResult = [NSMutableDictionary dictionary];
+    }
+    return dicResult;
+}
 
 @end
