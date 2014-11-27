@@ -10,12 +10,21 @@
 
 @interface GroupApplyViewController ()
 
+@property (weak, nonatomic) IBOutlet UITextView *tvMsg;
+
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *btnSubmit;
+
+- (IBAction)submitGroupApply:(id)sender;
+//- (IBAction)cancelGroupApply:(id)sender;
+
 @end
 
 @implementation GroupApplyViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    DPGroup *dpGroup = [[GroupDataProxy sharedProxy] getGroupInfoCurrent:SEND_HTTP_NO];
+    self.navigationController.title = [NSString stringWithFormat:@"申请加入：%@", dpGroup.name];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -45,21 +54,37 @@
 */
 #pragma mark - IBAction
 
-- (IBAction)checkGroupApply:(id)sender {
-    long long gid = [[GroupDataProxy sharedProxy] getGroupIdCurrent];
-    if (gid >0 ) {
-        //NSString *gidN = [NSString stringWithFormat:@"%li",gid];
-        NSString *msg = self.tvMsg.text;
-        NSLog(@"开始提交申请:%qi %@", gid , msg);
-        [[GroupMessageProxy sharedProxy] sendGroupApply:gid msg:msg];
+- (IBAction)submitGroupApply:(id)sender
+{
+    self.btnSubmit.enabled = NO; //避免频繁提交
+    DPGroup *dpGroup = [[GroupDataProxy sharedProxy] getGroupInfoCurrent:SEND_HTTP_NO];
+    if ([dpGroup isGroupApplicant]) { //已申请过
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"申请加群"
+                                                            message:@"你已提交过申请，请耐心等待管理员审核..."
+                                                           delegate:self
+                                                  cancelButtonTitle:@"确定"
+                                                  otherButtonTitles:nil, nil];
+        [alertView show];
+    }
+    else if ([dpGroup isGroupMember]) {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"申请加群"
+                                                            message:@"你已是群成员了"
+                                                           delegate:self
+                                                  cancelButtonTitle:@"确定"
+                                                  otherButtonTitles:nil, nil];
+        [alertView show];
+    }
+    else {
+        dpGroup.myRelation = GROUP_RELATION_APPLICANT;
+        [[GroupMessageProxy sharedProxy] sendGroupApply:dpGroup.gid msg:self.tvMsg.text];
     }
 }
 
-- (IBAction)cancelGroupApply:(id)sender {
-    [self dismissViewControllerAnimated:YES completion:^{
-        NSLog(@"取消申请");
-    }];
-}
+//- (IBAction)cancelGroupApply:(id)sender {
+//    [self dismissViewControllerAnimated:YES completion:^{
+//        NSLog(@"取消申请");
+//    }];
+//}
 #pragma mark - Notification
 - (void)registerMessageNotification {
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -74,9 +99,37 @@
 
 - (void)receiveDidGroupApply:(NSNotification *)notification {
     //TODO：判断申请是否发送成功
-    [self dismissViewControllerAnimated:YES completion:^{
-        NSLog(@"申请成功");
-    }];
+    UIAlertView *alertView;
+    if (notification.object) {
+        NSError *error = notification.object;
+        NSInteger errorCode = error.code;
+        NSString *message;
+        if (errorCode == GROUP_ERR_CODE_applied) {
+            message = @"你已提交过申请，请耐心等待管理员审核...";
+            DPGroup *dpGroup = [[GroupDataProxy sharedProxy] getGroupInfoCurrent:SEND_HTTP_NO];
+            dpGroup.myRelation = GROUP_RELATION_APPLICANT;
+        } else {
+            message = error.description;
+        }
+        alertView = [[UIAlertView alloc] initWithTitle:@"申请加群"
+                                                            message:message
+                                                           delegate:self
+                                                  cancelButtonTitle:@"确定"
+                                                  otherButtonTitles:nil, nil];
+        [alertView show];
+        [self.navigationController popViewControllerAnimated:true];
+    } else {
+        //NSLog(@"申请成功");
+        alertView = [[UIAlertView alloc] initWithTitle:@"申请加群"
+                                               message:@"申请已提交，请耐心等待管理员审核..."
+                                              delegate:self
+                                     cancelButtonTitle:@"确定"
+                                     otherButtonTitles:nil, nil];
+        [alertView show];
+        [self.navigationController popViewControllerAnimated:true];
+        //[self performSegueWithIdentifier:@"groupApply2GroupInfo" sender:self];
+    }
+
 }
 
 

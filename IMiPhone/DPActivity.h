@@ -25,8 +25,16 @@
 //@property (nonatomic, retain) NSString *geohash;
 @property (nonatomic) NSInteger curNum;
 @property (nonatomic) long long createrUid;
-@property (nonatomic, retain) NSString *ctime;
+@property (nonatomic, retain) NSString *ctime;//创建时间
 @property (nonatomic) NSInteger myreleation;
+@property (nonatomic) NSInteger maxNum;//最大人员数量
+@property (nonatomic, retain) NSString *beginTime;
+@property (nonatomic, retain) NSString *endTime;
+//TODO:数据初始化，以及db层添加
+@property (nonatomic) NSInteger albumId;
+@property (nonatomic, retain) NSString *logo;
+
+//@property (nonatomic, retain) NSArray *members;//成员
 
 @end
 

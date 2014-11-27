@@ -39,15 +39,17 @@
             [[UserMessageProxy sharedProxy] sendTypeSearch:self.tfAddTarget.text];
             break;
         case SEARCH_BY_GROUP_ID:{
-            long long gid = [self.tfAddTarget.text longLongValue];
+            IMGroupId gid = [self.tfAddTarget.text longLongValue];
             if (gid > 0) {
                 [[GroupDataProxy sharedProxy] setGroupIdCurrent:gid];
-                [[NSNotificationCenter defaultCenter] postNotificationName:@"skipToSearchGroupResult"
-                                                                    object:nil];
+                [[GroupDataProxy sharedProxy] getGroupInfo:gid byHttpMode:SEND_HTTP_YES];
+//                [[NSNotificationCenter defaultCenter] postNotificationName:@"skipToSearchGroupResult"
+//                                                                    object:nil];
 
             }
            break;
         }
     }
+    [self.tfAddTarget resignFirstResponder];
 }
 @end

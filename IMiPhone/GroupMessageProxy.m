@@ -6,6 +6,7 @@
 //  Copyright (c) 2014年 尹晓君. All rights reserved.
 //
 
+
 #import "GroupMessageProxy.h"
 #import "NSNumber+IMNWError.h"
 
@@ -23,42 +24,52 @@ static GroupMessageProxy *sharedGroupMessageProxy = nil;
     return sharedGroupMessageProxy;
 }
 
-//+ (DPGroup *)groupInfoWithJSON:(NSMutableDictionary *)json
-//{
-//    NSDictionary *info = [json objectForKey:KEYP_H__GROUP_INFO__INFO];
-//
-//    long gid = [[info objectForKey:KEYP_H__GROUP_INFO__INFO_GID] longValue];
-//    if (gid < 1) {
-//        return nil; //客户端错误码，待统一整理
-//    }
-//
-//    // NSTimeInterval timeInterval= [imUtil nowTime];
-//    DPGroup *dpGroup = [[DPGroup alloc] init];
-//
-//    //客户端存储
-//    // long long localExpireTime = [imUtil nowTime] + TIME_GROUP_INFO;
-//    // dpGroup.localExpireTime = localExpireTime;
-//    // dpGroup.isInMyGroups = [self isInMyGroups:gid];
-//
-//    //群基本信息
-//    dpGroup.gid = gid;
-//    dpGroup.name = [info objectForKey:KEYP_H__GROUP_INFO__INFO_NAME];
-//    dpGroup.intro = [info objectForKey:KEYP_H__GROUP_INFO__INFO_INTRO];
-//    dpGroup.ctime = [info objectForKey:KEYP_H__GROUP_INFO__INFO_CTIME];
-//    // NSLog(@"更新群创建时间：%@", dpGroup.ctime);
-//    dpGroup.memberNum = [[info objectForKey:KEYP_H__GROUP_INFO__INFO_MEMBERNUM] integerValue];
-//    dpGroup.myRelation = [[info objectForKey:KEYP_H__GROUP_SEARCH__LIST_MYRELATION] integerValue];
-//
-//    //群主信息
-//    NSDictionary *creator = [info objectForKey:KEYP_H__GROUP_INFO__INFO_CREATOR];
-//    dpGroup.creator_uid = [[creator objectForKey:KEYP_H__GROUP_INFO__INFO_CREATOR_UID] longLongValue];
-//    dpGroup.creator_nick = [creator objectForKey:KEYP_H__GROUP_INFO__INFO_CREATOR_NICK];
-//    dpGroup.creator_oid = [[creator objectForKey:KEYP_H__GROUP_INFO__INFO_CREATOR_OID] longLongValue];
-//    dpGroup.creator_vip = [[creator objectForKey:KEYP_H__GROUP_INFO__INFO_CREATOR_VIP] integerValue];
-//    dpGroup.creator_city = [creator objectForKey:KEYP_H__GROUP_INFO__INFO_CREATOR_CITY];
-//
-//    return dpGroup;
-//}
+#pragma mark - 数据转换
+
+
++ (DPGroup *)convertGroupJSON:(NSMutableDictionary *) json withProtoId:(NSInteger)protoId
+{
+    NSDictionary *info = [json objectForKey:KEYP_H__GROUP_INFO__INFO];
+    IMGroupId gid = [[info objectForKey:KEYP_H__GROUP_INFO__INFO_GID] longLongValue];
+
+    DPGroup *dpGroup = [[GroupDataProxy sharedProxy] getGroupInfo:gid byHttpMode:SEND_HTTP_NO];
+    if (dpGroup == nil) {
+        dpGroup = [[DPGroup alloc] init];
+    }
+
+    //群基本信息
+    dpGroup.gid = gid;
+    dpGroup.name = [info objectForKey:KEYP_H__GROUP_INFO__INFO_NAME];
+    dpGroup.intro = [info objectForKey:KEYP_H__GROUP_INFO__INFO_INTRO];
+    dpGroup.ctime = [info objectForKey:KEYP_H__GROUP_INFO__INFO_CTIME];
+    // NSLog(@"更新群创建时间：%@", dpGroup.ctime);
+    dpGroup.memberNum = [[info objectForKey:KEYP_H__GROUP_INFO__INFO_MEMBERNUM] integerValue];
+    dpGroup.myRelation = [[info objectForKey:KEYP_H__GROUP_SEARCH__LIST_MYRELATION] integerValue];
+
+    //群主信息
+    id creator = [info objectForKey:KEYP_H__GROUP_INFO__INFO_CREATOR];
+    if (![creator isKindOfClass:[NSNull class]] ) {
+        dpGroup.creator_uid = [[creator objectForKey:KEYP_H__GROUP_INFO__INFO_CREATOR_UID] longLongValue];
+        dpGroup.creator_nick = [creator objectForKey:KEYP_H__GROUP_INFO__INFO_CREATOR_NICK];
+        dpGroup.creator_oid = [[creator objectForKey:KEYP_H__GROUP_INFO__INFO_CREATOR_OID] longLongValue];
+        dpGroup.creator_vip = [[creator objectForKey:KEYP_H__GROUP_INFO__INFO_CREATOR_VIP] integerValue];
+        dpGroup.creator_city = [creator objectForKey:KEYP_H__GROUP_INFO__INFO_CREATOR_CITY];
+    }
+
+    //Loction:
+    id location = [info objectForKey:KEYP_H__GROUP_INFO__INFO_LOCATION];
+    //NSLog(@"%i", [location count]);
+    if (![location isKindOfClass:[NSNull class]]) {
+        dpGroup.address = [location objectForKey:KEYP_H__GROUP_INFO__INFO_LOCATION_ADDRESS];
+        dpGroup.latitude = [[location objectForKey:KEYP_H__GROUP_INFO__INFO_LOCATION_LAT] doubleValue];
+        dpGroup.longitude = [[location objectForKey:KEYP_H__GROUP_INFO__INFO_LOCATION_LON] doubleValue];
+    }
+
+    //客户端存储
+    dpGroup.localExpireTime = [imUtil getExpireTimeWithMinutes:TIMEOUT_GROUP_INFO];
+
+    return dpGroup;
+}
 
 - (void)processSuccessNotiName:(NSString *)notiName withUserInfo:(NSDictionary *)userInfo
 {
@@ -131,36 +142,37 @@ static GroupMessageProxy *sharedGroupMessageProxy = nil;
             else {
                 NSInteger errorcode = [[json objectForKey:KEYP_H__GROUP_INFO__ERROR_CODE] integerValue];
                 if (errorcode == 0) {
-                    NSDictionary *info = [json objectForKey:KEYP_H__GROUP_INFO__INFO];
-                    
-                    long long gid = [[info objectForKey:KEYP_H__GROUP_INFO__INFO_GID] longLongValue];
-                    
-                    // NSTimeInterval timeInterval= [imUtil nowTime];
-                    DPGroup *dpGroup = [[GroupDataProxy sharedProxy] getGroupInfoCurrent:SEND_HTTP_NO];
-                    if (!dpGroup || dpGroup.gid != gid) {
-                        dpGroup = [[DPGroup alloc] init];
-                    }
-                    
-                    //客户端存储
-                    long long localExpireTime = [imUtil getExpireTimeWithMinutes:TIMEOUT_GROUP_INFO];
-                    dpGroup.localExpireTime = localExpireTime;
-                    
-                    //群基本信息
-                    dpGroup.gid = gid;
-                    dpGroup.name = [info objectForKey:KEYP_H__GROUP_INFO__INFO_NAME];
-                    dpGroup.intro = [info objectForKey:KEYP_H__GROUP_INFO__INFO_INTRO];
-                    dpGroup.ctime = [info objectForKey:KEYP_H__GROUP_INFO__INFO_CTIME];
-                    // NSLog(@"更新群创建时间：%@", dpGroup.ctime);
-                    dpGroup.memberNum = [[info objectForKey:KEYP_H__GROUP_INFO__INFO_MEMBERNUM] integerValue];
-                    dpGroup.myRelation = [[info objectForKey:KEYP_H__GROUP_SEARCH__LIST_MYRELATION] integerValue];
-                    
-                    //群主信息
-                    NSDictionary *creator = [info objectForKey:KEYP_H__GROUP_INFO__INFO_CREATOR];
-                    dpGroup.creator_uid = [[creator objectForKey:KEYP_H__GROUP_INFO__INFO_CREATOR_UID] longLongValue];
-                    dpGroup.creator_nick = [creator objectForKey:KEYP_H__GROUP_INFO__INFO_CREATOR_NICK];
-                    dpGroup.creator_oid = [[creator objectForKey:KEYP_H__GROUP_INFO__INFO_CREATOR_OID] longLongValue];
-                    dpGroup.creator_vip = [[creator objectForKey:KEYP_H__GROUP_INFO__INFO_CREATOR_VIP] integerValue];
-                    dpGroup.creator_city = [creator objectForKey:KEYP_H__GROUP_INFO__INFO_CREATOR_CITY];
+                    DPGroup *dpGroup = [GroupMessageProxy convertGroupJSON:json withProtoId:GROUP_PRO_ID_info];
+//                    NSDictionary *info = [json objectForKey:KEYP_H__GROUP_INFO__INFO];
+//                    
+//                    long long gid = [[info objectForKey:KEYP_H__GROUP_INFO__INFO_GID] longLongValue];
+//                    
+//                    // NSTimeInterval timeInterval= [imUtil nowTime];
+//                    DPGroup *dpGroup = [[GroupDataProxy sharedProxy] getGroupInfoCurrent:SEND_HTTP_NO];
+//                    if (!dpGroup || dpGroup.gid != gid) {
+//                        dpGroup = [[DPGroup alloc] init];
+//                    }
+//                    
+//                    //客户端存储
+//                    long long localExpireTime = [imUtil getExpireTimeWithMinutes:TIMEOUT_GROUP_INFO];
+//                    dpGroup.localExpireTime = localExpireTime;
+//                    
+//                    //群基本信息
+//                    dpGroup.gid = gid;
+//                    dpGroup.name = [info objectForKey:KEYP_H__GROUP_INFO__INFO_NAME];
+//                    dpGroup.intro = [info objectForKey:KEYP_H__GROUP_INFO__INFO_INTRO];
+//                    dpGroup.ctime = [info objectForKey:KEYP_H__GROUP_INFO__INFO_CTIME];
+//                    // NSLog(@"更新群创建时间：%@", dpGroup.ctime);
+//                    dpGroup.memberNum = [[info objectForKey:KEYP_H__GROUP_INFO__INFO_MEMBERNUM] integerValue];
+//                    dpGroup.myRelation = [[info objectForKey:KEYP_H__GROUP_SEARCH__LIST_MYRELATION] integerValue];
+//                    
+//                    //群主信息
+//                    NSDictionary *creator = [info objectForKey:KEYP_H__GROUP_INFO__INFO_CREATOR];
+//                    dpGroup.creator_uid = [[creator objectForKey:KEYP_H__GROUP_INFO__INFO_CREATOR_UID] longLongValue];
+//                    dpGroup.creator_nick = [creator objectForKey:KEYP_H__GROUP_INFO__INFO_CREATOR_NICK];
+//                    dpGroup.creator_oid = [[creator objectForKey:KEYP_H__GROUP_INFO__INFO_CREATOR_OID] longLongValue];
+//                    dpGroup.creator_vip = [[creator objectForKey:KEYP_H__GROUP_INFO__INFO_CREATOR_VIP] integerValue];
+//                    dpGroup.creator_city = [creator objectForKey:KEYP_H__GROUP_INFO__INFO_CREATOR_CITY];
                     [[GroupDataProxy sharedProxy] updateGroupInfo:dpGroup];
                     //NSLog(@"group:%@\n myrelation:%i \n isInMyGroups:%i", dpGroup.name, dpGroup.myRelation, [GroupDataProxy isInMyGroups:dpGroup]);
 
@@ -208,7 +220,7 @@ static GroupMessageProxy *sharedGroupMessageProxy = nil;
                         NSDictionary *group = [list objectAtIndex:i];
 
                         //基本信息
-                        long gid = [[group objectForKey:KEYP_H__GROUP_MYLIST__LIST_GID] longValue];
+                        IMGroupId gid = [[group objectForKey:KEYP_H__GROUP_MYLIST__LIST_GID] longValue];
                         dpGroup.gid = gid;
                         NSDictionary *detail = [group objectForKey:KEYP_H__GROUP_MYLIST__LIST_DETAIL];
                         dpGroup.name = [detail objectForKey:KEYP_H__GROUP_MYLIST__LIST_DETAIL_NAME];
@@ -490,12 +502,15 @@ static GroupMessageProxy *sharedGroupMessageProxy = nil;
 
 #pragma mark - 群管理
 
-- (void)sendGroupCreate:(NSString *)name withIntro:(NSString *)intro
+- (void)sendGroupCreate:(DPGroup *)dpGroup
 {
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
 
-    [params setObject:name forKey:KEYQ_H__GROUP_CREATE__NAME];
-    [params setObject:intro forKey:KEYQ_H__GROUP_CREATE__INTRO];
+    [params setObject:dpGroup.name forKey:KEYQ_H__GROUP_CREATE__NAME];
+    [params setObject:dpGroup.intro forKey:KEYQ_H__GROUP_CREATE__INTRO];
+    [params setObject:[NSNumber numberWithDouble:dpGroup.latitude] forKey:KEYQ_H__GROUP_CREATE__LAT];
+    [params setObject:[NSNumber numberWithDouble:dpGroup.longitude] forKey:KEYQ_H__GROUP_CREATE__LON];
+    [params setObject:dpGroup.address forKey:KEYQ_H__GROUP_CREATE__ADDRESS];
 
     IMNWMessage *message =
         [IMNWMessage createForHttp:PATH_H__GROUP_CREATE_ withParams:params withMethod:METHOD_H__GROUP_CREATE_ ssl:NO];
@@ -513,6 +528,11 @@ static GroupMessageProxy *sharedGroupMessageProxy = nil;
                 if (errorcode == 0) {
                     // NSLog(@"sendGroupCreate response ok:\n%@", json);
                     //[[NSNotificationCenter defaultCenter] postNotificationName:NOTI_H__GROUP_CREATE_ object:nil];
+                    GroupDataProxy *proxy = [GroupDataProxy sharedProxy];
+                    DPGroup *dpGroup = [proxy getGroupCreating];
+                    dpGroup.gid = [[json objectForKey:KEYP_H__GROUP_CREATE__GID] longLongValue];
+                    dpGroup.status = GROUP_STATUS_AUDITING;
+                    [proxy mergeGroupMyList: dpGroup];
                     [self processSuccessNotiName:NOTI_H__GROUP_CREATE_ withUserInfo:nil];
                 }
                 else {

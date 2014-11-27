@@ -10,7 +10,4 @@
 
 @interface ActivityReadyTabController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
-
-
-
 @end

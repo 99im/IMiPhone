@@ -10,10 +10,6 @@
 #import "GroupDataProxy.h"
 
 @interface GroupTableViewCell : UITableViewCell
-@property (weak, nonatomic) IBOutlet UILabel *lblName;
-@property (weak, nonatomic) IBOutlet UILabel *lblIntro;
-@property (weak, nonatomic) IBOutlet UILabel *lblDistance;
-@property (weak, nonatomic) IBOutlet UIImageView *imgAvatar;
 
 @property (nonatomic) long long groupId;
 

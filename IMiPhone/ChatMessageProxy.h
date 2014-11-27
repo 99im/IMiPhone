@@ -18,6 +18,8 @@
 #define CHAT_STAGE_P2P @"p2p"
 #define CHAT_STAGE_GROUP @"group"
 
+#define CHAT_MESSAGE_NID @"nid"
+
 #define CHAT_MASSAGE_TYPE_TEXT 0
 #define CHAT_MASSAGE_TYPE_IMAGE 1
 
@@ -25,12 +27,12 @@
 
 + (ChatMessageProxy *)sharedProxy;
 
-- (void)sendHttpUploadimg:(id)image;
+- (void)sendHttpUploadimg:(id)image withMessageNid:(NSInteger)nid;
 
 - (void)sendTypeP2PChatList:(NSInteger)targetUid before:(NSInteger)beforeMid after:(NSInteger)afterMid startAt:(NSInteger)startIndex getNum:(NSInteger)pageNum;
 - (void)parseTypeP2PChatList:(id)json;
 
-- (void)sendTypeChat:(NSString *)stage targetId:(long long)targetId msgType:(NSInteger)msgType content:(NSString *)content;
+- (void)sendTypeChat:(NSString *)stage targetId:(long long)targetId msgType:(NSInteger)msgType content:(NSString *)content nid:(NSInteger)nid;
 - (void)parseTypeChat:(id)json;
 
 - (void)parseTypeChatn:(id)json;

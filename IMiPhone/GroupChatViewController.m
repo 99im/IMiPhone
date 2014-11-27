@@ -31,7 +31,6 @@
 
 //
 @property (nonatomic,retain) NSArray *arrChatMessages;
-@property (nonatomic,retain) NSMutableDictionary *mdicCellHeight;
 
 //表情弹框
 @property (strong, nonatomic) EmotionViewController *emotionViewController;
@@ -111,7 +110,6 @@ static NSString *kGroupChatImageCell = @"GroupChatImageTableViewCell";
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
-    self.mdicCellHeight = nil;
     //解除键盘出现通知
     [[NSNotificationCenter defaultCenter] removeObserver:self
                                                     name: UIKeyboardDidShowNotification object:nil];
@@ -247,27 +245,8 @@ static NSString *kGroupChatImageCell = @"GroupChatImageTableViewCell";
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (self.mdicCellHeight == nil) {
-        self.mdicCellHeight = [NSMutableDictionary dictionary];
-    }
-    NSString *key = [NSString stringWithFormat:@"%i", indexPath.row];
-    NSNumber *numCellHeight = [self.mdicCellHeight objectForKey:key];
-    if (numCellHeight) {
-        return [numCellHeight doubleValue];
-    }
-    else {
-        DPGroupChatMessage *dpChatMessage = [self.arrChatMessages objectAtIndex:indexPath.row];
-        CGFloat height;
-        if (dpChatMessage.msgType == CHAT_MASSAGE_TYPE_TEXT) {
-            height = [ChatTableViewCell heightOfTextCellWithMessage:dpChatMessage.content withFont:[UIFont systemFontOfSize:CHAT_CELL_CONTENT_FONT_SIZE] withContentWidth:CHAT_CELL_CONTENT_WIDTH_MAX];
-        }
-        else if (dpChatMessage.msgType == CHAT_MASSAGE_TYPE_IMAGE) {
-            //TODO:图片单元格高度计算
-            height = 50;
-        }
-        [self.mdicCellHeight setObject:[NSNumber numberWithDouble:height] forKey:key];
-        return height;
-    }
+    DPGroupChatMessage *dpChatMessage = [self.arrChatMessages objectAtIndex:indexPath.row];
+    return dpChatMessage.cellHeight;
 }
 
 - (void)scrollToLastCell:(BOOL)animated
@@ -284,7 +263,7 @@ static NSString *kGroupChatImageCell = @"GroupChatImageTableViewCell";
 
 - (IBAction)tfInputTextDidEndOnExit:(id)sender {
     
-    [[ChatMessageProxy sharedProxy] sendTypeChat:CHAT_STAGE_GROUP targetId:[GroupDataProxy sharedProxy].getGroupIdCurrent msgType:CHAT_MASSAGE_TYPE_TEXT content:((UITextField *)sender).text];
+    [[ChatMessageProxy sharedProxy] sendTypeChat:CHAT_STAGE_GROUP targetId:[GroupDataProxy sharedProxy].getGroupIdCurrent msgType:CHAT_MASSAGE_TYPE_TEXT content:((UITextField *)sender).text nid:0];
     
     ((UITextField *)sender).text = @"";
     
@@ -345,9 +324,11 @@ static NSString *kGroupChatImageCell = @"GroupChatImageTableViewCell";
 - (void)onChatUploadImg:(NSNotification *)notification
 {
     if (!notification.object) {
-        NSData *jsonData = [NSJSONSerialization dataWithJSONObject:notification.userInfo options:0 error:nil];
+        NSDictionary *dicImgInfo = [notification.userInfo objectForKey:KEYP_H__CHAT_UPLOADIMG__IMGINFO];
+        NSInteger nid = [[notification.userInfo objectForKey:CHAT_MESSAGE_NID] integerValue];
+        NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dicImgInfo options:0 error:nil];
         NSString *content = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
-        [[ChatMessageProxy sharedProxy] sendTypeChat:CHAT_STAGE_P2P targetId:[ChatDataProxy sharedProxy].chatToUid msgType:CHAT_MASSAGE_TYPE_IMAGE content:content];
+        [[ChatMessageProxy sharedProxy] sendTypeChat:CHAT_STAGE_P2P targetId:[ChatDataProxy sharedProxy].chatToUid msgType:CHAT_MASSAGE_TYPE_IMAGE content:content nid:nid];
     }
 }
 
@@ -427,10 +408,10 @@ static NSString *kGroupChatImageCell = @"GroupChatImageTableViewCell";
         UIImage *originalImage = [info objectForKey:UIImagePickerControllerOriginalImage];
         //NSURL *referenceURL = [info objectForKey:UIImagePickerControllerReferenceURL];
         //NSString *mediaType = [info objectForKey:UIImagePickerControllerMediaType];
-        
+        NSInteger nid = 0;
         NSString *imgPath = [imUtil storeCacheImage:originalImage useName:@"test"];
         if (imgPath) {
-            [[ChatMessageProxy sharedProxy] sendHttpUploadimg:imgPath];
+            [[ChatMessageProxy sharedProxy] sendHttpUploadimg:imgPath withMessageNid:nid];
         }
     }];
 }

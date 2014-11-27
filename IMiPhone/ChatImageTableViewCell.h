@@ -9,6 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "ChatTableViewCell.h"
 
-@interface ChatImageTableViewCell : ChatTextTableViewCell
+#define CHAT_CELL_CONTENT_IMAGE_HEIGHT 80.0f
+
+@interface ChatImageTableViewCell : ChatTableViewCell
+
+//预先计算cell高度
++ (CGFloat)heightOfCell;
 
 @end

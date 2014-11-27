@@ -12,6 +12,8 @@
 
 @synthesize gid;
 @synthesize name;
+@synthesize categoryId;
+@synthesize categoryName;
 @synthesize memberNum;
 @synthesize myRelation;
 @synthesize ctime;
@@ -27,9 +29,61 @@
 @synthesize latitude;
 @synthesize longitude;
 @synthesize altitude;
-@synthesize city;
+@synthesize address;
 
 @synthesize localExpireTime;
 //@synthesize isInMyGroups;
 
+//-(BOOL)isExpired
+//{
+//    return NO;
+//}
+
+-(BOOL)isGroupOK
+{
+    if (self.status == GROUP_STATUS_AUDITED) {
+        return YES;
+    }
+    return NO;
+}
+
+-(BOOL)isGroupOwner
+{
+    if (self.myRelation == GROUP_RELATION_OWNER) {
+        return YES;
+    }
+    return NO;
+}
+
+-(BOOL)isGroupManager
+{
+    if (self.myRelation == GROUP_RELATION_MEMBER || [self isGroupOwner]) {
+        return YES;
+    }
+    return NO;
+}
+
+-(BOOL)isGroupMember
+{
+    if (self.myRelation == GROUP_RELATION_MEMBER || [self isGroupManager]) {
+        return YES;
+    }
+    return NO;
+}
+
+-(BOOL)isGroupApplicant
+{
+    if (self.myRelation == GROUP_RELATION_APPLICANT) {
+        return YES;
+    }
+    return NO;
+}
+
+-(BOOL)canGroupApply
+{
+    if (![self isGroupMember] && ![self isGroupApplicant]) {
+        return YES;
+    }
+    return NO;
+}
 @end

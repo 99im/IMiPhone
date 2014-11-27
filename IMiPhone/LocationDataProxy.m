@@ -20,14 +20,21 @@
 @property (nonatomic, retain) DPLocation *dpLocationReport;
 @property (nonatomic) NSInteger remainTimes;
 
+@property (nonatomic) double lastLatitude;
+@property (nonatomic) double lastLongitude;
+@property (nonatomic, retain) NSMutableArray *dpPlacemarks;
+
 @end
 
 @implementation LocationDataProxy
 
 @synthesize locationManager = _locationManager;
 @synthesize dpPlacemarkUser = _dpPlacemarkUser;
+@synthesize dpPlacemarks = _dpPlacemarks;
 @synthesize dpLocationUser = _dpLocationUser;
 @synthesize dpLocationReport = _dpLocationReport;
+@synthesize lastLongitude = _lastLongitude;
+@synthesize lastLatitude = _lastLatitude;
 
 static LocationDataProxy *sharedLocationDataProxy = nil;
 + (LocationDataProxy *)sharedProxy
@@ -43,7 +50,7 @@ static LocationDataProxy *sharedLocationDataProxy = nil;
 {
     _dpLocationUser = [LocationDataProxy convertLocation:location toDPLocation:_dpLocationUser];
 
-    [LocationDataProxy reverseGeocodeDPPlacemark:_dpPlacemarkUser withLatitude:_dpLocationUser.latitude longitude:_dpLocationUser.longitude];
+    [LocationDataProxy reverseDPPlacemark:_dpPlacemarkUser withLatitude:_dpLocationUser.latitude longitude:_dpLocationUser.longitude];
 
     //判断是否需要上传
     BOOL needReport = NO;
@@ -98,7 +105,7 @@ static LocationDataProxy *sharedLocationDataProxy = nil;
 }
 
 
-+ (void)reverseGeocodeDPPlacemark:(DPPlacemark *)dpPlacemark withLatitude:(double)latitude longitude:(double)longitude
++ (void)reverseDPPlacemark:(DPPlacemark *)dpPlacemark withLatitude:(double)latitude longitude:(double)longitude
 {
     if (dpPlacemark && dpPlacemark.dataStatus != LBS_STATUS_DATA_UPDATING) {
         dpPlacemark.dataStatus = LBS_STATUS_DATA_UPDATING;
@@ -113,13 +120,14 @@ static LocationDataProxy *sharedLocationDataProxy = nil;
                            // dpPlacemark.altitude = altitude;
 
                            if (!error && [placemarks count] > 0) {
+                               //_dpPlacemarks = [NSMutableArray array];
                                // CLPlacemark *placemark = [placemarks lastObject];
                                CLPlacemark *placemark = placemarks[0];
 
                                [LocationDataProxy convertPlacemark:placemark toDPPlacemark:dpPlacemark];
 
-                               dpPlacemark.localExpireTime = [imUtil nowTime];
-                               dpPlacemark.localUpdateTime = [imUtil getExpireTimeWithMinutes:LBS_TIMEOUT_PLACEMARK];
+                               dpPlacemark.localExpireTime = [imUtil getExpireTimeWithMinutes:LBS_TIMEOUT_PLACEMARK];
+                               dpPlacemark.localUpdateTime = [imUtil nowTime];
 
                                [imUtil postNotificationName:LBS_NOTI_didReverseGEO object:nil];
                            }
@@ -130,9 +138,48 @@ static LocationDataProxy *sharedLocationDataProxy = nil;
     }
 }
 
++ (void)reverseDPPlacemarks:(NSMutableArray *)dpPlacemarks withLatitude:(double)latitude longitude:(double)longitude
+{
+    CLLocation *location = [[CLLocation alloc] initWithLatitude:latitude longitude:longitude];
+    CLGeocoder *geocoder = [[CLGeocoder alloc] init];
+    [geocoder reverseGeocodeLocation:location
+                   completionHandler:^(NSArray *placemarks, NSError *error) {
+                       if (!error && [placemarks count] > 0) {
+                           [dpPlacemarks removeAllObjects];
+                           long long localExpireTime = [imUtil getExpireTimeWithMinutes:LBS_TIMEOUT_PLACEMARK];
+                           long long localUpdateTime = [imUtil nowTime];
+                           for (NSInteger i=0; i < placemarks.count; i++) {
+                               CLPlacemark *placemark = [placemarks objectAtIndex:i];
+                               DPPlacemark *dpPlacemark = [[DPPlacemark alloc] init];
+                               dpPlacemark.dataStatus = LBS_STATUS_DATA_UPDATED;
+                               dpPlacemark.longitude = longitude;
+                               dpPlacemark.latitude = latitude;
+                               // dpPlacemark.altitude = altitude;                           //_dpPlacemarks = [NSMutableArray array];
+                               // CLPlacemark *placemark = [placemarks lastObject];
+
+
+                               [LocationDataProxy convertPlacemark:placemark toDPPlacemark:dpPlacemark];
+
+                               //NSString *address = [NSString stringWithFormat:@"%@ %@" , dpPlacemark.administrativeArea, dpPlacemark.locality];
+                               //NSLog(@"%@", address);
+
+                               dpPlacemark.localUpdateTime = localUpdateTime;
+                               dpPlacemark.localExpireTime = localExpireTime;
+
+                               [dpPlacemarks addObject:dpPlacemark];
+                           }
+                           NSLog(@"COUNT:%i" , placemarks.count);
+                           [imUtil postNotificationName:LBS_NOTI_didReverseDPPlacemarks object:nil];
+                       }
+                       else {
+                           [imUtil postNotificationName:LBS_NOTI_didReverseDPPlacemarks object:error];
+                       }
+                   }];
+}
+
 + (void)updateDPPlacemark:(DPPlacemark *)dpPlacemark withCoordinate:(CLLocationCoordinate2D)coordinate
 {
-    [LocationDataProxy reverseGeocodeDPPlacemark:dpPlacemark withLatitude:coordinate.latitude longitude:coordinate.longitude];
+    [LocationDataProxy reverseDPPlacemark:dpPlacemark withLatitude:coordinate.latitude longitude:coordinate.longitude];
 }
 
 #pragma mark - 设置执行
@@ -194,6 +241,27 @@ static LocationDataProxy *sharedLocationDataProxy = nil;
         //TODO:是否过期判断规则
     }
     return _dpPlacemarkUser;
+}
+- (NSMutableArray *)getPlacemarks
+{
+    if (!_dpPlacemarks) {
+        [self loadPlacemarksWithLatitude:40.000304 longitude:116.338154];//默认为五道口坐标
+    }
+    return _dpPlacemarks;
+}
+
+- (void)loadPlacemarksWithLatitude:(double)latitude longitude:(double)longitude;
+{
+    // TODO:过滤机制待定
+//    if(_lastLatitude != latitude || _lastLongitude != longitude || !_dpPlacemarks){
+        _lastLatitude = latitude;
+        _lastLongitude = longitude;
+        if (!_dpPlacemarks) {
+            _dpPlacemarks = [NSMutableArray array];
+        }
+        [LocationDataProxy reverseDPPlacemarks:_dpPlacemarks withLatitude:_lastLatitude longitude:_lastLongitude];
+//    }
+
 }
 
 #pragma mark - 委托方法

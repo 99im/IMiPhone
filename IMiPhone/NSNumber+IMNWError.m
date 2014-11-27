@@ -15,6 +15,9 @@
     NSString *sError = @"";
 
     switch (self.integerValue) {
+        case 10037:
+            sError = @"活动不存在或者隐藏了";
+            break;
         case 10036:
             sError = @"已经申请过了";
             break;

@@ -34,20 +34,6 @@
     return imgBg;
 }
 
-+ (CGFloat)heightOfTextCellWithMessage:(NSString*)message withFont:(UIFont *)font withContentWidth:(CGFloat) width
-{
-    NSAttributedString *abStr = [ChatGraphicsUtil abStringWithMessage:message withFont:font];
-    CGFloat contentH;
-    CGSize size = [IMRichText sizeOfRichTextWithAttributedString:abStr withFrameWidth:width];
-    if (size.height < CHAT_PORTRAIT_HEIGHT) {
-        contentH = CHAT_PORTRAIT_HEIGHT;
-    }
-    else {
-        contentH = size.height;
-    }
-    return CHAT_PORTRAIT_TOP_MARGIN_Y + contentH + CHAT_CELL_CONTENT_BG_OFF_HEIGHT;
-}
-
 - (void)awakeFromNib {
     
     self.backgroundColor = [UIColor clearColor];
@@ -61,25 +47,29 @@
     self.imgViewPortrait.image = [UIImage imageNamed:@"ChatDefault"];
     [self.contentView addSubview:self.imgViewPortrait];
     
+    _imgViewBg = [[UIImageView alloc] init];
+    
+    [self.contentView addSubview:self.imgViewBg];
+
     _viewMsgContent = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 50, 50)];//需要动态去修改大小
     [self.contentView addSubview:_viewMsgContent];
     
     _lblState = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
     [self.contentView addSubview:self.lblState];
     
-    _imgViewBg = [[UIImageView alloc] init];
 }
 
 - (void)setMsg:(DPChatMessage *)chatMessage
 {
-    [imUtil clearSubviewsInView:self.viewMsgContent];
     if (chatMessage.senderUid == [UserDataProxy sharedProxy].lastLoginUid) {
         self.messageType = ChatMessageTypeMe;
     }
     else {
         self.messageType = ChatMessageTypeOther;
     }
-    self.imgViewBg.image = [ChatTableViewCell resizableImageOfMsgBgWithMsgType:self.messageType ];
+    self.imgViewBg.frame = CGRectMake(0.0f, 0.0f, self.viewMsgContent.frame.size.width + CHAT_CELL_CONTENT_BG_OFF_WIDTH, self.viewMsgContent.frame.size.height + CHAT_CELL_CONTENT_BG_OFF_HEIGHT);
+     self.imgViewBg.image = [ChatTableViewCell resizableImageOfMsgBgWithMsgType:self.messageType ];
+    [self layoutComponents];
 }
 
 - (void)layoutComponents
@@ -90,60 +80,26 @@
     CGFloat iconWidth = CHAT_PORTRAIT_WIDTH;
     CGFloat iconHeight = CHAT_PORTRAIT_HEIGHT;
     CGFloat viewMsgContentX;
-    CGFloat viewMsgContentY = iconY;
+    CGFloat viewMsgContentY = iconY + CHAT_CELL_CONTENT_BG_OFF_HEIGHT / 2 ;
     CGFloat lblStateX;
     CGFloat lblStateY = iconY;
+    CGFloat imgBgX;
+    CGFloat imgBgY = iconY;
     if (self.messageType == ChatMessageTypeOther) {
-        viewMsgContentX = iconX + iconWidth + CHAT_PORTRAIT_MARGIN_X;
+        imgBgX = iconX + iconWidth + CHAT_PORTRAIT_MARGIN_X;
+        viewMsgContentX = imgBgX + CHAT_CELL_CONTENT_HER_OFF_X;
         lblStateX = viewMsgContentX + self.viewMsgContent.frame.size.width;
     }
     else if (self.messageType == ChatMessageTypeMe) {
         iconX = winSize.width - CHAT_PORTRAIT_MARGIN_X - iconWidth;
-        viewMsgContentX = iconX - CHAT_PORTRAIT_MARGIN_X - self.viewMsgContent.frame.size.width;
+        imgBgX = iconX - CHAT_PORTRAIT_MARGIN_X - self.imgViewBg.frame.size.width;
+        viewMsgContentX = imgBgX + CHAT_CELL_CONTENT_ME_OFF_X;
         lblStateX = viewMsgContentX - self.lblState.frame.size.width;
     }
     self.imgViewPortrait.frame = CGRectMake(iconX, iconY, iconWidth, iconHeight);
+    self.imgViewBg.frame = CGRectMake(imgBgX, imgBgY, self.imgViewBg.frame.size.width, self.imgViewBg.frame.size.height);
     self.viewMsgContent.frame = CGRectMake(viewMsgContentX, viewMsgContentY, self.viewMsgContent.frame.size.width, self.viewMsgContent.frame.size.height);
     self.lblState.frame = CGRectMake(lblStateX, lblStateY, self.lblState.frame.size.width, self.lblState.frame.size.height);
-}
-
-@end
-
-@implementation ChatTextTableViewCell
-
-
-- (void)setMsg:(DPChatMessage *)chatMessage
-{
-    [super setMsg:chatMessage];
-    
-    
-    UIView *viewTextContent = [self assembleMessage:chatMessage.content];
-    
-    NSLog(@"textContent width:%f and height:%f",viewTextContent.frame.size.width, viewTextContent.frame.size.height);
-
-    self.imgViewBg.frame = CGRectMake(0.0f, 0.0f, viewTextContent.frame.size.width + CHAT_CELL_CONTENT_BG_OFF_WIDTH, viewTextContent.frame.size.height + CHAT_CELL_CONTENT_BG_OFF_HEIGHT);
-    [self.viewMsgContent addSubview:self.imgViewBg];
-    [self.viewMsgContent addSubview:viewTextContent];
-
-    //调整图文内容位置
-    CGFloat contentOffX;
-    if (self.messageType == ChatMessageTypeMe) {
-        contentOffX = CHAT_CELL_CONTENT_ME_OFF_X;
-    }
-    else {
-        contentOffX = CHAT_CELL_CONTENT_HER_OFF_X;
-    }
-    viewTextContent.frame = CGRectMake(contentOffX, CHAT_CELL_CONTENT_BG_OFF_HEIGHT/2, viewTextContent.frame.size.width, viewTextContent.frame.size.height);
-    //动态调整viewMsgContent大小
-    self.viewMsgContent.frame = self.imgViewBg.frame;
-    //默认布局
-    [self layoutComponents];
-}
-
-- (UIView *)assembleMessage:(NSString *)message
-{
-    UIFont *fon = [UIFont systemFontOfSize:CHAT_CELL_CONTENT_FONT_SIZE];
-    return [ChatGraphicsUtil richTextWithMessage:message withFont:fon withContentWidth:CHAT_CELL_CONTENT_WIDTH_MAX];
 }
 
 @end

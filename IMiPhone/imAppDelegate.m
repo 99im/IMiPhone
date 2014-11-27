@@ -14,6 +14,22 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    
+    //注册推送通知功能
+    [application registerForRemoteNotificationTypes:UIRemoteNotificationTypeBadge|UIRemoteNotificationTypeAlert|UIRemoteNotificationTypeSound];
+    
+    //判断程序是不是由推送服务完成的
+    if (launchOptions) {
+        NSDictionary *pushNotificationKey = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
+        if (pushNotificationKey) {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"推送通知"
+                                                           message:@"这是通过推送窗口启动的程序，你可以在这里处理推送内容"
+                                                          delegate:nil
+                                                 cancelButtonTitle:@"知道了"
+                                                 otherButtonTitles:nil, nil];
+            [alert show];
+        }
+    }
     return YES;
 }
 							
@@ -44,6 +60,32 @@
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     [[IMNWManager sharedNWManager].socketConnect disconnect];
+}
+
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
+{
+    NSLog(@"Remote Notification regisger success, deviceToken: %@", deviceToken);
+}
+
+- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error
+{
+    NSLog(@"Remote Notification regisger fail, %@", error);
+}
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
+{
+    // 处理推送消息
+    NSLog(@"Remote Notification received: %@", userInfo);
+    // 把icon上的标记数字设置为0,
+    application.applicationIconBadgeNumber = 0;
+    if ([[userInfo objectForKey:@"aps"] objectForKey:@"alert"] != nil) {
+        UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"推送消息"
+                                                        message:[[userInfo objectForKey:@"aps"] objectForKey:@"alert"]
+                                                       delegate:self
+                                              cancelButtonTitle:@"关闭"
+                                              otherButtonTitles:@"处理推送内容",nil];
+        [alert show];
+    }
 }
 
 @end
