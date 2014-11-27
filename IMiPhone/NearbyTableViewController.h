@@ -7,7 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "NearbyVipTableViewCell.h"
+#import "NearbyBabyTableViewCell.h"
+#import "NearbyStarTableViewCell.h"
+#import "NearbyAngleTableViewCell.h"
+#import "NearbyClubManagerTableViewCell.h"
+#import "NearbyClubTableViewCell.h"
+#import "NearbyGroupRecruitTableViewCell.h"
 
 @interface NearbyTableViewController : UITableViewController
+@property (strong, nonatomic) IBOutlet UITableView *tableview;
 
 @end

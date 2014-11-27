@@ -8,6 +8,7 @@
 
 #import "ChatMsgTableViewCellP2P.h"
 #import "UserDataProxy.h"
+#import "ChatMessageProxy.h"
 
 @implementation ChatMsgTableViewCellP2P
 
@@ -27,7 +28,12 @@
         
     }
     //        NSLog(@"%@,%@",dpChatMsg.content,dpChatMsg.sendTime);
-    self.lblLastMsg.text = dpChatMsg.content;
+    if (dpChatMsg.msgType == CHAT_MASSAGE_TYPE_IMAGE) {
+        self.lblLastMsg.text = NSLocalizedString(@"Chat.Image", nil);
+    }
+    else if (dpChatMsg.msgType == CHAT_MASSAGE_TYPE_TEXT) {
+        self.lblLastMsg.text = dpChatMsg.content;
+    }
     self.lblTime.text = dpChatMsg.sendTime;
 }
 

@@ -8,9 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
-#define DB_PRIMARY_KEY_CHAT_MESSAGE_MID @"mid"
+#define DB_PRIMARY_KEY_CHAT_MESSAGE_NID @"nid"
 
 @interface DBChatMessage : NSObject
+
+@property (nonatomic) NSInteger nid;
 
 @property (nonatomic, retain) NSString *stage;
 @property (nonatomic) long long targetId;

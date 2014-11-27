@@ -89,11 +89,12 @@ static ChatDataProxy *messageDataProxy = nil;
     
     NSMutableArray *arrMessagesWithHer = [self getP2PChatMessagesByGid:gid];
 
-    NSInteger findIndex = [ImDataUtil getIndexOf:arrMessagesWithHer byItemKey:DB_PRIMARY_KEY_CHAT_MESSAGE_MID withValue:[NSNumber numberWithLongLong:tempDBMessage.mid]];
+    NSInteger findIndex = [ImDataUtil getIndexOf:arrMessagesWithHer byItemKey:DB_PRIMARY_KEY_CHAT_MESSAGE_NID withValue:[NSNumber numberWithLongLong:tempDBMessage.nid]];
+   
     if (findIndex != NSNotFound) {
         dpChatMessage.nid = ((DPChatMessage *)[arrMessagesWithHer objectAtIndex:findIndex]).nid;
         [arrMessagesWithHer replaceObjectAtIndex:findIndex withObject:dpChatMessage];
-        [[ChatMessageDAO sharedDAO] update:tempDBMessage ByCondition:[DB_PRIMARY_KEY_CHAT_MESSAGE_MID stringByAppendingString:@"=?"] Bind:[NSArray arrayWithObject:[NSString stringWithFormat:@"%lli", dpChatMessage.mid]]];
+        [[ChatMessageDAO sharedDAO] update:tempDBMessage ByCondition:[DB_PRIMARY_KEY_CHAT_MESSAGE_NID stringByAppendingString:@"=?"] Bind:[NSArray arrayWithObject:[NSString stringWithFormat:@"%li", (long)dpChatMessage.nid]]];
     }
     else
     {
@@ -101,12 +102,15 @@ static ChatDataProxy *messageDataProxy = nil;
             dpChatMessage.nid = 0;
         else
             dpChatMessage.nid = ((DPChatMessage *)arrMessagesWithHer.lastObject).nid + 1;
+        tempDBMessage.nid = dpChatMessage.nid;
         [[ChatMessageDAO sharedDAO] insert: tempDBMessage];
         [arrMessagesWithHer addObject:dpChatMessage];
         NSLog(@"arrMessages insert message id:%lli", ((DPChatMessage *)dpChatMessage).mid);
     }
     return dpChatMessage.nid;
 }
+
+
 
 - (DPChatMessage *)getP2PChatMessageByTargetUid:(long long)targetUid withMid:(long long)mid;
 {
@@ -160,23 +164,23 @@ static ChatDataProxy *messageDataProxy = nil;
     NSString *gid = dpChatMessage.gid;
     NSMutableArray *arrMessagesInGroup = [self getGroupChatMessagesByGid:gid];
     
-    NSInteger findIndex = [ImDataUtil getIndexOf:arrMessagesInGroup byItemKey:DB_PRIMARY_KEY_CHAT_MESSAGE_MID withValue:[NSNumber numberWithLongLong:tempDBMessage.mid]];
+    NSInteger findIndex = [ImDataUtil getIndexOf:arrMessagesInGroup byItemKey:DB_PRIMARY_KEY_CHAT_MESSAGE_NID withValue:[NSNumber numberWithLongLong:tempDBMessage.nid]];
     if (findIndex != NSNotFound) {
         [arrMessagesInGroup replaceObjectAtIndex:findIndex withObject:dpChatMessage];
-        [[ChatMessageDAO sharedDAO] update:tempDBMessage ByCondition:[DB_PRIMARY_KEY_CHAT_MESSAGE_MID stringByAppendingString:@"=?"] Bind:[NSArray arrayWithObject:[NSString stringWithFormat:@"%lli",dpChatMessage.mid]]];
+        [[ChatMessageDAO sharedDAO] update:tempDBMessage ByCondition:[DB_PRIMARY_KEY_CHAT_MESSAGE_NID stringByAppendingString:@"=?"] Bind:[NSArray arrayWithObject:[NSString stringWithFormat:@"%li", (long)dpChatMessage.nid]]];
     }
     else
     {
         [[ChatMessageDAO sharedDAO] insert: tempDBMessage];
         [arrMessagesInGroup addObject:dpChatMessage];
-        NSLog(@"arrGroupMessages insert message id:%lli", (long long)((DPChatMessage *)dpChatMessage).mid);
+        NSLog(@"arrGroupMessages insert message id:%li", (long)((DPChatMessage *)dpChatMessage).nid);
     }
 }
 
 - (DPGroupChatMessage *)getGroupChatMessageByGroupid:(long long)targetUid withMid:(long long)mid
 {
     NSArray *groupChatMessages = [self getGroupChatMessagesByGroupid:targetUid];
-    NSInteger findindex = [ImDataUtil getIndexOf:groupChatMessages byItemKey:DB_PRIMARY_KEY_CHAT_MESSAGE_MID withValue:[NSNumber numberWithLongLong:mid]];
+    NSInteger findindex = [ImDataUtil getIndexOf:groupChatMessages byItemKey:@"mid" withValue:[NSNumber numberWithLongLong:mid]];
     
     if (findindex != NSNotFound) {
         return [groupChatMessages objectAtIndex:findindex];
