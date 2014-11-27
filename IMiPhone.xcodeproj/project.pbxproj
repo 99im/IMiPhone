@@ -158,6 +158,20 @@
 		11B1C62D19E51AFB003D2711 /* MsgDataProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B1C62B19E51AFB003D2711 /* MsgDataProxy.m */; };
 		11C936021A03709100D26CFF /* DPSysMessageFriend.m in Sources */ = {isa = PBXBuildFile; fileRef = 11C936011A03709100D26CFF /* DPSysMessageFriend.m */; };
 		11C936031A03709100D26CFF /* DPSysMessageFriend.m in Sources */ = {isa = PBXBuildFile; fileRef = 11C936011A03709100D26CFF /* DPSysMessageFriend.m */; };
+		11D8C7571A2775B8006EC036 /* ActivityInfoTitleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 11D8C7561A2775B8006EC036 /* ActivityInfoTitleCell.m */; };
+		11D8C7581A2775B8006EC036 /* ActivityInfoTitleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 11D8C7561A2775B8006EC036 /* ActivityInfoTitleCell.m */; };
+		11D8C75B1A2777E7006EC036 /* ActivityInfoBelongCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 11D8C75A1A2777E7006EC036 /* ActivityInfoBelongCell.m */; };
+		11D8C75C1A2777E7006EC036 /* ActivityInfoBelongCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 11D8C75A1A2777E7006EC036 /* ActivityInfoBelongCell.m */; };
+		11D8C75F1A2779EA006EC036 /* ActivityInfoApplyOkCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 11D8C75E1A2779EA006EC036 /* ActivityInfoApplyOkCell.m */; };
+		11D8C7601A2779EA006EC036 /* ActivityInfoApplyOkCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 11D8C75E1A2779EA006EC036 /* ActivityInfoApplyOkCell.m */; };
+		11D8C7631A277B7B006EC036 /* ActivityInfoApplyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 11D8C7621A277B7B006EC036 /* ActivityInfoApplyCell.m */; };
+		11D8C7641A277B7B006EC036 /* ActivityInfoApplyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 11D8C7621A277B7B006EC036 /* ActivityInfoApplyCell.m */; };
+		11D8C7671A277D58006EC036 /* ActivityInfoCreatorCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 11D8C7661A277D58006EC036 /* ActivityInfoCreatorCell.m */; };
+		11D8C7681A277D58006EC036 /* ActivityInfoCreatorCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 11D8C7661A277D58006EC036 /* ActivityInfoCreatorCell.m */; };
+		11D8C76B1A277DD0006EC036 /* ActivityInfoMoreCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 11D8C76A1A277DD0006EC036 /* ActivityInfoMoreCell.m */; };
+		11D8C76C1A277DD0006EC036 /* ActivityInfoMoreCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 11D8C76A1A277DD0006EC036 /* ActivityInfoMoreCell.m */; };
+		11D8C76F1A277EEF006EC036 /* ActivityInfoDiscussCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 11D8C76E1A277EEF006EC036 /* ActivityInfoDiscussCell.m */; };
+		11D8C7701A277EEF006EC036 /* ActivityInfoDiscussCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 11D8C76E1A277EEF006EC036 /* ActivityInfoDiscussCell.m */; };
 		11DA19161A272AD700CBD32B /* ActivityListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 11DA19151A272AD700CBD32B /* ActivityListTableViewCell.m */; };
 		11DA19171A272AD700CBD32B /* ActivityListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 11DA19151A272AD700CBD32B /* ActivityListTableViewCell.m */; };
 		11DB34361A2481EC00223B6B /* GroupChatImageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 11DB34351A2481EC00223B6B /* GroupChatImageTableViewCell.m */; };
@@ -520,6 +534,20 @@
 		11B1C62B19E51AFB003D2711 /* MsgDataProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MsgDataProxy.m; sourceTree = "<group>"; };
 		11C936001A03709100D26CFF /* DPSysMessageFriend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPSysMessageFriend.h; sourceTree = "<group>"; };
 		11C936011A03709100D26CFF /* DPSysMessageFriend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPSysMessageFriend.m; sourceTree = "<group>"; };
+		11D8C7551A2775B8006EC036 /* ActivityInfoTitleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityInfoTitleCell.h; sourceTree = "<group>"; };
+		11D8C7561A2775B8006EC036 /* ActivityInfoTitleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityInfoTitleCell.m; sourceTree = "<group>"; };
+		11D8C7591A2777E7006EC036 /* ActivityInfoBelongCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityInfoBelongCell.h; sourceTree = "<group>"; };
+		11D8C75A1A2777E7006EC036 /* ActivityInfoBelongCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityInfoBelongCell.m; sourceTree = "<group>"; };
+		11D8C75D1A2779E9006EC036 /* ActivityInfoApplyOkCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityInfoApplyOkCell.h; sourceTree = "<group>"; };
+		11D8C75E1A2779EA006EC036 /* ActivityInfoApplyOkCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityInfoApplyOkCell.m; sourceTree = "<group>"; };
+		11D8C7611A277B7B006EC036 /* ActivityInfoApplyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityInfoApplyCell.h; sourceTree = "<group>"; };
+		11D8C7621A277B7B006EC036 /* ActivityInfoApplyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityInfoApplyCell.m; sourceTree = "<group>"; };
+		11D8C7651A277D58006EC036 /* ActivityInfoCreatorCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityInfoCreatorCell.h; sourceTree = "<group>"; };
+		11D8C7661A277D58006EC036 /* ActivityInfoCreatorCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityInfoCreatorCell.m; sourceTree = "<group>"; };
+		11D8C7691A277DD0006EC036 /* ActivityInfoMoreCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityInfoMoreCell.h; sourceTree = "<group>"; };
+		11D8C76A1A277DD0006EC036 /* ActivityInfoMoreCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityInfoMoreCell.m; sourceTree = "<group>"; };
+		11D8C76D1A277EEF006EC036 /* ActivityInfoDiscussCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityInfoDiscussCell.h; sourceTree = "<group>"; };
+		11D8C76E1A277EEF006EC036 /* ActivityInfoDiscussCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityInfoDiscussCell.m; sourceTree = "<group>"; };
 		11DA19141A272AD700CBD32B /* ActivityListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityListTableViewCell.h; sourceTree = "<group>"; };
 		11DA19151A272AD700CBD32B /* ActivityListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityListTableViewCell.m; sourceTree = "<group>"; };
 		11DB34341A2481EC00223B6B /* GroupChatImageTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupChatImageTableViewCell.h; sourceTree = "<group>"; };
@@ -842,6 +870,7 @@
 		111B4E9A1A0A26800043A29F /* Activity */ = {
 			isa = PBXGroup;
 			children = (
+				11D8C7541A27754C006EC036 /* InfoCells */,
 				111B4EA01A0A28830043A29F /* ActivityListController.h */,
 				111B4EA11A0A28830043A29F /* ActivityListController.m */,
 				111B4EA71A0A2A8E0043A29F /* ActivityReadyTabController.h */,
@@ -1002,6 +1031,27 @@
 				117AC69319EE763E00143973 /* IMAddressPerson.m */,
 			);
 			path = IMAddressBook;
+			sourceTree = "<group>";
+		};
+		11D8C7541A27754C006EC036 /* InfoCells */ = {
+			isa = PBXGroup;
+			children = (
+				11D8C7551A2775B8006EC036 /* ActivityInfoTitleCell.h */,
+				11D8C7561A2775B8006EC036 /* ActivityInfoTitleCell.m */,
+				11D8C7591A2777E7006EC036 /* ActivityInfoBelongCell.h */,
+				11D8C75A1A2777E7006EC036 /* ActivityInfoBelongCell.m */,
+				11D8C75D1A2779E9006EC036 /* ActivityInfoApplyOkCell.h */,
+				11D8C75E1A2779EA006EC036 /* ActivityInfoApplyOkCell.m */,
+				11D8C7611A277B7B006EC036 /* ActivityInfoApplyCell.h */,
+				11D8C7621A277B7B006EC036 /* ActivityInfoApplyCell.m */,
+				11D8C7651A277D58006EC036 /* ActivityInfoCreatorCell.h */,
+				11D8C7661A277D58006EC036 /* ActivityInfoCreatorCell.m */,
+				11D8C7691A277DD0006EC036 /* ActivityInfoMoreCell.h */,
+				11D8C76A1A277DD0006EC036 /* ActivityInfoMoreCell.m */,
+				11D8C76D1A277EEF006EC036 /* ActivityInfoDiscussCell.h */,
+				11D8C76E1A277EEF006EC036 /* ActivityInfoDiscussCell.m */,
+			);
+			name = InfoCells;
 			sourceTree = "<group>";
 		};
 		11E1581019F4FF58008544D1 /* Msg */ = {
@@ -1716,6 +1766,7 @@
 				58B9F66919F8E5C500567BCC /* EmotIconViewController.m in Sources */,
 				DBD2A9311A1A10F50020EECD /* FindNearbyGroupViewController.m in Sources */,
 				11E1581319F4FFE1008544D1 /* MsgTableViewController.m in Sources */,
+				11D8C75B1A2777E7006EC036 /* ActivityInfoBelongCell.m in Sources */,
 				116B6E8919B0534000DB1B5E /* DBGroup.m in Sources */,
 				117AC6A119EE7BCF00143973 /* UserDAO.m in Sources */,
 				DBC83B9B1A25780100B8EA81 /* UserSignTableViewCell.m in Sources */,
@@ -1807,6 +1858,7 @@
 				AB199AD01A0A4B5C00F6B858 /* LocationViewController.m in Sources */,
 				118310BE19FE5D1D00C1968D /* DBSysMessage.m in Sources */,
 				58B496E019A7186A0082AE30 /* NSString+MKNetworkKitAdditions.m in Sources */,
+				11D8C7631A277B7B006EC036 /* ActivityInfoApplyCell.m in Sources */,
 				ABAF97CB1A09F8F700BE29B8 /* DPLocation.m in Sources */,
 				58BACF1319B5E89D00A72391 /* VPImageCropperViewController.m in Sources */,
 				118310C619FE623300C1968D /* SysMessageDAO.m in Sources */,
@@ -1833,6 +1885,7 @@
 				11DB34361A2481EC00223B6B /* GroupChatImageTableViewCell.m in Sources */,
 				117AC69C19EE766200143973 /* DBUser.m in Sources */,
 				116B6E8019AF0F8C00DB1B5E /* DatabaseConfig.m in Sources */,
+				11D8C7671A277D58006EC036 /* ActivityInfoCreatorCell.m in Sources */,
 				11FFA51F1A1CE27100F6F00A /* ActivityCreateTableLabelDateCell.m in Sources */,
 				110F561A19D57013003B9EB4 /* DPUiMessage.m in Sources */,
 				1194301419F75CED00FD9206 /* ChatInputTextView.m in Sources */,
@@ -1859,8 +1912,10 @@
 				58F4FDB61A25C6F500032CD5 /* UIImageView+OnlineImage.m in Sources */,
 				AB62170819FF3F65003C2FBB /* GroupApplyViewController.m in Sources */,
 				116BF87F19C981AD0015561B /* DPUser.m in Sources */,
+				11D8C76B1A277DD0006EC036 /* ActivityInfoMoreCell.m in Sources */,
 				58D026C419D17D4800BE4748 /* NSNumber+IMNWError.m in Sources */,
 				111B4EB51A0A2DD90043A29F /* ActivityReadyTabChatController.m in Sources */,
+				11D8C76F1A277EEF006EC036 /* ActivityInfoDiscussCell.m in Sources */,
 				DBC83B951A2577D600B8EA81 /* UserInfoTableViewCell.m in Sources */,
 				58F2AA3919A487E300DC2FFB /* AsyncSocket.m in Sources */,
 				DBC83BBA1A25D99900B8EA81 /* NearbyClubManagerTableViewCell.m in Sources */,
@@ -1868,8 +1923,10 @@
 				58A9134019D2BDBA008E5A25 /* UserShowViewController.m in Sources */,
 				58BC1E3319C0304900722A00 /* RegInfoViewController.m in Sources */,
 				AB20EE8419F4DCCC004627C8 /* GroupDataProxy.m in Sources */,
+				11D8C75F1A2779EA006EC036 /* ActivityInfoApplyOkCell.m in Sources */,
 				DB51918F1A24886700C56EFF /* CommonUserViewController.m in Sources */,
 				DBC83BAE1A25D8DF00B8EA81 /* NearbyVipTableViewCell.m in Sources */,
+				11D8C7571A2775B8006EC036 /* ActivityInfoTitleCell.m in Sources */,
 				58C14DDA19C81562009334E1 /* RecommendViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1896,6 +1953,7 @@
 				1171F7D519E9278A00865A0B /* DBContactPerson.m in Sources */,
 				11FFA4F81A1C646E00F6F00A /* ActivityDAO.m in Sources */,
 				58BC1E5E19C06BAE00722A00 /* crypt.c in Sources */,
+				11D8C7601A2779EA006EC036 /* ActivityInfoApplyOkCell.m in Sources */,
 				114BF7411A198B9C00A28A94 /* DPFocusUser.m in Sources */,
 				11DF5F761A25C23100520243 /* ActivityMemberDAO.m in Sources */,
 				11FAA8C519EF558E002048FA /* FriendTableViewCellUser.m in Sources */,
@@ -1945,7 +2003,9 @@
 				58C14DE719CAB631009334E1 /* AddTableViewController.m in Sources */,
 				1192B5D519FE1F030013119E /* GroupMessageProxy.m in Sources */,
 				117A19011A10675E00E3B790 /* ChatGraphicsUtil.m in Sources */,
+				11D8C7701A277EEF006EC036 /* ActivityInfoDiscussCell.m in Sources */,
 				117AC6AD19EEB95500143973 /* UserDAO.m in Sources */,
+				11D8C7681A277D58006EC036 /* ActivityInfoCreatorCell.m in Sources */,
 				117AC6A719EEB8A100143973 /* ContactTest.m in Sources */,
 				11DF6A971A04B57C00A4B1D3 /* DPGroupChatMessage.m in Sources */,
 				114BF7511A1A499100A28A94 /* DPFanUser.m in Sources */,
@@ -1963,8 +2023,10 @@
 				11DF5F721A25B9AA00520243 /* ChatTextTableViewCell.m in Sources */,
 				11FFA5141A1CA4BE00F6F00A /* ActivityCreateTableInfoCell.m in Sources */,
 				116AB14A19B731DE00092E2C /* DBGroup.m in Sources */,
+				11D8C7581A2775B8006EC036 /* ActivityInfoTitleCell.m in Sources */,
 				117AC6B219EEB9A500143973 /* IMNWSocketConnect.m in Sources */,
 				117AC6AC19EEB91500143973 /* DPUserFromContact.m in Sources */,
+				11D8C7641A277B7B006EC036 /* ActivityInfoApplyCell.m in Sources */,
 				116AB14619B731CF00092E2C /* SqlightResult.m in Sources */,
 				58BC1E3819C0304900722A00 /* RegStep1ViewController.m in Sources */,
 				114BF73D1A198A6F00A28A94 /* DBFocusUser.m in Sources */,
@@ -2015,6 +2077,7 @@
 				1194302519F7B01D00FD9206 /* ChatTableViewCell.m in Sources */,
 				117AC6AE19EEB97D00143973 /* UsersFromContactDAO.m in Sources */,
 				117AC6B119EEB9A200143973 /* IMNWProxy.m in Sources */,
+				11D8C76C1A277DD0006EC036 /* ActivityInfoMoreCell.m in Sources */,
 				116AB14B19B731E100092E2C /* GroupDAO.m in Sources */,
 				111B4EC61A0A2EE70043A29F /* ActivityDataProxy.m in Sources */,
 				1192B5D419FE1E940013119E /* EmotionViewController.m in Sources */,
@@ -2024,6 +2087,7 @@
 				111B4EC21A0A2E6C0043A29F /* ActivityRunningTabInfoController.m in Sources */,
 				58EF8C4019BEEE1600C5A7AC /* AccountMessageProxy.m in Sources */,
 				116AB14719B731D300092E2C /* DBChatMessage.m in Sources */,
+				11D8C75C1A2777E7006EC036 /* ActivityInfoBelongCell.m in Sources */,
 				111B4ECE1A0A30AC0043A29F /* ActivityDetailController.m in Sources */,
 				11FC327919F0C670000A6733 /* FriendDAO.m in Sources */,
 				1194301519F75CED00FD9206 /* ChatInputTextView.m in Sources */,
