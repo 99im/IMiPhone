@@ -344,6 +344,14 @@
 		DBC83BA41A25783F00B8EA81 /* UserDescriptionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DBC83BA31A25783F00B8EA81 /* UserDescriptionTableViewCell.m */; };
 		DBC83BA71A2578DC00B8EA81 /* UserDynamiceTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DBC83BA61A2578DC00B8EA81 /* UserDynamiceTableViewCell.m */; };
 		DBC83BAA1A257BD000B8EA81 /* JoinGroupTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DBC83BA91A257BD000B8EA81 /* JoinGroupTableViewCell.m */; };
+		DBC83BAE1A25D8DF00B8EA81 /* NearbyVipTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DBC83BAD1A25D8DF00B8EA81 /* NearbyVipTableViewCell.m */; };
+		DBC83BB11A25D93500B8EA81 /* NearbyBabyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DBC83BB01A25D93500B8EA81 /* NearbyBabyTableViewCell.m */; };
+		DBC83BB41A25D95900B8EA81 /* NearbyStarTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DBC83BB31A25D95900B8EA81 /* NearbyStarTableViewCell.m */; };
+		DBC83BB71A25D97900B8EA81 /* NearbyAngleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DBC83BB61A25D97900B8EA81 /* NearbyAngleTableViewCell.m */; };
+		DBC83BBA1A25D99900B8EA81 /* NearbyClubManagerTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DBC83BB91A25D99900B8EA81 /* NearbyClubManagerTableViewCell.m */; };
+		DBC83BBD1A25D9BD00B8EA81 /* NearbyGroupRecruitTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DBC83BBC1A25D9BD00B8EA81 /* NearbyGroupRecruitTableViewCell.m */; };
+		DBC83BC01A25DA5200B8EA81 /* NearbyClubTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DBC83BBF1A25DA5200B8EA81 /* NearbyClubTableViewCell.m */; };
+		DBC83BC31A25EE2E00B8EA81 /* GroupRecruitCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DBC83BC21A25EE2E00B8EA81 /* GroupRecruitCellTableViewCell.m */; };
 		DBD2A9281A1996030020EECD /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DBD2A9271A1996030020EECD /* Images.xcassets */; };
 		DBD2A92B1A19D88D0020EECD /* head.png in Resources */ = {isa = PBXBuildFile; fileRef = DBD2A9291A19D88D0020EECD /* head.png */; };
 		DBD2A92E1A19E5430020EECD /* ActivityCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DBD2A92D1A19E5430020EECD /* ActivityCellTableViewCell.m */; };
@@ -738,6 +746,22 @@
 		DBC83BA61A2578DC00B8EA81 /* UserDynamiceTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserDynamiceTableViewCell.m; sourceTree = "<group>"; };
 		DBC83BA81A257BD000B8EA81 /* JoinGroupTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JoinGroupTableViewCell.h; sourceTree = "<group>"; };
 		DBC83BA91A257BD000B8EA81 /* JoinGroupTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JoinGroupTableViewCell.m; sourceTree = "<group>"; };
+		DBC83BAC1A25D8DF00B8EA81 /* NearbyVipTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NearbyVipTableViewCell.h; sourceTree = "<group>"; };
+		DBC83BAD1A25D8DF00B8EA81 /* NearbyVipTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NearbyVipTableViewCell.m; sourceTree = "<group>"; };
+		DBC83BAF1A25D93500B8EA81 /* NearbyBabyTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NearbyBabyTableViewCell.h; sourceTree = "<group>"; };
+		DBC83BB01A25D93500B8EA81 /* NearbyBabyTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NearbyBabyTableViewCell.m; sourceTree = "<group>"; };
+		DBC83BB21A25D95900B8EA81 /* NearbyStarTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NearbyStarTableViewCell.h; sourceTree = "<group>"; };
+		DBC83BB31A25D95900B8EA81 /* NearbyStarTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NearbyStarTableViewCell.m; sourceTree = "<group>"; };
+		DBC83BB51A25D97900B8EA81 /* NearbyAngleTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NearbyAngleTableViewCell.h; sourceTree = "<group>"; };
+		DBC83BB61A25D97900B8EA81 /* NearbyAngleTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NearbyAngleTableViewCell.m; sourceTree = "<group>"; };
+		DBC83BB81A25D99900B8EA81 /* NearbyClubManagerTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NearbyClubManagerTableViewCell.h; sourceTree = "<group>"; };
+		DBC83BB91A25D99900B8EA81 /* NearbyClubManagerTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NearbyClubManagerTableViewCell.m; sourceTree = "<group>"; };
+		DBC83BBB1A25D9BD00B8EA81 /* NearbyGroupRecruitTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NearbyGroupRecruitTableViewCell.h; sourceTree = "<group>"; };
+		DBC83BBC1A25D9BD00B8EA81 /* NearbyGroupRecruitTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NearbyGroupRecruitTableViewCell.m; sourceTree = "<group>"; };
+		DBC83BBE1A25DA5200B8EA81 /* NearbyClubTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NearbyClubTableViewCell.h; sourceTree = "<group>"; };
+		DBC83BBF1A25DA5200B8EA81 /* NearbyClubTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NearbyClubTableViewCell.m; sourceTree = "<group>"; };
+		DBC83BC11A25EE2E00B8EA81 /* GroupRecruitCellTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupRecruitCellTableViewCell.h; sourceTree = "<group>"; };
+		DBC83BC21A25EE2E00B8EA81 /* GroupRecruitCellTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupRecruitCellTableViewCell.m; sourceTree = "<group>"; };
 		DBD2A9271A1996030020EECD /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		DBD2A92A1A19D88D0020EECD /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "zh-Hans"; path = "zh-Hans.lproj/head.png"; sourceTree = "<group>"; };
 		DBD2A92C1A19E5430020EECD /* ActivityCellTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityCellTableViewCell.h; sourceTree = "<group>"; };
@@ -983,6 +1007,7 @@
 		58438C0A19D412C400B6962B /* Nearby */ = {
 			isa = PBXGroup;
 			children = (
+				DBC83BAB1A25D8BA00B8EA81 /* cell */,
 				58438C0B19D412E400B6962B /* NearbyTableViewController.h */,
 				58438C0C19D412E400B6962B /* NearbyTableViewController.m */,
 			);
@@ -1468,6 +1493,29 @@
 			name = dynamic;
 			sourceTree = "<group>";
 		};
+		DBC83BAB1A25D8BA00B8EA81 /* cell */ = {
+			isa = PBXGroup;
+			children = (
+				DBC83BAC1A25D8DF00B8EA81 /* NearbyVipTableViewCell.h */,
+				DBC83BAD1A25D8DF00B8EA81 /* NearbyVipTableViewCell.m */,
+				DBC83BAF1A25D93500B8EA81 /* NearbyBabyTableViewCell.h */,
+				DBC83BB01A25D93500B8EA81 /* NearbyBabyTableViewCell.m */,
+				DBC83BB21A25D95900B8EA81 /* NearbyStarTableViewCell.h */,
+				DBC83BB31A25D95900B8EA81 /* NearbyStarTableViewCell.m */,
+				DBC83BB51A25D97900B8EA81 /* NearbyAngleTableViewCell.h */,
+				DBC83BB61A25D97900B8EA81 /* NearbyAngleTableViewCell.m */,
+				DBC83BB81A25D99900B8EA81 /* NearbyClubManagerTableViewCell.h */,
+				DBC83BB91A25D99900B8EA81 /* NearbyClubManagerTableViewCell.m */,
+				DBC83BBE1A25DA5200B8EA81 /* NearbyClubTableViewCell.h */,
+				DBC83BBF1A25DA5200B8EA81 /* NearbyClubTableViewCell.m */,
+				DBC83BBB1A25D9BD00B8EA81 /* NearbyGroupRecruitTableViewCell.h */,
+				DBC83BBC1A25D9BD00B8EA81 /* NearbyGroupRecruitTableViewCell.m */,
+				DBC83BC11A25EE2E00B8EA81 /* GroupRecruitCellTableViewCell.h */,
+				DBC83BC21A25EE2E00B8EA81 /* GroupRecruitCellTableViewCell.m */,
+			);
+			name = cell;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1606,15 +1654,18 @@
 				58CDC03C19FE2EF600173FD7 /* GroupChatViewController.m in Sources */,
 				1171F7C819E8DE6300865A0B /* AddressAddTableViewCell.m in Sources */,
 				58BACF0819B5804700A72391 /* FriendMessageProxy.m in Sources */,
+				DBC83BB41A25D95900B8EA81 /* NearbyStarTableViewCell.m in Sources */,
 				110F560E19D56A9E003B9EB4 /* ChatDataProxy.m in Sources */,
 				DB6FACBF1A0B785A0048B76B /* HavingFunTableViewCell.m in Sources */,
 				58BACF0719B5803F00A72391 /* FriendDataProxy.m in Sources */,
 				111B4EC51A0A2EE70043A29F /* ActivityDataProxy.m in Sources */,
+				DBC83BB11A25D93500B8EA81 /* NearbyBabyTableViewCell.m in Sources */,
 				110F560A19D55792003B9EB4 /* DBUiMessage.m in Sources */,
 				11FFA50F1A1CA3FF00F6F00A /* ActivityCreateTableLimitCell.m in Sources */,
 				58CDC03919FE175500173FD7 /* GroupChatTextTableViewCell.m in Sources */,
 				58C14DD219C80D67009334E1 /* ContactViewController.m in Sources */,
 				58C14DEA19CAD70F009334E1 /* AddByInputTableViewCell.m in Sources */,
+				DBC83BC01A25DA5200B8EA81 /* NearbyClubTableViewCell.m in Sources */,
 				58B9F66919F8E5C500567BCC /* EmotIconViewController.m in Sources */,
 				DBD2A9311A1A10F50020EECD /* FindNearbyGroupViewController.m in Sources */,
 				11E1581319F4FFE1008544D1 /* MsgTableViewController.m in Sources */,
@@ -1670,6 +1721,7 @@
 				111B4EAD1A0A2B100043A29F /* ActivityRuningTabController.m in Sources */,
 				11B1C62819E4E069003D2711 /* ChatMessageProxy.m in Sources */,
 				1171F7CC19E9154F00865A0B /* DPContactPerson.m in Sources */,
+				DBC83BB71A25D97900B8EA81 /* NearbyAngleTableViewCell.m in Sources */,
 				AB4F947F19F789A500397549 /* DPGroup.m in Sources */,
 				58A331AA19E51A95005BE980 /* CategoryListTableViewController.m in Sources */,
 				58D3F28A19E63082006589F9 /* IMNWSocketConnect.m in Sources */,
@@ -1686,6 +1738,8 @@
 				114BF74C1A1A468E00A28A94 /* FanUserDAO.m in Sources */,
 				58B496DA19A7186A0082AE30 /* NSData+MKBase64.m in Sources */,
 				DB6FACB91A0B71DB0048B76B /* FindViewController.m in Sources */,
+				DBC83BC31A25EE2E00B8EA81 /* GroupRecruitCellTableViewCell.m in Sources */,
+				DBC83BBD1A25D9BD00B8EA81 /* NearbyGroupRecruitTableViewCell.m in Sources */,
 				58E8699B1A1DB776001437A2 /* ChatImageTableViewCell.m in Sources */,
 				116BF87119C81E030015561B /* AudioRecordManager.m in Sources */,
 				1171F7C419E8DE4000865A0B /* AddressInviteTableViewCell.m in Sources */,
@@ -1756,11 +1810,13 @@
 				111B4EB51A0A2DD90043A29F /* ActivityReadyTabChatController.m in Sources */,
 				DBC83B951A2577D600B8EA81 /* UserInfoTableViewCell.m in Sources */,
 				58F2AA3919A487E300DC2FFB /* AsyncSocket.m in Sources */,
+				DBC83BBA1A25D99900B8EA81 /* NearbyClubManagerTableViewCell.m in Sources */,
 				ABA91EF919F64B970017B045 /* GroupTableViewCell.m in Sources */,
 				58A9134019D2BDBA008E5A25 /* UserShowViewController.m in Sources */,
 				58BC1E3319C0304900722A00 /* RegInfoViewController.m in Sources */,
 				AB20EE8419F4DCCC004627C8 /* GroupDataProxy.m in Sources */,
 				DB51918F1A24886700C56EFF /* CommonUserViewController.m in Sources */,
+				DBC83BAE1A25D8DF00B8EA81 /* NearbyVipTableViewCell.m in Sources */,
 				58C14DDA19C81562009334E1 /* RecommendViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
