@@ -41,7 +41,7 @@
 - (void)updateNearbyActivityListWithStart:(NSInteger)start withServerNearbyList:(NSArray *)serverNearbyList;
 
 //附近活动
-- (NSArray *)getNearbyActivityListWithStart:(NSInteger)start withPageNum:(NSInteger)pageNum;
+- (NSArray *)getNearbyActivityListWithStart:(NSInteger)start withPageNum:(NSInteger)pageNum needRequest:(BOOL)need;
 
 //活动成员
 - (void)updateActivityMembersWithStart:(NSInteger)start withServerMembers:(NSArray *)serverMembers withAid:(long long)aid;

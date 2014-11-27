@@ -194,7 +194,7 @@ static ActivityMessageProxy *activityProxy = nil;
                     dpNearbyActivity.myReleation = [[item objectForKey:KEYP_H__ACTIVITY_NEARBY__LIST_MYRELATION] integerValue];
                     [arrNearbyActivity addObject:dpNearbyActivity];
                 }
-                [[ActivityDataProxy sharedProxy] updateActivityListWithServerList:arrR];
+                [[ActivityDataProxy sharedProxy] updateActivityListWithServerList:arrDp];
                 [[ActivityDataProxy sharedProxy] updateNearbyActivityListWithStart:start withServerNearbyList:arrNearbyActivity];
                 [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_H__ACTIVITY_NEARBY_ object:self];
             }
@@ -308,10 +308,16 @@ static ActivityMessageProxy *activityProxy = nil;
     dpActivity.endTime = [info objectForKey:KEYP_H__ACTIVITY_NEARBY__LIST_DETAIL_ENDTIME];
     dpActivity.maxNum = [[info objectForKey:KEYP_H__ACTIVITY_NEARBY__LIST_DETAIL_MAXNUM] integerValue];
 
+    
     NSDictionary *dicCreaterInfo = [info objectForKey:KEYP_H__ACTIVITY_NEARBY__LIST_DETAIL_CREATOR];
-    [[UserDataProxy sharedProxy] addServerUinfo:dicCreaterInfo];
-    dpActivity.createrUid = [[dicCreaterInfo objectForKey:@"uid"] longLongValue];
-
+    if( dicCreaterInfo)
+    {
+        [[UserDataProxy sharedProxy] addServerUinfo:dicCreaterInfo];
+        dpActivity.createrUid = [[dicCreaterInfo objectForKey:@"uid"] longLongValue];
+    }
+    else {
+        NSLog(@"dpActivityWithServerInfo dicCreaterInfo == nil!!!");
+    }
     return dpActivity;
 }
 

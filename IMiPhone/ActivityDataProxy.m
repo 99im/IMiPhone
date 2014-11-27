@@ -78,6 +78,7 @@ static ActivityDataProxy *sharedActivityProxy = nil;
     ActivityDAO *dbDAO = [ActivityDAO sharedDAO];
     for (NSInteger i = 0; i < serverList.count; i++) {
         dpActivity = [serverList objectAtIndex:i];
+        dbDataModel= [[DBActivity alloc] init];
         [ImDataUtil copyFrom:dpActivity To:dbDataModel];
         //先删除
         NSString *condition = [NSString stringWithFormat:@"%@ = ?",DB_PRIMARY_KEY_ACTIVITY_AID];
@@ -87,6 +88,7 @@ static ActivityDataProxy *sharedActivityProxy = nil;
         [dbDAO insert:dbDataModel];
         [self.dicActivity setObject:dbDataModel forKey:[NSNumber numberWithLongLong:dpActivity.aid]];
     }
+    NSLog(@"updateActivityListWithServerList 完成");
 }
 
 - (DPActivity *)getActivityWithAid:(long long)aid;
@@ -151,14 +153,16 @@ static ActivityDataProxy *sharedActivityProxy = nil;
 }
 
 //附近活动
-- (NSArray *)getNearbyActivityListWithStart:(NSInteger)start withPageNum:(NSInteger)pageNum
+- (NSArray *)getNearbyActivityListWithStart:(NSInteger)start withPageNum:(NSInteger)pageNum needRequest:(BOOL)need;
 {
-    DPLocation *dpLocation = [[LocationDataProxy sharedProxy] getUserLocation];
+    if (need) {
+        DPLocation *dpLocation = [[LocationDataProxy sharedProxy] getUserLocation];
     //因为附近活动列表随时可能变化，所以每次需要数据时候，都要向服务器请求
-    [[ActivityMessageProxy sharedProxy] sendHttpNearbyWithLon:[NSString stringWithFormat:@"%f", dpLocation.longitude]
+        [[ActivityMessageProxy sharedProxy] sendHttpNearbyWithLon:[NSString stringWithFormat:@"%f", dpLocation.longitude]
                                                       withLat:[NSString stringWithFormat:@"%f", dpLocation.latitude]
                                                     withStart:start
                                                   withPageNum:pageNum];
+    }
     MyActivityDAO *dbDAO = [MyActivityDAO sharedDAO];
     NSMutableArray *arrResult = [self getWithStart:start
                                        withPageNum:pageNum
@@ -209,19 +213,19 @@ static ActivityDataProxy *sharedActivityProxy = nil;
 //更新列表数据统一方法
 - (void)updateWithStart:(NSInteger)start withArray:(NSArray *)arr withDic:(NSMutableDictionary *)dic withDBCls:(Class)dbCls withDAO:(BaseDAO *)dbDAO withDBPrimaryKey:(NSString *)pkey
 {
-        [dic setObject:arr forKey:[NSNumber numberWithInteger:start]];
-        NSObject *dpModle;
-        //先删除数据库
-        NSString *strDelSql = [NSString stringWithFormat:@"%@ > = %li and %@ < %li", pkey, (long)start, pkey, (long)(start + arr.count)];
-        [dbDAO deleteByCondition:strDelSql Bind:nil];
-        //再插入数据库
-        NSObject *dbDataModel;
-        for (NSInteger i = 0; i < arr.count; i++) {
-            dbDataModel = [[dbCls alloc] init];
-            dpModle = [arr objectAtIndex:i];
-            [ImDataUtil copyFrom:dpModle To:dbDataModel];
-            [dbDAO insert:dbDataModel];
-        }
+    [dic setObject:arr forKey:[NSNumber numberWithInteger:start]];
+    NSObject *dpModle;
+    //先删除数据库
+    NSString *strDelSql = [NSString stringWithFormat:@"%@ > = %li and %@ < %li", pkey, (long)start, pkey, (long)(start + arr.count)];
+    [dbDAO deleteByCondition:strDelSql Bind:nil];
+    //再插入数据库
+    NSObject *dbDataModel;
+    for (NSInteger i = 0; i < arr.count; i++) {
+        dbDataModel = [[dbCls alloc] init];
+        dpModle = [arr objectAtIndex:i];
+        [ImDataUtil copyFrom:dpModle To:dbDataModel];
+        [dbDAO insert:dbDataModel];
+    }
 }
 
 //获得列表数据统一方法

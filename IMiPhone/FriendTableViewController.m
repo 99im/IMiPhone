@@ -88,6 +88,14 @@
     [super viewWillDisappear:animated];
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    //临时跳转到附近活动列表
+   // UIStoryboard* mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    //UIViewController *controller = [mainStoryboard instantiateViewControllerWithIdentifier:@"ActivityListController"];
+    //[self presentViewController:controller animated:NO completion:nil];
+}
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:@"FriendTable2UserInfo"]) {
