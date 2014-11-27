@@ -111,8 +111,8 @@
         NSMutableDictionary *json = [NSMutableDictionary dictionary];
         [json setObject:mark forKey:SOCKET_MARK];
         [json setObject:type forKey:SOCKET_TYPE];
-        [json setObject:[NSNumber numberWithLongLong:_sn] forKey:SOCKET__SN];
         if (info) {
+            [info setObject:[NSNumber numberWithLongLong:_sn] forKey:SOCKET__SN];
             [json setObject:info forKey:SOCKET_INFO];
         }
         self.data = [NSJSONSerialization dataWithJSONObject:json options:0 error:nil];

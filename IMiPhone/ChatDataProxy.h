@@ -30,7 +30,8 @@ typedef enum {
 - (void)reset;
 
 - (NSMutableArray *)getP2PChatMessagesByTargetUid:(long long)targetUid;
-- (NSInteger)updateP2PChatMessage:(DPChatMessage *)dpChatMessage;
+- (NSInteger)addP2PChatMessage:(DPChatMessage *)dpChatMessage;
+- (void)updateP2PChatMessage:(DPChatMessage *)dpChatMessage;
 
 - (DPChatMessage *)getP2PChatMessageByTargetUid:(long long)targetUid withMid:(long long)mid;
 
@@ -39,7 +40,7 @@ typedef enum {
 - (NSDictionary *)getEmotionDic;
 
 - (NSMutableArray *)getGroupChatMessagesByGroupid:(long long)groupid;
-
+- (NSInteger)addGroupChatMessage:(DPGroupChatMessage *)dpChatMessage;
 - (void)updateGroupChatMessage:(DPGroupChatMessage *)dpChatMessage;
 
 - (DPGroupChatMessage *)getGroupChatMessageByGroupid:(long long)targetUid withMid:(long long)mid;

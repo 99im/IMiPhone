@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="sWe-ai-dJr">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="sWe-ai-dJr">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
@@ -181,7 +181,7 @@
                         <viewControllerLayoutGuide type="bottom" id="mV5-85-lys"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="puO-i4-409">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="请输入验证码" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XXS-kK-4qr">
@@ -236,7 +236,7 @@
                         <viewControllerLayoutGuide type="bottom" id="YWB-mk-OZz"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="omk-R5-KSy">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="请设置密码（6-20位）" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="SA2-1J-mo0">
@@ -2369,7 +2369,7 @@
             <objects>
                 <tableViewController id="Tez-zb-r5A" userLabel="Group-群成员列表" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="GEC-7y-mnh">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -2550,7 +2550,7 @@
             <objects>
                 <tableViewController storyboardIdentifier="storyGroupSetting" hidesBottomBarWhenPushed="YES" id="f2G-Kw-Ad0" userLabel="Group-群设置" customClass="GroupSettingTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" sectionIndexMinimumDisplayRowCount="10" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="QKv-vj-09f" userLabel="Table">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <button key="tableFooterView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="tAz-49-9OP">
@@ -2673,7 +2673,7 @@
                         <viewControllerLayoutGuide type="bottom" id="PFQ-by-q8u"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="UdB-8E-pvC">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="你当前可以加入6个群，已加入3个群" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SH1-6c-oAI">
@@ -4310,13 +4310,13 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="j7u-OT-bsU"/>
-        <segue reference="dkl-wS-iyY"/>
         <segue reference="jj6-rV-QBG"/>
-        <segue reference="6IF-l5-3Iq"/>
-        <segue reference="fNZ-Tb-k0o"/>
-        <segue reference="DGb-6e-Qb2"/>
-        <segue reference="D64-tG-s28"/>
-        <segue reference="8gL-WP-3D1"/>
+        <segue reference="iIs-SU-ZLV"/>
+        <segue reference="kdV-GO-inJ"/>
+        <segue reference="yXo-ak-l89"/>
+        <segue reference="xJX-I6-fGX"/>
+        <segue reference="dkl-wS-iyY"/>
+        <segue reference="B9e-R6-y8A"/>
+        <segue reference="XGz-ue-SSV"/>
     </inferredMetricsTieBreakers>
 </document>

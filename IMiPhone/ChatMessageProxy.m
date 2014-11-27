@@ -66,6 +66,7 @@ static ChatMessageProxy *messageProxy = nil;
     [params setObject:[NSNumber numberWithInteger:msgType] forKey:KEYQ_S_CHAT_CHAT_MSGTYPE];
     [params setObject:content forKey:KEYQ_S_CHAT_CHAT_CONTENT];
     IMNWMessage *message = [IMNWMessage createForSocket:MARK_CHAT withType:TYPE_S_CHAT_CHAT];
+    message._sn = nid;
     [message send:params];
 }
 
@@ -98,7 +99,14 @@ static ChatMessageProxy *messageProxy = nil;
         dpChatMessage.targetId = [[info objectForKey:KEYP_S_CHAT_CHATN_TARGETID] integerValue];
         dpChatMessage.stage = [info objectForKey:KEYP_S_CHAT_CHATN_STAGE];
         dpChatMessage.gid = [info objectForKey:KEYP_S_CHAT_CHATN_GID];
-        [[ChatDataProxy sharedProxy] updateP2PChatMessage:dpChatMessage];
+        if (dpChatMessage.senderUid == [UserDataProxy sharedProxy].lastLoginUid) {
+            NSInteger nid = [[info objectForKey:SOCKET__SN] integerValue];
+            dpChatMessage.nid = nid;
+            [[ChatDataProxy sharedProxy] updateP2PChatMessage:dpChatMessage];
+        }
+        else {
+            [[ChatDataProxy sharedProxy] addP2PChatMessage:dpChatMessage];
+        }
       
         dpUiMessage.type = UI_MESSAGE_TYPE_CHAT;
         dpUiMessage.mid = dpChatMessage.mid;
@@ -121,7 +129,15 @@ static ChatMessageProxy *messageProxy = nil;
         dpGroupChatMsg.targetId = [[info objectForKey:KEYP_S_CHAT_CHATN_TARGETID] integerValue];
         dpGroupChatMsg.stage = [info objectForKey:KEYP_S_CHAT_CHATN_STAGE];
         dpGroupChatMsg.gid = [info objectForKey:KEYP_S_CHAT_CHATN_GID];
-        [[ChatDataProxy sharedProxy] updateGroupChatMessage:dpGroupChatMsg];
+        if (dpGroupChatMsg.senderUid == [UserDataProxy sharedProxy].lastLoginUid) {
+            NSInteger nid = [[info objectForKey:SOCKET__SN] integerValue];
+            dpGroupChatMsg.nid = nid;
+            [[ChatDataProxy sharedProxy] updateGroupChatMessage:dpGroupChatMsg];
+        }
+        else {
+            [[ChatDataProxy sharedProxy] addGroupChatMessage:dpGroupChatMsg];
+        }
+
         dpUiMessage.type = UI_MESSAGE_TYPE_GROUP_CHAT;
         dpUiMessage.mid = dpGroupChatMsg.mid;
         dpUiMessage.relationId = dpGroupChatMsg.targetId ;
