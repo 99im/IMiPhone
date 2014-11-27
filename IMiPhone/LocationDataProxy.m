@@ -201,6 +201,8 @@ static LocationDataProxy *sharedLocationDataProxy = nil;
 
         if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0) {
             [_locationManager requestWhenInUseAuthorization];
+        } else {
+
         }
         if (updateTimes > 0) {
             _remainTimes = updateTimes;
@@ -233,7 +235,7 @@ static LocationDataProxy *sharedLocationDataProxy = nil;
         _dpLocationUser.localUpdateTime = nowTime;
         _dpLocationUser.dataStatus = LBS_STATUS_DATA_INIT;
         [self startUpdatingLocation:1];
-    } else if( [_dpLocationUser isExpired] ) {
+    } else if( ![_dpLocationUser isUpdated] ) {
         _dpLocationUser.localUpdateTime = nowTime;
         _dpLocationUser.dataStatus = LBS_STATUS_DATA_UPDATING;
         [self startUpdatingLocation:1];
