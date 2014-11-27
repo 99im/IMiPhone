@@ -50,7 +50,8 @@
 + (BOOL)canUserPickPhotosFromPhotoLibrary;
 + (BOOL)cameraSupportsMedia:(NSString *)paramMediaType sourceType:(UIImagePickerControllerSourceType)paramSourceType;
 
-+ (NSString *)storeCacheImage:(UIImage *)image useName:(NSString *)name;
++ (NSString *)storeCacheImage:(UIImage *)image forNid:(NSInteger)nid;
++ (NSString *)modifyCacheImage:(NSInteger)nid toName:(NSString *)newName;
 
 #pragma mark - view清除子节点
 

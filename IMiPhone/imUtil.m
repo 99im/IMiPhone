@@ -174,7 +174,6 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:notiName object:object];
 }
 
-
 #pragma mark camera utility
 
 + (BOOL) isCameraAvailable{
@@ -197,10 +196,12 @@
     return [UIImagePickerController isSourceTypeAvailable:
             UIImagePickerControllerSourceTypePhotoLibrary];
 }
+
 + (BOOL) canUserPickVideosFromPhotoLibrary{
     return [self
             cameraSupportsMedia:(__bridge NSString *)kUTTypeMovie sourceType:UIImagePickerControllerSourceTypePhotoLibrary];
 }
+
 + (BOOL) canUserPickPhotosFromPhotoLibrary{
     return [self
             cameraSupportsMedia:(__bridge NSString *)kUTTypeImage sourceType:UIImagePickerControllerSourceTypePhotoLibrary];
@@ -222,23 +223,37 @@
     return result;
 }
 
-+ (NSString *)storeCacheImage:(UIImage *)image useName:(NSString *)name
+#pragma mark cache image utility
+
++ (NSString *)storeCacheImage:(UIImage *)image forNid:(NSInteger)nid
 {
     NSData *imgData;
     NSString *imgPath;
     [[NSFileManager defaultManager] createDirectoryAtPath:[NSString stringWithFormat:@"%@/Documents/cache/image/", NSHomeDirectory()] withIntermediateDirectories:YES attributes:nil error:nil];
     if (UIImagePNGRepresentation(image) == nil) {
         imgData = UIImageJPEGRepresentation(image, 1);
-        imgPath = [NSString stringWithFormat:@"%@/Documents/cache/image/%@.jpg", NSHomeDirectory(), name];
+        imgPath = [NSString stringWithFormat:@"%@/Documents/cache/image/chat_%li.jpg", NSHomeDirectory(), (long)nid];
     } else {
         imgData = UIImagePNGRepresentation(image);
-        imgPath = [NSString stringWithFormat:@"%@/Documents/cache/image/%@.png", NSHomeDirectory(), name];
+        imgPath = [NSString stringWithFormat:@"%@/Documents/cache/image/chat_%li.png", NSHomeDirectory(), (long)nid];
     }
     
     if (imgPath) {
         [imgData writeToFile:imgPath atomically:YES];
     }
     return imgPath;
+}
+
++ (NSString *)modifyCacheImage:(NSInteger)nid toName:(NSString *)newName
+{
+    NSError *err = nil;
+    NSString *tempPath = [NSString stringWithFormat:@"%@/Documents/cache/image/chat_%li.%@", NSHomeDirectory(), (long)nid, [newName pathExtension]];
+    NSString *newPath = [NSString stringWithFormat:@"%@/Documents/cache/image/%@", NSHomeDirectory(), newName];
+    [[NSFileManager defaultManager] moveItemAtPath:tempPath toPath:newPath error:&err];
+    if (err) {
+        NSLog(@"JSON create error: %@", err);
+    }
+    return newPath;
 }
 
 #pragma mark - view清除子节点

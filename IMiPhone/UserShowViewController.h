@@ -22,6 +22,8 @@
 
 - (IBAction)focusTouchUpInside:(id)sender;
 
+- (IBAction)btnMoreTouchUpInside:(id)sender;
+
 - (void)showStrangerButton:(BOOL)value;
 
 - (void)hideButtonsByReleation:(NSInteger)releation;

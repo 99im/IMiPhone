@@ -1623,17 +1623,10 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="昵称" id="YWH-oq-Uer">
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="YPZ-jn-cDk">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="MXj-v4-nhU">
-                                <rect key="frame" x="-23" y="-15" width="71" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="更多">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="btnMoreTouchUpInside:" destination="Ixd-6h-fyu" eventType="touchUpInside" id="sgF-Sd-FhK"/>
-                                </connections>
-                            </button>
+                        <barButtonItem key="rightBarButtonItem" title="更多" id="q1f-l7-78n">
+                            <connections>
+                                <action selector="btnMoreTouchUpInside:" destination="Ixd-6h-fyu" id="uSN-9s-G6G"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <nil key="simulatedBottomBarMetrics"/>
@@ -4310,13 +4303,13 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="jj6-rV-QBG"/>
-        <segue reference="iIs-SU-ZLV"/>
-        <segue reference="kdV-GO-inJ"/>
         <segue reference="yXo-ak-l89"/>
-        <segue reference="xJX-I6-fGX"/>
+        <segue reference="SUU-2p-Sgf"/>
+        <segue reference="kdV-GO-inJ"/>
+        <segue reference="iIs-SU-ZLV"/>
         <segue reference="dkl-wS-iyY"/>
-        <segue reference="B9e-R6-y8A"/>
+        <segue reference="xJX-I6-fGX"/>
+        <segue reference="8gL-WP-3D1"/>
         <segue reference="XGz-ue-SSV"/>
     </inferredMetricsTieBreakers>
 </document>
