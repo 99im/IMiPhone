@@ -40,8 +40,12 @@
     [chatMessage parseImageContent];
     
     self.imageViewImage.frame = CGRectMake(0.0f, 0.0f, CHAT_CELL_CONTENT_IMAGE_HEIGHT, CHAT_CELL_CONTENT_IMAGE_HEIGHT);
-    //self.imageViewImage.image = [UIImage imageNamed:@"HeadBg"];
-    [self.imageViewImage setOnlineImage:chatMessage.imgThumbnail placeholderImage:[UIImage imageNamed:@"HeadBg"]];
+    if (chatMessage.imgThumbnailPath) {
+        //self.imageViewImage.image = [UIImage imageWithContentsOfFile:chatMessage.imgThumbnailPath];
+    }
+    else if (chatMessage.imgThumbnail) {
+        [self.imageViewImage setOnlineImage:chatMessage.imgThumbnail placeholderImage:[UIImage imageNamed:@"HeadBg"]];
+    }
     [self.viewMsgContent addSubview:self.imageViewImage];
     self.viewMsgContent.frame = self.imageViewImage.frame ;
     

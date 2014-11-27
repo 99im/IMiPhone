@@ -25,6 +25,7 @@
 @synthesize useSSL;
 @synthesize method;
 @synthesize url;
+@synthesize _sn;
 
 + (IMNWMessage *)createForSocket:(NSString *)mark withType:(NSString *)type
 {
@@ -111,6 +112,7 @@
         [json setObject:mark forKey:SOCKET_MARK];
         [json setObject:type forKey:SOCKET_TYPE];
         if (info) {
+            [info setObject:[NSNumber numberWithLongLong:_sn] forKey:SOCKET__SN];
             [json setObject:info forKey:SOCKET_INFO];
         }
         self.data = [NSJSONSerialization dataWithJSONObject:json options:0 error:nil];
