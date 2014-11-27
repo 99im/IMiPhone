@@ -190,31 +190,35 @@ static LocationDataProxy *sharedLocationDataProxy = nil;
 
 - (void)startUpdatingLocation:(NSInteger)updateTimes
 {
-    if ([CLLocationManager locationServicesEnabled]) {
-        // 初始化定位管理对象
-        if (_locationManager == nil) {
-            _locationManager = [[CLLocationManager alloc] init];
-            _locationManager.delegate = self;
-            _locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters; // 100米级
-            _locationManager.distanceFilter = 1000.0f;
-        }
+    if ([_dpLocationUser isExpired] || _dpLocationUser.dataStatus != LBS_STATUS_DATA_UPDATING) {
+        if ([CLLocationManager locationServicesEnabled]) {
+            // 初始化定位管理对象
+            if (_locationManager == nil) {
+                _locationManager = [[CLLocationManager alloc] init];
+                _locationManager.delegate = self;
+                _locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters; // 100米级
+                _locationManager.distanceFilter = 1000.0f;
+            }
 
-        if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0) {
-            [_locationManager requestWhenInUseAuthorization];
-        } else {
+            if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0) {
+                [_locationManager requestWhenInUseAuthorization];
+            } else {
 
+            }
+            if (updateTimes > 0) {
+                _remainTimes = updateTimes;
+            }
+            _dpLocationUser.dataStatus = LBS_STATUS_DATA_UPDATING;
+            [_locationManager startUpdatingLocation];
         }
-        if (updateTimes > 0) {
-            _remainTimes = updateTimes;
+        else {
+            //NSLog(@"Location services are not enabled");
+            [imUtil postNotificationName:LBS_NOTI_didUpdateLocations
+                                  object:[NSError errorWithDomain:LBS_ERR_DOMAIN
+                                                             code:LBS_ERR_CODE_locationServicesDisabled                                                     userInfo:nil]];
         }
-        [_locationManager startUpdatingLocation];
     }
-    else {
-        //NSLog(@"Location services are not enabled");
-        [imUtil postNotificationName:LBS_NOTI_didUpdateLocations
-                              object:[NSError errorWithDomain:LBS_ERR_DOMAIN
-                                                         code:LBS_ERR_CODE_locationServicesDisabled                                                     userInfo:nil]];
-    }
+
 }
 
 - (void)stopUpdatingLocation
@@ -234,7 +238,6 @@ static LocationDataProxy *sharedLocationDataProxy = nil;
         _dpLocationUser.dataStatus = LBS_STATUS_DATA_INIT;
         [self startUpdatingLocation:1];
     } else if([_dpLocationUser isUpdated] && [_dpLocationUser isExpired]) {
-        _dpLocationUser.dataStatus = LBS_STATUS_DATA_UPDATING;
         [self startUpdatingLocation:1];
     }
     return _dpLocationUser;
