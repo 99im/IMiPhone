@@ -22,6 +22,8 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    //获取用户当前位置
+    [[LocationDataProxy sharedProxy] getUserLocation];
 }
 
 - (void)didReceiveMemoryWarning {

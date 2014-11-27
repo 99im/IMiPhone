@@ -52,6 +52,7 @@ static LocationDataProxy *sharedLocationDataProxy = nil;
 {
     _dpLocationUser = [LocationDataProxy convertLocation:location toDPLocation:_dpLocationUser];
     _dpLocationUser.localUpdateTime = [imUtil nowTime];
+    _dpLocationUser.dataStatus = LBS_STATUS_DATA_UPDATED;
 
     [LocationDataProxy reverseDPPlacemark:_dpPlacemarkUser withLatitude:_dpLocationUser.latitude longitude:_dpLocationUser.longitude];
 
@@ -129,7 +130,7 @@ static LocationDataProxy *sharedLocationDataProxy = nil;
 
                                [LocationDataProxy convertPlacemark:placemark toDPPlacemark:dpPlacemark];
 
-                               dpPlacemark.localExpireTime = [imUtil getExpireTimeWithMinutes:LBS_TIMEOUT_PLACEMARK];
+                               //dpPlacemark.localExpireTime = [imUtil getExpireTimeWithMinutes:LBS_TIMEOUT_MINUTES_PLACEMARK];
                                dpPlacemark.localUpdateTime = [imUtil nowTime];
 
                                [imUtil postNotificationName:LBS_NOTI_didReverseGEO object:nil];
@@ -148,8 +149,8 @@ static LocationDataProxy *sharedLocationDataProxy = nil;
     [geocoder reverseGeocodeLocation:location
                    completionHandler:^(NSArray *placemarks, NSError *error) {
                        if (!error && [placemarks count] > 0) {
-                           [dpPlacemarks removeAllObjects];
-                           long long localExpireTime = [imUtil getExpireTimeWithMinutes:LBS_TIMEOUT_PLACEMARK];
+                           [dpPlacemarks removeAllObjects];//清空旧数据
+                           //long long localExpireTime = [imUtil getExpireTimeWithMinutes:LBS_TIMEOUT_MINUTES_PLACEMARK];
                            long long localUpdateTime = [imUtil nowTime];
                            for (NSInteger i=0; i < placemarks.count; i++) {
                                CLPlacemark *placemark = [placemarks objectAtIndex:i];
@@ -167,7 +168,7 @@ static LocationDataProxy *sharedLocationDataProxy = nil;
                                //NSLog(@"%@", address);
 
                                dpPlacemark.localUpdateTime = localUpdateTime;
-                               dpPlacemark.localExpireTime = localExpireTime;
+                               //dpPlacemark.localExpireTime = localExpireTime;
 
                                [dpPlacemarks addObject:dpPlacemark];
                            }
@@ -230,9 +231,11 @@ static LocationDataProxy *sharedLocationDataProxy = nil;
     if (!_dpLocationUser) { //从未取过
         _dpLocationUser = [[DPLocation alloc] init];
         _dpLocationUser.localUpdateTime = nowTime;
+        _dpLocationUser.dataStatus = LBS_STATUS_DATA_INIT;
         [self startUpdatingLocation:1];
     } else if( [_dpLocationUser isExpired] ) {
         _dpLocationUser.localUpdateTime = nowTime;
+        _dpLocationUser.dataStatus = LBS_STATUS_DATA_UPDATING;
         [self startUpdatingLocation:1];
     }
     return _dpLocationUser;

@@ -24,4 +24,13 @@
     }
     return NO;
 }
+
+-(BOOL)isUpdated
+{
+    if (self.dataStatus == LBS_STATUS_DATA_UPDATED) {
+        return YES;
+    }
+    return NO;
+}
+
 @end

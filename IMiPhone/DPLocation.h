@@ -10,6 +10,13 @@
 
 #define LBS_TIMEOUT_MINUTES_LOCATION 60  //单位（分钟）   1小时：60   1天: 1440 = 60*24   1周:10080 = 7*24*60
 
+#define LBS_STATUS_SUCCESS 0  //正常
+#define LBS_STATUS_SERVICES_NOT_ENABLED 500 //不支持服务
+
+#define LBS_STATUS_DATA_INIT 0          //数据状态：初始化
+#define LBS_STATUS_DATA_UPDATING 1      //数据状态：更新进行中
+#define LBS_STATUS_DATA_UPDATED 2       //数据状态：更新完毕
+
 @interface DPLocation : NSObject
 
 @property (nonatomic) double longitude; //经度
@@ -20,6 +27,7 @@
 @property (nonatomic) long long localUpdateTime; //本地更新时间，格式(yyyyMMddHHmmss)：201411024125959
 //@property (nonatomic) long long localExpireTime; //本地过期时间，格式(yyyyMMddHHmmss)：201411024125959
 
--(BOOL)isExpired;
+-(BOOL)isExpired;   //数据是否已过期
+-(BOOL)isUpdated;    //是否已更新成功
 
 @end

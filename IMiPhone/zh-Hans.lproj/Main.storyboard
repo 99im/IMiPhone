@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="sWe-ai-dJr">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="sWe-ai-dJr">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
@@ -2723,14 +2723,14 @@
                         <viewControllerLayoutGuide type="bottom" id="1DE-Tv-kht"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="9Vj-Im-Qql">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yHX-Y0-GbZ">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="KqY-XJ-01n">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="520"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="432"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <prototypes>
                                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="GroupChatTableViewCell" id="VmY-1L-lPn" customClass="GroupChatTableViewCell">
@@ -2743,7 +2743,7 @@
                                         </prototypes>
                                     </tableView>
                                     <view contentMode="scaleToFill" restorationIdentifier="ChatInputTextView" translatesAutoresizingMaskIntoConstraints="NO" id="jPq-oe-xPE" userLabel="Chat Input Text View" customClass="ChatInputTextView">
-                                        <rect key="frame" x="0.0" y="520" width="320" height="48"/>
+                                        <rect key="frame" x="0.0" y="432" width="320" height="48"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6i6-OX-Sf8">
                                                 <rect key="frame" x="10" y="8" width="25" height="25"/>
@@ -2789,7 +2789,7 @@
                                         </constraints>
                                     </view>
                                     <view hidden="YES" contentMode="scaleToFill" restorationIdentifier="ChatInputSoundView" translatesAutoresizingMaskIntoConstraints="NO" id="x2C-GP-KUE" userLabel="Chat Input Sound View" customClass="ChatInputSoundView">
-                                        <rect key="frame" x="0.0" y="520" width="320" height="48"/>
+                                        <rect key="frame" x="0.0" y="432" width="320" height="48"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kAR-PI-iJF">
                                                 <rect key="frame" x="10" y="8" width="25" height="25"/>
@@ -4310,13 +4310,13 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="B9e-R6-y8A"/>
         <segue reference="jj6-rV-QBG"/>
         <segue reference="iIs-SU-ZLV"/>
         <segue reference="kdV-GO-inJ"/>
-        <segue reference="yXo-ak-l89"/>
-        <segue reference="xJX-I6-fGX"/>
         <segue reference="dkl-wS-iyY"/>
-        <segue reference="B9e-R6-y8A"/>
-        <segue reference="XGz-ue-SSV"/>
+        <segue reference="yXo-ak-l89"/>
+        <segue reference="DGb-6e-Qb2"/>
+        <segue reference="xJX-I6-fGX"/>
     </inferredMetricsTieBreakers>
 </document>

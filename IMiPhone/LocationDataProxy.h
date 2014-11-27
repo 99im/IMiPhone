@@ -18,12 +18,6 @@
 
 #define TIMEOUT_LOCATION_CURRENT 10 //过期时间(分钟):当前位置
 
-#define LBS_STATUS_SUCCESS 0  //正常
-#define LBS_STATUS_SERVICES_NOT_ENABLED 500 //不支持服务
-#define LBS_STATUS_DATA_INIT 0          //数据状态：初始化
-#define LBS_STATUS_DATA_UPDATING 1      //数据状态：更新进行中
-#define LBS_STATUS_DATA_UPDATED 2       //数据状态：更新完毕
-
 #pragma mark - 消息名宏定义
 #define LBS_NOTI_didUpdateLocations @"LBS_NOTI_didUpdateLocations"
 //#define LBS_NOTI_didUpdateLocationsFail @"LBS_NOTI_didUpdateLocationsFail"
