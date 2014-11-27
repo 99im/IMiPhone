@@ -39,8 +39,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.btnMain.hidden = YES;
     // Do any additional setup after loading the view.
-    [self registerMessageNotification];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -48,8 +48,11 @@
     //[self registerMessageNotification];
     [super viewDidAppear:animated];
 
+    self.btnMain.hidden = YES;
+
     DPGroup *currGroup = [[GroupDataProxy sharedProxy] getGroupInfoCurrent:SEND_HTTP_AUTO];
     [self drawContent:currGroup];
+    [self registerMessageNotification];
 
 }
 
@@ -119,7 +122,7 @@
             [self.btnMain setTitle:@"申请加入" forState:UIControlStateNormal];
             self.btnMain.hidden = NO;
         } else {
-
+            self.btnMain.hidden = YES;
         }
     } else {
         self.btnMain.hidden = YES;
