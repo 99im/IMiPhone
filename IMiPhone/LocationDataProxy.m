@@ -19,6 +19,7 @@
 @property (nonatomic, retain) DPLocation *dpLocationUser;
 @property (nonatomic, retain) DPLocation *dpLocationReport;
 @property (nonatomic) NSInteger remainTimes;
+//@property (nonatomic) long long lastTimeOfUpdateLocation;
 
 @property (nonatomic) double lastLatitude;
 @property (nonatomic) double lastLongitude;
@@ -35,6 +36,7 @@
 @synthesize dpLocationReport = _dpLocationReport;
 @synthesize lastLongitude = _lastLongitude;
 @synthesize lastLatitude = _lastLatitude;
+//@synthesize lastTimeOfUpdateLocation = _lastTimeOfUpdateLocation;
 
 static LocationDataProxy *sharedLocationDataProxy = nil;
 + (LocationDataProxy *)sharedProxy
@@ -49,6 +51,7 @@ static LocationDataProxy *sharedLocationDataProxy = nil;
 - (void)saveUserLocation:(CLLocation *)location
 {
     _dpLocationUser = [LocationDataProxy convertLocation:location toDPLocation:_dpLocationUser];
+    _dpLocationUser.localUpdateTime = [imUtil nowTime];
 
     [LocationDataProxy reverseDPPlacemark:_dpPlacemarkUser withLatitude:_dpLocationUser.latitude longitude:_dpLocationUser.longitude];
 
@@ -223,11 +226,14 @@ static LocationDataProxy *sharedLocationDataProxy = nil;
 
 - (DPLocation *)getUserLocation
 {
+    long long nowTime = [imUtil nowTime];
     if (!_dpLocationUser) { //从未取过
         _dpLocationUser = [[DPLocation alloc] init];
+        _dpLocationUser.localUpdateTime = nowTime;
         [self startUpdatingLocation:1];
-    } else {
-        //TODO:是否过期判断规则
+    } else if( [_dpLocationUser isExpired] ) {
+        _dpLocationUser.localUpdateTime = nowTime;
+        [self startUpdatingLocation:1];
     }
     return _dpLocationUser;
 }

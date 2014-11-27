@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-#define LBS_TIMEOUT_LOCATION 60  //单位（分钟）   1小时：60   1天: 1440 = 60*24   1周:10080 = 7*24*60
+#define LBS_TIMEOUT_MINUTES_LOCATION 60  //单位（分钟）   1小时：60   1天: 1440 = 60*24   1周:10080 = 7*24*60
 
 @interface DPLocation : NSObject
 
@@ -19,5 +19,7 @@
 @property (nonatomic) NSInteger dataStatus;     //数据状态, 可取值：LBS_STATUS_DATA_INIT、 LBS_STATUS_DATA_UPDATING、 LBS_STATUS_DATA_UPDATED
 @property (nonatomic) long long localUpdateTime; //本地更新时间，格式(yyyyMMddHHmmss)：201411024125959
 //@property (nonatomic) long long localExpireTime; //本地过期时间，格式(yyyyMMddHHmmss)：201411024125959
+
+-(BOOL)isExpired;
 
 @end

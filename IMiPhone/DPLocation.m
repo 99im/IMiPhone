@@ -17,4 +17,11 @@
 @synthesize localUpdateTime;
 //@synthesize localExpireTime;
 
+-(BOOL)isExpired
+{
+    if ((self.localUpdateTime + LBS_TIMEOUT_MINUTES_LOCATION*60) < [imUtil nowTime]) {
+        return YES;
+    }
+    return NO;
+}
 @end
