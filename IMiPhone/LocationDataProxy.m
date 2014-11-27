@@ -229,14 +229,11 @@ static LocationDataProxy *sharedLocationDataProxy = nil;
 
 - (DPLocation *)getUserLocation
 {
-    long long nowTime = [imUtil nowTime];
     if (!_dpLocationUser) { //从未取过
         _dpLocationUser = [[DPLocation alloc] init];
-        _dpLocationUser.localUpdateTime = nowTime;
         _dpLocationUser.dataStatus = LBS_STATUS_DATA_INIT;
         [self startUpdatingLocation:1];
-    } else if( ![_dpLocationUser isUpdated] ) {
-        _dpLocationUser.localUpdateTime = nowTime;
+    } else if([_dpLocationUser isUpdated] && [_dpLocationUser isExpired]) {
         _dpLocationUser.dataStatus = LBS_STATUS_DATA_UPDATING;
         [self startUpdatingLocation:1];
     }
