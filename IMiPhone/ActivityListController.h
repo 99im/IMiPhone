@@ -6,8 +6,10 @@
 //  Copyright (c) 2014年 尹晓君. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "ActivityDataProxy.h"
+#import "IMNWProxyProtocol.h"
+#import "ActivityListTableViewCell.h"
 
-@interface ActivityListController : UITableViewController
+@interface ActivityListController : UIViewController <UITableViewDataSource, UITableViewDelegate, IMNWProxyProtocol>
 
 @end

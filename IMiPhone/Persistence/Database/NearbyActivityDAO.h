@@ -22,4 +22,6 @@
 
 @interface NearbyActivityDAO : BaseDAO
 
++ (NearbyActivityDAO *)sharedDAO;
+
 @end
