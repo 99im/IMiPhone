@@ -17,6 +17,13 @@
 @synthesize localUpdateTime;
 //@synthesize localExpireTime;
 
++(DPLocation *)create
+{
+    DPLocation *dpLocation = [[DPLocation alloc] init];
+    dpLocation.dataStatus = LBS_STATUS_DATA_INIT;
+    return dpLocation;
+}
+
 -(BOOL)isExpired
 {
     if ((self.localUpdateTime + LBS_TIMEOUT_MINUTES_LOCATION*60) < [imUtil nowTime]) {

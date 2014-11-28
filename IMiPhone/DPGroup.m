@@ -34,6 +34,12 @@
 @synthesize localExpireTime;
 //@synthesize isInMyGroups;
 
++(DPGroup *)create
+{
+    DPGroup *group = [[DPGroup alloc] init];
+    return group;
+}
+
 //-(BOOL)isExpired
 //{
 //    return NO;

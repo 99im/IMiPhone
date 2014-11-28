@@ -18,6 +18,7 @@
 //@property (nonatomic) int countSendGroupInfo;
 //@property (nonatomic) long long updateTimeGroupMyList;
 @property (nonatomic, retain) NSMutableArray *arrGroupsSearch;
+@property (nonatomic, retain) NSMutableArray *groupMembersCurrent;
 
 @property (nonatomic, retain) DPGroup *dpGroupCreating;
 
@@ -29,8 +30,10 @@
 // long long const TIMEOUT_GROUP_MY_LIST = 60; //
 
 //@synthesize updateTimeGroupMyList = _updateTimeGroupMyList;
+@synthesize groupIdCurrent = _groupIdCurrent;
 @synthesize arrGroupMyList = _arrGroupMyList;
-//@synthesize groupInfoCurrent = _groupInfoCurrent;
+@synthesize groupInfoCurrent = _groupInfoCurrent;
+@synthesize groupMembersCurrent = _groupMembersCurrent;
 @synthesize arrGroupsSearch = _arrGroupsSearch;
 
 @synthesize dpGroupCreating = _dpGroupCreating;
@@ -298,6 +301,32 @@ static GroupDataProxy *sharedGroupDataProxy = nil;
         _groupInfoCurrent = [self getGroupInfo:_groupIdCurrent byHttpMode:httpMode];
     }
     return _groupInfoCurrent;
+}
+
+#pragma mark - 群成员
+-(NSMutableArray *)getGroupMembersCurrent{
+    if (!_groupMembersCurrent) {
+        _groupMembersCurrent = [NSMutableArray array];
+        if (_groupIdCurrent > 0) {
+            [[GroupMessageProxy sharedProxy] sendGroupMembers:_groupIdCurrent start:0 pageNum:50];
+        }
+    } else {//TODO:待判断是否过期
+    }
+    return _groupMembersCurrent;
+}
+
+-(NSMutableArray *)getGroupMembersWithGID:(IMGroupId) gid
+{
+    return nil;
+}
+
+-(void)saveGroupMembers:(NSMutableArray *)members withGID:(IMGroupId) gid
+{
+    if (gid == _groupIdCurrent) {
+        _groupMembersCurrent = members;
+    }
+    //TODO:判断该群是否为自己加入过的，若加入过，则入库保存群成员
+
 }
 
 //#pragma mark - 群消息

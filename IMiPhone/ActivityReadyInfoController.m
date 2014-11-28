@@ -6,7 +6,7 @@
 //  Copyright (c) 2014年 尹晓君. All rights reserved.
 //
 
-#import "ActivityReadyTabController.h"
+#import "ActivityReadyInfoController.h"
 #import "ActivityMessageProxy.h"
 #import "ActivityDataProxy.h"
 
@@ -21,31 +21,34 @@ typedef NS_ENUM(NSInteger, ActivityInfoSection)
     ActivityInfoSectionNum
 };
 
-@interface ActivityReadyTabController ()
+@interface ActivityReadyInfoController ()
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
-@property (nonatomic) BOOL isTemp;
-
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *barBtnJoinOrExit;
+
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *barBtnDiscuss;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *barBtnFavor;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *barBtnReport;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *barBtnShare;
 
+@property (nonatomic, retain) DPActivity *dpActivity;
+@property (nonatomic) BOOL isTemp;
+
+
 - (IBAction)barBtnJoinOrExitAction:(id)sender;
 
 @end
 
-@implementation ActivityReadyTabController
+@implementation ActivityReadyInfoController
 
-static NSString *ActivityInfoTitleCell = @"ActivityInfoTableTitleCell";
-static NSString *ActivityInfoTableApplyOKCell = @"ActivityInfoTableApplyOKCell";
-static NSString *ActivityInfoTableCreatorCell = @"ActivityInfoTableCreatorCell";
-static NSString *ActivityInfoTableJoinMembersCell = @"ActivityInfoTableJoinMembersCell";
-static NSString *ActivityInfoTableTimeCell = @"ActivityInfoTableTimeCell";
-static NSString *ActivityInfoTableMoreCell = @"ActivityInfoTableMoreCell";
-static NSString *ActivityInfoTableDiscussCell = @"ActivityInfoTableDiscussCell";
+static NSString *ActivityInfoTitleCell = @"ActivityInfoTitleCell";
+static NSString *ActivityInfoTableApplyOKCell = @"ActivityInfoApplyOkCell";
+static NSString *ActivityInfoBelongCell = @"ActivityInfoBelongCell";
+static NSString *ActivityInfoApplyCell = @"ActivityInfoApplyCell";
+static NSString *ActivityInfoCreatorCell = @"ActivityInfoCreatorCell";
+static NSString *ActivityInfoTableMoreCell = @"ActivityInfoMoreCell";
+static NSString *ActivityInfoTableDiscussCell = @"ActivityInfoDiscussCell";
 
 - (void)viewDidLoad
 {
@@ -57,6 +60,8 @@ static NSString *ActivityInfoTableDiscussCell = @"ActivityInfoTableDiscussCell";
 - (void)viewWillAppear:(BOOL)animated
 {
     self.isTemp = YES;
+    long long curAid = [ActivityDataProxy sharedProxy].curAid;
+    self.dpActivity =  [[ActivityDataProxy sharedProxy] getActivityWithAid:curAid needRequest:YES];
 }
 
 - (void)viewWillDisappear:(BOOL)annimated
@@ -101,17 +106,17 @@ static NSString *ActivityInfoTableDiscussCell = @"ActivityInfoTableDiscussCell";
             return cellApplyOK;
         }
         else {
-            UITableViewCell *cellCreator = [self.tableView dequeueReusableCellWithIdentifier:ActivityInfoTableCreatorCell forIndexPath:indexPath];
-            return cellCreator;
+            UITableViewCell *cellBelong = [self.tableView dequeueReusableCellWithIdentifier:ActivityInfoBelongCell forIndexPath:indexPath];
+            return cellBelong;
         }
     }
     else if (indexPath.section == ActivityInfoSectionJoinMembers) {
-        UITableViewCell *cellJoinMembers = [self.tableView dequeueReusableCellWithIdentifier:ActivityInfoTableJoinMembersCell forIndexPath:indexPath];
+        UITableViewCell *cellJoinMembers = [self.tableView dequeueReusableCellWithIdentifier:ActivityInfoApplyCell forIndexPath:indexPath];
         return cellJoinMembers;
     }
     else if (indexPath.section == ActivityInfoSectionTime) {
-        UITableViewCell *cellTime = [self.tableView dequeueReusableCellWithIdentifier:ActivityInfoTableTimeCell forIndexPath:indexPath];
-        return cellTime;
+        UITableViewCell *cellCreator = [self.tableView dequeueReusableCellWithIdentifier:ActivityInfoCreatorCell forIndexPath:indexPath];
+        return cellCreator;
     }
     else if (indexPath.section == ActivityInfoSectionMore) {
         UITableViewCell *cellMore = [self.tableView dequeueReusableCellWithIdentifier:ActivityInfoTableMoreCell forIndexPath:indexPath];
@@ -132,22 +137,55 @@ static NSString *ActivityInfoTableDiscussCell = @"ActivityInfoTableDiscussCell";
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    CGFloat height;
+//    UITableViewCell *cell;
+//    NSString *cellIdentify;
     switch (indexPath.section) {
         case ActivityInfoSectionTitle:
+//            cellIdentify = ActivityInfoTitleCell;
+            height = 65;
+            break;
         case ActivityInfoSectionCreatorOrApplyOk:
+            if (self.isTemp) {
+//                cellIdentify = ActivityInfoTableApplyOKCell;
+                height = 100;
+            }
+            else {
+//                cellIdentify = ActivityInfoBelongCell;
+                height = 35;
+
+            }
+            break;
         case ActivityInfoSectionJoinMembers:
-            return 44;
+//            cellIdentify = ActivityInfoApplyCell;
+            height = 90;
+            break;
         case ActivityInfoSectionTime:
-            return 220;
+//            cellIdentify = ActivityInfoCreatorCell;
+            height = 134;
+            break;
         case ActivityInfoSectionMore:
-            return 50;
+//            cellIdentify = ActivityInfoTableMoreCell;
+            height = 152;
+            break;
         case ActivityInfoSectionDiscuss:
             //TODO:获取本活动的评论条目高度
-            return 44;
+//             cellIdentify = ActivityInfoTableDiscussCell;
+            height = 79;
+            break;
         default:
             NSLog(@"ActivityReadyTabController 错误的tableView section:%i",indexPath.section);
-            return 0;
+
     }
+//    if (cellIdentify) {
+//         cell = [self.tableView dequeueReusableCellWithIdentifier:cellIdentify];
+//        NSLog(@"活动信息：section:%li cell height:%f", (long)indexPath.section, cell.bounds.size.height);
+//        return cell.bounds.size.height;
+//    }
+//    else {
+//        return 0;
+//    }
+    return height;
 }
 
 

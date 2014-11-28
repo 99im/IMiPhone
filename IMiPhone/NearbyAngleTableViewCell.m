@@ -9,7 +9,8 @@
 #import "NearbyAngleTableViewCell.h"
 
 @implementation NearbyAngleTableViewCell
-
+@synthesize lblDistance;
+@synthesize lblNickName;
 - (void)awakeFromNib {
     // Initialization code
 }

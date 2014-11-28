@@ -9,7 +9,8 @@
 #import "NearbyStarTableViewCell.h"
 
 @implementation NearbyStarTableViewCell
-
+@synthesize lblNickName;
+@synthesize lblDistance;
 - (void)awakeFromNib {
     // Initialization code
 }
