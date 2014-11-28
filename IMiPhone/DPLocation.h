@@ -27,6 +27,8 @@
 @property (nonatomic) long long localUpdateTime; //本地更新时间，格式(yyyyMMddHHmmss)：201411024125959
 //@property (nonatomic) long long localExpireTime; //本地过期时间，格式(yyyyMMddHHmmss)：201411024125959
 
++(DPLocation *)create;
+
 -(BOOL)isExpired;   //数据是否已过期
 -(BOOL)isUpdated;    //是否已更新成功
 

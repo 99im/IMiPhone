@@ -10,5 +10,7 @@
 
 @interface NearbyClubTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UIButton *btnClub;
+@property (weak, nonatomic) IBOutlet UILabel *lblClunName;
+@property (weak, nonatomic) IBOutlet UILabel *lblClubID;
 
 @end

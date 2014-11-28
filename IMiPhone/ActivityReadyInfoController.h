@@ -6,8 +6,8 @@
 //  Copyright (c) 2014年 尹晓君. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "IMNWProxyProtocol.h"
 
-@interface ActivityReadyTabController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@interface ActivityReadyInfoController : UIViewController <UITableViewDataSource, UITableViewDelegate, IMNWProxyProtocol>
 
 @end

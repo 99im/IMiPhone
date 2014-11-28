@@ -91,10 +91,10 @@ static ActivityDataProxy *sharedActivityProxy = nil;
     NSLog(@"updateActivityListWithServerList 完成");
 }
 
-- (DPActivity *)getActivityWithAid:(long long)aid;
+- (DPActivity *)getActivityWithAid:(long long)aid needRequest:(BOOL)need;
 {
-    if (self.dicActivity == nil) {
-        self.dicActivity = [NSMutableDictionary dictionary];
+    if (need) {
+        [[ActivityMessageProxy sharedProxy] sendHttpInfoWithAid:aid];
     }
     DPActivity *dpA = [self.dicActivity objectForKey:[NSNumber numberWithLongLong:aid]];
     if (dpA == nil) {

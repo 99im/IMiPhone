@@ -9,7 +9,8 @@
 #import "NearbyClubTableViewCell.h"
 
 @implementation NearbyClubTableViewCell
-
+@synthesize lblClunName;
+@synthesize lblClubID;
 - (void)awakeFromNib {
     // Initialization code
     //翻转

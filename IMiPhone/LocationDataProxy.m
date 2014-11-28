@@ -283,7 +283,7 @@ static LocationDataProxy *sharedLocationDataProxy = nil;
         _remainTimes--;
     }
     else {
-        [locationManager stopUpdatingLocation];
+        //[locationManager stopUpdatingLocation];
     }
 
     [self saveUserLocation:[locations lastObject]];
@@ -295,6 +295,12 @@ static LocationDataProxy *sharedLocationDataProxy = nil;
 {
     //[manager stopUpdatingLocation];
     NSLog(@"locationManager:didFailWithError:%@", error);
+    NSInteger code = error.code;
+    if (code == kCLErrorLocationUnknown) {
+        NSLog(@"(%i) location is currently unknown, but CL will keep trying", (int)code);
+    } else if(code == kCLErrorDenied){
+        NSLog(@"(%i) Access to location or ranging has been denied by the user", (int)code);
+    }
     [imUtil postNotificationName:LBS_NOTI_didUpdateLocations object:error];
 }
 

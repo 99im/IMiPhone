@@ -291,10 +291,26 @@ static GroupMessageProxy *sharedGroupMessageProxy = nil;
             else {
                 NSInteger errorcode = [[json objectForKey:KEYP_H__GROUP_MEMBERS__ERROR_CODE] integerValue];
                 if (errorcode == 0) {
-                    NSLog(@"sendGroupMembers response ok:\n%@", json);
-                    //              [[NSNotificationCenter defaultCenter]
-                    //                  postNotificationName:NOTI__ACCOUNT_MOBCODE_
-                    //                                object:nil];
+                    //NSLog(@"sendGroupMembers response ok:\n%@", json);
+                    NSMutableArray *members = [NSMutableArray array];
+                    NSArray *list = [json objectForKey:KEYP_H__GROUP_MEMBERS__LIST];
+                    for (NSInteger i = 0; i < list.count; i++) {
+                        NSDictionary *user = [list objectAtIndex:i];
+                        DPGroupMember *member = [DPGroupMember create];
+                        member.gid = [[user objectForKey:KEYP_H__GROUP_MEMBERS__LIST_GID] longLongValue];
+                        member.uid = [[user objectForKey:KEYP_H__GROUP_MEMBERS__LIST_UID] longLongValue];
+                        member.relation = [[user objectForKey:KEYP_H__GROUP_MEMBERS__LIST_RELATION] integerValue];
+
+                        id uinfo = [user objectForKey:KEYP_H__GROUP_MEMBERS__LIST_UINFO];
+                        member.nick = [uinfo objectForKey:KEYP_H__GROUP_MEMBERS__LIST_UINFO_NICK];
+                        member.city = [uinfo objectForKey:KEYP_H__GROUP_MEMBERS__LIST_UINFO_CITY];
+                        member.oid = [uinfo objectForKey:KEYP_H__GROUP_MEMBERS__LIST_UINFO_OID];
+
+                        [members addObject:member];
+                        
+                    }
+
+                    [[GroupDataProxy sharedProxy] saveGroupMembers:members withGID:gid];
                     [self processSuccessNotiName:NOTI_H__GROUP_MEMBERS_ withUserInfo:nil];
                 }
                 else {

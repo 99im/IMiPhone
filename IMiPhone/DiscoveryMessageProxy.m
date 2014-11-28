@@ -84,9 +84,47 @@ static DiscoveryMessageProxy *discoveryProxy = nil;
                 NSInteger errorcode = [[json objectForKey:KEYP_H__DISCOVERY_NEARBYLIST__ERROR_CODE] integerValue];
                 if (errorcode == 0) {
                     NSLog(@"sendDiscoveryNearbyList response ok:\n%@", json);
-                    [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_H__DISCOVERY_NEARBYLIST_
-                                                                        object:nil];
-                    //[self processSuccessNotiName:NOTI_H__DISCOVERY_REPORTGEO_ withUserInfo:nil];
+                    
+                    NSArray *list = [json objectForKey:KEYP_H__DISCOVERY_NEARBYLIST__LIST];
+                    
+                    NSMutableArray *myList = [NSMutableArray array];
+                   
+                    
+                    for (NSInteger i = 0; i < [list count]; i ++) {
+                        NSMutableDictionary *nearbyList = [list objectAtIndex:i];
+                        DPNearby *dpNearby = [[DPNearby alloc] init];
+                        
+                        NSInteger type = [[nearbyList objectForKey:KEYP_H__DISCOVERY_NEARBYLIST__LIST_TYPE] integerValue];
+                        NSInteger distance = [[nearbyList objectForKey:KEYP_H__DISCOVERY_NEARBYLIST__LIST_DISTANCE] integerValue];
+                        
+                        dpNearby.type = type;
+                        dpNearby.distance = distance;
+                        
+                        NSDictionary *data = [nearbyList objectForKey:KEYP_H__DISCOVERY_NEARBYLIST__LIST_DATA];
+                       
+                        if (type == NEARBY_USER) {
+                            long long uid = [[data objectForKey:KEYP_H__DISCOVERY_NEARBYLIST__LIST_DATA_UID] longLongValue];
+                            NSDictionary *dicUinfo = [data objectForKey:KEYP_H__DISCOVERY_NEARBYLIST__LIST_DATA_UINFO];
+                            [[UserDataProxy sharedProxy] addServerUinfo:dicUinfo];
+                            dpNearby.dataID = uid;
+                            [myList addObject:dpNearby];
+                        }
+                        else if (type == NEARBY_CLUB){
+                            long long clubId = [[data objectForKey:KEYP_H__DISCOVERY_NEARBYLIST__LIST_DATA_CLUBID] longLongValue];
+                            [[ClubDataProxy sharedProxy] addServerClubInfo:data];
+                            dpNearby.dataID = clubId;
+                            [myList addObject:dpNearby];
+                        }
+                    }
+                    
+                    errorcode = [[DiscoveryDataProxy sharedProxy] updateNearbyList:myList];
+                    if (errorcode == 0) {
+                        [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_H__DISCOVERY_NEARBYLIST_
+                                                                            object:nil];
+                    }
+                    else{
+                        NSLog(@"sendDiscoveryNearbyList 失败");
+                    }
                 }
                 else {
                     [self processErrorCode:errorcode

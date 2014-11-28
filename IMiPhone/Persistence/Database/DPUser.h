@@ -25,5 +25,8 @@
 @property (nonatomic, retain) NSString *career;
 @property (nonatomic, retain) NSString *interest;
 @property (nonatomic, retain) NSString *intro;
+@property (nonatomic) NSInteger logoAlbumId;
+@property (nonatomic, retain) NSString *logo;
+@property (nonatomic, retain) NSMutableArray *roles;
 
 @end

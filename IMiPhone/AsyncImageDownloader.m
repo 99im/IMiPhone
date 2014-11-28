@@ -7,6 +7,7 @@
 //
 
 #import "AsyncImageDownloader.h"
+#import "imUtil.h"
 
 static AsyncImageDownloader *sharedDownloader = nil;
 
@@ -51,17 +52,17 @@ static AsyncImageDownloader *sharedDownloader = nil;
     /* 2. Check disk cache */
     /* 3. Download the image */
     
-    UIImage *image = nil;
+    //UIImage *image = nil;
     //image = [cacheQueue tryToHitImageWithKey:[info objectForKey:@"url"]];
-    
-    if (nil != image) {
-        id theDelegate = [info objectForKey:@"delegate"];
-        if ([theDelegate respondsToSelector:@selector(imageDownloader:didFinishWithImage:)]) {
-            [theDelegate imageDownloader:self didFinishWithImage:image];
-        }
-    } else {
+    //
+    //if (nil != image) {
+    //    id theDelegate = [info objectForKey:@"delegate"];
+    //    if ([theDelegate respondsToSelector:@selector(imageDownloader:didFinishWithImage:object:)]) {
+    //        [theDelegate imageDownloader:self didFinishWithImage:image object:info];
+    //    }
+    //} else {
         [self performSelector:@selector(downloadImage:) withObject:info];
-    }
+    //}
 }
 
 - (void)downloadImage:(NSDictionary *)info
@@ -75,10 +76,11 @@ static AsyncImageDownloader *sharedDownloader = nil;
     
     if (image) {
         id theDelegate = [info objectForKey:@"delegate"];
-        if ([theDelegate respondsToSelector:@selector(imageDownloader:didFinishWithImage:)]) {
-            [theDelegate imageDownloader:self didFinishWithImage:image];
+        if ([theDelegate respondsToSelector:@selector(imageDownloader:didFinishWithImage:object:)]) {
+            [theDelegate imageDownloader:self didFinishWithImage:image object:info];
         }
         
+        [imUtil storeCacheImage:image forName:[url lastPathComponent]];
         //[cacheQueue cacheImage:image withKey:url];
     } else {
 #ifdef DEBUG

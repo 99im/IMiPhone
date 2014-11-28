@@ -489,7 +489,7 @@ static NSString *kAdrressID = @"ActivityCreateSectionInfoRowAddress";//地址cel
     NSString *lat = @"lat";
     NSString *alt = @"alt";
     //TODO: 实现ui选择后修改
-    NSString * dataStr;
+//    NSString * dataStr;
     NSDateFormatter *dataFormatter = [[NSDateFormatter alloc] init];
     [dataFormatter setDateFormat:NSLocalizedString(@"DateAndTimeFormatServer", nil)];
 

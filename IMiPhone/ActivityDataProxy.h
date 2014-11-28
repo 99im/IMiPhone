@@ -23,13 +23,14 @@
 @property (nonatomic) NSInteger createActivityType;
 
 @property (nonatomic) long long curAid;//当前查看活动id
+@property (nonatomic) NSInteger curRelation;//当前查看活动与自己关系
 
 + (ActivityDataProxy *)sharedProxy;
 - (void)reset;
 
 - (void)updateActivityListWithServerList:(NSArray *)serverList;
 
-- (DPActivity *)getActivityWithAid:(long long)aid;
+- (DPActivity *)getActivityWithAid:(long long)aid needRequest:(BOOL)need;
 
 //我的活动
 - (void)updateMyActivityListWithStart:(NSInteger)start withServerMyList:(NSArray *)serverMyList;
