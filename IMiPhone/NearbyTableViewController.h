@@ -15,8 +15,15 @@
 #import "NearbyClubManagerTableViewCell.h"
 #import "NearbyClubTableViewCell.h"
 #import "NearbyGroupRecruitTableViewCell.h"
+#import "DiscoveryDataProxy.h"
+#import "DiscoveryMessageProxy.h"
+#import "DPUser.h"
+#import "DPNearbyClub.h"
+#import "ClubDataProxy.h"
+#import "UserShowViewController.h"
 
 @interface NearbyTableViewController : UITableViewController
 @property (strong, nonatomic) IBOutlet UITableView *tableview;
+
 
 @end

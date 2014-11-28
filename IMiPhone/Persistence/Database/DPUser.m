@@ -25,5 +25,8 @@
 @synthesize career;
 @synthesize interest;
 @synthesize intro;
+@synthesize logoAlbumId;
+@synthesize logo;
+@synthesize roles;
 
 @end

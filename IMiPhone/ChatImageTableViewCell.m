@@ -7,7 +7,7 @@
 //
 
 #import "ChatImageTableViewCell.h"
-#import "UIImageView+OnlineImage.h"
+#import "UIImageView+ChatImage.h"
 
 @interface ChatImageTableViewCell ()
 
@@ -44,7 +44,7 @@
         //self.imageViewImage.image = [UIImage imageWithContentsOfFile:chatMessage.imgThumbnailPath];
     }
     else if (chatMessage.imgThumbnail) {
-        [self.imageViewImage setOnlineImage:chatMessage.imgThumbnail placeholderImage:[UIImage imageNamed:@"HeadBg"]];
+        [self.imageViewImage setChatImage:chatMessage.imgThumbnail placeholderImage:[UIImage imageNamed:@"HeadBg"]];
     }
     [self.viewMsgContent addSubview:self.imageViewImage];
     self.viewMsgContent.frame = self.imageViewImage.frame ;

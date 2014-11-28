@@ -225,20 +225,49 @@
 
 #pragma mark cache image utility
 
++ (NSString *)getCacheImagePath:(NSString *)name
+{
+    return [NSString stringWithFormat:@"%@/Documents/cache/image/%@", NSHomeDirectory(), name];
+}
+
++ (NSString *)getCacheImageDir
+{
+    return [NSString stringWithFormat:@"%@/Documents/cache/image/", NSHomeDirectory()];
+}
+
++ (NSString *)storeCacheImage:(UIImage *)image forName:(NSString *)name
+{
+    NSData *imgData;
+    NSString *imgPath;
+    [[NSFileManager defaultManager] createDirectoryAtPath:[imUtil getCacheImageDir] withIntermediateDirectories:YES attributes:nil error:nil];
+    if (UIImagePNGRepresentation(image) == nil) {
+        imgData = UIImageJPEGRepresentation(image, 1.0f);
+    } else {
+        imgData = UIImagePNGRepresentation(image);
+    }
+    imgPath = [imUtil getCacheImagePath:name];
+    if (imgData) {
+        [imgData writeToFile:imgPath atomically:YES];
+    }
+    return imgPath;
+}
+
 + (NSString *)storeCacheImage:(UIImage *)image forNid:(NSInteger)nid
 {
     NSData *imgData;
     NSString *imgPath;
-    [[NSFileManager defaultManager] createDirectoryAtPath:[NSString stringWithFormat:@"%@/Documents/cache/image/", NSHomeDirectory()] withIntermediateDirectories:YES attributes:nil error:nil];
+    NSString *imgName;
+    [[NSFileManager defaultManager] createDirectoryAtPath:[imUtil getCacheImageDir] withIntermediateDirectories:YES attributes:nil error:nil];
     if (UIImagePNGRepresentation(image) == nil) {
-        imgData = UIImageJPEGRepresentation(image, 1);
-        imgPath = [NSString stringWithFormat:@"%@/Documents/cache/image/chat_%li.jpg", NSHomeDirectory(), (long)nid];
+        imgData = UIImageJPEGRepresentation(image, 1.0f);
+        imgName = [NSString stringWithFormat:@"chat_%li.jpg", (long)nid];
+        
     } else {
         imgData = UIImagePNGRepresentation(image);
-        imgPath = [NSString stringWithFormat:@"%@/Documents/cache/image/chat_%li.png", NSHomeDirectory(), (long)nid];
+        imgName = [NSString stringWithFormat:@"chat_%li.png", (long)nid];
     }
-    
-    if (imgPath) {
+    if (imgData) {
+        imgPath = [imUtil getCacheImagePath:imgName];
         [imgData writeToFile:imgPath atomically:YES];
     }
     return imgPath;
@@ -247,8 +276,8 @@
 + (NSString *)modifyCacheImage:(NSInteger)nid toName:(NSString *)newName
 {
     NSError *err = nil;
-    NSString *tempPath = [NSString stringWithFormat:@"%@/Documents/cache/image/chat_%li.%@", NSHomeDirectory(), (long)nid, [newName pathExtension]];
-    NSString *newPath = [NSString stringWithFormat:@"%@/Documents/cache/image/%@", NSHomeDirectory(), newName];
+    NSString *tempPath = [imUtil getCacheImagePath:[NSString stringWithFormat:@"chat_%li.%@", (long)nid, [newName pathExtension]]];
+    NSString *newPath = [imUtil getCacheImagePath:newName];
     [[NSFileManager defaultManager] moveItemAtPath:tempPath toPath:newPath error:&err];
     if (err) {
         NSLog(@"JSON create error: %@", err);

@@ -10,6 +10,7 @@
 #import "imUtil.h"
 #import "GroupDAO.h"
 #import "DPGroup.h"
+#import "DPGroupMember.h"
 #import "UserDataProxy.h"
 #import "LocationDataProxy.h"
 #import "GroupMessageProxy.h"
@@ -53,6 +54,10 @@
 - (void)setGroupIdCurrent:(IMGroupId)gid;
 - (DPGroup *)getGroupInfoCurrent:(NSInteger)httpMode;
 
+#pragma mark - 群成员
+-(NSMutableArray *)getGroupMembersWithGID:(IMGroupId) gid;
+-(NSMutableArray *)getGroupMembersCurrent;
+-(void)saveGroupMembers:(NSMutableArray *)members withGID:(IMGroupId) gid;
 
 //#pragma mark - 群聊天
 /////获得某个群组的聊天消息

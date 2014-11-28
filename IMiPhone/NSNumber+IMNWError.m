@@ -15,6 +15,12 @@
     NSString *sError = @"";
 
     switch (self.integerValue) {
+        case 10039:
+            sError = @"没有权限评论";
+            break;
+        case 10038:
+            sError = @"没有权限操作feed";
+            break;
         case 10037:
             sError = @"活动不存在或者隐藏了";
             break;

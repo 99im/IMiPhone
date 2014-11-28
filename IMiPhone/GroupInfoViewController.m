@@ -173,6 +173,8 @@
     }
     else if (buttonIndex == 1) {
         NSLog(@"查看成员");
+        [self performSegueWithIdentifier:@"groupInfo2GroupMembers" sender:self];
+
     }
 }
 @end

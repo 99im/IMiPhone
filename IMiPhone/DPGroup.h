@@ -60,6 +60,7 @@ typedef long long IMUserId;
 @property (nonatomic) long long localExpireTime;  //本地过期时间，格式(yyyyMMddHHmmss)：201411024125959
 //@property (nonatomic) BOOL isInMyGroups;
 
++(DPGroup *)create;
 //-(BOOL)isExpired;
 -(BOOL)isGroupOK;           //判断：群是否已通过审核
 -(BOOL)isGroupOwner;        //判断：当前用户是否为群主
