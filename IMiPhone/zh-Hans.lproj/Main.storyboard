@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="sWe-ai-dJr">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="sWe-ai-dJr">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
@@ -2242,11 +2242,93 @@
                         <segue destination="f2G-Kw-Ad0" kind="push" identifier="groupInfo2GroupSetting" id="Gnm-RN-Gtp"/>
                         <segue destination="yEJ-R3-2p3" kind="push" identifier="groupInfo2GroupChat" id="DGb-6e-Qb2"/>
                         <segue destination="zdu-lY-f24" kind="push" identifier="groupInfo2GroupApply" id="CTP-3c-gYN"/>
+                        <segue destination="Gi0-SJ-MsI" kind="push" identifier="groupInfo2GroupMembers" id="2k4-yJ-w1Z"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0bI-9q-o0A" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3988" y="4034"/>
+        </scene>
+        <!--Group-Members-->
+        <scene sceneID="tXE-eM-FVR">
+            <objects>
+                <tableViewController id="Gi0-SJ-MsI" userLabel="Group-Members" customClass="GroupMembersTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="72" sectionHeaderHeight="22" sectionFooterHeight="22" id="cKG-sg-RME">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="cellGroupMember" id="HAY-C5-p7L" customClass="GroupMemberTableCell">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="HAY-C5-p7L" id="krN-Bc-18R">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" placeholderIntrinsicWidth="64" placeholderIntrinsicHeight="64" image="head1" translatesAutoresizingMaskIntoConstraints="NO" id="xhK-Wu-ydZ">
+                                            <rect key="frame" x="4" y="4" width="64" height="64"/>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="UserName" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bwE-xh-Qe3">
+                                            <rect key="frame" x="77" y="4" width="127" height="30"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="专业背黑锅…" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="egW-a5-h6o">
+                                            <rect key="frame" x="77" y="47" width="220" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0.00KM | 9分钟前" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sq8-Ph-7GR">
+                                            <rect key="frame" x="193" y="9" width="119" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="临时工" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D8t-ko-srF">
+                                            <rect key="frame" x="77" y="27" width="48" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="男" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4vn-hA-zZ8">
+                                            <rect key="frame" x="132" y="29" width="28" height="17"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="18" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LcN-7G-6De">
+                                            <rect key="frame" x="158" y="29" width="29" height="17"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="imgAvatar" destination="xhK-Wu-ydZ" id="yEZ-z9-crk"/>
+                                    <outlet property="lblAge" destination="LcN-7G-6De" id="iQ3-gv-tDT"/>
+                                    <outlet property="lblDistance" destination="sq8-Ph-7GR" id="PbV-nE-Yzy"/>
+                                    <outlet property="lblIntro" destination="egW-a5-h6o" id="FD6-m6-e0e"/>
+                                    <outlet property="lblLevel" destination="D8t-ko-srF" id="iWV-Tm-Wbg"/>
+                                    <outlet property="lblNickName" destination="bwE-xh-Qe3" id="daR-X9-3iM"/>
+                                    <outlet property="lblSex" destination="4vn-hA-zZ8" id="W13-we-sgm"/>
+                                    <segue destination="Ixd-6h-fyu" kind="push" identifier="groupMembers2UserInfo" id="osh-fz-Jtw"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Gi0-SJ-MsI" id="jId-sw-kxC"/>
+                            <outlet property="delegate" destination="Gi0-SJ-MsI" id="jJA-hc-iuO"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="群成员列表" id="gMb-af-9cC">
+                        <barButtonItem key="backBarButtonItem" title="返回" id="fsv-DZ-6Go"/>
+                    </navigationItem>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="N2e-xG-Y7v" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4457" y="4034"/>
         </scene>
         <!--LBS-选择群地点-->
         <scene sceneID="Nkt-KA-a64">
@@ -4454,13 +4536,13 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="dkl-wS-iyY"/>
-        <segue reference="jj6-rV-QBG"/>
-        <segue reference="iIs-SU-ZLV"/>
         <segue reference="kdV-GO-inJ"/>
-        <segue reference="B9e-R6-y8A"/>
-        <segue reference="tGe-34-b6p"/>
-        <segue reference="XGz-ue-SSV"/>
-        <segue reference="xJX-I6-fGX"/>
+        <segue reference="iIs-SU-ZLV"/>
+        <segue reference="jj6-rV-QBG"/>
+        <segue reference="YF8-tq-9ko"/>
+        <segue reference="EnR-fJ-pM5"/>
+        <segue reference="yXo-ak-l89"/>
+        <segue reference="8gL-WP-3D1"/>
+        <segue reference="DGb-6e-Qb2"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -10,6 +10,7 @@
 
 @interface NearbyTableViewController ()
 
+
 @end
 
 @implementation NearbyTableViewController
@@ -22,8 +23,6 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    //获取用户当前位置
-    [[LocationDataProxy sharedProxy] getUserLocation];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -33,7 +32,14 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-   
+    //获取用户当前位置
+    DPLocation *dpLocation = [[LocationDataProxy sharedProxy] getUserLocation];
+    NSLog(@"%i <%f, %f>", (int)dpLocation.dataStatus , dpLocation.latitude, dpLocation.longitude);
+}
+
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [[LocationDataProxy sharedProxy] stopUpdatingLocation];
 }
 
 #pragma mark - Table view data source
