@@ -1496,6 +1496,25 @@
             </objects>
             <point key="canvasLocation" x="-445" y="8201"/>
         </scene>
+        <!--图片浏览-->
+        <scene sceneID="cyM-cG-eQ9">
+            <objects>
+                <viewController id="4yX-j2-lRY" userLabel="图片浏览" customClass="ImageViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Y0e-yp-RwB"/>
+                        <viewControllerLayoutGuide type="bottom" id="GCV-lT-Ajb"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="9yK-3T-8Lz">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ogV-fW-45B" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-45" y="8201"/>
+        </scene>
         <!--Chat-功能页-->
         <scene sceneID="ux7-7h-wgH">
             <objects>
