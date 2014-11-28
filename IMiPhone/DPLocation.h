@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <CoreLocation/CoreLocation.h>
 
 #define LBS_TIMEOUT_MINUTES_LOCATION 60  //单位（分钟）   1小时：60   1天: 1440 = 60*24   1周:10080 = 7*24*60
 
@@ -29,7 +30,12 @@
 
 +(DPLocation *)create;
 
+#pragma mark - 状态判断
 -(BOOL)isExpired;   //数据是否已过期
 -(BOOL)isUpdated;    //是否已更新成功
+
+#pragma mark - 距离计算
+-(double)distanceFromLatigude:(double)lat longitude:(double)lon;
+-(NSString *)distanceStringFromLatigude:(double)lat longitude:(double)lon;
 
 @end

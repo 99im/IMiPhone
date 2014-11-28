@@ -15,6 +15,7 @@
 @property (nonatomic) IMUserId uid;
 @property (nonatomic, retain) NSString *nick;
 @property (nonatomic) NSInteger relation;
+@property (nonatomic) NSInteger gender;
 @property (nonatomic, retain) NSString *oid;
 @property (nonatomic, retain) NSString *city;
 @property (nonatomic, retain) NSString *ctime;
@@ -22,5 +23,6 @@
 
 +(DPGroupMember *)create;
 -(NSString *)getLevelName;
+-(NSString *)getGenderName;
 
 @end

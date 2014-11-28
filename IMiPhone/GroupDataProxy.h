@@ -23,7 +23,6 @@
 
 @interface GroupDataProxy : NSObject
 
-
 - (void)reset;
 
 #pragma mark - 静态方法

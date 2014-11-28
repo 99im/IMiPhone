@@ -41,6 +41,7 @@
     _userId = member.uid;
     self.lblNickName.text = member.nick;
     self.lblLevel.text = [member getLevelName];
+    self.lblSex.text = [member getGenderName];
 }
 
 @end

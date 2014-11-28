@@ -18,6 +18,7 @@
 //@property (nonatomic) int countSendGroupInfo;
 //@property (nonatomic) long long updateTimeGroupMyList;
 @property (nonatomic, retain) NSMutableArray *arrGroupsSearch;
+
 @property (nonatomic, retain) NSMutableArray *groupMembersCurrent;
 
 @property (nonatomic, retain) DPGroup *dpGroupCreating;
@@ -46,6 +47,7 @@
     _arrGroupsSearch = nil;
     _groupIdSendLast = 0;
     _groupInfoCurrent = nil;
+    _groupMembersCurrent = nil;
     _groupIdCurrent = 0;
 
 }
@@ -306,11 +308,13 @@ static GroupDataProxy *sharedGroupDataProxy = nil;
 #pragma mark - 群成员
 -(NSMutableArray *)getGroupMembersCurrent{
     if (!_groupMembersCurrent) {
-        _groupMembersCurrent = [NSMutableArray array];
+        //_groupMembersCurrent = [NSMutableArray array];
         if (_groupIdCurrent > 0) {
             [[GroupMessageProxy sharedProxy] sendGroupMembers:_groupIdCurrent start:0 pageNum:50];
         }
-    } else {//TODO:待判断是否过期
+    } else if([_groupMembersCurrent count]>0){//TODO:待判断是否过期
+        NSLog(@"postBy GroupDataProxy");
+        [imUtil postNotificationName:NOTI_H__GROUP_MEMBERS_ object:nil];
     }
     return _groupMembersCurrent;
 }

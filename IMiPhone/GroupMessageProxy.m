@@ -311,7 +311,8 @@ static GroupMessageProxy *sharedGroupMessageProxy = nil;
                     }
 
                     [[GroupDataProxy sharedProxy] saveGroupMembers:members withGID:gid];
-                    [self processSuccessNotiName:NOTI_H__GROUP_MEMBERS_ withUserInfo:nil];
+                    [imUtil postNotificationName:NOTI_H__GROUP_MEMBERS_ object:nil];
+                    //[self processSuccessNotiName:NOTI_H__GROUP_MEMBERS_ withUserInfo:nil];
                 }
                 else {
                     [self processErrorCode:errorcode

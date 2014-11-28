@@ -14,6 +14,7 @@
 @synthesize uid;
 @synthesize nick;
 @synthesize relation;
+@synthesize gender;
 @synthesize oid;
 @synthesize city;
 @synthesize vip;
@@ -37,6 +38,14 @@
         lvName = @"未定义";
     }
     return lvName;
+}
+
+-(NSString *)getGenderName
+{
+    if (self.gender == 0) {
+        return @"男";
+    }
+    return @"女";
 }
 
 @end

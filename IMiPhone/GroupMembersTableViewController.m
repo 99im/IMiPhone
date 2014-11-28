@@ -10,18 +10,18 @@
 
 @interface GroupMembersTableViewController ()
 
-@property (nonatomic, retain) NSMutableArray *groupMembers;
+@property (nonatomic, retain) NSMutableArray *members;
 
 @end
 
 @implementation GroupMembersTableViewController
 
-@synthesize groupMembers = _groupMembers;
+@synthesize members = _members;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    _groupMembers = [[GroupDataProxy sharedProxy] getGroupMembersCurrent];
+    _members = [[GroupDataProxy sharedProxy] getGroupMembersCurrent];
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -38,38 +38,37 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-//#warning Incomplete method implementation.
-    return _groupMembers.count;
+    return _members.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     GroupMemberTableCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cellGroupMember" forIndexPath:indexPath];
     NSInteger row = indexPath.row;
-    DPGroupMember *member = [_groupMembers objectAtIndex:row];
+    DPGroupMember *member = [_members objectAtIndex:row];
     [cell drawCellWithGroupMember:member];
     return cell;
 }
 
 #pragma mark - 消息监听
-- (void)registerMessageNotification {
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(didSendGroupMembers:)
-                                                 name:NOTI_H__GROUP_MEMBERS_
-                                               object:nil];
-}
+//- (void)registerMessageNotification {
+//    [[NSNotificationCenter defaultCenter] addObserver:self
+//                                             selector:@selector(didSendGroupMembers:)
+//                                                 name:NOTI_H__GROUP_MEMBERS_
+//                                               object:nil];
+//}
+//
+//- (void)removeMessageNotification {
+//    [[NSNotificationCenter defaultCenter] removeObserver:self];
+//}
 
-- (void)removeMessageNotification {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
-
-- (void)didSendGroupMembers:(NSNotification *)notification {
-    if (notification.object) {
-        //出错了
-    } else {
-        _groupMembers = [[GroupDataProxy sharedProxy] getGroupMembersCurrent];
-        [self.tableView reloadData];
-    }
-}
+//- (void)didSendGroupMembers:(NSNotification *)notification {
+//    if (notification.object) {
+//        //出错了
+//    } else {
+//        _groupMembers = [[GroupDataProxy sharedProxy] getGroupMembersCurrent];
+//        [self.tableView reloadData];
+//    }
+//}
 
 
 /*

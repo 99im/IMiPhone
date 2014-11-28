@@ -59,14 +59,13 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    [self removeMessageNotification];
     // Dispose of any resources that can be recreated.
     // body
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
-    //[self removeMessageNotification];
+    [self removeMessageNotification];
     [super viewWillDisappear:animated];
 }
 
@@ -94,6 +93,22 @@
     else {
         DPGroup *currGroup = [[GroupDataProxy sharedProxy] getGroupInfoCurrent:SEND_HTTP_NO];
         [self drawContent:currGroup];
+    }
+}
+
+- (void)didSendGroupMembers:(NSNotification *)notification {
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:NOTI_H__GROUP_MEMBERS_ object:nil];
+    if (notification.object) {
+        NSString* msg = [((NSError*)notification.object).userInfo objectForKey:NSLocalizedDescriptionKey];
+        UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Alert", nil)
+                                                            message:msg
+                                                           delegate:nil
+                                                  cancelButtonTitle:NSLocalizedString(@"OK", nil)
+                                                  otherButtonTitles:nil];
+        [alertView show];
+    } else {
+
+        [self performSegueWithIdentifier:@"groupInfo2GroupMembers" sender:self];
     }
 }
 
@@ -173,7 +188,12 @@
     }
     else if (buttonIndex == 1) {
         NSLog(@"查看成员");
-        [self performSegueWithIdentifier:@"groupInfo2GroupMembers" sender:self];
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(didSendGroupMembers:)
+                                                     name:NOTI_H__GROUP_MEMBERS_
+                                                   object:nil];
+        [[GroupDataProxy sharedProxy] getGroupMembersCurrent];
+        //[self performSegueWithIdentifier:@"groupInfo2GroupMembers" sender:self];
 
     }
 }
