@@ -10,7 +10,7 @@
 
 @implementation DBActivityMember
 
-@synthesize orderid;
+@synthesize nid;
 
 @synthesize aid;
 @synthesize ctime;
@@ -30,7 +30,7 @@ static ActivityMemberDAO* sharedActivityMemberDAO = nil;
                   ^{
                       sharedActivityMemberDAO = [[self alloc] init];
                       NSString *tableName = @"tb_activity_member";
-                      NSString *primaryKey = DB_PRIMARY_KEY_ACTIVITY_MEMBER_ORDERID;
+                      NSString *primaryKey = DB_PRIMARY_KEY_ACTIVITY_MEMBER_NID;
                       [sharedActivityMemberDAO createTableIfNotExist:tableName withDataMode:[DBActivityMember class] withPrimaryKey:primaryKey];
                   }
                   );

@@ -30,7 +30,7 @@
 
 - (void)parseImageContent
 {
-    if (!imgThumbnail && !imgSrc) {
+    if (!imgThumbnail && !imgSrc && content && content.length > 0) {
         NSError *err = nil;
         NSDictionary *imgInfo = [NSJSONSerialization
                                  JSONObjectWithData:[content dataUsingEncoding:NSUTF8StringEncoding]

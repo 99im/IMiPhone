@@ -226,7 +226,7 @@ static NSString *kGroupChatImageCell = @"GroupChatImageTableViewCell";
     return arrGroupChatMsgs.count;
 }
 
--(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     DPGroupChatMessage *dpChatMessage = [self.arrChatMessages objectAtIndex:indexPath.row];
     
@@ -262,10 +262,20 @@ static NSString *kGroupChatImageCell = @"GroupChatImageTableViewCell";
 #pragma mark - chat text input logic
 
 - (IBAction)tfInputTextDidEndOnExit:(id)sender {
-    
-    [[ChatMessageProxy sharedProxy] sendTypeChat:CHAT_STAGE_GROUP targetId:[GroupDataProxy sharedProxy].getGroupIdCurrent msgType:CHAT_MASSAGE_TYPE_TEXT content:((UITextField *)sender).text nid:0];
+    DPGroupChatMessage *groupChatMessage = [[DPGroupChatMessage alloc] init];
+    groupChatMessage.msgType = CHAT_MASSAGE_TYPE_IMAGE;
+    groupChatMessage.content = ((UITextField *)sender).text;
+    groupChatMessage.sendTime = [imUtil nowTimeForServer];
+    groupChatMessage.mid = 0;
+    groupChatMessage.senderUid = [UserDataProxy sharedProxy].user.uid;
+    groupChatMessage.targetId = [GroupDataProxy sharedProxy].getGroupIdCurrent;
+    groupChatMessage.stage = CHAT_STAGE_GROUP;
+    groupChatMessage.gid = [[ChatDataProxy sharedProxy] assembleGidWithStage:groupChatMessage.stage withSenderUid:groupChatMessage.senderUid withTargetId:groupChatMessage.targetId];
+    [[ChatDataProxy sharedProxy] addGroupChatMessage:groupChatMessage];
+    [[ChatMessageProxy sharedProxy] sendTypeChat:CHAT_STAGE_GROUP targetId:[GroupDataProxy sharedProxy].getGroupIdCurrent msgType:CHAT_MASSAGE_TYPE_TEXT content:((UITextField *)sender).text nid:groupChatMessage.nid];
     
     ((UITextField *)sender).text = @"";
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_S_CHAT_CHATN object:nil];
     
 }
 
@@ -328,7 +338,12 @@ static NSString *kGroupChatImageCell = @"GroupChatImageTableViewCell";
         NSInteger nid = [[notification.userInfo objectForKey:CHAT_MESSAGE_NID] integerValue];
         NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dicImgInfo options:0 error:nil];
         NSString *content = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
-        [[ChatMessageProxy sharedProxy] sendTypeChat:CHAT_STAGE_P2P targetId:[ChatDataProxy sharedProxy].chatToUid msgType:CHAT_MASSAGE_TYPE_IMAGE content:content nid:nid];
+        NSInteger findIndex = [ImDataUtil getIndexOf:self.arrChatMessages byItemKey:DB_PRIMARY_KEY_CHAT_MESSAGE_NID withValue:[NSNumber numberWithLongLong:nid]];
+        DPGroupChatMessage *groupChatMessage = [self.arrChatMessages objectAtIndex:findIndex];
+        NSString *imgSrcUrl = [dicImgInfo objectForKey:KEYP_H__CHAT_UPLOADIMG__IMGINFO_SRC];
+        groupChatMessage.imgSrcPath = [imUtil modifyCacheImage:nid toName:[imgSrcUrl lastPathComponent]];
+        groupChatMessage.imgThumbnailPath = groupChatMessage.imgSrcPath;
+        [[ChatMessageProxy sharedProxy] sendTypeChat:CHAT_STAGE_GROUP targetId:[ChatDataProxy sharedProxy].chatToUid msgType:CHAT_MASSAGE_TYPE_IMAGE content:content nid:nid];
     }
 }
 
@@ -408,11 +423,23 @@ static NSString *kGroupChatImageCell = @"GroupChatImageTableViewCell";
         UIImage *originalImage = [info objectForKey:UIImagePickerControllerOriginalImage];
         //NSURL *referenceURL = [info objectForKey:UIImagePickerControllerReferenceURL];
         //NSString *mediaType = [info objectForKey:UIImagePickerControllerMediaType];
-        NSInteger nid = 0;
-        NSString *imgPath = [imUtil storeCacheImage:originalImage useName:@"test"];
+        DPGroupChatMessage *groupChatMessage = [[DPGroupChatMessage alloc] init];
+        groupChatMessage.msgType = CHAT_MASSAGE_TYPE_IMAGE;
+        groupChatMessage.content = @"";
+        groupChatMessage.sendTime = [imUtil nowTimeForServer];
+        groupChatMessage.mid = 0;
+        groupChatMessage.senderUid = [UserDataProxy sharedProxy].user.uid;
+        groupChatMessage.targetId = [GroupDataProxy sharedProxy].getGroupIdCurrent;
+        groupChatMessage.stage = CHAT_STAGE_GROUP;
+        groupChatMessage.gid = [[ChatDataProxy sharedProxy] assembleGidWithStage:groupChatMessage.stage withSenderUid:groupChatMessage.senderUid withTargetId:groupChatMessage.targetId];
+        [[ChatDataProxy sharedProxy] addGroupChatMessage:groupChatMessage];
+        NSString *imgPath = [imUtil storeCacheImage:originalImage forNid:groupChatMessage.nid];
+        groupChatMessage.imgSrcPath = imgPath;
+        groupChatMessage.imgThumbnailPath = imgPath;
         if (imgPath) {
-            [[ChatMessageProxy sharedProxy] sendHttpUploadimg:imgPath withMessageNid:nid];
+            //[[ChatMessageProxy sharedProxy] sendHttpUploadimg:imgPath withMessageNid:chatMessage.nid];
         }
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_S_CHAT_CHATN object:nil];
     }];
 }
 

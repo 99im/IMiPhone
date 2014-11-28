@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "LocationDataProxy.h"
 #import "NearbyVipTableViewCell.h"
 #import "NearbyBabyTableViewCell.h"
 #import "NearbyStarTableViewCell.h"

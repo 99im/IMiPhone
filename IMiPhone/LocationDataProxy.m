@@ -19,6 +19,7 @@
 @property (nonatomic, retain) DPLocation *dpLocationUser;
 @property (nonatomic, retain) DPLocation *dpLocationReport;
 @property (nonatomic) NSInteger remainTimes;
+//@property (nonatomic) long long lastTimeOfUpdateLocation;
 
 @property (nonatomic) double lastLatitude;
 @property (nonatomic) double lastLongitude;
@@ -35,6 +36,7 @@
 @synthesize dpLocationReport = _dpLocationReport;
 @synthesize lastLongitude = _lastLongitude;
 @synthesize lastLatitude = _lastLatitude;
+//@synthesize lastTimeOfUpdateLocation = _lastTimeOfUpdateLocation;
 
 static LocationDataProxy *sharedLocationDataProxy = nil;
 + (LocationDataProxy *)sharedProxy
@@ -49,6 +51,8 @@ static LocationDataProxy *sharedLocationDataProxy = nil;
 - (void)saveUserLocation:(CLLocation *)location
 {
     _dpLocationUser = [LocationDataProxy convertLocation:location toDPLocation:_dpLocationUser];
+    _dpLocationUser.localUpdateTime = [imUtil nowTime];
+    _dpLocationUser.dataStatus = LBS_STATUS_DATA_UPDATED;
 
     [LocationDataProxy reverseDPPlacemark:_dpPlacemarkUser withLatitude:_dpLocationUser.latitude longitude:_dpLocationUser.longitude];
 
@@ -126,7 +130,7 @@ static LocationDataProxy *sharedLocationDataProxy = nil;
 
                                [LocationDataProxy convertPlacemark:placemark toDPPlacemark:dpPlacemark];
 
-                               dpPlacemark.localExpireTime = [imUtil getExpireTimeWithMinutes:LBS_TIMEOUT_PLACEMARK];
+                               //dpPlacemark.localExpireTime = [imUtil getExpireTimeWithMinutes:LBS_TIMEOUT_MINUTES_PLACEMARK];
                                dpPlacemark.localUpdateTime = [imUtil nowTime];
 
                                [imUtil postNotificationName:LBS_NOTI_didReverseGEO object:nil];
@@ -145,8 +149,8 @@ static LocationDataProxy *sharedLocationDataProxy = nil;
     [geocoder reverseGeocodeLocation:location
                    completionHandler:^(NSArray *placemarks, NSError *error) {
                        if (!error && [placemarks count] > 0) {
-                           [dpPlacemarks removeAllObjects];
-                           long long localExpireTime = [imUtil getExpireTimeWithMinutes:LBS_TIMEOUT_PLACEMARK];
+                           [dpPlacemarks removeAllObjects];//清空旧数据
+                           //long long localExpireTime = [imUtil getExpireTimeWithMinutes:LBS_TIMEOUT_MINUTES_PLACEMARK];
                            long long localUpdateTime = [imUtil nowTime];
                            for (NSInteger i=0; i < placemarks.count; i++) {
                                CLPlacemark *placemark = [placemarks objectAtIndex:i];
@@ -164,7 +168,7 @@ static LocationDataProxy *sharedLocationDataProxy = nil;
                                //NSLog(@"%@", address);
 
                                dpPlacemark.localUpdateTime = localUpdateTime;
-                               dpPlacemark.localExpireTime = localExpireTime;
+                               //dpPlacemark.localExpireTime = localExpireTime;
 
                                [dpPlacemarks addObject:dpPlacemark];
                            }
@@ -186,29 +190,35 @@ static LocationDataProxy *sharedLocationDataProxy = nil;
 
 - (void)startUpdatingLocation:(NSInteger)updateTimes
 {
-    if ([CLLocationManager locationServicesEnabled]) {
-        // 初始化定位管理对象
-        if (_locationManager == nil) {
-            _locationManager = [[CLLocationManager alloc] init];
-            _locationManager.delegate = self;
-            _locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters; // 100米级
-            _locationManager.distanceFilter = 1000.0f;
-        }
+    if ([_dpLocationUser isExpired] || _dpLocationUser.dataStatus != LBS_STATUS_DATA_UPDATING) {
+        if ([CLLocationManager locationServicesEnabled]) {
+            // 初始化定位管理对象
+            if (_locationManager == nil) {
+                _locationManager = [[CLLocationManager alloc] init];
+                _locationManager.delegate = self;
+                _locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters; // 100米级
+                _locationManager.distanceFilter = 1000.0f;
+            }
 
-        if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0) {
-            [_locationManager requestWhenInUseAuthorization];
+            if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0) {
+                [_locationManager requestWhenInUseAuthorization];
+            } else {
+
+            }
+            if (updateTimes > 0) {
+                _remainTimes = updateTimes;
+            }
+            _dpLocationUser.dataStatus = LBS_STATUS_DATA_UPDATING;
+            [_locationManager startUpdatingLocation];
         }
-        if (updateTimes > 0) {
-            _remainTimes = updateTimes;
+        else {
+            //NSLog(@"Location services are not enabled");
+            [imUtil postNotificationName:LBS_NOTI_didUpdateLocations
+                                  object:[NSError errorWithDomain:LBS_ERR_DOMAIN
+                                                             code:LBS_ERR_CODE_locationServicesDisabled                                                     userInfo:nil]];
         }
-        [_locationManager startUpdatingLocation];
     }
-    else {
-        //NSLog(@"Location services are not enabled");
-        [imUtil postNotificationName:LBS_NOTI_didUpdateLocations
-                              object:[NSError errorWithDomain:LBS_ERR_DOMAIN
-                                                         code:LBS_ERR_CODE_locationServicesDisabled                                                     userInfo:nil]];
-    }
+
 }
 
 - (void)stopUpdatingLocation
@@ -225,9 +235,10 @@ static LocationDataProxy *sharedLocationDataProxy = nil;
 {
     if (!_dpLocationUser) { //从未取过
         _dpLocationUser = [[DPLocation alloc] init];
+        _dpLocationUser.dataStatus = LBS_STATUS_DATA_INIT;
         [self startUpdatingLocation:1];
-    } else {
-        //TODO:是否过期判断规则
+    } else if([_dpLocationUser isUpdated] && [_dpLocationUser isExpired]) {
+        [self startUpdatingLocation:1];
     }
     return _dpLocationUser;
 }

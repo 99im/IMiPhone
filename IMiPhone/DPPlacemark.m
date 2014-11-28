@@ -28,8 +28,24 @@
 @synthesize ocean;
 
 @synthesize localUpdateTime;
-@synthesize localExpireTime;
+//@synthesize localExpireTime;
 
+
+-(BOOL)isExpired
+{
+    if ((self.localUpdateTime + LBS_TIMEOUT_MINUTES_PLACEMARK * 60) < [imUtil nowTime]) {
+        return YES;
+    }
+    return NO;
+}
+
+-(BOOL)isUpdated
+{
+    if (self.dataStatus == LBS_STATUS_DATA_UPDATED) {
+        return YES;
+    }
+    return NO;
+}
 
 -(NSString *)getCityName
 {
