@@ -11,6 +11,7 @@
 @implementation ActivityInfoTitleCell
 
 - (void)awakeFromNib {
+    [super awakeFromNib];
     // Initialization code
 }
 
@@ -20,4 +21,18 @@
     // Configure the view for the selected state
 }
 
+- (void)setFrame:(CGRect)frame
+{
+    [super setFrame:frame];
+    NSLog(@"set cell height:%f,", frame.size.height);
+}
+
+- (id)initWithFrame:(CGRect)frame reuseIdentifier:(NSString *)reuseIdentifier
+{
+    if (self = [super initWithFrame:frame reuseIdentifier:reuseIdentifier]) {
+        
+    }
+    NSLog(@"initWithFrame cell height:%f,", frame.size.height);
+    return self;
+}
 @end
