@@ -17,6 +17,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *btnCreatGroup;
 
 - (IBAction)btnJoinActivityOnTouchUpInside:(UIButton *)sender;
+
 - (IBAction)btnCreatActivityOnTouchUpInside:(UIButton *)sender;
 
 //创建群组中的lable

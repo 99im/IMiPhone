@@ -7,6 +7,8 @@
 //
 
 #import "FindViewController.h"
+#import "ActivityCreateTabelController.h"
+#import "ActivityListController.h"
 
 @interface FindViewController ()
 
@@ -32,7 +34,6 @@
     self.dataFDList = [self.dictionary valueForKey:@"好友动态"];
     self.dataHFList = [self.dictionary valueForKey:@"玩乐"];
     self.dataSList = [self.dictionary valueForKey:@"服务"];
-    [self registerMessageNotification];
     
 }
 
@@ -41,15 +42,17 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [self registerMessageNotification];
+    [super viewWillAppear:animated];
+}
 -(void)viewWillDisappear:(BOOL)animated
 {
+    [self removeMessageNotification];
     [super viewWillDisappear:animated];
 }
 
-- (void) viewDidDisappear:(BOOL)animated{
-    [self removeMessageNotification];
-    [super viewDidDisappear:animated];
-}
 /*
 #pragma mark - Navigation
 
@@ -155,11 +158,14 @@
 }
 
 - (void)dealnotificationcreatactivity:(NSNotification *) notification{
-    //  TO DO
+    
+     ActivityCreateTabelController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"ActivityCreateTabelController"];
+    [self.navigationController pushViewController:viewController animated:YES];
 }
 
 - (void)dealnotificationjoinactivity:(NSNotification *) notification{
-    //TO DO
+    ActivityListController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"ActivityListController"];
+    [self.navigationController pushViewController:viewController animated:YES];
 }
 
 @end

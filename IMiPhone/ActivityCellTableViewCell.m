@@ -58,4 +58,5 @@
 - (IBAction)btnCreatActivityOnTouchUpInside:(UIButton *)sender {
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_ACTIVITY_CELL_BTN_CREATACTIVITY object:self];
 }
+
 @end
