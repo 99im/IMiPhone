@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="sWe-ai-dJr">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="sWe-ai-dJr">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
@@ -1585,7 +1585,7 @@
         <!--User-个人信息页-->
         <scene sceneID="Ztv-wa-Bt9">
             <objects>
-                <viewController hidesBottomBarWhenPushed="YES" id="Ixd-6h-fyu" userLabel="User-个人信息页" customClass="UserShowViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="userInfoView" hidesBottomBarWhenPushed="YES" id="Ixd-6h-fyu" userLabel="User-个人信息页" customClass="UserShowViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Iey-5W-vgx"/>
                         <viewControllerLayoutGuide type="bottom" id="hXK-eM-Cea"/>
@@ -1644,10 +1644,17 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="昵称" id="YWH-oq-Uer">
-                        <barButtonItem key="rightBarButtonItem" title="更多" id="q1f-l7-78n">
-                            <connections>
-                                <action selector="btnMoreTouchUpInside:" destination="Ixd-6h-fyu" id="uSN-9s-G6G"/>
-                            </connections>
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="YPZ-jn-cDk">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="MXj-v4-nhU">
+                                <rect key="frame" x="-23" y="-15" width="71" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="更多">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="btnMoreTouchUpInside:" destination="Ixd-6h-fyu" eventType="touchUpInside" id="sgF-Sd-FhK"/>
+                                </connections>
+                            </button>
                         </barButtonItem>
                     </navigationItem>
                     <nil key="simulatedBottomBarMetrics"/>
@@ -2540,8 +2547,8 @@
                                     <segue destination="of2-lT-RB4" kind="modal" id="ypU-hC-grZ"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="地点：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FDe-bt-mTK">
-                                <rect key="frame" x="16" y="206" width="244" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="城市" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zVF-52-iyd">
+                                <rect key="frame" x="16" y="204" width="51" height="25"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -2550,7 +2557,6 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
-                        <outlet property="lblAddress" destination="FDe-bt-mTK" id="6gY-pz-VVZ"/>
                         <outlet property="tfName" destination="xoK-wb-cf9" id="fmL-cH-giI"/>
                         <outlet property="tvIntro" destination="OVv-fu-vJj" id="FsK-NT-wdY"/>
                         <segue destination="nqj-0p-hk3" kind="push" identifier="CreatGroup2InfoSegue" id="j7u-OT-bsU"/>
@@ -3789,34 +3795,6 @@
             </objects>
             <point key="canvasLocation" x="1793" y="1927"/>
         </scene>
-        <!--附近列表-->
-        <scene sceneID="8NG-ah-9hs">
-            <objects>
-                <tableViewController id="ftN-OH-Ayi" userLabel="附近列表" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="vdF-tA-90v">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="dTD-hK-5IQ">
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dTD-hK-5IQ" id="0je-vP-W0Y">
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="ftN-OH-Ayi" id="RAk-vH-2Yo"/>
-                            <outlet property="delegate" destination="ftN-OH-Ayi" id="5Mr-24-gHF"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="RlY-yJ-eHg"/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="KEg-px-gUX" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2492" y="2525"/>
-        </scene>
         <!--附近-->
         <scene sceneID="TQw-Yl-BJN">
             <objects>
@@ -4497,13 +4475,13 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="yXo-ak-l89"/>
+        <segue reference="jj6-rV-QBG"/>
         <segue reference="iIs-SU-ZLV"/>
         <segue reference="kdV-GO-inJ"/>
-        <segue reference="jj6-rV-QBG"/>
-        <segue reference="yXo-ak-l89"/>
-        <segue reference="xJX-I6-fGX"/>
-        <segue reference="B9e-R6-y8A"/>
         <segue reference="dkl-wS-iyY"/>
+        <segue reference="xJX-I6-fGX"/>
+        <segue reference="8gL-WP-3D1"/>
         <segue reference="XGz-ue-SSV"/>
     </inferredMetricsTieBreakers>
 </document>

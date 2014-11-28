@@ -13,6 +13,7 @@
 @end
 
 @implementation NearbyTableViewController
+@synthesize userShowViewController;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -23,7 +24,7 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     [self registerMessageNotification];
-    [[DiscoveryDataProxy sharedProxy]getNearbyList:SEND_NEARBYLIST_HTTP_YES];
+    [self getNearbyList];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -69,6 +70,8 @@
         NSInteger role = [dpUser.roles[0] integerValue];
         NSString *nick = dpUser.nick;
         NSInteger distance = dpNearby.distance;
+        
+        
         //0 普通 1 宝贝 2助教 3天使 4 俱乐部经理 5明星
         if(role == 0){
             NearbyVipTableViewCell *cell0 = [tableView dequeueReusableCellWithIdentifier:@"nearbyVipCell" forIndexPath:indexPath];
@@ -164,27 +167,31 @@
     return 80;
 }
 
-#pragma mark - 消息处理
-//- (void) registerMessageNotification{
-//    [[NSNotificationCenter defaultCenter] addObserver:self
-//                                             selector:@selector(didShowNearbyGroupList:)
-//                                                 name:NOTI_H__GROUP_SEARCH_
-//                                               object:nil];
-//}
-//
-//- (void) reomveMessageNotification{
-//    [[NSNotificationCenter defaultCenter] removeObserver:self];
-//}
-//
-//- (void) didShowNearbyGroupList:(NSNotification *)notification {
-//    [self.tableView reloadData];
-//}
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    DPNearby *dpNearby = [[DiscoveryDataProxy sharedProxy] getNearbyListInfoAtRow:indexPath.row];
+    if (dpNearby.type == NEARBY_USER) {
+        DPUser *dpUser = [[UserDataProxy sharedProxy] getUserByUid:dpNearby.dataID];
+        [UserDataProxy sharedProxy].showUserInfoUid = dpUser.uid;
+        self.userShowViewController = [[UserShowViewController alloc] init];
+        self.userShowViewController.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:self.userShowViewController animated:YES];
+
+    }
+}
+
 #pragma mark - 消息处理
 - (void) registerMessageNotification{
     [[NSNotificationCenter defaultCenter] addObserver:self
                                           selector:@selector(didShowNearbyList:)
                                           name:NOTI_H__DISCOVERY_NEARBYLIST_
                                           object:nil];
+    
+    //LBS_NOTI_didUpdateLocations
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(didrefreshNearbyList:)
+                                                 name:LBS_NOTI_didUpdateLocations
+                                               object:nil];
 }
 
 - (void) reomveMessageNotification{
@@ -193,6 +200,17 @@
 
 - (void) didShowNearbyList:(NSNotification *)notification{
     [self.tableview reloadData];
+}
+
+- (void) didrefreshNearbyList:(NSNotification *)notification{
+    if(notification.object != nil)
+         NSLog(@"没有开启获取地理位置");
+    else
+        [self getNearbyList];
+}
+
+- (void)getNearbyList{
+    [[DiscoveryDataProxy sharedProxy]getNearbyList:SEND_NEARBYLIST_HTTP_YES];
 }
 
 

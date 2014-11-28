@@ -20,8 +20,11 @@
 #import "DPUser.h"
 #import "DPNearbyClub.h"
 #import "ClubDataProxy.h"
+#import "UserShowViewController.h"
 
 @interface NearbyTableViewController : UITableViewController
 @property (strong, nonatomic) IBOutlet UITableView *tableview;
+
+@property (strong, nonatomic) UserShowViewController *userShowViewController;
 
 @end

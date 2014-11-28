@@ -43,7 +43,12 @@ static DiscoveryDataProxy *sharenDiscoveryProxy = nil;
     //发送http请求新的附近Item列表
     if (sendHttp == YES) {
         //经度    纬度      海拔 暂时为假数据
-        [[DiscoveryMessageProxy sharedProxy] sendDiscoveryNearbyList:39.12 longitude:115.725 altitude:0];
+        //获取用户当前位置
+        DPLocation *dpLocation = [[LocationDataProxy sharedProxy] getUserLocation];
+        if ([dpLocation isUpdated] != NO) {
+            [[DiscoveryMessageProxy sharedProxy] sendDiscoveryNearbyList:dpLocation.latitude longitude:dpLocation.longitude altitude:dpLocation.altitude];
+        }
+        [[DiscoveryMessageProxy sharedProxy] sendDiscoveryNearbyList:39.12 longitude:115.725 altitude:dpLocation.longitude];
     }
     return [self mutableArrayValueForKey:@"arrNearbyList"];
 }
