@@ -9,7 +9,8 @@
 #import "NearbyClubManagerTableViewCell.h"
 
 @implementation NearbyClubManagerTableViewCell
-
+@synthesize lblNickName;
+@synthesize lblDistance;
 - (void)awakeFromNib {
     // Initialization code
 }

@@ -332,6 +332,9 @@
 		ABAF97C81A09D44800BE29B8 /* LocationDataProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = ABAF97C71A09D44800BE29B8 /* LocationDataProxy.m */; };
 		ABAF97CB1A09F8F700BE29B8 /* DPLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = ABAF97CA1A09F8F700BE29B8 /* DPLocation.m */; };
 		ABAF97CC1A0A090200BE29B8 /* LocationDataProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = ABAF97C71A09D44800BE29B8 /* LocationDataProxy.m */; };
+		DB4933F61A26FABF00D6A540 /* DPNearbyClub.m in Sources */ = {isa = PBXBuildFile; fileRef = DB4933F51A26FABF00D6A540 /* DPNearbyClub.m */; };
+		DB4933F91A26FDCD00D6A540 /* DiscoveryDataProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = DB4933F81A26FDCD00D6A540 /* DiscoveryDataProxy.m */; };
+		DB4934041A2726B500D6A540 /* DPNearby.m in Sources */ = {isa = PBXBuildFile; fileRef = DB4934031A2726B500D6A540 /* DPNearby.m */; };
 		DB51918F1A24886700C56EFF /* CommonUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB51918E1A24886700C56EFF /* CommonUserViewController.m */; };
 		DB6FACB91A0B71DB0048B76B /* FindViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB6FACB81A0B71DB0048B76B /* FindViewController.m */; };
 		DB6FACBC1A0B77CA0048B76B /* FriendDynamicTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DB6FACBB1A0B77CA0048B76B /* FriendDynamicTableViewCell.m */; };
@@ -359,6 +362,9 @@
 		DBC83BBD1A25D9BD00B8EA81 /* NearbyGroupRecruitTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DBC83BBC1A25D9BD00B8EA81 /* NearbyGroupRecruitTableViewCell.m */; };
 		DBC83BC01A25DA5200B8EA81 /* NearbyClubTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DBC83BBF1A25DA5200B8EA81 /* NearbyClubTableViewCell.m */; };
 		DBC83BC31A25EE2E00B8EA81 /* GroupRecruitCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DBC83BC21A25EE2E00B8EA81 /* GroupRecruitCellTableViewCell.m */; };
+		DBCCC2501A2811BA004E4559 /* ClubDataProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = DBCCC24F1A2811BA004E4559 /* ClubDataProxy.m */; };
+		DBCCC2531A281598004E4559 /* DBClub.m in Sources */ = {isa = PBXBuildFile; fileRef = DBCCC2521A281598004E4559 /* DBClub.m */; };
+		DBCCC2591A281636004E4559 /* ClubDAO.m in Sources */ = {isa = PBXBuildFile; fileRef = DBCCC2581A281636004E4559 /* ClubDAO.m */; };
 		DBD2A9281A1996030020EECD /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DBD2A9271A1996030020EECD /* Images.xcassets */; };
 		DBD2A92B1A19D88D0020EECD /* head.png in Resources */ = {isa = PBXBuildFile; fileRef = DBD2A9291A19D88D0020EECD /* head.png */; };
 		DBD2A92E1A19E5430020EECD /* ActivityCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DBD2A92D1A19E5430020EECD /* ActivityCellTableViewCell.m */; };
@@ -736,6 +742,12 @@
 		ABAF97C71A09D44800BE29B8 /* LocationDataProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationDataProxy.m; sourceTree = "<group>"; };
 		ABAF97C91A09F8F700BE29B8 /* DPLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPLocation.h; sourceTree = "<group>"; };
 		ABAF97CA1A09F8F700BE29B8 /* DPLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPLocation.m; sourceTree = "<group>"; };
+		DB4933F41A26FABF00D6A540 /* DPNearbyClub.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPNearbyClub.h; sourceTree = "<group>"; };
+		DB4933F51A26FABF00D6A540 /* DPNearbyClub.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPNearbyClub.m; sourceTree = "<group>"; };
+		DB4933F71A26FDCD00D6A540 /* DiscoveryDataProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiscoveryDataProxy.h; sourceTree = "<group>"; };
+		DB4933F81A26FDCD00D6A540 /* DiscoveryDataProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiscoveryDataProxy.m; sourceTree = "<group>"; };
+		DB4934021A2726B500D6A540 /* DPNearby.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPNearby.h; sourceTree = "<group>"; };
+		DB4934031A2726B500D6A540 /* DPNearby.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPNearby.m; sourceTree = "<group>"; };
 		DB51918D1A24886700C56EFF /* CommonUserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonUserViewController.h; sourceTree = "<group>"; };
 		DB51918E1A24886700C56EFF /* CommonUserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonUserViewController.m; sourceTree = "<group>"; };
 		DB6FACB71A0B71DB0048B76B /* FindViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FindViewController.h; sourceTree = "<group>"; };
@@ -779,6 +791,12 @@
 		DBC83BBF1A25DA5200B8EA81 /* NearbyClubTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NearbyClubTableViewCell.m; sourceTree = "<group>"; };
 		DBC83BC11A25EE2E00B8EA81 /* GroupRecruitCellTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupRecruitCellTableViewCell.h; sourceTree = "<group>"; };
 		DBC83BC21A25EE2E00B8EA81 /* GroupRecruitCellTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupRecruitCellTableViewCell.m; sourceTree = "<group>"; };
+		DBCCC24E1A2811BA004E4559 /* ClubDataProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClubDataProxy.h; sourceTree = "<group>"; };
+		DBCCC24F1A2811BA004E4559 /* ClubDataProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClubDataProxy.m; sourceTree = "<group>"; };
+		DBCCC2511A281598004E4559 /* DBClub.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBClub.h; sourceTree = "<group>"; };
+		DBCCC2521A281598004E4559 /* DBClub.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBClub.m; sourceTree = "<group>"; };
+		DBCCC2571A281636004E4559 /* ClubDAO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClubDAO.h; sourceTree = "<group>"; };
+		DBCCC2581A281636004E4559 /* ClubDAO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClubDAO.m; sourceTree = "<group>"; };
 		DBD2A9271A1996030020EECD /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		DBD2A92A1A19D88D0020EECD /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "zh-Hans"; path = "zh-Hans.lproj/head.png"; sourceTree = "<group>"; };
 		DBD2A92C1A19E5430020EECD /* ActivityCellTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityCellTableViewCell.h; sourceTree = "<group>"; };
@@ -957,6 +975,10 @@
 				11FFA4F61A1C646E00F6F00A /* ActivityDAO.m */,
 				11DF5F731A25C23100520243 /* ActivityMemberDAO.h */,
 				11DF5F741A25C23100520243 /* ActivityMemberDAO.m */,
+				DBCCC2511A281598004E4559 /* DBClub.h */,
+				DBCCC2521A281598004E4559 /* DBClub.m */,
+				DBCCC2571A281636004E4559 /* ClubDAO.h */,
+				DBCCC2581A281636004E4559 /* ClubDAO.m */,
 			);
 			path = Database;
 			sourceTree = "<group>";
@@ -1224,6 +1246,14 @@
 				11DF5F6C1A25755800520243 /* DPNearbyActivity.m */,
 				11DF5F771A25C4AE00520243 /* DPActivityMember.h */,
 				11DF5F781A25C4AE00520243 /* DPActivityMember.m */,
+				DB4933F41A26FABF00D6A540 /* DPNearbyClub.h */,
+				DB4933F51A26FABF00D6A540 /* DPNearbyClub.m */,
+				DB4934021A2726B500D6A540 /* DPNearby.h */,
+				DB4934031A2726B500D6A540 /* DPNearby.m */,
+				DB4933F71A26FDCD00D6A540 /* DiscoveryDataProxy.h */,
+				DB4933F81A26FDCD00D6A540 /* DiscoveryDataProxy.m */,
+				DBCCC24E1A2811BA004E4559 /* ClubDataProxy.h */,
+				DBCCC24F1A2811BA004E4559 /* ClubDataProxy.m */,
 			);
 			name = DataProxy;
 			sourceTree = "<group>";
@@ -1663,6 +1693,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DB4933F91A26FDCD00D6A540 /* DiscoveryDataProxy.m in Sources */,
 				AB1B830D1A1D9A8D00BDC841 /* DiscoveryMessageProxy.m in Sources */,
 				DBD687771A1C8AF00001857D /* DBFanUser.m in Sources */,
 				117AC6A419EE7C2F00143973 /* DPUserFromContact.m in Sources */,
@@ -1673,6 +1704,7 @@
 				111B4EBD1A0A2E180043A29F /* ActivityRunningTabChatController.m in Sources */,
 				11FFA5131A1CA4BE00F6F00A /* ActivityCreateTableInfoCell.m in Sources */,
 				5DBDE2B51A22179E00E28642 /* FIRMessageProxy.m in Sources */,
+				DBCCC2501A2811BA004E4559 /* ClubDataProxy.m in Sources */,
 				11FC326F19F0A92C000A6733 /* FriendTableViewController.m in Sources */,
 				11FDE12319EFB516002AEDB7 /* FriendDAO.m in Sources */,
 				11DF5F6D1A25755800520243 /* DPNearbyActivity.m in Sources */,
@@ -1713,6 +1745,7 @@
 				116B6E9519B058A400DB1B5E /* SqlightAdapter.m in Sources */,
 				58B496E819A7186A0082AE30 /* MKNetworkOperation.m in Sources */,
 				58BC1E3519C0304900722A00 /* RegisterViewController.m in Sources */,
+				DB4934041A2726B500D6A540 /* DPNearby.m in Sources */,
 				111B4EA21A0A28830043A29F /* ActivityListController.m in Sources */,
 				58BACF0F19B5DAB900A72391 /* imPhotoPicker.m in Sources */,
 				116B6E9619B058A400DB1B5E /* SqlightDriver.m in Sources */,
@@ -1767,9 +1800,11 @@
 				117A19001A10675E00E3B790 /* ChatGraphicsUtil.m in Sources */,
 				114BF74C1A1A468E00A28A94 /* FanUserDAO.m in Sources */,
 				58B496DA19A7186A0082AE30 /* NSData+MKBase64.m in Sources */,
+				DB4933F61A26FABF00D6A540 /* DPNearbyClub.m in Sources */,
 				DB6FACB91A0B71DB0048B76B /* FindViewController.m in Sources */,
 				DBC83BC31A25EE2E00B8EA81 /* GroupRecruitCellTableViewCell.m in Sources */,
 				DBC83BBD1A25D9BD00B8EA81 /* NearbyGroupRecruitTableViewCell.m in Sources */,
+				DBCCC2531A281598004E4559 /* DBClub.m in Sources */,
 				58E8699B1A1DB776001437A2 /* ChatImageTableViewCell.m in Sources */,
 				116BF87119C81E030015561B /* AudioRecordManager.m in Sources */,
 				1171F7C419E8DE4000865A0B /* AddressInviteTableViewCell.m in Sources */,
@@ -1840,6 +1875,7 @@
 				116BF87F19C981AD0015561B /* DPUser.m in Sources */,
 				58D026C419D17D4800BE4748 /* NSNumber+IMNWError.m in Sources */,
 				111B4EB51A0A2DD90043A29F /* ActivityReadyTabChatController.m in Sources */,
+				DBCCC2591A281636004E4559 /* ClubDAO.m in Sources */,
 				DBC83B951A2577D600B8EA81 /* UserInfoTableViewCell.m in Sources */,
 				58F2AA3919A487E300DC2FFB /* AsyncSocket.m in Sources */,
 				DBC83BBA1A25D99900B8EA81 /* NearbyClubManagerTableViewCell.m in Sources */,

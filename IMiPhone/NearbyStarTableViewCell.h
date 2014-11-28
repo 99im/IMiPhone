@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface NearbyStarTableViewCell : UITableViewCell
-
+@property (weak, nonatomic) IBOutlet UILabel *lblNickName;
+@property (weak, nonatomic) IBOutlet UILabel *lblDistance;
 @end

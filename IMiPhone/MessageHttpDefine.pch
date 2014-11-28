@@ -4,6 +4,360 @@
 
 /*
 mark: activity
+type: /activity/feeddel/
+kind: http
+method: http-get
+describe: feed流删除
+example: http://local.taiqiu.com:7070/activity/feeddel/?aid=12&fid=20&verify=17_1411380649_8cd8f6306fb1232f98573dae4e137f50
+
+{
+"error_code": 0
+}
+*/
+#define PATH_H__ACTIVITY_FEEDDEL_ @"/activity/feeddel/"
+#define NOTI_H__ACTIVITY_FEEDDEL_ @"MPactivityfeeddelNotifiction"
+#define METHOD_H__ACTIVITY_FEEDDEL_ @"GET"
+#define KEYQ_H__ACTIVITY_FEEDDEL__AID @"aid" //aid int 
+#define KEYQ_H__ACTIVITY_FEEDDEL__FID @"fid" //fid int
+#define KEYP_H__ACTIVITY_FEEDDEL__ERROR_CODE @"error_code" //error_code int
+
+/*
+mark: activity
+type: /activity/feedlist/
+kind: http
+method: http-get
+describe: 获取活动的feed流列表
+
+example: http://local.taiqiu.com:7070/activity/feedlist/?aid=12&afterFid=12&verify=17_1411380649_8cd8f6306fb1232f98573dae4e137f50
+
+{
+"error_code": 0,
+"list": [
+{
+"fid": 13,
+"objType": 2,
+"objId": 12,
+"cType": 0,
+"content": "hellofeed",
+"pics": "",
+"url": "",
+"thumbPid": 0,
+"title": "",
+"status": 0,
+"uid": 17,
+"ctime": "2014-11-26 19:38:23",
+"uinfo": {
+"uid": 17,
+"oid": "17",
+"nick": "嘎嘎嘎",
+"city": "",
+"gender": 1,
+"vip": 0,
+"logoAlbumId": 20,
+"logo": null,
+"roles": [
+0
+]
+}
+},
+{
+"fid": 14,
+"objType": 2,
+"objId": 12,
+"cType": 0,
+"content": "hellofeed",
+"pics": "",
+"url": "",
+"thumbPid": 0,
+"title": "",
+"status": 0,
+"uid": 17,
+"ctime": "2014-11-26 19:38:24",
+"uinfo": {
+"uid": 17,
+"oid": "17",
+"nick": "嘎嘎嘎",
+"city": "",
+"gender": 1,
+"vip": 0,
+"logoAlbumId": 20,
+"logo": null,
+"roles": [
+0
+]
+}
+},
+{
+"fid": 15,
+"objType": 2,
+"objId": 12,
+"cType": 0,
+"content": "hellofeed",
+"pics": "",
+"url": "",
+"thumbPid": 0,
+"title": "",
+"status": 0,
+"uid": 17,
+"ctime": "2014-11-26 19:54:09",
+"uinfo": {
+"uid": 17,
+"oid": "17",
+"nick": "嘎嘎嘎",
+"city": "",
+"gender": 1,
+"vip": 0,
+"logoAlbumId": 20,
+"logo": null,
+"roles": [
+0
+]
+}
+},
+{
+"fid": 16,
+"objType": 2,
+"objId": 12,
+"cType": 0,
+"content": "hellopic",
+"pics": "",
+"url": "",
+"thumbPid": 0,
+"title": "",
+"status": 0,
+"uid": 17,
+"ctime": "2014-11-27 10:05:00",
+"uinfo": {
+"uid": 17,
+"oid": "17",
+"nick": "嘎嘎嘎",
+"city": "",
+"gender": 1,
+"vip": 0,
+"logoAlbumId": 20,
+"logo": null,
+"roles": [
+0
+]
+}
+},
+{
+"fid": 17,
+"objType": 2,
+"objId": 12,
+"cType": 0,
+"content": "hellopic",
+"pics": "",
+"url": "",
+"thumbPid": 0,
+"title": "",
+"status": 0,
+"uid": 17,
+"ctime": "2014-11-27 10:05:03",
+"uinfo": {
+"uid": 17,
+"oid": "17",
+"nick": "嘎嘎嘎",
+"city": "",
+"gender": 1,
+"vip": 0,
+"logoAlbumId": 20,
+"logo": null,
+"roles": [
+0
+]
+}
+},
+{
+"fid": 18,
+"objType": 2,
+"objId": 12,
+"cType": 1,
+"content": "hellopic",
+"pics": [],
+"url": "",
+"thumbPid": 0,
+"title": "",
+"status": 0,
+"uid": 17,
+"ctime": "2014-11-27 10:05:11",
+"uinfo": {
+"uid": 17,
+"oid": "17",
+"nick": "嘎嘎嘎",
+"city": "",
+"gender": 1,
+"vip": 0,
+"logoAlbumId": 20,
+"logo": null,
+"roles": [
+0
+]
+}
+},
+{
+"fid": 19,
+"objType": 2,
+"objId": 12,
+"cType": 1,
+"content": "hellopic",
+"pics": [
+{
+"pid": 113,
+"src": "http://local.p.taiqiuui.com:81/i/5/2/12/113/40612091a28cbb2e6edf75216c301a43.jpeg",
+"thumb": "http://local.p.taiqiuui.com:81/i/5/2/12/113/40612091a28cbb2e6edf75216c301a43_250x250.jpeg"
+},
+{
+"pid": 114,
+"src": "http://local.p.taiqiuui.com:81/i/5/2/12/114/19ba6c95ac695deeb1b61a0f1883d714.jpeg",
+"thumb": "http://local.p.taiqiuui.com:81/i/5/2/12/114/19ba6c95ac695deeb1b61a0f1883d714_250x250.jpeg"
+}
+],
+"url": "",
+"thumbPid": 0,
+"title": "",
+"status": 0,
+"uid": 17,
+"ctime": "2014-11-27 10:06:55",
+"uinfo": {
+"uid": 17,
+"oid": "17",
+"nick": "嘎嘎嘎",
+"city": "",
+"gender": 1,
+"vip": 0,
+"logoAlbumId": 20,
+"logo": null,
+"roles": [
+0
+]
+}
+},
+{
+"fid": 20,
+"objType": 2,
+"objId": 12,
+"cType": 1,
+"content": "hellopic",
+"pics": [
+{
+"pid": 113,
+"src": "http://local.p.taiqiuui.com:81/i/5/2/12/113/40612091a28cbb2e6edf75216c301a43.jpeg",
+"thumb": "http://local.p.taiqiuui.com:81/i/5/2/12/113/40612091a28cbb2e6edf75216c301a43_250x250.jpeg"
+},
+{
+"pid": 114,
+"src": "http://local.p.taiqiuui.com:81/i/5/2/12/114/19ba6c95ac695deeb1b61a0f1883d714.jpeg",
+"thumb": "http://local.p.taiqiuui.com:81/i/5/2/12/114/19ba6c95ac695deeb1b61a0f1883d714_250x250.jpeg"
+}
+],
+"url": "",
+"thumbPid": 0,
+"title": "",
+"status": 0,
+"uid": 17,
+"ctime": "2014-11-27 10:12:35",
+"uinfo": {
+"uid": 17,
+"oid": "17",
+"nick": "嘎嘎嘎",
+"city": "",
+"gender": 1,
+"vip": 0,
+"logoAlbumId": 20,
+"logo": null,
+"roles": [
+0
+]
+}
+}
+]
+}
+*/
+#define PATH_H__ACTIVITY_FEEDLIST_ @"/activity/feedlist/"
+#define NOTI_H__ACTIVITY_FEEDLIST_ @"MPactivityfeedlistNotifiction"
+#define METHOD_H__ACTIVITY_FEEDLIST_ @"GET"
+#define KEYQ_H__ACTIVITY_FEEDLIST__AID @"aid" //aid int 群编号
+#define KEYQ_H__ACTIVITY_FEEDLIST__BEFOREFID @"beforeFid" //beforeFid int 获取消息编号之前的消息，fid倒叙排列
+#define KEYQ_H__ACTIVITY_FEEDLIST__AFTERFID @"afterFid" //afterFid int 获取消息编号之后的消息，fid正叙排列 (如何beforeMid和afterFid都为0，则返回最新的)
+#define KEYQ_H__ACTIVITY_FEEDLIST__START @"start" //start int 开始
+#define KEYQ_H__ACTIVITY_FEEDLIST__PAGENUM @"pageNum" //pageNum int 数量（默认为20）
+#define KEYP_H__ACTIVITY_FEEDLIST__ERROR_CODE @"error_code" //error_code
+#define KEYP_H__ACTIVITY_FEEDLIST__LIST @"list" //list
+#define KEYP_H__ACTIVITY_FEEDLIST__LIST_FID @"fid" // fid int feed编号
+#define KEYP_H__ACTIVITY_FEEDLIST__LIST_CTYPE @"cType" // cType int feed类型
+#define KEYP_H__ACTIVITY_FEEDLIST__LIST_CONTENT @"content" // content string
+#define KEYP_H__ACTIVITY_FEEDLIST__LIST_TITLE @"title" // title string
+#define KEYP_H__ACTIVITY_FEEDLIST__LIST_URL @"url" // url string
+#define KEYP_H__ACTIVITY_FEEDLIST__LIST_PICS @"pics" // pics array
+#define KEYP_H__ACTIVITY_FEEDLIST__LIST_PICS_PID @"pid" //  pid
+#define KEYP_H__ACTIVITY_FEEDLIST__LIST_PICS_SRC @"src" //  src
+#define KEYP_H__ACTIVITY_FEEDLIST__LIST_PICS_THUMB @"thumb" //  thumb
+#define KEYP_H__ACTIVITY_FEEDLIST__LIST_UINFO @"uinfo" // uinfo object
+#define KEYP_H__ACTIVITY_FEEDLIST__LIST_CTIME @"ctime" // ctime int 时间
+
+/*
+mark: activity
+type: /activity/feed/
+kind: http
+method: http-post
+describe: 发表活动 feed
+example: http://local.taiqiu.com:7070/activity/feed/?aid=12&content=hellopic&pics=116&verify=17_1411380649_8cd8f6306fb1232f98573dae4e137f50
+
+{
+"error_code": 0
+}
+*/
+#define PATH_H__ACTIVITY_FEED_ @"/activity/feed/"
+#define NOTI_H__ACTIVITY_FEED_ @"MPactivityfeedNotifiction"
+#define METHOD_H__ACTIVITY_FEED_ @"POST"
+#define KEYQ_H__ACTIVITY_FEED__AID @"aid" //aid int 活动id
+#define KEYQ_H__ACTIVITY_FEED__CTYPE @"cType" //cType int feed 类型 0 为纯文字 1 为图片 2为分享
+#define KEYQ_H__ACTIVITY_FEED__CONTENT @"content" //content string 文字内容 700字上限
+#define KEYQ_H__ACTIVITY_FEED__PICS @"pics" //pics string 112,113 上传的图片的id串（逗号隔开）
+#define KEYQ_H__ACTIVITY_FEED__TITLE @"title" //title string 分享标题 128长度
+#define KEYQ_H__ACTIVITY_FEED__URL @"url" //url string 分享url 255长度
+#define KEYQ_H__ACTIVITY_FEED__THUMBPID @"thumbPid" //thumbPid int 预览图pid
+#define KEYP_H__ACTIVITY_FEED__ERROR_CODE @"error_code" //error_code int 0
+
+
+#define MARK_PHOTO @"photo"
+
+/*
+mark: photo
+type: /photo/upload/
+kind: http
+method: http-post
+describe: 图片通用上传接口
+
+objType 说明
+ 0 用户
+ 1 群组
+ 2 活动
+
+example: http://local.taiqiu.com:7070/photo/upload/?verify=17_1411380649_8cd8f6306fb1232f98573dae4e137f50
+
+{
+
+"error_code": 0,
+"pid": 116,
+"albumId": 0
+}
+*/
+#define PATH_H__PHOTO_UPLOAD_ @"/photo/upload/"
+#define NOTI_H__PHOTO_UPLOAD_ @"MPphotouploadNotifiction"
+#define METHOD_H__PHOTO_UPLOAD_ @"POST"
+#define KEYQ_H__PHOTO_UPLOAD__OBJTYPE @"objType" //objType int 图片所属对象类型
+#define KEYQ_H__PHOTO_UPLOAD__OBJID @"objId" //objId int 图片所属对象Id
+#define KEYQ_H__PHOTO_UPLOAD__UPLOADIMG @"uploadimg" //uploadimg FILE 图片
+#define KEYQ_H__PHOTO_UPLOAD__TITLE @"title" //title string 图片标题
+#define KEYQ_H__PHOTO_UPLOAD__EXIF @"exif" //exif string 图片扩展信息
+#define KEYP_H__PHOTO_UPLOAD__ERROR_CODE @"error_code" //error_code int 0
+#define KEYP_H__PHOTO_UPLOAD__PID @"pid" //pid int 图片id
+#define KEYP_H__PHOTO_UPLOAD__ALBUMID @"albumId" //albumId int 图片所属专辑id
+
+/*
+mark: activity
 type: /activity/logo/sort/
 kind: http
 method: http-get
@@ -770,9 +1124,6 @@ example: http://local.taiqiu.com:7070/chat/chatlist/?stage=group&targetId=8&befo
 #define KEYP_H__CHAT_CHATLIST__LIST_CTIME @"ctime" // ctime int 时间
 #define KEYP_H__CHAT_CHATLIST__LIST_STATUS @"status" // status int 状态
 
-
-#define MARK_PHOTO @"photo"
-
 /*
 mark: photo
 type: /photo/logo-del/
@@ -915,61 +1266,28 @@ method: http-get
 describe: 获取评论列表
 parentCid指定主线获取
 
-example: http://local.taiqiu.com:7070/comment/list/?otype=1&oid=1&ruid=17&parentCid=0&verify=16_1411380260_8e01b76b234112ca88fdb3645eacac44
+example: http://local.taiqiu.com:7070/comment/list/?objType=2&objId=12&verify=16_1411380260_8e01b76b234112ca88fdb3645eacac44
 
 {
 "error_code": 0,
 "list": [
 {
-"cid": 7,
-"otype": 1,
-"oid": 1,
-"parentCid": 0,
-"childNum": 2,
-"suid": 16,
-"ruid": 17,
-"juid": 0,
-"ctime": "2014-11-11 11:10:05",
-"lasttime": "0000-00-00 00:00:00",
-"hidden": 0,
-"del": 0,
-"delUid": 0,
-"contentType": 0,
-"content": "test"
-},
-{
-"cid": 8,
-"otype": 1,
-"oid": 1,
+"cid": 13,
+"objType": 2,
+"objId": 12,
 "parentCid": 0,
 "childNum": 0,
 "suid": 16,
-"ruid": 17,
+"ruid": 0,
 "juid": 0,
-"ctime": "2014-11-11 11:10:51",
+"ctime": "2014-11-27 14:38:00",
 "lasttime": "0000-00-00 00:00:00",
 "hidden": 0,
 "del": 0,
 "delUid": 0,
-"contentType": 0,
-"content": "test"
-},
-{
-"cid": 9,
-"otype": 1,
-"oid": 1,
-"parentCid": 0,
-"childNum": 0,
-"suid": 16,
-"ruid": 17,
-"juid": 0,
-"ctime": "2014-11-11 11:10:52",
-"lasttime": "0000-00-00 00:00:00",
-"hidden": 0,
-"del": 0,
-"delUid": 0,
-"contentType": 0,
-"content": "test"
+"cType": 0,
+"content": "test",
+"pics": ""
 }
 ],
 "uinfos": {
@@ -978,14 +1296,13 @@ example: http://local.taiqiu.com:7070/comment/list/?otype=1&oid=1&ruid=17&parent
 "oid": "16",
 "nick": "谁谁谁",
 "city": "",
-"vip": 0
-},
-"17": {
-"uid": 17,
-"oid": "17",
-"nick": "嘎嘎嘎",
-"city": "",
-"vip": 0
+"gender": 0,
+"vip": 0,
+"logoAlbumId": 0,
+"logo": null,
+"roles": [
+0
+]
 }
 }
 }
@@ -993,8 +1310,8 @@ example: http://local.taiqiu.com:7070/comment/list/?otype=1&oid=1&ruid=17&parent
 #define PATH_H__COMMENT_LIST_ @"/comment/list/"
 #define NOTI_H__COMMENT_LIST_ @"MPcommentlistNotifiction"
 #define METHOD_H__COMMENT_LIST_ @"GET"
-#define KEYQ_H__COMMENT_LIST__OTYPE @"otype" //otype int 评论对象类型
-#define KEYQ_H__COMMENT_LIST__OID @"oid" //oid int 评论对象id
+#define KEYQ_H__COMMENT_LIST__OBJTYPE @"objType" //objType int 评论对象类型
+#define KEYQ_H__COMMENT_LIST__OBJID @"objId" //objId int 评论对象id
 #define KEYQ_H__COMMENT_LIST__RUID @"ruid" //ruid int 评论对象所属uid
 #define KEYQ_H__COMMENT_LIST__PARENTCID @"parentCid" //parentCid int 评论对象为评论时，评论id
 #define KEYP_H__COMMENT_LIST__ERROR_CODE @"error_code" //error_code int 0
@@ -1014,10 +1331,10 @@ type: /comment/post/
 kind: http
 method: http-post
 describe: 评论
-otype 说明
- 1 测试对象
+objType 说明
+ 2 活动留言
  
-example: http://local.taiqiu.com:7070/comment/post/?otype=1&oid=1&ruid=17&parentCid=7&contentType=0&content=test&verify=16_1411380260_8e01b76b234112ca88fdb3645eacac44
+example: http://local.taiqiu.com:7070/comment/post/?objType=2&objId=12&ruid=0&contentType=0&content=test&verify=16_1411380260_8e01b76b234112ca88fdb3645eacac44
 
 {
 "error_code": 0,
@@ -1027,12 +1344,12 @@ example: http://local.taiqiu.com:7070/comment/post/?otype=1&oid=1&ruid=17&parent
 #define PATH_H__COMMENT_POST_ @"/comment/post/"
 #define NOTI_H__COMMENT_POST_ @"MPcommentpostNotifiction"
 #define METHOD_H__COMMENT_POST_ @"POST"
-#define KEYQ_H__COMMENT_POST__OTYPE @"otype" //otype int 评论对象类型
-#define KEYQ_H__COMMENT_POST__OID @"oid" //oid int 评论对象id
+#define KEYQ_H__COMMENT_POST__OBJTYPE @"objType" //objType int 评论对象类型
+#define KEYQ_H__COMMENT_POST__OBJID @"objId" //objId int 评论对象id
 #define KEYQ_H__COMMENT_POST__RUID @"ruid" //ruid int 评论对象所属uid
 #define KEYQ_H__COMMENT_POST__JUID @"juid" //juid int 当前评论参与者
 #define KEYQ_H__COMMENT_POST__HIDDEN @"hidden" //hidden int 是否为悄悄话 0不是 1是
-#define KEYQ_H__COMMENT_POST__CONTENTTYPE @"contentType" //contentType int 评论内容类型 0 为文字
+#define KEYQ_H__COMMENT_POST__CTYPE @"cType" //cType int 评论内容类型 0 为文字
 #define KEYQ_H__COMMENT_POST__CONTENT @"content" //content string 评论内容
 #define KEYQ_H__COMMENT_POST__PARENTCID @"parentCid" //parentCid int 评论对象为评论时，评论id
 #define KEYP_H__COMMENT_POST__ERROR_CODE @"error_code" //error_code int 0
@@ -1202,6 +1519,8 @@ example: http://local.taiqiu.com:7070/discovery/nearbylist/?lon=115.725&lat=39.1
 #define KEYP_H__DISCOVERY_NEARBYLIST__LIST_DATA @"data" // data object
 #define KEYP_H__DISCOVERY_NEARBYLIST__LIST_DATA_UID @"uid" //  uid
 #define KEYP_H__DISCOVERY_NEARBYLIST__LIST_DATA_UINFO @"uinfo" //  uinfo
+#define KEYP_H__DISCOVERY_NEARBYLIST__LIST_DATA_CLUBID @"clubId" //  clubId
+#define KEYP_H__DISCOVERY_NEARBYLIST__LIST_DATA_NAME @"name" //  name
 
 /*
 mark: discovery
