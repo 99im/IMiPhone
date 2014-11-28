@@ -10,6 +10,7 @@
 
 @interface NearbyTableViewController ()
 
+
 @end
 
 @implementation NearbyTableViewController
@@ -34,7 +35,14 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-   
+    //获取用户当前位置
+    DPLocation *dpLocation = [[LocationDataProxy sharedProxy] getUserLocation];
+    NSLog(@"%i <%f, %f>", (int)dpLocation.dataStatus , dpLocation.latitude, dpLocation.longitude);
+}
+
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [[LocationDataProxy sharedProxy] stopUpdatingLocation];
 }
 
 - (void) viewDidAppear:(BOOL)animated{

@@ -24,12 +24,10 @@
 		110FCCA119ADF83C0087CBCB /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 110FCCA019ADF83A0087CBCB /* libsqlite3.dylib */; };
 		111B4EA21A0A28830043A29F /* ActivityListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 111B4EA11A0A28830043A29F /* ActivityListController.m */; };
 		111B4EA31A0A28830043A29F /* ActivityListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 111B4EA11A0A28830043A29F /* ActivityListController.m */; };
-		111B4EA91A0A2A8E0043A29F /* ActivityReadyTabController.m in Sources */ = {isa = PBXBuildFile; fileRef = 111B4EA81A0A2A8E0043A29F /* ActivityReadyTabController.m */; };
-		111B4EAA1A0A2A8E0043A29F /* ActivityReadyTabController.m in Sources */ = {isa = PBXBuildFile; fileRef = 111B4EA81A0A2A8E0043A29F /* ActivityReadyTabController.m */; };
+		111B4EA91A0A2A8E0043A29F /* ActivityReadyInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 111B4EA81A0A2A8E0043A29F /* ActivityReadyInfoController.m */; };
+		111B4EAA1A0A2A8E0043A29F /* ActivityReadyInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 111B4EA81A0A2A8E0043A29F /* ActivityReadyInfoController.m */; };
 		111B4EAD1A0A2B100043A29F /* ActivityRuningTabController.m in Sources */ = {isa = PBXBuildFile; fileRef = 111B4EAC1A0A2B100043A29F /* ActivityRuningTabController.m */; };
 		111B4EAE1A0A2B100043A29F /* ActivityRuningTabController.m in Sources */ = {isa = PBXBuildFile; fileRef = 111B4EAC1A0A2B100043A29F /* ActivityRuningTabController.m */; };
-		111B4EB11A0A2D5A0043A29F /* ActivityGroupChatController.m in Sources */ = {isa = PBXBuildFile; fileRef = 111B4EB01A0A2D5A0043A29F /* ActivityGroupChatController.m */; };
-		111B4EB21A0A2D5A0043A29F /* ActivityGroupChatController.m in Sources */ = {isa = PBXBuildFile; fileRef = 111B4EB01A0A2D5A0043A29F /* ActivityGroupChatController.m */; };
 		111B4EB51A0A2DD90043A29F /* ActivityReadyTabChatController.m in Sources */ = {isa = PBXBuildFile; fileRef = 111B4EB41A0A2DD90043A29F /* ActivityReadyTabChatController.m */; };
 		111B4EB61A0A2DD90043A29F /* ActivityReadyTabChatController.m in Sources */ = {isa = PBXBuildFile; fileRef = 111B4EB41A0A2DD90043A29F /* ActivityReadyTabChatController.m */; };
 		111B4EB91A0A2DFE0043A29F /* ActivityReadyTabMembersController.m in Sources */ = {isa = PBXBuildFile; fileRef = 111B4EB81A0A2DFE0043A29F /* ActivityReadyTabMembersController.m */; };
@@ -416,12 +414,10 @@
 		110FCCA019ADF83A0087CBCB /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		111B4EA01A0A28830043A29F /* ActivityListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityListController.h; sourceTree = "<group>"; };
 		111B4EA11A0A28830043A29F /* ActivityListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityListController.m; sourceTree = "<group>"; };
-		111B4EA71A0A2A8E0043A29F /* ActivityReadyTabController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityReadyTabController.h; sourceTree = "<group>"; };
-		111B4EA81A0A2A8E0043A29F /* ActivityReadyTabController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityReadyTabController.m; sourceTree = "<group>"; };
+		111B4EA71A0A2A8E0043A29F /* ActivityReadyInfoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityReadyInfoController.h; sourceTree = "<group>"; };
+		111B4EA81A0A2A8E0043A29F /* ActivityReadyInfoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityReadyInfoController.m; sourceTree = "<group>"; };
 		111B4EAB1A0A2B100043A29F /* ActivityRuningTabController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityRuningTabController.h; sourceTree = "<group>"; };
 		111B4EAC1A0A2B100043A29F /* ActivityRuningTabController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityRuningTabController.m; sourceTree = "<group>"; };
-		111B4EAF1A0A2D5A0043A29F /* ActivityGroupChatController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityGroupChatController.h; sourceTree = "<group>"; };
-		111B4EB01A0A2D5A0043A29F /* ActivityGroupChatController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityGroupChatController.m; sourceTree = "<group>"; };
 		111B4EB31A0A2DD90043A29F /* ActivityReadyTabChatController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityReadyTabChatController.h; sourceTree = "<group>"; };
 		111B4EB41A0A2DD90043A29F /* ActivityReadyTabChatController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityReadyTabChatController.m; sourceTree = "<group>"; };
 		111B4EB71A0A2DFE0043A29F /* ActivityReadyTabMembersController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityReadyTabMembersController.h; sourceTree = "<group>"; };
@@ -895,15 +891,14 @@
 		111B4E9A1A0A26800043A29F /* Activity */ = {
 			isa = PBXGroup;
 			children = (
+				11F1C3F41A28125F00207753 /* CreatCells */,
 				11D8C7541A27754C006EC036 /* InfoCells */,
 				111B4EA01A0A28830043A29F /* ActivityListController.h */,
 				111B4EA11A0A28830043A29F /* ActivityListController.m */,
-				111B4EA71A0A2A8E0043A29F /* ActivityReadyTabController.h */,
-				111B4EA81A0A2A8E0043A29F /* ActivityReadyTabController.m */,
+				111B4EA71A0A2A8E0043A29F /* ActivityReadyInfoController.h */,
+				111B4EA81A0A2A8E0043A29F /* ActivityReadyInfoController.m */,
 				111B4EAB1A0A2B100043A29F /* ActivityRuningTabController.h */,
 				111B4EAC1A0A2B100043A29F /* ActivityRuningTabController.m */,
-				111B4EAF1A0A2D5A0043A29F /* ActivityGroupChatController.h */,
-				111B4EB01A0A2D5A0043A29F /* ActivityGroupChatController.m */,
 				111B4EB31A0A2DD90043A29F /* ActivityReadyTabChatController.h */,
 				111B4EB41A0A2DD90043A29F /* ActivityReadyTabChatController.m */,
 				111B4EB71A0A2DFE0043A29F /* ActivityReadyTabMembersController.h */,
@@ -916,18 +911,6 @@
 				111B4ECC1A0A30AC0043A29F /* ActivityDetailController.m */,
 				11FFA5011A1C9EE400F6F00A /* ActivityCreateTabelController.h */,
 				11FFA5021A1C9EE400F6F00A /* ActivityCreateTabelController.m */,
-				11FFA5051A1CA2A300F6F00A /* ActivityCreateTableOptionCell.h */,
-				11FFA5061A1CA2A300F6F00A /* ActivityCreateTableOptionCell.m */,
-				11FFA5091A1CA34E00F6F00A /* ActivityCreateTableTitleCell.h */,
-				11FFA50A1A1CA34E00F6F00A /* ActivityCreateTableTitleCell.m */,
-				11FFA50D1A1CA3FF00F6F00A /* ActivityCreateTableLimitCell.h */,
-				11FFA50E1A1CA3FF00F6F00A /* ActivityCreateTableLimitCell.m */,
-				11FFA5111A1CA4BE00F6F00A /* ActivityCreateTableInfoCell.h */,
-				11FFA5121A1CA4BE00F6F00A /* ActivityCreateTableInfoCell.m */,
-				11FFA51D1A1CE27100F6F00A /* ActivityCreateTableLabelDateCell.h */,
-				11FFA51E1A1CE27100F6F00A /* ActivityCreateTableLabelDateCell.m */,
-				11FFA5211A1CE2AC00F6F00A /* ActivityCreateTableDetailCell.h */,
-				11FFA5221A1CE2AC00F6F00A /* ActivityCreateTableDetailCell.m */,
 				11DA19141A272AD700CBD32B /* ActivityListTableViewCell.h */,
 				11DA19151A272AD700CBD32B /* ActivityListTableViewCell.m */,
 			);
@@ -1100,6 +1083,25 @@
 				114376141A04E0C00058233D /* ChatMsgTableViewCellP2P.m */,
 			);
 			name = Msg;
+			sourceTree = "<group>";
+		};
+		11F1C3F41A28125F00207753 /* CreatCells */ = {
+			isa = PBXGroup;
+			children = (
+				11FFA5051A1CA2A300F6F00A /* ActivityCreateTableOptionCell.h */,
+				11FFA5061A1CA2A300F6F00A /* ActivityCreateTableOptionCell.m */,
+				11FFA5091A1CA34E00F6F00A /* ActivityCreateTableTitleCell.h */,
+				11FFA50A1A1CA34E00F6F00A /* ActivityCreateTableTitleCell.m */,
+				11FFA50D1A1CA3FF00F6F00A /* ActivityCreateTableLimitCell.h */,
+				11FFA50E1A1CA3FF00F6F00A /* ActivityCreateTableLimitCell.m */,
+				11FFA5111A1CA4BE00F6F00A /* ActivityCreateTableInfoCell.h */,
+				11FFA5121A1CA4BE00F6F00A /* ActivityCreateTableInfoCell.m */,
+				11FFA51D1A1CE27100F6F00A /* ActivityCreateTableLabelDateCell.h */,
+				11FFA51E1A1CE27100F6F00A /* ActivityCreateTableLabelDateCell.m */,
+				11FFA5211A1CE2AC00F6F00A /* ActivityCreateTableDetailCell.h */,
+				11FFA5221A1CE2AC00F6F00A /* ActivityCreateTableDetailCell.m */,
+			);
+			name = CreatCells;
 			sourceTree = "<group>";
 		};
 		581A27331A1AE70500E5BE5F /* pch */ = {
@@ -1536,6 +1538,8 @@
 				AB20EE8319F4DCCC004627C8 /* GroupDataProxy.m */,
 				AB4F947D19F789A500397549 /* DPGroup.h */,
 				AB4F947E19F789A500397549 /* DPGroup.m */,
+				ABBDD37D1A28549300F1C496 /* DPGroupMember.h */,
+				ABBDD37E1A28549300F1C496 /* DPGroupMember.m */,
 				11DF6A941A04B57C00A4B1D3 /* DPGroupChatMessage.h */,
 				11DF6A951A04B57C00A4B1D3 /* DPGroupChatMessage.m */,
 			);
@@ -1563,6 +1567,10 @@
 				58CDC03B19FE2EF600173FD7 /* GroupChatViewController.m */,
 				11DB34341A2481EC00223B6B /* GroupChatImageTableViewCell.h */,
 				11DB34351A2481EC00223B6B /* GroupChatImageTableViewCell.m */,
+				ABBDD3771A281C0100F1C496 /* GroupMembersTableViewController.h */,
+				ABBDD3781A281C0100F1C496 /* GroupMembersTableViewController.m */,
+				ABBDD37A1A281D6100F1C496 /* GroupMemberTableCell.h */,
+				ABBDD37B1A281D6100F1C496 /* GroupMemberTableCell.m */,
 			);
 			name = Group;
 			sourceTree = "<group>";
@@ -1818,6 +1826,7 @@
 				110487A219D79DFB0002AB36 /* ChatMessageDAO.m in Sources */,
 				58CDC04419FE355C00173FD7 /* SystemTableViewController.m in Sources */,
 				58F2AA3419A2F85400DC2FFB /* imUtil.m in Sources */,
+				ABBDD37C1A281D6100F1C496 /* GroupMemberTableCell.m in Sources */,
 				58D95F5119A5ECA4007139AB /* UserMessageProxy.m in Sources */,
 				58B9F66419F8D24100567BCC /* EmotionViewController.m in Sources */,
 				114BF73C1A198A6F00A28A94 /* DBFocusUser.m in Sources */,
@@ -1869,6 +1878,7 @@
 				58D3F28A19E63082006589F9 /* IMNWSocketConnect.m in Sources */,
 				AB20EE8719F4DD8C004627C8 /* GroupMessageProxy.m in Sources */,
 				111B4EB11A0A2D5A0043A29F /* ActivityGroupChatController.m in Sources */,
+				ABBDD3791A281C0100F1C496 /* GroupMembersTableViewController.m in Sources */,
 				116B6E8C19B0538300DB1B5E /* GroupDAO.m in Sources */,
 				DBC83B9E1A25781200B8EA81 /* UserBBSTableViewCell.m in Sources */,
 				111B4ECD1A0A30AC0043A29F /* ActivityDetailController.m in Sources */,
@@ -1906,6 +1916,7 @@
 				58B496E019A7186A0082AE30 /* NSString+MKNetworkKitAdditions.m in Sources */,
 				11D8C7631A277B7B006EC036 /* ActivityInfoApplyCell.m in Sources */,
 				ABAF97CB1A09F8F700BE29B8 /* DPLocation.m in Sources */,
+				ABBDD37F1A28549300F1C496 /* DPGroupMember.m in Sources */,
 				58BACF1319B5E89D00A72391 /* VPImageCropperViewController.m in Sources */,
 				118310C619FE623300C1968D /* SysMessageDAO.m in Sources */,
 				58D3F28719E63082006589F9 /* IMNWManager.m in Sources */,
@@ -1936,7 +1947,7 @@
 				1194301419F75CED00FD9206 /* ChatInputTextView.m in Sources */,
 				58438C0D19D412E400B6962B /* NearbyTableViewController.m in Sources */,
 				11DA19161A272AD700CBD32B /* ActivityListTableViewCell.m in Sources */,
-				111B4EA91A0A2A8E0043A29F /* ActivityReadyTabController.m in Sources */,
+				111B4EA91A0A2A8E0043A29F /* ActivityReadyInfoController.m in Sources */,
 				11FFA50B1A1CA34E00F6F00A /* ActivityCreateTableTitleCell.m in Sources */,
 				117AC69519EE763E00143973 /* IMAddressPerson.m in Sources */,
 				DBDD8F401A1AE31300B9F5C9 /* AllGroupTableViewCell.m in Sources */,
@@ -1986,7 +1997,7 @@
 				110487AB19D90BFE0002AB36 /* MessageDataProxyTest.m in Sources */,
 				1171F7C919E8DE6300865A0B /* AddressAddTableViewCell.m in Sources */,
 				58BC1E5819C06BAE00722A00 /* NSData+MKBase64.m in Sources */,
-				111B4EAA1A0A2A8E0043A29F /* ActivityReadyTabController.m in Sources */,
+				111B4EAA1A0A2A8E0043A29F /* ActivityReadyInfoController.m in Sources */,
 				11E1581419F4FFE1008544D1 /* MsgTableViewController.m in Sources */,
 				58BC1E5919C06BAE00722A00 /* NSDate+RFC1123.m in Sources */,
 				116BF87819C96F8F0015561B /* UserDataProxy.m in Sources */,
