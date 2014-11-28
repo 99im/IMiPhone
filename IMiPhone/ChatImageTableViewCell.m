@@ -7,11 +7,12 @@
 //
 
 #import "ChatImageTableViewCell.h"
-#import "UIImageView+OnlineImage.h"
+#import "UIImageView+ChatImage.h"
 
 @interface ChatImageTableViewCell ()
 
 @property (nonatomic, retain) UIImageView *imageViewImage;
+@property (nonatomic, retain) UITapGestureRecognizer *tapImage;
 
 @end
 
@@ -27,12 +28,21 @@
     [super awakeFromNib];
     
     self.imageViewImage = [[UIImageView alloc] init];
+    self.tapImage = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(imageTapGesture:)];
+    [self.imageViewImage addGestureRecognizer:self.tapImage];
+    self.tapImage.delegate = self;
+    self.tapImage.cancelsTouchesInView = NO;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
+}
+
+- (IBAction)imageTapGesture:(UITapGestureRecognizer *)sender
+{
+    ;
 }
 
 - (void)setMsg:(DPChatMessage *)chatMessage
@@ -44,7 +54,7 @@
         //self.imageViewImage.image = [UIImage imageWithContentsOfFile:chatMessage.imgThumbnailPath];
     }
     else if (chatMessage.imgThumbnail) {
-        [self.imageViewImage setOnlineImage:chatMessage.imgThumbnail placeholderImage:[UIImage imageNamed:@"HeadBg"]];
+        [self.imageViewImage setChatImage:chatMessage.imgThumbnail placeholderImage:[UIImage imageNamed:@"HeadBg"]];
     }
     [self.viewMsgContent addSubview:self.imageViewImage];
     self.viewMsgContent.frame = self.imageViewImage.frame ;

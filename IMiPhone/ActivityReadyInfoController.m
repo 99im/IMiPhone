@@ -35,8 +35,7 @@ typedef NS_ENUM(NSInteger, ActivityInfoSection)
 @property (nonatomic, retain) DPActivity *dpActivity;
 @property (nonatomic) BOOL isTemp;
 
-
-- (IBAction)barBtnJoinOrExitAction:(id)sender;
+- (IBAction)barBtnJoinOrExitOnAction:(id)sender;
 
 @end
 
@@ -61,12 +60,46 @@ static NSString *ActivityInfoTableDiscussCell = @"ActivityInfoDiscussCell";
 {
     self.isTemp = YES;
     long long curAid = [ActivityDataProxy sharedProxy].curAid;
-    self.dpActivity =  [[ActivityDataProxy sharedProxy] getActivityWithAid:curAid needRequest:YES];
+    //TODO:和服务端确认查询活动信息协议正确性
+    self.dpActivity =  [[ActivityDataProxy sharedProxy] getActivityWithAid:curAid needRequest:NO];
+    
+    [self setBtnJoinOrExitText];
+    
+    [self registerMessageNotification];
+    
+    [super viewWillAppear:animated];
+
 }
 
-- (void)viewWillDisappear:(BOOL)annimated
+- (void)viewWillDisappear:(BOOL)animated
 {
+    [self removeMessageNotification];
+
     
+    [super viewWillDisappear:animated];
+}
+
+- (void)registerMessageNotification
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dealNotifyActionJoin:) name:NOTI_H__ACTIVITY_JOIN_ object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dealNotifyActionExit:) name:NOTI_H__ACTIVITY_EXIT_ object:nil];
+}
+
+- (void)removeMessageNotification
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)dealNotifyActionJoin:(NSNotification *)notify
+{
+    self.barBtnJoinOrExit.enabled = YES;
+    [self setBtnJoinOrExitText];
+}
+
+- (void)dealNotifyActionExit:(NSNotification *)notify
+{
+    self.barBtnJoinOrExit.enabled = YES;
+    [self setBtnJoinOrExitText];
 }
 
 #pragma - mark tableview datasource
@@ -190,11 +223,45 @@ static NSString *ActivityInfoTableDiscussCell = @"ActivityInfoDiscussCell";
 
 
 #pragma - mark other
-- (IBAction)barBtnJoinOrExitAction:(id)sender {
+
+
+- (IBAction)barBtnJoinOrExitOnAction:(id)sender
+{
     NSLog(@"barBtnJoinOrExitAction");
-//TODO:判断自己和活动的关系
-    long long aid = [ActivityDataProxy sharedProxy].curAid;
-    [[ActivityMessageProxy sharedProxy] sendHttpJoinWithAid:aid];
+    NSInteger relation = [ActivityDataProxy sharedProxy].curRelation;
+
+     long long aid = [ActivityDataProxy sharedProxy].curAid;
+    if (relation == ACTIVITY_RELATION_CREATOR) {
+        
+    }
+    else if (relation == ACTIVITY_RELATION_MANAGER || relation == ACTIVITY_RELATION_MEMBER) {
+        NSLog(@"退出活动 aid:%lli", aid);
+        
+        [[ActivityMessageProxy sharedProxy] sendHttpExitWithAid:aid];
+    }
+    else {
+        NSLog(@"加入活动 aid:%lli", aid);
+        
+        [[ActivityMessageProxy sharedProxy] sendHttpJoinWithAid:aid];
+    }
+   
+    self.barBtnJoinOrExit.enabled = NO;
+}
+
+- (void)setBtnJoinOrExitText
+{
+    NSInteger relation = [ActivityDataProxy sharedProxy].curRelation;
+    
+    if (relation == ACTIVITY_RELATION_CREATOR) {
+        self.barBtnJoinOrExit.title = @"";
+    }
+    else if (relation == ACTIVITY_RELATION_MANAGER || relation == ACTIVITY_RELATION_MEMBER) {
+        self.barBtnJoinOrExit.title = NSLocalizedString(@"Activity.Exit", nil);
+    }
+    else {
+        self.barBtnJoinOrExit.title = NSLocalizedString(@"Activity.Join", nil);
+
+    }
 }
 
 @end

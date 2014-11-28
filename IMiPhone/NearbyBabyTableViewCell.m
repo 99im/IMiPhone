@@ -9,7 +9,8 @@
 #import "NearbyBabyTableViewCell.h"
 
 @implementation NearbyBabyTableViewCell
-
+@synthesize lblDistance;
+@synthesize lblNickName;
 - (void)awakeFromNib {
     // Initialization code
 }
@@ -19,5 +20,6 @@
 
     // Configure the view for the selected state
 }
+
 
 @end

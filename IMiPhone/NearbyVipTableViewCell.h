@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DPUser.h"
+#import "UserDataProxy.h"
 
 @interface NearbyVipTableViewCell : UITableViewCell
-
+@property (weak, nonatomic) IBOutlet UILabel *lblNickName;
+@property (weak, nonatomic) IBOutlet UILabel *lblDistance;
 @end

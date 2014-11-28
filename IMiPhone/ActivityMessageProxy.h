@@ -26,6 +26,11 @@
 #define ACTIVITY_PAY_TYPE_FAIL 3
 #define ACTIVITY_PAY_TYPE_BY_HOUR 4
 
+#define ACTIVITY_RELATION_CREATOR 1 //创建
+#define ACTIVITY_RELATION_MANAGER 2 //管理
+#define ACTIVITY_RELATION_MEMBER 3 //成员
+
+
 @interface ActivityMessageProxy : IMNWProxy
 
 + (ActivityMessageProxy *)sharedProxy;

@@ -253,8 +253,9 @@ static UserDataProxy *sharedProxy = nil;
     dpUser.nick = [uinfo objectForKey:@"nick"];
     dpUser.city = [uinfo objectForKey:@"city"];
     dpUser.vip = [[uinfo objectForKey:@"vip"] integerValue];
-//    dpUser.logo = [uinfo objectForKey:@"logo"];
-//    dpUser.logoAlbumId = [uinfo objectForKey:@"logoAlbumId"];
+    dpUser.logo = [uinfo objectForKey:@"logo"];
+    dpUser.logoAlbumId = [[uinfo objectForKey:@"logoAlbumId"] integerValue];
+    dpUser.roles = [uinfo objectForKey:@"roles"];
     
     [[self mutableArrayUsers] addObject:dpUser];
 }

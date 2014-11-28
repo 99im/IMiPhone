@@ -85,6 +85,9 @@ static ActivityMessageProxy *activityProxy = nil;
             NSInteger errorCode = [[json objectForKey:KEYP_H__ACTIVITY_JOIN__ERROR_CODE] integerValue];
             if (errorCode == 0) {
                 NSLog(@"加入活动成功，活动id：%lli", aid);
+                if ([ActivityDataProxy sharedProxy].curAid == aid) {
+                    [ActivityDataProxy sharedProxy].curRelation = ACTIVITY_RELATION_MEMBER;
+                }
                 [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_H__ACTIVITY_JOIN_ object:self];
             }
             else {
@@ -129,7 +132,9 @@ static ActivityMessageProxy *activityProxy = nil;
                 dpActivity.alt = [[json objectForKey:KEYP_H__ACTIVITY_INFO__LOCATION] objectForKey:@"alt"];
                 dpActivity.curNum = [[json objectForKey:KEYP_H__ACTIVITY_INFO__CURNUM] integerValue];
                 dpActivity.ctime = [json objectForKey:KEYP_H__ACTIVITY_INFO__CTIME];
-                dpActivity.myreleation = [[json objectForKey:KEYP_H__ACTIVITY_INFO__MYRELATION] integerValue];
+                if ([ActivityDataProxy sharedProxy].curAid == aid) {
+                    [ActivityDataProxy sharedProxy].curRelation = [[json objectForKey:KEYP_H__ACTIVITY_INFO__MYRELATION] integerValue];
+                }
                 dpActivity.maxNum = [[json objectForKey:KEYP_H__ACTIVITY_INFO__MAXNUM] integerValue];
                 dpActivity.beginTime = [json objectForKey:KEYP_H__ACTIVITY_INFO__BEGINTIME];
                 dpActivity.endTime = [json objectForKey:KEYP_H__ACTIVITY_INFO__ENDTIME];
@@ -225,6 +230,7 @@ static ActivityMessageProxy *activityProxy = nil;
             NSInteger errorCode = [[json objectForKey:KEYP_H__ACTIVITY_EXIT__ERROR_CODE] integerValue];
             if (errorCode == 0) {
                 NSLog(@"退出活动成功，活动id：%lli", aid);
+                [ActivityDataProxy sharedProxy].curRelation = 0;
                 [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_H__ACTIVITY_EXIT_ object:self];
             }
             else {

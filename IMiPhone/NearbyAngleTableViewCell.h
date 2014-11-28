@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface NearbyAngleTableViewCell : UITableViewCell
-
+@property (weak, nonatomic) IBOutlet UILabel *lblNickName;
+@property (weak, nonatomic) IBOutlet UILabel *lblDistance;
 @end

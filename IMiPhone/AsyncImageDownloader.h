@@ -8,12 +8,14 @@
 
 #import <Foundation/Foundation.h>
 
+#define NOTI_ASYNC_IMAGE_DOWNLOADED @"AsyncImageDownloadedNotifiction"
+
 @class AsyncImageDownloader;
 
 @protocol AsyncImageDownloaderDelegate <NSObject>
 
 @optional
-- (void)imageDownloader:(AsyncImageDownloader *)downloader didFinishWithImage:(UIImage *)image;
+- (void)imageDownloader:(AsyncImageDownloader *)downloader didFinishWithImage:(UIImage *)image object:(NSDictionary *)info;
 - (void)imageDownloader:(AsyncImageDownloader *)downloader didFailWithError:(NSError *)error;
 
 @end
