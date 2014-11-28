@@ -32,6 +32,7 @@
     self.dataFDList = [self.dictionary valueForKey:@"好友动态"];
     self.dataHFList = [self.dictionary valueForKey:@"玩乐"];
     self.dataSList = [self.dictionary valueForKey:@"服务"];
+    [self registerMessageNotification];
     
 }
 
@@ -40,6 +41,15 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+}
+
+- (void) viewDidDisappear:(BOOL)animated{
+    [self removeMessageNotification];
+    [super viewDidDisappear:animated];
+}
 /*
 #pragma mark - Navigation
 
@@ -138,6 +148,10 @@
 - (void)registerMessageNotification{
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dealnotificationcreatactivity:) name:NOTI_ACTIVITY_CELL_BTN_CREATACTIVITY object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dealnotificationjoinactivity:) name:NOTI_ACTIVITY_CELL_BTN_JOINACTIVITY object:nil];
+}
+
+- (void) removeMessageNotification{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)dealnotificationcreatactivity:(NSNotification *) notification{
