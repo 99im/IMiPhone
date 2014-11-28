@@ -29,7 +29,7 @@
 
 - (void)updateActivityListWithServerList:(NSArray *)serverList;
 
-- (DPActivity *)getActivityWithAid:(long long)aid;
+- (DPActivity *)getActivityWithAid:(long long)aid needRequest:(BOOL)need;
 
 //我的活动
 - (void)updateMyActivityListWithStart:(NSInteger)start withServerMyList:(NSArray *)serverMyList;

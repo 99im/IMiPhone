@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ActivityReadyTabController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@interface ActivityReadyInfoController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
 @end
