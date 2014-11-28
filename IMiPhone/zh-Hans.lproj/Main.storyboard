@@ -3,7 +3,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Account-欢迎页-->
@@ -3119,7 +3118,11 @@
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hGc-Wn-SSf">
                                 <rect key="frame" x="0.0" y="436" width="320" height="44"/>
                                 <items>
-                                    <barButtonItem title="报名或退出" width="50" id="Q4v-aK-wox"/>
+                                    <barButtonItem title="报名或退出" width="50" id="Q4v-aK-wox">
+                                        <connections>
+                                            <action selector="barBtnJoinOrExitOnAction:" destination="mED-qR-dBH" id="1WJ-4r-JHD"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem title="评论" width="50" id="fUE-zc-x1j"/>
                                     <barButtonItem title="收藏" width="50" id="78R-08-GvU"/>
                                     <barButtonItem title="举报" width="50" id="pIE-26-VP3"/>
