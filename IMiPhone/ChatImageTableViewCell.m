@@ -12,6 +12,7 @@
 @interface ChatImageTableViewCell ()
 
 @property (nonatomic, retain) UIImageView *imageViewImage;
+@property (nonatomic, retain) UITapGestureRecognizer *tapImage;
 
 @end
 
@@ -27,12 +28,21 @@
     [super awakeFromNib];
     
     self.imageViewImage = [[UIImageView alloc] init];
+    self.tapImage = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(imageTapGesture:)];
+    [self.imageViewImage addGestureRecognizer:self.tapImage];
+    self.tapImage.delegate = self;
+    self.tapImage.cancelsTouchesInView = NO;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
+}
+
+- (IBAction)imageTapGesture:(UITapGestureRecognizer *)sender
+{
+    ;
 }
 
 - (void)setMsg:(DPChatMessage *)chatMessage

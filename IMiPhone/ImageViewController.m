@@ -10,6 +10,8 @@
 
 @interface ImageViewController ()
 
+- (IBAction)imgImageTapGesture:(id)sender;
+
 @end
 
 @implementation ImageViewController
@@ -34,4 +36,6 @@
 }
 */
 
+- (IBAction)imgImageTapGesture:(id)sender {
+}
 @end
