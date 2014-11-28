@@ -13,4 +13,6 @@
 @interface NearbyVipTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *lblNickName;
 @property (weak, nonatomic) IBOutlet UILabel *lblDistance;
+@property (weak, nonatomic) IBOutlet UIImageView *imageVip;
+
 @end

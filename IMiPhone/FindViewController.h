@@ -11,8 +11,10 @@
 #import "HavingFunTableViewCell.h"
 #import "ServiceTableViewCell.h"
 #import "ActivityCellTableViewCell.h"
+#import "IMNWProxyProtocol.h"
 
-@interface FindViewController : UIViewController<UITableViewDelegate, UITableViewDataSource>
+
+@interface FindViewController : UIViewController<UITableViewDelegate, UITableViewDataSource, IMNWProxyProtocol>
 @property (weak, nonatomic) IBOutlet UITableView *tableview;
 
 @property (nonatomic) NSDictionary *dictionary;

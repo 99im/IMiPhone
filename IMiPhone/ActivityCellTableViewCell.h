@@ -9,11 +9,15 @@
 #import <UIKit/UIKit.h>
 #import "GroupCreateViewController.h"
 
+#define NOTI_ACTIVITY_CELL_BTN_CREATACTIVITY @"noti_activity_cell_ben_creatactivity"
+#define NOTI_ACTIVITY_CELL_BTN_JOINACTIVITY @"noti_activity_cell_ben_joinactivity"
 @interface ActivityCellTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UIButton *btnJoinActivity;
 @property (weak, nonatomic) IBOutlet UIButton *btnStartActivity;
 @property (weak, nonatomic) IBOutlet UIButton *btnCreatGroup;
 
+- (IBAction)btnJoinActivityOnTouchUpInside:(UIButton *)sender;
+- (IBAction)btnCreatActivityOnTouchUpInside:(UIButton *)sender;
 
 //创建群组中的lable
 @property (strong, nonatomic) UILabel *lblCreatGroup1;

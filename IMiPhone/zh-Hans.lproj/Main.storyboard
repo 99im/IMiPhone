@@ -811,6 +811,9 @@
                                                         <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="btnJoinActivityOnTouchUpInside:" destination="qAK-Vw-LJz" eventType="touchUpInside" id="CY7-i3-cQU"/>
+                                                    </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YeE-xU-Mn4">
                                                     <rect key="frame" x="235" y="2" width="70" height="60"/>
@@ -826,6 +829,7 @@
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <connections>
+                                                        <action selector="btnCreatActivityOnTouchUpInside:" destination="qAK-Vw-LJz" eventType="touchUpInside" id="Kys-Tj-u9f"/>
                                                         <action selector="onClick_btnCreatGroup:" destination="qAK-Vw-LJz" eventType="touchUpInside" id="yal-zn-vze"/>
                                                         <segue destination="xc6-7k-stq" kind="modal" identifier="find1groupCreate" id="dkl-wS-iyY"/>
                                                     </connections>
@@ -3854,6 +3858,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="imageVip" destination="MQW-GT-Bbb" id="e0d-J5-ghc"/>
                                     <outlet property="lblDistance" destination="qPC-89-pOW" id="NDM-wK-S3M"/>
                                     <outlet property="lblNickName" destination="P6M-iW-tvx" id="jZE-4i-sD6"/>
                                 </connections>

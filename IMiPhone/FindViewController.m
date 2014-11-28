@@ -135,4 +135,17 @@
     [self.tableview reloadData];
 }
 
+- (void)registerMessageNotification{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dealnotificationcreatactivity:) name:NOTI_ACTIVITY_CELL_BTN_CREATACTIVITY object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dealnotificationjoinactivity:) name:NOTI_ACTIVITY_CELL_BTN_JOINACTIVITY object:nil];
+}
+
+- (void)dealnotificationcreatactivity:(NSNotification *) notification{
+    //  TO DO
+}
+
+- (void)dealnotificationjoinactivity:(NSNotification *) notification{
+    //TO DO
+}
+
 @end
