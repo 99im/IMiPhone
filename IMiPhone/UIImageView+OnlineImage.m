@@ -23,10 +23,9 @@
     [downloader startWithUrl:url delegate:self];
 }
 
-#pragma mark -
 #pragma mark - AsyncImageDownloader Delegate
 
-- (void)imageDownloader:(AsyncImageDownloader *)downloader didFinishWithImage:(UIImage *)image
+- (void)imageDownloader:(AsyncImageDownloader *)downloader didFinishWithImage:(UIImage *)image object:(NSDictionary *)info
 {
     dispatch_async(dispatch_get_main_queue(), ^{
         self.image = image;

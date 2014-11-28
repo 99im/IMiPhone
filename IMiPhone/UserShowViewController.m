@@ -93,6 +93,7 @@
 }
 
 - (IBAction)btnMessageTouchUpInside:(id)sender {
+    [self btnChatTouchUpInside:sender];
 }
 
 - (IBAction)btnChatTouchUpInside:(id)sender {

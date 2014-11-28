@@ -26,7 +26,6 @@
 @property (nonatomic) NSInteger curNum;
 @property (nonatomic) long long createrUid;
 @property (nonatomic, retain) NSString *ctime;//创建时间
-@property (nonatomic) NSInteger myreleation;
 @property (nonatomic) NSInteger maxNum;//最大人员数量
 @property (nonatomic, retain) NSString *beginTime;
 @property (nonatomic, retain) NSString *endTime;

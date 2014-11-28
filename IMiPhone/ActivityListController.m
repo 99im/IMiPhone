@@ -79,9 +79,11 @@ static NSString *kActivityCellId = @"ActivityListTableViewCell";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    DPActivity *dpActivity = [self.arrCurActivitys objectAtIndex:indexPath.row];
-    [ActivityDataProxy sharedProxy].curAid = dpActivity.aid;
-    [self performSegueWithIdentifier:@"ActivityList2ActivityInfo" sender:self];    
+    DPNearbyActivity *dpNearbyActivity = [self.arrCurActivitys objectAtIndex:indexPath.row];
+    [ActivityDataProxy sharedProxy].curAid = dpNearbyActivity.aid;
+    
+    [ActivityDataProxy sharedProxy].curRelation = dpNearbyActivity.myReleation;
+    [self performSegueWithIdentifier:@"ActivityList2ActivityInfo" sender:self];
 }
 
 #pragma mark - 用户操作响应

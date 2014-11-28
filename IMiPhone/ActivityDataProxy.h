@@ -23,6 +23,7 @@
 @property (nonatomic) NSInteger createActivityType;
 
 @property (nonatomic) long long curAid;//当前查看活动id
+@property (nonatomic) NSInteger curRelation;//当前查看活动与自己关系
 
 + (ActivityDataProxy *)sharedProxy;
 - (void)reset;
