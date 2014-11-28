@@ -328,6 +328,7 @@
 		58F2AA3919A487E300DC2FFB /* AsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F2AA3819A487E300DC2FFB /* AsyncSocket.m */; };
 		58F4FDB61A25C6F500032CD5 /* UIImageView+OnlineImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F4FDB51A25C6F500032CD5 /* UIImageView+OnlineImage.m */; };
 		58F4FDB91A25C72500032CD5 /* AsyncImageDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F4FDB81A25C72500032CD5 /* AsyncImageDownloader.m */; };
+		5D0C0E4C1A286FAD006E27A5 /* UIImageView+ChatImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D0C0E4B1A286FAD006E27A5 /* UIImageView+ChatImage.m */; };
 		5D7BD4F91A278B76000D3C9E /* ImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D7BD4F81A278B76000D3C9E /* ImageViewController.m */; };
 		5DBDE2B51A22179E00E28642 /* FIRMessageProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DBDE2B41A22179E00E28642 /* FIRMessageProxy.m */; };
 		AB199ACA1A0A244E00F6B858 /* DPSysMessageGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = AB6396221A038CA500FF0BC6 /* DPSysMessageGroup.m */; };
@@ -735,6 +736,8 @@
 		58F4FDB51A25C6F500032CD5 /* UIImageView+OnlineImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+OnlineImage.m"; sourceTree = "<group>"; };
 		58F4FDB71A25C72500032CD5 /* AsyncImageDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsyncImageDownloader.h; sourceTree = "<group>"; };
 		58F4FDB81A25C72500032CD5 /* AsyncImageDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsyncImageDownloader.m; sourceTree = "<group>"; };
+		5D0C0E4A1A286FAD006E27A5 /* UIImageView+ChatImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+ChatImage.h"; sourceTree = "<group>"; };
+		5D0C0E4B1A286FAD006E27A5 /* UIImageView+ChatImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+ChatImage.m"; sourceTree = "<group>"; };
 		5D7BD4F71A278B76000D3C9E /* ImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageViewController.h; sourceTree = "<group>"; };
 		5D7BD4F81A278B76000D3C9E /* ImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageViewController.m; sourceTree = "<group>"; };
 		5DBDE2B31A22179E00E28642 /* FIRMessageProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FIRMessageProxy.h; sourceTree = "<group>"; };
@@ -939,6 +942,8 @@
 				11DF5F701A25B9AA00520243 /* ChatTextTableViewCell.m */,
 				5D7BD4F71A278B76000D3C9E /* ImageViewController.h */,
 				5D7BD4F81A278B76000D3C9E /* ImageViewController.m */,
+				5D0C0E4A1A286FAD006E27A5 /* UIImageView+ChatImage.h */,
+				5D0C0E4B1A286FAD006E27A5 /* UIImageView+ChatImage.m */,
 			);
 			name = Chat;
 			sourceTree = "<group>";
@@ -1798,6 +1803,7 @@
 				5825D8F119D808CA004FF6FF /* CategoryTableViewController.m in Sources */,
 				11DF6A961A04B57C00A4B1D3 /* DPGroupChatMessage.m in Sources */,
 				58D3F28819E63082006589F9 /* IMNWMessage.m in Sources */,
+				5D0C0E4C1A286FAD006E27A5 /* UIImageView+ChatImage.m in Sources */,
 				11795E2819D297CD003FD9A7 /* DPFriend.m in Sources */,
 				11C936021A03709100D26CFF /* DPSysMessageFriend.m in Sources */,
 				58D3F28919E63082006589F9 /* IMNWProxy.m in Sources */,
