@@ -48,7 +48,7 @@ static DiscoveryDataProxy *sharenDiscoveryProxy = nil;
         if ([dpLocation isUpdated] != NO) {
             [[DiscoveryMessageProxy sharedProxy] sendDiscoveryNearbyList:dpLocation.latitude longitude:dpLocation.longitude altitude:dpLocation.altitude];
         }
-        [[DiscoveryMessageProxy sharedProxy] sendDiscoveryNearbyList:39.12 longitude:115.725 altitude:dpLocation.longitude];
+        //[[DiscoveryMessageProxy sharedProxy] sendDiscoveryNearbyList:39.12 longitude:115.725 altitude:dpLocation.longitude];
     }
     return [self mutableArrayValueForKey:@"arrNearbyList"];
 }

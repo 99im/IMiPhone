@@ -14,7 +14,6 @@
 @end
 
 @implementation NearbyTableViewController
-@synthesize userShowViewController;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -43,10 +42,6 @@
 -(void)viewWillDisappear:(BOOL)animated
 {
     [[LocationDataProxy sharedProxy] stopUpdatingLocation];
-}
-
-- (void) viewDidAppear:(BOOL)animated{
-    [super viewDidAppear:animated];
 }
 
 - (void) viewDidDisappear:(BOOL)animated{
@@ -130,48 +125,13 @@
         [cellClub.lblClubID setText:[NSString stringWithFormat:@"%lld", clubID]];
         return cellClub;
     }
-//    if (indexPath.row == 0) {
-//        NearbyVipTableViewCell *cell0 = [tableView dequeueReusableCellWithIdentifier:@"nearbyVipCell" forIndexPath:indexPath];
-//        cell0.selectionStyle = UITableViewCellSelectionStyleNone;
-//        return cell0;
-//    }
-//    else if (indexPath.row == 1){
-//        NearbyBabyTableViewCell *cell1 = [tableView dequeueReusableCellWithIdentifier:@"nearbyBabyCell" forIndexPath:indexPath];
-//        cell1.selectionStyle = UITableViewCellSelectionStyleNone;
-//        return cell1;
-//    }
-//    else if (indexPath.row == 2){
-//        NearbyStarTableViewCell *cell2 = [tableView dequeueReusableCellWithIdentifier:@"nearbyStarCell" forIndexPath:indexPath];
-//        cell2.selectionStyle = UITableViewCellSelectionStyleNone;
-//        return cell2;
-//    }
-//    else if (indexPath.row == 3){
-//        NearbyAngleTableViewCell *cell3 = [tableView dequeueReusableCellWithIdentifier:@"nearbyAngleCell" forIndexPath:indexPath];
-//        cell3.selectionStyle = UITableViewCellSelectionStyleNone;
-//        return cell3;
-//    }
-//    else if (indexPath.row == 4){
-//        NearbyClubManagerTableViewCell *cell4 = [tableView dequeueReusableCellWithIdentifier:@"nearbyClubManagerCell" forIndexPath:indexPath];
-//        cell4.selectionStyle = UITableViewCellSelectionStyleNone;
-//        return cell4;
-//    }
-//    else if (indexPath.row == 5){
-//        NearbyClubTableViewCell *cell5 = [tableView dequeueReusableCellWithIdentifier:@"nearbyClubCell" forIndexPath:indexPath];
-//        cell5.selectionStyle = UITableViewCellSelectionStyleNone;
-//        return cell5;
-//    }
-//    else if (indexPath.row == 6){
-//        NearbyGroupRecruitTableViewCell *cell6 = [tableView dequeueReusableCellWithIdentifier:@"nearbyGroupRecruitCell" forIndexPath:indexPath];
-//        cell6.selectionStyle = UITableViewCellSelectionStyleNone;
-//        return cell6;
-//    }
     return nil;
 }
 
 -(CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    if (indexPath.row == 5 || indexPath.row == 6) {
+    DPNearby *dpNearby = [[DiscoveryDataProxy sharedProxy] getNearbyListInfoAtRow:indexPath.row];
+    if(dpNearby.type == NEARBY_CLUB)
         return 120;
-    }
     return 80;
 }
 
@@ -181,9 +141,8 @@
     if (dpNearby.type == NEARBY_USER) {
         DPUser *dpUser = [[UserDataProxy sharedProxy] getUserByUid:dpNearby.dataID];
         [UserDataProxy sharedProxy].showUserInfoUid = dpUser.uid;
-        self.userShowViewController = [[UserShowViewController alloc] init];
-        self.userShowViewController.hidesBottomBarWhenPushed = YES;
-        [self.navigationController pushViewController:self.userShowViewController animated:YES];
+        UserShowViewController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"userInfoView"];
+        [self.navigationController pushViewController:viewController animated:YES];
 
     }
 }
