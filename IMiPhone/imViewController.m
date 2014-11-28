@@ -35,7 +35,7 @@
     if (self.hasVerified) {
         [[AccountMessageProxy sharedProxy] sendTypeMyinfo];
     }
-#if TARGET_OS_IPHONE
+#ifndef TARGET_IPHONE_SIMULATOR
     [[FIRMessageProxy sharedProxy] sendHttpVersion];
 #endif
 }
