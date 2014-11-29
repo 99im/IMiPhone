@@ -48,15 +48,12 @@ static ChatMessageProxy *messageProxy = nil;
     }];
 }
 
-- (void)sendTypeP2PChatList:(NSInteger)targetUid before:(NSInteger)beforeMid after:(NSInteger)afterMid startAt:(NSInteger)startIndex getNum:(NSInteger)pageNum
+- (void)sendHttpP2PChatList:(NSInteger)targetUid before:(NSInteger)beforeMid after:(NSInteger)afterMid startAt:(NSInteger)startIndex getNum:(NSInteger)pageNum
 {
-    
+//   [[ChatDataProxy sharedProxy] ]
 }
 
-- (void)parseTypeP2PChatList:(id)json
-{
-    
-}
+
 
 - (void)sendTypeChat:(NSString *)stage targetId:(long long)targetId msgType:(NSInteger)msgType content:(NSString *)content nid:(NSInteger)nid
 {
@@ -151,6 +148,41 @@ static ChatMessageProxy *messageProxy = nil;
     if (dpUiMessage) {
         [[MsgDataProxy sharedProxy] updateUiMsgList:dpUiMessage];
     }
+}
+
+//
+- (void)sendHttpUnReadListWithReadInfo:(NSDictionary *)readInfo
+{
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    
+    [params setObject:readInfo forKey:KEYQ_H__CHAT_UNREADLIST__READINFO];
+   
+    IMNWMessage *message = [IMNWMessage createForHttp:PATH_H__CHAT_UNREADLIST_ withParams:params withMethod:METHOD_H__CHAT_UNREADLIST_ ssl:NO];
+    
+    [[IMNWManager sharedNWManager] sendMessage:message withResponse:^(NSString *responseString, NSData *responseData) {
+        NSError *err = nil;
+        NSMutableDictionary *json = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingAllowFragments error:&err];
+        if (err) {
+            NSLog(@"JSON create error: %@", err);
+        }
+        else {
+            int errorcode = [[json objectForKey:KEYP_H__CHAT_UNREADLIST__ERROR_CODE] intValue];
+            if (errorcode == 0) {
+                //TODO:返回列表格式确认，根据每个会话id：gid
+                //和最新消息list添加到本地数据库中
+                //根据totalnum 和list长度 在本地数据库中插入相应条数空纪录
+                //根据total num 更新uimessage中unread数
+                NSArray *arr = [json objectForKey:KEYP_H__CHAT_UNREADLIST__UNREAD_LIST];
+                
+                //消息列表，刷新未读消息数量
+                [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_H__CHAT_UNREADLIST_ object:self];
+            }
+            else {
+                [self processErrorCode:errorcode fromSource:PATH_H__CHAT_UPLOADIMG_ useNotiName:NOTI_H__CHAT_UPLOADIMG_];
+            }
+        }
+    }];
+
 }
 
 @end
