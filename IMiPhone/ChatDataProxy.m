@@ -13,12 +13,11 @@
 
 @interface ChatDataProxy()
 
-@property (nonatomic, retain) NSDictionary *dicMessages;
+@property (nonatomic, retain) NSMutableDictionary *dicMessages;
 
-@property (nonatomic, retain) NSDictionary *dicEmotion;
+@property (nonatomic, retain, getter=getDicMessages) NSMutableDictionary *dicEmotion;
 
-@property (nonatomic, retain) NSDictionary *dicGroupMessages;
-
+@property (nonatomic,getter=getMaxNid) NSInteger maxNid;
 
 @end
 
@@ -32,6 +31,10 @@
 
 @synthesize dicEmotion = _dicEmotion;
 
+@synthesize dicMessages = _dicMessages;
+
+@synthesize maxNid = _maxNid;
+
 static ChatDataProxy *messageDataProxy = nil;
 
 + (ChatDataProxy *)sharedProxy
@@ -43,10 +46,26 @@ static ChatDataProxy *messageDataProxy = nil;
     return messageDataProxy;
 }
 
+- (id)init
+{
+    if (self = [super init]) {
+        _maxNid = NSIntegerMax;
+    }
+    return self;
+}
+
 - (void)reset
 {
     self.dicMessages = nil;
-    self.dicGroupMessages = nil;
+    _maxNid = NSIntegerMax;
+}
+
+- (NSMutableDictionary *)getDicMessages
+{
+    if (_dicMessages == nil) {
+        _dicMessages = [NSMutableDictionary dictionary];
+    }
+    return _dicMessages;
 }
 
 #pragma mark - messages
@@ -133,10 +152,8 @@ static ChatDataProxy *messageDataProxy = nil;
 
 - (NSMutableArray *)getGroupChatMessagesByGid:(NSString *)gid
 {
-    if (self.dicGroupMessages == nil) {
-        self.dicGroupMessages = [NSMutableDictionary dictionary];
-    }
-    NSMutableArray *arrGroupMessages = [self.dicGroupMessages objectForKey:gid];
+    
+    NSMutableArray *arrGroupMessages = [self.dicMessages objectForKey:gid];
     if (arrGroupMessages == nil) {
         NSMutableArray *arrDBMessages = [[ChatMessageDAO sharedDAO] query:@"stage=? AND gid=?" Bind:[NSMutableArray arrayWithObjects:CHAT_STAGE_GROUP, gid,nil]];
         arrGroupMessages = [NSMutableArray array];
@@ -148,7 +165,7 @@ static ChatDataProxy *messageDataProxy = nil;
                 [arrGroupMessages addObject:tempMessage];
             }
         }
-        [self.dicGroupMessages setValue:arrGroupMessages forKey:gid];
+        [self.dicMessages setValue:arrGroupMessages forKey:gid];
     }
     return arrGroupMessages;
 }
@@ -254,6 +271,60 @@ static ChatDataProxy *messageDataProxy = nil;
         strResult = [NSString stringWithFormat:@"g_%lli", targetId];
     }
     return strResult;
+}
+
+
+- (void)updateUnreadWithGid:(NSString *)gid withTotal:(NSInteger)total withUnreadList:(NSArray *)list
+{
+    //TODO:修改uiMessage 中unread 和 releationId
+//    [[MsgDataProxy sharedProxy] ]
+    
+    //数据库中插入未获得内容的空消息
+    DBChatMessage *dbModel;
+    NSInteger i = 0;
+    for ( ; i < total - list.count; i++) {
+        dbModel = [[DBChatMessage alloc] init];
+        dbModel.gid = gid;
+        dbModel.nid = self.maxNid + 1;
+        [self increaseMaxNid];
+        [[ChatMessageDAO sharedDAO] insert:dbModel];
+    }
+    //数据库中插入返回的最近数据
+    NSDictionary *info;
+    for (NSInteger j = 0; j < list.count; j++) {
+        info = [list objectAtIndex:j];
+        dbModel = [[DBChatMessage alloc] init];
+        dbModel.nid = self.maxNid + 1;
+        [self increaseMaxNid];
+        dbModel.senderUid = [[info objectForKey:KEYP_S_CHAT_CHATN_SENDUID] integerValue];
+        dbModel.msgType = [[info objectForKey:KEYP_S_CHAT_CHATN_MSGTYPE] integerValue];
+        dbModel.content = [info objectForKey:KEYP_S_CHAT_CHATN_CONTENT];
+        dbModel.sendTime = [info objectForKey:KEYP_S_CHAT_CHATN_TIME];
+        dbModel.mid = [[info objectForKey:KEYP_S_CHAT_CHATN_MID] integerValue];
+        dbModel.senderUid = [[info objectForKey:KEYP_S_CHAT_CHATN_SENDUID] integerValue];
+        dbModel.targetId = [[info objectForKey:KEYP_S_CHAT_CHATN_TARGETID] integerValue];
+        dbModel.stage = [info objectForKey:KEYP_S_CHAT_CHATN_STAGE];
+        dbModel.gid = [info objectForKey:KEYP_S_CHAT_CHATN_GID];
+        [[ChatMessageDAO sharedDAO] insert:dbModel];
+    }
+}
+
+//返回最大nid
+- (NSInteger)getMaxNid
+{
+//    if (_maxNid == NSIntegerMax) {
+        _maxNid = [[ChatMessageDAO sharedDAO] primaryKeyMaxValue];
+//    }
+    return _maxNid;
+}
+- (void)increaseMaxNid
+{
+    if (_maxNid == NSIntegerMax) {
+        NSLog(@"increaseMaxNid _maxNid == NSIntegerMax!!!");
+    }
+    else {
+        _maxNid ++;
+    }
 }
 
 @end

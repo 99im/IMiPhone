@@ -14,4 +14,6 @@
 
 + (ChatMessageDAO*)sharedDAO;
 
+- (NSInteger)primaryKeyMaxValue;
+
 @end

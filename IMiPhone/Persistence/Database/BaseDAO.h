@@ -14,6 +14,10 @@
 
 @interface BaseDAO : NSObject
 
+@property (nonatomic, retain, readonly) SqlightAdapter *sqlight;
+@property (nonatomic, retain, readonly) NSString *tableName;
+@property (nonatomic, retain, readonly) Class dataMode;
+
 - (NSInteger)createTableIfNotExist:(NSString *)name withDataMode:(Class)cls withPrimaryKey:(NSString *)pKey;
 - (NSInteger)dropTable;
 //sample code:     Group *g = [[Group alloc] init];    g.group_name = @"桌球小组";  BaseDAO *dao = [ChildDao shareManager];[dao insert(g)];

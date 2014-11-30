@@ -172,7 +172,16 @@ static ChatMessageProxy *messageProxy = nil;
                 //和最新消息list添加到本地数据库中
                 //根据totalnum 和list长度 在本地数据库中插入相应条数空纪录
                 //根据total num 更新uimessage中unread数
-                NSArray *arr = [json objectForKey:KEYP_H__CHAT_UNREADLIST__UNREAD_LIST];
+                NSDictionary * dicAllUnread = [json objectForKey:KEYP_H__CHAT_UNREADLIST__UNREAD];
+                NSDictionary *dicOneGidUnreadInfo;
+                NSInteger total;//未读消息总数
+                NSArray *list;//最近未读消息列表，最多20条
+                for (NSString *key in dicAllUnread) {
+                    dicOneGidUnreadInfo = [dicAllUnread objectForKey:key];
+                    total  = [[dicOneGidUnreadInfo objectForKey:KEYP_H__CHAT_UNREADLIST__UNREAD_TOTAL] integerValue];
+                    list = [dicOneGidUnreadInfo objectForKey:KEYP_H__CHAT_UNREADLIST__UNREAD_LIST];
+                    [[ChatDataProxy sharedProxy] updateUnreadWithGid:key withTotal:total withUnreadList:list];
+                }
                 
                 //消息列表，刷新未读消息数量
                 [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_H__CHAT_UNREADLIST_ object:self];

@@ -47,4 +47,9 @@ typedef enum {
 
 - (NSString *)assembleGidWithStage:(NSString *)stage withSenderUid:(long long)sid withTargetId:(long long)targetId;
 
+//gid:会话id; total:总未读消息数; list:离现在最近的未读消息列表(最多20条)
+- (void)updateUnreadWithGid:(NSString *)gid withTotal:(NSInteger)total withUnreadList:(NSArray *)list;
+
+- (NSInteger)getMaxNid;
+
 @end
