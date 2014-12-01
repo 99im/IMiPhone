@@ -11,6 +11,7 @@
 @implementation NearbyVipTableViewCell
 @synthesize lblNickName;
 @synthesize lblDistance;
+@synthesize imageVip;
 - (void)awakeFromNib {
     // Initialization code
 }

@@ -7,6 +7,8 @@
 //
 
 #import "FindViewController.h"
+#import "ActivityCreateTabelController.h"
+#import "ActivityListController.h"
 
 @interface FindViewController ()
 
@@ -38,6 +40,17 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [self registerMessageNotification];
+    [super viewWillAppear:animated];
+}
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [self removeMessageNotification];
+    [super viewWillDisappear:animated];
 }
 
 /*
@@ -133,6 +146,26 @@
 
 - (void) didShowList{
     [self.tableview reloadData];
+}
+
+- (void)registerMessageNotification{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dealnotificationcreatactivity:) name:NOTI_ACTIVITY_CELL_BTN_CREATACTIVITY object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dealnotificationjoinactivity:) name:NOTI_ACTIVITY_CELL_BTN_JOINACTIVITY object:nil];
+}
+
+- (void) removeMessageNotification{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)dealnotificationcreatactivity:(NSNotification *) notification{
+    
+     ActivityCreateTabelController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"ActivityCreateTabelController"];
+    [self.navigationController pushViewController:viewController animated:YES];
+}
+
+- (void)dealnotificationjoinactivity:(NSNotification *) notification{
+    ActivityListController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"ActivityListController"];
+    [self.navigationController pushViewController:viewController animated:YES];
 }
 
 @end

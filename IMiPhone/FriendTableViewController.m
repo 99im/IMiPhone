@@ -13,7 +13,7 @@
 #import "UserDataProxy.h"
 #import "UserMessageProxy.h"
 #import "UserShowViewController.h"
-
+#import "ChatMessageProxy.h"
 
 //typedef NS_ENUM(NSInteger, FriendTableViewSection) ｛
 
@@ -75,6 +75,10 @@
     [[FriendMessageProxy sharedProxy] sendTypeFriendList:[NSNumber numberWithInteger:0] withPageNum:[NSNumber numberWithInteger:50]];
     [self registerMessageNotification];
     [super viewWillAppear:animated];
+    
+    //TODO:删除掉临时代码
+  //  [[ChatMessageProxy sharedProxy] sendHttpUnReadListWithReadInfo:@{}];
+  //  [[ChatDataProxy sharedProxy] getMaxNid];
 }
 
 - (void)didReceiveMemoryWarning {

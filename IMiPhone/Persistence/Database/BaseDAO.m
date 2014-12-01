@@ -12,11 +12,14 @@
 #import "ImDataUtil.h"
 
 @interface BaseDAO()
-    @property NSString *tableName;
-    @property SqlightAdapter *sqlight;
-    @property Class dataMode;
+
 @end
+
 @implementation BaseDAO
+
+@synthesize sqlight = _sqlight;
+@synthesize tableName = _tableName;
+@synthesize dataMode = _dataMode;
 
 static NSDictionary *dicSQLDataType;
 
@@ -69,11 +72,11 @@ static NSDictionary *dicSQLDataType;
 - (NSInteger)createTableIfNotExist:(NSString *)name withDataMode:(Class)cls withPrimaryKey:(NSString *)pKey
 {
     NSString *dbName = [DatabaseConfig shareDatabaseConfig].databaseName;
-    self.tableName = name;
-    self.dataMode = cls;
-    self.sqlight = [SqlightAdapter database:dbName AndTable:name];
+    _tableName = name;
+    _dataMode = cls;
+    _sqlight = [SqlightAdapter database:dbName AndTable:name];
     if (nil == self.sqlight) {
-        self.sqlight = [SqlightAdapter database:dbName];
+        _sqlight = [SqlightAdapter database:dbName];
         
 //        //
 //        SqlightResult *result = [sqlight createTable:name Info:[NSMutableArray arrayWithObjects:

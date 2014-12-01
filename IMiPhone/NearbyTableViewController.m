@@ -81,6 +81,7 @@
             cell0.selectionStyle = UITableViewCellSelectionStyleNone;
             [cell0.lblNickName setText:nick];
             [cell0.lblDistance setText:[NSString stringWithFormat:@"%i",distance]];
+            cell0.imageVip.hidden = NO;
             return cell0;
         }
         else if (role == 1){
