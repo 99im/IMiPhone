@@ -9,5 +9,11 @@
 #import <UIKit/UIKit.h>
 
 @interface ActivityInfoTitleCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UIImageView *imgViewLogo;
+@property (weak, nonatomic) IBOutlet UILabel *lblTitle;
+@property (weak, nonatomic) IBOutlet UILabel *lblRenqi;//人气
+@property (weak, nonatomic) IBOutlet UILabel *lblDistance;
+@property (weak, nonatomic) IBOutlet UILabel *lblDiscussNum;//留言数
+
 
 @end

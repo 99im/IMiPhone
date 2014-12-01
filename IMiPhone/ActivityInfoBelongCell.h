@@ -9,5 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface ActivityInfoBelongCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UILabel *lblBelong;//发起方
+@property (weak, nonatomic) IBOutlet UILabel *lblGroupLevel;//群级别
+
 
 @end

@@ -62,6 +62,27 @@ static NSString *kActivityCellId = @"ActivityListTableViewCell";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     ActivityListTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:kActivityCellId forIndexPath:indexPath];
+   
+    DPNearbyActivity *dpNearbyActivity = [self.arrCurActivitys objectAtIndex:indexPath.row];
+    DPActivity *dpActivity = [[ActivityDataProxy sharedProxy] getActivityWithAid:dpNearbyActivity.aid needRequest:NO];
+
+//TODO:活动地点
+//    cell.lblAddress = dpActivity.
+    //TODO:活动地点
+//    cell.lblBeginTime
+    //TODO:活动归属
+//    cell.lblBelong.text = [NSLocalizedString(@"Activity.Belong", nil) stringByAppendingString:dpActivity.beLong];
+    DPUser *dpUserCreator = [[UserDataProxy sharedProxy] getUserByUid:dpActivity.createrUid];
+    cell.lblCreator.text = [NSLocalizedString(@"Activity.Creator", nil) stringByAppendingString:dpUserCreator.nick];
+    
+    cell.lblCurNum.text =
+    [NSString stringWithFormat:@"%@(%li/%li)", NSLocalizedString(@"Activity.CurNum", nil), (long)dpActivity.curNum, (long)dpActivity.maxNum];
+    cell.lblDate.text = [NSLocalizedString(@"Activity.Date", nil) stringByAppendingString:dpActivity.beginTime];
+    //TODO:每人费用根据费用类型显示
+//    cell.lblPay.text = [NSLocalizedString(@"Activity.Date", nil) stringByAppendingString:dpActivity.];
+//TODO:人气
+//    cell.lblRenqi.text
+    cell.lblTitle.text = dpActivity.title;
     return cell;
 }
 
@@ -83,6 +104,7 @@ static NSString *kActivityCellId = @"ActivityListTableViewCell";
     [ActivityDataProxy sharedProxy].curAid = dpNearbyActivity.aid;
     
     [ActivityDataProxy sharedProxy].curRelation = dpNearbyActivity.myReleation;
+    
     [self performSegueWithIdentifier:@"ActivityList2ActivityInfo" sender:self];
 }
 
