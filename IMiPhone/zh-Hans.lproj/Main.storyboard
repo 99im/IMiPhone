@@ -824,7 +824,6 @@
                                                     </state>
                                                     <connections>
                                                         <action selector="btnCreatActivityOnTouchUpInside:" destination="qAK-Vw-LJz" eventType="touchUpInside" id="d7F-dI-I6e"/>
-                                                        <action selector="btnJoinActivityOnTouchUpInside:" destination="qAK-Vw-LJz" eventType="touchUpInside" id="bca-BF-AKv"/>
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ons-xr-chQ">
@@ -3078,6 +3077,13 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="imgViewLogo" destination="WFE-EX-z4a" id="WLh-7f-NsW"/>
+                                            <outlet property="lblDiscussNum" destination="2ic-X2-Nhg" id="au6-c6-PSZ"/>
+                                            <outlet property="lblDistance" destination="Bao-4Y-4m3" id="Ek2-ea-B6O"/>
+                                            <outlet property="lblRenqi" destination="uZt-Ab-8iv" id="71L-Pq-RA0"/>
+                                            <outlet property="lblTitle" destination="Ocv-rf-xck" id="1yu-Bc-mgk"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ActivityInfoBelongCell" rowHeight="35" id="a14-pG-7LG" customClass="ActivityInfoBelongCell">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -3105,6 +3111,10 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="lblBelong" destination="iJW-iN-RTY" id="a97-tw-YWK"/>
+                                            <outlet property="lblGroupLevel" destination="zLO-zd-H51" id="chh-Cv-8vb"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ActivityInfoApplyOkCell" rowHeight="100" id="kGk-ji-ZrQ" customClass="ActivityInfoApplyOkCell">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -3129,6 +3139,11 @@
                                                 </imageView>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="imgViewUser1" destination="nXq-KU-GDX" id="dGF-yV-noc"/>
+                                            <outlet property="imgViewUser2" destination="WWs-Vv-ZMo" id="04L-Jx-xmi"/>
+                                            <outlet property="imgViewUser3" destination="ccN-UE-Rxb" id="Xbs-LV-gOg"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ActivityInfoApplyCell" rowHeight="90" id="kgI-fe-myK" customClass="ActivityInfoApplyCell">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -3153,6 +3168,13 @@
                                                 </imageView>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="imgViewUser1" destination="pXe-Qx-Gyt" id="DCh-AH-9oS"/>
+                                            <outlet property="imgViewUser2" destination="DLg-8i-70g" id="1m5-HE-ud1"/>
+                                            <outlet property="imgViewUser3" destination="5Fu-s4-E0N" id="Kuh-N6-SlV"/>
+                                            <outlet property="imgViewUser4" destination="FoA-qB-3PK" id="d1B-lY-yog"/>
+                                            <outlet property="imgViewUser5" destination="ZfR-ql-EDJ" id="WRZ-K3-raG"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ActivityInfoCreatorCell" rowHeight="134" id="r9n-eM-JSt" customClass="ActivityInfoCreatorCell">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -3192,6 +3214,13 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="lblCreator" destination="2bs-NF-0FJ" id="NbQ-lz-tsH"/>
+                                            <outlet property="lblCurNum" destination="Buy-ax-sRG" id="F2l-61-cKP"/>
+                                            <outlet property="lblDate" destination="Ats-P5-qke" id="tU2-fw-uV9"/>
+                                            <outlet property="lblPay" destination="LGg-3k-WC3" id="pCf-7i-hBi"/>
+                                            <outlet property="lblTime" destination="49l-Bn-Peh" id="UhI-ZQ-jXR"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ActivityInfoMoreCell" rowHeight="152" id="8gW-8o-s2c" customClass="ActivityInfoMoreCell">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="152"/>
@@ -3199,7 +3228,7 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8gW-8o-s2c" id="aj3-ns-Ced">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="A46-dQ-qKN">
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A46-dQ-qKN">
                                                     <rect key="frame" x="0.0" y="0.0" width="320" height="152"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
@@ -3208,6 +3237,9 @@
                                                 </textView>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="textView" destination="A46-dQ-qKN" id="VKk-xl-5bM"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ActivityInfoDiscussCell" rowHeight="79" id="Wgb-vc-qTa" customClass="ActivityInfoDiscussCell">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="70"/>
@@ -3238,6 +3270,12 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="imgViewPortrait" destination="66C-bX-x6w" id="DHX-uS-VKM"/>
+                                            <outlet property="lblContent" destination="Wk0-sX-53r" id="R7R-qZ-OQs"/>
+                                            <outlet property="lblDate" destination="lMe-TY-Mla" id="9EI-VZ-GZ9"/>
+                                            <outlet property="lblNick" destination="sGk-cu-X5s" id="uSg-QB-5gy"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <sections/>
@@ -3557,6 +3595,18 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="imgViewIcon" destination="2vg-cY-avP" id="SsA-UU-wbR"/>
+                                            <outlet property="lblAddress" destination="d0a-Dt-zAQ" id="BBi-d6-9Ox"/>
+                                            <outlet property="lblBeginTime" destination="whe-Wi-eyH" id="Iyl-5V-z8b"/>
+                                            <outlet property="lblBelong" destination="yhb-wx-CiZ" id="6F7-Fc-N1y"/>
+                                            <outlet property="lblCreator" destination="YYQ-gb-qdO" id="4wj-xH-19I"/>
+                                            <outlet property="lblCurNum" destination="rVi-Zw-FLs" id="jVP-um-GXr"/>
+                                            <outlet property="lblDate" destination="dLm-sA-2Mh" id="OdI-xr-Ica"/>
+                                            <outlet property="lblPay" destination="mPF-bT-oRT" id="dh3-6h-PV7"/>
+                                            <outlet property="lblRenqi" destination="kHp-et-pZB" id="Zk5-hH-BQi"/>
+                                            <outlet property="lblTitle" destination="eTO-Qv-82R" id="PWy-8g-tXG"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -3566,7 +3616,7 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <connections>
                         <outlet property="tableView" destination="UKM-aH-2ON" id="xaI-uK-YJ7"/>
-                        <segue destination="mED-qR-dBH" kind="modal" identifier="ActivityList2ActivityInfo" animates="NO" id="6dY-07-6oT"/>
+                        <segue destination="mED-qR-dBH" kind="push" identifier="ActivityList2ActivityInfo" id="6dY-07-6oT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uOb-cU-YW4" userLabel="First Responder" sceneMemberID="firstResponder"/>

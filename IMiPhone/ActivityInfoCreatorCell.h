@@ -9,5 +9,10 @@
 #import <UIKit/UIKit.h>
 
 @interface ActivityInfoCreatorCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UILabel *lblCreator;
+@property (weak, nonatomic) IBOutlet UILabel *lblDate;
+@property (weak, nonatomic) IBOutlet UILabel *lblTime;
+@property (weak, nonatomic) IBOutlet UILabel *lblPay;
+@property (weak, nonatomic) IBOutlet UILabel *lblCurNum;
 
 @end

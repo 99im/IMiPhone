@@ -9,5 +9,10 @@
 #import <UIKit/UIKit.h>
 
 @interface ActivityInfoApplyCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UIImageView *imgViewUser1;
+@property (weak, nonatomic) IBOutlet UIImageView *imgViewUser2;
+@property (weak, nonatomic) IBOutlet UIImageView *imgViewUser3;
+@property (weak, nonatomic) IBOutlet UIImageView *imgViewUser4;
+@property (weak, nonatomic) IBOutlet UIImageView *imgViewUser5;
 
 @end

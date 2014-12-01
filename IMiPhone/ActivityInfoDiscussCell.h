@@ -9,5 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface ActivityInfoDiscussCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UIImageView *imgViewPortrait;
+@property (weak, nonatomic) IBOutlet UILabel *lblNick;
+@property (weak, nonatomic) IBOutlet UILabel *lblDate;
+@property (weak, nonatomic) IBOutlet UILabel *lblContent;
 
 @end

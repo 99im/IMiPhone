@@ -9,6 +9,13 @@
 #import "ActivityReadyInfoController.h"
 #import "ActivityMessageProxy.h"
 #import "ActivityDataProxy.h"
+#import "ActivityInfoTitleCell.h"
+#import "ActivityInfoMoreCell.h"
+#import "ActivityInfoDiscussCell.h"
+#import "ActivityInfoCreatorCell.h"
+#import "ActivityInfoBelongCell.h"
+#import "ActivityInfoApplyOkCell.h"
+#import "ActivityInfoApplyCell.h"
 
 typedef NS_ENUM(NSInteger, ActivityInfoSection)
 {
@@ -33,6 +40,7 @@ typedef NS_ENUM(NSInteger, ActivityInfoSection)
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *barBtnShare;
 
 @property (nonatomic, retain) DPActivity *dpActivity;
+
 @property (nonatomic) BOOL isTemp;
 
 - (IBAction)barBtnJoinOrExitOnAction:(id)sender;
@@ -41,13 +49,13 @@ typedef NS_ENUM(NSInteger, ActivityInfoSection)
 
 @implementation ActivityReadyInfoController
 
-static NSString *ActivityInfoTitleCell = @"ActivityInfoTitleCell";
-static NSString *ActivityInfoTableApplyOKCell = @"ActivityInfoApplyOkCell";
-static NSString *ActivityInfoBelongCell = @"ActivityInfoBelongCell";
-static NSString *ActivityInfoApplyCell = @"ActivityInfoApplyCell";
-static NSString *ActivityInfoCreatorCell = @"ActivityInfoCreatorCell";
-static NSString *ActivityInfoTableMoreCell = @"ActivityInfoMoreCell";
-static NSString *ActivityInfoTableDiscussCell = @"ActivityInfoDiscussCell";
+static NSString *kActivityInfoTitleCell = @"ActivityInfoTitleCell";
+static NSString *kActivityInfoTableApplyOKCell = @"ActivityInfoApplyOkCell";
+static NSString *kActivityInfoBelongCell = @"ActivityInfoBelongCell";
+static NSString *kActivityInfoApplyCell = @"ActivityInfoApplyCell";
+static NSString *kActivityInfoCreatorCell = @"ActivityInfoCreatorCell";
+static NSString *kActivityInfoTableMoreCell = @"ActivityInfoMoreCell";
+static NSString *kActivityInfoTableDiscussCell = @"ActivityInfoDiscussCell";
 
 - (void)viewDidLoad
 {
@@ -130,33 +138,53 @@ static NSString *ActivityInfoTableDiscussCell = @"ActivityInfoDiscussCell";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section == ActivityInfoSectionTitle) {
-        UITableViewCell *cellTitle = [self.tableView dequeueReusableCellWithIdentifier:ActivityInfoTitleCell forIndexPath:indexPath];
+        ActivityInfoTitleCell *cellTitle = [self.tableView dequeueReusableCellWithIdentifier:kActivityInfoTitleCell forIndexPath:indexPath];
+        cellTitle.lblTitle.text = self.dpActivity.title;
+        //TODO:活动距离，人气，评论数
+//        cellTitle.lblDistance.text = self.dpActivity.
         return cellTitle;
     }
     else if (indexPath.section == ActivityInfoSectionCreatorOrApplyOk) {
         if (self.isTemp == YES) {
-            UITableViewCell *cellApplyOK = [self.tableView dequeueReusableCellWithIdentifier:ActivityInfoTableApplyOKCell forIndexPath:indexPath];
+            ActivityInfoApplyOkCell *cellApplyOK = [self.tableView dequeueReusableCellWithIdentifier:kActivityInfoTableApplyOKCell forIndexPath:indexPath];
+            //TODO:显示审核通过的用户头像
+//            cellApplyOK.imgViewUser1
             return cellApplyOK;
         }
         else {
-            UITableViewCell *cellBelong = [self.tableView dequeueReusableCellWithIdentifier:ActivityInfoBelongCell forIndexPath:indexPath];
+            ActivityInfoBelongCell *cellBelong = [self.tableView dequeueReusableCellWithIdentifier:kActivityInfoBelongCell forIndexPath:indexPath];
+            //TODO:所属聚乐部或者群
+//            cellBelong.lblBelong
+            //TODO:群等级或者俱乐部等级
+//            cellBelong.lblGroupLevel
             return cellBelong;
         }
     }
     else if (indexPath.section == ActivityInfoSectionJoinMembers) {
-        UITableViewCell *cellJoinMembers = [self.tableView dequeueReusableCellWithIdentifier:ActivityInfoApplyCell forIndexPath:indexPath];
+        ActivityInfoApplyCell *cellJoinMembers = [self.tableView dequeueReusableCellWithIdentifier:kActivityInfoApplyCell forIndexPath:indexPath];
+        //TODO:根据参加人员显示头像
+//        cellJoinMembers.imgViewUser1
         return cellJoinMembers;
     }
     else if (indexPath.section == ActivityInfoSectionTime) {
-        UITableViewCell *cellCreator = [self.tableView dequeueReusableCellWithIdentifier:ActivityInfoCreatorCell forIndexPath:indexPath];
+        ActivityInfoCreatorCell *cellCreator = [self.tableView dequeueReusableCellWithIdentifier:kActivityInfoCreatorCell forIndexPath:indexPath];
+        DPUser *dpUser = [[UserDataProxy sharedProxy] getUserByUid:self.dpActivity.createrUid];
+        cellCreator.lblCreator.text = [NSLocalizedString(@"Activity.Creator", nil) stringByAppendingString:dpUser.nick ];
+        cellCreator.lblCurNum.text =
+        [NSString stringWithFormat:@"%@(%li/%li)", NSLocalizedString(@"Activity.CurNum", nil), (long)self.dpActivity.curNum, (long)self.dpActivity.maxNum];
+        cellCreator.lblDate.text = [NSLocalizedString(@"Activity.Date", nil) stringByAppendingString:self.dpActivity.beginTime];
+//TODO:时间he付费显示
         return cellCreator;
     }
     else if (indexPath.section == ActivityInfoSectionMore) {
-        UITableViewCell *cellMore = [self.tableView dequeueReusableCellWithIdentifier:ActivityInfoTableMoreCell forIndexPath:indexPath];
+        ActivityInfoMoreCell *cellMore = [self.tableView dequeueReusableCellWithIdentifier:kActivityInfoTableMoreCell forIndexPath:indexPath];
+        cellMore.textView.text = self.dpActivity.detail;
         return cellMore;
     }
     else if (indexPath.section == ActivityInfoSectionDiscuss) {
-        UITableViewCell *cellDiscuss = [self.tableView dequeueReusableCellWithIdentifier:ActivityInfoTableDiscussCell forIndexPath:indexPath];
+        ActivityInfoDiscussCell *cellDiscuss = [self.tableView dequeueReusableCellWithIdentifier:kActivityInfoTableDiscussCell forIndexPath:indexPath];
+        //TODO:评论的显示
+//        cellDiscuss.lblNick = 
         return cellDiscuss;
     }
     else {
@@ -175,35 +203,35 @@ static NSString *ActivityInfoTableDiscussCell = @"ActivityInfoDiscussCell";
 //    NSString *cellIdentify;
     switch (indexPath.section) {
         case ActivityInfoSectionTitle:
-//            cellIdentify = ActivityInfoTitleCell;
+//            cellIdentify = kActivityInfoTitleCell;
             height = 65;
             break;
         case ActivityInfoSectionCreatorOrApplyOk:
             if (self.isTemp) {
-//                cellIdentify = ActivityInfoTableApplyOKCell;
+//                cellIdentify = kActivityInfoTableApplyOKCell;
                 height = 100;
             }
             else {
-//                cellIdentify = ActivityInfoBelongCell;
+//                cellIdentify = kActivityInfoBelongCell;
                 height = 35;
 
             }
             break;
         case ActivityInfoSectionJoinMembers:
-//            cellIdentify = ActivityInfoApplyCell;
+//            cellIdentify = kActivityInfoApplyCell;
             height = 90;
             break;
         case ActivityInfoSectionTime:
-//            cellIdentify = ActivityInfoCreatorCell;
+//            cellIdentify = kActivityInfoCreatorCell;
             height = 134;
             break;
         case ActivityInfoSectionMore:
-//            cellIdentify = ActivityInfoTableMoreCell;
+//            cellIdentify = kActivityInfoTableMoreCell;
             height = 152;
             break;
         case ActivityInfoSectionDiscuss:
             //TODO:获取本活动的评论条目高度
-//             cellIdentify = ActivityInfoTableDiscussCell;
+//             cellIdentify = kActivityInfoTableDiscussCell;
             height = 79;
             break;
         default:
