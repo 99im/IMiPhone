@@ -19,7 +19,8 @@
 //@property (nonatomic) long long updateTimeGroupMyList;
 @property (nonatomic, retain) NSMutableArray *arrGroupsSearch;
 
-@property (nonatomic, retain) NSMutableArray *groupMembersCurrent;
+@property (nonatomic, retain) NSMutableArray *currGroupMembersList;
+@property (nonatomic) IMGroupId currGroupMembersGid;
 
 @property (nonatomic, retain) DPGroup *dpGroupCreating;
 
@@ -34,7 +35,7 @@
 @synthesize groupIdCurrent = _groupIdCurrent;
 @synthesize arrGroupMyList = _arrGroupMyList;
 @synthesize groupInfoCurrent = _groupInfoCurrent;
-@synthesize groupMembersCurrent = _groupMembersCurrent;
+@synthesize currGroupMembersList = _currGroupMembersList;
 @synthesize arrGroupsSearch = _arrGroupsSearch;
 
 @synthesize dpGroupCreating = _dpGroupCreating;
@@ -47,7 +48,7 @@
     _arrGroupsSearch = nil;
     _groupIdSendLast = 0;
     _groupInfoCurrent = nil;
-    _groupMembersCurrent = nil;
+    _currGroupMembersList = nil;
     _groupIdCurrent = 0;
 
 }
@@ -307,16 +308,24 @@ static GroupDataProxy *sharedGroupDataProxy = nil;
 
 #pragma mark - 群成员
 -(NSMutableArray *)getGroupMembersCurrent{
-    if (!_groupMembersCurrent) {
+    BOOL needSend = NO;
+    if (!_currGroupMembersList) {
+        needSend = YES;
         //_groupMembersCurrent = [NSMutableArray array];
         if (_groupIdCurrent > 0) {
             [[GroupMessageProxy sharedProxy] sendGroupMembers:_groupIdCurrent start:0 pageNum:50];
         }
-    } else if([_groupMembersCurrent count]>0){//TODO:待判断是否过期
+    } else if(_currGroupMembersGid != _groupIdCurrent){//TODO:待判断是否过期
+        needSend = YES;
+    }
+    if (needSend == YES) {
+        _currGroupMembersGid = _groupIdCurrent;
+        [[GroupMessageProxy sharedProxy] sendGroupMembers:_groupIdCurrent start:0 pageNum:50];
+    } else {
         NSLog(@"postBy GroupDataProxy");
         [imUtil postNotificationName:NOTI_H__GROUP_MEMBERS_ object:nil];
     }
-    return _groupMembersCurrent;
+    return _currGroupMembersList;
 }
 
 -(NSMutableArray *)getGroupMembersWithGID:(IMGroupId) gid
@@ -327,7 +336,7 @@ static GroupDataProxy *sharedGroupDataProxy = nil;
 -(void)saveGroupMembers:(NSMutableArray *)members withGID:(IMGroupId) gid
 {
     if (gid == _groupIdCurrent) {
-        _groupMembersCurrent = members;
+        _currGroupMembersList = members;
     }
     //TODO:判断该群是否为自己加入过的，若加入过，则入库保存群成员
 

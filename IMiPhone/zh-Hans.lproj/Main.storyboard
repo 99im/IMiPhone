@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="sWe-ai-dJr">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="sWe-ai-dJr">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
@@ -2294,7 +2294,6 @@
                         <outlet property="lblGroupName" destination="dlg-nV-kFa" id="yD6-Eq-gg4"/>
                         <outlet property="lblMemberNum" destination="qC8-MD-ylo" id="SxB-ME-pB0"/>
                         <outlet property="tvIntro" destination="Skp-jk-w4A" id="E8t-9b-BFY"/>
-                        <segue destination="Tez-zb-r5A" kind="push" identifier="GroupInfo2MembersSegue" id="3hi-GN-j2D"/>
                         <segue destination="f2G-Kw-Ad0" kind="push" identifier="groupInfo2GroupSetting" id="Gnm-RN-Gtp"/>
                         <segue destination="yEJ-R3-2p3" kind="push" identifier="groupInfo2GroupChat" id="DGb-6e-Qb2"/>
                         <segue destination="zdu-lY-f24" kind="push" identifier="groupInfo2GroupApply" id="CTP-3c-gYN"/>
@@ -2495,50 +2494,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qAi-XA-I0A" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4520" y="3185"/>
-        </scene>
-        <!--Group-群成员列表-->
-        <scene sceneID="sYu-Tx-UjA">
-            <objects>
-                <tableViewController id="Tez-zb-r5A" userLabel="Group-群成员列表" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="GEC-7y-mnh">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="XeL-h7-bw4" detailTextLabel="dsc-Pl-Mde" style="IBUITableViewCellStyleValue1" id="Mdb-kj-cLq">
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Mdb-kj-cLq" id="rcd-fd-JHU">
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="成员名称" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="XeL-h7-bw4">
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="dsc-Pl-Mde">
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                            <color key="textColor" red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="Tez-zb-r5A" id="ZTm-Fu-o7J"/>
-                            <outlet property="delegate" destination="Tez-zb-r5A" id="63u-qB-Hwy"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" id="jBD-ov-1Ep"/>
-                    <connections>
-                        <segue destination="Ixd-6h-fyu" kind="push" identifier="GroupMembers2UserInfoSegue" id="xJX-I6-fGX"/>
-                    </connections>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="5qz-4A-Fxo" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3164" y="6227"/>
         </scene>
         <!--Group-我加入的群-->
         <scene sceneID="OH2-Fr-kDb">
@@ -4469,13 +4424,13 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="jj6-rV-QBG"/>
         <segue reference="iIs-SU-ZLV"/>
         <segue reference="kdV-GO-inJ"/>
-        <segue reference="jj6-rV-QBG"/>
-        <segue reference="dkl-wS-iyY"/>
         <segue reference="yXo-ak-l89"/>
-        <segue reference="xJX-I6-fGX"/>
+        <segue reference="osh-fz-Jtw"/>
         <segue reference="8gL-WP-3D1"/>
+        <segue reference="dkl-wS-iyY"/>
         <segue reference="XGz-ue-SSV"/>
     </inferredMetricsTieBreakers>
 </document>
